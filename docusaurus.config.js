@@ -111,7 +111,7 @@ const config = {
             activeBaseRegex: `/docs-api/`,
           },
           {
-            to: '/docs-system/Introducao',  // ./docs-system/Intro.md
+            to: '/docs-system/Intro',  // ./docs-system/Intro.md
             label: 'My System',
             position: 'left',
             activeBaseRegex: `/docs-system/`,
@@ -131,7 +131,7 @@ const config = {
             items: [
               {
                 label: 'Tutorial',
-                to: '/docs/docsA',
+                to: '/docs-system/',
               },
             ],
           },
