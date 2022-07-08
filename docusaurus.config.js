@@ -7,7 +7,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: '月离的文档站',
-  tagline: 'Dinosaurs are cool',
+  tagline: 'Enjoy the docs',
   url: 'https://docs.yuelili.com',
   baseUrl: '/',
   onBrokenLinks: 'throw',
@@ -85,7 +85,7 @@ const config = {
 
 
       navbar: {
-        title: 'My Site',
+        title: '月离的文档站',
         logo: {
           alt: 'My Site Logo',
           src: 'img/logo.svg',
