@@ -5,9 +5,9 @@ export default defineUserConfig({
   base: "/",
 
   locales: {
-    "/": {
+    "/en/": {
       lang: "en-US",
-      title: "YueLiLi Document",
+      title: "YueLi Document",
       description: "OpenSource Documentation",
     },
     "/zh/": {

@@ -17,7 +17,7 @@ export const zhSidebarConfig = sidebar({
       link: "guide/",
       children: "structure",
     }],
-  "/zh/exp/":"structure"
+  "/zh/ae/expression/":"structure"
   
   
 });

@@ -12,8 +12,8 @@ export default hopeTheme({
   hostname: "https://vuepress-theme-hope-v2-demo.mrhope.site",
 
   author: {
-    name: "Mr.Hope",
-    url: "https://mrhope.site",
+    name: "月离",
+    url: "https://yuelili.com",
   },
 
   iconAssets: "iconfont",
@@ -61,7 +61,7 @@ export default hopeTheme({
   },
 
   locales: {
-    "/": {
+    "/en/": {
       // navbar
       navbar: enNavbarConfig,
 
@@ -138,7 +138,15 @@ export default hopeTheme({
     },
 
     mdEnhance: {
-      enableAll: true,
+      tasklist: true,
+
+        // 启用图片标记
+        imageMark: true,
+        // 启用图片大小
+        imageSize: true,
+        mark: true,
+        container: true,
+
       presentation: {
         plugins: ["highlight", "math", "search", "notes", "zoom"],
       },
