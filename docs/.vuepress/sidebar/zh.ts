@@ -17,7 +17,18 @@ export const zhSidebarConfig = sidebar({
       link: "guide/",
       children: "structure",
     }],
-  "/zh/ae/expression/":"structure"
+  "/zh/ae/":[
+    {
+      text: "表达式",
+      icon: "creative",
+      prefix: "expression/",
+      link: "expression/",
+      // children: "structure",
+    }
+  ],
+  "/zh/ae/expression/":"structure",
+  
+
   
   
 });
