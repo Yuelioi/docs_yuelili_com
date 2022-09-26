@@ -2,7 +2,7 @@ import { defineUserConfig } from "vuepress";
 import { docsearchPlugin } from "@vuepress/plugin-docsearch";
 import { searchPlugin } from "@vuepress/plugin-search";
 import theme from "./theme.js";
-import { hopeTheme } from "vuepress-theme-hope";
+import { redirectPlugin } from "vuepress-plugin-redirect";
 
 export default defineUserConfig({
   base: "/",
@@ -20,11 +20,13 @@ export default defineUserConfig({
     },
   },
   theme,
-  // theme: hopeTheme({
-  //   iconAssets:"fontawesome"
-  //   // iconAssets: "//at.alicdn.com/t/c/font_3673964_i7nrxfjndp.css",
-  // }),
   plugins:[
+    // redirectPlugin({
+    //   hostname: "https://docs.yuelili.com",
+    //   config: {
+    //     "/": "/zh.html",
+    //   },
+    // }),
     searchPlugin({
       locales: {
         '/en/': {

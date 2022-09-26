@@ -1996,7 +1996,7 @@ builtin-modules@^3.1.0:
   resolved "https://registry.yarnpkg.com/builtin-modules/-/builtin-modules-3.3.0.tgz#cae62812b89801e9656336e46223e030386be7b6"
   integrity sha512-zhaCDicdLuWN5UbN5IMnFqNMhNfo919sH85y2/ea+5Yg9TsTkeZxpL+JLbp6cgYFS4sRLp3YV4S6yDuqVWHYOw==
 
-cac@^6.7.12:
+cac@^6.7.12, cac@^6.7.14:
   version "6.7.14"
   resolved "https://registry.yarnpkg.com/cac/-/cac-6.7.14.tgz#804e1e6f506ee363cb0e3ccbb09cad5dd9870959"
   integrity sha512-b6Ilus+c3RrdDk+JhLKUAQfzzgLEPy6wcXqS7f/xe1EETvsDP6GORG7SFuOs6cID5YkqchW/LXZbX5bc8j7ZcQ==
@@ -4928,6 +4928,18 @@ vuepress-plugin-reading-time2@2.0.0-beta.104:
   resolved "https://registry.yarnpkg.com/vuepress-plugin-reading-time2/-/vuepress-plugin-reading-time2-2.0.0-beta.104.tgz#2b64cd6bfbdd4df80d2c0c5b4ae9007e6db9b037"
   integrity sha512-NVsyRfSxnPYJuJpyeTYlCvj7gGif69UdXbgcIQkxUkCVpEsRjdAFBzUYav8YJhggNjGcJk48nykUyzRKXp9lvA==
   dependencies:
+    vuepress-shared "2.0.0-beta.104"
+
+vuepress-plugin-redirect@^2.0.0-beta.104:
+  version "2.0.0-beta.104"
+  resolved "https://registry.yarnpkg.com/vuepress-plugin-redirect/-/vuepress-plugin-redirect-2.0.0-beta.104.tgz#2e958afde4cdf0aedf34b73535a8ae26b3181871"
+  integrity sha512-iHeAmJ18/FjQtWsVRbQCNiLeR3WUgml+ZxMIAuiP/lvAi1aY7Y6JpOUCCR8IKoFjo9FcJdCdOrO7GtrKX17Q0A==
+  dependencies:
+    "@vuepress/cli" "2.0.0-beta.51"
+    "@vuepress/core" "2.0.0-beta.51"
+    "@vuepress/shared" "2.0.0-beta.51"
+    "@vuepress/utils" "2.0.0-beta.51"
+    cac "^6.7.14"
     vuepress-shared "2.0.0-beta.104"
 
 vuepress-plugin-sass-palette@2.0.0-beta.104:

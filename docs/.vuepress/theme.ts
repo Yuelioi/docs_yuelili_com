@@ -9,7 +9,7 @@ import {
 } from "./sidebar/index.js";
 
 export default hopeTheme({
-  hostname: "https://vuepress-theme-hope-v2-demo.mrhope.site",
+  hostname: "https://docs.yuelili.com",
 
   author: {
     name: "月离",
@@ -20,7 +20,7 @@ export default hopeTheme({
 
   logo: "/logo.svg",
 
-  repo: "vuepress-theme-hope/vuepress-theme-hope",
+  repo: "Yuelioi/docs_yuelili_com",
 
   docsDir: "demo/src",
 
