@@ -1,34 +1,51 @@
 import { sidebar } from "vuepress-theme-hope";
 
 export const zhSidebarConfig = sidebar({
-
   "/zh/": [
-
     {
-      text: "如何使用",
+      text: "AE文档",
       icon: "creative",
-      prefix: "exp/",
-      link: "exp/",
+      prefix: "ae/",
+      link: "ae/",
       children: "structure",
-    },{
-      text: "如何使用3",
+    },
+    {
+      text: "Blender文档",
       icon: "creative",
-      prefix: "guide/",
-      link: "guide/",
+      prefix: "blender/",
+      link: "blender/",
       children: "structure",
-    }],
-  "/zh/ae/":[
+    },
+  ],
+  "/zh/ae/": [
     {
       text: "表达式",
       icon: "creative",
       prefix: "expression/",
       link: "expression/",
       // children: "structure",
-    }
+    },
+    {
+      text: "文字动画",
+      icon: "creative",
+      prefix: "text-animation/",
+      link: "text-animation/",
+    },
+    {
+      text: "形状图层",
+      icon: "creative",
+      prefix: "shape/",
+      link: "shape/",
+    },
+    {
+      text: "内置效果",
+      icon: "creative",
+      prefix: "expression/",
+      link: "expression/",
+    },
   ],
-  "/zh/ae/expression/":"structure",
-  
-
-  
-  
+  "/zh/ae/expression/": "structure",
+  "/zh/ae/shape/": "structure",
+  "/zh/ae/text-animation/": "structure",
+  "/zh/Speed Tree/": "structure",
 });

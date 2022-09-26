@@ -9,38 +9,25 @@ heroFullScreen: true
 tagline: 全世界最大的文档开源中心(不是)
 projects:
   - icon: project
-    name: 项目名称
-    desc: 项目详细描述
-    link: https://你的项目链接
+    name: 导航站
+    desc: 网址导航
+    link: https://nav.yuelili.com
 
   - icon: link
-    name: 链接名称
-    desc: 链接详细描述
-    link: https://链接地址
+    name: 个人网站
+    desc: 返回月离的万事屋
+    link: https://www.yuelili.com
 
-  - icon: book
-    name: 书籍名称
-    desc: 书籍详细描述
-    link: https://你的书籍链接
-
-  - icon: article
-    name: 文章名称
-    desc: 文章详细描述
-    link: https://你的文章链接
-
-  - icon: friend
-    name: 协助这
-    desc: 介绍
-    link: https://
+  - icon: friendiconPrefix
+    name: 点赞
+    desc: Github上点赞本项目
+    link: https://github.com/Yuelioi/docs_yuelili_com
 
   - icon: /logo.svg
-    name: 更多
-    desc: 详细介绍
-    link: https://你的自定义链接
+    name: 关于
+    desc: 关于本文档
+    link: /zh/intro
 
 footer: 页脚
 ---
-
 这是一个页脚。
-
-

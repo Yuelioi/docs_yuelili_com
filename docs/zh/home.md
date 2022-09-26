@@ -10,23 +10,20 @@ actions:
     link: /zh/guide/
     type: primary
 
-  - text: 博客主页 🏠
+  - text: 返回主页 🏠
     link: /zh/
 
 features:
-  - title: Markdown 增强
-    icon: markdown
-    details: 新增文字对齐、上下角标、脚注、标记、任务列表、数学公式、流程图、图表与幻灯片支持
-    link: https://vuepress-theme-hope.github.io/v2/zh/guide/markdown/
+  - title: AE表达式
+    details: 全函数方法详解
+    link: ./ae/expression/
 
-  - title: 幻灯片页面
-    icon: slides
-    details: 添加幻灯片页面以显示你喜欢的内容
-    link: https://vuepress-theme-hope.github.io/v2/zh/guide/layout/slides
+  - title: AE文档
+    details: 形状图层、文字动画
+    link: ./ae/ae-doc/
 
-  - title: 布局增强
-    icon: layout
-    details: 添加路径导航、页脚、改进的导航栏、改进的页面导航等。
+  - title: AE脚本文档
+    details: 
     link: https://vuepress-theme-hope.github.io/v2/zh/guide/layout/
 
   - title: 浏览量与评论
@@ -101,7 +98,6 @@ features:
 copyright: false
 footer: MIT Licensed | Copyright © 2019-present Mr.Hope
 ---
-
 这是项目主页的案例。你可以在这里放置你的主体内容。
 
 想要使用此布局，你需要在页面 front matter 中设置 `home: true`。
