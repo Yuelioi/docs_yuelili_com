@@ -2,8 +2,8 @@
 /node_modules
 
 # Production
-docs/.vuepress/build
-
+/docs/.vuepress/dist
+docs/**/dist
 .obsidian
 # Generated files
 
