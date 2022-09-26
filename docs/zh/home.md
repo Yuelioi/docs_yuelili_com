@@ -14,10 +14,10 @@ actions:
     link: /zh/
 
 features:
-  - title: Markdown 增强
+  - title: AE表达式
     icon: markdown
-    details: 新增文字对齐、上下角标、脚注、标记、任务列表、数学公式、流程图、图表与幻灯片支持
-    link: https://vuepress-theme-hope.github.io/v2/zh/guide/markdown/
+    details: Adobe After Effects 表达式文档
+    link: ./ae/expression/
 
   - title: 幻灯片页面
     icon: slides
@@ -101,7 +101,6 @@ features:
 copyright: false
 footer: MIT Licensed | Copyright © 2019-present Mr.Hope
 ---
-
 这是项目主页的案例。你可以在这里放置你的主体内容。
 
 想要使用此布局，你需要在页面 front matter 中设置 `home: true`。
