@@ -10,23 +10,20 @@ actions:
     link: /zh/guide/
     type: primary
 
-  - text: 博客主页 🏠
+  - text: 返回主页 🏠
     link: /zh/
 
 features:
-  - title: AE表达式
-    icon: markdown
-    details: Adobe After Effects 表达式文档
+  - title: AE表达式   
+    details: 全函数方法详解
     link: ./ae/expression/
 
-  - title: 幻灯片页面
-    icon: slides
-    details: 添加幻灯片页面以显示你喜欢的内容
-    link: https://vuepress-theme-hope.github.io/v2/zh/guide/layout/slides
+  - title: AE文档
+    details: 形状图层、文字动画
+    link: ./ae/ae-doc/
 
-  - title: 布局增强
-    icon: layout
-    details: 添加路径导航、页脚、改进的导航栏、改进的页面导航等。
+  - title: AE脚本文档
+    details: 
     link: https://vuepress-theme-hope.github.io/v2/zh/guide/layout/
 
   - title: 浏览量与评论

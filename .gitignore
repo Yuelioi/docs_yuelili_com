@@ -2,8 +2,9 @@
 /node_modules
 
 # Production
-/build
-
+/docs/.vuepress/dist
+docs/**/dist
+.obsidian
 # Generated files
 
 .cache-loader

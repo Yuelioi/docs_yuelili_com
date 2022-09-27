@@ -1,48 +1,14 @@
----
-home: true
-layout: Blog
-icon: home
-title: YueLi Document
-heroImage: /logo.svg
-heroText: YueLi Docsily
-tagline: You can put your slogan here
-heroFullScreen: true
-projects:
-  - icon: project
-    name: project name
-    desc: project detailed description
-    link: https://your.project.link
+## 介绍
 
-  - icon: link
-    name: link name
-    desc: link detailed description
-    link: https://link.address
+月离的文档站存档
 
-  - icon: book
-    name: book name
-    desc: Detailed description of the book
-    link: https://link.to.your.book
+## Markdown增强语法
 
-  - icon: article
-    name: article name
-    desc: Detailed description of the article
-    link: https://link.to.your.article
+使用了markdown额外功能,详见[自定义容器](https://vuepress-theme-hope.github.io/v2/zh/guide/markdown/container.html#%E6%BC%94%E7%A4%BA)
 
-  - icon: friend
-    name: friend name
-    desc: Detailed description of friend
-    link: https://link.to.your.friend
 
-  - icon: /logo.svg
-    name: custom item
-    desc: Detailed description of this custom item
-    link: https://link.to.your.friend
+::info
 
-footer: customize your footer text
----
+xxx
 
-This is a blog home page demo.
-
-To use this layout, you should set both `layout: Blog` and `home: true` in the page front matter.
-
-For related configuration docs, please see [blog homepage](https://vuepress-theme-hope.github.io/v2/guide/blog/home/).
+:::

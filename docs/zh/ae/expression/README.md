@@ -7,8 +7,11 @@ category:
 
 [官方文档(英文)](https://ae-expressions.docsforadobe.dev/)
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> fbb885653515ec5c88d512ec012d7f33f21f2a2e
 ## 介绍
 
 使用 After Effects 表达式元素和标准 JavaScript 元素来编写表达式。您可以随时使用 Expression Language 菜单将方法和属性插入到表达式中，并且您可以随时使用pickwhip 插入属性。
@@ -21,7 +24,10 @@ category:
 
 W3Schools JavaScript 参考网站提供标准 JavaScript 语言的信息，包括 JavaScript Math 和 String 对象的页面。
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> fbb885653515ec5c88d512ec012d7f33f21f2a2e
 ## 变更日志
 
 表达式有什么新变化？
@@ -215,8 +221,11 @@ W3Schools JavaScript 参考网站提供标准 JavaScript 语言的信息，包�
 
 * 首次添加的表达式
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> fbb885653515ec5c88d512ec012d7f33f21f2a2e
 ## 资源
 
 用户“Beaver”在 Mograph 论坛上发布了[5 个将改变您生活的表达式。](http://mograph.net/board/index.php?showtopic=13954)
