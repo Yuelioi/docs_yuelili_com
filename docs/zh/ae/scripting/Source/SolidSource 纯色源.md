@@ -4,7 +4,8 @@ order: 5
 category:
   - AE
 ---
-    # 纯色源对象 #
+
+## 纯色源对象
 
 app.project.item(index).mainSource  
 app.project.item(index).proxySource
@@ -13,13 +14,12 @@ app.project.item(index).proxySource
 
 父级关系：纯色源是素材源（FootageSource）的子类。因此素材源的方法和属性均可用。
 
-# 属性 #
+## 属性
 
-## color #
+### color
 
 solidSource.color
 
 描述：纯色的颜色，红色，绿色和蓝色。
 
-类型：三个浮点值的数组；读/写。[R, G, B]均为0.0~1.0
-
+类型：三个浮点值的数组；读/写。[R, G, B]均为 0.0~1.0

@@ -4,7 +4,7 @@ order: 7
 category:
   - AE
 ---
-    # FootageItem object #
+## FootageItem object #
 
 app.project.item(index)  
 app.project.items[index]
@@ -15,9 +15,9 @@ app.project.items[index]
 
 使用方式：footageItem.XX → app.project.item(index).XX
 
-# 属性篇 #
+## 属性篇 #
 
-## file 素材源文件 #
+### file 素材源文件 #
 
 app.project.item(index).file
 
@@ -26,7 +26,7 @@ File对象。如果FootageItem的mainSource是文件源，则与FootageItem.main
 
 类型：文件对象；只读。
 
-## mainSource 素材源对象 #
+### mainSource 素材源对象 #
 
 app.project.item(index).mainSource
 
@@ -41,9 +41,9 @@ replace”方法。请参见footageSource对象及其三种类型：
 
 类型：footageSource对象; 只读。
 
-# 方法 #
+## 方法 #
 
-## openInViewer() 在查看器打开素材 #
+### openInViewer() 在查看器打开素材 #
 
 app.project.item(index).openInViewer()
 
@@ -55,7 +55,7 @@ app.project.item(index).openInViewer()
 
 返回：“素材”面板的查看器对象；如果无法打开素材，则为null。
 
-## replace() 更改素材源 #
+### replace() 更改素材源 #
 
 app.project.item(index).replace(file)
 
@@ -65,7 +65,7 @@ app.project.item(index).replace(file)
 
   * file：用于素材主要源的文件，ExtendScript File对象。
 
-## replaceWithPlaceholder() 占位符替换素材 #
+### replaceWithPlaceholder() 占位符替换素材 #
 
 app.project.item(index).replaceWithPlaceholder(name, width, height, frameRate,
 duration)
@@ -80,7 +80,7 @@ duration)
   * frameRate ：占位符的帧速率，范围为1.0.~99.0
   * duration 占位符的持续时间(像素)，浮点数，范围为0.0~10800.0
 
-## replaceWithSequence() 序列替换素材 #
+### replaceWithSequence() 序列替换素材 #
 
 app.project.item(index).replaceWithSequence(file, forceAlphabetical)
 
@@ -91,7 +91,7 @@ app.project.item(index).replaceWithSequence(file, forceAlphabetical)
   * file：序列中第一个文件的ExtendScript File对象，用作素材的主要来源。
   * forceAlphabetical：如果为true，则使用“强制字母顺序”选项。
 
-## replaceWithSolid() 纯色层替换素材 #
+### replaceWithSolid() 纯色层替换素材 #
 
 app.project.item(index).replaceWithSolid(color, name, width, height,
 pixelAspect)

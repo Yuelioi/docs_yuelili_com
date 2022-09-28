@@ -4,7 +4,7 @@ order: 4
 category:
   - AE
 ---
-    # 关键帧缓动 #
+## 关键帧缓动 #
 
 myKey = new KeyframeEase(speed, influence);
 
@@ -13,7 +13,7 @@ myKey = new KeyframeEase(speed, influence);
   * speed：浮点值。设置速度（speed）属性。
   * influence：浮点值，0.01~100.0。设置影响（influence）属性。
 
-### 示例1：设置第二个关键帧的缓入缓出 #
+#### 示例1：设置第二个关键帧的缓入缓出 #
 
 假定位置具有两个以上的关键帧。右键第二个关键帧 - 关键帧速度
 
@@ -21,14 +21,14 @@ myKey = new KeyframeEase(speed, influence);
 
 ![](https://cdn.yuelili.com/20211012171544.png)
 
-    
-    
-    var easeIn = new KeyframeEase(0.5, 50);
-    var easeOut = new KeyframeEase(0.75, 85);
-    var myPositionProperty = app.project.activeItem.layer(1).property("Position");
-    myPositionProperty.setTemporalEaseAtKey(2, [easeIn], [easeOut]);
+```javascript
+var easeIn = new KeyframeEase(0.5, 50); var easeOut = new
+KeyframeEase(0.75, 85); var myPositionProperty =
+app.project.activeItem.layer(1).property("Position");
+myPositionProperty.setTemporalEaseAtKey(2, [easeIn], [easeOut]);
+```
 
-### 示例2：缩放具有两或三个维度的时间属性。 #
+#### 示例2：缩放具有两或三个维度的时间属性。 #
 
 对于2D和3D属性，必须为每个尺寸设置一个easeIn和easeOut值，右键第二个关键帧 - 关键帧速度
 
@@ -36,16 +36,17 @@ myKey = new KeyframeEase(speed, influence);
 
 ![](https://cdn.yuelili.com/20211012171920.png)
 
-    
-    
-    var easeIn = new KeyframeEase(0.5, 50);
-    var easeOut = new KeyframeEase(0.75, 85);
-    var myScaleProperty = app.project.activeItem.layer(1).property("Scale")
-    myScaleProperty.setTemporalEaseAtKey(2, [easeIn, easeIn, easeIn], [easeOut, easeOut, easeOut]);
+```javascript
+var easeIn = new KeyframeEase(0.5, 50); var easeOut = new
+KeyframeEase(0.75, 85); var myScaleProperty =
+app.project.activeItem.layer(1).property("Scale")
+myScaleProperty.setTemporalEaseAtKey(2, [easeIn, easeIn, easeIn], [easeOut,
+easeOut, easeOut]);
+```
 
-# 属性 #
+## 属性 #
 
-## KeyframeEase.influence #
+### KeyframeEase.influence #
 
 myKey.influence
 
@@ -58,7 +59,7 @@ myKey.influence
 
 类型：浮点值，0.1~100.0；读/写。
 
-## KeyframeEase.speed #
+### KeyframeEase.speed #
 
 myKey.speed
 

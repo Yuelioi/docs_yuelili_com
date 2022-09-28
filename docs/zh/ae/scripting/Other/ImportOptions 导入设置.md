@@ -4,7 +4,7 @@ order: 3
 category:
   - AE
 ---
-    # 导入选项 #
+## 导入选项 #
 
 new ImportOptions();  
 new ImportOptions(file);
@@ -14,9 +14,9 @@ File对象。如果未提供，则file在将对象与importFile方法一起使�
 
 例如：new ImportOptions().file = new File("myfile.psd");
 
-# 属性 #
+## 属性 #
 
-## file 导入文件 #
+### file 导入文件 #
 
 importOptions.file
 
@@ -24,7 +24,7 @@ importOptions.file
 
 类型：ExtendScript File对象；读/写。
 
-## forceAlphabetical 强制字母顺序 #
+### forceAlphabetical 强制字母顺序 #
 
 importOptions.forceAlphabetical
 
@@ -32,7 +32,7 @@ importOptions.forceAlphabetical
 
 类型：布尔值 读/写。
 
-## importAs 作为某源导入 #
+### importAs 作为某源导入 #
 
 importOptions.importAs
 
@@ -45,11 +45,12 @@ importOptions.importAs
   * ImportAsType.COMP
   * ImportAsType.PROJECT
 
-## rangeEnd 导入序列结束剪切 #
+### rangeEnd 导入序列结束剪切 #
 
 importOptions.rangeEnd
 
-__Warning
+::: danger
+:::
 
 此方法/属性无正式记录，是否存在以及是否报错未知，如果有更多信息，请贡献！
 
@@ -65,11 +66,12 @@ __Warning
 
 类型：整数; 读/写。
 
-## rangeStart 导入序列起始剪切 #
+### rangeStart 导入序列起始剪切 #
 
 importOptions.rangeStart
 
-__Warning
+::: danger
+:::
 
 此方法/属性无正式记录，是否存在以及是否报错未知，如果有更多信息，请贡献！
 
@@ -101,7 +103,7 @@ importOptions.rangeEnd = 30;
 
 var item = app.project.importFile(importOptions);
 
-## sequence 导入序列 #
+### sequence 导入序列 #
 
 importOptions.sequence
 
@@ -109,9 +111,9 @@ importOptions.sequence
 
 类型：布尔值 读/写。
 
-# 方法 #
+## 方法 #
 
-## canImportAs() 能否作为某源导入 #
+### canImportAs() 能否作为某源导入 #
 
 importOptions.canImportAs(type)
 
@@ -135,11 +137,12 @@ if (io.canImportAs(ImportAsType.COMP)) {
 io.importAs = ImportAsType.COMP;  
 }
 
-## isFileNameNumbered() 文件名是否含数字 #
+### isFileNameNumbered() 文件名是否含数字 #
 
 importOptions.isFileNameNumbered(file)
 
-__Warning
+::: danger
+:::
 
 此方法/属性无正式记录，是否存在以及是否报错未知，如果有更多信息，请贡献！
 

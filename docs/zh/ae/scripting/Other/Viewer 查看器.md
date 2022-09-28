@@ -4,7 +4,7 @@ order: 10
 category:
   - AE
 ---
-    # Viewer 查看器对象 #
+## Viewer 查看器对象 #
 
 app.activeViewer
 
@@ -18,9 +18,9 @@ if (activeViewer.type === ViewerType.VIEWER_COMPOSITION) {
 alert("Composition panel is active.");  
 }
 
-# 属性 #
+## 属性 #
 
-## active #
+### active #
 
 viewer.active
 
@@ -28,7 +28,7 @@ viewer.active
 
 类型：布尔值 只读。
 
-## fastPreview #
+### fastPreview #
 
 viewer.fastPreview
 
@@ -57,7 +57,7 @@ app.activeViewer.views[0].options.fastPreview === FastPreviewType.FP_OFF;
 app.activeViewer.views[0].options.fastPreview ===
 FastPreviewType.FP_WIREFRAME;
 
-## guidesLocked #
+### guidesLocked #
 
 viewer.guidesLocked
 
@@ -71,7 +71,7 @@ viewer.guidesLocked
 
 app.activeViewer.views[0].options.guidesLocked;
 
-## guidesSnap #
+### guidesSnap #
 
 viewer.guidesSnap
 
@@ -85,7 +85,7 @@ viewer.guidesSnap
 
 app.activeViewer.views[0].options.guidesSnap;
 
-## guidesVisibility #
+### guidesVisibility #
 
 viewer.guidesVisibility
 
@@ -99,7 +99,7 @@ viewer.guidesVisibility
 
 app.activeViewer.views[0].options.guidesVisibility;
 
-## maximized #
+### maximized #
 
 viewer.maximized
 
@@ -107,7 +107,7 @@ viewer.maximized
 
 类型：布尔值 读/写。
 
-## rulers #
+### rulers #
 
 笔记：此功能已添加到After Effects 16.1(CC 2019)中 描述：如果为true，则表示在查看器中显示了标尺。 类型：布尔值 读/写。
 示例 app.activeViewer.views[0].options.rulers;
@@ -120,7 +120,7 @@ viewer.maximized
 
 app.activeViewer.views[0].options.rulers;
 
-## type #
+### type #
 
 viewer.type
 
@@ -132,9 +132,9 @@ viewer.type
   * ViewerType.VIEWER_LAYER
   * ViewerType.VIEWER_FOOTAGE
 
-# 方法 #
+## 方法 #
 
-## setActive() #
+### setActive() #
 
 viewer.setActive()
 

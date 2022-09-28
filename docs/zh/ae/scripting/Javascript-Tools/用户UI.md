@@ -11,9 +11,9 @@ UI构建原型：[UI Events](https://www.w3.org/TR/uievents/#ui-events-overview)
 
 本站只提供说明，以及属性、函数参考，也就是快速入门使用。
 
-# 窗体 #
+## 窗体 #
 
-### new Window #
+#### new Window #
 
 new Window (type [, title, bounds, {creation_properties}]);
 
@@ -32,31 +32,23 @@ new Window (type [, title, bounds, {creation_properties}]);
 
 示例1：直接创建
 
-    
-    
-    var dlg = new Window( "dialog", "用户提示" );  // ← ← ← 创建一个dialog类型窗口，左上角名称为：用户提示
-    var myMessage = dlg.add ("statictext");  // 给窗口添加一个静态文字
-    myMessage.text = "Hello, world!"  // 给静态文字添加内容
-    dlg.show();  // 显示窗体
-    
+```javascript
+var dlg = new Window( "dialog", "用户提示" ); // ← ← ←
+创建一个dialog类型窗口，左上角名称为：用户提示 var myMessage = dlg.add ("statictext"); //
+给窗口添加一个静态文字 myMessage.text = "Hello, world!" // 给静态文字添加内容 dlg.show(); // 显示窗体
+
+```
 
 示例2：函数包裹
 
-    
-    
-    var win = createWindow();
-    win.show();
-    
-    // 创建UI 函数
-    function createWindow() {
-        var w = new Window('palette',"用户窗口");  // ← ← ← 创建一个palette类型窗口，左上角名称为：用户提示
-        var m = w.add('statictext');
-        m.text = 'Hello, world!';
-        return w;
-    }
-    
+```javascript
+var win = createWindow(); win.show(); // 创建UI 函数 function
+createWindow() { var w = new Window('palette',"用户窗口"); // ← ← ←
+创建一个palette类型窗口，左上角名称为：用户提示 var m = w.add('statictext'); m.text = 'Hello,
+world!'; return w; } 
+```
 
-# 窗体与控件类型 #
+## 窗体与控件类型 #
 
 窗口类型介绍（英文版）：[窗口对象](https://extendscript.docsforadobe.dev/user-interface-tools/window-object.html?highlight=palette)
 
@@ -88,7 +80,7 @@ new Window (type [, title, bounds, {creation_properties}]);
 |tab | 容器 | 切换面板的单面板|
 |treeview | 容器 | 树状视图。|
   
-# 窗体与控件属性 #
+## 窗体与控件属性 #
 
 全部读/写。很多都是通用的，自己看看就行
 
@@ -194,31 +186,25 @@ dropdownlis、listbox、vtable、tpanel
 
 |  
   
-## borderStyle #
+### borderStyle #
 
 说明：边框样式
 
-    
-    
-    w = new Window('dialog');
-    
-    w.grp1 = w.add('group');
-    w.grp1.add('panel', [0, 0, 100, 100], 'None', { borderStyle: 'none' });
-    w.grp1.add('panel', [0, 0, 100, 100], 'Gray', { borderStyle: 'gray' });
-    w.grp1.add('panel', [0, 0, 100, 100], 'Black', { borderStyle: 'black' });
-    w.grp1.add('panel', [0, 0, 100, 100], 'White', { borderStyle: 'white' });
-    
-    w.grp2 = w.add('group');
-    w.grp2.add('panel', [0, 0, 100, 100], 'Etched', { borderStyle: 'etched' });
-    w.grp2.add('panel', [0, 0, 100, 100], 'Sunken', { borderStyle: 'sunken' });
-    w.grp2.add('panel', [0, 0, 100, 100], 'Raised', { borderStyle: 'raised' });
-    
-    w.show();
-    
+```javascript
+w = new Window('dialog'); w.grp1 = w.add('group');
+w.grp1.add('panel', [0, 0, 100, 100], 'None', { borderStyle: 'none' });
+w.grp1.add('panel', [0, 0, 100, 100], 'Gray', { borderStyle: 'gray' });
+w.grp1.add('panel', [0, 0, 100, 100], 'Black', { borderStyle: 'black' });
+w.grp1.add('panel', [0, 0, 100, 100], 'White', { borderStyle: 'white' });
+w.grp2 = w.add('group'); w.grp2.add('panel', [0, 0, 100, 100], 'Etched', {
+borderStyle: 'etched' }); w.grp2.add('panel', [0, 0, 100, 100], 'Sunken', {
+borderStyle: 'sunken' }); w.grp2.add('panel', [0, 0, 100, 100], 'Raised', {
+borderStyle: 'raised' }); w.show(); 
+```
 
 ![](https://cdn.yuelili.com/20211016111255.png)
 
-## add() 添加组件或子项 #
+### add() 添加组件或子项 #
 
 window.add(ui)
 
@@ -234,21 +220,16 @@ window.add(ui)
 
 示例：
 
-    
-    
-    var myWindow = new Window("dialog", "用户提示"); // 定义窗体
-    
-    // 直接添加（参数单独分开）
-    var myText = myWindow.add ("statictext", undefined,  "Hello World")  // ← ← ← 添加组件方法1
-    
-    // 直接添加（参数放在字典里）
-    var myText = myWindow.add ("statictext {text: 'Hello, world!'}");   // ← ← ← 添加组件方法2
-    // 先添加 然后给参数赋值
-    var myText = myWindow.add ("statictext") // ← ← ← 添加组件方法3
-    myText.text = "Hello World"
-    
+```javascript
+var myWindow = new Window("dialog", "用户提示"); // 定义窗体 //
+直接添加（参数单独分开） var myText = myWindow.add ("statictext", undefined, "Hello
+World") // ← ← ← 添加组件方法1 // 直接添加（参数放在字典里） var myText = myWindow.add
+("statictext {text: 'Hello, world!'}"); // ← ← ← 添加组件方法2 // 先添加 然后给参数赋值 var
+myText = myWindow.add ("statictext") // ← ← ← 添加组件方法3 myText.text = "Hello
+World" 
+```
 
-## show() 显示窗体 #
+### show() 显示窗体 #
 
 window.show
 
@@ -256,17 +237,14 @@ window.show
 
 案例：显示窗体
 
-    
-    
-    var myWindow = new Window("dialog", "用户提示"); // 创建一个dialog类型窗口，左上角名称为：用户提示
-    
-    var button1 = myWindow.add("button", undefined, undefined, { name: "button1" });
-    button1.text = "我是按钮"
-    
-    myWindow.show(); // ← ← ← 显示窗体。
-    
+```javascript
+var myWindow = new Window("dialog", "用户提示"); //
+创建一个dialog类型窗口，左上角名称为：用户提示 var button1 = myWindow.add("button", undefined,
+undefined, { name: "button1" }); button1.text = "我是按钮" myWindow.show(); // ← ←
+← 显示窗体。 
+```
 
-## onShow() 窗体显示时 #
+### onShow() 窗体显示时 #
 
 window.onShow
 
@@ -274,24 +252,21 @@ window.onShow
 
 案例：窗体显示时，弹窗
 
-    
-    
-    var myWindow = new Window("dialog", "窗体");
-    myWindow.onShow = function () {  // ← ← ← 显示窗体时运行的函数。
-        alert("窗体显示啦！")
-    }
-    myWindow.show();
-    
+```javascript
+var myWindow = new Window("dialog", "窗体"); myWindow.onShow =
+function () { // ← ← ← 显示窗体时运行的函数。 alert("窗体显示啦！") } myWindow.show();
 
-## layout.layout() #
+```
 
-## remove() #
+### layout.layout() #
 
-## UI组件 #
+### remove() #
+
+### UI组件 #
 
 英文原版：https://extendscript.docsforadobe.dev/user-interface-tools/control-objects.html
 
-## Icon buttons 图片按钮 #
+### Icon buttons 图片按钮 #
 
 图片按钮
 
@@ -299,17 +274,15 @@ window.onShow
 
 ![](https://cdn.yuelili.com/20211016120247.png)
 
-    
-    
-    var w = new Window("dialog");
-    var f = File("/d/test/icon.png")  //本地图标文件
-    
-    w.add("iconbutton", undefined, f); // a：按钮里嵌入一个图片
-    w.add("iconbutton", undefined, f, { style: "toolbutton" }); // b：只显示图片，不显示按钮
-    var t1 = w.add("iconbutton", undefined, f, { style: "toolbutton", toggle: true }); // c：只显示图片，未切换
-    var t2 = w.add("iconbutton", undefined, f, { style: "toolbutton", toggle: true }); // d：只显示图片，切换
-    t2.value = true;  // ← ← ← 切换时 这里的value为true就行
-    w.show();
+```javascript
+var w = new Window("dialog"); var f = File("/d/test/icon.png")
+//本地图标文件 w.add("iconbutton", undefined, f); // a：按钮里嵌入一个图片 w.add("iconbutton",
+undefined, f, { style: "toolbutton" }); // b：只显示图片，不显示按钮 var t1 =
+w.add("iconbutton", undefined, f, { style: "toolbutton", toggle: true }); //
+c：只显示图片，未切换 var t2 = w.add("iconbutton", undefined, f, { style: "toolbutton",
+toggle: true }); // d：只显示图片，切换 t2.value = true; // ← ← ← 切换时 这里的value为true就行
+w.show();
+```
 
 案例：不同状态显示不同图标
 
@@ -327,16 +300,30 @@ window.onShow
     
     w.show();
     
-
-## radiobutton 单选按钮 #
-
-示例：单击OK，提示你选择了哪一项
-
-![](https://cdn.yuelili.com/20211016123340.png)
-
+```
     
     
-    var w = new Window("dialog");
+    
+    
+    
+    ## radiobutton 单选按钮 #
+    
+    
+    
+    
+    
+    
+    
+    示例：单击OK，提示你选择了哪一项
+    
+    
+    
+    
+    ![](https://cdn.yuelili.com/20211016123340.png)
+    
+    
+    ```javascript
+var w = new Window("dialog");
     var radio_group = w.add("panel");
     radio_group.alignChildren = "left";
     
@@ -360,16 +347,24 @@ window.onShow
         alert("你选择了 " + selected_rbutton(radio_group));
     }
     
-
-## listbox 列表框 #
-
-[英文文档](https://extendscript.docsforadobe.dev/user-interface-tools/control-objects.html?highlight=progressbar#listbox)
-
-### 初始化 #
-
+```
     
     
-    // 直接添加
+    ## listbox 列表框 #
+    
+    
+    
+    
+    [英文文档](https://extendscript.docsforadobe.dev/user-interface-tools/control-objects.html?highlight=progressbar#listbox)
+    
+    
+    
+    
+    ### 初始化 #
+    
+    
+    ```javascript
+// 直接添加
     var w = new Window ("dialog");
     var myList = w.add ("listbox", undefined, ["one", "two", "three"]);
     w.show ();
@@ -386,33 +381,45 @@ window.onShow
     var w = new Window ("dialog");
     var myList = w.add ("listbox", undefined, ["one", "owo", "three"], {multiselect: true});
     w.show ();
-
-### 选择与查找 #
-
+```
     
     
-    myList.selection = [0,1]; // 列表当前选择项
+    ### 选择与查找 #
+    
+    
+    ```javascript
+myList.selection = [0,1]; // 列表当前选择项
     myList.selection = myList.find ("two");  // 查找一个子项，并选择（注意 find只能找一个）
     myList.revealItem ("two")  // 滚动到子项。项目太多的时候，方便查找。参数可以是字符串/index
     
-
-### 个性化 #
-
-
-![](https://cdn.yuelili.com/20211016135446.png)![](https://cdn.yuelili.com/20211016135459.png)
-
+```
     
     
-    myList.items[i].image = File (一个图片路径) // 项目前加图片
+    ### 个性化 #
+    
+    
+    
+    
+
+    ![](https://cdn.yuelili.com/20211016135446.png)![](https://cdn.yuelili.com/20211016135459.png)
+    
+    
+    ```javascript
+myList.items[i].image = File (一个图片路径) // 项目前加图片
     myList.items[1].checked = true; // 项目前加一个 √
-
-### 多列列表 #
-
-![](https://cdn.yuelili.com/20211016135702.png)
-
+```
     
     
-    var w = new Window("dialog");
+    ### 多列列表 #
+    
+    
+    
+    
+    ![](https://cdn.yuelili.com/20211016135702.png)
+    
+    
+    ```javascript
+var w = new Window("dialog");
     var myList = w.add("listbox", undefined, " ",
         {
             numberOfColumns: 3, showHeaders: true,  // 列数与标题化
@@ -433,37 +440,73 @@ window.onShow
     }
     w.show();
     
-
-## dropdownlist #
-
-下拉列表跟列表框差不太多，增删改查看上面文档
-
-分隔符
-
-![](https://cdn.yuelili.com/20211016213209.png)
-
-可以直接["one", "two", "-","three"] 在列表里加"-" 插入，也可以后面自己加
-
+```
     
     
-    var w = new Window ("dialog");
+    ## dropdownlist #
+    
+    
+    
+    
+    下拉列表跟列表框差不太多，增删改查看上面文档
+    
+    
+    
+    
+    分隔符
+    
+    
+    
+    
+    ![](https://cdn.yuelili.com/20211016213209.png)
+    
+    
+    
+    
+    可以直接["one", "two", "-","three"] 在列表里加"-" 插入，也可以后面自己加
+    
+    
+    ```javascript
+var w = new Window ("dialog");
     var myDropdown = w.add ("dropdownlist", undefined, ["one", "two", "three"]);
     myDropdown.add ("separator", undefined, 1)  // ← ← ← 后面自己加分隔符
     myDropdown.selection = 0;
     w.show ();
     
-
-## tabbedpanel 切换面板 #
-
-示例
-
-![](https://cdn.yuelili.com/20211016220130.png)
-
-创建tab，tab再添加子控件，所以tabbedpanel相当于一个壳，没啥好说的
-
+```
     
     
-    var w = new Window("dialog", "tab 面板演示", undefined, { closeButton: false });
+     
+    
+    
+    
+    
+    
+    
+    
+    ## tabbedpanel 切换面板 #
+    
+    
+    
+    
+    
+    
+    
+    示例
+    
+    
+    
+    
+    ![](https://cdn.yuelili.com/20211016220130.png)
+    
+    
+    
+    
+    创建tab，tab再添加子控件，所以tabbedpanel相当于一个壳，没啥好说的
+    
+    
+    ```javascript
+var w = new Window("dialog", "tab 面板演示", undefined, { closeButton: false });
     w.alignChildren = "right";
     
     var tpanel = w.add("tabbedpanel");
@@ -495,20 +538,35 @@ window.onShow
     
     w.show();
     
-
-## slider #
-
-![](https://cdn.yuelili.com/20211017002135.png)
-
-示例：拖动滑块数字改变，改变数字，滑块也会动
-
+```
     
     
-    var w = new Window('dialog');
+    ## slider #
+    
+    
+    
+    
+    ![](https://cdn.yuelili.com/20211017002135.png)
+    
+    
+    
+    
+    示例：拖动滑块数字改变，改变数字，滑块也会动
+    
+    
+    ```javascript
+var w = new Window('dialog');
     var myText = w.add('edittext {text: 50, characters: 3, justify: "center", active: true}');
     var slider = w.add('slider { minvalue: 0, maxvalue: 100, value: 50 }');
     slider.onChanging = function () { myText.text = slider.value }
     myText.onChanging = function () { slider.value = Number(myText.text) }
     w.show();
+    
+```
+    
+    
+     
+    
+    
     
 

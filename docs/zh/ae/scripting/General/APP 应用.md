@@ -5,13 +5,17 @@ category:
   - AE
 ---
 
+## 说明
+
 描述：最顶层的对象，也就是 AE 应用/软件本身。用于访问应用的对象以及应用设置。
 
 属性：AE 程序的对象。比如工程文件、AE 版本号等等
 
 方法：软件层级的操作，比如创建项目、打开现有项目、控制监视文件夹模式、清除内存并退出 AE。当 AE 退出时，将关闭打开的项目，提示用户根据需要保存或放弃更改，并根据需要创建项目文件。
 
-## activeViewer 监视器
+## 属性篇
+
+### activeViewer 监视器
 
 全名：app.activeViewer
 
@@ -27,19 +31,18 @@ category:
 ![](https://cdn.yuelili.com/20210824221123.png)
 
 ```javascript
-alert(app.activeViewer);
+alert(app.activeViewer); //如果打开查看器了，屏幕会显示[object Viewer]
 ```
-
-//如果打开查看器了，屏幕会显示[object Viewer]
 
 查看器的其他属性，请参考 其他>查看器对象
 
-## availableGPUAccelTypes GPU 加速类型
+### availableGPUAccelTypes GPU 加速类型
 
-app.availableGPUAccelTypes
+全名：app.availableGPUAccelTypes
 
 :::info
-在 After Effects 14.0(CC 2017)中添加了此功能
+在 AfterEffects14.0(CC2017)中添加了此功能
+
 :::
 
 描述：与 app.project.gpuAccelType 结合使用，可为“项目设置”>“视频渲染和效果”>“使用范围”设置加速方式。
@@ -59,20 +62,15 @@ app.availableGPUAccelTypes
 示例：下面的示例代码检查当前计算机的可用 GPU 加速类型，并将其设置为 Metal(如果可用)。
 
 ```javascript
-// app.availableGPUAccelTypes ：根据当前系统，返回当前可用的GPU加速类型.
-// 可用于检测GPU加速类型.
-var newType = GpuAccelType.METAL;
-
-// 设置前，请先检查当前系统上可用的GPU加速类型。
+// app.availableGPUAccelTypes ：根据当前系统，返回当前可用的GPU加速类型. //可用于检测GPU加速类型.
+var newType = GpuAccelType.METAL; // 设置前，请先检查当前系统上可用的GPU加速类型。
 var canSet = false;
-var currentOptions = app.availableGPUAccelTypes;
-// 遍历加速类型
+var currentOptions = app.availableGPUAccelTypes; // 遍历加速类型
 for (var op in currentOptions) {
   if (currentOptions[op] === newType) {
     canSet = true;
   }
 }
-
 if (canSet) {
   // 可用，则设置加速类型.
   app.project.gpuAccelType = newType;
@@ -81,7 +79,7 @@ if (canSet) {
 }
 ```
 
-## buildName 内部版本名
+### buildName 内部版本名
 
 全名：app.buildName
 
@@ -92,10 +90,10 @@ if (canSet) {
 类型：字符串；只读。
 
 ```javascript
-alert(app.buildName); // 本机AE17.7x45
+alert(app.buildName); // 本机AE：17.7x45
 ```
 
-## buildNumber 内部版本号
+### buildNumber 内部版本号
 
 全名：app.buildNumber
 
@@ -104,10 +102,10 @@ alert(app.buildName); // 本机AE17.7x45
 类型：整数；只读。
 
 ```javascript
-alert(app.buildNumber); // 本机AE45（版本号 17.7写5 后面的数字）
+alert(app.buildNumber); // 本机AE：45 （版本号 17.7x45 后面的数字）
 ```
 
-## disableRendering 实时渲染
+### disableRendering 实时渲染
 
 全名：app.disableRendering
 
@@ -117,11 +115,12 @@ alert(app.buildNumber); // 本机AE45（版本号 17.7写5 后面的数字）
 
 类型：布尔值；读/写。
 
-alert(app.disableRendering) // 读：返回 false，当前未禁用
+```javascript
+alert(app.disableRendering); // 读：返回false，当前未禁用
+app.disableRendering = True; // 写：强制禁止渲染
+```
 
-app.disableRendering =True // 写：强制禁止渲染
-
-## effects 效果
+### effects 效果
 
 全名：app.effects
 
@@ -138,25 +137,19 @@ app.disableRendering =True // 写：强制禁止渲染
 
 示例
 
-    alert(app.effects[12].displayName) //CC Color Offset;
+```javascript
+alert(app.effects[12].displayName); //CC Color Offset;
+alert(app.effects.length); //461
+```
 
-    alert(app.effects.length) //461
+```javascript
+//获取本机所有效果的匹配名，！注意
+需要等待20秒左右，而且会布满整个屏幕！ var effects = app.effects; var fxName = new Array();
+for(i=0; i < app.effects.length; i++){ fxName.push(effects[i].matchName) }
+alert(fxName);
+```
 
-    //获取本机所有效果的匹配名，！注意 需要等待20秒左右，而且会布满整个屏幕！
-
-    var effects = app.effects;
-
-    var fxName = new Array();
-
-    for(i=0; i < app.effects.length; i++){
-
-    fxName.push(effects[i].matchName)
-
-    }
-
-    alert(fxName);
-
-## exitAfterLaunchAndEval 命令行 AE 退出状态
+### exitAfterLaunchAndEval 命令行 AE 退出状态
 
 全名：app.exitAfterLaunchAndEval
 
@@ -169,9 +162,13 @@ app.disableRendering =True // 写：强制禁止渲染
 示例：在 AE 的 Support
 Files 文件中打开 cmd，然后输入以下代码（大致意思是运行 Labels 脚本），再运行该脚本后，AE 会自动退出（因为 exitAfterLaunchAndEval 为 True）
 
+```javascript
+    AfterFX.exe -r H:\adobe\Adobe After Effects 2020\Support Files\Scripts\ScriptUI Panels\Labels.jsx
+```
+
 ![](https://cdn.yuelili.com/20210824223422.png)
 
-## exitCode 脚本状态码
+### exitCode 脚本状态码
 
 全名：app.exitCode
 
@@ -187,13 +184,13 @@ Files 文件中打开 cmd，然后输入以下代码（大致意思是运行 Lab
 示例：封装到某个代码块里，只要返回这个值，就是这部分代码报错
 
 ```javascript
-if (XXXX) {
-  // 运行 XX 代码
+if (XXXX){
+  运行 XX 代码 ;
   app.exitCode = 2;
 } // 报错时，该方法返回2
 ```
 
-## isoLanguage 语言环境
+### isoLanguage 语言环境
 
 全名：app.isoLanguage
 
@@ -201,8 +198,7 @@ if (XXXX) {
 
 :::info
 $.locale 返回操作系统语言，而不是 AfterEffects 应用程序的语言。
-
-:::,.
+:::
 
 类型：字符串; 只读。一些常见的值包括：
 
@@ -217,23 +213,18 @@ $.locale 返回操作系统语言，而不是 AfterEffects 应用程序的语言
 
 示例：根据不同语言环境，执行不同代码
 
-```var lang = app.isoLanguage;
-
+```javascript
+var lang = app.isoLanguage;
 if (lang === "en_US") {
-
-alert("当前使用的是英文版");
-
+  alert("当前使用的是英文版");
 } else if (lang === "fr_FR") {
-
-alert("当前使用的是法文版");
-
+  alert("当前使用的是法文版");
 } else {
+  alert("反正不是英文或法文版，具体的自己设置");
+}
+```
 
-alert("反正不是英文或法文版，具体的自己设置");
-
-}```
-
-## isRenderEngine 是否仅作为渲染引擎
+### isRenderEngine 是否仅作为渲染引擎
 
 全名：app.isRenderEngine
 
@@ -243,7 +234,7 @@ alert("反正不是英文或法文版，具体的自己设置");
 
 类型：布尔值；只读。
 
-## isWatchFolder 监视文件夹
+### isWatchFolder 监视文件夹
 
 全名：app.isWatchFolder
 
@@ -255,7 +246,7 @@ alert("反正不是英文或法文版，具体的自己设置");
 
 ![](https://cdn.yuelili.com/20210824224830.png)
 
-## memoryInUse 占用内存
+### memoryInUse 占用内存
 
 全名：app.memoryInUse
 
@@ -267,9 +258,12 @@ alert("反正不是英文或法文版，具体的自己设置");
 
 ![](https://cdn.yuelili.com/20210825001243.png)
 
-    alert(app.memoryInUse/1024/1024) //返回348.1654...（单位是兆的话要除以俩个1024）
+```javascript
+alert(app.memoryInUse / 1024 / 1024);
+//返回348.1654...（单位是兆的话要除以俩个1024）
+```
 
-## onError 脚本错误码
+### onError 脚本错误码
 
 全名：app.onError
 
@@ -281,17 +275,12 @@ alert("反正不是英文或法文版，具体的自己设置");
 
 示例
 
-    // 发生错误，调用一个名为err的函数。
+```javascript
+// 发生错误，调用一个名为err的函数。 function err(errString) {
+alert(errString) ; } app.onError = err;
+```
 
-    function err(errString) {
-
-    alert(errString) ;
-
-    }
-
-    app.onError = err;
-
-## preferences 首选项
+### preferences 首选项
 
 全名：app.preferences
 
@@ -299,7 +288,7 @@ alert("反正不是英文或法文版，具体的自己设置");
 
 类型：首选项对象；只读。
 
-## project 项目
+### project 项目
 
 全名：app.project
 
@@ -307,7 +296,7 @@ alert("反正不是英文或法文版，具体的自己设置");
 
 类型：项目对象；只读。
 
-## saveProjectOnCrash 崩溃保存设置
+### saveProjectOnCrash 崩溃保存设置
 
 全名：app.saveProjectOnCrash
 
@@ -315,9 +304,11 @@ alert("反正不是英文或法文版，具体的自己设置");
 
 类型：布尔值；读/写。
 
-    app.saveProjectOnCrash=false //你完了 AE崩了就炸了
+```javascript
+app.saveProjectOnCrash = false; //你完了 AE崩了就炸了
+```
 
-## settings 加载设置
+### settings 加载设置
 
 全名：app.settings
 
@@ -325,13 +316,13 @@ alert("反正不是英文或法文版，具体的自己设置");
 
 类型：设置对象；只读。
 
-    //只能获得在使用脚本过程中添加的设置，不能修改After Effects本身的默认设置
+```javascript
+//只能获得在使用脚本过程中添加的设置，不能修改After Effects本身的默认设置
+app.settings.saveSetting("SettingA", "ValueA", 100);
+alert(app.settings.getSetting("SettingA", "ValueA"));
+```
 
-    app.settings.saveSetting("SettingA", "ValueA", 100);
-
-    alert(app.settings.getSetting("SettingA", "ValueA"));
-
-## version 版本号
+### version 版本号
 
 全名：app.version
 
@@ -343,13 +334,14 @@ alert("反正不是英文或法文版，具体的自己设置");
 
 示例
 
-    var ver = app.version;
+```javascript
+var ver = app.version; alert("正在运行 " + ver + " 版本的AE"); //正在运行
+17.5.1x47 版本的AE
+```
 
-    alert("正在运行 " + ver + " 版本的AE"); //正在运行 17.5.1x47 版本的AE
+## 方法篇
 
-# 方法篇
-
-## activate() 窗口最大化
+### activate() 窗口最大化
 
 全名：app.activate()
 
@@ -359,9 +351,11 @@ alert("反正不是英文或法文版，具体的自己设置");
 
 返回：无。
 
-    app.activate()//真的直接弹出来了
+```javascript
+app.activate(); //真的直接弹出来了
+```
 
-## beginSuppressDialogs() 禁用脚本错误对话框
+### beginSuppressDialogs() 禁用脚本错误对话框
 
 全名：app.beginSuppressDialogs()
 
@@ -371,7 +365,7 @@ alert("反正不是英文或法文版，具体的自己设置");
 
 返回：无。
 
-## beginUndoGroup() 撤销组起始
+### beginUndoGroup() 撤销组起始
 
 全名：app.beginUndoGroup(undoString)
 
@@ -385,21 +379,16 @@ alert("反正不是英文或法文版，具体的自己设置");
 
 返回：无。
 
-    //同时创建三个方形，如果撤销的话，就撤销3个
+```javascript
+//同时创建三个方形，如果撤销的话，就撤销3个 app.beginUndoGroup("AddSquare");
+myComp = app.project.item(1);
+myComp.layers.addSolid([1.0, 1.0, 0], "square1", 50, 50, 1);
+myComp.layers.addSolid([1.0, 1.0, 0], "square2", 50, 50, 1);
+myComp.layers.addSolid([1.0, 1.0, 0], "square3", 50, 50, 1);
+app.endUndoGroup();
+```
 
-    app.beginUndoGroup("AddSquare");
-
-    myComp = app.project.item(1);
-
-    myComp.layers.addSolid([1.0,1.0,0], 'square1', 50, 50, 1);
-
-    myComp.layers.addSolid([1.0,1.0,0], 'square2', 50, 50, 1);
-
-    myComp.layers.addSolid([1.0,1.0,0], 'square3', 50, 50, 1);
-
-    app.endUndoGroup();
-
-## cancelTask() 删除延迟任务
+### cancelTask​​() 删除延迟任务
 
 全名：app.cancelTask(taskID)
 
@@ -411,7 +400,7 @@ alert("反正不是英文或法文版，具体的自己设置");
 
 返回：无。
 
-## endSuppressDialogs() 显示脚本报错框
+### endSuppressDialogs() 显示脚本报错框
 
 全名：app.endSuppressDialogs(alert)
 
@@ -423,7 +412,7 @@ alert("反正不是英文或法文版，具体的自己设置");
 
 返回：无。
 
-## endUndoGroup() 撤消组结束
+### endUndoGroup() 撤消组结束
 
 全名：app.endUndoGroup()
 
@@ -435,21 +424,16 @@ alert("反正不是英文或法文版，具体的自己设置");
 
 返回：无。
 
-    //同时创建三个方形，如果撤销的话，就撤销3个
+```javascript
+//同时创建三个方形，如果撤销的话，就撤销3个 app.beginUndoGroup("AddSquare");
+myComp = app.project.item(1);
+myComp.layers.addSolid([1.0, 1.0, 0], "square1", 50, 50, 1);
+myComp.layers.addSolid([1.0, 1.0, 0], "square2", 50, 50, 1);
+myComp.layers.addSolid([1.0, 1.0, 0], "square3", 50, 50, 1);
+app.endUndoGroup();
+```
 
-    app.beginUndoGroup("AddSquare");
-
-    myComp = app.project.item(1);
-
-    myComp.layers.addSolid([1.0,1.0,0], 'square1', 50, 50, 1);
-
-    myComp.layers.addSolid([1.0,1.0,0], 'square2', 50, 50, 1);
-
-    myComp.layers.addSolid([1.0,1.0,0], 'square3', 50, 50, 1);
-
-    app.endUndoGroup();
-
-## endWatchFolder() 结束监视文件夹模式
+### endWatchFolder() 结束监视文件夹模式
 
 全名：app.endWatchFolder()
 
@@ -467,7 +451,7 @@ alert("反正不是英文或法文版，具体的自己设置");
 - app.executeCommand
 - app.executeCommand(id)
 
-## executeCommand 调用菜单 ID
+### executeCommand 调用菜单 ID
 
 app.executeCommand(id)
 
@@ -486,11 +470,11 @@ app.executeCommand(id)
 
 示例
 
-    // 调用“转换为贝塞尔”命令
+```javascript
+// 调用“转换为贝塞尔”命令 app.executeCommand(4162);
+```
 
-    app.executeCommand(4162);
-
-## findMenuCommandId 查找菜单 ID
+### findMenuCommandId 查找菜单 ID
 
 全名：app.findMenuCommandId(Command)
 
@@ -508,11 +492,12 @@ app.executeCommand(id)
 
 ![](https://cdn.yuelili.com/20210824231633.png)
 
-    id = app.findMenuCommandId('显示标尺') //查找显示标尺的id
+```javascript
+id = app.findMenuCommandId("显示标尺"); //查找显示标尺的id
+app.executeCommand(id); //调用该id命令
+```
 
-    app.executeCommand(id);//调用该id命令
-
-## newProject() 新建工程
+### newProject() 新建工程
 
 全名：app.newProject()
 
@@ -525,13 +510,13 @@ app.executeCommand(id)
 
 示例
 
-    //不保存现有工程，直接新建
+```javascript
+//不保存现有工程，直接新建
+app.project.close(CloseOptions.DO_NOT_SAVE_CHANGES);
+app.newProject();
+```
 
-    app.project.close(CloseOptions.DO_NOT_SAVE_CHANGES);
-
-    app.newProject();
-
-## open() 打开项目
+### open() 打开项目
 
 全名：app.open([file])
 
@@ -545,21 +530,17 @@ app.executeCommand(id)
 
 示例：在当前目录下找 test.aep，如果有，则打开，并且弹出文件名
 
-    var my_file = new File("./test.aep");
-
-    if (my_file.exists) {
-
-    var new_project = app.open(my_file);
-
-    if (new_project) {
-
+```javascript
+var my_file = new File("./test.aep");
+if (my_file.exists) {
+  var new_project = app.open(my_file);
+  if (new_project) {
     alert(new_project.file.name);
+  }
+}
+```
 
-    }
-
-    }
-
-## parseSwatchFile() 监视文件夹加载颜色样本数据
+### parseSwatchFile() 监视文件夹加载颜色样本数据
 
 全名：app.parseSwatchFile(file)
 
@@ -573,21 +554,22 @@ app.executeCommand(id)
 
 返回：样本数据，采用以下格式：
 
-| data.majorVersion data.minorVersion | ASE 版本号。                                                      |
-| ----------------------------------- | ----------------------------------------------------------------- |
-| data.values                         | 样本值数组。                                                      |
-| SwatchValue.type                    | “ RGB”，“ CMYK”，“ LAB”，“Gray”，其中之一                         |
-| SwatchValue.r/g/b                   | type = "RGB"时，颜色值在[0.0~1.0]范围内。0，0，0 是黑色。         |
-| 示例：SwatchValue.r //返回 0.5      |                                                                   |
-| SwatchValue.c/m/y/k                 | 当 type=“ CMYK”时，颜色值在[0.0~1.0]范围内。0，0，0，0 是白色。   |
-| 示例：SwatchValue.c //返回 0.5      |                                                                   |
-| SwatchValue.l/a/b                   | 当 type = "LAB"时，颜色值 L 在[0.0~1.0]范围内。a/b 在[-128.0 .. + |
-| 128.0]范围内，0，0，0 是黑色        |                                                                   |
-| 示例：SwatchValue.a //返回 0.5      |                                                                   |
-| SwatchValue.value                   | 当 type = “Gray”时，颜色值在[0.0~1.0]范围内。0.0 为黑色           |
-| 示例：SwatchValue.value //返回 0.5  |                                                                   |
+| data.majorVersion data.minorVersion | ASE 版本号。                                              |
+| ----------------------------------- | --------------------------------------------------------- |
+| data.values                         | 样本值数组。                                              |
+| SwatchValue.type                    | “ RGB”，“ CMYK”，“ LAB”，“Gray”，其中之一                 |
+| SwatchValue.r/g/b                   | type = "RGB"时，颜色值在[0.0~1.0]范围内。0，0，0 是黑色。 |
 
-## pauseWatchFolder() 监视文件夹继续搜索项目
+示例：SwatchValue.r //返回 0.5  
+SwatchValue.c/m/y/k | 当 type=“ CMYK”时，颜色值在[0.0~1.0]范围内。0，0，0，0 是白色。  
+示例：SwatchValue.c //返回 0.5  
+SwatchValue.l/a/b | 当 type = "LAB"时，颜色值 L 在[0.0~1.0]范围内。a/b 在[-128.0 .. +
+128.0]范围内，0，0，0 是黑色  
+示例：SwatchValue.a //返回 0.5  
+SwatchValue.value | 当 type = “Gray”时，颜色值在[0.0~1.0]范围内。0.0 为黑色  
+示例：SwatchValue.value //返回 0.5
+
+### pauseWatchFolder() 监视文件夹继续搜索项目
 
 全名：app.pauseWatchFolder(pause)
 
@@ -607,7 +589,7 @@ app.executeCommand(id)
 - app.watchFolder()
 - app.endWatchFolder()
 
-## purge() 清理缓存
+### purge() 清理缓存
 
 全名：app.purge(target)
 
@@ -623,7 +605,7 @@ app.executeCommand(id)
 
 返回：无。
 
-## quit() 退出应用
+### quit() 退出应用
 
 全名：app.quit()
 
@@ -633,7 +615,7 @@ app.executeCommand(id)
 
 返回：无。
 
-## scheduleTask() 脚本延迟执行
+### scheduleTask() 脚本延迟执行
 
 全名：app.scheduleTask(stringToExecute, delay, repeat)
 
@@ -645,13 +627,15 @@ app.executeCommand(id)
 - delay：要等待的毫秒数。浮点值。
 - repeat：如果为 true，重复执行脚本，每次执行之间具有相同延迟。如果为 false，则该脚本仅执行一次。
 
-返回：整数，此任务的唯一标识符，可通过 app.cancelTask()取消。
+返回：整数，此任务的唯一标识符，可通过 app.cancelTask​​()取消。
 
 示例：每 5 秒弹一下窗
 
-    app.scheduleTask('alert("3点了，饮茶先")',5000,true)
+```javascript
+app.scheduleTask('alert("3点了，饮茶先")', 5000, true);
+```
 
-## setMemoryUsageLimits() 内存使用限制
+### setMemoryUsageLimits() 内存使用限制
 
 全名：app.setMemoryUsageLimits(imageCachePercentage, maximumMemoryPercentage)
 
@@ -666,7 +650,7 @@ n：32 位 Windows 为 2 GB，64 位 Windows 为 4 GB，Mac OS 为 3.5 GB。
 
 返回：无。
 
-## setSavePreferencesOnQuit() 退出保存首选项
+### setSavePreferencesOnQuit() 退出保存首选项
 
 全名：app.setSavePreferencesOnQuit(doSave)
 
@@ -678,7 +662,7 @@ n：32 位 Windows 为 2 GB，64 位 Windows 为 4 GB，Mac OS 为 3.5 GB。
 
 返回：无。
 
-## watchFolder() 启动监视文件夹
+### watchFolder() 启动监视文件夹
 
 全名：app.watchFolder(folder_object_to_watch)
 
@@ -692,9 +676,10 @@ n：32 位 Windows 为 2 GB，64 位 Windows 为 4 GB，Mac OS 为 3.5 GB。
 
 示例
 
-    var theFolder = new Folder("c：/tool");
-
-    app.watchFolder(theFolder);
+```javascript
+var theFolder = new Folder("c：/tool");
+app.watchFolder(theFolder);
+```
 
 也可以看看
 

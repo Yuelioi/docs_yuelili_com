@@ -4,7 +4,7 @@ order: 9
 category:
   - AE
 ---
-    # TextDocument object #
+## TextDocument object #
 
 new TextDocument(docText)  
 app.project.item(index).layer(index).property("Source Text").value  
@@ -45,7 +45,7 @@ textProp.setValue(textDocument);
 
 属性
 
-## allCaps #
+### allCaps #
 
 textDocument.allCaps
 
@@ -59,7 +59,7 @@ textDocument.allCaps
 
 类型：布尔值 只读。
 
-## applyFill #
+### applyFill #
 
 textDocument.applyFill
 
@@ -67,7 +67,7 @@ textDocument.applyFill
 
 类型：布尔值 读/写。
 
-## applyStroke #
+### applyStroke #
 
 textDocument.applyStroke
 
@@ -75,7 +75,7 @@ textDocument.applyStroke
 
 类型：布尔值 读/写。
 
-## baselineLocs #
+### baselineLocs #
 
 textDocument.baselineLocs
 
@@ -103,7 +103,7 @@ lineN-1.end_x,
 lineN-1.end_y  
 ]
 
-## baselineShift #
+### baselineShift #
 
 textDocument.baselineShift
 
@@ -117,7 +117,7 @@ textDocument.baselineShift
 
 类型：浮点值；只读。
 
-## boxText #
+### boxText #
 
 textDocument.boxText
 
@@ -125,7 +125,7 @@ textDocument.boxText
 
 类型：布尔值 只读。
 
-## boxTextPos #
+### boxTextPos #
 
 textDocument.boxTextPos
 
@@ -146,7 +146,7 @@ in layer coordinates.
 // e.g. approximately [0, -25] with default character panel settings.  
 var boxTextLayerPos = myTextLayer.sourceText.value.boxTextPos;
 
-## boxTextSize #
+### boxTextSize #
 
 textDocument.boxTextSize
 
@@ -154,7 +154,7 @@ textDocument.boxTextSize
 
 类型：两个整数的数组(最小值为1)；读/写。
 
-## fauxBold #
+### fauxBold #
 
 textDocument.fauxBold
 
@@ -172,7 +172,7 @@ textDocument.fauxBold
 
 var isFauxBold = myTextLayer.sourceText.value.fauxBold;
 
-## fauxItalic #
+### fauxItalic #
 
 textDocument.fauxItalic
 
@@ -186,7 +186,7 @@ textDocument.fauxItalic
 
 类型：布尔值 只读。
 
-## fillColor #
+### fillColor #
 
 textDocument.fillColor
 
@@ -199,7 +199,7 @@ g, b]
 
 类型：浮点值数组；读/写。[r, g, b]
 
-## font #
+### font #
 
 textDocument.font
 
@@ -211,7 +211,7 @@ textDocument.font
 
 类型：字符串; 读/写。
 
-## fontFamily #
+### fontFamily #
 
 textDocument.fontFamily
 
@@ -225,7 +225,7 @@ textDocument.fontFamily
 
 类型：字符串; 只读。
 
-## fontLocation #
+### fontLocation #
 
 textDocument.fontLocation
 
@@ -243,7 +243,7 @@ textDocument.fontLocation
 
 类型：字符串; 只读。
 
-## fontSize #
+### fontSize #
 
 textDocument.fontSize
 
@@ -255,7 +255,7 @@ textDocument.fontSize
 
 类型：浮点值(包括0.1到1296)；读/写。
 
-## fontStyle #
+### fontStyle #
 
 textDocument.fontStyle
 
@@ -269,7 +269,7 @@ textDocument.fontStyle
 
 类型：字符串; 只读。
 
-## horizo​​ntalScale #
+### horizo​​ntalScale #
 
 textDocument.horizontalScale
 
@@ -287,7 +287,7 @@ textDocument.horizontalScale
 
 var valOfHScale = myTextLayer.sourceText.value.horizontalScale;
 
-## justification #
+### justification #
 
 textDocument.justification
 
@@ -303,7 +303,7 @@ ParagraphJustification.FULL_JUSTIFY_LASTLINE_RIGHT
 ParagraphJustification.FULL_JUSTIFY_LASTLINE_CENTER  
 ParagraphJustification.FULL_JUSTIFY_LASTLINE_FULL
 
-## leading #
+### leading #
 
 textDocument.leading
 
@@ -328,7 +328,7 @@ var myTextDocument = myTextSource.value;
 myTextDocument.leading = 100;  
 myTextSource.setValue(myTextDocument);
 
-## pointText #
+### pointText #
 
 textDocument.pointText
 
@@ -336,7 +336,7 @@ textDocument.pointText
 
 类型：布尔值 只读。
 
-## smallCaps #
+### smallCaps #
 
 textDocument.smallCaps
 
@@ -350,7 +350,7 @@ textDocument.smallCaps
 
 类型：布尔值 只读。
 
-## strokeColor #
+### strokeColor #
 
 textDocument.strokeColor
 
@@ -362,7 +362,7 @@ textDocument.strokeColor
 
 类型：浮点值数组[r，g，b]；读/写。
 
-## strokeOverFill #
+### strokeOverFill #
 
 textDocument.strokeOverFill
 
@@ -374,7 +374,7 @@ textDocument.strokeOverFill
 
 类型：布尔值 读/写。
 
-## strokeWidth #
+### strokeWidth #
 
 textDocument.strokeWidth
 
@@ -386,7 +386,7 @@ textDocument.strokeWidth
 
 类型：浮点值(0到1000，含)；读/写。
 
-## subscript #
+### subscript #
 
 textDocument.subscript
 
@@ -400,7 +400,7 @@ textDocument.subscript
 
 类型：布尔值 只读。
 
-## superscript #
+### superscript #
 
 textDocument.superscript
 
@@ -414,7 +414,7 @@ textDocument.superscript
 
 类型：布尔值 只读。
 
-## text #
+### text #
 
 textDocument.text
 
@@ -422,7 +422,7 @@ textDocument.text
 
 类型：字符串; 读/写。
 
-## tracking #
+### tracking #
 
 textDocument.tracking
 
@@ -434,7 +434,7 @@ textDocument.tracking
 
 类型：浮点值；读/写。
 
-## tsume #
+### tsume #
 
 textDocument.tsume
 
@@ -448,7 +448,7 @@ textDocument.tsume
 
 类型：浮点值；只读。
 
-## verticalScale #
+### verticalScale #
 
 textDocument.verticalScale
 
@@ -464,7 +464,7 @@ textDocument.verticalScale
 
 方法
 
-## resetCharStyle() #
+### resetCharStyle() #
 
 textDocument.resetCharStyle()
 
@@ -474,7 +474,7 @@ textDocument.resetCharStyle()
 
 返回：无。
 
-## resetParagraphStyle() #
+### resetParagraphStyle() #
 
 描述：恢复“段落”面板中的默认文本段落特征。
 

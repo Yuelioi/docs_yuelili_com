@@ -4,7 +4,7 @@ order: 3
 category:
   - AE
 ---
-    # app.project.items #
+## app.project.items #
 
 描述：ItemCollection对象表示项目(item)的集合。
 
@@ -17,9 +17,9 @@ category:
 
 简写：ItemCollection → items
 
-# 方法 #
+## 方法 #
 
-## addComp() 创建合成 #
+### addComp() 创建合成 #
 
 app.project.items.addComp(name, width, height, pixelAspect, duration,
 frameRate)
@@ -43,11 +43,12 @@ frameRate)
 
 示例：新建一个名为合成1，宽1902，高1080,100秒，25fps的新合成。
 
-    
-    
-    app.project.items.addComp('合成1',1920, 1080, 1, 100, 25)
+```javascript
+app.project.items.addComp('合成1',1920, 1080, 1, 100,
+25)
+```
 
-## addFolder() 创建文件夹 #
+### addFolder() 创建文件夹 #
 
 app.project.items.addFolder(name)
 
@@ -67,25 +68,13 @@ app.project.items.addFolder(name)
 
 示例：“项目”面板中创建文件夹，并将合成移入其中。
 
-    
-    
-    //创建文件夹对象，命名为comps
-    var compFolder = app.project.items.addFolder("comps");
-    
-    //把所有合成已到comps文件夹中
-    //只需把项目的 parentFolder 设置为comps即可
-    var order = true
-    
-    for (var i = 1; i <= app.project.numItems; i++){
-      if (app.project.item(i).name == 'comps'){
-    	  order = false
-      }
-      if (app.project.item(i) instanceof CompItem) {
-        app.project.item(i).parentFolder = compFolder;
-    	//找到合成并添加到文件夹后，如果合成在文件夹前，当前循环数-1，文件总数-1，否则直接循环
-    	if(order == true){
-    		i--;
-    	}
-      }
-    }
+```javascript
+//创建文件夹对象，命名为comps var compFolder =
+app.project.items.addFolder("comps"); //把所有合成已到comps文件夹中 //只需把项目的 parentFolder
+设置为comps即可 var order = true for (var i = 1; i <= app.project.numItems; i++){
+if (app.project.item(i).name == 'comps'){ order = false } if
+(app.project.item(i) instanceof CompItem) { app.project.item(i).parentFolder =
+compFolder; //找到合成并添加到文件夹后，如果合成在文件夹前，当前循环数-1，文件总数-1，否则直接循环 if(order == true){
+i--; } } }
+```
 

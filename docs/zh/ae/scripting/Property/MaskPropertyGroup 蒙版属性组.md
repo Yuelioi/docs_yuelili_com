@@ -4,35 +4,41 @@ order: 5
 category:
   - AE
 ---
-    # 蒙版属性组对象 #
+
+## 蒙版属性组对象
 
 app.project.item(index).layer(index).mask
 
-描述：MaskPropertyGroup对象，将蒙版属性封装在一个图层中。
+描述：MaskPropertyGroup 对象，将蒙版属性封装在一个图层中。
 
-父级关系：蒙版属性组（MaskPropertyGroup）是属性组（PropertyGroup）的子类。PropertyBase对象和PropertyGroup的所有方法和属性均可使用
+父级关系：蒙版属性组（MaskPropertyGroup）是属性组（PropertyGroup）的子类。PropertyBase 对象和 PropertyGroup 的所有方法和属性均可使用
 
-# 属性 #
+## 属性
 
-## 添加蒙版示例 #
+### 添加蒙版示例
 
-    
-    
-    var selLayer = app.project.activeItem.selectedLayers[0]
-    // 创建蒙版对象
-    newMask = selLayer.Masks.addProperty("Mask");
-    newMask.color=[1,1,1] //设置蒙版颜色
-    newMask.inverted = true;//设置蒙版反转
-    newMask.locked =true ;//设置蒙版锁定
-    
-    // 创建蒙版形状
-    myMaskShape = newMask.property("maskShape");
-    myShape = myMaskShape.value;
-    myShape.vertices = [[930,450],[930,570],[1050,570],[1050,450]];
-    myShape.closed = true;
-    myMaskShape.setValue(myShape);
+```javascript
+var selLayer = app.project.activeItem.selectedLayers[0];
+// 创建蒙版对象
+newMask = selLayer.Masks.addProperty("Mask");
+newMask.color = [1, 1, 1]; //设置蒙版颜色
+newMask.inverted = true; //设置蒙版反转
+newMask.locked = true; //设置蒙版锁定
 
-## color 蒙版颜色 #
+// 创建蒙版形状
+myMaskShape = newMask.property("maskShape");
+myShape = myMaskShape.value;
+myShape.vertices = [
+  [930, 450],
+  [930, 570],
+  [1050, 570],
+  [1050, 450],
+];
+myShape.closed = true;
+myMaskShape.setValue(myShape);
+```
+
+### color 蒙版颜色
 
 app.project.item(index).layer(index).mask(index).color
 
@@ -44,33 +50,32 @@ app.project.item(index).layer(index).mask(index).color
 
 示例：把蒙版前面颜色改为白色
 
-    
-    
-    var comp = app.project.activeItem
-    comp.layer(1).mask(1).color = [1,1,1]
-    
+```javascript
+var comp = app.project.activeItem comp.layer(1).mask(1).color
+= [1,1,1]
+```
 
-## inverted 蒙版反转 #
+### inverted 蒙版反转
 
 app.project.item(index).layer(index).mask(index).inverted
 
-描述：设置为true时，蒙版反转。否则为false。
+描述：设置为 true 时，蒙版反转。否则为 false。
 
 类型：布尔值，读/写。
 
 ![](https://cdn.yuelili.com/20210930235106.png)
 
-## locked 蒙版锁定 #
+### locked 蒙版锁定
 
 app.project.item(index).layer(index).mask(index).locked
 
-描述：如果为true，则遮罩将被锁定，无法在用户界面进行编辑；否则为false。
+描述：如果为 true，则遮罩将被锁定，无法在用户界面进行编辑；否则为 false。
 
 类型：布尔值，读/写。
 
 ![](https://cdn.yuelili.com/20210930235135.png)
 
-## maskFeatherFalloff 羽化衰减 #
+### maskFeatherFalloff 羽化衰减
 
 app.project.item(index).layer(index).mask(index).maskFeatherFalloff
 
@@ -78,12 +83,12 @@ app.project.item(index).layer(index).mask(index).maskFeatherFalloff
 
 类型：MaskFeatherFalloff，枚举值; 读/写：
 
-  * MaskFeatherFalloff.FFO_LINEAR：线性
-  * MaskFeatherFalloff.FFO_SMOOTH：平滑
+- MaskFeatherFalloff.FFO_LINEAR：线性
+- MaskFeatherFalloff.FFO_SMOOTH：平滑
 
 ![](https://cdn.yuelili.com/20210930235255.png)
 
-## maskMode 蒙版叠加模式 #
+### maskMode 蒙版叠加模式
 
 app.project.item(index).layer(index).mask(index).maskMode
 
@@ -91,17 +96,17 @@ app.project.item(index).layer(index).mask(index).maskMode
 
 类型：MaskMode，枚举值; 读/写：
 
-  * MaskMode.NONE：无
-  * MaskMode.ADD：相加
-  * MaskMode.SUBTRACT：相减
-  * MaskMode.INTERSECT：交集
-  * MaskMode.LIGHTEN：变亮
-  * MaskMode.DARKEN：变暗
-  * MaskMode.DIFFERENCE：差值
+- MaskMode.NONE：无
+- MaskMode.ADD：相加
+- MaskMode.SUBTRACT：相减
+- MaskMode.INTERSECT：交集
+- MaskMode.LIGHTEN：变亮
+- MaskMode.DARKEN：变暗
+- MaskMode.DIFFERENCE：差值
 
 ![](https://cdn.yuelili.com/20210930235401.png)
 
-## maskMotionBlur 蒙版运动模糊 #
+### maskMotionBlur 蒙版运动模糊
 
 app.project.item(index).layer(index).mask(index).maskMotionBlur
 
@@ -109,19 +114,18 @@ app.project.item(index).layer(index).mask(index).maskMotionBlur
 
 类型：MakMotionBlur，枚举值; 读/写：
 
-  * MaskMotionBlur.SAME_AS_LAYER：与图层相同
-  * MaskMotionBlur.ON：开
-  * MaskMotionBlur.OFF：关
+- MaskMotionBlur.SAME_AS_LAYER：与图层相同
+- MaskMotionBlur.ON：开
+- MaskMotionBlur.OFF：关
 
 ![](https://cdn.yuelili.com/20210930235457.png)
 
-## rotoBezier 蒙版贝塞尔 #
+### rotoBezier 蒙版贝塞尔
 
 app.project.item(index).layer(index).mask(index).rotoBezier
 
-描述：如果为true，则蒙版为RotoBezier形状；否则为假。
+描述：如果为 true，则蒙版为 RotoBezier 形状；否则为假。
 
 类型：布尔值，读/写。
 
 ![](https://cdn.yuelili.com/20210930235746.png)
-

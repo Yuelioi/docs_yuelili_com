@@ -2,6 +2,9 @@
 [aria-label$="README.md"] {
   display: none!important;
 }
+#toc .toc-link.level2 {
+  border-bottom: 1px dashed rgb(0 0 0 / 10%);
+}
 
 @media (min-width: 768px) {}
 

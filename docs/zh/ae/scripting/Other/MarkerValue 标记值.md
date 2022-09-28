@@ -4,7 +4,7 @@ order: 5
 category:
   - AE
 ---
-    # 标记值 #
+## 标记值 #
 
 new MarkerValue(comment, chapter, url, frameTarget, cuePointName, params)
 
@@ -15,40 +15,36 @@ new MarkerValue(comment, chapter, url, frameTarget, cuePointName, params)
 设置MarkerValue对象：layerObject.property("Marker").setValueAtTime(time,
 markerValueObject);
 
-### 示例1.新建一个标记 #
+#### 示例1.新建一个标记 #
 
 ![](https://cdn.yuelili.com/20211012172953.png)
 
-    
-    
-    var myMarker = new MarkerValue("我是标记");  // 新建一个标记值
-    app.project.activeItem.layer(1).property("Marker").setValueAtTime(2, myMarker)  // 把值加给一个图层或合成的"Marker"属性组里
-    
+```javascript
+var myMarker = new MarkerValue("我是标记"); // 新建一个标记值
+app.project.activeItem.layer(1).property("Marker").setValueAtTime(2, myMarker)
+// 把值加给一个图层或合成的"Marker"属性组里 
+```
 
-### 示例2：获取/修改标记值 #
+#### 示例2：获取/修改标记值 #
 
-    
-    
-    var layer = app.project.activeItem.layer(1)  // 定义一个图层
-    
-    var keyComent4 = layer.property("Marker").valueAtTime(4.0, true).comment; // "获取"第4秒标记的评论
-    
-    var compMarker = new MarkerValue("我是图层标记!"); // 定义评论值
-    compMarker.label = 9; // 修改标记的属性
-    var keyComent = layer.property("Marker").setValueAtKey(1,compMarker);  // "修改"图层第1个标记的评论
-    
-    var mkGroup = layer.property("Marker");  // 定义标记属性组
-    var key4 = mkGroup.keyValue(mkGroup.nearestKeyIndex(4.2));  // 最接近第4秒的标记
-    
+```javascript
+var layer = app.project.activeItem.layer(1) // 定义一个图层 var
+keyComent4 = layer.property("Marker").valueAtTime(4.0, true).comment; //
+"获取"第4秒标记的评论 var compMarker = new MarkerValue("我是图层标记!"); // 定义评论值
+compMarker.label = 9; // 修改标记的属性 var keyComent =
+layer.property("Marker").setValueAtKey(1,compMarker); // "修改"图层第1个标记的评论 var
+mkGroup = layer.property("Marker"); // 定义标记属性组 var key4 =
+mkGroup.keyValue(mkGroup.nearestKeyIndex(4.2)); // 最接近第4秒的标记 
+```
 
 AE2018标记设置 | AE2019及之后的标记设置（很多功能没有了）  
 ---|---  
 ![](https://mir.yuelili.com/wp-content/uploads/2021/07/0b35a735cb997a6be046c7fdd0c7afda.png) |
 ![](https://cdn.yuelili.com/20211012172447.png)  
   
-# 属性 #
+## 属性 #
 
-## chapter 标记章节 #
+### chapter 标记章节 #
 
 app.project.item(index).layer(index).property("Marker").keyValue(index).chapter
 
@@ -58,7 +54,7 @@ app.project.item(index).layer(index).property("Marker").keyValue(index).chapter
 
 类型：字符串; 读/写。
 
-## comment 标记注释 #
+### comment 标记注释 #
 
 app.project.item(index).layer(index).property("Marker").keyValue(index).comment
 
@@ -68,7 +64,7 @@ app.project.item(index).layer(index).property("Marker").keyValue(index).comment
 
 类型：字符串; 读/写。
 
-## cuePointName 标记提示点 #
+### cuePointName 标记提示点 #
 
 app.project.item(index).layer(index).property("Marker").keyValue(index).cuePointName
 
@@ -78,7 +74,7 @@ app.project.item(index).layer(index).property("Marker").keyValue(index).cuePoint
 
 类型：字符串; 读/写。
 
-## duration 标记持续时间 #
+### duration 标记持续时间 #
 
 app.project.item(index).layer(index).property("Marker").keyValue(index).duration
 
@@ -89,7 +85,7 @@ app.project.item(index).layer(index).property("Marker").keyValue(index).duration
 
 类型：浮点; 读/写。
 
-## eventCuePoint 标记事件提示点 #
+### eventCuePoint 标记事件提示点 #
 
 app.project.item(index).layer(index).property("Marker").keyValue(index).eventCuePoint
 
@@ -99,7 +95,7 @@ app.project.item(index).layer(index).property("Marker").keyValue(index).eventCue
 
 类型：布尔值 读/写。
 
-## frameTarget 编辑文本帧目标 #
+### frameTarget 编辑文本帧目标 #
 
 app.project.item(index).layer(index).property("Marker").keyValue(index).frameTarget
 
@@ -109,7 +105,7 @@ app.project.item(index).layer(index).property("Marker").keyValue(index).frameTar
 
 类型：字符串; 读/写。
 
-## url 标记链接 #
+### url 标记链接 #
 
 app.project.item(index).layer(index).property("Marker").keyValue(index).url
 
@@ -119,7 +115,7 @@ app.project.item(index).layer(index).property("Marker").keyValue(index).url
 
 类型：字符串; 读/写。
 
-## label 标记标签 #
+### label 标记标签 #
 
 app.project.item(index).layer(index).property("Marker").keyValue(index).label
 
@@ -130,7 +126,7 @@ app.project.item(index).layer(index).property("Marker").keyValue(index).label
 
 类型：整数(0到16)；读/写。
 
-## protectedRegion 标记受保护区 #
+### protectedRegion 标记受保护区 #
 
 app.project.item(index).markerProperty.keyValue(index).protectedRegion
 
@@ -142,9 +138,9 @@ app.project.item(index).markerProperty.keyValue(index).protectedRegion
 
 类型：布尔值 读/写。
 
-# 方法 #
+## 方法 #
 
-## getParameters() #
+### getParameters() #
 
 app.project.item(index).layer(index).property("Marker").keyValue(index).getParameters()
 
@@ -154,7 +150,7 @@ app.project.item(index).layer(index).property("Marker").keyValue(index).getParam
 
 返回：具有与每个参数名称匹配的属性的对象，其中包含该参数的值。
 
-## setParameters() #
+### setParameters() #
 
 app.project.item(index).layer(index).property("Marker").keyValue(index).setParameters(keyValuePairs)
 

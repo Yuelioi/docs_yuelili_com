@@ -4,7 +4,7 @@ order: 6
 category:
   - AE
 ---
-    # FolderItem object #
+## FolderItem object #
 
 app.project.FolderItem
 
@@ -14,20 +14,16 @@ app.project.FolderItem
 
 示例：假定项目中的第二个项目是文件夹（FolderItem），下面代码会遍历文件夹内所有项目，并弹出其名称。
 
-    
-    
-    var secondItem = app.project.item(2);
-    if (!(secondItem instanceof FolderItem)) {
-        alert("报错: 第2项不是文件夹，请重新选择");
-    } else {
-        for (var i = 1; i <= secondItem.numItems; i++) {
-            alert("第" + i + "项的名称为：" + secondItem.item(i).name);
-        }
-    }
+```javascript
+var secondItem = app.project.item(2); if (!(secondItem
+instanceof FolderItem)) { alert("报错: 第2项不是文件夹，请重新选择"); } else { for (var i =
+1; i <= secondItem.numItems; i++) { alert("第" + i + "项的名称为：" +
+secondItem.item(i).name); } }
+```
 
-# 属性篇 #
+## 属性篇 #
 
-## items 项目集 #
+### items 项目集 #
 
 app.project.item(index).items
 
@@ -39,15 +35,13 @@ app.project.item(index).items
 
 ![](https://mir.yuelili.com/wp-content/uploads/2021/07/aebece4f63f2413b362989fbe0f3a450.png)
 
-    
-    
-    var myItems = app.project.item(1).items;
-    alert(myItems.length);  //返回2，myIterm共有2个子项（不包含子项的子项）
-    
-    var myItems = app.project.items;
-    alert(myItems.length); //返回7，项目面板一共7个（包含所有）
+```javascript
+var myItems = app.project.item(1).items;
+alert(myItems.length); //返回2，myIterm共有2个子项（不包含子项的子项） var myItems =
+app.project.items; alert(myItems.length); //返回7，项目面板一共7个（包含所有）
+```
 
-## numItems 项目个数 #
+### numItems 项目个数 #
 
 app.project.item(index).numItems
 
@@ -57,13 +51,13 @@ app.project.item(index).numItems
 
 案例：返回当前项目的子项数量
 
-    
-    
-    alert(app.project.activeItem.numItems)
+```javascript
+alert(app.project.activeItem.numItems)
+```
 
-# 方法 #
+## 方法 #
 
-## FolderItem.item() #
+### FolderItem.item() #
 
 app.project.item(index).item(index)
 
@@ -81,7 +75,7 @@ app.project.item(index).item(index)
 
 示例：父文件夹中第4个项目的名称（父文件夹在项目第2位），Comp 5/7/8不计数
 
-    
-    
-    alert(app.project.item(2).item(4).name) //弹窗：子文件夹2
+```javascript
+alert(app.project.item(2).item(4).name) //弹窗：子文件夹2
+```
 

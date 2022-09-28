@@ -4,7 +4,7 @@ order: 8
 category:
   - AE
 ---
-    # 形状对象 Shape object #
+## 形状对象 Shape object #
 
 app.project.item(index).layer(index).property(index).property("maskShape").value
 
@@ -64,9 +64,9 @@ corner of the square
 myShape.featherRadii = [30, 100]; // second feather point (onright-
 sidesegment) has a larger radius
 
-# 属性 #
+## 属性 #
 
-## closed 形状闭合 #
+### closed 形状闭合 #
 
 shapeObject.value.closed
 
@@ -74,7 +74,7 @@ shapeObject.value.closed
 
 类型：布尔值 读/写。
 
-## featherInterps 羽化插值 #
+### featherInterps 羽化插值 #
 
 shapeObject.value.featherInterps
 
@@ -84,7 +84,7 @@ shapeObject.value.featherInterps
 
 类型：整数数组(0或1)；读/写。
 
-## featherRadii 羽化半径 #
+### featherRadii 羽化半径 #
 
 shapeObject.value.featherRadii
 
@@ -94,7 +94,7 @@ shapeObject.value.featherRadii
 
 类型：浮点值数组；读/写。
 
-## featherRelCornerAngles #
+### featherRelCornerAngles #
 
 shapeObject.value.featherRelCornerAngles
 
@@ -104,7 +104,7 @@ shapeObject.value.featherRelCornerAngles
 
 类型：浮点百分比值数组(0到100)；读/写。
 
-## featherRelSegLocs 羽化路径X？ #
+### featherRelSegLocs 羽化路径X？ #
 
 shapeObject.value.featherRelSegLocs
 
@@ -114,7 +114,7 @@ shapeObject.value.featherRelSegLocs
 
 类型：浮点值数组(0到1)；读/写。
 
-## featherSegLocs 羽化路径段号 #
+### featherSegLocs 羽化路径段号 #
 
 shapeObject.value.featherSegLocs
 
@@ -144,7 +144,7 @@ my_maskShape.featherSegLocs = [0, 0, 0];
 // Update the mask path.  
 layer.mask(1).property("ADBE Mask Shape").setValue(my_maskShape);
 
-## featherTensions 羽化张量 #
+### featherTensions 羽化张量 #
 
 shapeObject.value.featherTensions
 
@@ -154,7 +154,7 @@ shapeObject.value.featherTensions
 
 类型：浮点值数组(0到1)；读/写。
 
-## featherTypes 羽化方向 #
+### featherTypes 羽化方向 #
 
 shapeObject.value.featherTypes
 
@@ -166,7 +166,7 @@ shapeObject.value.featherTypes
 
 类型：整数数组(0或1)；读/写。
 
-## inTangents 形状入点手柄 #
+### inTangents 形状入点手柄 #
 
 shapeObject.value.inTangents
 
@@ -178,7 +178,7 @@ shapeObject.value.inTangents
 
 类型：浮点对数组 读/写。
 
-## outTangents 形状出点手柄 #
+### outTangents 形状出点手柄 #
 
 shapeObject.value.outTangents
 
@@ -190,7 +190,7 @@ shapeObject.value.outTangents
 
 类型：浮点对数组 读/写。
 
-## vertices 形状顶点 #
+### vertices 形状顶点 #
 
 shapeObject.value.vertices
 
