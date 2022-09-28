@@ -5,7 +5,7 @@ category:
   - AE
 ---
 
-## 渲染队列对象 这节暂时跳过 #
+## 渲染队列对象 这节暂时跳过
 
 app.project.renderQueue
 
@@ -20,7 +20,7 @@ app.project.renderQueue
 
 app.project.renderQueue.canQueueInAME
 
-::: tip
+:::info 提示
 在 After Effects 14.0(CC 2017)中添加了此功能
 :::
 
@@ -68,7 +68,7 @@ app.project.renderQueue.item(index)
 
 app.project.renderQueue.pauseRendering(pause)
 
-描述：暂停当前 ​​ 渲染过程，或继续暂停的渲染过程。这与渲染队列面板单击“暂停”相同。可以从 RenderQueueItem.onStatusChanged 或 app.onError 回调此方法。
+描述：暂停当前渲染过程，或继续暂停的渲染过程。这与渲染队列面板单击“暂停”相同。可以从 RenderQueueItem.onStatusChanged 或 app.onError 回调此方法。
 
 参数：pause 为 true，暂停当前渲染过程。为 false，则继续暂停的渲染。
 
@@ -111,13 +111,15 @@ app.project.renderQueue.stopRendering()
 
 app.project.renderQueue.queueInAME(render_immediately_in_AME)
 
-笔记：在 After Effects 14.0(CC 2017)中添加了此功能
+:::info 提示
+在 After Effects 14.0(CC 2017)中添加了此功能
+:::
 
 描述：调用 AME 中的 Queue 命令。此方法需要传递一个布尔值，告诉 AME 是进行排队(false)还是开始处理队列(true)。
 
-笔记：这需要 Adobe Media Encoder CC 2017(11.0)或更高版本。
-
-笔记：当 AME 收到排队的项目时，它将应用最近使用的编码预设。如果 render_immediately_in_AME 设置为 true，则更改编码设置。
+:::tip
+当 AME 收到排队的项目时，它将应用最近使用的编码预设。如果 render_immediately_in_AME 设置为 true，则更改编码设置。
+:::
 
 参数：render_immediately_in_AME 告诉 AME 是只对渲染项目排队(false)还是 AME 也应该开始处理其队列(true)。
 

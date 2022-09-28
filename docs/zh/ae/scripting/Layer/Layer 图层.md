@@ -98,7 +98,7 @@ app.project.item(index).layer(index).id
 
 描述：图层 ID。当项目保存到文件并重新加载时，ID 保持不变。但将此项目导入另一个项目时， 所有图层会获得新 ID。ID 不会显示在普通用户界面。
 
-::: tip
+:::info 提示
 从 AE 2022 Beta 版本 22x25 开始加入
 :::
 
@@ -120,7 +120,7 @@ app.project.item(index).layer(index).label
 
 描述：图层的标签颜色。由其数字表示(“ 0”代表“无”，“ 1 至 16”代表“标签”首选项中预设颜色编号)。
 
-::: tip
+:::info 提示
 自定义标签颜色无法通过编程进行设置。
 :::
 
@@ -249,7 +249,7 @@ app.project.item(index).layer(index).copyToComp(intoComp)
 
 描述：将图层复制到指定的合成中。原始层保持不变。这与用户界面复制并粘贴图层相同。
 
-::: tip
+:::info 提示
 从 After Effects 13.6 开始，当图层具有父级时，此方法不再导致 After Effects 崩溃。
 :::
 
@@ -270,9 +270,7 @@ topmost_index_of_selected_layers - 1 )
 
 ```javascript
 var comp = app.project.activeItem;
-
 comp.layer(2).copyToComp(comp); // 复制第2个图层
-
 copylayer = comp.layer(2 - 1); // 因为副本总在最上面，所以新图层索引是2-1 = 1
 ```
 
@@ -294,7 +292,7 @@ app.project.layerByID(id)
 
 描述：将图层移动到指定图层之后(下方)。
 
-::: tip
+:::info 提示
 从 AE 2022 Beta 版本 22x25 开始加入
 :::
 

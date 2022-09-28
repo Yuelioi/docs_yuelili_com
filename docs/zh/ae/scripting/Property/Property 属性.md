@@ -5,7 +5,7 @@ category:
   - AE
 ---
 
-## Property object 属性对象 #
+## Property object 属性对象
 
 app.project.item(index).layer(index).propertySpec
 
@@ -13,7 +13,7 @@ app.project.item(index).layer(index).propertySpec
 
 父级关系：property 是属性基类（PropertyBase）的子类。因此，属性基类的方法和属性均可用。
 
-::: tip
+:::info 提示
 原文：在本指南中，“属性（properties）”被称为“属性（attributes）”，避免与 After Effects 自己的属性（properties）混淆。
 
 不过咱是中文，所以都叫属性了
@@ -86,11 +86,11 @@ myProperty.setValueAtKey(3, newTextDocument("数字3")); }
 
 ## 属性
 
-### alternateSource 备用源！21 新出
+### alternateSource 备用源
 
 app.project.item(index).layer(index).propertySpec.alternateSource
 
-::: tip
+:::info 提示
 此功能已添加到 After Effects 18.0(2021)中
 :::
 
@@ -116,7 +116,7 @@ app.project.item(index).layer(index).propertySpec.alternateSource
 
 app.project.item(index).layer(index).propertySpec.canSetAlternateSource
 
-::: tip
+:::info 提示
 此功能已添加到 After Effects 18.0(2021)中
 :::
 
@@ -148,7 +148,7 @@ app.project.item(index).layer(index).propertySpec.dimensionsSeparated
 
 描述：如果为 true，则该属性的尺寸表示为单独属性。例如位置拆分为“ X 位置”和“ Y 位置”时，就为 true。
 
-::: tip
+:::info 提示
 仅当 isSeparationLeader 属性为 true 时，此属性才适用。
 :::
 
@@ -171,7 +171,7 @@ app.project.item(index).layer(index).propertySpec.essentialPropertySource
 
 描述 **：** 基本属性对象上的实例属性，也就是基本图形属性的源属性。
 
-::: tip
+:::info 提示
 从 AE 2022 Beta 版本 22x25 开始加入
 :::
 
@@ -269,7 +269,7 @@ alert(selLayer.effect("Slider Control")(1).hasMin); //返回 true
 
 app.project.item(index).layer(index).propertySpec.isDropdownEffect
 
-::: tip
+:::info 提示
 此功能已添加到 After Effects 17.0.1(2020)中
 :::
 
@@ -294,7 +294,7 @@ app.project.item(index).layer(index).propertySpec.isSeparationFollower
 
 描述：如果为 true，则表示该属性是多维属性其中一个维度。例如，“ X 位置”就是是由“位置”分离出来的。
 
-::: tip
+:::info 提示
 合并的多维属性是“分离组”，而分隔出来的一维属性是“分离元”。[1920,1080] 可以分离为 1920 和 1080
 :::
 
@@ -313,7 +313,7 @@ app.project.item(index).layer(index).propertySpec.isSeparationLeader
 
 描述：如果为 true，则该属性为多维并且可以分离。例如，位置属性就为 true。
 
-::: tip
+:::info 提示
 合并的多维属性是“分离组”，而分隔出来的一维属性是“分离元”。[1920,1080] 可以分离为 1920 和 1080
 :::
 
@@ -391,32 +391,35 @@ app.project.item(index).layer(index).propertySpec.propertyValueType
 相反，形状属性(例如蒙版形状)为 Shape 对象。为形状设置值时，按如下所示传递 Shape 对象：
 
 ```javascript
-var selLayer = app.project.activeItem.selectedLayers[0];
-//当前选择的图层 var myShape = new Shape(); //定义一个蒙版形状 myShape.vertices = [[0,0],
-[0,100], [100,100], [100,0]]; //设置形状参数 var myMask = selLayer.property("ADBE
-Mask Parade").property(1); //假设已经画过一个蒙版 myMask.property("ADBE Mask
-Shape").setValue(myShape); //把新的形状参数设置给蒙版
+var selLayer = app.project.activeItem.selectedLayers[0]; //当前选择的图层
+var myShape = new Shape(); //定义一个蒙版形状
+myShape.vertices = [
+  [0, 0],
+  [0, 100],
+  [100, 100],
+  [100, 0],
+]; //设置形状参数
+var myMask = selLayer.property("ADBE Mask Parade").property(1); //假设已经画过一个蒙版
+myMask.property("ADBE Mask Shape").setValue(myShape); //把新的形状参数设置给蒙版
 ```
 
 类型：PropertyValueType，枚举值; 读/写：
 
-| PropertyValueType                | 直译      | 介绍                       | 示例 |
-| -------------------------------- | --------- | -------------------------- | ---- |
-| PropertyValueType.NO_VALUE       | 无        | 不存储任何数据             |      |
-| PropertyValueType.ThreeD_SPATIAL | 3D 空间值 | 3 个浮点数组成的位置型数组 |      |
-
-如锚点值为：[10.0、20.2、0.0]  
-|PropertyValueType.ThreeD | 3D 值 | 3 个浮点数组成的数组 | 如缩放值为：[100.0、20.2、0.0]|
-|PropertyValueType.TwoD_SPATIAL | 2D 空间值 | 2 个浮点数组成的位置型数组 | 如锚点值为：[5.1，10.0]|
-|PropertyValueType.TwoD | 2D 值 | 2 个浮点数组成的数组 | 如缩放值为：[5.1，100.0]|
-|PropertyValueType.OneD | 1D 数值 | 浮点值 ||
-|PropertyValueType.COLOR | 颜色值 | 4 个浮点值（范围为 0.0~1.0）组成数组 | 例如颜色[0.8、0.3、0.1、1.0]|
-|PropertyValueType.CUSTOM_VALUE | 自定义值 | 自定义属性值 | 例如“色阶”效果的“直方图”属性|
-|PropertyValueType.MARKER | 标记对象 | 标记对象 ||
-|PropertyValueType.LAYER_INDEX | 图层索引 | 整数 | 为 0 表示无图层|
-|PropertyValueType.MASK_INDEX | 蒙版索引 | 整数 | 为 0 表示无蒙版|
-|PropertyValueType.SHAPE | 形状对象 | 形状对象 ||
-|PropertyValueType.TEXT_DOCUMENT | 文字对象 | 文字对象 ||
+| PropertyValueType                | 直译      | 介绍                                 | 示例                           |
+| -------------------------------- | --------- | ------------------------------------ | ------------------------------ |
+| PropertyValueType.NO_VALUE       | 无        | 不存储任何数据                       |                                |
+| PropertyValueType.ThreeD_SPATIAL | 3D 空间值 | 3 个浮点数组成的位置型数组           | 如锚点值为：[10.0、20.2、0.0]  |
+| PropertyValueType.ThreeD         | 3D 值     | 3 个浮点数组成的数组                 | 如缩放值为：[100.0、20.2、0.0] |
+| PropertyValueType.TwoD_SPATIAL   | 2D 空间值 | 2 个浮点数组成的位置型数组           | 如锚点值为：[5.1，10.0]        |
+| PropertyValueType.TwoD           | 2D 值     | 2 个浮点数组成的数组                 | 如缩放值为：[5.1，100.0]       |
+| PropertyValueType.OneD           | 1D 数值   | 浮点值                               |                                |
+| PropertyValueType.COLOR          | 颜色值    | 4 个浮点值（范围为 0.0~1.0）组成数组 | 例如颜色[0.8、0.3、0.1、1.0]   |
+| PropertyValueType.CUSTOM_VALUE   | 自定义值  | 自定义属性值                         | 例如“色阶”效果的“直方图”属性   |
+| PropertyValueType.MARKER         | 标记对象  | 标记对象                             |                                |
+| PropertyValueType.LAYER_INDEX    | 图层索引  | 整数                                 | 为 0 表示无图层                |
+| PropertyValueType.MASK_INDEX     | 蒙版索引  | 整数                                 | 为 0 表示无蒙版                |
+| PropertyValueType.SHAPE          | 形状对象  | 形状对象                             |                                |
+| PropertyValueType.TEXT_DOCUMENT  | 文字对象  | 文字对象                             |                                |
 
 ### selectedKeys 已选择关键帧的索引
 
@@ -432,7 +435,7 @@ app.project.item(index).layer(index).propertySpec.separationDimension
 
 描述：分离元在分离组中的维度编号。起始编号为 0。例如，“Y 位置的 separationDimension 为 1；X 位置的值为 0。
 
-::: tip
+:::info 提示
 合并的多维属性是“分离组”，而分隔出来的一维属性是“分离元”。[1920,1080] 可以分离为 1920 和 1080
 :::
 
@@ -444,7 +447,7 @@ app.project.item(index).layer(index).propertySpec.separationLeader
 
 描述：查找分离元所在的分离组。例如，Y 位置分离组为位置属性。
 
-::: tip
+:::info 提示
 合并的多维属性是“分离组”，而分隔出来的一维属性是“分离元”。[1920,1080] 可以分离为 1920 和 1080
 :::
 
@@ -497,7 +500,7 @@ app.project.item(index).layer(index).propertySpec.addKey(time)
 
 app.project.item(index).layer(index).propertySpec.addToMotionGraphicsTemplate(comp)
 
-::: tip
+:::info 提示
 在 After Effects 15.0(CC 2018)中添加了此功能
 :::
 
@@ -518,7 +521,7 @@ app.project.item(index).layer(index).propertySpec.addToMotionGraphicsTemplate(co
 app.project.item(index).layer(index).propertySpec.addToMotionGraphicsTemplateAs(comp,
 name)
 
-::: tip
+:::info 提示
 此功能已添加到 After Effects 16.1(CC 2019)中
 :::
 
@@ -539,7 +542,7 @@ name)
 
 app.project.item(index).layer(index).propertySpec.canAddToMotionGraphicsTemplate(comp)
 
-::: tip
+:::info 提示
 在 After Effects 15.0(CC 2018)中添加了此功能
 :::
 
@@ -566,7 +569,7 @@ app.project.item(index).layer(index).propertySpec.getSeparationFollower(dim)
 
 描述：对于单独的多维属性（分离组），检索其跟随者（分离元）。如果该属性不是多维或不具有指定的维度（比如在 2 维坐标找第 3 维），则返回错误
 
-::: tip
+:::info 提示
 合并的多维属性是“分离组”，而分隔出来的一维属性是“分离元”。如[1920,1080] 可以分离为 1920 和 1080
 :::
 
@@ -818,7 +821,7 @@ app.project.item(index).layer(index).propertySpec.removeKey(keyIndex)
 
 app.project.item(index).layer(index).propertySpec.setAlternateSource(newSource)
 
-::: tip
+:::info 提示
 此功能已添加到 After Effects 18.0(2021)中
 :::
 
@@ -861,7 +864,7 @@ inType[, outType])
 
 app.project.item(index).layer(index).propertySpec.setPropertyParameters(items)
 
-::: tip
+:::info 提示
 此功能已添加到 After Effects 17.0.1(2020)中
 :::
 
@@ -879,7 +882,7 @@ app.project.item(index).layer(index).propertySpec.setPropertyParameters(items)
 - 项目不允许使用“ |” 。
 - 项目如果为“(-”。代表分隔线。分隔线也会占一个索引。
 
-::: tip
+:::info 提示
 在当前代码页中，项目字符串应采用 ASCII 或可编码的 MultiByte。换句话说，项目字符串应在运行系统的脚本中提供。例如：在英语系统上运行脚本时以日语指定项目字符串将创建一个下拉效果，其中项目字符串中的字符难以辨认。
 :::
 
@@ -1084,7 +1087,7 @@ preExpression)
 
 描述：指定时间属性的值。请注意，返回的值类型不明确，具体取决于属性。
 
-::: tip
+:::info 提示
 与 After Effects 13.6 一样，此方法会等待时间密集的表达式(如 sampleImage)返回结果之后，再运行。
 :::
 

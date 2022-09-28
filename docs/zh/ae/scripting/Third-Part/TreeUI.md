@@ -37,7 +37,6 @@ var Tree = function () {
 
 :::info 提示
 ✏️ 推荐在生产环境中使用 `tree.min.js`，即经过压缩的版本，这样可以有效减少脚本文件的体积。
-
 :::
 
 ### 通过 Extend Script 预处理指令导入

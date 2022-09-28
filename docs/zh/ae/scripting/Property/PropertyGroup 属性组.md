@@ -9,9 +9,7 @@ category:
 
 app.project.item(index).layer(index).propertyGroupSpec
 
-描述：PropertyGroup（属性组）对象代表一组属性。它可以包含属性和其他属性组。可以嵌套属性组，其中 Layer 对象位于最顶部(root)，再到单个属性对象，例如蒙版
-
-> 蒙版羽化。
+描述：PropertyGroup（属性组）对象代表一组属性。它可以包含属性和其他属性组。可以嵌套属性组，其中 Layer 对象位于最顶部(root)，再到单个属性对象，例如蒙版 - 蒙版羽化。
 
 说明：要遍历组层次结构，使用 PropertyBase 方法和属性，参见 PropertyBase.propertyGroup()。访问属性和属性组，请参见 PropertyBase
 object。
@@ -146,7 +144,7 @@ name：子属性的名称。支持：
 - 表达式“括号样式”，表示显示名称或紧凑的英文名称，如：Anchor Point
 - 表达式“ intercap style”语法中的任何名称。如： depthOfField
 
-::: tip
+:::info 提示
 Intercap style ：所有词连接在一起，中间没有空格，并且每个词的首字母都大写
 
 有关受支持的属性名称，请参见下表。

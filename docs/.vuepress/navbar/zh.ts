@@ -4,7 +4,7 @@ export const zhNavbarConfig = navbar([
   "/zh/",
   "/zh/home",
   {
-    text: "AE文档",
+    text: "ADobe",
     icon: "edit",
     prefix: "/zh/",
     children: [
@@ -24,7 +24,16 @@ export const zhNavbarConfig = navbar([
         text: "AE插件",
         icon: "edit",
         prefix: "ae/",
-        children: [{ text: "*P粒子", icon: "edit", link: "particular/" }],
+        children: [
+          { text: "*P粒子", icon: "edit", link: "particular/" },
+          { text: "*Stardust", icon: "edit", link: "plugins/stardust/" },
+        ],
+      },
+      {
+        text: "PR文档",
+        icon: "edit",
+        prefix: "pr/",
+        children: [{ text: "脚本开发", icon: "edit", link: "scripting/" }],
       },
     ],
   },
@@ -33,19 +42,13 @@ export const zhNavbarConfig = navbar([
     text: "*Blender文档",
     icon: "edit",
     prefix: "/zh/",
-    children: [
-      { text: "*脚本开发", icon: "edit", link: "expression/" },
-    
-    ],
+    children: [{ text: "*脚本开发", icon: "edit", link: "expression/" }],
   },
   {
     text: "*Houdini文档",
     icon: "edit",
     prefix: "/zh/",
-    children: [
-      { text: "*VEX", icon: "edit", link: "expression/" },
-    
-    ],
+    children: [{ text: "*VEX", icon: "edit", link: "expression/" }],
   },
 
   {

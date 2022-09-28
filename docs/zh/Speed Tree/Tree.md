@@ -4,7 +4,7 @@ order: 2
 category:
   - Speed Tree
 ---
-![speedtree-20220416100117](../ASSETS/SpeedTree-20220416100117.png)
+![speedtree-20220416100117](../assets/SpeedTree-20220416100117.png)
 
 ---
 
@@ -24,7 +24,7 @@ Sink：水平线高度
 
 Roll：旋转
 
-![speedtree-20220416095357](../ASSETS/SpeedTree-20220416095357.png)
+![speedtree-20220416095357](../assets/SpeedTree-20220416095357.png)
 
 ---
 
@@ -38,7 +38,7 @@ Roll：旋转
 
 设置高模低模
 
-![speedtree-20220416095954](../ASSETS/SpeedTree-20220416095954.png)
+![speedtree-20220416095954](../assets/SpeedTree-20220416095954.png)
 
 还可以设置高模低模层级数量、树干树枝的 LOD 曲线、以及树叶的 LOD
 

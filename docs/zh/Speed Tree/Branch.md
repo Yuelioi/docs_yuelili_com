@@ -20,4 +20,4 @@ Spread：展开（每一叉舒展开来，不抱团）
 
 Spiral：螺旋（旋转）
 
-![speedtree-20220416110058](../ASSETS/SpeedTree-20220416110058.png)
+![speedtree-20220416110058](../assets/SpeedTree-20220416110058.png)

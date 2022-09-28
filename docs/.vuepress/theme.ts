@@ -16,7 +16,7 @@ export default hopeTheme({
     url: "https://yuelili.com",
   },
 
-  iconAssets: "iconfont",
+  iconassets: "iconfont",
 
   logo: "/logo.svg",
 

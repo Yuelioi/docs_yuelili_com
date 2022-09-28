@@ -5,7 +5,7 @@ category:
   - AE
 ---
 
-## app.preferences #
+## app.preferences
 
 描述：首选项对象，保存在首选项文件中（C:\Users\你的用户名\AppData\Roaming\Adobe\After
 Effects\版本号），并且在 AE 关闭之前保持不变。
@@ -16,7 +16,7 @@ Effects\版本号），并且在 AE 关闭之前保持不变。
 
 ![](https://cdn.yuelili.com/20211021115314.png)
 
-::: tip
+:::info 提示
 首选项文件不同 AE 版本、不同 AE 软件语言，均不相同。
 :::
 
@@ -170,8 +170,8 @@ app.preferences.getPrefAsString(sectionName, keyName[, prefType])
 ![](https://cdn.yuelili.com/20210930130927.png)
 
 ```javascript
-var pree = app.preferences.getPrefAsString("Main Pref Section v2", 'Pref_DEFAULT_STILL_OUT_POINT v2',
-PREFType.PREF_Type_MACHINE_INDEPENDENT); alert(pree) // 返回 57/30
+var pree = app.preferences.getPrefAsString("Main Pref Section v2", "Pref_DEFAULT_STILL_OUT_POINT v2", PREFType.PREF_Type_MACHINE_INDEPENDENT);
+alert(pree); // 返回 57/30
 ```
 
 ### havePref()

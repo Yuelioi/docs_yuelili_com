@@ -40,7 +40,7 @@ alert(app.activeViewer); //如果打开查看器了，屏幕会显示[object Vie
 
 全名：app.availableGPUAccelTypes
 
-:::info
+:::info 提示
 在 AfterEffects14.0(CC2017)中添加了此功能
 
 :::
@@ -109,7 +109,9 @@ alert(app.buildNumber); // 本机AE：45 （版本号 17.7x45 后面的数字）
 
 全名：app.disableRendering
 
-笔记：在 After Effects 16.0(CC 2019)中添加了此功能
+:::info 提示
+在 After Effects 16.0(CC 2019)中添加了此功能
+:::
 
 描述：如果为 false(默认值)，则渲染按常规进行。设置为 true 可禁用渲染，等同于打开 Caps Lock。
 
@@ -163,7 +165,7 @@ alert(fxName);
 Files 文件中打开 cmd，然后输入以下代码（大致意思是运行 Labels 脚本），再运行该脚本后，AE 会自动退出（因为 exitAfterLaunchAndEval 为 True）
 
 ```javascript
-    AfterFX.exe -r H:\adobe\Adobe After Effects 2020\Support Files\Scripts\ScriptUI Panels\Labels.jsx
+AfterFX.exe -r H:\adobe\Adobe After Effects 2020\Support Files\Scripts\ScriptUI Panels\Labels.jsx
 ```
 
 ![](https://cdn.yuelili.com/20210824223422.png)
@@ -196,7 +198,7 @@ if (XXXX){
 
 描述：显示当前 After Effects 的语言环境(语言和区域名称)。
 
-:::info
+:::info 提示
 $.locale 返回操作系统语言，而不是 AfterEffects 应用程序的语言。
 :::
 
@@ -317,7 +319,7 @@ app.saveProjectOnCrash = false; //你完了 AE崩了就炸了
 类型：设置对象；只读。
 
 ```javascript
-//只能获得在使用脚本过程中添加的设置，不能修改After Effects本身的默认设置
+//只能获得在使用脚本过程添加设置，不能修改After Effects本身的默认设置
 app.settings.saveSetting("SettingA", "ValueA", 100);
 alert(app.settings.getSetting("SettingA", "ValueA"));
 ```
@@ -326,7 +328,9 @@ alert(app.settings.getSetting("SettingA", "ValueA"));
 
 全名：app.version
 
-笔记：此功能是在 After Effects 12.0(CC)中添加的
+:::info 提示
+此功能于After Effects 12.0(CC)添加
+:::
 
 描述：显示正在运行的 After Effects 版本号
 
@@ -560,14 +564,16 @@ if (my_file.exists) {
 | SwatchValue.type                    | “ RGB”，“ CMYK”，“ LAB”，“Gray”，其中之一                 |
 | SwatchValue.r/g/b                   | type = "RGB"时，颜色值在[0.0~1.0]范围内。0，0，0 是黑色。 |
 
-示例：SwatchValue.r //返回 0.5  
-SwatchValue.c/m/y/k | 当 type=“ CMYK”时，颜色值在[0.0~1.0]范围内。0，0，0，0 是白色。  
-示例：SwatchValue.c //返回 0.5  
+```javascript
+示例：SwatchValue.r //返回 0.5
+SwatchValue.c/m/y/k | 当 type=“ CMYK”时，颜色值在[0.0~1.0]范围内。0，0，0，0 是白色。
+示例：SwatchValue.c //返回 0.5
 SwatchValue.l/a/b | 当 type = "LAB"时，颜色值 L 在[0.0~1.0]范围内。a/b 在[-128.0 .. +
-128.0]范围内，0，0，0 是黑色  
-示例：SwatchValue.a //返回 0.5  
-SwatchValue.value | 当 type = “Gray”时，颜色值在[0.0~1.0]范围内。0.0 为黑色  
+128.0]范围内，0，0，0 是黑色
+示例：SwatchValue.a //返回 0.5
+SwatchValue.value | 当 type = “Gray”时，颜色值在[0.0~1.0]范围内。0.0 为黑色
 示例：SwatchValue.value //返回 0.5
+```
 
 ### pauseWatchFolder() 监视文件夹继续搜索项目
 

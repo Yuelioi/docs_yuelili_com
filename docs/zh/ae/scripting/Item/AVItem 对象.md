@@ -119,7 +119,7 @@ app.project.item(index).height
 
 app.project.item(index).isMediaReplacementCompatible
 
-::: tip
+:::info 提示
 此功能已添加到 After Effects 18.0(2021)中
 :::
 
@@ -269,7 +269,7 @@ app.project.item(index).setProxyWithPlaceholder(name, width, height
 
 描述：创建具有指定值的占位符对象（PlaceholderSource），将它设置为 proxySource 对象的值，然后将 useProxy 设置为 true。不保留解析参数，而是使用用户首选项。
 
-::: tip
+:::info 提示
 在用户界面中无法直接将占位符设置为代理。当已设置代理，然后将其移动或删除时，才会这样。
 :::
 
@@ -304,7 +304,7 @@ pixelAspect)
 
 描述：创建具有指定值的 SolidSource 对象，将此对象设置为 proxySource 属性的值，然后设置 useProxy 为 true。不保留解析参数，而是使用用户首选项。
 
-::: tip
+:::info 提示
 无法在用户界面将纯色设置为代理。此功能仅可 **通过脚本** 实现。
 :::
 

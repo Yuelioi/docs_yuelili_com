@@ -5,7 +5,7 @@ category:
   - AE
 ---
 
-## Item 对象 #
+## Item 对象
 
 app.project.items[index]/app.project.item(index)
 
@@ -56,7 +56,7 @@ app.project.item(index).dynamicLinkGUID
 
 app.project.item(index).guides
 
-::: tip
+:::info 提示
 此功能已添加到 After Effects 16.1(CC 2019)中
 :::
 
@@ -78,7 +78,9 @@ app.project.item(index).label
 
 描述：标签颜色。颜色由其数字表示(“ 0”代表“无”，或者“ 1 至 16”代表“标签”首选项中的一种预设颜色)。
 
-笔记：自定义标签颜色无法通过编程设置。
+:::info 提示
+自定义标签颜色无法通过编程设置。
+:::
 
 类型：整数(0 到 16)；读/写。
 
@@ -158,7 +160,7 @@ alert(app.project.item(6).typeName);
 
 app.project.item(index).addGuide(orientationType, position)
 
-::: tip
+:::info 提示
 此功能已添加到 After Effects 16.1(CC 2019)中
 :::
 
@@ -193,7 +195,7 @@ app.project.item(index).remove()
 
 app.project.item(index).removeGuide(guideIndex)
 
-::: tip
+:::info 提示
 此功能已添加到 After Effects 16.1(CC 2019)中
 :::
 
@@ -209,13 +211,15 @@ app.project.item(index).removeGuide(guideIndex)
 app.project.activeItem.removeGuide(0);
 ```
 
-警告：删除索引 2，那么原来的索引 3 就会变成 2。
+:::danger：
+删除索引 2，那么原来的索引 3 就会变成 2。
+:::
 
 ### setGuide() 修改参考线
 
 app.project.item(index).setGuide(position,guideIndex)
 
-::: tip
+:::info 提示
 此功能已添加到 After Effects 16.1(CC 2019)中
 :::
 

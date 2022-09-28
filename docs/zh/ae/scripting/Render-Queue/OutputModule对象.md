@@ -74,7 +74,9 @@ app.project.renderQueue.item(index).outputModule(index).applyTemplate(templateNa
 
 app.project.renderQueue.item(index).outputModule(index).getSetting()
 
-笔记：此功能已添加到 After Effects 13.0(CC 2014)中
+:::info 提示
+此功能已添加到 After Effects 13.0(CC 2014)中
+:::
 
 描述：获取给定输出模块的特定设置。
 
@@ -91,7 +93,9 @@ https://blogs.adobe.com/creativecloud/new-changed-after-effects-cc-2014/?segment
 
 app.project.renderQueue.item(index).outputModule(index).getSettings()
 
-笔记：此功能已添加到 After Effects 13.0(CC 2014)中
+:::info 提示
+此功能已添加到 After Effects 13.0(CC 2014)中
+:::
 
 描述：获取给定输出模块的所有设置。
 
@@ -161,7 +165,9 @@ app.project.renderQueue.item(index).outputModule(index).saveAsTemplate(name)
 
 app.project.renderQueue.item(index).outputModule(index).setSetting()
 
-笔记：此功能已添加到 After Effects 13.0(CC 2014)中
+:::info 提示
+此功能已添加到 After Effects 13.0(CC 2014)中
+:::
 
 描述：为给定的输出模块设置特定设置。
 
@@ -178,7 +184,9 @@ https://blogs.adobe.com/creativecloud/new-changed-after-effects-cc-2014/?segment
 
 app.project.renderQueue.item(index).outputModule(index).setSettings()
 
-笔记：此功能已添加到 After Effects 13.0(CC 2014)中
+:::info 提示
+此功能已添加到 After Effects 13.0(CC 2014)中
+:::
 
 描述：折旧资源：https://blogs.adobe.com/creativecloud/new-changed-after-effects-cc-2014/?segment=dva
 
@@ -186,7 +194,7 @@ app.project.renderQueue.item(index).outputModule(index).setSettings()
 https://blogs.adobe.com/creativecloud/new-changed-after-effects-cc-2014/?segment=dva
 
 :::danger
-警告：修改输出模块设置后，有一个错误会导致 OutputModule 对象失效，因此，修改它后，需要再次检索输出模块。
+修改输出模块设置后，有一个错误会导致 OutputModule 对象失效，因此，修改它后，需要再次检索输出模块。
 :::
 
 示例

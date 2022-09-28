@@ -5,7 +5,7 @@ category:
   - AE
 ---
 
-## 渲染序列项目 #
+## 渲染序列项目
 
 app.project.renderQueue.item(index)
 
@@ -162,7 +162,7 @@ app.project.renderQueue.item(index).duplicate()
 
 描述：创建此项的副本并将其添加到此渲染队列。
 
-::: tip
+:::info 提示
 复制状态为“完成”的项目，会将新项目的状态设置为“已排队”。
 :::
 
@@ -174,7 +174,7 @@ app.project.renderQueue.item(index).duplicate()
 
 app.project.renderQueue.item(index).getSetting()
 
-::: tip
+:::info 提示
 此功能已添加到 After Effects 13.0(CC 2014)中
 :::
 
@@ -188,20 +188,22 @@ app.project.renderQueue.item(index).getSetting()
 
 示例
 
-/获取渲染设置的“代理使用”的当前值  
-//关键键和值均为英文字符串。  
-var rqItem1_proxyUse = app.project.renderQueue.item(1).getSetting("Proxy
-Use");
+```javascript
+/获取渲染设置的“代理使用”的当前值
+//关键键和值均为英文字符串。
+var rqItem1_proxyUse = app.project.renderQueue.item(1).getSetting("Proxy Use");
 
-// 获取相同设置的字符串版本，在字符串的末尾添加“ -str”  
-var rqItem1_proxyUse_str = app.project.renderQueue.item(1).getSetting("Proxy
-Use-str");
+// 获取相同设置的字符串版本，在字符串的末尾添加“ -str”
+var rqItem1_proxyUse_str = app.project.renderQueue.item(1).getSetting("Proxy Use-str");
+```
 
 ### getSettings() 获取渲染设置
 
 app.project.renderQueue.item(index).getSettings()
 
-笔记：此功能已添加到 After Effects 13.0(CC 2014)中
+:::info 提示
+此功能已添加到 After Effects 13.0(CC 2014)中
+:::
 
 描述：获取给定渲染队列项的所有设置。
 
@@ -216,9 +218,10 @@ app.project.renderQueue.item(index).getSettings()
 //获取包含以下对象的所有渲染设置的所有可能值的对象  
 //呈现队列项目 1 并转换为 JSON 格式。
 
-var rqItem1_spec_str =
-app.project.renderQueue.item(1).getSettings(GetSettingsFormat.SPEC);  
+```javascript
+var rqItem1_spec_str = app.project.renderQueue.item(1).getSettings(GetSettingsFormat.SPEC);
 var rqItem1_spec_str_json = rqItem1_spec_str.toSource();
+```
 
 ### outputModule() 输出模块
 
@@ -254,7 +257,9 @@ app.project.renderQueue.item(index).saveAsTemplate(name)
 
 app.project.renderQueue.item(index).setSetting()
 
-笔记：此功能已添加到 After Effects 13.0(CC 2014)中
+:::info 提示
+此功能已添加到 After Effects 13.0(CC 2014)中
+:::
 
 描述：为给定的“渲染队列项目”设置特定设置。
 
@@ -266,18 +271,20 @@ app.project.renderQueue.item(index).setSetting()
 
 示例：将“代理使用”的值设置为“使用所有代理”
 
-app.project.renderQueue.item(1).setSetting("Proxy Use", "Use All Proxies");
+```javascript
+app.project.renderQueue.item(1).setSetting("Proxy Use", "Use ll Proxies");
 
-//您也可以使用数字。  
+//您也可以使用数字。
 //这两个示例效果相同。
 
 app.project.renderQueue.item(1).setSetting("Proxy Use", 1);
+```
 
 ### setSettings() 渲染设置
 
 app.project.renderQueue.item(index).setSettings()
 
-::: tip
+:::info 提示
 此功能已添加到 After Effects 13.0(CC 2014)中
 :::
 
@@ -291,26 +298,27 @@ app.project.renderQueue.item(index).setSettings()
 
 示例
 
-//获取一个包含可设置渲染设置的字符串版本的对象  
-//呈现队列项目 1 的值。  
+```javascript
+//获取一个包含可设置渲染设置的字符串版本的对象
+//呈现队列项目 1 的值。
 //要获取数字格式的值，请使用 GetSettingsFormat.NUMBER_SETTABLE 作为参数。
 
-var rqItem1_settable_str = app.project.renderQueue.item(1).getSettings(
-GetSettingsFormat.STRING_SETTABLE );
+var rqItem1_settable_str = app.project.renderQueue.item(1).getSettings(GetSettingsFormat.STRING_SETTABLE);
 
-// Set render queue item 2 with values that you got from render  
+// Set render queue item 2 with values that you got from render
 //queue item 1.
 
-app.project.renderQueue.item(2).setSettings( rqItem1_settable_str );
+app.project.renderQueue.item(2).setSettings(rqItem1_settable_str);
 
 // Set render queue item 3 with values you create.
 
-var my_renderSettings = {  
-"Color Depth": "32 bits per channel",  
-"Quality": "Best",  
-"Effects": "All On",  
-"Time Span Duration": "1.0",  
-"Time Span Start": "2.0"  
+var my_renderSettings = {
+  "Color Depth": "32 bits per channel",
+  Quality: "Best",
+  Effects: "All On",
+  "Time Span Duration": "1.0",
+  "Time Span Start": "2.0",
 };
 
-app.project.renderQueue.item(2).setSettings( my_renderSettings );
+app.project.renderQueue.item(2).setSettings(my_renderSettings);
+```

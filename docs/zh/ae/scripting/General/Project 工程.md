@@ -39,7 +39,7 @@ alert(app.project.bitsPerChannel); // 弹窗：8
 
 app.project.compensateForSceneReferredProfiles
 
-::: tip
+:::info 提示
 在 After Effects 16.0(CC 2019)中添加了此功能
 :::
 
@@ -53,7 +53,7 @@ app.project.compensateForSceneReferredProfiles
 
 app.project.dirty
 
-::: tip
+:::info 提示
 在 After Effects 17.5(CC2020)中添加了此功能。
 :::
 
@@ -77,7 +77,7 @@ app.project.displayStartFrame
 
 类型：整数(0 或 1)；读/写。
 
-::: tip
+:::info 提示
 在 CS5 以及更高版本，“时间显示格式”已发生很大变化，因此老版本可能无法使用。更多信息，请参见 After Effects CS5.5 。
 :::
 
@@ -89,7 +89,9 @@ app.project.displayStartFrame = 1; //把起始帧设置为1
 
 app.project.expressionEngine
 
-笔记：在 After Effects 16.0(CC 2019)中添加了此功能
+:::info 提示
+在 After Effects 16.0(CC 2019)中添加了此功能
+:::
 
 描述：“项目设置” - “表达式引擎”设置。
 
@@ -183,7 +185,7 @@ app.project.framesUseFeetFrames
 
 app.project.gpuAccelType
 
-::: tip
+:::info 提示
 此功能已添加到 After Effects 13.8(CC 2015.3)中
 :::
 
@@ -231,7 +233,7 @@ app.project.linearBlending
 
 app.project.linearizeWorkingSpace
 
-::: tip
+:::info 提示
 在 After Effects 16.0(CC 2019)中添加了此功能
 :::
 
@@ -252,8 +254,8 @@ app.project.numItems
 示例：显示当前有多少个项目
 
 ```javascript
-var numItems = app.project.numItems; alert("有 " + numItems + "
-个项目.")
+var numItems = app.project.numItems;
+alert("有 " + numItems + " 个项目.");
 ```
 
 ### renderQueue 渲染队列
@@ -307,7 +309,9 @@ app.project.timeDisplayType
 
 app.project.toolType
 
-笔记：在 After Effects 14.0(CC 2017)中添加了此功能
+:::info 提示
+在 After Effects 14.0(CC 2017)中添加了此功能
+:::
 
 描述：在“工具”面板中获取并设置活动工具。
 
@@ -411,9 +415,15 @@ Effects 会忽略工作灰度系数值。
 
 示例：
 
-要将工作灰度系数设置为 2.4(建议 709)，请执行以下操作： app.project.workingGamma = 2.4;
+要将工作灰度系数设置为 2.4(建议 709)，请执行以下操作：
 
+```javascript
+app.project.workingGamma = 2.4;
+```
+
+```javascript
 要获取当前的工作区灰度系数，请执行以下操作： var currentGamma = app.project.workingGamma;
+```
 
 ### workingSpace 工作区
 
@@ -613,7 +623,7 @@ app.project.item(index)
 
 app.project.itemByID(id)
 
-::: tip
+:::info 提示
 此功能已添加到 After Effects 13.0(CC 2014)中
 :::
 
@@ -716,7 +726,7 @@ app.project.listColorProfiles()
 
 app.project.newTeamProject(teamProjectName, description)
 
-::: tip
+:::info 提示
 此功能已添加到 After Effects 14.2(CC 2017.1)中
 :::
 
@@ -733,7 +743,7 @@ app.project.newTeamProject(teamProjectName, description)
 
 app.project.openTeamProject(teamProjectName)
 
-::: tip
+:::info 提示
 此功能已添加到 After Effects 14.2(CC 2017.1)中
 :::
 
@@ -749,7 +759,7 @@ app.project.openTeamProject(teamProjectName)
 
 app.project.shareTeamProject(comment)
 
-::: tip
+:::info 提示
 此功能已添加到 After Effects 14.2(CC 2017.1)中
 :::
 
@@ -765,7 +775,7 @@ app.project.shareTeamProject(comment)
 
 app.project.syncTeamProject()
 
-::: tip
+:::info 提示
 此功能已添加到 After Effects 14.2(CC 2017.1)中
 :::
 
@@ -777,7 +787,7 @@ app.project.syncTeamProject()
 
 app.project.closeTeamProject()
 
-::: tip
+:::info 提示
 此功能已添加到 After Effects 14.2(CC 2017.1)中
 :::
 
@@ -789,7 +799,7 @@ app.project.closeTeamProject()
 
 app.project.convertTeamProjectToProject(project_file)
 
-::: tip
+:::info 提示
 此功能已添加到 After Effects 14.2(CC 2017.1)中
 :::
 
@@ -805,7 +815,7 @@ app.project.convertTeamProjectToProject(project_file)
 
 app.project.listTeamProjects()
 
-::: tip
+:::info 提示
 此功能已添加到 After Effects 14.2(CC 2017.1)中
 :::
 
@@ -817,7 +827,7 @@ app.project.listTeamProjects()
 
 app.project.isTeamProjectOpen(teamProjectName)
 
-::: tip
+:::info 提示
 此功能已添加到 After Effects 14.2(CC 2017.1)中
 :::
 
@@ -833,7 +843,7 @@ app.project.isTeamProjectOpen(teamProjectName)
 
 app.project.isAnyTeamProjectOpen()
 
-::: tip
+:::info 提示
 此功能已添加到 After Effects 14.2(CC 2017.1)中
 :::
 
@@ -845,7 +855,7 @@ app.project.isAnyTeamProjectOpen()
 
 app.project.isTeamProjectEnabled()
 
-::: tip
+:::info 提示
 此功能已添加到 After Effects 14.2(CC 2017.1)中
 :::
 
@@ -857,7 +867,7 @@ app.project.isTeamProjectEnabled()
 
 app.project.isLoggedInToTeamProject()
 
-::: tip
+:::info 提示
 此功能已添加到 After Effects 14.2(CC 2017.1)中
 :::
 
@@ -869,7 +879,7 @@ app.project.isLoggedInToTeamProject()
 
 app.project.isSyncCommandEnabled()
 
-::: tip
+:::info 提示
 此功能已添加到 After Effects 14.2(CC 2017.1)中
 :::
 
@@ -881,7 +891,7 @@ app.project.isSyncCommandEnabled()
 
 app.project.isShareCommandEnabled()
 
-::: tip
+:::info 提示
 此功能已添加到 After Effects 14.2(CC 2017.1)中
 :::
 
@@ -893,7 +903,7 @@ app.project.isShareCommandEnabled()
 
 app.project.isResolveCommandEnabled()
 
-::: tip
+:::info 提示
 此功能已添加到 After Effects 14.2(CC 2017.1)中
 :::
 
@@ -905,7 +915,7 @@ app.project.isResolveCommandEnabled()
 
 app.project.resolveConflict(ResolveType)
 
-::: tip
+:::info 提示
 此功能已添加到 After Effects 14.2(CC 2017.1)中
 :::
 

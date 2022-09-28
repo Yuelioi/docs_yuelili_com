@@ -49,7 +49,7 @@ app.project.item(1).bgColor = [0.5, 0.5, 0.5];
 
 app.project.item(index).counters
 
-::: tip
+:::info 提示
 在 After Effects 13.2(CC2014)中添加了此功能。
 :::
 
@@ -71,7 +71,7 @@ app.project.item(index).displayStartFrame
 
 该值是使用 CompItem.displayStartTime 和 CompItem.frameDuration 计算起始帧以补偿浮点问题的替代方法。
 
-::: tip
+:::info 提示
 此功能在 After Effects 17.1 中添加。
 :::
 
@@ -91,7 +91,9 @@ app.project.item(index).displayStartTime
 
 描述：设置为合成开始时间。等效于“合成设置” - “开始时间码”或“开始帧”设置。
 
-笔记：从 After Effects 17.1 开始，最小值为-10800.0。在 17.1 之前，最小值为 0.0
+:::info 提示
+从 After Effects 17.1 开始，最小值为-10800.0。在 17.1 之前，最小值为 0.0
+:::
 
 类型：浮点值，范围为-10800.0~86339.0，也就是(-3：00：00：00 到 23：59：00：00)；读/写。如果不是合成，可能返回 undefined
 
@@ -161,7 +163,7 @@ app.project.item(index).layers
 
 app.project.item(index).markerProperty
 
-::: tip
+:::info 提示
 在 After Effects 14.0(CC 2017)中添加了此功能
 :::
 
@@ -220,7 +222,7 @@ app.project.item(index).motionBlurSamplesPerFrame
 
 app.project.item(index).motionGraphicsTemplateControllerCount
 
-::: tip
+:::info 提示
 此功能已添加到 After Effects 16.1(CC 2019)中
 :::
 
@@ -238,7 +240,7 @@ app.project.item(1).motionGraphicsTemplateControllerCount // 返回 2
 
 app.project.item(index).motionGraphicsTemplateName
 
-::: tip
+:::info 提示
 在 After Effects 15.0(CC 2018)中添加了此功能
 :::
 
@@ -420,7 +422,7 @@ app.project.item(index).duplicate()
 app.project.item(index).exportAsMotionGraphicsTemplate(doOverWriteFileIfExisting,
 file_path)
 
-::: tip
+:::info 提示
 在 After Effects 15.0(CC 2018)中添加了此功能
 :::
 
@@ -430,9 +432,9 @@ file_path)
 
 指定保存运动图形模板文件的文件夹的路径(可选)。如果未指定，则文件将保存在当前用户的“基本图形”文件夹中：
 
-macOS: /Users//Library/Application Support/Adobe/Common/Essential Graphics/
+- macOS: /Users//Library/Application Support/Adobe/Common/Essential Graphics/
 
-Windows: C:\Users\你的用户名\AppData\Roaming\Adobe\Common\Essential Graphics\
+- Windows: C:\Users\你的用户名\AppData\Roaming\Adobe\Common\Essential Graphics\
 
 如果项目自上次保存以来已更改，After Effects 将提示用户保存项目。为避免这种情况，请在导出运动图形模板之前使用 project 的 save()方法。
 
@@ -449,7 +451,7 @@ app.project.item(index).getMotionGraphicsTemplateControllerName(index)
 
 ![](https://mir.yuelili.com/wp-content/uploads/2021/07/c41b00b232b5062c65df8527dbcbd0a2.png)
 
-::: tip
+:::info 提示
 此功能已添加到 After Effects 16.1(CC 2019)中
 :::
 
@@ -471,13 +473,13 @@ alert(app.project.activeItem.getMotionGraphicsTemplateControllerName(2));
 
 app.project.item(index).setMotionGraphicsControllerName(index,newName)
 
-::: tip
+:::info 提示
 此功能已添加到 After Effects 16.1(CC 2019)中
 :::
 
 描述：在“基本图形”面板中设置单个属性的名称。
 
-::: tip
+:::info 提示
 要在添加到 EGP 中的属性重命名，请参见 Property.addToMotionGraphicsTemplateAs()。
 :::
 
@@ -522,7 +524,7 @@ alert(app.project.activeItem.layer(srcLayer, -2).name);
 
 app.project.item(index).openInEssentialGraphics()
 
-::: tip
+:::info 提示
 此功能已添加到 After Effects 15.0(CC 2018)中
 :::
 
