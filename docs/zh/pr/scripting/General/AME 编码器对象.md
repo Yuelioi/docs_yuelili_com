@@ -140,7 +140,7 @@ removeUponCompletion)
 ```
 
 
-    ## launchEncoder() 启动 AME #
+## launchEncoder() 启动 AME #
 
 
 
@@ -177,7 +177,7 @@ removeUponCompletion)
 
 
 
-    ## setEmbeddedXMPEnabled() 没用过 #
+## setEmbeddedXMPEnabled() 没用过 #
 
 
 
@@ -242,7 +242,7 @@ removeUponCompletion)
 
 
 
-    ## setSidecarXMPEnabled() 没用过 #
+## setSidecarXMPEnabled() 没用过 #
 
 
 
@@ -302,7 +302,7 @@ removeUponCompletion)
 
 
 
-    ## startBatch() AME开始渲染 #
+## startBatch() AME开始渲染 #
 
 
 

@@ -29,31 +29,11 @@ export const zhNavbarConfig = navbar([
           { text: "*Stardust", icon: "edit", link: "plugins/stardust/" },
         ],
       },
-      {
-        text: "PR文档",
-        icon: "edit",
-        prefix: "pr/",
-        children: [{ text: "脚本开发", icon: "edit", link: "scripting/" }],
-      },
+      { text: "PR文档", icon: "edit", prefix: "pr/", children: [{ text: "脚本开发", icon: "edit", link: "scripting/" }] },
     ],
   },
 
-  {
-    text: "*Blender文档",
-    icon: "edit",
-    prefix: "/zh/",
-    children: [{ text: "*脚本开发", icon: "edit", link: "expression/" }],
-  },
-  {
-    text: "*Houdini文档",
-    icon: "edit",
-    prefix: "/zh/",
-    children: [{ text: "*VEX", icon: "edit", link: "expression/" }],
-  },
-
-  {
-    text: "月离的万事屋",
-    icon: "note",
-    link: "https://www.yuelili.com",
-  },
+  { text: "Blender文档", icon: "edit", prefix: "/zh/blender/", children: [{ text: "*脚本开发", icon: "edit", link: "development/" }] },
+  { text: "Houdini文档", icon: "edit", prefix: "/zh/houdini/", children: [{ text: "*VEX", icon: "edit", link: "vex/" }] },
+  { text: "月离的万事屋", icon: "note", link: "https://www.yuelili.com" },
 ]);
