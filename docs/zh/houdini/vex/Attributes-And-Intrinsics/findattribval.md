@@ -62,7 +62,7 @@ which match to return.
 如果多个元素在属性中都有给定的值，这将控制返回哪个匹配。
 
 If you're searching for multiple elements with the same attribute value, you
-can use [findattribvalcount](findattribvalcount.html "Returns number of
+can use [findattribvalcount](findattribvalcount.html) "Returns number of
 elements where an integer or string attribute has a certain value.") to get
 the total number of matches and then iterate through them by increasing the
 `which` argument to this function in a loop. See the examples below.The array
@@ -110,7 +110,7 @@ Find all points with `@age` == 10
     for (int point_num : findattribval(0, "point", "age", 10)){// ...do something with the point...}
 
 Find all points with `@age` == 10, using
-[findattribvalcount](findattribvalcount.html "Returns number of elements where
+[findattribvalcount](findattribvalcount.html) "Returns number of elements where
 an integer or string attribute has a certain value.").
 
 查找带有@id==10 的原始点

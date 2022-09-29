@@ -33,8 +33,8 @@ reference.
 或者，该参数可以是一个字符串，指定要读取的几何体文件（例如，a.bgeo）。当在 Houdini 内部运行时，这个参数可以是 anop:/path/to/sopreference。
 
 This is a simpler, array-based replacement for the combination
-of[neighbourcount](neighbourcount.html "Returns the number of points that are
-connected to the specified point.") and [neighbour](neighbour.html "Returns
+of[neighbourcount](neighbourcount.html) "Returns the number of points that are
+connected to the specified point.") and [neighbour](neighbour.html) "Returns
 the point number of the next point connected to a given point.").The array
 contains the numbersof all points that share an edge with `ptnum`.The point
 numbers are in no particular order.

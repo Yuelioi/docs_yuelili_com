@@ -12,7 +12,7 @@ Returns the number of unique values from an integer or string attribute.
 `int nuniqueval(<geometry>geometry, string attribclass, string attribute_name)`
 
 Returns the number of _unique_ values across all values of an attribute.You
-can use [uniqueval](uniqueval.html "Returns one of the set of unique values
+can use [uniqueval](uniqueval.html) "Returns one of the set of unique values
 across all values for an int or string attribute.") to iterate though the set
 of unique values.
 

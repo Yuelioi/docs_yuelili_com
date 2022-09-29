@@ -18,7 +18,7 @@ Returns a list of the direct children of the given transform.
 返回给定变换的直接子节点的列表。
 
 Returns an empty array if `transform` is [out of
-range](agenttransformcount.html "Returns the number of transforms in an agent
+range](agenttransformcount.html) "Returns the number of transforms in an agent
 primitive‘srig."), `prim` is out of range, or `prim` is not an agent
 primitive.
 

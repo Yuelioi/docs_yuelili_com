@@ -15,7 +15,7 @@ Samples a channel of an agent‘sclip at a specific time.
 
 Evaluates the clip at the given time and returns the value of the specified
 channel.Returns zero if `clipname` is not one of the agent‘s[animation
-clips](agentclipcatalog.html "Returns all of the animation clips that have
+clips](agentclipcatalog.html) "Returns all of the animation clips that have
 been loaded for an agent primitive."),`prim` is out of range, `prim` is not an
 agent primitive, `channel_index` is out of range, or `channel` does not exist.
 
@@ -64,7 +64,7 @@ The name of the animation clip.
 `time`
 
 The time (in seconds) to evaluate the clip at. If this time is greater than
-the [clip‘slength](agentcliplength.html "Returns the length (in seconds)
+the [clip‘slength](agentcliplength.html) "Returns the length (in seconds)
 of an agent‘sanimation clip."), it will be wrapped around.
 
 动画片段的名称。

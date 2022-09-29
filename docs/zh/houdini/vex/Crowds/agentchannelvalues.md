@@ -17,7 +17,7 @@ float [] agentchannelvalues(<geometry>geometry, int prim)
 ```
 
 If only a single channel value is needed, using
-[agentchannelvalue](agentchannelvalue.html "Returns the current value of an
+[agentchannelvalue](agentchannelvalue.html) "Returns the current value of an
 agent primitive‘schannel.") instead can be significantly faster.
 
 如果只需要一个通道值，使用 agentchannelvalue 代替会快很多。

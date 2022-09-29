@@ -14,7 +14,7 @@ Imports channel data from a point cloud outside a `pciterate` or a
 matrix3  pcimportbyidx3(int handle, string channel_name, int idx)
 ```
 
-After a [pcopen](pcopen.html "Returns a handle to a point cloud file.") and a
+After a [pcopen](pcopen.html) "Returns a handle to a point cloud file.") and a
 [pcnumfound](pcnumfound.html "This node returns the number of points found by
 pcopen."), this can be used to extractspecific search results from the found
 points.

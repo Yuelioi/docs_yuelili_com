@@ -12,14 +12,14 @@ Returns the names of the channels in an agent‘sanimation clip.
 `string [] agentclipchannelnames(<geometry>geometry, int prim, string clipname)`
 
 Returns an empty array if `clipname` is not one of the agent‘s[animation
-clips](agentclipcatalog.html "Returns all of the animation clips that have
+clips](agentclipcatalog.html) "Returns all of the animation clips that have
 been loaded for an agent primitive."),`prim` is out of range, or `prim` is not
 an agent primitive.
 
 如果 clipname 不是 agentâsanimation clips 之一，prim 超出范围，或者 prim 不是 agent 的 prim，返回一个空数组。
 
 For a list of the agent‘stransforms, use
-[agenttransformnames](agenttransformnames.html "Returns the name of each
+[agenttransformnames](agenttransformnames.html) "Returns the name of each
 transform in an agent primitive‘srig.").
 
 对于代理的变换列表，使用 agenttransformnames。

@@ -55,7 +55,7 @@ Tip
 
 When you specify a texture, such as with the `"environment"` keyword,you can
 also use the image filtering keyword arguments. See
-[environment](environment.html "Returns the color of the environment
+[environment](environment.html) "Returns the color of the environment
 texture.")for a listing of the image filter keyword arguments.
 
 如果没有发现任何遮挡物体，则返回 1；如果射线击中了中间的物体，则返回 0。

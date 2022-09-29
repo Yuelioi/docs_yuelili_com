@@ -16,7 +16,7 @@ int  vertexprimindex(<geometry>geometry, int linearindex)
 Note
 
 To convert the linear index into a primitive number and primitive vertex
-number,use [vertexprim](vertexprim.html "Returns the number of the primitive
+number,use [vertexprim](vertexprim.html) "Returns the number of the primitive
 containing a given vertex.") and [vertexprimindex](vertexprimindex.html "Converts a linear vertex index into a primitive vertex number.").
 
 将线性索引转换为原始数和原始顶点数。
@@ -54,7 +54,7 @@ vertex has no primitive.
 一个顶点的线性索引
 
 To get the primitive number of the containing primitive, use
-[vertexprim](vertexprim.html "Returns the number of the primitive containing a
+[vertexprim](vertexprim.html) "Returns the number of the primitive containing a
 given vertex.").
 
 顶点在包含它的基元中的编号，如果该顶点没有基元，则为 1。

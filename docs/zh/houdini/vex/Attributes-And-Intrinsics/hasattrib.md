@@ -10,10 +10,10 @@ category:
 Checks whether a geometry attribute exists.
 
 If you know the attribute class ahead of time, using
-[hasdetailattrib](hasdetailattrib.html "Returns if a geometry detail attribute
-exists."), [hasprimattrib](hasprimattrib.html "Returns if a geometry prim
-attribute exists."), [haspointattrib](haspointattrib.html "Returns if a
-geometry point attribute exists."), or [hasvertexattrib](hasvertexattrib.html "Returns if a geometry vertex attribute exists.") may be faster.
+[hasdetailattrib](hasdetailattrib.html) "Returns if a geometry detail attribute
+exists."), [hasprimattrib](hasprimattrib.html) "Returns if a geometry prim
+attribute exists."), [haspointattrib](haspointattrib.html) "Returns if a
+geometry point attribute exists."), or [hasvertexattrib](hasvertexattrib.html) "Returns if a geometry vertex attribute exists.") may be faster.
 
 如果你提前知道属性类别，使用 hasdetailattrib、hasprimattrib、haspointattrib 或 hasvertexattrib 可能会更快。
 

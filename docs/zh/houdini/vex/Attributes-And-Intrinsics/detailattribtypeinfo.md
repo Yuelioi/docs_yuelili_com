@@ -13,7 +13,7 @@ Returns the type info of a geometry attribute.
 string  detailattribtypeinfo(<geometry>geometry, string attribute_name)
 ```
 
-See [attribtypeinfo](attribtypeinfo.html "Returns the transformation metadata
+See [attribtypeinfo](attribtypeinfo.html) "Returns the transformation metadata
 of a geometry attribute.") for more information.
 
 更多信息请参见 attribtype infof。

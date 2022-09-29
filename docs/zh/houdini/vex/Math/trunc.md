@@ -13,9 +13,9 @@ Removes the fractional part of a floating point number.
 float  trunc(float x)
 ```
 
-If the argument is negative, this returns [ceil(x)](ceil.html "Returns the
+If the argument is negative, this returns [ceil(x)](ceil.html) "Returns the
 smallest integer greater than or equal to the argument."), otherwise it
-returns[floor(x)](floor.html "Returns the largest integer less than or equal
+returns[floor(x)](floor.html) "Returns the largest integer less than or equal
 to the argument.").
 
 如果参数为负数，则返回 ceil(x)，否则返回 floor(x)。

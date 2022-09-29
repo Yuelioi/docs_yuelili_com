@@ -24,7 +24,7 @@ Tip
 
 You can use this function pad a number (such as the frame number in a
 filename) with zeros (similarly to the
-[padzero](../../expressions/padzero.html "Returns a string padding a number to
+[padzero](../../expressions/padzero.html) "Returns a string padding a number to
 a given length with zeros.") expression function) using a format such as
 
 ```c

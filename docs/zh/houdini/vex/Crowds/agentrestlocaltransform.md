@@ -14,7 +14,7 @@ matrix  agentrestlocaltransform(<geometry>geometry, int prim, int transform)
 ```
 
 Returns an identity matrix if `transform` is [out of
-range](agenttransformcount.html "Returns the number of transforms in an agent
+range](agenttransformcount.html) "Returns the number of transforms in an agent
 primitive‘srig."), `prim` is out of range, or `prim` is not an agent
 primitive.
 

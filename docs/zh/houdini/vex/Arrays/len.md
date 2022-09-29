@@ -25,7 +25,7 @@ For a string, this returns the number of _bytes_ (not characters).
 
 For a dictionary, this returns the number of keys in the dictionary.
 
-Do not confuse this function with [length](length.html "Returns the magnitude
+Do not confuse this function with [length](length.html) "Returns the magnitude
 of a vector."), which returns the magnitude of a vector.
 
 返回给定对象中的元素/组件的数量。对于数组来说，是数组的元素个数。对于矩阵或向量，这是其分量数量。

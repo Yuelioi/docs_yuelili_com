@@ -12,7 +12,7 @@ Finds the index of a channel in an agent‘sanimation clip.
 `int agentclipchannel(<geometry>geometry, int prim, string clipname, string channel)`
 
 Returns the index of a channel in the specified animation clip.Returns -1 if
-`clipname` is not one of the agent‘s[animation clips](agentclipcatalog.html "Returns all of the animation clips that have been loaded for an agent
+`clipname` is not one of the agent‘s[animation clips](agentclipcatalog.html) "Returns all of the animation clips that have been loaded for an agent
 primitive."),`prim` is out of range, `prim` is not an agent primitive, or
 `channel` does not exist.
 

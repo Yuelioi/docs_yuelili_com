@@ -76,7 +76,7 @@ ofthe metaball.
 
 float meta:prim:
 
-For example, the [metaweight](metaweight.html "Returns the metaweight of the
+For example, the [metaweight](metaweight.html) "Returns the metaweight of the
 geometry at position p.") function can be expressed in the followingway:
 
 当前元宝的基元编号

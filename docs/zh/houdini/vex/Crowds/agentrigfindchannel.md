@@ -19,7 +19,7 @@ int  agentrigfindchannel(<geometry>geometry, int prim, string channelname)
 Returns `-1` if `channelname` was not found in the rig, `prim` is out of
 range, or `prim` is not an agent primitive.This index can be used to access an
 agent‘scurrent channel value using
-[agentchannelvalue](agentchannelvalue.html "Returns the current value of an
+[agentchannelvalue](agentchannelvalue.html) "Returns the current value of an
 agent primitive‘schannel.") and
 [setagentchannelvalue](setagentchannelvalue.html "Overrides the value of an
 agent primitive‘schannel."), or to sample the channel value from any clip

@@ -10,11 +10,11 @@ category:
 Returns the type of a geometry attribute.
 
 If you know the attribute class ahead of time, using
-[detailattribtype](detailattribtype.html "Returns the type of a geometry
-detail attribute."), [primattribtype](primattribtype.html "Returns the type of
-a geometry prim attribute."), [pointattribtype](pointattribtype.html "Returns
+[detailattribtype](detailattribtype.html) "Returns the type of a geometry
+detail attribute."), [primattribtype](primattribtype.html) "Returns the type of
+a geometry prim attribute."), [pointattribtype](pointattribtype.html) "Returns
 the type of a geometry point attribute."), or
-[vertexattribtype](vertexattribtype.html "Returns the type of a geometry
+[vertexattribtype](vertexattribtype.html) "Returns the type of a geometry
 vertex attribute.") may be faster.
 
 如果你提前知道属性类别，使用 etailattribtype、primattribtype、pointattribtype 或 vertexattribtyp 可能更快。

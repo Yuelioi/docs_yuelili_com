@@ -12,7 +12,7 @@ Returns the name of the current layer of an agent primitive.
 Warning
 
 This function has been deprecated. Use
-[agentcurrentlayers](agentcurrentlayers.html "Returns the names of an agent
+[agentcurrentlayers](agentcurrentlayers.html) "Returns the names of an agent
 primitive‘scurrent layers.") instead.
 
 这个函数已被废弃。请使用 agentcurrentlayers 来代替。

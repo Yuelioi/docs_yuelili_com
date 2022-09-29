@@ -14,7 +14,7 @@ float  agentclipsamplerate(<geometry>geometry, int prim, string clipname)
 ```
 
 Returns `0` if `prim` is out of range or is not an agent primitive, or if
-`clipname` is not one of the agent‘s[animation clips](agentclipcatalog.html "Returns all of the animation clips that have been loaded for an agent
+`clipname` is not one of the agent‘s[animation clips](agentclipcatalog.html) "Returns all of the animation clips that have been loaded for an agent
 primitive.").
 
 如果 prim 超出范围或不是一个代理基元，或如果 clipname 不是代理的 animation clips 之一，则返回 0。

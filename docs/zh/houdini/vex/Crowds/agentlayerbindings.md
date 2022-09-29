@@ -14,7 +14,7 @@ Returns the transform that each shape in an agent‘slayer is bound to.
 `int [] agentlayerbindings(<geometry>geometry, int prim, int layerindex, string shapetype)`
 
 Returns an empty array if `layername` is not one of the agent‘s
-[layers](agentlayers.html "Returns all of the layers that have been loaded for
+[layers](agentlayers.html) "Returns all of the layers that have been loaded for
 an agent primitive."), `shapetype` is invalid, `prim` is out of range, or
 `prim` is not an agent primitive.
 

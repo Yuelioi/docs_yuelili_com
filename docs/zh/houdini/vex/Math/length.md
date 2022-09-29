@@ -10,7 +10,7 @@ category:
 Returns the magnitude of a vector.
 
 To get the length of a string, or number of items in an array, use
-[len](len.html "Returns the length of an array.").
+[len](len.html) "Returns the length of an array.").
 
 要获得一个字符串的长度，或一个数组中的项目数，使用 elen。
 
@@ -38,7 +38,7 @@ Returns the distance of the vector or vector4 from the origin.
 
 返回向量或向量 4 离原点的距离。
 
-If you want the squared length, using [length2](length2.html "Returns the
+If you want the squared length, using [length2](length2.html) "Returns the
 squared distance of the vector or vector4.") is faster than squaring the
 result of this function.
 

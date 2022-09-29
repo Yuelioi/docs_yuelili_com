@@ -24,7 +24,7 @@ This function only works with area lights.
 
 `lightids`
 
-An array of light IDs, as returned by [getlights](getlights.html "Returns an
+An array of light IDs, as returned by [getlights](getlights.html) "Returns an
 array of light identifiers for the currently shaded surface.").
 
 An array of light IDs, as returned bygetlights.

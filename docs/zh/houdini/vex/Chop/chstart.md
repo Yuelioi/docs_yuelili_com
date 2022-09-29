@@ -41,9 +41,9 @@ it is connected.
 
 如果你指定-1，该函数使用当前的 CHOP 节点或输入 0（如果它被连接）。
 
-To get the start frame, use [chstartf](chstartf.html "Returns the frame
+To get the start frame, use [chstartf](chstartf.html) "Returns the frame
 corresponding to the first sample of the inputspecified."). To get the start
-time in seconds, use [chstartt](chstartt.html "Returns the time corresponding
+time in seconds, use [chstartt](chstartt.html) "Returns the time corresponding
 to the first sample of the inputspecified.").
 
 要获得起始帧，使用 echstartf。要获得以秒为单位的开始时间，使用 echstartt。

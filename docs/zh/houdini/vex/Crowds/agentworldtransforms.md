@@ -14,7 +14,7 @@ matrix [] agentworldtransforms(<geometry>geometry, int prim)
 ```
 
 If only a single transform is needed, using
-[agentworldtransform](agentworldtransform.html "Returns the current world
+[agentworldtransform](agentworldtransform.html) "Returns the current world
 space transform of an agent primitive‘sbone.") instead can be significantly
 faster.
 

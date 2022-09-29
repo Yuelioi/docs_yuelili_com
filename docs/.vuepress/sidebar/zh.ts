@@ -118,8 +118,6 @@ export const zhSidebarConfig = sidebar({
     { text: "Usd", icon: "creative", prefix: "Usd/", collapsable: true, children: "structure" },
     { text: "Utility", icon: "creative", prefix: "Utility/", collapsable: true, children: "structure" },
     { text: "Volume", icon: "creative", prefix: "Volume/", collapsable: true, children: "structure" },
-    { text: "_Args", icon: "creative", prefix: "_Args/", collapsable: true, children: "structure" },
-    { text: "_Tags", icon: "creative", prefix: "_Tags/", collapsable: true, children: "structure" },
   ],
   "/zh/Speed Tree/": "structure",
 });

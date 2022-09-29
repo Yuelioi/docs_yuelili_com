@@ -13,7 +13,7 @@ Filters points found by `pcopen` using a simple reconstruction filter.
 <type> pcfilter(int handle, string channel_name, ...)
 ```
 
-Filters the points queued up by [pcopen](pcopen.html "Returns a handle to a
+Filters the points queued up by [pcopen](pcopen.html) "Returns a handle to a
 point cloud file.")using a simple reconstruction filter.
 
 使用一个简单的重构滤波器过滤由 copen 排队的点。

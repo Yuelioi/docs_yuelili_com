@@ -23,7 +23,7 @@ radius from a point that is already in thepoint cloud.
 如果导出成功则返回 1，如果导出失败则返回 0。
 
 This function writes to the channels of points opened with
-[pcopen](pcopen.html "Returns a handle to a point cloud file.")
+[pcopen](pcopen.html) "Returns a handle to a point cloud file.")
 or[pcgenerate](pcgenerate.html "Generates a point cloud."). The second version
 of this function takes a radius parameter and uses it to accept or reject the
 point being exported according to its distance to the points that are already

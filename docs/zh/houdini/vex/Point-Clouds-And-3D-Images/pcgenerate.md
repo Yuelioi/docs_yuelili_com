@@ -25,8 +25,8 @@ contain the specified number of points.
 
 该函数返回一个指定名称的点云的句柄，或
 
-Once a position channel has been established, call [pcopen](pcopen.html "Returns a handle to a point cloud file.") to query thegenerated point
-cloud.Note that calling [pcopen](pcopen.html "Returns a handle to a point
+Once a position channel has been established, call [pcopen](pcopen.html) "Returns a handle to a point cloud file.") to query thegenerated point
+cloud.Note that calling [pcopen](pcopen.html) "Returns a handle to a point
 cloud file.") will lock the specifiedposition channel.Once a point cloud has
 been opened, it is considered to begenerated.Calling pcgenerate() with the
 name of a generated point cloud issimilar to calling pcopen() and requesting 0

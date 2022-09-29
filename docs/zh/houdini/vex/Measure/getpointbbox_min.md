@@ -17,7 +17,7 @@ vector  getpointbbox_min(<geometry>geometry)
 vector  getpointbbox_min(<geometry>geometry, string pointgroup)
 ```
 
-This is the same as [getbbox_min](getbbox_min.html "Returns the minimum of the
+This is the same as [getbbox_min](getbbox_min.html) "Returns the minimum of the
 bounding box for the geometry.") except it only computes the bounding box of
 the _points_. So if a primitive has extents that don‘t have points (for
 example, the boundary of a primitive sphere), they will not be included in the

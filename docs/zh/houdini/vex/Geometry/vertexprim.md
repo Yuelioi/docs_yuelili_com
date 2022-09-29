@@ -16,7 +16,7 @@ int  vertexprim(<geometry>geometry, int linearvertex)
 Note
 
 To convert the linear index into a primitive number and primitive vertex
-number,use [vertexprim](vertexprim.html "Returns the number of the primitive
+number,use [vertexprim](vertexprim.html) "Returns the number of the primitive
 containing a given vertex.") and [vertexprimindex](vertexprimindex.html "Converts a linear vertex index into a primitive vertex number.").
 
 将线性索引转换为原始数和原始顶点数。

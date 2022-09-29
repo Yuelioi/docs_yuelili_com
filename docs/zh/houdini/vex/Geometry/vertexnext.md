@@ -46,7 +46,7 @@ Returns
 
 The linear index of the next vertex sharing the same point with the given
 vertex,or `-1` if the vertex has no later shared vertices.(To go in the other
-direction, use [vertexprev](vertexprev.html "Returns the linear vertex number
+direction, use [vertexprev](vertexprev.html) "Returns the linear vertex number
 of the previous vertex sharing a point with a given vertex.").)
 
 如果你有一个点的编号和点的顶点编号，你可以使用 evertexindex 将它们转换为一个线性索引。

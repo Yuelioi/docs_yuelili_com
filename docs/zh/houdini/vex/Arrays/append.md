@@ -4,7 +4,7 @@ order: 1
 category:
   - houdini
 ---
-    
+
 ## 描述
 
 Adds an item to an array or string.
@@ -21,8 +21,6 @@ Appends the second string to the first.
 void  append(string &array, string value)
 ```
 
----
-
 Appends the given value to the end of the array. Increases the size of `array`
 by 1. This is the same as [[push]] (array, value)
 
@@ -31,8 +29,6 @@ by 1. This is the same as [[push]] (array, value)
 ```c
 void  append(<type>&array[], <type>value)
 ```
-
----
 
 Concatenates the values from the `values` array to the end of `array`.
 Increases the size of `array` by `len(values)`. This is the same as
@@ -44,13 +40,12 @@ Increases the size of `array` by `len(values)`. This is the same as
 void  append(<type>&array[], <type>values[])
 ```
 
-```ad-tip
+:::tip
 
 You can set an individual item in an array using `array[n] = x`.
 
 可以用array[n] = x来设置数组中的单个元素。
-
-```
+:::
 
 ## 示例
 

@@ -4,9 +4,10 @@ order: 18
 category:
   - houdini
 ---
+
     # 增
 
-## append 追加值
+### append 追加值
 
 Adds an item to an array or string.
 
@@ -26,13 +27,13 @@ void  append(<type>&array[], <type>value)
 void  append(<type>&array[], <type>values[])
 ```
 
-## array 创建
+### array 创建
 
 ```c
 <type>[] array(...)
 ```
 
-## insert 插入
+### insert 插入
 
 ```c
 void  insert(string &str, int index, string value)
@@ -54,7 +55,7 @@ int  insert(dict &dstdict, string dstkey, dict srcdict, string srckey)
 void  insert(dict &dstdict, dict srcdict)
 ```
 
-## push 追加
+### push 追加
 
 ```c
 void  push(<type>&array[], <type>value)
@@ -64,9 +65,9 @@ void  push(<type>&array[], <type>value)
 void  push(<type>&array[], <type>values[])
 ```
 
-# 删
+## 删
 
-## pop 移除元素
+### pop 移除元素
 
 ```c
 <type> pop(<type>&array[])
@@ -76,7 +77,7 @@ void  push(<type>&array[], <type>values[])
 <type> pop(<type>&array[], int index)
 ```
 
-## removeindex 基于索引移除
+### removeindex 基于索引移除
 
 ```c
 <type> removeindex(<type>&array[], int index)
@@ -86,16 +87,17 @@ void  push(<type>&array[], <type>values[])
 int  removeindex(dict &dictionary, string index)
 ```
 
-## removevalue 基于值移除
+### removevalue 基于值移除
 
 ```c
 int  removevalue(<type>&array[], <type>value)
 ```
 
-# 查
+## 查
 
-## foreach 遍历
+### foreach 遍历
 
+```c
     foreach ([element_type] value; array) {
 
 }
@@ -103,8 +105,9 @@ int  removevalue(<type>&array[], <type>value)
     foreach (index, value; array) statement;
 
     foreach (int index; element_type value; array) statement;
+```
 
-## isvalidindex 判断索引越界
+### isvalidindex 判断索引越界
 
 ```c
 int  isvalidindex(<type>&array[], int index)
@@ -118,7 +121,7 @@ int  isvalidindex(string str, int index)
 int  isvalidindex(dict d, string key)
 ```
 
-## len 元素个数
+### len 元素个数
 
 ```c
 int  len(<vector>v)
@@ -140,15 +143,15 @@ int  len(string s)
 int  len(dict d)
 ```
 
-# 排序
+## 排序
 
-## argsort 排序
+### argsort 排序
 
 ```c
 int [] argsort(<type>value[])
 ```
 
-## reorder 重新排序
+### reorder 重新排序
 
 ```c
 string  reorder(string value, int indices[])
@@ -158,7 +161,7 @@ string  reorder(string value, int indices[])
 <type>[] reorder(<type>values[], int indices[])
 ```
 
-## resize 重新规划尺寸
+### resize 重新规划尺寸
 
 ```c
 void  resize(<type>&array[], int size)
@@ -168,7 +171,7 @@ void  resize(<type>&array[], int size)
 void  resize(<type>&array[], int size, <type>val)
 ```
 
-## reverse 反转
+### reverse 反转
 
 ```c
 string  reverse(string str)
@@ -178,7 +181,7 @@ string  reverse(string str)
 <type>[] reverse(<type>values[])
 ```
 
-## slice 分割
+### slice 分割
 
 ```c
 string  slice(string s, int start, int end)
@@ -200,7 +203,7 @@ string  slice(string s, int start, int end, int step)
 
 `<type>[] slice(<type>array[], int hasstart, int start, int hasend, int end, int hasstep, int step)`
 
-## sort 排序
+### sort 排序
 
 ```c
 int [] sort(int values[])
@@ -214,7 +217,7 @@ float [] sort(float values[])
 string [] sort(string values[])
 ```
 
-## upush 用于 SIMD 数组
+### upush 用于 SIMD 数组
 
 ```c
 void  upush(<type>&array[], <type>value)

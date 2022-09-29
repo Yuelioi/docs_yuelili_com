@@ -23,7 +23,7 @@ Returns `-1` if the shader is not generating photons from a light.
 如果着色器没有产生光子，则返回 1。
 
 The return value is an integer identifying a light. You can get convert
-thisinteger ID to the light name with [getlightname](getlightname.html "Returns the name of the current light when called from within an illuminance
+thisinteger ID to the light name with [getlightname](getlightname.html) "Returns the name of the current light when called from within an illuminance
 loop, or converts an integer light ID into the light‘sname.")
 
 返回值是一个识别光的整数。你可以将这个

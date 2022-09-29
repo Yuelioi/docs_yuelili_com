@@ -10,11 +10,11 @@ category:
 Returns the size of a geometry attribute.
 
 If you know the attribute class ahead of time, using
-[detailattribsize](detailattribsize.html "Returns the size of a geometry
-detail attribute."), [primattribsize](primattribsize.html "Returns the size of
-a geometry prim attribute."), [pointattribsize](pointattribsize.html "Returns
+[detailattribsize](detailattribsize.html) "Returns the size of a geometry
+detail attribute."), [primattribsize](primattribsize.html) "Returns the size of
+a geometry prim attribute."), [pointattribsize](pointattribsize.html) "Returns
 the size of a geometry point attribute."), or
-[vertexattribsize](vertexattribsize.html "Returns the size of a geometry
+[vertexattribsize](vertexattribsize.html) "Returns the size of a geometry
 vertex attribute.") may be faster.
 
 如果你提前知道属性类别，使用 etailattribsize、primattribsize、pointattribsize 或 vertexattribsiz 可能会更快。

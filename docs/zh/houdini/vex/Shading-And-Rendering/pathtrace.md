@@ -42,7 +42,7 @@ Tip
 
 When you specify a texture, such as with the `"environment"` keyword,you can
 also use the image filtering keyword arguments. See
-[environment](environment.html "Returns the color of the environment
+[environment](environment.html) "Returns the color of the environment
 texture.")for a listing of the image filter keyword arguments.
 
 PBR 渲染引擎。它使用路径追踪和

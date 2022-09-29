@@ -33,7 +33,7 @@ the shadow shader with with simport().
 
 `lightid`
 
-A light identifier, as returned by [getlights](getlights.html "Returns an
+A light identifier, as returned by [getlights](getlights.html) "Returns an
 array of light identifiers for the currently shaded surface.").
 
 直接提供朝向光源的位置和方向，并执行影子

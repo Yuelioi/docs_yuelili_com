@@ -43,9 +43,9 @@ lightexport 关键字参数
 The shadow shader is not called unless you explicitly call it. However, once
 the shadow shader has been called, the value of `Cl` will be changed for the
 duration of the surface shader. The shadow shader is automatically called when
-using any of the built-in lighting calls (e.g. [diffuse](diffuse.html "Returns
-a diffuse BSDF or computes diffuse shading."), [specular](specular.html "Returns a specular BSDF or computes specular shading."),
-[ambient](ambient.html "Returns the color of ambient light in the scene.")).
+using any of the built-in lighting calls (e.g. [diffuse](diffuse.html) "Returns
+a diffuse BSDF or computes diffuse shading."), [specular](specular.html) "Returns a specular BSDF or computes specular shading."),
+[ambient](ambient.html) "Returns the color of ambient light in the scene.")).
 
 阴影着色器不会被调用，除非你明确地调用它。然而，一旦阴影着色器被调用，Cl 的值就会在表面着色器的期间内被改变。当使用任何内置的光照调用（比如漫反射、镜面反射、环境反射）时，阴影着色器会被自动调用。
 

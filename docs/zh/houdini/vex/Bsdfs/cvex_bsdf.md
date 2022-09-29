@@ -107,7 +107,7 @@ the BSDF.
 
 This should not be dependent on the `v` vector, since it is used as an average
 reflectivity over all lighting directions.This is the value that the
-[albedo](albedo.html "Returns the albedo (percentage of reflected light) for
+[albedo](albedo.html) "Returns the albedo (percentage of reflected light) for
 a bsdf given the outgoing light direction.") function will return.
 
 入射光线方向，从表面到光线。

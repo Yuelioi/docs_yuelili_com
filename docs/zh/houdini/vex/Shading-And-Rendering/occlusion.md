@@ -70,7 +70,7 @@ Tip
 
 When you specify a texture, such as with the `"environment"` keyword,you can
 also use the image filtering keyword arguments. See
-[environment](environment.html "Returns the color of the environment
+[environment](environment.html) "Returns the color of the environment
 texture.")for a listing of the image filter keyword arguments.
 
 为了使这个函数正常工作，必须在可选的选项中指定一个恒定的背景颜色或环境地图

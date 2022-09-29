@@ -19,7 +19,7 @@ fog](../contexts/fog.html)[ surface](../contexts/surface.html)
 `lightid`
 
 An integer identifying a light. You can get a list of light IDs for lights
-affecting the currently shaded surface with [getlights](getlights.html "Returns an array of light identifiers for the currently shaded surface.").
+affecting the currently shaded surface with [getlights](getlights.html) "Returns an array of light identifiers for the currently shaded surface.").
 
 一个识别灯光的整数。你可以用 getlights 获取影响当前阴影表面的灯光 ID 列表。
 

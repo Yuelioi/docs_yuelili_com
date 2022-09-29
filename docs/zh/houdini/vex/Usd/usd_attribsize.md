@@ -66,7 +66,7 @@ If the attribute does not exist, returns `0`.
 
 如果该属性不存在，返回 0。
 
-Use [usd_attriblen](usd_attriblen.html "Returns the length of the array
+Use [usd_attriblen](usd_attriblen.html) "Returns the length of the array
 attribute.") if you want to obtain the array attribute length.
 
 如果你想获得数组属性的长度，使用 usd_attriblen。

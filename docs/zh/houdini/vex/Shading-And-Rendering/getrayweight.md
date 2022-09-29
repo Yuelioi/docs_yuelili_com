@@ -19,7 +19,7 @@ float  getrayweight()
 
 Returns an approximation to the contribution of the ray to the finalpixel
 color. Often, this is a better metric for judging contribution tothe final
-pixel color than [getraylevel](getraylevel.html "Returns the depth of the ray
+pixel color than [getraylevel](getraylevel.html) "Returns the depth of the ray
 tree for the current shading."). However, thisrelies on prior shaders giving
 good estimates on the contribution totheir shading (see
 [reflectlight](reflectlight.html "Computes the amount of reflected light which

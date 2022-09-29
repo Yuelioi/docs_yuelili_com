@@ -12,7 +12,7 @@ Returns the name of the collision layer of an agent primitive.
 Warning
 
 This function has been deprecated. Use
-[agentcollisionlayers](agentcollisionlayers.html "Returns the names of an
+[agentcollisionlayers](agentcollisionlayers.html) "Returns the names of an
 agent primitive‘scollision layers.") instead.
 
 这个函数已被弃用。请使用 agentcollisionlayers 来代替。

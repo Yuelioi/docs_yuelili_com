@@ -15,7 +15,7 @@ int  pciterate(int handle)
 ```
 
 This function can be used to iterate over all the points which werefound in a
-[pcopen](pcopen.html "Returns a handle to a point cloud file.") query. The
+[pcopen](pcopen.html) "Returns a handle to a point cloud file.") query. The
 first argument is the handlereturned by `pcopen`.The function returns 1 while
 there are points left in the iteration loop,or 0 when there are no further
 points. This lets you use the function asthe condition in a [while
@@ -25,7 +25,7 @@ loop](../statement.html).
 
 Warnings:
 
-- It is not possible to nest pcunshaded or pciterate loops for the samehandle. That is, for a single [pcopen](pcopen.html "Returns a handle to a point cloud file.") call, only one[pcunshaded](pcunshaded.html "Iterate over all of the points of a read-write channel which haven‘thad any data written to the channel yet.") or `pciterate` loop may be entered.
+- It is not possible to nest pcunshaded or pciterate loops for the samehandle. That is, for a single [pcopen](pcopen.html) "Returns a handle to a point cloud file.") call, only one[pcunshaded](pcunshaded.html "Iterate over all of the points of a read-write channel which haven‘thad any data written to the channel yet.") or `pciterate` loop may be entered.
 
 中发现的所有点。第一个参数是由 copen 返回的 handler。
 

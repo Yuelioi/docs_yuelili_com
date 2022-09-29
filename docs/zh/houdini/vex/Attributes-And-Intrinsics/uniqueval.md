@@ -66,7 +66,7 @@ The name of the attribute (or intrinsic) to read.
 
 `which`
 
-Which one of the unique values to return.Use [nuniqueval](nuniqueval.html "Returns the number of unique values from an integer or string attribute.") to
+Which one of the unique values to return.Use [nuniqueval](nuniqueval.html) "Returns the number of unique values from an integer or string attribute.") to
 get how many unique values the attribute has.
 
 要返回哪一个唯一值。

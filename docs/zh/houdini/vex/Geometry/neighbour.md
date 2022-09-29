@@ -11,7 +11,7 @@ Returns the point number of the next point connected to a given point.
 
 This function lets you walk the points connected to a point (separated by a
 single edge). To get a list of all connected points at once, use
-[neighbours](neighbours.html "Returns an array of the point numbers of the
+[neighbours](neighbours.html) "Returns an array of the point numbers of the
 neighbours of a point.").
 
 这个函数可以让你行走与一个点相连的点（由一条边分开）。要想一次获得所有连接点的列表，请使用 eneighbours。
@@ -48,7 +48,7 @@ The number of the point whose neighbours you want to find.
 `neighbour_num`
 
 Which neighbour to find. The neighbours are in no particular order. Use
-[neighbourcount](neighbourcount.html "Returns the number of points that are
+[neighbourcount](neighbourcount.html) "Returns the number of points that are
 connected to the specified point.") to get the total number of connected
 points.
 

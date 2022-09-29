@@ -22,7 +22,7 @@ is in the range -Ï/2 to Ï/2.
 float  atan(float y, float x)
 ```
 
-Alias for [atan2](atan2.html "Returns the inverse tangent of y/x.").
+Alias for [atan2](atan2.html) "Returns the inverse tangent of y/x.").
 
 datan2 的别名。
 

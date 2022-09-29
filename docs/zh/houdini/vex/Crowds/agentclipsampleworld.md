@@ -15,10 +15,10 @@ Samples an agent‘sanimation clip at a specific time.
 
 Evaluates the clip at the given time and returns the world transforms of the
 agent‘srig.Returns an empty array if `clipname` is not one of the agent‘s
-[animation clips](agentclipcatalog.html "Returns all of the animation clips
+[animation clips](agentclipcatalog.html) "Returns all of the animation clips
 that have been loaded for an agent primitive."),`prim` is out of range, `prim`
 is not an agent primitive, or `transform` is [out of
-range](agenttransformcount.html "Returns the number of transforms in an agent
+range](agenttransformcount.html) "Returns the number of transforms in an agent
 primitive‘srig.").The `matrix` signature is more efficient than the
 `matrix[]` signature for sampling a single transform.
 
@@ -59,7 +59,7 @@ The name of the animation clip.
 `time`
 
 The time (in seconds) to evaluate the clip at. If this time is greater than
-the [clip‘slength](agentcliplength.html "Returns the length (in seconds)
+the [clip‘slength](agentcliplength.html) "Returns the length (in seconds)
 of an agent‘sanimation clip."), it will be wrapped around.
 
 基质编号。

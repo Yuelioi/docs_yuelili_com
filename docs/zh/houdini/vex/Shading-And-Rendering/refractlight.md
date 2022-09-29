@@ -50,7 +50,7 @@ the final color of the pixel. This has no effect on theresultant color.
 alpha (af)。参见 opacity 与 alpha。
 
 The first form of the refractlight() function takes a position anddirection,
-typically computed by the [refract](refract.html "Returns the refraction ray
+typically computed by the [refract](refract.html) "Returns the refraction ray
 given an incoming direction, thenormalized normal and an index of
 refraction.") or[fresnel](fresnel.html "Computes the fresnel
 reflection/refraction contributions given anincoming vector, surface normal
@@ -140,7 +140,7 @@ Tip
 
 When you specify a texture, such as with the `"environment"` keyword,you can
 also use the image filtering keyword arguments. See
-[environment](environment.html "Returns the color of the environment
+[environment](environment.html) "Returns the color of the environment
 texture.")for a listing of the image filter keyword arguments.
 
 当你指定一个纹理时，比如用 "环境 "关键字。

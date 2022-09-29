@@ -54,7 +54,7 @@ Tip
 
 When you specify a texture, such as with the `"environment"` keyword,you can
 also use the image filtering keyword arguments. See
-[environment](environment.html "Returns the color of the environment
+[environment](environment.html) "Returns the color of the environment
 texture.")for a listing of the image filter keyword arguments.
 
 每一个闭塞的表面都将被评估，其不透明度将被加到总的闭塞程度上。

@@ -33,7 +33,7 @@ string  chname(int opinput, int channel_index)
 ```
 
 Returns the name of the channel, for example `"tx"`.To get a list of all
-channel names, use [chnames](chnames.html "Returns all the CHOP channel names
+channel names, use [chnames](chnames.html) "Returns all the CHOP channel names
 of a given CHOP input.").
 
 返回通道的名称，例如 "tx"。

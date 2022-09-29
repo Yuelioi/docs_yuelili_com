@@ -32,7 +32,7 @@ reference.
 
 或者，该参数可以是一个字符串，指定要读取的几何体文件（例如，a.bgeo）。当在 Houdini 内部运行时，这可以是一个 op:/path/to/sopreference。
 
-See [attribtype](attribtype.html "Returns the type of a geometry attribute.")
+See [attribtype](attribtype.html) "Returns the type of a geometry attribute.")
 for more information.
 
 更多信息请参见属性类型。

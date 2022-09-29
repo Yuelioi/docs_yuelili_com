@@ -31,7 +31,7 @@ Adds a primitive attribute to the given geometry.
 `int addprimattrib(int geohandle, string name, <type>defvalue[], string typeinfo)`
 
 Adds a primitive attribute with the given transformation info. See
-[attribtypeinfo](attribtypeinfo.html "Returns the transformation metadata of a
+[attribtypeinfo](attribtypeinfo.html) "Returns the transformation metadata of a
 geometry attribute.") for more details.
 
 添加一个具有给定转换信息的原始属性。更多细节见 attribtypeinfof。
@@ -39,7 +39,7 @@ geometry attribute.") for more details.
 `geohandle`
 
 A handle to the geometry to write to. Currently the only valid value is `0` or
-[geoself](geoself.html "Returns a handle to the current geometry."), which
+[geoself](geoself.html) "Returns a handle to the current geometry."), which
 means the current geometry in a node. (This argument may be used in the future
 to allow writing to other geometries.)
 

@@ -14,7 +14,7 @@ matrix [] agentlocaltransforms(<geometry>geometry, int prim)
 ```
 
 If only a single transform is needed, using
-[agentlocaltransform](agentlocaltransform.html "Returns the current local
+[agentlocaltransform](agentlocaltransform.html) "Returns the current local
 space transform of an agent primitive‘sbone.") instead can be significantly
 faster.
 

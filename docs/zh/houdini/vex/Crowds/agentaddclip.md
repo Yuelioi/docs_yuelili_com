@@ -27,12 +27,12 @@ transform_name:channel_name
 ```
 
 where _transform_name_ is a string matching the
-values returned by[agenttransformnames](agenttransformnames.html "Returns the
+values returned by[agenttransformnames](agenttransformnames.html) "Returns the
 name of each transform in an agent primitive‘srig.") and _channel_name_ is
 one of `tx`, `ty`, `tz`, `rx`,`ry`, `rz`, `sx`, `sy`, or `sz`. The channels
 starting with `t` denotetranslation, `r` denote rotation, and `s` denote
 scale. The resultingtransforms will be treated as _local_ transforms, such as
-those returned by[agentlocaltransform](agentlocaltransform.html "Returns the
+those returned by[agentlocaltransform](agentlocaltransform.html) "Returns the
 current local space transform of an agent primitive‘sbone.") (ie. they are
 relative to the corresponding parenttransform in the agent‘sskeleton).
 
@@ -41,7 +41,7 @@ relative to the corresponding parenttransform in the agent‘sskeleton).
 `geohandle`
 
 A handle to the geometry to write to. Currently the only valid value is `0` or
-[geoself](geoself.html "Returns a handle to the current geometry."), which
+[geoself](geoself.html) "Returns a handle to the current geometry."), which
 means the current geometry in a node. (This argument may be used in the future
 to allow writing to other geometries.)
 

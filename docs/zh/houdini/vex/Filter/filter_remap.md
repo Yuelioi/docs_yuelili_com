@@ -121,7 +121,7 @@ approximate weight of the kernel at the returned sample.
 Note that some filters (`"sinc"`, `"mitchell"`, `"catrom"`), have negative
 weights in some areas. When importance sampling, you cannot use negative
 values, so you should use the absolute value of the weight (using
-[abs](abs.html "Returns the absolute value of the argument.")). However, some
+[abs](abs.html) "Returns the absolute value of the argument.")). However, some
 applications need to know whether the returned sample had a negative weight.
 
 当建立重要性采样的查找表时，滤波器是以这个分辨率进行径向采样的。

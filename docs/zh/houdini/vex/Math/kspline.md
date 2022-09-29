@@ -94,7 +94,7 @@ the shown points.)
 `"linearsolve"` (or `"solvelinear"`)
 
 Maps between a set of non-uniform positions and a set of values.The
-[kspline](kspline.html "Returns an interpolated value along a curve defined by
+[kspline](kspline.html) "Returns an interpolated value along a curve defined by
 a basis and key/position pairs.") function does this mapping implicitly.
 
 采样范围的起点）和第二至最后一个点（采样范围的终点）的曲线斜率。

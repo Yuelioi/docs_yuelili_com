@@ -22,7 +22,7 @@ shading contexts, where the Ng variable is used.
 vector  frontface(vector N, vector I, vector Nref)
 ```
 
-If [dot](dot.html "Returns the dot product between the arguments.")(I, Nref)
+If [dot](dot.html) "Returns the dot product between the arguments.")(I, Nref)
 is less than zero, N will be negated.
 
 使用 Ng 变量的情况下可用。

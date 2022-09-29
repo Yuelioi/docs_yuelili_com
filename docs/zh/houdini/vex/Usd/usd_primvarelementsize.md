@@ -35,9 +35,9 @@ In most cases, the element size is `1`.
 在大多数情况下，元素大小是 1。
 
 Note, element size is a USD concept and differs from the VEX tuple size
-obtained with [usd_primvarsize](usd_primvarsize.html "Returns the tuple size
+obtained with [usd_primvarsize](usd_primvarsize.html) "Returns the tuple size
 of the primvar directly on the USD primitive.") or the VEX array length
-obtained with [usd_primvarlen](usd_primvarlen.html "Returns the length of the
+obtained with [usd_primvarlen](usd_primvarlen.html) "Returns the length of the
 array primvar directly on the USD primitive.").
 
 注意，元素大小是一个 USD 概念，与用 usd_primvarsize 得到的 VEX 元组大小或用 usd_primvarlen 得到的 VEX 数组长度不同。

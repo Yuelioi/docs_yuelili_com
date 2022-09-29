@@ -67,7 +67,7 @@ If the primvar does not exist, returns `0`.
 
 如果 primvar 不存在，则返回 0。
 
-Use [usd_primvarlen](usd_primvarlen.html "Returns the length of the array
+Use [usd_primvarlen](usd_primvarlen.html) "Returns the length of the array
 primvar directly on the USD primitive.") if you want to obtain the array
 primvar length.
 

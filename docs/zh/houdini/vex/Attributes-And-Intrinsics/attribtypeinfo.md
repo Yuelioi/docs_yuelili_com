@@ -14,11 +14,11 @@ Returns the transformation metadata of a geometry attribute.
 This general form lets you specify the attribute “class” at run-time. This can
 be useful for writing general code that can work on different classes.If you
 know the attribute class ahead of time, using
-[detailattribtypeinfo](detailattribtypeinfo.html "Returns the type info of a
-geometry attribute."), [primattribtypeinfo](primattribtypeinfo.html "Returns
+[detailattribtypeinfo](detailattribtypeinfo.html) "Returns the type info of a
+geometry attribute."), [primattribtypeinfo](primattribtypeinfo.html) "Returns
 the type info of a geometry attribute."),
-[pointattribtypeinfo](pointattribtypeinfo.html "Returns the type info of a
-geometry attribute."), or [vertexattribtypeinfo](vertexattribtypeinfo.html "Returns the type info of a geometry attribute.") may be faster.
+[pointattribtypeinfo](pointattribtypeinfo.html) "Returns the type info of a
+geometry attribute."), or [vertexattribtypeinfo](vertexattribtypeinfo.html) "Returns the type info of a geometry attribute.") may be faster.
 
 这种一般的形式让你在运行时指定 "类 "的属性。这对于编写可以在不同类上工作的一般代码是很有用的。
 

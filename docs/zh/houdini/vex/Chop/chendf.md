@@ -21,9 +21,9 @@ input.
 
 返回对应于给定 CHOP 输入的最后一个样本的帧号。
 
-To get the end sample number, use [chend](chend.html "Returns the sample
+To get the end sample number, use [chend](chend.html) "Returns the sample
 number of the last sample in a given CHOP input."). To get the end time in
-seconds, use [chendt](chendt.html "Returns the time corresponding to the last
+seconds, use [chendt](chendt.html) "Returns the time corresponding to the last
 sample of the inputspecified.").
 
 要获得最后的样本数，使用 echend。要获得结束时间（秒），使用 echendt。

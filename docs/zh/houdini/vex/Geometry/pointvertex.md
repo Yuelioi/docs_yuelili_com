@@ -14,7 +14,7 @@ int  pointvertex(<geometry>geometry, int point_num)
 ```
 
 Use this to find linear vertex number of the first vertex to share this
-point.Then you can use [vertexnext](vertexnext.html "Returns the linear vertex
+point.Then you can use [vertexnext](vertexnext.html) "Returns the linear vertex
 number of the next vertex sharing a point with a given vertex.") to iterate
 over the other vertices in the point.
 

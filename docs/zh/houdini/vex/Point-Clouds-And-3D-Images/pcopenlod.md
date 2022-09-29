@@ -50,7 +50,7 @@ pciterate or a pcunshaded loop.").
 
 这个函数打开一个点云文件(.pc)并排队访问其中的
 
-While this function is similar to [pcopen](pcopen.html "Returns a handle to a
+While this function is similar to [pcopen](pcopen.html) "Returns a handle to a
 point cloud file."), the major difference is the points that it queues up may
 be aggregates of entire groups of points.Inother words, a single point may
 represent many points.This allows you toperform queries at any desired level
@@ -62,7 +62,7 @@ they are a single point.
 
 中包含的点。 然后你可以用 pcunshaded 或 citerate 来迭代这些点，并使用 pcexport 将新数据添加到点云中。
 
-As in [pcopen](pcopen.html "Returns a handle to a point cloud file."), P
+As in [pcopen](pcopen.html) "Returns a handle to a point cloud file."), P
 specifies the query origin and Pchannelspecifies the position channel.During
 construction, the tree structurestarts out as a single bounding box that
 encompasses all the points in apoint cloud, and is recursively subdivided
@@ -81,7 +81,7 @@ the query has the desired level of detail.Two`measure` values are supported:
 
 ## Distance Queries
 
-`distance` mode is provided for compatibility with [pcopen](pcopen.html "Returns a handle to a point cloud file.") and doesnot queue up aggregate
+`distance` mode is provided for compatibility with [pcopen](pcopen.html) "Returns a handle to a point cloud file.") and doesnot queue up aggregate
 points.Distance queries take a threshold parameterthat indicates the radius
 within which to accept points.
 
@@ -89,7 +89,7 @@ within which to accept points.
 
 The `threshold` argument specifies the radius within which points areaccepted
 
-- identical to the radius passed to [pcopen](pcopen.html "Returns a handle to
+- identical to the radius passed to [pcopen](pcopen.html) "Returns a handle to
 a point cloud file.").For example,calling `pcopenlod`(â¦, `"measure"`,
   `"distance"`, `"threshold"`, radius, â¦)queues up points that lie within the
   specified radius of the query origin.

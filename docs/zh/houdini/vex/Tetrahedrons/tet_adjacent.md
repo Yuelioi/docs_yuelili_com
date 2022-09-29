@@ -51,7 +51,7 @@ f the primitive is not a tet or doesn‘t have an adjacent tetrahedron.
 
 有顶点 0 的三角形。
 
-Use [tet_faceindex](tet_faceindex.html "Returns vertex indices of each face of
+Use [tet_faceindex](tet_faceindex.html) "Returns vertex indices of each face of
 a tetrahedron.") to get the vertex indices of each face of a tetrahedron.
 
 与给定顶点相对的四面体的基元编号。

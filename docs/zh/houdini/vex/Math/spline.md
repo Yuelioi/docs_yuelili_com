@@ -114,7 +114,7 @@ the shown points.)
 `"linearsolve"` (or `"solvelinear"`)
 
 Maps between a set of non-uniform positions and a set of values. The
-[kspline](https://www.sidefx.com/docs/houdini/vex/functions/kspline.html "Returns an interpolated value along a curve defined by a basis and
+[kspline](https://www.sidefx.com/docs/houdini/vex/functions/kspline.html) "Returns an interpolated value along a curve defined by a basis and
 key/position pairs.") function does this mapping implicitly.
 
     tk = spline("linearsolve", t, k0, k1, k2, k3, ...);

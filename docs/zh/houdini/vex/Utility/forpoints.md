@@ -42,9 +42,9 @@ optional and may result in slower execution of the shader.
 
 如果你指定了距离，那么在指定点的距离内的所有元气球/粒子将被迭代。距离参数是可选的，可能会导致着色器的执行速度变慢。
 
-Inside the loop, you can call the [mdensity](mdensity.html "Returns the
+Inside the loop, you can call the [mdensity](mdensity.html) "Returns the
 density of the metaball field if metaball geometry isspecified to i3dgen.")
-and [mattrib](mattrib.html "Returns the value of the point attribute for the
+and [mattrib](mattrib.html) "Returns the value of the point attribute for the
 metaballs ifmetaball geometry is specified to i3dgen.") functions to query the
 contribution of the current point instead of getting a “blended” value.
 
@@ -57,7 +57,7 @@ which contributes the maximum weight to the point in space:
 
     float d = 0, max = 0;vector clr = 0;vector blended_color;forpoints ( P ) {d = mdensity(P);if (d > max) {clr = mattrib("Cd", P);max = d;}blended_color = d * clr;}
 
-Note that when you call [mattrib](mattrib.html "Returns the value of the point
+Note that when you call [mattrib](mattrib.html) "Returns the value of the point
 attribute for the metaballs ifmetaball geometry is specified to i3dgen.")
 inside a `forpoints` loop, the attribute is not pre-blended by the density of
 the metaball.

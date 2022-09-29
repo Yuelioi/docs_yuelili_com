@@ -16,7 +16,7 @@ int  pcunshaded(int handle, string channel_name)
 
 Like [pciterate](pciterate.html "This function can be used to iterate over all
 the points which werefound in the pcopen query."), this function can be used
-to iterate overpoints which were found in a [pcopen](pcopen.html "Returns a
+to iterate overpoints which were found in a [pcopen](pcopen.html) "Returns a
 handle to a point cloud file.") query. The first argument isthe handle
 returned by `pcopen`.
 
@@ -36,7 +36,7 @@ condition in a [while loop](../statement.html).
 
 Warnings:
 
-- This function will not work correctly when used in multi-threaded OPs.It is not possible to nest `pcunshaded` or [pciterate](pciterate.html "This function can be used to iterate over all the points which werefound in the pcopen query.")loops for the same handle. That is, for a single [pcopen](pcopen.html "Returns a handle to a point cloud file.")call, only one `pcunshaded` or [pciterate](pciterate.html "This function can be used to iterate over all the points which werefound in the pcopen query.") loop may beentered.
+- This function will not work correctly when used in multi-threaded OPs.It is not possible to nest `pcunshaded` or [pciterate](pciterate.html "This function can be used to iterate over all the points which werefound in the pcopen query.")loops for the same handle. That is, for a single [pcopen](pcopen.html) "Returns a handle to a point cloud file.")call, only one `pcunshaded` or [pciterate](pciterate.html "This function can be used to iterate over all the points which werefound in the pcopen query.") loop may beentered.
 
 然而，与 epciterate 遍历所有的点相比，这个函数
 
