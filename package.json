@@ -16,7 +16,7 @@
     "vuepress": "2.0.0-beta.51",
     "vuepress-plugin-blog2": "^2.0.0-beta.104",
     "vuepress-plugin-redirect": "^2.0.0-beta.104",
-    "vuepress-theme-hope": "2.0.0-beta.104"
+    "vuepress-theme-hope": "^2.0.0-beta.104"
   },
   "main": "index.js",
   "directories": {
