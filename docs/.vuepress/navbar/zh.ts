@@ -1,10 +1,10 @@
 import { navbar } from "vuepress-theme-hope";
 
-export const zhNavbarConfig = navbar([
+export const zhNavbar = navbar([
   "/zh/",
   "/zh/home",
   {
-    text: "ADobe",
+    text: "Adobe",
     icon: "edit",
     prefix: "/zh/",
     children: [

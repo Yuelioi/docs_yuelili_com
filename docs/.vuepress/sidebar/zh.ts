@@ -1,6 +1,6 @@
 import { sidebar } from "vuepress-theme-hope";
 
-export const zhSidebarConfig = sidebar({
+export const zhSidebar = sidebar({
   "/zh/": [
     { text: "AE文档", icon: "creative", prefix: "ae/", link: "ae/", children: "structure" },
     { text: "Blender文档", icon: "creative", prefix: "blender/", link: "blender/", children: "structure" },

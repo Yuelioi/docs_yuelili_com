@@ -1,8 +1,10 @@
 import { defineUserConfig } from "vuepress";
-import { docsearchPlugin } from "@vuepress/plugin-docsearch";
+// import { docsearchPlugin } from "@vuepress/plugin-docsearch";
 import { searchPlugin } from "@vuepress/plugin-search";
 import theme from "./theme.js";
-import { redirectPlugin } from "vuepress-plugin-redirect";
+// import { redirectPlugin } from "vuepress-plugin-redirect";
+import { blogPlugin } from "vuepress-plugin-blog2";
+
 
 export default defineUserConfig({
   base: "/",
@@ -21,7 +23,7 @@ export default defineUserConfig({
   },
   theme,
   plugins:[
-
+    blogPlugin({}),
     searchPlugin({
       locales: {
         '/en/': {
