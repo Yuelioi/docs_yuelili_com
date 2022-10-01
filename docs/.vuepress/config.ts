@@ -1,9 +1,10 @@
 import { defineUserConfig } from "vuepress";
-// import { docsearchPlugin } from "@vuepress/plugin-docsearch";
-import { searchPlugin } from "@vuepress/plugin-search";
 import theme from "./theme.js";
-// import { redirectPlugin } from "vuepress-plugin-redirect";
-import { blogPlugin } from "vuepress-plugin-blog2";
+
+import { searchPlugin } from "@vuepress/plugin-search";
+// import { docsearchPlugin } from "@vuepress/plugin-docsearch";
+
+
 
 
 export default defineUserConfig({
@@ -22,23 +23,21 @@ export default defineUserConfig({
     },
   },
   theme,
-  plugins:[
-    blogPlugin({}),
+  plugins: [
     searchPlugin({
       locales: {
-        '/en/': {
-          placeholder: 'Search',
+        "/en/": {
+          placeholder: "Search",
         },
-        '/zh/': {
-          placeholder: '搜索',
-        }}
-
+        "/zh/": {
+          placeholder: "搜索",
+        },
+      },
     }),
     // docsearchPlugin({
     //   appId:"55HOH8C0U6",
     //   apiKey:"6a9654f45e6c315b1297ec7d974994cc",
     //   indexName:"docs"
     // }),
-    
-  ]
+  ],
 });

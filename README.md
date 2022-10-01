@@ -12,3 +12,6 @@
 xxx
 
 :::
+
+
+./node_modules/.bin/vuepress dev docs --clean-cache

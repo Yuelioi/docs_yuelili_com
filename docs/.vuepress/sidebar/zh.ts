@@ -11,7 +11,13 @@ export const zhSidebar = sidebar({
     { text: "形状图层", icon: "creative", prefix: "shape/", link: "shape/" },
     { text: "内置效果", icon: "creative", prefix: "effects/", link: "expression/" },
   ],
-  "/zh/ae/expression/": "structure",
+  "/zh/ae/expression/": [
+    { text: "Intro", icon: "creative", prefix: "Intro/", collapsable: true, children: "structure" },
+    { text: "General", icon: "creative", prefix: "General/", collapsable: true, children: "structure" },
+    { text: "Objects", icon: "creative", prefix: "Objects/", collapsable: true, children: "structure" },
+    { text: "Layers", icon: "creative", prefix: "Layers/", collapsable: true, children: "structure" },
+    { text: "Text", icon: "creative", prefix: "Text/", collapsable: true, children: "structure" },
+  ],
   "/zh/ae/effects/": [
     { text: "Overview", icon: "creative", prefix: "Overview/", collapsable: true, children: "structure" },
     { text: "3D-Channel", icon: "creative", prefix: "3D-Channel/", collapsable: true, children: "structure" },

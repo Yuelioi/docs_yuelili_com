@@ -56,7 +56,8 @@ export default hopeTheme({
     },
   },
   plugins: {
-    blog: { autoExcerpt: true },
+    // blog: { autoExcerpt: true },
+    blog:true,
     comment: {
       provider: "Giscus",
       repo: "Yuelioi/docs_comments",
