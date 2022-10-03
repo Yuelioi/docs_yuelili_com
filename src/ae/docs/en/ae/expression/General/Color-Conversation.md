@@ -81,7 +81,7 @@ Any of the following will return `[1.0, 0.0, 1.0, 1.0]`:
 
 - `hexToRgb("0xFF00FF")`
 
-- `hexToRgb("0XFF00FFFF")` 
-:::info Note
-This inputs an 8-digit hex quartet; the last two digits set alpha channel to 1.0.
-:::
+- `hexToRgb("0XFF00FFFF")`
+  :::info Note
+  This inputs an 8-digit hex quartet; the last two digits set alpha channel to 1.0.
+  :::

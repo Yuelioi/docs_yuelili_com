@@ -1,500 +1,471 @@
----
-title: Text-Style
-order: 2
-category:
-  - AE 表达式
----
+## setText()
 
-## Description
+用法：style.setText(value)
 
-# Text Style
+说明：设置文本的内容
 
-These functions are accessible from [SourceText.style](text-sourcetext.html#sourcetext-style) after AE 17.0.
+参数：value 为字符串
 
-For more info on working with text styles, see:
-
-- [Use Expressions to Edit and Access Text Properties on helpx.adobe.com](https://helpx.adobe.com/after-effects/user-guide.html/after-effects/using/expressions-text-properties.ug.html)
-
-- [After Effects 2020: Express Yourself (and Your Text) on blog.adobe.com](https://blog.adobe.com/en/2020/01/24/after-effects-2020-express-yourself-and-your-text.html#gs.uwyfgz)
-
----
-
-## TextStyle.setText(`value`)
-
-**Description**
-
-This is used when you want to define (or inherit) a text style, while settingthe text content separately.
-
-For example, to inherit the text style and content from another layer:
+示例：
 
 ```javascript
-const referenceText = thisComp.layer("source layer
-name").text.sourceText; const style = referenceText.getStyleAt(0,0);style.setText(referenceText);
+text.sourceText.style.setText("hhhh"); //此时屏幕上会显示 hhhh
 ```
 
-Or to create a custom style and then set the text within the expression:
+## fontSize
+
+用法：style.fontSize
+
+说明：获取文本的字体大小
+
+类型：数值
+
+示例：
 
 ```javascript
-text.sourceText.createStyle().setFontSize(300).setFont("Impact").setText("Hello
-world!")
+text.sourceText.style.fontSize; //比如当前我的字体大小为：24
 ```
 
-**Parameters**
+## setFontSize()
 
-| Property | Type                    |
-| -------- | ----------------------- |
-| `value`  | String. The text to set |
+用法：style.setFontSize(fontsize)
 
-**Type**
+说明：设置文本的字体大小
 
-None
+参数：fontsize 为数值
 
----
+示例：
 
-## TextStyle.fontSize
+```javascript
+text.sourceText.style.setFontSize(50); //比如当前我的字体大小为：24。使用表达式后变成：50。用此表达式也可做文字逐步变大的效果
+```
 
-**Description**
+## font
 
-Returns the value of Font Size for a text layer.
+用法：style.font
 
-**Type**
+说明：文本的字体名称。不过是字体英文名
 
-Number
+类型：字符串
 
----
+示例：
 
-## TextStyle.setFontSize(`value`)
+```javascript
+text.sourceText.style.font; //返回当前字体：SourceHanSansTC-Medium （中文叫 思源黑体)
+```
 
-**Description**
+## setFont()
 
-Used to set the font size to a specified value.
+用法：setFont(font)
 
-**Parameters**
+说明：设置文本的字体
 
-| Property | Type                             |
-| -------- | -------------------------------- |
-| `value`  | Number. The font size to set to. |
+参数：font 为字符串
 
-**Type**
+示例：
 
-None
+```javascript
+text.sourceText.style.setFont("Simsum"); //把当前字体设置为：Simsum
+```
 
----
+## isFauxBold
 
-## TextStyle.font
+用法：style.isFauxBold
 
-**Description**
+说明：检测当文本是否为仿粗体。单击下方按钮进行设置
 
-Returns the font name for a text layer.
+类型：布尔值
 
-**Type**
+示例：
 
-String
+![](https://mir.yuelili.com/wp-content/uploads/user/AE/expression/a-z/faux-bold.png)
 
----
+```javascript
+text.sourceText.style.isFauxBold; //是仿粗体则类型：truetrue
+```
 
-## TextStyle.setFont(`value`)
+## setFauxBold()
 
-**Description**
+用法：style.setFauxBold(bold)
 
-Used to set the font to a specified value.
+说明：字体仿粗体的设置。仿粗体见下图
 
-**Parameters**
+参数：bold 为布尔值
 
-| Property | Type                        |
-| -------- | --------------------------- |
-| `value`  | String. The font to set to. |
+示例：
 
-**Type**
+![](https://mir.yuelili.com/wp-content/uploads/user/AE/expression/a-z/faux-bold.png)
 
-None
+```javascript
+text.sourceText.style.setFauxBold(true); //效果：把当前文本设置为仿粗体
+```
 
----
+## isFauxItalic
 
-## TextStyle.isFauxBold
+用法：style.isFauxItalic
 
-**Description**
+说明：文本是否为仿斜体
 
-Returns whether faux bold is enabled
+类型：布尔值
 
-**Type**
+示例：
 
-Boolean
+![](https://mir.yuelili.com/wp-content/uploads/user/AE/expression/a-z/faux-italic.png)
 
----
+```javascript
+text.sourceText.style.isFauxItalic; //是仿斜体则类型：true
+```
 
-## TextStyle.setFauxBold(`value`)
+## setFauxItalic()
 
-**Description**
+用法：style.setFauxItalic(value)
 
-Used to set the faux bold status
+说明：设置文本的仿斜体
 
-**Parameters**
+参数：value 为布尔值
 
-| Property | Type                                            |
-| -------- | ----------------------------------------------- |
-| `value`  | Boolean. Whether to enable or disable faux bold |
+示例：
 
-**Type**
+![](https://mir.yuelili.com/wp-content/uploads/user/AE/expression/a-z/faux-italic.png)
 
-None
+```javascript
+text.sourceText.style.setFauxItalic(true); // 效果：把当前文本设置为仿斜体
+```
 
----
+## isAllCaps
 
-## TextStyle.isFauxItalic
+用法：style.isAllCaps
 
-**Description**
+说明：文本是否为大写化
 
-Returns whether faux italic is enabled
+类型：布尔值
 
-**Type**
+示例：
 
-Boolean
+![](https://mir.yuelili.com/wp-content/uploads/user/AE/expression/a-z/all-caps.png)
 
----
+```javascript
+text.sourceText.style.isAllCaps; //当前文本为大写化，故而类型：true
+```
 
-## TextStyle.setFauxItalic(`value`)
+## setAllCaps()
 
-**Description**
+用法：style.setAllCaps(value)
 
-Used to set the faux italic status
+说明：把文本设置为大写化
 
-**Parameters**
+参数：value 为布尔值
 
-| Property | Type                                              |
-| -------- | ------------------------------------------------- |
-| `value`  | Boolean. Whether to enable or disable faux italic |
+示例：
 
-**Type**
+![](https://mir.yuelili.com/wp-content/uploads/user/AE/expression/a-z/all-caps.png)
 
-None
+```javascript
+text.sourceText.style.setAllCaps(true); //原文字：Abc。设置表达式后：ABC
+```
 
----
+## isSmallCaps
 
-## TextStyle.isAllCaps
+用法：style.isSmallCaps
 
-**Description**
+说明：文本是否为小写化
 
-Returns whether all caps is enabled
+类型：布尔值
 
-**Type**
+示例：见下图示例
 
-Boolean
+![](https://mir.yuelili.com/wp-content/uploads/user/AE/expression/a-z/small-caps.png)
 
----
+![](https://mir.yuelili.com/wp-content/uploads/user/AE/expression/a-z/small-caps2.png)
 
-## TextStyle.setAllCaps(`value`)
+```javascript
+text.sourceText.style.isSmallCaps; //原文本：Abc 并非全为小写，故类型：false
+```
 
-**Description**
+## setSmallCaps()
 
-Used to set the All Caps status
+用法：style.setSmallCaps(value)
 
-**Parameters**
+说明：文本设置为小写化
 
-| Property | Type                                           |
-| -------- | ---------------------------------------------- |
-| `value`  | Boolean. Whether to enable or disable all caps |
+参数：value 为布尔值
 
-**Type**
+示例：
 
-None
+![](https://mir.yuelili.com/wp-content/uploads/user/AE/expression/a-z/small-caps.png)
 
----
+![](https://mir.yuelili.com/wp-content/uploads/user/AE/expression/a-z/small-caps2.png)
 
-## TextStyle.isSmallCaps
+```javascript
+text.sourceText.style.setSmallCaps(true); //原文本：Abe。设置表达式后：ABE(其中BE只有正常字母一半高）
+```
 
-**Description**
+## tracking
 
-Returns whether small caps is enabled
+用法：style.tracking
 
-**Type**
+说明：文本的字间距
 
-Boolean
+类型：数值
 
----
+示例：
 
-## TextStyle.setSmallCaps(`value`)
+![](https://mir.yuelili.com/wp-content/uploads/user/AE/expression/a-z/tracking.png)
 
-**Description**
+```javascript
+text.sourceText.style.tracking; //比如返回80
+```
 
-Used to set the small caps status
+## setTracking()
 
-**Parameters**
+用法：style.setTracking(value)
 
-| Property | Type                                             |
-| -------- | ------------------------------------------------ |
-| `value`  | Boolean. Whether to enable or disable small caps |
+说明：设置文本的字间距
 
-**Type**
+参数：value 为数值
 
-None
+示例：
 
----
+![](https://mir.yuelili.com/wp-content/uploads/user/AE/expression/a-z/tracking.png)
 
-## TextStyle.tracking
+```javascript
+text.sourceText.style.setTracking(80); //设置为80
+```
 
-**Description**
+## leading
 
-Returns the value of Tracking for a text layer.
+用法：style.leading
 
-**Type**
+说明：文本的段间距
 
-Number
+类型：数值
 
----
+示例：
 
-## TextStyle.setTracking(`value`)
+![](https://mir.yuelili.com/wp-content/uploads/user/AE/expression/a-z/leading.png)
 
-**Description**
+```javascript
+text.sourceText.style.leading; //比如返回50
+```
 
-Used to set the tracking to a specified value.
+## setLeading()
 
-**Parameters**
+用法：style.setLeading(value)
 
-| Property | Type                                  |
-| -------- | ------------------------------------- |
-| `value`  | Number. The tracking value to set to. |
+说明：设置文本的段间距
 
-**Type**
+参数：value 为数值
 
-None
+示例：
 
----
+![](https://mir.yuelili.com/wp-content/uploads/user/AE/expression/a-z/leading.png)
 
-## TextStyle.leading
+```javascript
+text.sourceText.style.setLeading(50); //设置为50
+```
 
-**Description**
+## autoLeading
 
-Returns the value of leading for a text layer.
+用法：style.autoLeading
 
-**Type**
+说明：文本是否为自动间距
 
-Number
+类型：布尔值
 
----
+示例：
 
-## TextStyle.setLeading(`value`)
+![](https://mir.yuelili.com/wp-content/uploads/user/AE/expression/a-z/auto-leading.png)
 
-**Description**
+```javascript
+text.sourceText.style.autoLeading; //是则类型：true
+```
 
-Used to set the leading to a specified value.
+## setAutoLeading()
 
-**Parameters**
+用法：style.setAutoLeading(value)
 
-| Property | Type                                 |
-| -------- | ------------------------------------ |
-| `value`  | Number. The leading value to set to. |
+说明：设置文本为自动间距
 
-**Type**
+参数：value 为布尔值
 
-None
+示例：
 
----
+![](https://mir.yuelili.com/wp-content/uploads/user/AE/expression/a-z/auto-leading.png)
 
-## TextStyle.isAutoLeading
+```javascript
+text.sourceText.style.setAutoLeading(true);
+```
 
-**Description**
+## baselineShift
 
-Returns whether auto leading is enabled
+用法：style.baselineShift;
 
-**Type**
+说明：文本基线偏移值
 
-Boolean
+类型：数值
 
----
+示例：
 
-## TextStyle.setAutoLeading(`value`)
+![](https://mir.yuelili.com/wp-content/uploads/user/AE/expression/a-z/baseline-shift.png)
 
-**Description**
+```javascript
+text.sourceText.style.baselineShift; //比如50
+```
 
-Used to set the auto leading status
+## setBaselineShift()
 
-**Parameters**
+用法：style.setBaselineShift(value)
 
-| Property | Type                                               |
-| -------- | -------------------------------------------------- |
-| `value`  | Boolean. Whether to enable or disable auto leading |
+说明：设置文本基线偏移值
 
-**Type**
+参数：value 为布尔值
 
-None
+示例：
 
----
+![](https://mir.yuelili.com/wp-content/uploads/user/AE/expression/a-z/baseline-shift.png)
 
-## TextStyle.baselineShift
+```javascript
+text.sourceText.style.setBaselineShift(50); //比如设置为80
+```
 
-**Description**
+## applyFill
 
-Returns the value of baseline shift for a text layer.
+用法：style.applyFill
 
-**Type**
+说明：文字是否有填充
 
-Number
+类型：布尔值
 
----
+示例：
 
-## TextStyle.setBaselineShift(`value`)
+```javascript
+text.sourceText.style.applyFill; //有则类型：true
+thisComp.layer("月离离真帅").text.sourceText.getStyleAt(2).applyFill; //当前合成的"月离离真帅"文字图层的第3个文字（真）有填充效果，故返回True
+```
 
-**Description**
+## setApplyFill()
 
-Used to set the baseline shift to a specified value.
+用法：style.setApplyFill(value)
 
-**Parameters**
+说明：设置文本是否填充
 
-| Property | Type                                        |
-| -------- | ------------------------------------------- |
-| `value`  | Number. The baseline shift value to set to. |
+参数：value 为布尔值
 
-**Type**
+示例：
 
-None
+```javascript
+text.sourceText.style.setApplyFill(false); //关闭文字填充
+```
 
----
+## fillColor
 
-## TextStyle.applyFill
+用法：style.fillColor
 
-**Description**
+说明：文本的填充颜色
 
-Returns whether text fill color is enabled
+类型：RGB 三维数组，不过颜色的 255 在这里为 1
 
-**Type**
+示例：
 
-Boolean
+```javascript
+text.sourceText.style.fillColor; //比如填充为红色时，类型：[1,0,0]，也就是红色的[255,0,0]
+```
 
----
+## setFillColor()
 
-## TextStyle.setApplyFill(`value`)
+用法：style.setFillColor(value)
 
-**Description**
+说明：设置文本的填充颜色
 
-Used to set whether text fill is enabled
+参数：value 为 RGB 三维数组，不过颜色的 255 在这里为 1
 
-**Parameters**
+示例：
 
-| Property | Type                                             |
-| -------- | ------------------------------------------------ |
-| `value`  | Boolean. Whether to enable or disable apply fill |
+```javascript
+text.sourceText.style.setFillColor([0, 1, 0]); //比如我想把文字填充改为绿色 [0,255,0] → [0,1,0]。注意需要先开启填充
+```
 
-**Type**
+## applyStroke
 
-None
+用法：style.applyStroke
 
----
+说明：文本是否有描边。
 
-## TextStyle.fillColor
+类型：布尔值
 
-**Description**
+示例：
 
-Returns the text fill color, RGB values on a scale from 0 - 1.0
+```javascript
+text.sourceText.style.applyStroke; //有描边则类型：true
+thisComp.layer("月离离真帅").text.sourceText.getStyleAt(2).applyStroke; //当前合成的"月离离真帅"文字图层的第3个文字（真）有描边，故返回True
+```
 
-**Type**
+## setApllyStroke()
 
-Array of numbers
+用法：style.setApllyStroke(value)
 
----
+说明：设置文本的描边
 
-## TextStyle.setFillColor(`value`)
+参数：value 为布尔值
 
-**Description**
+示例：
 
-Used to set the text fill color
+```javascript
+text.sourceText.style.setApplyStroke(true); //使文字增加描边效果
+```
 
-**Parameters**
+## strokeColor
 
-| Property | Type                                                             |
-| -------- | ---------------------------------------------------------------- |
-| `value`  | Array of numbers. `[R, G, B]` with each value between 0.0 to 1.0 |
+用法：style.strokeColor
 
-**Type**
+说明：文本的描边颜色
 
-None
+类型：RGB 三维数组，只不过颜色的 255 在这里为 1
 
----
+示例：
 
-## TextStyle.applyStroke
+```javascript
+text.sourceText.style.strokeColor; //比如我的描边是红色，则返回[1,0,0]
+```
 
-**Description**
+## setStrokeColor()
 
-Returns whether text stroke is enabled
+用法：style.setStrokeColor(value)
 
-**Type**
+说明：设置文本的描边颜色
 
-Boolean
+参数：value 为 RGB 三维数组，不过颜色的 255 在这里为 1
 
----
+示例：
 
-## TextStyle.setApplyStroke(`value`)
+```javascript
+text.sourceText.style.setStrokeColor([0, 0, 1]); //把描边设置为蓝色，注意需要先开启描边
+```
 
-**Description**
+## strokeWidth
 
-Used to set whether text stroke is enabled
+用法：style.strokeWidth
 
-**Parameters**
+说明：获取描边宽度
 
-| Property | Type                                              |
-| -------- | ------------------------------------------------- |
-| `value`  | Boolean. Whether to enable or disable text stroke |
+类型：数值
 
-**Type**
+示例：
 
-None
+```javascript
+text.sourceText.style.strokeWidth; // 当前描边宽度为50
+```
 
----
+## setStrokeWidth()
 
-## TextStyle.strokeColor
+用法：style.setStrokeWidth(value)
 
-**Description**
+说明：设置描边宽度
 
-Returns the text stroke color, RGB values on a scale from 0 - 1.0
+参数：value 为数值
 
-**Type**
+示例：
 
-Array of numbers
-
----
-
-## TextStyle.setStrokeColor(`value`)
-
-**Description**
-
-Used to set the text stroke color
-
-**Parameters**
-
-| Property | Type                                                             |
-| -------- | ---------------------------------------------------------------- |
-| `value`  | Array of numbers. `[R, G, B]` with each value between 0.0 to 1.0 |
-
-**Type**
-
-None
-
----
-
-## TextStyle.strokeWidth
-
-**Description**
-
-Returns the stroke width value for a text layer.
-
-**Type**
-
-Number
-
----
-
-## TextStyle.setStrokeWidth(`value`)
-
-**Description**
-
-Used to set the stroke width to a specified value.
-
-**Parameters**
-
-| Property | Type                                          |
-| -------- | --------------------------------------------- |
-| `value`  | Number. The value to set the stroke width to. |
-
-**Type**
-
-None
+```javascript
+text.sourceText.style.setStrokeWidth(20); //把描边设置为20宽，注意需要先开启描边
+```

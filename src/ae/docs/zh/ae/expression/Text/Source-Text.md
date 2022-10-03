@@ -1,82 +1,54 @@
----
-title: Source-Text
-order: 2
-category:
-  - AE 表达式
----
+## getStyleAt()
 
-## Description
+用法：getStyleAt(charIndex, t = time)
 
-# Source Text
+说明：获取某秒的某个字符的样式
 
-These functions are accessible from [Text.sourceText](text.html#text-sourcetext) after AE 17.0.
+参数：charIndex 为字符的索引，从 0 开始排序。t 为时间，因为文字也是可以根据时间变化内容的，比如第 1 秒是 1，第 20 秒是 20。所以参数 t 也是有点用的
 
----
+示例：
 
-## SourceText.style
+源文字
 
-**Description**
+使用表达式后
 
-Returns the text style object for a given `sourceText` property.
+![](https://mir.yuelili.com/wp-content/uploads/user/AE/expression/a-z/source-text.png)
 
-**Type**
-
-[Text Style](text-style.html#textstyle) object
-
----
-
-## SourceText.getStyleAt(`charIndex`, `t = time`)
-
-**Description**
-
-This function returns the style value of a particular character at a specific
-time.
-
-In case the style is keyframed and changes over time, use the second `time`parameter to specify the target time to get the style at.
-
-:::info Note
-
-Using SourceText.style is the same as using `text.sourceText.getStyleAt(0,0)`
-:::
-
-For example, to get the style of the first character at the beginning of the
-timeline:
+![](https://mir.yuelili.com/wp-content/uploads/user/AE/expression/a-z/text-sample1.png)
 
 ```javascript
-text.sourceText.getStyleAt(0, 0);
+getStyleAt(1, (t = time)); //获取第1个字符的样式
 ```
 
-**Parameters**
+## createStyle()
 
-| Property | Type                                                                     |
-| -------- | ------------------------------------------------------------------------ |
-| `index`  | Number. The index of the letter or character whose style is needed       |
-| `time`   | Number, optional. The time within the composition to get the style from. |
+用法：createStyle() 或 createStyle().你的文字样式
 
-Defaults to `time`.
+说明：可以使用它创建一个空的样式，或者直接创建好所有样式
 
-**Type**
+类型：新样式
 
-[Text Style](text-style.html#textstyle) object
-
----
-
-## SourceText.createStyle()
-
-**Description**
-
-Used to initialize an empty [Text Style](text-style.html#textstyle) object inwhich you’d manually bake in specific values.
-
-For example, to create a new style with font size 300 and the font Impact:
+示例 1：先创建空样式，后面再赋值
 
 ```javascript
-text.sourceText.createStyle().setFontSize(300).setFont("Impact");
+styleA = createStyle(); //先创建一个空样式，赋值给styleA（样式A）
+styleB = styleA.setFontSize(100); //给样式A增加一个样式内容，字体大小为100号，然后赋值给样式B
+styleB; //调用样式B，此时文字变成100字号了
 ```
 
-**Parameters**
+示例 2：直接创建样式（非空样式）
 
-None.
+```javascript
+createStyle().setFontSize(100); //字体变为100字号了
+```
 
-**Type**
+其他说明：有点像新建空变量，然后赋值，以及直接新建变量的同时进行赋值
 
-Empty [Text Style](text-style.html#textstyle) object
+参考如下：如果你学了表达式，那么以下可以加深理解。如果没有，可以跳过
+
+```javascript
+var a;
+a = 10;
+以及;
+var a = 10;
+```

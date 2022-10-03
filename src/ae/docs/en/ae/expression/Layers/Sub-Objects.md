@@ -9,7 +9,6 @@ category:
 
 For After Effects CC and CS6, the Expression language menu, the “Layer Sub-objects”, “Layer General”, “Layer Properties”, “Layer 3D”, and “Layer SpaceTransforms” have been arranged into a “Layer” submenu.
 :::
----
 
 ## Layer.source
 

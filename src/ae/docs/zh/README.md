@@ -28,6 +28,7 @@ projects:
     desc: 关于本文档
     link: /zh/intro
 
-footer: 页脚
+copyright: false
+footer: Copyright © 2022 | 月离的万事屋
 ---
-<!-- 这是一个页脚。 -->
+

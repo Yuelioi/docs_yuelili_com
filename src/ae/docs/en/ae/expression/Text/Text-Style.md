@@ -7,8 +7,6 @@ category:
 
 ## Description
 
-# Text Style
-
 These functions are accessible from [SourceText.style](text-sourcetext.html#sourcetext-style) after AE 17.0.
 
 For more info on working with text styles, see:

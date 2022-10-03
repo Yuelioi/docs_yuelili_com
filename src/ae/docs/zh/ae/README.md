@@ -1,10 +1,10 @@
 ---
 home: true
 icon: home
-title: 文档主页
+title: AE主页
 heroImage: /logo.svg
 heroText: 文档
-tagline: 全世界最大的文档开源中心(x)
+tagline: Adobe After Effects
 actions:
   - text: 使用指南 💡
     link: /zh/guide/
@@ -14,22 +14,34 @@ actions:
     link: /zh/
 
 features:
-  - title: AE表达式   
-    details: 全函数方法详解
-    link: ./ae/expression/
+  - title: 表达式   
+    details: 表达式使用方法及函数大全
+    link: ./expression/
 
-  - title: AE文档
-    details: 形状图层、文字动画
-    link: ./ae/ae-doc/
+  - title: 形状图层
+    details: 形状图层全参数详解
+    link: ./shape/
 
-  - title: AE脚本文档
-    details: 
-    link: https://vuepress-theme-hope.github.io/v2/zh/guide/layout/
+  - title: 文字动画
+    details: 形状图层全参数详解
+    link: ./text-animation/
 
-  - title: 浏览量与评论
-    icon: comment
-    details: 配合 Waline 来开启阅读量统计与评论支持
-    link: https://vuepress-theme-hope.github.io/v2/zh/guide/feature/comment.html
+  - title: 内置效果
+    details: 289个内置效果参数详解 + 视频教程
+    link: ./effects/
+
+  - title: 脚本编写
+    details: 脚本全函数详解
+    link: ./scripting/
+
+  - title: P粒子
+    details: Particular
+    link: ./plugins/particular/
+
+  - title: Stardust
+    details: stardust 星辰粒子
+    link: ./plugins/stardust/
+
 
 copyright: Copyright © 2022 | 月离的万事屋
 

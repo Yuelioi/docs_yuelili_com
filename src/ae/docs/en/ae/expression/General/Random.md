@@ -9,6 +9,7 @@ category:
 
 The wiggle method—which is used to randomly vary a property value—is in theProperty attributes and methods category. See Property attributes and methods.
 :::
+
 ---
 
 ## seedRandom(`offset`, `timeless=false`)

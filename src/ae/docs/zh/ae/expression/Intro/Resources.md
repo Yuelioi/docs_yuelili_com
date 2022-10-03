@@ -1,5 +1,5 @@
 ---
-title: Resources
+title: 资源
 order: 3
 category:
   - AE 表达式

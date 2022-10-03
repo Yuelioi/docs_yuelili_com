@@ -4,6 +4,7 @@ order: 7
 category:
   - AE表达式
 ---
+
 ## active
 
 返回类型：布尔值。
@@ -13,7 +14,7 @@ category:
 示例
 
 ```javascript
-thisComp.layer("Solid 2").effect("Bulge").active
+thisComp.layer("Solid 2").effect("Bulge").active;
 ```
 
 ## param(name)
@@ -27,33 +28,33 @@ thisComp.layer("Solid 2").effect("Bulge").active
 示例：
 
 ```javascript
-thisComp.layer("Solid 2").effect("Bulge").param("Bulge Height") //返回凸出高度值
+thisComp.layer("Solid 2").effect("Bulge").param("Bulge Height"); //返回凸出高度值
 ```
 
 ## param(index)
 
 类型：属性。
 
-参数：index是数值
+参数：index 是数值
 
 说明：返回效果中的属性。效果控制里的点始终位于图层空间中。
 
 示例：
 
 ```javascript
-thisComp.layer("Solid 2").effect("Bulge").param(4) //返回凸出高度值
+thisComp.layer("Solid 2").effect("Bulge").param(4); //返回凸出高度值
 ```
 
 ## name
 
 说明：效果属性的名称
 
-返回：字符串
+类型：字符串
 
 例如：
 
 ```javascript
-thisComp.layer("Solid 2").effect("Bulge").name//返回Bulge
+thisComp.layer("Solid 2").effect("Bulge").name; //返回Bulge
 ```
 
-Updated on 2021年9月9日
+Updated on 2021 年 9 月 9 日

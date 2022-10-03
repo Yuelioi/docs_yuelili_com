@@ -14,6 +14,7 @@ For example, the expression `add([10, 20], [1, 2, 3])` returns `[11, 22, 3]`.
 [JJ Gifford’s
 website](http://www.adobe.com/go/learn_ae_jjgiffordexpressionsgeometrytrig)provides explanations and examples that show how to use simple geometry andtrigonometry with expressions.
 :::
+
 ---
 
 ## add(`vec1`, `vec2`)

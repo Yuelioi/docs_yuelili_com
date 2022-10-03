@@ -7,8 +7,6 @@ category:
 
 ## Description
 
-# Text
-
 This category holds generic text-related entries for text layers.
 
 ---

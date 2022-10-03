@@ -10,6 +10,7 @@ category:
 Many of the examples in this section are based on expressions provided by Dan
 Ebberts.
 :::
+
 ---
 
 ## Get this project’s AEP name (AE 15.1+ only)
@@ -120,6 +121,7 @@ previous.
 
 Dan Ebberts provides more examples and techniques for creating trails ofimages on his [MotionScript](http://www.motionscript.com/mastering-expressions/follow-the-leader.html).
 :::
+
 ---
 
 ## Create a bulge between two layers
@@ -171,6 +173,7 @@ if (toCompVec([0, 0, 1])[2] > 0 ) value else 0
 
 Dan Ebberts explains this expression on his[site](http://www.adobe.com/go/learn_ae_motionscriptinvisiblelayer).
 :::
+
 ---
 
 ## Flip layer horizontally if facing away from camera

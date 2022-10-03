@@ -29,5 +29,8 @@
   "bugs": {
     "url": "https://github.com/Yuelioi/docs_yuelili_com/issues"
   },
-  "homepage": "https://github.com/Yuelioi/docs_yuelili_com#readme"
+  "homepage": "https://github.com/Yuelioi/docs_yuelili_com#readme",
+  "dependencies": {
+    "vuepress-plugin-md-enhance": "2.0.0-beta.106"
+  }
 }

@@ -1,5 +1,5 @@
 ---
-title: Examples
+title: 示例
 order: 4
 category:
   - AE 表达式
@@ -7,42 +7,37 @@ category:
 
 :::info Note
 
-Many of the examples in this section are based on expressions provided by Dan
-Ebberts.
+Dan Ebberts 提供的基础示例
 :::
 
 ---
 
-## Get this project’s AEP name (AE 15.1+ only)
+## 获取工程名称 (AE 15.1+ only)
 
-While there is no method to directly access your AEP’s name, you CAN get the
-full path to the AEP.
+先获取完整路径,接着再处理路径字符串:
 
-With some string manipulation, you can derive the aep name from this:
+::: danger 月离备注
+试了没用. $.os 应该是脚本语法,这里应该发错了
+:::
 
 ```javascript
-var aepName =
-thisProject.fullPath.split($.os.indexOf("Windows") > -1 ? "\\\" : "/").pop();
-
+var aepName = thisProject.fullPath.split($.os.indexOf("Windows") > -1 ? "\\" : "/").pop();
 ```
 
-If you wanted to write “Unsaved” in that case, you can use the following
-expression:
+也可以保留未保存工程的名称
 
 ```javascript
-var aepName =
-thisProject.fullPath.split($.os.indexOf("Windows") > -1 ? "\\\" : "/").pop();aepName = aepName === "" ? "Unsaved" : aepName;
+var aepName = thisProject.fullPath.split($.os.indexOf("Windows") > -1 ? "\\" : "/").pop();
+aepName = aepName === "" ? "Unsaved" : aepName;
 ```
 
 ---
 
-## Make a layer revolve in a circle
+## 让图层圆形旋转
 
-You can create an expression without using properties from other layers. Forexample, you can make a layer revolve in a perfect circle.
+1. 选择图层,给位置打表达式
 
-1. Select a layer, press P to reveal its Position property in the Timeline panel, and Alt-click (Windows) or Option-click (Mac OS) the stopwatch to the left of the property name.
-
-2. Enter the following in the expression field:
+2.输入以下表达式:
 
 ```javascript
 [thisComp.width / 2, thisComp.height / 2] + [Math.sin(time) * 50, -Math.cos(time) * 50];
@@ -50,27 +45,29 @@ You can create an expression without using properties from other layers. Forexam
 
 ---
 
-## Rotate the hands of a clock
+## 时针旋转
 
-You can use the pick whip to link rotation values between layers to animatethe hands on a clock—as the hour hand moves from hour to hour, the minute handrotates the full circumference of the clock face. This type of animation wouldtake a long time to create if you had to set each keyframe for both handlayers, but with the pick whip, you can do it in a matter of minutes.
+使用螺旋挑鞭(表达式选择器)来连接各层之间的旋转值，使时钟上的指针旋转的同时，分针随其选择。
 
-1. Import or create two long, narrow solid-color layers: an hour hand and a minute hand.
+如果两个指针分别设置关键帧，这种类型的动画 K 起来费时费力，但使用挑鞭，分分钟搞定。
 
-2. Set the anchor points at the ends of the layers.
+1. 绘制一个时针和分针(随便 2 个矩形就行)
 
-3. Move the layers so that the anchor points are at the center of the composition.
+2. 把它们的锚点拉倒图层尾部
 
-4. Set Rotation keyframes for the hour hand.
+3. 移动图层,使其锚点重合在合成中心
 
-5. Select the Rotation property for the minute hand and choose `Animation > Add Expression.`
+4. 为时针设置旋转关键帧。
 
-6. Drag the pick whip to the Rotation property for the hour hand. The following expression appears:
+5. 选择分针的旋转属性 : `动画 > 添加表达式.`
+
+6. 拖动分针的螺旋挑鞭(表达式选择器)至时针,会以下表达式:
 
 ```javascript
-thisComp.layer("hour hand").rotation;
+thisComp.layer("时针").rotation;
 ```
 
-7. To make the minute hand rotate 12 times as fast as the hour hand, add `* 12` at the end of the expression as follows:
+7. 设置分针旋转速度为时针的 12 倍,后面加`* 12`即可:
 
 ```javascript
 thisComp.layer("hour hand").rotation * 12;
@@ -78,7 +75,7 @@ thisComp.layer("hour hand").rotation * 12;
 
 ---
 
-## Position one layer between two others
+## 图层在另外 2 个图层中间
 
 This example expression positions and maintains one layer at a balanceddistance between two other layers.
 
@@ -96,7 +93,7 @@ This example expression positions and maintains one layer at a balanceddistance 
 
 ---
 
-## Create a trail of images
+## 创建图片拖尾
 
 This example expression instructs a layer to be at the same position as thenext higher layer in the Timeline panel, but delayed by a specified amount oftime (in this case, 0.5 seconds). You can set similar expressions for theother geometric properties.
 
@@ -151,10 +148,20 @@ fromWorld(thisComp.layer("Magnifier").position);
 Apply the following expression to the Opacity property of a 3D layer:
 
 ```javascript
-startFade = 500; // Start fade 500 pixels from camera. endFade
-= 1500; // End fade 1500 pixels from camera. try { // Check whether there's a
-camera C = thisComp.activeCamera.toWorld([0,0,0]); } catch (err) { // Nocamera, so assume 50mm w = thisComp.width * thisComp.pixelAspect; z =(w/2)/Math.tan(degreesToRadians(19.799)); C = [0,0,-z]; } P =toWorld(anchorPoint); d = length(C,P); linear(d,startFade,endFade,100,0)
-
+startFade = 500; // Start fade 500 pixels from camera.
+endFade = 1500; // End fade 1500 pixels from camera.
+try {
+  // Check whether there's a camera
+  C = thisComp.activeCamera.toWorld([0, 0, 0]);
+} catch (err) {
+  // Nocamera, so assume 50mm
+  w = thisComp.width * thisComp.pixelAspect;
+  z = w / 2 / Math.tan(degreesToRadians(19.799));
+  C = [0, 0, -z];
+}
+P = toWorld(anchorPoint);
+d = length(C, P);
+linear(d, startFade, endFade, 100, 0);
 ```
 
 The fade starts at a distance of `500` pixels from the camera and is completeat `1500` pixels from the camera. The linear interpolation method is used tomap distance values to opacity values.
@@ -193,8 +200,18 @@ Apply the following expression to a Scale property to make a layer wobble at
 each marker:
 
 ```javascript
-n = 0; t = 0; if (marker.numKeys > 0){ n =
-marker.nearestKey(time).index; if (marker.key(n).time > time) n\--; } if (n >0) t = time - marker.key(n).time; amp = 15; freq = 5; decay = 3.0; angle =freq * 2 * Math.PI * t; scaleFact = (100 + amp * Math.sin(angle) /Math.exp(decay * t)) / 100; [value[0] * scaleFact, value[1] / scaleFact];
+n = 0; t = 0;
+if (marker.numKeys > 0){
+  n =marker.nearestKey(time).index;
+if (marker.key(n).time > time) n\--;
+}
+if (n >0) t = time - marker.key(n).time;
+amp = 15;
+freq = 5;
+decay = 3.0;
+angle =freq * 2 * Math.PI * t;
+scaleFact = (100 + amp * Math.sin(angle) /Math.exp(decay * t)) / 100;
+[value[0] * scaleFact, value[1] / scaleFact];
 
 ```
 

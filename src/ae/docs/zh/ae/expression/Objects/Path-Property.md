@@ -5,9 +5,13 @@ category:
   - AE 表达式
 ---
 
+::: info Note
+2018 之后可用
+:::
+
 ## Path.points()
 
-全名：path.points(t = time)
+用法：path.points(t = time)
 
 说明：获取路径上所有顶点的 x、y 坐标。
 
@@ -21,7 +25,7 @@ category:
 
 ![](https://cdn.yuelili.com/20210913232057.png)
 
-返回：嵌套数组，四舍五入到小数点后四位。
+类型：嵌套数组，四舍五入到小数点后四位。
 
 参数：t （可选）数字。路径的时间（以秒为单位）。默认值为 time（当前时间）。
 
@@ -37,11 +41,11 @@ thisComp
 
 ## Path.inTangents()
 
-全名：Path.inTangents(t = time)
+用法：Path.inTangents(t = time)
 
 说明：获取路径上所有入点手柄的二维坐标。坐标值是相对于父点。 [0,0] 代表在入点处不产生弯曲。
 
-返回：嵌套数组，四舍五入到小数点后四位。
+类型：嵌套数组，四舍五入到小数点后四位。
 
 参数：t （可选）数字。采样路径的合成时间（以秒为单位）。默认值为时间（当前时间）。
 
@@ -56,11 +60,11 @@ thisComp.layer("纯色 1").mask("蒙版 1").maskPath.inTangents();
 
 ## Path.outTangents()
 
-全名：Path.outTangents(t = time)
+用法：Path.outTangents(t = time)
 
 说明：获取路径上所有出点手柄的二维坐标。坐标值是相对于父点。 [0,0] 代表在入点处不产生弯曲。
 
-返回：嵌套数组，四舍五入到小数点后四位。
+类型：嵌套数组，四舍五入到小数点后四位。
 
 参数：t （可选）数字。采样路径的合成时间（以秒为单位）。默认值为时间（当前时间）。
 
@@ -75,11 +79,11 @@ thisComp.layer("纯色 1").mask("蒙版 1").maskPath.outTangents();
 
 ## Path.isClosed()
 
-全名：path.isClosed()
+用法：path.isClosed()
 
 说明：路径是开放的还是闭合的。如果路径是闭合的，则返回 true；如果路径是开放的，则返回 false。
 
-返回：布尔值
+类型：布尔值
 
 参数：无
 
@@ -90,7 +94,7 @@ thisComp.layer("Solid 1").mask("Mask 1").maskPath.isClosed();
 
 ## Path.pointOnPath()
 
-全名：Path.pointOnPath(percentage = 0.5, t = time)
+用法：Path.pointOnPath(percentage = 0.5, t = time)
 
 说明：获取路径上任意点的 x、y 坐标。该点表示为路径弧线长度的百分比。第一个点为 0%，最后一个点为 100%。
 
@@ -101,7 +105,7 @@ thisComp.layer("Solid 1").mask("Mask 1").maskPath.isClosed();
 - 百分比 （可选）0 到 1 之间的数字。默认值为 0.5。
 - t （可选）数字。采样路径的合成时间（以秒为单位）。默认值为时间（当前时间）。
 
-返回：数组。
+类型：数组。
 
 注意：蒙版与形状，返回的点依据不一样。详见 Path.points()的其他说明
 
@@ -116,7 +120,7 @@ thisComp.layer("Turquoise Solid 1").mask("Mask 1").maskPath.pointOnPath(0.5);
 
 ## Path.tangentOnPath(percentage = 0.5, t = time)
 
-全名：Path .tangentOnPath(percentage = 0.5, t = time)
+用法：Path .tangentOnPath(percentage = 0.5, t = time)
 
 说明：获取路径上任意点的出点手柄的标准化矢量 x、y 坐标。
 
@@ -127,7 +131,7 @@ thisComp.layer("Turquoise Solid 1").mask("Mask 1").maskPath.pointOnPath(0.5);
 - 百分比 （可选）0 到 1 之间的数字。采样沿路径的弧长的百分比。值小于 0 和大于 1 的部分会被剪掉。默认值为 0.5。
 - t （可选）数字。采样路径的合成时间（以秒为单位）。默认值为时间（当前时间）。
 
-返回：数组。
+类型：数组。
 
 示例：获取某一出点的标注化矢量坐标
 
@@ -140,9 +144,9 @@ thisComp.layer("Solid 1").mask("Mask 1").maskPath.tangentOnPath(0.5);
 
 ## Path .normalOnPath()
 
-全名：Path.normalOnPath(percentage = 0.5, t = time)
+用法：Path.normalOnPath(percentage = 0.5, t = time)
 
-返回：数偶数组。
+类型：数偶数组。
 
 说明：获取路径上经过计算的任意点的**法线**的标准化矢量 x、y 坐标。
 
@@ -164,9 +168,9 @@ thisComp.layer("Solid 1").mask("Mask 1").maskPath.tangentOnPath(0.5);
 
 ## Path.createPath()
 
-全名：Path.createPath(points = [[0,0], [100,0], [100,100], [0,100]], inTangents = [], outTangents = [], is_closed = true)
+用法：Path.createPath(points = [[0,0], [100,0], [100,100], [0,100]], inTangents = [], outTangents = [], is_closed = true)
 
-返回：路径对象。
+类型：路径对象。
 
 说明：根据坐标点和切线点创建路径对象。
 

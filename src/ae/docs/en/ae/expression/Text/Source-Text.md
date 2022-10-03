@@ -7,8 +7,6 @@ category:
 
 ## Description
 
-# Source Text
-
 These functions are accessible from [Text.sourceText](text.html#text-sourcetext) after AE 17.0.
 
 ---

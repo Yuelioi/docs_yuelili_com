@@ -2,39 +2,33 @@
 home: true
 layout: Blog
 icon: home
-title: YueLi Document
+title: Home
 heroImage: /logo.svg
-heroText: YueLi Docsily
-tagline: You can put your slogan here
+heroText: Yuelili Docs
 heroFullScreen: true
+tagline: Open Source Document
 projects:
   - icon: project
-    name: project name
-    desc: project detailed description
-    link: https://your.project.link
+    name: Nav Website
+    desc: websites for nav
+    link: https://nav.yuelili.com
 
   - icon: link
-    name: link name
-    desc: link detailed description
-    link: https://link.address
+    name: Personal Web
+    desc: Go back to yuelili.com
+    link: https://www.yuelili.com
 
-  - icon: book
-    name: book name
-    desc: Detailed description of the book
-    link: https://link.to.your.book
-
-  - icon: article
-    name: article name
-    desc: Detailed description of the article
-    link: https://link.to.your.article
-
-  - icon: friend
-    name: friend name
-    desc: Detailed description of friend
-    link: https://link.to.your.friend
+  - icon: friendiconPrefix
+    name: Github
+    desc: Github Link
+    link: https://github.com/Yuelioi/docs_yuelili_com
 
   - icon: /logo.svg
-    name: custom item
-    desc: Detailed description of this custom item
-    link: https://link.to.your.friend
+    name: About
+    desc: About this docs
+    link: /zh/intro
+
+copyright: false
+footer: Copyright © 2022 | 月离的万事屋
 ---
+

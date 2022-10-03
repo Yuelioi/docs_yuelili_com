@@ -34,17 +34,15 @@ Groups 可以拥有固定数量属性(比如单独一个效果,其属性不会�
 
 ---
 
-## numProperties¶
+## numProperties
 
-全名：组.numProperties
-
-类型：属性
+用法：组.numProperties
 
 说明：组内属性个数(不包含嵌套组内的属性)
 
 参数：无
 
-返回：数值
+类型：数值
 
 示例：查看文字组有多少个属性
 
@@ -59,7 +57,7 @@ Object.getOwnPropertyNames(thisLayer.text); // 文字图层中text组的子属�
 
 ## propertyGroup
 
-全名：propertyGroup(`countUp=1`)
+用法：propertyGroup(`countUp=1`)
 
 类型：方法
 
@@ -67,7 +65,7 @@ Object.getOwnPropertyNames(thisLayer.text); // 文字图层中text组的子属�
 
 参数：countUp,父级层级,默认为 1(2 就是爷级)
 
-返回：Group
+类型：Group
 
 示例：查看文字组父级
 
@@ -75,15 +73,13 @@ Object.getOwnPropertyNames(thisLayer.text); // 文字图层中text组的子属�
 thisLayer.text.propertyGroup(1); // 返回当前文字图层
 ```
 
-## propertyIndex¶
+## propertyIndex
 
-全名：XX.propertyIndex
-
-类型：属性
+用法：XX.propertyIndex
 
 说明：返回当前属性在其父组的索引
 
-返回：数值
+类型：数值
 
 示例：查看文字组在图层里的索引
 
@@ -97,7 +93,7 @@ transform.propertyIndex; // 5
 由此可见,属性索引并非视觉上的 1 2,总体的索引大概也包含了子属性,还有些隐藏属性
 :::
 
-## name¶
+## name
 
 说明:组的名称
 

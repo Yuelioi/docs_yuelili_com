@@ -19,8 +19,8 @@ export default hopeTheme({
       sidebar: enSidebar,
       displayFooter: true,
       footer: "MIT",
-      copyright:"@2022 | 月离的万事屋",
-      // 
+      copyright: "@2022 | 月离的万事屋",
+      //
       blog: {
         description: "A FrontEnd programmer",
         intro: "/intro.html",
@@ -31,7 +31,7 @@ export default hopeTheme({
       sidebar: zhSidebar,
       displayFooter: true,
       footer: "MIT",
-      copyright:"@2022 | 月离的万事屋",
+      copyright: "@2022 | 月离的万事屋",
       blog: {
         description: "一个前端开发者",
         intro: "/zh/intro.html",
@@ -56,8 +56,7 @@ export default hopeTheme({
     },
   },
   plugins: {
-    // blog: { autoExcerpt: true },
-    blog:true,
+    blog: { autoExcerpt: true },
     comment: {
       provider: "Giscus",
       repo: "Yuelioi/docs_comments",
