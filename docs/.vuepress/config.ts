@@ -1,6 +1,5 @@
 import { defineUserConfig } from "vuepress";
 import theme from "./theme.js";
-import path from "path";
 
 import { searchPlugin } from "@vuepress/plugin-search";
 import mdEnhancePlugin from "vuepress-plugin-md-enhance";

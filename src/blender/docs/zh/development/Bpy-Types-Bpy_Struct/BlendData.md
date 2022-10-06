@@ -2,10 +2,12 @@
 title: BlendData
 order: 5
 category:
-  - AE
+  - blender-dev
 ---
 
-    [BlendData(bpy_struct)](https://docs.blender.org/api/master/bpy.types.BlendData.html)
+## Description
+
+[BlendData(bpy_struct)](https://docs.blender.org/api/master/bpy.types.BlendData.html)
 
 基类：bpy_struct
 
@@ -287,9 +289,7 @@ Remove (delete) several IDs at once.
 
 WARNING: Considered experimental feature currently.
 
-Note that this function is quicker than individual calls to remove() (from
-bpy.types.BlendData ID collections), but less safe/versatile (it can break
-Blender, e.g. by removing all scenes…).
+Note that this function is quicker than individual calls to remove() (frombpy.types.BlendData ID collections), but less safe/versatile (it can breakBlender, e.g. by removing all scenes…).
 
 参数：ids 。 Iterables of IDs (types can be mixed).
 
@@ -327,8 +327,7 @@ to True
 do_linked_ids (bool, 字符串) 。 Include unused linked IDs in the deletion,
 defaults to True
 
-do_recursive (bool, 字符串) 。 Recursively check for unused IDs, ensuring no
-orphaned one remain after a single run of that function, defaults to False
+do_recursive (bool, 字符串) 。 Recursively check for unused IDs, ensuring noorphaned one remain after a single run of that function, defaults to False
 
 返回：The number of deleted IDs.
 
@@ -338,8 +337,7 @@ orphaned one remain after a single run of that function, defaults to False
 
 A context manager that temporarily creates blender file data.
 
-参数：filepath (str or NoneType) 。 The file path for the newly temporary data.
-When None, the path of the currently open file is used.
+参数：filepath (str or NoneType) 。 The file path for the newly temporary data.When None, the path of the currently open file is used.
 
 返回：Blend file data which is freed once the context exists.
 
@@ -352,13 +350,11 @@ When None, the path of the currently open file is used.
 Returns a mapping of all ID data-blocks in current bpy.data to a set of all
 datablocks using them.
 
-For list of valid set members for key_types & value_types, see:
-bpy.types.KeyingSetPath.id_type.
+For list of valid set members for key_types & value_types, see:bpy.types.KeyingSetPath.id_type.
 
 参数：
 
-subset (sequence) 。 When passed, only these data-blocks and their users will
-be included as keys/values in the map.
+subset (sequence) 。 When passed, only these data-blocks and their users willbe included as keys/values in the map.
 
 key_types (set of strings) 。 Filter the keys mapped by ID types.
 

@@ -2,10 +2,12 @@
 title: UIPieMenu UIPopover UIPopupMenu
 order: 14
 category:
-  - AE
+  - blender-dev
 ---
 
-    [UIPieMenu(bpy_struct)](https://docs.blender.org/api/master/bpy.types.UIPieMenu.html)
+## Description
+
+[UIPieMenu(bpy_struct)](https://docs.blender.org/api/master/bpy.types.UIPieMenu.html)
 
 [UIPopover(bpy_struct)](https://docs.blender.org/api/master/bpy.types.UIPopover.html)
 

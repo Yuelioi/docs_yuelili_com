@@ -2,10 +2,12 @@
 title: 路径工具(bpy.path)
 order: 9
 category:
-  - AE
+  - blender-dev
 ---
 
-    本模块与os.path类似，在Blender中处理各种路径。
+## Description
+
+本模块与 os.path 类似，在 Blender 中处理各种路径。
 
 ### abspath()
 

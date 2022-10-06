@@ -4,4 +4,4 @@ icon: info
 
 # Intro Page
 
-Place your introducation and profile here.
+Because author is lasy, no any more description about this project.

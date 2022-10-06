@@ -1,1 +1,0 @@
-import{_}from"./_plugin-vue_export-helper.cdc0426e.js";import{o as e,c}from"./app.75ca2a8e.js";const o={};function r(t,s){return e(),c("div")}const l=_(o,[["render",r],["__file","\u7269\u7406\u529B Physical Forces \uFF08\u8FD8\u6CA1\u5199.html.vue"]]);export{l as default};

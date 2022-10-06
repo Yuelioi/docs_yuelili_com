@@ -2,17 +2,16 @@
 title: Space
 order: 12
 category:
-  - AE
+  - blender-dev
 ---
 
-    Space(bpy_struct)
+## Description
+
+Space(bpy_struct)
 
 基类： bpy_struct
 
-子类：SpaceClipEditor, SpaceConsole, SpaceDopeSheetEditor, SpaceFileBrowser,
-SpaceGraphEditor, SpaceImageEditor, SpaceInfo, SpaceNLA, SpaceNodeEditor,
-SpaceOutliner, SpacePreferences, SpaceProperties, SpaceSequenceEditor,
-SpaceSpreadsheet, SpaceTextEditor, SpaceView3D
+子类：SpaceClipEditor, SpaceConsole, SpaceDopeSheetEditor, SpaceFileBrowser,SpaceGraphEditor, SpaceImageEditor, SpaceInfo, SpaceNLA, SpaceNodeEditor,SpaceOutliner, SpacePreferences, SpaceProperties, SpaceSequenceEditor,SpaceSpreadsheet, SpaceTextEditor, SpaceView3D
 
 说明：场景的空间数据（Space data for a screen area）
 
@@ -78,8 +77,7 @@ SpaceSpreadsheet, SpaceTextEditor, SpaceView3D
 
 全名：draw_handler_add(callback, args, region_type, draw_type)
 
-说明：为这个空间类型添加一个新的绘制处理程序（draw
-handler）。它将在每次空间类型中的指定区块（region）被绘制时被调用。注意：目前所有的参数都只是位置性的。
+说明：为这个空间类型添加一个新的绘制处理程序（drawhandler）。它将在每次空间类型中的指定区块（region）被绘制时被调用。注意：目前所有的参数都只是位置性的。
 
 参数：
 

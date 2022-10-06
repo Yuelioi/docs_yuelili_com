@@ -2,7 +2,9 @@
 title: Modifier总览
 order: 2
 category:
-  - AE
+  - blender-dev
 ---
 
-    https://docs.blender.org/api/master/bpy.types.Modifier.html
+## Description
+
+https://docs.blender.org/api/master/bpy.types.Modifier.html

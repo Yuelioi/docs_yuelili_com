@@ -4,4 +4,4 @@ icon: info
 
 # Intro Page
 
-Place your introducation and profile here.
+This is a docs about Adobe Affer Effects. Many docs about built-in effects, plugins scripting and more.

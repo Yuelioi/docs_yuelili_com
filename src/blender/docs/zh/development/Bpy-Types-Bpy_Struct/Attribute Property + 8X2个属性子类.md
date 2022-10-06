@@ -2,10 +2,12 @@
 title: Attribute Property + 8X2个属性子类
 order: 4
 category:
-  - AE
+  - blender-dev
 ---
 
-    **Attribute属性（几何属性）**
+## Description
+
+**Attribute 属性（几何属性）**
 
 [Attribute(bpy_struct)](https://docs.blender.org/api/master/bpy.types.Attribute.html)
 
@@ -205,8 +207,7 @@ domain
 
 基类： bpy_struct
 
-子类：BoolProperty, CollectionProperty, EnumProperty, FloatProperty, IntProperty,
-PointerProperty, StringProperty
+子类：BoolProperty, CollectionProperty, EnumProperty, FloatProperty, IntProperty,PointerProperty, StringProperty
 
 介绍：RNA 属性定义
 
@@ -393,9 +394,7 @@ icon：[系统图标](https://www.yuelili.com/blender-development-use-blenders-o
 
 说明：Type of units for this property
 
-类型：enum in [‘NONE’, ‘LENGTH’, ‘AREA’, ‘VOLUME’, ‘ROTATION’, ‘TIME’,
-‘TIME_ABSOLUTE’, ‘VELOCITY’, ‘ACCELERATION’, ‘MASS’, ‘CAMERA’, ‘POWER’,
-‘TEMPERATURE’], default ‘NONE’, 只读
+类型：enum in [‘NONE’, ‘LENGTH’, ‘AREA’, ‘VOLUME’, ‘ROTATION’, ‘TIME’,‘TIME_ABSOLUTE’, ‘VELOCITY’, ‘ACCELERATION’, ‘MASS’, ‘CAMERA’, ‘POWER’,‘TEMPERATURE’], default ‘NONE’, 只读
 
 ### classmethod bl_rna_get_subclass()
 
@@ -421,8 +420,7 @@ icon：[系统图标](https://www.yuelili.com/blender-development-use-blenders-o
 
 基类： bpy_struct
 
-子类：AssetHandle, OperatorFileListElement, OperatorMousePath,
-OperatorStrokeElement, SelectedUvElement
+子类：AssetHandle, OperatorFileListElement, OperatorMousePath,OperatorStrokeElement, SelectedUvElement
 
 说明：PropertyGroups 是动态定义的属性集的基类。
 
@@ -442,1458 +440,543 @@ OperatorStrokeElement, SelectedUvElement
 
 ### 示例
 
-    import bpy
-
-
-
-    # 创建（类）属性
-
-    class MyPropertyGroup(bpy.types.PropertyGroup):
-
-        custom_1: bpy.props.FloatProperty(name="My Float") # 注意RNA属性用 : 进行定义
-
-        custom_2: bpy.props.IntProperty(name="My Int")
-
-
-
-
-
-    # 注册类
-
-    bpy.utils.register_class(MyPropertyGroup)
-
-
-
-    # 对Object类，添加一个参数
-
-    bpy.types.Object.my_prop_grp = bpy.props.PointerProperty(type=MyPropertyGroup)
-
-
-
-
-
-    # 给一个object添加自定义属性
-
-    bpy.data.objects[0].my_prop_grp.custom_1 = 22.0
-
+```python
+import bpy # 创建（类）属性 class
+MyPropertyGroup(bpy.types.PropertyGroup): custom_1:bpy.props.FloatProperty(name="My Float") # 注意RNA属性用 : 进行定义 custom_2:bpy.props.IntProperty(name="My Int") # 注册类bpy.utils.register_class(MyPropertyGroup) # 对Object类，添加一个参数bpy.types.Object.my_prop_grp = bpy.props.PointerProperty(type=MyPropertyGroup)# 给一个object添加自定义属性 bpy.data.objects[0].my_prop_grp.custom_1 = 22.0
 ```
 
+### classbpy.types.PropertyGroup()
 
-## classbpy.types.PropertyGroup() #
+全名：classbpy.types.PropertyGroup(bpy_struct)
 
+说明：Group of ID properties
 
+### name
 
+说明：Unique name used in the code and scripting
 
-    全名：classbpy.types.PropertyGroup(bpy_struct)
+类型：string, default “”, 不会为 None
 
+### classmethod bl_rna_get_subclass()
 
+全名：classmethod bl_rna_get_subclass(id, default=None)
 
+参数：id (字符串) 。 The RNA type identifier.
 
-    说明：Group of ID properties
+返回：RNA 类型，未找到则为默认。
 
+返回类型：bpy.types.Struct subclass
 
+### classmethod bl_rna_get_subclass_py()
 
+全名：classmethod bl_rna_get_subclass_py(id, default=None)
 
-## name #
+参数：id (字符串) 。 The RNA type identifier.
 
+返回：类，未找到则为默认。
 
+返回类型：type
 
+## PropertyGroupItem(bpy_struct)
 
-    说明：Unique name used in the code and scripting
+基类： bpy_struct
 
+说明：储存任意、用户定义的属性
 
+### collection
 
+说明：
 
-    类型：string, default “”, 不会为None
+类型：bpy_prop_collection of PropertyGroup, 只读
 
+### double
 
+说明：
 
+类型：float in [-inf, inf], default 0.0
 
-## classmethod bl_rna_get_subclass() #
+### double_array
 
+说明：
 
+类型：float array of 1 items in [-inf, inf], default (0.0)
 
+### float
 
-    全名：classmethod bl_rna_get_subclass(id, default=None)
+说明：
 
+类型：float in [-inf, inf], default 0.0
 
+### float_array
 
+说明：
 
-    参数：id (字符串) 。 The RNA type identifier.
+类型：float array of 1 items in [-inf, inf], default (0.0)
 
+### group
 
+说明：类型：PropertyGroup, 只读
 
+### id
 
-    返回：RNA类型，未找到则为默认。
+说明：
 
+类型：ID
 
+### idp_array
 
+说明：
 
-    返回类型：bpy.types.Struct subclass
+类型：bpy_prop_collection of PropertyGroup, 只读
 
+### int
 
+说明：类型：int in [-inf, inf], default 0
 
+### int_array
 
-## classmethod bl_rna_get_subclass_py() #
+说明：
 
+类型：int array of 1 items in [-inf, inf], default (0,)
 
+### string
 
+说明：
 
-    全名：classmethod bl_rna_get_subclass_py(id, default=None)
+类型：string, default “”, 不会为 None
 
+### classmethod bl_rna_get_subclass()
 
+全名：classmethod bl_rna_get_subclass(id, default=None)
 
+参数：id (字符串) 。 The RNA type identifier.
 
-    参数：id (字符串) 。 The RNA type identifier.
+返回：RNA 类型，未找到则为默认。
 
+返回类型：bpy.types.Struct subclass
 
+### classmethod bl_rna_get_subclass_py()
 
+全名：classmethod bl_rna_get_subclass_py(id, default=None)
 
-    返回：类，未找到则为默认。
+参数：id (字符串) 。 The RNA type identifier.
 
+返回：类，未找到则为默认。
 
+返回类型：type
 
+## BoolAttribute(Attribute)
 
-    返回类型：type
+基类： bpy_struct, Attribute
 
+说明：几何属性布尔值
 
+### data
 
+说明：  
+类型：bpy_prop_collection of BoolAttributeValue, 只读
 
-    # PropertyGroupItem(bpy_struct) #
+### classmethod bl_rna_get_subclass()
 
+全名：classmethod bl_rna_get_subclass(id, default=None)
 
+参数：id (字符串) 。 The RNA type identifier.
 
+返回：RNA 类型，未找到则为默认。
 
-    基类： bpy_struct
+返回类型：bpy.types.Struct subclass
 
+### classmethod bl_rna_get_subclass_py()
 
+全名：classmethod bl_rna_get_subclass_py(id, default=None)
 
+参数：id (字符串) 。 The RNA type identifier.
 
-    说明：储存任意、用户定义的属性
+返回：类，未找到则为默认。
 
+返回类型：type
 
+## ByteColorAttribute(Attribute)
 
+基类： bpy_struct, Attribute
 
-## collection #
+Color geometry attribute, with 8-bit values
 
+### data
 
+说明：  
+类型：bpy_prop_collection of ByteColorAttributeValue, 只读
 
+### classmethod bl_rna_get_subclass()
 
-    说明：
+全名：classmethod bl_rna_get_subclass(id, default=None)
 
+参数：id (字符串) 。 The RNA type identifier.
 
+返回：RNA 类型，未找到则为默认。
 
+返回类型：bpy.types.Struct subclass
 
-    类型：bpy_prop_collection of PropertyGroup, 只读
+### classmethod bl_rna_get_subclass_py()
 
+全名：classmethod bl_rna_get_subclass_py(id, default=None)
 
+参数：id (字符串) 。 The RNA type identifier.
 
+返回：类，未找到则为默认。
 
-## double #
+返回类型：type
 
+## Float2Attribute(Attribute)
 
+基类： bpy_struct, Attribute
 
+### classbpy.types.Float2Attribute()
 
-    说明：
+全名：classbpy.types.Float2Attribute(Attribute)
 
+2D vector geometry attribute, with floating-point values
 
+### data
 
+说明：  
+类型：bpy_prop_collection of Float2AttributeValue, 只读
 
-    类型：float in [-inf, inf], default 0.0
+### classmethod bl_rna_get_subclass()
 
+全名：classmethod bl_rna_get_subclass(id, default=None)
 
+参数：id (字符串) 。 The RNA type identifier.
 
+返回：RNA 类型，未找到则为默认。
 
-## double_array #
+返回类型：bpy.types.Struct subclass
 
+### classmethod bl_rna_get_subclass_py()
 
+全名：classmethod bl_rna_get_subclass_py(id, default=None)
 
+参数：id (字符串) 。 The RNA type identifier.
 
-    说明：
+返回：类，未找到则为默认。
 
+返回类型：type
 
+## FloatAttribute(Attribute)
 
+基类： bpy_struct, Attribute
 
-    类型：float array of 1 items in [-inf, inf], default (0.0)
+### classbpy.types.FloatAttribute()
 
+全名：classbpy.types.FloatAttribute(Attribute)
 
+Geometry attribute with floating-point values
 
+### data
 
-## float #
+说明：  
+类型：bpy_prop_collection of FloatAttributeValue, 只读
 
+### classmethod bl_rna_get_subclass()
 
+全名：classmethod bl_rna_get_subclass(id, default=None)
 
+参数：id (字符串) 。 The RNA type identifier.
 
-    说明：
+返回：RNA 类型，未找到则为默认。
 
+返回类型：bpy.types.Struct subclass
 
+### classmethod bl_rna_get_subclass_py()
 
+全名：classmethod bl_rna_get_subclass_py(id, default=None)
 
-    类型：float in [-inf, inf], default 0.0
+参数：id (字符串) 。 The RNA type identifier.
 
+返回：类，未找到则为默认。
 
+返回类型：type
 
+## FloatColorAttribute(Attribute)
 
-## float_array #
+基类： bpy_struct, Attribute
 
+### classbpy.types.FloatColorAttribute()
 
+全名：classbpy.types.FloatColorAttribute(Attribute)
 
+Color geometry attribute, with floating-point values
 
-    说明：
+### data
 
+说明：  
+类型：bpy_prop_collection of FloatColorAttributeValue, 只读
 
+### classmethod bl_rna_get_subclass()
 
+全名：classmethod bl_rna_get_subclass(id, default=None)
 
-    类型：float array of 1 items in [-inf, inf], default (0.0)
+参数：id (字符串) 。 The RNA type identifier.
 
+返回：RNA 类型，未找到则为默认。
 
+返回类型：bpy.types.Struct subclass
 
+### classmethod bl_rna_get_subclass_py()
 
-## group #
+全名：classmethod bl_rna_get_subclass_py(id, default=None)
 
+参数：id (字符串) 。 The RNA type identifier.
 
+返回：类，未找到则为默认。
 
+返回类型：type
 
-    说明：类型：PropertyGroup, 只读
+## FloatVectorAttribute(Attribute)
 
+基类： bpy_struct, Attribute
 
+### classbpy.types.FloatVectorAttribute()
 
+全名：classbpy.types.FloatVectorAttribute(Attribute)
 
-## id #
+Vector geometry attribute, with floating-point values
 
+### data
 
+说明：  
+类型：bpy_prop_collection of FloatVectorAttributeValue, 只读
 
+### classmethod bl_rna_get_subclass()
 
-    说明：
+全名：classmethod bl_rna_get_subclass(id, default=None)
 
+参数：id (字符串) 。 The RNA type identifier.
 
+返回：RNA 类型，未找到则为默认。
 
+返回类型：bpy.types.Struct subclass
 
-    类型：ID
+### classmethod bl_rna_get_subclass_py()
 
+全名：classmethod bl_rna_get_subclass_py(id, default=None)
 
+参数：id (字符串) 。 The RNA type identifier.
 
+返回：类，未找到则为默认。
 
-## idp_array #
+返回类型：type
 
+## IntAttribute(Attribute)
 
+基类： bpy_struct, Attribute
 
+### classbpy.types.IntAttribute()
 
-    说明：
+全名：classbpy.types.IntAttribute(Attribute)
 
+Integer geometry attribute
 
+### data
 
+说明：  
+类型：bpy_prop_collection of IntAttributeValue, 只读
 
-    类型：bpy_prop_collection of PropertyGroup, 只读
+### classmethod bl_rna_get_subclass()
 
+全名：classmethod bl_rna_get_subclass(id, default=None)
 
+参数：id (字符串) 。 The RNA type identifier.
 
+返回：RNA 类型，未找到则为默认。
 
-## int #
+返回类型：bpy.types.Struct subclass
 
+### classmethod bl_rna_get_subclass_py()
 
+全名：classmethod bl_rna_get_subclass_py(id, default=None)
 
+参数：id (字符串) 。 The RNA type identifier.
 
-    说明：类型：int in [-inf, inf], default 0
+返回：类，未找到则为默认。
 
+返回类型：type
 
+## StringAttribute(Attribute)
 
+基类： bpy_struct, Attribute
 
-## int_array #
+### classbpy.types.StringAttribute()
 
+全名：classbpy.types.StringAttribute(Attribute)
 
+String geometry attribute
 
+### data
 
-    说明：
+说明：  
+类型：bpy_prop_collection of StringAttributeValue, 只读
 
+### classmethod bl_rna_get_subclass()
 
+全名：classmethod bl_rna_get_subclass(id, default=None)
 
+参数：id (字符串) 。 The RNA type identifier.
 
-    类型：int array of 1 items in [-inf, inf], default (0,)
+返回：RNA 类型，未找到则为默认。
 
+返回类型：bpy.types.Struct subclass
 
+### classmethod bl_rna_get_subclass_py()
 
+全名：classmethod bl_rna_get_subclass_py(id, default=None)
 
-## string #
+参数：id (字符串) 。 The RNA type identifier.
 
+返回：类，未找到则为默认。
 
+返回类型：type
 
+## BoolProperty(Property)
 
-    说明：
+基类：bpy_struct, Property
 
+说明：定义 RNA 的布尔属性
 
+### 示例
 
+name、description、default 都是继承于父类 Property
 
-    类型：string, default “”, 不会为None
-
-
-
-
-## classmethod bl_rna_get_subclass() #
-
-
-
-
-    全名：classmethod bl_rna_get_subclass(id, default=None)
-
-
-
-
-    参数：id (字符串) 。 The RNA type identifier.
-
-
-
-
-    返回：RNA类型，未找到则为默认。
-
-
-
-
-    返回类型：bpy.types.Struct subclass
-
-
-
-
-## classmethod bl_rna_get_subclass_py() #
-
-
-
-
-    全名：classmethod bl_rna_get_subclass_py(id, default=None)
-
-
-
-
-    参数：id (字符串) 。 The RNA type identifier.
-
-
-
-
-    返回：类，未找到则为默认。
-
-
-
-
-    返回类型：type
-
-
-
-
-     
-
-
-
-
-     
-
-
-
-
-     
-
-
-
-
-    # BoolAttribute(Attribute) #
-
-
-
-
-    基类： bpy_struct, Attribute
-
-
-
-
-    说明：几何属性布尔值
-
-
-
-
-## data #
-
-
-
-
-    说明：
-
-    类型：bpy_prop_collection of BoolAttributeValue, 只读
-
-
-
-
-## classmethod bl_rna_get_subclass() #
-
-
-
-
-    全名：classmethod bl_rna_get_subclass(id, default=None)
-
-
-
-
-    参数：id (字符串) 。 The RNA type identifier.
-
-
-
-
-    返回：RNA类型，未找到则为默认。
-
-
-
-
-    返回类型：bpy.types.Struct subclass
-
-
-
-
-## classmethod bl_rna_get_subclass_py() #
-
-
-
-
-    全名：classmethod bl_rna_get_subclass_py(id, default=None)
-
-
-
-
-    参数：id (字符串) 。 The RNA type identifier.
-
-
-
-
-    返回：类，未找到则为默认。
-
-
-
-
-    返回类型：type
-
-
-
-
-    # ByteColorAttribute(Attribute) #
-
-
-
-
-    基类： bpy_struct, Attribute
-
-
-
-
-    Color geometry attribute, with 8-bit values
-
-
-
-
-## data #
-
-
-
-
-    说明：
-
-    类型：bpy_prop_collection of ByteColorAttributeValue, 只读
-
-
-
-
-## classmethod bl_rna_get_subclass() #
-
-
-
-
-    全名：classmethod bl_rna_get_subclass(id, default=None)
-
-
-
-
-    参数：id (字符串) 。 The RNA type identifier.
-
-
-
-
-    返回：RNA类型，未找到则为默认。
-
-
-
-
-    返回类型：bpy.types.Struct subclass
-
-
-
-
-## classmethod bl_rna_get_subclass_py() #
-
-
-
-
-    全名：classmethod bl_rna_get_subclass_py(id, default=None)
-
-
-
-
-    参数：id (字符串) 。 The RNA type identifier.
-
-
-
-
-    返回：类，未找到则为默认。
-
-
-
-
-    返回类型：type
-
-
-
-
-    # Float2Attribute(Attribute) #
-
-
-
-
-    基类： bpy_struct, Attribute
-
-
-
-
-## classbpy.types.Float2Attribute() #
-
-
-
-
-    全名：classbpy.types.Float2Attribute(Attribute)
-
-
-
-
-    2D vector geometry attribute, with floating-point values
-
-
-
-
-## data #
-
-
-
-
-    说明：
-
-    类型：bpy_prop_collection of Float2AttributeValue, 只读
-
-
-
-
-## classmethod bl_rna_get_subclass() #
-
-
-
-
-    全名：classmethod bl_rna_get_subclass(id, default=None)
-
-
-
-
-    参数：id (字符串) 。 The RNA type identifier.
-
-
-
-
-    返回：RNA类型，未找到则为默认。
-
-
-
-
-    返回类型：bpy.types.Struct subclass
-
-
-
-
-## classmethod bl_rna_get_subclass_py() #
-
-
-
-
-    全名：classmethod bl_rna_get_subclass_py(id, default=None)
-
-
-
-
-    参数：id (字符串) 。 The RNA type identifier.
-
-
-
-
-    返回：类，未找到则为默认。
-
-
-
-
-    返回类型：type
-
-
-
-
-    # FloatAttribute(Attribute) #
-
-
-
-
-    基类： bpy_struct, Attribute
-
-
-
-
-## classbpy.types.FloatAttribute() #
-
-
-
-
-    全名：classbpy.types.FloatAttribute(Attribute)
-
-
-
-
-    Geometry attribute with floating-point values
-
-
-
-
-## data #
-
-
-
-
-    说明：
-
-    类型：bpy_prop_collection of FloatAttributeValue, 只读
-
-
-
-
-## classmethod bl_rna_get_subclass() #
-
-
-
-
-    全名：classmethod bl_rna_get_subclass(id, default=None)
-
-
-
-
-    参数：id (字符串) 。 The RNA type identifier.
-
-
-
-
-    返回：RNA类型，未找到则为默认。
-
-
-
-
-    返回类型：bpy.types.Struct subclass
-
-
-
-
-## classmethod bl_rna_get_subclass_py() #
-
-
-
-
-    全名：classmethod bl_rna_get_subclass_py(id, default=None)
-
-
-
-
-    参数：id (字符串) 。 The RNA type identifier.
-
-
-
-
-    返回：类，未找到则为默认。
-
-
-
-
-    返回类型：type
-
-
-
-
-    # FloatColorAttribute(Attribute) #
-
-
-
-
-    基类： bpy_struct, Attribute
-
-
-
-
-## classbpy.types.FloatColorAttribute() #
-
-
-
-
-    全名：classbpy.types.FloatColorAttribute(Attribute)
-
-
-
-
-    Color geometry attribute, with floating-point values
-
-
-
-
-## data #
-
-
-
-
-    说明：
-
-    类型：bpy_prop_collection of FloatColorAttributeValue, 只读
-
-
-
-
-## classmethod bl_rna_get_subclass() #
-
-
-
-
-    全名：classmethod bl_rna_get_subclass(id, default=None)
-
-
-
-
-    参数：id (字符串) 。 The RNA type identifier.
-
-
-
-
-    返回：RNA类型，未找到则为默认。
-
-
-
-
-    返回类型：bpy.types.Struct subclass
-
-
-
-
-## classmethod bl_rna_get_subclass_py() #
-
-
-
-
-    全名：classmethod bl_rna_get_subclass_py(id, default=None)
-
-
-
-
-    参数：id (字符串) 。 The RNA type identifier.
-
-
-
-
-    返回：类，未找到则为默认。
-
-
-
-
-    返回类型：type
-
-
-
-
-    # FloatVectorAttribute(Attribute) #
-
-
-
-
-    基类： bpy_struct, Attribute
-
-
-
-
-## classbpy.types.FloatVectorAttribute() #
-
-
-
-
-    全名：classbpy.types.FloatVectorAttribute(Attribute)
-
-
-
-
-    Vector geometry attribute, with floating-point values
-
-
-
-
-## data #
-
-
-
-
-    说明：
-
-    类型：bpy_prop_collection of FloatVectorAttributeValue, 只读
-
-
-
-
-## classmethod bl_rna_get_subclass() #
-
-
-
-
-    全名：classmethod bl_rna_get_subclass(id, default=None)
-
-
-
-
-    参数：id (字符串) 。 The RNA type identifier.
-
-
-
-
-    返回：RNA类型，未找到则为默认。
-
-
-
-
-    返回类型：bpy.types.Struct subclass
-
-
-
-
-## classmethod bl_rna_get_subclass_py() #
-
-
-
-
-    全名：classmethod bl_rna_get_subclass_py(id, default=None)
-
-
-
-
-    参数：id (字符串) 。 The RNA type identifier.
-
-
-
-
-    返回：类，未找到则为默认。
-
-
-
-
-    返回类型：type
-
-
-
-
-    # IntAttribute(Attribute) #
-
-
-
-
-    基类： bpy_struct, Attribute
-
-
-
-
-## classbpy.types.IntAttribute() #
-
-
-
-
-    全名：classbpy.types.IntAttribute(Attribute)
-
-
-
-
-    Integer geometry attribute
-
-
-
-
-## data #
-
-
-
-
-    说明：
-
-    类型：bpy_prop_collection of IntAttributeValue, 只读
-
-
-
-
-## classmethod bl_rna_get_subclass() #
-
-
-
-
-    全名：classmethod bl_rna_get_subclass(id, default=None)
-
-
-
-
-    参数：id (字符串) 。 The RNA type identifier.
-
-
-
-
-    返回：RNA类型，未找到则为默认。
-
-
-
-
-    返回类型：bpy.types.Struct subclass
-
-
-
-
-## classmethod bl_rna_get_subclass_py() #
-
-
-
-
-    全名：classmethod bl_rna_get_subclass_py(id, default=None)
-
-
-
-
-    参数：id (字符串) 。 The RNA type identifier.
-
-
-
-
-    返回：类，未找到则为默认。
-
-
-
-
-    返回类型：type
-
-
-
-
-    # StringAttribute(Attribute) #
-
-
-
-
-    基类： bpy_struct, Attribute
-
-
-
-
-## classbpy.types.StringAttribute() #
-
-
-
-
-    全名：classbpy.types.StringAttribute(Attribute)
-
-
-
-
-    String geometry attribute
-
-
-
-
-## data #
-
-
-
-
-    说明：
-
-    类型：bpy_prop_collection of StringAttributeValue, 只读
-
-
-
-
-## classmethod bl_rna_get_subclass() #
-
-
-
-
-    全名：classmethod bl_rna_get_subclass(id, default=None)
-
-
-
-
-    参数：id (字符串) 。 The RNA type identifier.
-
-
-
-
-    返回：RNA类型，未找到则为默认。
-
-
-
-
-    返回类型：bpy.types.Struct subclass
-
-
-
-
-## classmethod bl_rna_get_subclass_py() #
-
-
-
-
-    全名：classmethod bl_rna_get_subclass_py(id, default=None)
-
-
-
-
-    参数：id (字符串) 。 The RNA type identifier.
-
-
-
-
-    返回：类，未找到则为默认。
-
-
-
-
-    返回类型：type
-
-
-
-
-     
-
-
-
-
-    # BoolProperty(Property) #
-
-
-
-
-    基类：bpy_struct, Property
-
-
-
-
-    说明：定义RNA的布尔属性
-
-
-
-
-## 示例 #
-
-
-
-
-    name、description、default都是继承于父类Property
-
-
-
-
-
-    my_bool: bpy.props.BoolProperty(
-
-        name="开/关",
-
-        description="我是布尔类型",
-
-        default = False
-
-    )
-
-
+```python
+my_bool: bpy.props.BoolProperty( name="开/关", description="我是布尔类型",
+default = False )
 ```
 
-## array_dimensions #
+### array_dimensions
 
+说明：Length of each dimension of the array
 
+类型：int array of 3 items in [0, inf], default (0, 0, 0), 只读
 
+### array_length
 
-    说明：Length of each dimension of the array
+说明：Maximum length of the array, 0 means unlimited
 
+类型：int in [0, inf], default 0, 只读
 
+### default
 
+说明：Default value for this number
 
-    类型：int array of 3 items in [0, inf], default (0, 0, 0), 只读
+类型：boolean, default False, 只读
 
+### default_array
 
+说明：Default value for this array
 
+类型：boolean array of 3 items, default (False, False, False), 只读
 
-## array_length #
+### is_array
 
+说明：类型：boolean, default False, 只读
 
+### classmethod bl_rna_get_subclass()
 
+全名：classmethod bl_rna_get_subclass(id, default=None)
 
-    说明：Maximum length of the array, 0 means unlimited
+参数：id (字符串) 。 The RNA type identifier.
 
+返回：RNA 类型，未找到则为默认。
 
+返回类型：bpy.types.Struct subclass
 
+### classmethod bl_rna_get_subclass_py()
 
-    类型：int in [0, inf], default 0, 只读
+全名：classmethod bl_rna_get_subclass_py(id, default=None)
 
+参数：id (字符串) 。 The RNA type identifier.
 
+返回：类，未找到则为默认。
 
+返回类型：type
 
-## default #
+## CollectionProperty(Property)
 
+基类：bpy_struct, Property
 
+说明：RNA 集合属性用于定义 lists, arrays and mappings
 
+### fixed_type
 
-    说明：Default value for this number
+说明：Fixed pointer type, empty if variable type
 
+类型：Struct, 只读
 
+### classmethod bl_rna_get_subclass()
 
+全名：classmethod bl_rna_get_subclass(id, default=None)
 
-    类型：boolean, default False, 只读
+参数：id (字符串) 。 The RNA type identifier.
 
+返回：RNA 类型，未找到则为默认。
 
+返回类型：bpy.types.Struct subclass
 
+### classmethod bl_rna_get_subclass_py()
 
-## default_array #
+全名：classmethod bl_rna_get_subclass_py(id, default=None)
 
+参数：id (字符串) 。 The RNA type identifier.
 
+返回：类，未找到则为默认。
 
+返回类型：type
 
-    说明：Default value for this array
+---
 
+### 示例
 
-
-
-    类型：boolean array of 3 items, default (False, False, False), 只读
-
-
-
-
-## is_array #
-
-
-
-
-    说明：类型：boolean, default False, 只读
-
-
-
-
-## classmethod bl_rna_get_subclass() #
-
-
-
-
-    全名：classmethod bl_rna_get_subclass(id, default=None)
-
-
-
-
-    参数：id (字符串) 。 The RNA type identifier.
-
-
-
-
-    返回：RNA类型，未找到则为默认。
-
-
-
-
-    返回类型：bpy.types.Struct subclass
-
-
-
-
-## classmethod bl_rna_get_subclass_py() #
-
-
-
-
-    全名：classmethod bl_rna_get_subclass_py(id, default=None)
-
-
-
-
-    参数：id (字符串) 。 The RNA type identifier.
-
-
-
-
-    返回：类，未找到则为默认。
-
-
-
-
-    返回类型：type
-
-
-
-
-    # CollectionProperty(Property) #
-
-
-
-
-    基类：bpy_struct, Property
-
-
-
-
-    说明：RNA集合属性用于定义lists, arrays and mappings
-
-
-
-
-## fixed_type #
-
-
-
-
-    说明：Fixed pointer type, empty if variable type
-
-
-
-
-    类型：Struct, 只读
-
-
-
-
-## classmethod bl_rna_get_subclass() #
-
-
-
-
-    全名：classmethod bl_rna_get_subclass(id, default=None)
-
-
-
-
-    参数：id (字符串) 。 The RNA type identifier.
-
-
-
-
-    返回：RNA类型，未找到则为默认。
-
-
-
-
-    返回类型：bpy.types.Struct subclass
-
-
-
-
-## classmethod bl_rna_get_subclass_py() #
-
-
-
-
-    全名：classmethod bl_rna_get_subclass_py(id, default=None)
-
-
-
-
-    参数：id (字符串) 。 The RNA type identifier.
-
-
-
-
-    返回：类，未找到则为默认。
-
-
-
-
-    返回类型：type
-
-
-
-
-    * * *
-
-
-
-
-## 示例 #
-
-
-
-
-
-    from bpy.types import PropertyGroup
-
-
-
-    # 定义
-
-    class ListItem(PropertyGroup):
-
-        """代表列表中一个项目的属性组"""
-
-        prop1: StringProperty(
-
-            name="propp1",
-
-            description="一个属性",
-
-            default="属性1")
-
-
-
-        prop2: StringProperty(
-
-            name="propp2",
-
-            description="另一个属性",
-
-            default="属性2")
-
-
-
-    # 使用
-
-    bpy.types.Scene.my_list = CollectionProperty(type=ListItem) # type 继承父类Property？
-
-
-
-    class XX()
-
-        def execute(self, context):
-
-            my_list = context.scene.my_list # 从scene中获取my_lsit
-
-
-
-            my_list.add()  # 添加项
-
-
-
-            index = context.scene.list_index
-
-            my_list.remove(index) # 删除项
-
-            my_list.move(index + 1, index) # 移动项，示例为向下移动1
-
-            my_list.clear() #清空项
-
-
-
-            return{'FINISHED'}
-
+```python
+from bpy.types import PropertyGroup # 定义 class
+ListItem(PropertyGroup): """代表列表中一个项目的属性组""" prop1: StringProperty(name="propp1", description="一个属性", default="属性1") prop2: StringProperty(name="propp2", description="另一个属性", default="属性2") # 使用bpy.types.Scene.my_list = CollectionProperty(type=ListItem) # type继承父类Property？ class XX() def execute(self, context): my_list =context.scene.my_list # 从scene中获取my_lsit my_list.add() # 添加项 index =context.scene.list_index my_list.remove(index) # 删除项 my_list.move(index + 1,index) # 移动项，示例为向下移动1 my_list.clear() #清空项 return{'FINISHED'}
 ```
 
+以下非官方文档，为查看其它示例以及个人找到的。
 
-    以下非官方文档，为查看其它示例以及个人找到的。
+![](https://cdn.yuelili.com/20220117000319.png)
 
+### add()
 
+说明：添加项
 
+### clear()
 
-    ![](https://cdn.yuelili.com/20220117000319.png)
+说明：清空所有项
 
+### move()
 
+全名：XX list.move(trg , src)
 
+说明：移动项
 
-## add() #
+参数：
 
+- trg：目标索引
+- src：被移动的索引
 
+### remove()
 
+说明：移除项
 
-    说明：添加项
+参数：指定一个索引，没啥好说的
 
+## EnumProperty(Property)
 
+基类：bpy_struct, Property
 
+说明：RNA 枚举属性定义，用于从预设选项中选取
 
-## clear() #
-
-
-
-
-    说明：清空所有项
-
-
-
-
-## move() #
-
-
-
-
-    全名：XX list.move(trg , src)
-
-
-
-
-    说明：移动项
-
-
-
-
-    参数：
-
-
-
-
-
-
-      * trg：目标索引
-
-
-      * src：被移动的索引
-
-
-
-
-
-## remove() #
-
-
-
-
-    说明：移除项
-
-
-
-
-    参数：指定一个索引，没啥好说的
-
-
-
-
-     
-
-
-
-
-     
-
-
-
-
-    # EnumProperty(Property) #
-
-
-
-
-    基类：bpy_struct, Property
-
-
-
-
-    说明：RNA枚举属性定义，用于从预设选项中选取
-
-
-
-
-## 示例 #
-
-
-
-
+### 示例
 
         my_enum: EnumProperty(
 
@@ -1911,15 +994,15 @@ OperatorStrokeElement, SelectedUvElement
 
             )
 
-
 ```
+
 
      
 
 
 
 
-## default #
+    ## default #
 
 
 
@@ -1934,7 +1017,7 @@ OperatorStrokeElement, SelectedUvElement
 
 
 
-## default_flag #
+    ## default_flag #
 
 
 
@@ -1949,7 +1032,7 @@ OperatorStrokeElement, SelectedUvElement
 
 
 
-## enum_items #
+    ## enum_items #
 
 
 
@@ -1964,7 +1047,7 @@ OperatorStrokeElement, SelectedUvElement
 
 
 
-## enum_items_static #
+    ## enum_items_static #
 
 
 
@@ -1979,7 +1062,7 @@ OperatorStrokeElement, SelectedUvElement
 
 
 
-## classmethod bl_rna_get_subclass() #
+    ## classmethod bl_rna_get_subclass() #
 
 
 
@@ -2004,7 +1087,7 @@ OperatorStrokeElement, SelectedUvElement
 
 
 
-## classmethod bl_rna_get_subclass_py() #
+    ## classmethod bl_rna_get_subclass_py() #
 
 
 
@@ -2044,7 +1127,7 @@ OperatorStrokeElement, SelectedUvElement
 
 
 
-## description #
+    ## description #
 
 
 
@@ -2059,7 +1142,7 @@ OperatorStrokeElement, SelectedUvElement
 
 
 
-## icon #
+    ## icon #
 
 
 
@@ -2074,7 +1157,7 @@ OperatorStrokeElement, SelectedUvElement
 
 
 
-## identifier #
+    ## identifier #
 
 
 
@@ -2089,7 +1172,7 @@ OperatorStrokeElement, SelectedUvElement
 
 
 
-## name #
+    ## name #
 
 
 
@@ -2104,7 +1187,7 @@ OperatorStrokeElement, SelectedUvElement
 
 
 
-## value #
+    ## value #
 
 
 
@@ -2119,7 +1202,7 @@ OperatorStrokeElement, SelectedUvElement
 
 
 
-## classmethod bl_rna_get_subclass() #
+    ## classmethod bl_rna_get_subclass() #
 
 
 
@@ -2144,7 +1227,7 @@ OperatorStrokeElement, SelectedUvElement
 
 
 
-## classmethod bl_rna_get_subclass_py() #
+    ## classmethod bl_rna_get_subclass_py() #
 
 
 
@@ -2184,7 +1267,7 @@ OperatorStrokeElement, SelectedUvElement
 
 
 
-## 示例 #
+    ## 示例 #
 
 
 
@@ -2204,10 +1287,10 @@ OperatorStrokeElement, SelectedUvElement
 
             )
 
+
 ```
 
-
-## array_dimensions #
+    ## array_dimensions #
 
 
 
@@ -2222,7 +1305,7 @@ OperatorStrokeElement, SelectedUvElement
 
 
 
-## array_length #
+    ## array_length #
 
 
 
@@ -2237,7 +1320,7 @@ OperatorStrokeElement, SelectedUvElement
 
 
 
-## default #
+    ## default #
 
 
 
@@ -2252,7 +1335,7 @@ OperatorStrokeElement, SelectedUvElement
 
 
 
-## default_array #
+    ## default_array #
 
 
 
@@ -2267,7 +1350,7 @@ OperatorStrokeElement, SelectedUvElement
 
 
 
-## hard_max #
+    ## hard_max #
 
 
 
@@ -2282,7 +1365,7 @@ OperatorStrokeElement, SelectedUvElement
 
 
 
-## hard_min #
+    ## hard_min #
 
 
 
@@ -2297,7 +1380,7 @@ OperatorStrokeElement, SelectedUvElement
 
 
 
-## is_array #
+    ## is_array #
 
 
 
@@ -2307,7 +1390,7 @@ OperatorStrokeElement, SelectedUvElement
 
 
 
-## precision #
+    ## precision #
 
 
 
@@ -2322,7 +1405,7 @@ OperatorStrokeElement, SelectedUvElement
 
 
 
-## soft_max #
+    ## soft_max #
 
 
 
@@ -2337,7 +1420,7 @@ OperatorStrokeElement, SelectedUvElement
 
 
 
-## soft_min #
+    ## soft_min #
 
 
 
@@ -2352,7 +1435,7 @@ OperatorStrokeElement, SelectedUvElement
 
 
 
-## step #
+    ## step #
 
 
 
@@ -2367,7 +1450,7 @@ OperatorStrokeElement, SelectedUvElement
 
 
 
-## classmethod bl_rna_get_subclass() #
+    ## classmethod bl_rna_get_subclass() #
 
 
 
@@ -2392,7 +1475,7 @@ OperatorStrokeElement, SelectedUvElement
 
 
 
-## classmethod bl_rna_get_subclass_py() #
+    ## classmethod bl_rna_get_subclass_py() #
 
 
 
@@ -2432,13 +1515,11 @@ OperatorStrokeElement, SelectedUvElement
 
 
 
-## 示例 #
+    ## 示例 #
 
 
-
-
-
-        my_int: IntProperty(
+    ```python
+    my_int: IntProperty(
 
             name = "整数类型",
 
@@ -2452,15 +1533,15 @@ OperatorStrokeElement, SelectedUvElement
 
             )
 
+````
 
-```
 
      
 
 
 
 
-## array_dimensions #
+    ## array_dimensions #
 
 
 
@@ -2475,7 +1556,7 @@ OperatorStrokeElement, SelectedUvElement
 
 
 
-## array_length #
+    ## array_length #
 
 
 
@@ -2490,7 +1571,7 @@ OperatorStrokeElement, SelectedUvElement
 
 
 
-## default #
+    ## default #
 
 
 
@@ -2505,7 +1586,7 @@ OperatorStrokeElement, SelectedUvElement
 
 
 
-## default_array #
+    ## default_array #
 
 
 
@@ -2520,7 +1601,7 @@ OperatorStrokeElement, SelectedUvElement
 
 
 
-## hard_max #
+    ## hard_max #
 
 
 
@@ -2535,7 +1616,7 @@ OperatorStrokeElement, SelectedUvElement
 
 
 
-## hard_min #
+    ## hard_min #
 
 
 
@@ -2550,7 +1631,7 @@ OperatorStrokeElement, SelectedUvElement
 
 
 
-## is_array #
+    ## is_array #
 
 
 
@@ -2560,7 +1641,7 @@ OperatorStrokeElement, SelectedUvElement
 
 
 
-## soft_max #
+    ## soft_max #
 
 
 
@@ -2575,7 +1656,7 @@ OperatorStrokeElement, SelectedUvElement
 
 
 
-## soft_min #
+    ## soft_min #
 
 
 
@@ -2590,7 +1671,7 @@ OperatorStrokeElement, SelectedUvElement
 
 
 
-## step #
+    ## step #
 
 
 
@@ -2605,7 +1686,7 @@ OperatorStrokeElement, SelectedUvElement
 
 
 
-## classmethod bl_rna_get_subclass() #
+    ## classmethod bl_rna_get_subclass() #
 
 
 
@@ -2630,7 +1711,7 @@ OperatorStrokeElement, SelectedUvElement
 
 
 
-## classmethod bl_rna_get_subclass_py() #
+    ## classmethod bl_rna_get_subclass_py() #
 
 
 
@@ -2675,7 +1756,7 @@ OperatorStrokeElement, SelectedUvElement
 
 
 
-## fixed_type #
+    ## fixed_type #
 
 
 
@@ -2690,7 +1771,7 @@ OperatorStrokeElement, SelectedUvElement
 
 
 
-## classmethod bl_rna_get_subclass() #
+    ## classmethod bl_rna_get_subclass() #
 
 
 
@@ -2715,7 +1796,7 @@ OperatorStrokeElement, SelectedUvElement
 
 
 
-## classmethod bl_rna_get_subclass_py() #
+    ## classmethod bl_rna_get_subclass_py() #
 
 
 
@@ -2755,13 +1836,11 @@ OperatorStrokeElement, SelectedUvElement
 
 
 
-## 示例 #
+    ## 示例 #
 
 
-
-
-
-        my_string: StringProperty(
+    ```python
+    my_string: StringProperty(
 
             name="用户输入",
 
@@ -2773,10 +1852,10 @@ OperatorStrokeElement, SelectedUvElement
 
             )
 
-```
 
+````
 
-## default #
+    ## default #
 
 
 
@@ -2791,7 +1870,7 @@ OperatorStrokeElement, SelectedUvElement
 
 
 
-## length_max #
+    ## length_max #
 
 
 
@@ -2806,7 +1885,7 @@ OperatorStrokeElement, SelectedUvElement
 
 
 
-## classmethod bl_rna_get_subclass() #
+    ## classmethod bl_rna_get_subclass() #
 
 
 
@@ -2831,7 +1910,7 @@ OperatorStrokeElement, SelectedUvElement
 
 
 
-## classmethod bl_rna_get_subclass_py() #
+    ## classmethod bl_rna_get_subclass_py() #
 
 
 
@@ -2871,7 +1950,7 @@ OperatorStrokeElement, SelectedUvElement
 
 
 
-## base #
+    ## base #
 
 
 
@@ -2886,7 +1965,7 @@ OperatorStrokeElement, SelectedUvElement
 
 
 
-## description #
+    ## description #
 
 
 
@@ -2901,7 +1980,7 @@ OperatorStrokeElement, SelectedUvElement
 
 
 
-## functions #
+    ## functions #
 
 
 
@@ -2911,7 +1990,7 @@ OperatorStrokeElement, SelectedUvElement
 
 
 
-## identifier #
+    ## identifier #
 
 
 
@@ -2926,7 +2005,7 @@ OperatorStrokeElement, SelectedUvElement
 
 
 
-## name #
+    ## name #
 
 
 
@@ -2941,7 +2020,7 @@ OperatorStrokeElement, SelectedUvElement
 
 
 
-## name_property #
+    ## name_property #
 
 
 
@@ -2956,7 +2035,7 @@ OperatorStrokeElement, SelectedUvElement
 
 
 
-## nested #
+    ## nested #
 
 
 
@@ -2971,7 +2050,7 @@ OperatorStrokeElement, SelectedUvElement
 
 
 
-## properties #
+    ## properties #
 
 
 
@@ -2986,7 +2065,7 @@ OperatorStrokeElement, SelectedUvElement
 
 
 
-## property_tags #
+    ## property_tags #
 
 
 
@@ -3001,7 +2080,7 @@ OperatorStrokeElement, SelectedUvElement
 
 
 
-## translation_context #
+    ## translation_context #
 
 
 
@@ -3016,7 +2095,7 @@ OperatorStrokeElement, SelectedUvElement
 
 
 
-## classmethod bl_rna_get_subclass() #
+    ## classmethod bl_rna_get_subclass() #
 
 
 
@@ -3041,7 +2120,7 @@ OperatorStrokeElement, SelectedUvElement
 
 
 
-## classmethod bl_rna_get_subclass_py() #
+    ## classmethod bl_rna_get_subclass_py() #
 
 
 
@@ -3062,8 +2141,3 @@ OperatorStrokeElement, SelectedUvElement
 
 
     返回类型：type
-
-
-
-
-```

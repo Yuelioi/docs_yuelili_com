@@ -1,12 +1,13 @@
-# Dependencies
+
 /node_modules
 
-# Production
-/docs/.vuepress/dist
-docs/**/dist
-.obsidian
-# Generated files
+/**/dist
+.temp
+.cache
 
+.vscode
+
+.obsidian
 .cache-loader
 
 # Misc
@@ -19,6 +20,4 @@ docs/**/dist
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-node_modules
-.temp
-.cache
+

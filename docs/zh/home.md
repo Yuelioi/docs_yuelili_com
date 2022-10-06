@@ -4,7 +4,7 @@ icon: home
 title: 文档主页
 heroImage: /logo.svg
 heroText: 文档
-tagline: 全世界最大的文档开源中心(x)
+tagline: 全宇宙最大的文档开源中心(x)
 actions:
   - text: 使用指南 💡
     link: /zh/guide/

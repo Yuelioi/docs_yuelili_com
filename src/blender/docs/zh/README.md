@@ -6,7 +6,7 @@ title: 网站主页
 heroImage: /logo.svg
 heroText: 月离离文档
 heroFullScreen: true
-tagline: 全世界最大的文档开源中心(不是)
+tagline: 全宇宙最大的文档开源中心(不是)
 projects:
   - icon: project
     name: 导航站

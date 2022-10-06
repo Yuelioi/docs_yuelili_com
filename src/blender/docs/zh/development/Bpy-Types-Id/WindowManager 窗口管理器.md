@@ -2,10 +2,12 @@
 title: WindowManager 窗口管理器
 order: 4
 category:
-  - AE
+  - blender-dev
 ---
 
-    [WindowManager(ID)](https://docs.blender.org/api/master/bpy.types.WindowManager.html)
+## Description
+
+[WindowManager(ID)](https://docs.blender.org/api/master/bpy.types.WindowManager.html)
 
 基类：bpy_struct, ID
 
@@ -106,8 +108,7 @@ category:
 
 全名：classmethodmodal_handler_add(operator)
 
-说明：为窗口管理器添加一个模态 Modal 处理程序，用于给定的模态操作项。（在 return
-{'RUNNING_MODAL'}之前，由 invoke()与 self 调用）。
+说明：为窗口管理器添加一个模态 Modal 处理程序，用于给定的模态操作项。（在 return{'RUNNING_MODAL'}之前，由 invoke()与 self 调用）。
 
 参数：：operator ，要调用的操作项
 
@@ -204,837 +205,359 @@ F3，输入 Test My UI，然后弹出“操作项对话框”
 
 此时你可以更改属性，此时更改属性时，会直接执行 execute()，也就是会打印 mStr 的内容
 
-    import bpy
-
-    from bpy.props import StringProperty, BoolProperty
-
-
+```python
+import bpy
+from bpy.props import StringProperty, BoolProperty
 
 
+class Test_OT_test_ui(bpy.types.Operator):
+    bl_idname = "test.ui"
+    bl_label = "Test My UI"
+    bl_options = {"REGISTER", "UNDO"}
 
-    class Test_OT_test_ui(bpy.types.Operator):
+    # 创建2个RNA属性
+    mStr: StringProperty(
+        default="我是字符串",
+        description="我是属性说明",
+    )
 
-        bl_idname = "test.ui"
+    mBool: BoolProperty(
+        name="我是布尔值",
+        description="我是属性说明",
+        default=True,
+    )
 
-        bl_label = "Test My UI"
+    def execute(self, context):
+        # 控制台打印字符串，可以不要
+        self.report({"INFO"}, self.mStr)
+        return {"FINISHED"}
 
-        bl_options = {"REGISTER", "UNDO"}
-
-
-
-        # 创建2个RNA属性
-
-        mStr: StringProperty(
-
-            default="我是字符串",
-
-            description="我是属性说明",
-
-        )
-
-
-
-        mBool: BoolProperty(
-
-            name="我是布尔值",
-
-            description="我是属性说明",
-
-            default=True,
-
-        )
+    def invoke(self, context, event):
+        return context.window_manager.invoke_props_popup(self,event)
 
 
+bpy.utils.register_class(Test_OT_test_ui)
+```
 
-        def execute(self, context):
+### classmethod invoke_props_dialog()
 
-            # 控制台打印字符串，可以不要
+全名：classmethod invoke_props_dialog(operator, width=300)
 
-            self.report({"INFO"}, self.mStr)
+说明：操作项对话框（非自动执行弹出式）调用（显示操作项属性，点击确定按钮后执行）。
 
-            return {"FINISHED"}
+参数：
+
+- operator：要调用的操作项
+- width ：弹窗宽度，整数，可选
+
+返回：result
+
+- RUNNING_MODAL：保持运行模式，操作项与 blender 一起运行。
+- CANCELLED：取消。 操作项不做任何事情退出，所以不应该推送撤销条目。
+- FINISHED：完成。操作项在完成其动作后退出。
+- PASS_THROUGH：跳过。不做任何事情，将事件传递下去。
+- INTERFACE：界面。 处理但不执行（弹出式菜单）。
+
+返回类型：以上之一
+
+示例：
+
+![](https://cdn.yuelili.com/20220118001203.png)
+
+F3，输入 Test My UI，然后弹出“操作项对话框”
+
+此时更改属性，单击 OK 确定后，会执行 execute()，也就是会打印 mStr 的内容
+
+```python
+import bpy
+from bpy.props import StringProperty, BoolProperty
 
 
+class Test_OT_test_ui(bpy.types.Operator):
+    bl_idname = "test.ui"
+    bl_label = "Test My UI"
+    bl_options = {"REGISTER", "UNDO"}
 
-        def invoke(self, context, event):
+    # 创建2个RNA属性
+    mStr: StringProperty(
+        default="我是字符串",
+        description="我是属性说明",
+    )
 
-            return context.window_manager.invoke_props_popup(self,event)
+    mBool: BoolProperty(
+        name="我是布尔值",
+        description="我是属性说明",
+        default=True,
+    )
+
+    def execute(self, context):
+        # 控制台打印字符串，可以不要
+        self.report({"INFO"}, self.mStr)
+        return {"FINISHED"}
+
+    def invoke(self, context, event):
+        return context.window_manager.invoke_props_dialog(self,width = 200)
 
 
-
-
-
-    bpy.utils.register_class(Test_OT_test_ui)
+bpy.utils.register_class(Test_OT_test_ui)
 
 ```
 
+### classmethod invoke_search_popup() 弹出搜索式操作项
 
-## classmethod invoke_props_dialog() #
+全名：classmethodinvoke_search_popup(operator)
 
+说明：弹出调用搜索式操作项，搜索操作项的 bpy.types.Operator.bl_property（必须是 EnumProperty），在确认后执行。
 
+参数：operator，要调用的操作项
 
+### classmethod invoke_popup()
 
-    全名：classmethod invoke_props_dialog(operator, width=300)
+全名：classmethodinvoke_popup(operator, width=300)
 
+说明：操作项弹出式调用（只显示操作项属性，不执行）。
 
+参数：
 
+- operator ：要执行的操作项
+- width，整数，[0, inf]，可选，弹窗的宽度
 
-    说明：操作项对话框（非自动执行弹出式）调用（显示操作项属性，点击确定按钮后执行）。
+返回：result
 
+- RUNNING_MODAL：保持运行模式，操作项与 blender 一起运行。
+- CANCELLED：取消。 操作项不做任何事情退出，所以不应该推送撤销条目。
+- FINISHED：完成。操作项在完成其动作后退出。
+- PASS_THROUGH：跳过。不做任何事情，将事件传递下去。
+- INTERFACE：界面。 处理但不执行（弹出式菜单）。
 
+返回类型：以上之一
 
+示例：
 
-    参数：
+![](https://cdn.yuelili.com/20220118001203.png)
 
+F3，输入 Test My UI，然后弹出“操作项对话框”
 
+此时你可以更改属性，单击 OK 确定后，啥也不干（不会进入 invoke），但是属性值会更改
 
+```python
+import bpy
+from bpy.props import StringProperty, BoolProperty
 
 
+class Test_OT_test_ui(bpy.types.Operator):
+    bl_idname = "test.ui"
+    bl_label = "Test My UI"
+    bl_options = {"REGISTER", "UNDO"}
 
-      * operator：要调用的操作项
+    # 创建2个RNA属性
+    mStr: StringProperty(
+        default="我是字符串",
+        description="我是属性说明",
+    )
 
+    mBool: BoolProperty(
+        name="我是布尔值",
+        description="我是属性说明",
+        default=True,
+    )
 
-      * width ：弹窗宽度，整数，可选
+    def execute(self, context):
+        # 控制台打印字符串，可以不要
+        self.report({"INFO"}, self.mStr)
+        return {"FINISHED"}
 
+    def invoke(self, context, event):
+        return context.window_manager.invoke_popup(self,width = 200)
 
 
-
-
-    返回：result
-
-
-
-
-
-
-      * RUNNING_MODAL：保持运行模式，操作项与blender一起运行。
-
-
-      * CANCELLED：取消。 操作项不做任何事情退出，所以不应该推送撤销条目。
-
-
-      * FINISHED：完成。操作项在完成其动作后退出。
-
-
-      * PASS_THROUGH：跳过。不做任何事情，将事件传递下去。
-
-
-      * INTERFACE：界面。 处理但不执行（弹出式菜单）。
-
-
-
-
-
-    返回类型：以上之一
-
-
-
-
-    示例：
-
-
-
-
-    ![](https://cdn.yuelili.com/20220118001203.png)
-
-
-
-
-    F3，输入Test My UI，然后弹出“操作项对话框”
-
-
-
-
-    此时更改属性，单击OK确定后，会执行execute()，也就是会打印mStr的内容
-
-
-
-
-
-    import bpy
-
-    from bpy.props import StringProperty, BoolProperty
-
-
-
-
-
-    class Test_OT_test_ui(bpy.types.Operator):
-
-        bl_idname = "test.ui"
-
-        bl_label = "Test My UI"
-
-        bl_options = {"REGISTER", "UNDO"}
-
-
-
-        # 创建2个RNA属性
-
-        mStr: StringProperty(
-
-            default="我是字符串",
-
-            description="我是属性说明",
-
-        )
-
-
-
-        mBool: BoolProperty(
-
-            name="我是布尔值",
-
-            description="我是属性说明",
-
-            default=True,
-
-        )
-
-
-
-        def execute(self, context):
-
-            # 控制台打印字符串，可以不要
-
-            self.report({"INFO"}, self.mStr)
-
-            return {"FINISHED"}
-
-
-
-        def invoke(self, context, event):
-
-            return context.window_manager.invoke_props_dialog(self,width = 200)
-
-
-
-
-
-    bpy.utils.register_class(Test_OT_test_ui)
-
+bpy.utils.register_class(Test_OT_test_ui)
 
 ```
 
-## classmethod invoke_search_popup() 弹出搜索式操作项 #
+### classmethod invoke_confirm()
 
+全名：classmethodinvoke_confirm(operator, event)
 
+说明：确认操作项弹窗（只让用户确认执行，不显示操作项属性）
 
+参数：
 
-    全名：classmethodinvoke_search_popup(operator)
+- operator ：要执行的操作项
+- event：事件
 
+返回：result
 
+- RUNNING_MODAL：保持运行模式，操作项与 blender 一起运行。
+- CANCELLED：取消。 操作项不做任何事情退出，所以不应该推送撤销条目。
+- FINISHED：完成。操作项在完成其动作后退出。
+- PASS_THROUGH：跳过。不做任何事情，将事件传递下去。
+- INTERFACE：界面。 处理但不执行（弹出式菜单）。
 
+返回类型：以上之一
 
-    说明：弹出调用搜索式操作项，搜索操作项的bpy.types.Operator.bl_property（必须是EnumProperty），在确认后执行。
+示例：
 
+![](https://cdn.yuelili.com/20220118002743.png)
 
+F3，输入 Test My UI，然后弹出“确认对话框”，此时不会显示属性
 
+单击确定后，会进入 invoke 函数
 
-    参数：operator，要调用的操作项
+```python
+import bpy
+from bpy.props import StringProperty, BoolProperty
 
 
+class Test_OT_test_ui(bpy.types.Operator):
+    bl_idname = "test.ui"
+    bl_label = "Test My UI"
+    bl_options = {"REGISTER", "UNDO"}
 
+    # 创建2个RNA属性
+    mStr: StringProperty(
+        default="我是字符串",
+        description="我是属性说明",
+    )
 
-## classmethod invoke_popup() #
+    mBool: BoolProperty(
+        name="我是布尔值",
+        description="我是属性说明",
+        default=True,
+    )
 
+    def execute(self, context):
+        # 控制台打印字符串，可以不要
+        self.report({"INFO"}, self.mStr)
+        return {"FINISHED"}
 
+    def invoke(self, context, event):
+        return context.window_manager.invoke_confirm(self,event)
 
 
-    全名：classmethodinvoke_popup(operator, width=300)
-
-
-
-
-    说明：操作项弹出式调用（只显示操作项属性，不执行）。
-
-
-
-
-    参数：
-
-
-
-
-
-
-      * operator ：要执行的操作项
-
-
-      * width，整数，[0, inf]，可选，弹窗的宽度
-
-
-
-
-
-    返回：result
-
-
-
-
-
-
-      * RUNNING_MODAL：保持运行模式，操作项与blender一起运行。
-
-
-      * CANCELLED：取消。 操作项不做任何事情退出，所以不应该推送撤销条目。
-
-
-      * FINISHED：完成。操作项在完成其动作后退出。
-
-
-      * PASS_THROUGH：跳过。不做任何事情，将事件传递下去。
-
-
-      * INTERFACE：界面。 处理但不执行（弹出式菜单）。
-
-
-
-
-
-    返回类型：以上之一
-
-
-
-
-    示例：
-
-
-
-
-    ![](https://cdn.yuelili.com/20220118001203.png)
-
-
-
-
-    F3，输入Test My UI，然后弹出“操作项对话框”
-
-
-
-
-    此时你可以更改属性，单击OK确定后，啥也不干（不会进入invoke），但是属性值会更改
-
-
-
-
-
-    import bpy
-
-    from bpy.props import StringProperty, BoolProperty
-
-
-
-
-
-    class Test_OT_test_ui(bpy.types.Operator):
-
-        bl_idname = "test.ui"
-
-        bl_label = "Test My UI"
-
-        bl_options = {"REGISTER", "UNDO"}
-
-
-
-        # 创建2个RNA属性
-
-        mStr: StringProperty(
-
-            default="我是字符串",
-
-            description="我是属性说明",
-
-        )
-
-
-
-        mBool: BoolProperty(
-
-            name="我是布尔值",
-
-            description="我是属性说明",
-
-            default=True,
-
-        )
-
-
-
-        def execute(self, context):
-
-            # 控制台打印字符串，可以不要
-
-            self.report({"INFO"}, self.mStr)
-
-            return {"FINISHED"}
-
-
-
-        def invoke(self, context, event):
-
-            return context.window_manager.invoke_popup(self,width = 200)
-
-
-
-
-
-    bpy.utils.register_class(Test_OT_test_ui)
+bpy.utils.register_class(Test_OT_test_ui)
 
 ```
 
+### classmethod popmenu_begin\_\_internal()
 
-## classmethod invoke_confirm() #
+全名：classmethodpopmenu_begin\_\_internal(title, icon='NONE')
 
+说明：popmenu_begin\_\_internal
 
+参数：icon，字符串，[系统图标](https://www.yuelili.com/blender-development-use-blenders-own-icon/)列表里任选一个
 
+### classmethod popmenu_end\_\_internal()
 
-    全名：classmethodinvoke_confirm(operator, event)
+全名：classmethod popmenu_end\_\_internal(menu)
 
+popmenu_end\_\_internal
 
+### classmethod popover_begin\_\_internal()
 
+全名：classmethod popover_begin\_\_internal(ui_units_x=0, from_active_button=False)
 
-    说明：确认操作项弹窗（只让用户确认执行，不显示操作项属性）
+说明：popover_begin\_\_internal
 
+参数：
 
+- ui_units_x ，整数，[0, inf]，可选，ui_units_x
+- from_active_button ，布尔值，可选，使用按钮, 使用活动按钮进行定位
 
+返回类型：UIPopover, 不会为 None
 
-    参数：
+### classmethod popover_end\_\_internal()
 
+全名：classmethodpopover_end\_\_internal(menu, keymap=None)
 
+说明：popover_end\_\_internal
 
+参数：keymap (KeyMap, (optional)) – Key Map, Active key map
 
+### classmethod piemenu_begin\_\_internal()
 
+全名：classmethodpiemenu_begin\_\_internal(title, icon='NONE', event=None)
 
-      * operator ：要执行的操作项
+参数：icon，字符串，[系统图标](https://www.yuelili.com/blender-development-use-blenders-own-icon/)列表里任选一个
 
+说明：piemenu_begin\_\_internal
 
-      * event：事件
+返回类型：UIPieMenu, 不会为 None
 
+### classmethod piemenu_end\_\_internal()
 
+全名：classmethodpiemenu_end\_\_internal(menu)
 
+说明：piemenu_end\_\_internal
 
+### classmethodoperator_properties_last()
 
-    返回：result
+全名：classmethodoperator_properties_last(operator)
 
+说明：operator_properties_last
 
+返回类型：OperatorProperties, 不会为 None
 
+### print_undo_steps()
 
+说明：print_undo_steps
 
+### classmethodtag_script_reload()
 
-      * RUNNING_MODAL：保持运行模式，操作项与blender一起运行。
+说明：脚本重新加载后刷新界面的标签
 
+### popover()
 
-      * CANCELLED：取消。 操作项不做任何事情退出，所以不应该推送撤销条目。
+全名：popover(draw_func, \*, ui_units_x=0, keymap=None, from_active_button=False)
 
+说明：popup_menu(draw_func, \*, title='', icon='NONE')
 
-      * FINISHED：完成。操作项在完成其动作后退出。
+参数：icon，字符串，[系统图标](https://www.yuelili.com/blender-development-use-blenders-own-icon/)列表里任选一个
 
+说明：直接弹出式菜单，不需要注册菜单类。
 
-      * PASS_THROUGH：跳过。不做任何事情，将事件传递下去。
-
-
-      * INTERFACE：界面。 处理但不执行（弹出式菜单）。
-
-
-
-
-
-    返回类型：以上之一
-
-
-
-
-    示例：
-
-
-
-
-    ![](https://cdn.yuelili.com/20220118002743.png)
-
-
-
-
-    F3，输入Test My UI，然后弹出“确认对话框”，此时不会显示属性
-
-
-
-
-    单击确定后，会进入invoke函数
-
-
-
-
-
-    import bpy
-
-    from bpy.props import StringProperty, BoolProperty
-
-
-
-
-
-    class Test_OT_test_ui(bpy.types.Operator):
-
-        bl_idname = "test.ui"
-
-        bl_label = "Test My UI"
-
-        bl_options = {"REGISTER", "UNDO"}
-
-
-
-        # 创建2个RNA属性
-
-        mStr: StringProperty(
-
-            default="我是字符串",
-
-            description="我是属性说明",
-
-        )
-
-
-
-        mBool: BoolProperty(
-
-            name="我是布尔值",
-
-            description="我是属性说明",
-
-            default=True,
-
-        )
-
-
-
-        def execute(self, context):
-
-            # 控制台打印字符串，可以不要
-
-            self.report({"INFO"}, self.mStr)
-
-            return {"FINISHED"}
-
-
-
-        def invoke(self, context, event):
-
-            return context.window_manager.invoke_confirm(self,event)
-
-
-
-
-
-    bpy.utils.register_class(Test_OT_test_ui)
-
-
-```
-
-     
-
-
-
-
-## classmethod popmenu_begin__internal() #
-
-
-
-
-    全名：classmethodpopmenu_begin__internal(title, icon='NONE')
-
-
-
-
-    说明：popmenu_begin__internal
-
-
-
-
-    参数：icon，字符串，[系统图标](https://www.yuelili.com/blender-development-use-blenders-own-icon/)列表里任选一个
-
-
-
-
-## classmethod popmenu_end__internal() #
-
-
-
-
-    全名：classmethod popmenu_end__internal(menu)
-
-
-
-
-    popmenu_end__internal
-
-
-
-
-## classmethod popover_begin__internal() #
-
-
-
-
-    全名：classmethod popover_begin__internal(ui_units_x=0, from_active_button=False)
-
-
-
-
-    说明：popover_begin__internal
-
-
-
-
-    参数：
-
-
-
-
-
-
-      * ui_units_x ，整数，[0, inf]，可选，ui_units_x
-
-
-      * from_active_button ，布尔值，可选，使用按钮, 使用活动按钮进行定位
-
-
-
-
-
-    返回类型：UIPopover, 不会为None
-
-
-
-
-## classmethod popover_end__internal() #
-
-
-
-
-    全名：classmethodpopover_end__internal(menu, keymap=None)
-
-
-
-
-    说明：popover_end__internal
-
-
-
-
-    参数：keymap (KeyMap, (optional)) – Key Map, Active key map
-
-
-
-
-## classmethod piemenu_begin__internal() #
-
-
-
-
-    全名：classmethodpiemenu_begin__internal(title, icon='NONE', event=None)
-
-
-
-
-    参数：icon，字符串，[系统图标](https://www.yuelili.com/blender-development-use-blenders-own-icon/)列表里任选一个
-
-
-
-
-    说明：piemenu_begin__internal
-
-
-
-
-    返回类型：UIPieMenu, 不会为None
-
-
-
-
-## classmethod piemenu_end__internal() #
-
-
-
-
-    全名：classmethodpiemenu_end__internal(menu)
-
-
-
-
-    说明：piemenu_end__internal
-
-
-
-
-## classmethodoperator_properties_last() #
-
-
-
-
-    全名：classmethodoperator_properties_last(operator)
-
-
-
-
-    说明：operator_properties_last
-
-
-
-
-    返回类型：OperatorProperties, 不会为None
-
-
-
-
-## print_undo_steps() #
-
-
-
-
-    说明：print_undo_steps
-
-
-
-
-## classmethodtag_script_reload() #
-
-
-
-
-    说明：脚本重新加载后刷新界面的标签
-
-
-
-
-## popover() #
-
-
-
-
-    全名：popover(draw_func, *, ui_units_x=0, keymap=None, from_active_button=False)
-
-
-
-
-    说明：popup_menu(draw_func, *, title='', icon='NONE')
-
-
-
-
-    参数：icon，字符串，[系统图标](https://www.yuelili.com/blender-development-use-blenders-own-icon/)列表里任选一个
-
-
-
-
-    说明：直接弹出式菜单，不需要注册菜单类。
-
-
-
-
-
-
-    ::: tip
-
+::: tip
+请注意，它们不会阻止脚本执行，所以没法等待用户输入。
 :::
 
-     请注意，它们不会阻止脚本执行，所以没法等待用户输入。
+```python
+import bpy
 
 
+def draw(self, context):
+    self.layout.label(text="Hello World")
 
 
-
-    import bpy
-
-
-
-
-
-    def draw(self, context):
-
-        self.layout.label(text="Hello World")
-
-
-
-
-
-    bpy.context.window_manager.popup_menu(draw, title="Greeting", icon='INFO')
+bpy.context.window_manager.popup_menu(draw, title="Greeting", icon='INFO')
 
 ```
 
+### popup_menu_pie()
 
-## popup_menu_pie() #
+全名：popup_menu_pie(event, draw_func, \*, title='', icon='NONE')
 
+说明：classmethodbl_rna_get_subclass(id, default=None)
 
+说明：Parameters：d (string) – The RNA type identifier.
 
+返回：RNA 类型，未找到则为默认
 
-    全名：popup_menu_pie(event, draw_func, *, title='', icon='NONE')
+返回类型：bpy.types.Struct subclass
 
+### classmethodbl_rna_get_subclass_py()
 
+全名：classmethodbl_rna_get_subclass_py(id, default=None)
 
+说明：参数：id (string) – The RNA type identifier.
 
-    说明：classmethodbl_rna_get_subclass(id, default=None)
+返回：类，未找到则为默认
 
+返回类型：type
 
+### draw_cursor_add()
 
+说明：Undocumented, consider contributing.
 
-    说明：Parameters：d (string) – The RNA type identifier.
+### draw_cursor_remove()
 
-
-
-
-    返回：RNA类型，未找到则为默认
-
-
-
-
-    返回类型：bpy.types.Struct subclass
-
-
-
-
-## classmethodbl_rna_get_subclass_py() #
-
-
-
-
-    全名：classmethodbl_rna_get_subclass_py(id, default=None)
-
-
-
-
-    说明：参数：id (string) – The RNA type identifier.
-
-
-
-
-    返回：类，未找到则为默认
-
-
-
-
-    返回类型：type
-
-
-
-
-## draw_cursor_add() #
-
-
-
-
-    说明：Undocumented, consider contributing.
-
-
-
-
-## draw_cursor_remove() #
-
-
-
-
-    说明：Undocumented, consider contributing.
-
-
-
-
-```
+说明：Undocumented, consider contributing.

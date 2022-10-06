@@ -2,10 +2,12 @@
 title: Mesh
 order: 3
 category:
-  - AE
+  - blender-dev
 ---
 
-    [Mesh(ID)](https://docs.blender.org/api/master/bpy.types.Mesh.html)
+## Description
+
+[Mesh(ID)](https://docs.blender.org/api/master/bpy.types.Mesh.html)
 
 基类：bpy_struct, ID
 
@@ -29,1385 +31,560 @@ Blender 存储了 4 个主要数组来定义网格的几何形状。
 [`Mesh.uv_layers`](https://docs.blender.org/api/master/bpy.types.Mesh.html#bpy.types.Mesh.uv_layers "bpy.types.Mesh.uv_layers")
 [`Mesh.vertex_colors`](https://docs.blender.org/api/master/bpy.types.Mesh.html#bpy.types.Mesh.vertex_colors "bpy.types.Mesh.vertex_colors") 都是对齐的，所以相同的多边形循环索引可以寻找 UV 和顶点的颜色，就像顶点一样。
 
-要比较网格 API 选项，请参见： [NGons and Tessellation
-Faces](https://docs.blender.org/api/master/info_gotcha.html#info-gotcha-mesh-faces)
+要比较网格 API 选项，请参见： [NGons and TessellationFaces](https://docs.blender.org/api/master/info_gotcha.html#info-gotcha-mesh-faces)
 
 假设活动对象是个带 UV 的网格。本示例打印每个多边形的顶点和 UV
 
-    import bpy
+```python
+import bpy
+
+me = bpy.context.object.data
+uv_layer = me.uv_layers.active.data
 
 
+for poly in me.polygons:
+    print("Polygon index: %d, length: %d" % (poly.index, poly.loop_total))
 
-    me = bpy.context.object.data
+    # 在这里使用range为了展示多边形如何引用循环(loop),
+    # 方便起见，也可以使用'poly.loop_indices'替代
 
-    uv_layer = me.uv_layers.active.data
+    for loop_index in range(poly.loop_start, poly.loop_start + poly.loop_total):
 
-
-
-    for poly in me.polygons:
-
-        print("Polygon index: %d, length: %d" % (poly.index, poly.loop_total))
-
-
-
-        # 在这里使用range为了展示多边形如何引用循环(loop),
-
-        # 方便起见，也可以使用'poly.loop_indices'替代
-
-        for loop_index in range(poly.loop_start, poly.loop_start + poly.loop_total):
-
-            print("    Vertex: %d" % me.loops[loop_index].vertex_index)
-
-            print("    UV: %r" % uv_layer[loop_index].uv)
+        print("    Vertex: %d" % me.loops[loop_index].vertex_index)
+        print("    UV: %r" % uv_layer[loop_index].uv)
 
 ```
 
+## animation_data
 
-     
+说明：Animation data for this data-block
 
+类型：AnimData, 只读
 
+## attributes
 
+说明：Geometry attributes
 
-## animation_data #
+类型：AttributeGroup bpy_prop_collection of Attribute, 只读
 
+## auto_smooth_angle
 
+说明：Maximum angle between face normals that will be considered as smooth (unused if custom split normals data are available)
 
+类型：float in [0, 3.14159], default 0.523599
 
-    说明：Animation data for this data-block
+## auto_texspace
 
+说明：Adjust active object’s texture space automatically when transforming object
 
+类型：boolean, default True
 
+## cycles
 
-    类型：AnimData, 只读
+说明：Cycles mesh settings
 
+类型：CyclesMeshSettings, 只读
 
+## edges
 
+说明：Edges of the mesh
 
-## attributes #
+类型：MeshEdges bpy_prop_collection of MeshEdge, 只读
 
+## face_maps
 
+说明：类型：MeshFaceMapLayers bpy_prop_collection of MeshFaceMapLayer, 只读
 
+## has_custom_normals
 
-    说明：Geometry attributes
+说明：True if there are custom split normals data in this mesh
 
+类型：boolean, default False, 只读
 
+## is_editmode
 
+说明：True when used in editmode
 
-    类型：AttributeGroup bpy_prop_collection of Attribute, 只读
+类型：boolean, default False, 只读
 
+## loop_triangles
 
+说明：Tessellation of mesh polygons into triangles
 
+类型：MeshLoopTriangles bpy_prop_collection of MeshLoopTriangle, 只读
 
-## auto_smooth_angle #
+## loops
 
+说明：Loops of the mesh (polygon corners)
 
+类型：MeshLoops bpy_prop_collection of MeshLoop, 只读
 
+## materials
 
-    说明：Maximum angle between face normals that will be considered as smooth (unused if custom split normals data are available)
+说明：类型：IDMaterials bpy_prop_collection of Material, 只读
 
+## polygon_layers_float
 
+说明：类型：PolygonFloatProperties bpy_prop_collection of MeshPolygonFloatPropertyLayer, 只读
 
+## polygon_layers_int
 
-    类型：float in [0, 3.14159], default 0.523599
+说明：类型：PolygonIntProperties bpy_prop_collection of MeshPolygonIntPropertyLayer, 只读
 
+## polygon_layers_string
 
+说明：类型：PolygonStringProperties bpy_prop_collection of MeshPolygonStringPropertyLayer, 只读
 
+## polygons
 
-## auto_texspace #
+说明：Polygons of the mesh
 
+类型：MeshPolygons bpy_prop_collection of MeshPolygon, 只读
 
+## remesh_mode
 
+说明：VOXEL Voxel 。 Use the voxel remesher.
 
-    说明：Adjust active object’s texture space automatically when transforming object
+QUAD Quad 。 Use the quad remesher.
 
+类型：enum in [‘VOXEL’, ‘QUAD’], default ‘VOXEL’
 
+## remesh_voxel_adaptivity
 
+说明：Reduces the final face count by simplifying geometry where detail is not needed, generating triangles. A value greater than 0 disables Fix Poles
 
-    类型：boolean, default True
+类型：float in [0, 1], default 0.0
 
+## remesh_voxel_size
 
+说明：Size of the voxel in object space used for volume evaluation. Lower values preserve finer details
 
+类型：float in [0.0001, inf], default 0.1
 
-## cycles #
+## sculpt_vertex_colors
 
+说明：All vertex colors
 
+类型：VertColors bpy_prop_collection of MeshVertColorLayer, 只读
 
+## shape_keys
 
-    说明：Cycles mesh settings
+说明：类型：Key, 只读
 
+## skin_vertices
 
+说明：All skin vertices
 
+类型：bpy_prop_collection of MeshSkinVertexLayer, 只读
 
-    类型：CyclesMeshSettings, 只读
+## texco_mesh
 
+说明：Derive texture coordinates from another mesh
 
+类型：Mesh
 
+## texspace_location
 
-## edges #
+说明：Texture space location
 
+类型：float array of 3 items in [-inf, inf], default (0.0, 0.0, 0.0)
 
+## texspace_size
 
+说明：Texture space size
 
-    说明：Edges of the mesh
+类型：float array of 3 items in [-inf, inf], default (1.0, 1.0, 1.0)
 
+## texture_mesh
 
+说明：Use another mesh for texture indices (vertex indices must be aligned)
 
+类型：Mesh
 
-    类型：MeshEdges bpy_prop_collection of MeshEdge, 只读
+## total_edge_sel
 
+说明：Selected edge count in editmode
 
+类型：int in [0, inf], default 0, 只读
 
+## total_face_sel
 
-## face_maps #
+说明：Selected face count in editmode
 
+类型：int in [0, inf], default 0, 只读
 
+## total_vert_sel
 
+说明：Selected vertex count in editmode
 
-    说明：类型：MeshFaceMapLayers bpy_prop_collection of MeshFaceMapLayer, 只读
+类型：int in [0, inf], default 0, 只读
 
+## use_auto_smooth
 
+说明：Auto smooth (based on smooth/sharp faces/edges and angle between faces), or use custom split normals data if available
 
+类型：boolean, default False
 
-## has_custom_normals #
+## use_auto_texspace
 
+说明：Adjust active object’s texture space automatically when transforming object
 
+类型：boolean, default True
 
+## use_customdata_edge_bevel
 
-    说明：True if there are custom split normals data in this mesh
+说明：类型：boolean, default False
 
+## use_customdata_edge_crease
 
+说明：类型：boolean, default False
 
+## use_customdata_vertex_bevel
 
-    类型：boolean, default False, 只读
+说明：类型：boolean, default False
 
+## use_mirror_topology
 
+说明：Use topology based mirroring (for when both sides of mesh have matching, unique topology)
 
+类型：boolean, default False
 
-## is_editmode #
+## use_mirror_vertex_groups
 
+说明：Mirror the left/right vertex groups when painting. The symmetry axis is determined by the symmetry settings
 
+类型：boolean, default True
 
+## use_mirror_x
 
-    说明：True when used in editmode
+说明：Enable symmetry in the X axis
 
+类型：boolean, default False
 
+## use_mirror_y
 
+说明：Enable symmetry in the Y axis
 
-    类型：boolean, default False, 只读
+类型：boolean, default False
 
+## use_mirror_z
 
+说明：Enable symmetry in the Z axis
 
+类型：boolean, default False
 
-## loop_triangles #
+## use_paint_mask
 
+说明：Face selection masking for painting
 
+类型：boolean, default False
 
+## use_paint_mask_vertex
 
-    说明：Tessellation of mesh polygons into triangles
+说明：Vertex selection masking for painting
 
+类型：boolean, default False
 
+## use_remesh_fix_poles
 
+说明：Produces less poles and a better topology flow
 
-    类型：MeshLoopTriangles bpy_prop_collection of MeshLoopTriangle, 只读
+类型：boolean, default True
 
+## use_remesh_preserve_paint_mask
 
+说明：Keep the current mask on the new mesh
 
+类型：boolean, default False
 
-## loops #
+## use_remesh_preserve_sculpt_face_sets
 
+说明：Keep the current Face Sets on the new mesh
 
+类型：boolean, default False
 
+## use_remesh_preserve_vertex_colors
 
-    说明：Loops of the mesh (polygon corners)
+说明：Keep the current vertex colors on the new mesh
 
+类型：boolean, default False
 
+## use_remesh_preserve_volume
 
+说明：Projects the mesh to preserve the volume and details of the original mesh
 
-    类型：MeshLoops bpy_prop_collection of MeshLoop, 只读
+类型：boolean, default True
 
+## uv_layer_clone
 
+说明：UV loop layer to be used as cloning source
 
+类型：MeshUVLoopLayer
 
-## materials #
+## uv_layer_clone_index
 
+说明：Clone UV loop layer index
 
+类型：int in [0, inf], default 0
 
+## uv_layer_stencil
 
-    说明：类型：IDMaterials bpy_prop_collection of Material, 只读
+说明：UV loop layer to mask the painted area
 
+类型：MeshUVLoopLayer
 
+## uv_layer_stencil_index
 
+说明：Mask UV loop layer index
 
-## polygon_layers_float #
+类型：int in [0, inf], default 0
 
+## uv_layers
 
+说明：All UV loop layers
 
+类型：UVLoopLayers bpy_prop_collection of MeshUVLoopLayer, 只读
 
-    说明：类型：PolygonFloatProperties bpy_prop_collection of MeshPolygonFloatPropertyLayer, 只读
+## vertex_colors
 
+说明：All vertex colors
 
+类型：LoopColors bpy_prop_collection of MeshLoopColorLayer, 只读
 
+## vertex_layers_float
 
-## polygon_layers_int #
+说明：类型：VertexFloatProperties bpy_prop_collection of MeshVertexFloatPropertyLayer, 只读
 
+## vertex_layers_int
 
+说明：类型：VertexIntProperties bpy_prop_collection of MeshVertexIntPropertyLayer, 只读
 
+## vertex_layers_string
 
-    说明：类型：PolygonIntProperties bpy_prop_collection of MeshPolygonIntPropertyLayer, 只读
+说明：类型：VertexStringProperties bpy_prop_collection of MeshVertexStringPropertyLayer, 只读
 
+## vertex_paint_masks
 
+说明：Vertex paint mask
 
+类型：bpy_prop_collection of MeshPaintMaskLayer, 只读
 
-## polygon_layers_string #
+## vertices
 
+说明：Vertices of the mesh
 
+类型：MeshVertices bpy_prop_collection of MeshVertex, 只读
 
+## edge_keys
 
-    说明：类型：PolygonStringProperties bpy_prop_collection of MeshPolygonStringPropertyLayer, 只读
+说明：只读
 
+## transform()
 
+全名：transform(matrix, shape_keys=False)
 
+说明：Transform mesh vertices by a matrix (Warning: inverts normals if matrix is negative)
 
-## polygons #
+参数：matrix (float multi-dimensional array of 4 \* 4 items in [-inf, inf]) 。 Matrix
 
+shape_keys (boolean，可选) 。 Transform Shape Keys
 
+## flip_normals()
 
+全名：flip_normals()
 
-    说明：Polygons of the mesh
+说明：Invert winding of all polygons (clears tessellation, does not handle custom normals)
 
+## calc_normals()
 
+全名：calc_normals()
 
+Calculate vertex normals
 
-    类型：MeshPolygons bpy_prop_collection of MeshPolygon, 只读
+## create_normals_split()
 
+全名：create_normals_split()
 
+说明：Empty split vertex normals
 
+## calc_normals_split()
 
-## remesh_mode #
+全名：calc_normals_split()
 
+说明：Calculate split vertex normals, which preserve sharp edges
 
+## free_normals_split()
 
+全名：free_normals_split()
 
-    说明：VOXEL Voxel 。 Use the voxel remesher.
+说明：Free split vertex normals
 
+## split_faces()
 
+全名：split_faces(free_loop_normals=True)
 
+说明：Split faces based on the edge angle
 
-    QUAD Quad 。 Use the quad remesher.
+参数：free_loop_normals (boolean，可选) 。 Free Loop Normals, Free loop normals custom data layer
 
+## calc_tangents()
 
+全名：calc_tangents(uvmap='')
 
+说明：Compute tangents and bitangent signs, to be used together with the split normals to get a complete tangent space for normal mapping (split normals are also computed if not yet present)
 
-    类型：enum in [‘VOXEL’, ‘QUAD’], default ‘VOXEL’
+参数：uvmap (string, (可选，可选)) 。 Name of the UV map to use for tangent space computation
 
+## free_tangents()
 
+全名：free_tangents()
 
+说明：Free tangents
 
-## remesh_voxel_adaptivity #
+## calc_loop_triangles()
 
+全名：calc_loop_triangles()
 
+说明：Calculate loop triangle tessellation (supports editmode too)
 
+## calc_smooth_groups()
 
-    说明：Reduces the final face count by simplifying geometry where detail is not needed, generating triangles. A value greater than 0 disables Fix Poles
+全名：calc_smooth_groups(use_bitflags=False)
 
+说明：Calculate smooth groups from sharp edges
 
+参数：use_bitflags，boolean，可选。Produce bitflags groups instead of simple numeric values
 
+返回：(poly_groups, groups)
 
-    类型：float in [0, 1], default 0.0
+- poly_groups：Smooth Groups, int array of 1 items in [-inf, inf]
 
+- groups：Total number of groups, int in [0, inf]
 
+## normals_split_custom_set()
 
+全名：normals_split_custom_set(normals)
 
-## remesh_voxel_size #
+Define custom split normals of this mesh (use zero-vectors to keep auto ones)
 
+参数：normals (float multi-dimensional array of 1 \* 3 items in [-1, 1]) 。 Normals
 
+## normals_split_custom_set_from_vertices()
 
+全名：normals_split_custom_set_from_vertices(normals)
 
-    说明：Size of the voxel in object space used for volume evaluation. Lower values preserve finer details
+说明：Define custom split normals of this mesh, from vertices’ normals (use zero-vectors to keep auto ones)
 
+参数：normals (float multi-dimensional array of 1 \* 3 items in [-1, 1]) 。 Normals
 
+## update()
 
+全名：update(calc_edges=False, calc_edges_loose=False)
 
-    类型：float in [0.0001, inf], default 0.1
+说明：update
 
+参数：
 
+- calc_edges：boolean，可选。 Calculate Edges, Force recalculation of edges
 
+- calc_edges_loose：boolean，可选。 Calculate Loose Edges, Calculate the loose state of each edge
 
-## sculpt_vertex_colors #
+## update_gpu_tag()
 
+全名：update_gpu_tag()
 
+update_gpu_tag
 
+## unit_test_compare()
 
-    说明：All vertex colors
+全名：unit_test_compare(mesh=None, threshold=7.1526e-06)
 
+unit_test_compare
 
+参数：mesh (Mesh，可选) 。 Mesh to compare to
 
+threshold (float in [0, inf]，可选) 。 Threshold, Comparison tolerance threshold
 
-    类型：VertColors bpy_prop_collection of MeshVertColorLayer, 只读
+返回：Return value, String description of result of comparison
 
+返回类型：string, 不会为 None
 
+## clear_geometry()
 
+全名：clear_geometry()
 
-## shape_keys #
+Remove all geometry from the mesh. Note that this does not free shape keys or materials
 
+## validate()
 
+全名：validate(verbose=False, clean_customdata=True)
 
+Validate geometry, return True when the mesh has had invalid geometry corrected/removed
 
-    说明：类型：Key, 只读
+参数：verbose (boolean，可选) 。 Verbose, Output information about the errors found
 
+clean_customdata (boolean，可选) 。 Clean Custom Data, Remove temp/cached custom-data layers, like e.g. normals…
 
+返回：Result
 
+返回类型：boolean
 
-## skin_vertices #
+## validate_material_indices()
 
+全名：validate_material_indices()
 
+Validate material indices of polygons, return True when the mesh has had invalid indices corrected (to default 0)
 
+返回：Result
 
-    说明：All skin vertices
+返回类型：boolean
 
+## count_selected_items()
 
+全名：count_selected_items()
 
+Return the number of selected items (vert, edge, face)
 
-    类型：bpy_prop_collection of MeshSkinVertexLayer, 只读
+返回：Result
 
+返回类型：int array of 3 items in [0, inf]
 
+## from_pydata()
 
+全名：from_pydata(vertices, edges, faces)
 
-## texco_mesh #
+Make a mesh from a list of vertices/edges/faces Until we have a nicer way to make geometry, use this.
 
+参数：vertices (iterable object) 。 float triplets each representing (X, Y, Z) eg: [(0.0, 1.0, 0.5), …].
 
+edges (iterable object) 。
 
+int pairs, each pair contains two indices to the vertices argument. eg: [(1, 2), …]
 
-    说明：Derive texture coordinates from another mesh
+When an empty iterable is passed in, the edges are inferred from the polygons.
 
+faces (iterable object) 。 iterator of faces, each faces contains three or more indices to the vertices argument. eg: [(5, 6, 8, 9), (1, 2, 3), …]
 
+Warning
 
+Invalid mesh data (out of range indices, edges with matching indices, 2 sided faces… etc) are not prevented. If the data used for mesh creation isn’t known to be valid, run Mesh.validate after this function.
 
-    类型：Mesh
+## classmethod bl_rna_get_subclass()
 
+全名：classmethod bl_rna_get_subclass(id, default=None)
 
+参数：id(字符串)。 The RNA type identifier.
 
+返回：RNA 类型，未找到则为默认。
 
-## texspace_location #
+返回类型：bpy.types.Struct subclass
 
+## classmethod bl_rna_get_subclass_py()
 
+全名：classmethod bl_rna_get_subclass_py(id, default=None)
 
+参数：id(字符串)。 The RNA type identifier.
 
-    说明：Texture space location
+返回：类，未找到则为默认。
 
-
-
-
-    类型：float array of 3 items in [-inf, inf], default (0.0, 0.0, 0.0)
-
-
-
-
-## texspace_size #
-
-
-
-
-    说明：Texture space size
-
-
-
-
-    类型：float array of 3 items in [-inf, inf], default (1.0, 1.0, 1.0)
-
-
-
-
-## texture_mesh #
-
-
-
-
-    说明：Use another mesh for texture indices (vertex indices must be aligned)
-
-
-
-
-    类型：Mesh
-
-
-
-
-## total_edge_sel #
-
-
-
-
-    说明：Selected edge count in editmode
-
-
-
-
-    类型：int in [0, inf], default 0, 只读
-
-
-
-
-## total_face_sel #
-
-
-
-
-    说明：Selected face count in editmode
-
-
-
-
-    类型：int in [0, inf], default 0, 只读
-
-
-
-
-## total_vert_sel #
-
-
-
-
-    说明：Selected vertex count in editmode
-
-
-
-
-    类型：int in [0, inf], default 0, 只读
-
-
-
-
-## use_auto_smooth #
-
-
-
-
-    说明：Auto smooth (based on smooth/sharp faces/edges and angle between faces), or use custom split normals data if available
-
-
-
-
-    类型：boolean, default False
-
-
-
-
-## use_auto_texspace #
-
-
-
-
-    说明：Adjust active object’s texture space automatically when transforming object
-
-
-
-
-    类型：boolean, default True
-
-
-
-
-## use_customdata_edge_bevel #
-
-
-
-
-    说明：类型：boolean, default False
-
-
-
-
-## use_customdata_edge_crease #
-
-
-
-
-    说明：类型：boolean, default False
-
-
-
-
-## use_customdata_vertex_bevel #
-
-
-
-
-    说明：类型：boolean, default False
-
-
-
-
-## use_mirror_topology #
-
-
-
-
-    说明：Use topology based mirroring (for when both sides of mesh have matching, unique topology)
-
-
-
-
-    类型：boolean, default False
-
-
-
-
-## use_mirror_vertex_groups #
-
-
-
-
-    说明：Mirror the left/right vertex groups when painting. The symmetry axis is determined by the symmetry settings
-
-
-
-
-    类型：boolean, default True
-
-
-
-
-## use_mirror_x #
-
-
-
-
-    说明：Enable symmetry in the X axis
-
-
-
-
-    类型：boolean, default False
-
-
-
-
-## use_mirror_y #
-
-
-
-
-    说明：Enable symmetry in the Y axis
-
-
-
-
-    类型：boolean, default False
-
-
-
-
-## use_mirror_z #
-
-
-
-
-    说明：Enable symmetry in the Z axis
-
-
-
-
-    类型：boolean, default False
-
-
-
-
-## use_paint_mask #
-
-
-
-
-    说明：Face selection masking for painting
-
-
-
-
-    类型：boolean, default False
-
-
-
-
-## use_paint_mask_vertex #
-
-
-
-
-    说明：Vertex selection masking for painting
-
-
-
-
-    类型：boolean, default False
-
-
-
-
-## use_remesh_fix_poles #
-
-
-
-
-    说明：Produces less poles and a better topology flow
-
-
-
-
-    类型：boolean, default True
-
-
-
-
-## use_remesh_preserve_paint_mask #
-
-
-
-
-    说明：Keep the current mask on the new mesh
-
-
-
-
-    类型：boolean, default False
-
-
-
-
-## use_remesh_preserve_sculpt_face_sets #
-
-
-
-
-    说明：Keep the current Face Sets on the new mesh
-
-
-
-
-    类型：boolean, default False
-
-
-
-
-## use_remesh_preserve_vertex_colors #
-
-
-
-
-    说明：Keep the current vertex colors on the new mesh
-
-
-
-
-    类型：boolean, default False
-
-
-
-
-## use_remesh_preserve_volume #
-
-
-
-
-    说明：Projects the mesh to preserve the volume and details of the original mesh
-
-
-
-
-    类型：boolean, default True
-
-
-
-
-## uv_layer_clone #
-
-
-
-
-    说明：UV loop layer to be used as cloning source
-
-
-
-
-    类型：MeshUVLoopLayer
-
-
-
-
-## uv_layer_clone_index #
-
-
-
-
-    说明：Clone UV loop layer index
-
-
-
-
-    类型：int in [0, inf], default 0
-
-
-
-
-## uv_layer_stencil #
-
-
-
-
-    说明：UV loop layer to mask the painted area
-
-
-
-
-    类型：MeshUVLoopLayer
-
-
-
-
-## uv_layer_stencil_index #
-
-
-
-
-    说明：Mask UV loop layer index
-
-
-
-
-    类型：int in [0, inf], default 0
-
-
-
-
-## uv_layers #
-
-
-
-
-    说明：All UV loop layers
-
-
-
-
-    类型：UVLoopLayers bpy_prop_collection of MeshUVLoopLayer, 只读
-
-
-
-
-## vertex_colors #
-
-
-
-
-    说明：All vertex colors
-
-
-
-
-    类型：LoopColors bpy_prop_collection of MeshLoopColorLayer, 只读
-
-
-
-
-## vertex_layers_float #
-
-
-
-
-    说明：类型：VertexFloatProperties bpy_prop_collection of MeshVertexFloatPropertyLayer, 只读
-
-
-
-
-## vertex_layers_int #
-
-
-
-
-    说明：类型：VertexIntProperties bpy_prop_collection of MeshVertexIntPropertyLayer, 只读
-
-
-
-
-## vertex_layers_string #
-
-
-
-
-    说明：类型：VertexStringProperties bpy_prop_collection of MeshVertexStringPropertyLayer, 只读
-
-
-
-
-## vertex_paint_masks #
-
-
-
-
-    说明：Vertex paint mask
-
-
-
-
-    类型：bpy_prop_collection of MeshPaintMaskLayer, 只读
-
-
-
-
-## vertices #
-
-
-
-
-    说明：Vertices of the mesh
-
-
-
-
-    类型：MeshVertices bpy_prop_collection of MeshVertex, 只读
-
-
-
-
-## edge_keys #
-
-
-
-
-    说明：只读
-
-
-
-
-## transform() #
-
-
-
-
-    全名：transform(matrix, shape_keys=False)
-
-
-
-
-    说明：Transform mesh vertices by a matrix (Warning: inverts normals if matrix is negative)
-
-
-
-
-    参数：matrix (float multi-dimensional array of 4 * 4 items in [-inf, inf]) 。 Matrix
-
-
-
-
-    shape_keys (boolean，可选) 。 Transform Shape Keys
-
-
-
-
-## flip_normals() #
-
-
-
-
-    全名：flip_normals()
-
-
-
-
-    说明：Invert winding of all polygons (clears tessellation, does not handle custom normals)
-
-
-
-
-## calc_normals() #
-
-
-
-
-    全名：calc_normals()
-
-
-
-
-    Calculate vertex normals
-
-
-
-
-## create_normals_split() #
-
-
-
-
-    全名：create_normals_split()
-
-
-
-
-    说明：Empty split vertex normals
-
-
-
-
-## calc_normals_split() #
-
-
-
-
-    全名：calc_normals_split()
-
-
-
-
-    说明：Calculate split vertex normals, which preserve sharp edges
-
-
-
-
-## free_normals_split() #
-
-
-
-
-    全名：free_normals_split()
-
-
-
-
-    说明：Free split vertex normals
-
-
-
-
-## split_faces() #
-
-
-
-
-    全名：split_faces(free_loop_normals=True)
-
-
-
-
-    说明：Split faces based on the edge angle
-
-
-
-
-    参数：free_loop_normals (boolean，可选) 。 Free Loop Normals, Free loop normals custom data layer
-
-
-
-
-## calc_tangents() #
-
-
-
-
-    全名：calc_tangents(uvmap='')
-
-
-
-
-    说明：Compute tangents and bitangent signs, to be used together with the split normals to get a complete tangent space for normal mapping (split normals are also computed if not yet present)
-
-
-
-
-    参数：uvmap (string, (可选，可选)) 。 Name of the UV map to use for tangent space computation
-
-
-
-
-## free_tangents() #
-
-
-
-
-    全名：free_tangents()
-
-
-
-
-    说明：Free tangents
-
-
-
-
-## calc_loop_triangles() #
-
-
-
-
-    全名：calc_loop_triangles()
-
-
-
-
-    说明：Calculate loop triangle tessellation (supports editmode too)
-
-
-
-
-## calc_smooth_groups() #
-
-
-
-
-    全名：calc_smooth_groups(use_bitflags=False)
-
-
-
-
-    说明：Calculate smooth groups from sharp edges
-
-
-
-
-    参数：use_bitflags，boolean，可选。Produce bitflags groups instead of simple numeric values
-
-
-
-
-    返回：(poly_groups, groups)
-
-
-
-
-
-
-      * poly_groups：Smooth Groups, int array of 1 items in [-inf, inf]
-
-
-      * groups：Total number of groups, int in [0, inf]
-
-
-
-
-
-## normals_split_custom_set() #
-
-
-
-
-    全名：normals_split_custom_set(normals)
-
-
-
-
-    Define custom split normals of this mesh (use zero-vectors to keep auto ones)
-
-
-
-
-    参数：normals (float multi-dimensional array of 1 * 3 items in [-1, 1]) 。 Normals
-
-
-
-
-## normals_split_custom_set_from_vertices() #
-
-
-
-
-    全名：normals_split_custom_set_from_vertices(normals)
-
-
-
-
-    说明：Define custom split normals of this mesh, from vertices’ normals (use zero-vectors to keep auto ones)
-
-
-
-
-    参数：normals (float multi-dimensional array of 1 * 3 items in [-1, 1]) 。 Normals
-
-
-
-
-## update() #
-
-
-
-
-    全名：update(calc_edges=False, calc_edges_loose=False)
-
-
-
-
-    说明：update
-
-
-
-
-    参数：
-
-
-
-
-
-
-      * calc_edges：boolean，可选。 Calculate Edges, Force recalculation of edges
-
-
-      * calc_edges_loose：boolean，可选。 Calculate Loose Edges, Calculate the loose state of each edge
-
-
-
-
-
-## update_gpu_tag() #
-
-
-
-
-    全名：update_gpu_tag()
-
-
-
-
-    update_gpu_tag
-
-
-
-
-## unit_test_compare() #
-
-
-
-
-    全名：unit_test_compare(mesh=None, threshold=7.1526e-06)
-
-
-
-
-    unit_test_compare
-
-
-
-
-    参数：mesh (Mesh，可选) 。 Mesh to compare to
-
-
-
-
-    threshold (float in [0, inf]，可选) 。 Threshold, Comparison tolerance threshold
-
-
-
-
-    返回：Return value, String description of result of comparison
-
-
-
-
-    返回类型：string, 不会为None
-
-
-
-
-## clear_geometry() #
-
-
-
-
-    全名：clear_geometry()
-
-
-
-
-    Remove all geometry from the mesh. Note that this does not free shape keys or materials
-
-
-
-
-## validate() #
-
-
-
-
-    全名：validate(verbose=False, clean_customdata=True)
-
-
-
-
-    Validate geometry, return True when the mesh has had invalid geometry corrected/removed
-
-
-
-
-    参数：verbose (boolean，可选) 。 Verbose, Output information about the errors found
-
-
-
-
-    clean_customdata (boolean，可选) 。 Clean Custom Data, Remove temp/cached custom-data layers, like e.g. normals…
-
-
-
-
-    返回：Result
-
-
-
-
-    返回类型：boolean
-
-
-
-
-## validate_material_indices() #
-
-
-
-
-    全名：validate_material_indices()
-
-
-
-
-    Validate material indices of polygons, return True when the mesh has had invalid indices corrected (to default 0)
-
-
-
-
-    返回：Result
-
-
-
-
-    返回类型：boolean
-
-
-
-
-## count_selected_items() #
-
-
-
-
-    全名：count_selected_items()
-
-
-
-
-    Return the number of selected items (vert, edge, face)
-
-
-
-
-    返回：Result
-
-
-
-
-    返回类型：int array of 3 items in [0, inf]
-
-
-
-
-## from_pydata() #
-
-
-
-
-    全名：from_pydata(vertices, edges, faces)
-
-
-
-
-    Make a mesh from a list of vertices/edges/faces Until we have a nicer way to make geometry, use this.
-
-
-
-
-    参数：vertices (iterable object) 。 float triplets each representing (X, Y, Z) eg: [(0.0, 1.0, 0.5), …].
-
-
-
-
-    edges (iterable object) 。
-
-
-
-
-    int pairs, each pair contains two indices to the vertices argument. eg: [(1, 2), …]
-
-
-
-
-    When an empty iterable is passed in, the edges are inferred from the polygons.
-
-
-
-
-    faces (iterable object) 。 iterator of faces, each faces contains three or more indices to the vertices argument. eg: [(5, 6, 8, 9), (1, 2, 3), …]
-
-
-
-
-    Warning
-
-
-
-
-    Invalid mesh data (out of range indices, edges with matching indices, 2 sided faces… etc) are not prevented. If the data used for mesh creation isn’t known to be valid, run Mesh.validate after this function.
-
-
-
-
-## classmethod bl_rna_get_subclass() #
-
-
-
-
-    全名：classmethod bl_rna_get_subclass(id, default=None)
-
-
-
-
-    参数：id(字符串)。 The RNA type identifier.
-
-
-
-
-    返回：RNA类型，未找到则为默认。
-
-
-
-
-    返回类型：bpy.types.Struct subclass
-
-
-
-
-## classmethod bl_rna_get_subclass_py() #
-
-
-
-
-    全名：classmethod bl_rna_get_subclass_py(id, default=None)
-
-
-
-
-    参数：id(字符串)。 The RNA type identifier.
-
-
-
-
-    返回：类，未找到则为默认。
-
-
-
-
-    返回类型：type
-
-
-
-
-     
-
-
-
-
-```
+返回类型：type

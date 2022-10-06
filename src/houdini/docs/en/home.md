@@ -4,14 +4,14 @@ icon: home
 title: Docs
 heroImage: /logo.svg
 heroText: Docs
-tagline: 全世界最大的文档开源中心(x)
+tagline: 全宇宙最大的文档开源中心(x)
 actions:
   - text: Guide 💡
     link: /en/guide/
     type: primary
 
-  - text: Home 🏠
-    link: /en/
+  - text: Back to Docs Home 🏠
+    link: https://docs.yuelili.com/en/
 
 features:
   - title: After Effects

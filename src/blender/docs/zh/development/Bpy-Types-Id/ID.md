@@ -2,18 +2,16 @@
 title: ID
 order: 2
 category:
-  - AE
+  - blender-dev
 ---
 
-    [ID(bpy_struct)](https://docs.blender.org/api/master/bpy.types.ID.html)
+## Description
+
+[ID(bpy_struct)](https://docs.blender.org/api/master/bpy.types.ID.html)
 
 基类： bpy_struct
 
-子类：Action, Armature, Brush, CacheFile, Camera, Collection, Curve,
-FreestyleLineStyle, GreasePencil, Hair, Image, Key, Lattice, Library, Light,
-LightProbe, Mask, Material, Mesh, MetaBall, MovieClip, NodeTree, Object,
-PaintCurve, Palette, ParticleSettings, PointCloud, Scene, Screen, Simulation,
-Sound, Speaker, Text, Texture, VectorFont, Volume, WindowManager, WorkSpace,
+子类：Action, Armature, Brush, CacheFile, Camera, Collection, Curve,FreestyleLineStyle, GreasePencil, Hair, Image, Key, Lattice, Library, Light,LightProbe, Mask, Material, Mesh, MetaBall, MovieClip, NodeTree, Object,PaintCurve, Palette, ParticleSettings, PointCloud, Scene, Screen, Simulation,Sound, Speaker, Text, Texture, VectorFont, Volume, WindowManager, WorkSpace,
 World
 
 说明：数据块（data-blocks）的基础类型，定义唯一的名称，从其他库中链接和垃圾收集。
@@ -26,8 +24,7 @@ World
 
 ### is_embedded_data
 
-说明：This data-block is not an independent one, but is actually a sub-data of
-another ID (typical example: root node trees or master collections)
+说明：This data-block is not an independent one, but is actually a sub-data ofanother ID (typical example: root node trees or master collections)
 
 类型：boolean, default False, 只读
 
@@ -52,8 +49,7 @@ another ID (typical example: root node trees or master collections)
 
 ### library_weak_reference
 
-说明：Weak reference to a data-block in another library .blend file (used to re-
-use already appended data instead of appending new copies)
+说明：Weak reference to a data-block in another library .blend file (used to re-use already appended data instead of appending new copies)
 
 类型：LibraryWeakReference, 只读
 
@@ -134,8 +130,7 @@ Create a copy of this data-block (not supported for all data-blocks)
 
 全名：asset_mark()
 
-Enable easier reuse of the data-block through the Asset Browser, with the help
-of customizable metadata (like previews, descriptions and tags)
+Enable easier reuse of the data-block through the Asset Browser, with the helpof customizable metadata (like previews, descriptions and tags)
 
 ### asset_clear()
 
@@ -157,8 +152,7 @@ Generate preview image (might be scheduled in a background thread)
 Create an overridden local copy of this linked data-block (not supported for
 all data-blocks)
 
-参数：remap_local_usages (boolean，可选) 。 Whether local usages of the linked ID
-should be remapped to the new library override of it
+参数：remap_local_usages (boolean，可选) 。 Whether local usages of the linked IDshould be remapped to the new library override of it
 
 返回：New overridden local copy of the ID
 
@@ -168,8 +162,7 @@ should be remapped to the new library override of it
 
 全名：override_hierarchy_create(scene, view_layer, reference=None)
 
-Create an overridden local copy of this linked data-block, and most of its
-dependencies when it is a Collection or and Object
+Create an overridden local copy of this linked data-block, and most of itsdependencies when it is a Collection or and Object
 
 参数：scene (Scene, 不会为 None) 。 In which scene the new overrides should be
 instantiated
@@ -177,8 +170,7 @@ instantiated
 view_layer (ViewLayer, 不会为 None) 。 In which view layer the new overrides should
 be instantiated
 
-reference (ID，可选) 。 Another ID (usually an Object or Collection) used to
-decide where to instantiate the new overrides
+reference (ID，可选) 。 Another ID (usually an Object or Collection) used todecide where to instantiate the new overrides
 
 返回：New overridden local copy of the root ID
 
@@ -197,8 +189,7 @@ Create an override template for this ID
 Clear the user count of a data-block so its not saved, on reload the data will
 be removed
 
-This function is for advanced use only, misuse can crash blender since the
-user count is used to prevent data being removed when it is used.
+This function is for advanced use only, misuse can crash blender since theuser count is used to prevent data being removed when it is used.
 
 ### user_remap()
 
@@ -212,11 +203,9 @@ Replace all usage in the .blend file of this ID by new given one
 
 全名：make_local(clear_proxy=True)
 
-Make this datablock local, return local one (may be a copy of the original, in
-case it is also indirectly used)
+Make this datablock local, return local one (may be a copy of the original, incase it is also indirectly used)
 
-参数：clear_proxy (boolean，可选) 。 Whether to clear proxies (the default behavior,
-note that if object has to be duplicated to be made local, proxies are always
+参数：clear_proxy (boolean，可选) 。 Whether to clear proxies (the default behavior,note that if object has to be duplicated to be made local, proxies are always
 cleared)
 
 返回：This ID, or the new ID if it was copied

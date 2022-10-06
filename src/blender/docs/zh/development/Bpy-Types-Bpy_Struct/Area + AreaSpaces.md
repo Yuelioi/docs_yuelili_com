@@ -2,10 +2,12 @@
 title: Area + AreaSpaces
 order: 3
 category:
-  - AE
+  - blender-dev
 ---
 
-    [Area(bpy_struct)](https://docs.blender.org/api/master/bpy.types.Area.html)
+## Description
+
+[Area(bpy_struct)](https://docs.blender.org/api/master/bpy.types.Area.html)
 
 [AreaSpaces(bpy_struct)](https://docs.blender.org/api/master/bpy.types.AreaSpaces.html)
 

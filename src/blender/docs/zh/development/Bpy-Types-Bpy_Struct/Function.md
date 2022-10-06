@@ -2,10 +2,12 @@
 title: Function
 order: 7
 category:
-  - AE
+  - blender-dev
 ---
 
-    [Function(bpy_struct)](https://docs.blender.org/api/master/bpy.types.Function.html)
+## Description
+
+[Function(bpy_struct)](https://docs.blender.org/api/master/bpy.types.Function.html)
 
 基类：bpy_struct
 
@@ -50,8 +52,7 @@ python)
 
 ### use_self_type
 
-说明：Function passes its self type as an argument (becomes a class method in
-python if use_self is false)
+说明：Function passes its self type as an argument (becomes a class method inpython if use_self is false)
 
 类型：boolean, default False, 只读
 

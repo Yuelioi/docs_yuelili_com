@@ -2,10 +2,12 @@
 title: Window
 order: 15
 category:
-  - AE
+  - blender-dev
 ---
 
-    [Window(bpy_struct)](https://docs.blender.org/api/master/bpy.types.Window.html)
+## Description
+
+[Window(bpy_struct)](https://docs.blender.org/api/master/bpy.types.Window.html)
 
 基类： bpy_struct
 

@@ -1,1 +1,0 @@
-[官方文档地址](https://ae-scripting.docsforadobe.dev/)

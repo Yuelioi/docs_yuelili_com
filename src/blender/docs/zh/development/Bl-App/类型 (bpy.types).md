@@ -2,10 +2,10 @@
 title: 类型 (bpy.types)
 order: 7
 category:
-  - AE
+  - blender-dev
 ---
 
-## 节点类 #
+## 节点类
 
 - [CompositorNode(NodeInternal)](https://docs.blender.org/api/master/bpy.types.CompositorNode.html)：合成器节点
 - [FunctionNode(NodeInternal)](https://docs.blender.org/api/master/bpy.types.FunctionNode.html)：函数节点
