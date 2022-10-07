@@ -1,60 +1,36 @@
 ---
 title: finput
-order: 10
+order: 11
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Returns fully filtered pixel input.
 
-| Context(s) | [cop](../contexts/cop.html) |
-| ---------- | --------------------------- |
 
-```c
-vector  finput(int u, int v, ...)
-```
+Context(s)
+[cop](../contexts/cop.html)
 
-```c
-vector4  finput(int u, int v, ...)
-```
+`vector finput(int u, int v, ...)`
 
-```c
-vector  finput(float u, float v, ...)
-```
+`vector4 finput(int u, int v, ...)`
 
-```c
-vector4  finput(float u, float v, ...)
-```
+`vector finput(float u, float v, ...)`
 
-```c
-float  finput(int component, int u, int v, ...)
-```
+`vector4 finput(float u, float v, ...)`
 
-```c
-float  finput(int component, float u, float v, ...)
-```
+`float finput(int component, int u, int v, ...)`
 
-```c
-vector  finput(int opinput, int planeindex, int u, int v, ...)
-```
+`float finput(int component, float u, float v, ...)`
 
-```c
-vector4  finput(int opinput, int planeindex, int u, int v, ...)
-```
+`vector finput(int opinput, int planeindex, int u, int v, ...)`
 
-```c
-vector  finput(int opinput, int planeindex, float u, float v, ...)
-```
+`vector4 finput(int opinput, int planeindex, int u, int v, ...)`
 
-```c
-vector4  finput(int opinput, int planeindex, float u, float v, ...)
-```
+`vector finput(int opinput, int planeindex, float u, float v, ...)`
 
-```c
-float  finput(int opinput, int planeindex, int component, int u, int v, ...)
-```
+`vector4 finput(int opinput, int planeindex, float u, float v, ...)`
+
+`float finput(int opinput, int planeindex, int component, int u, int v, ...)`
 
 `float finput(int opinput, int planeindex, int component, float u, float v, ...)`
 
@@ -70,7 +46,50 @@ float  finput(int opinput, int planeindex, int component, int u, int v, ...)
 
 `float finput(int opinput, int planeindex, int arrayindex, int component, float u, float v, int frame, ...)`
 
-See [COP pixel sampling functions](../cop_sample_suite.html) for more
-information.
+See [COP pixel sampling functions](../cop_sample_suite.html) for more information.
 
-更多信息见 COP 像素采样功能。
+
+
+## See also
+
+- [COP pixel sampling functions](../cop_sample_suite.html)
+- [binput](binput.html)
+- [cinput](cinput.html)
+- [ninput](ninput.html)
+
+|
+cop
+
+[binput](binput.html)
+
+[cinput](cinput.html)
+
+[finput](finput.html)
+
+[hasmetadata](hasmetadata.html)
+
+[metadata](metadata.html)
+
+[ninput](ninput.html)
+
+|
+pixel
+
+[binput](binput.html)
+
+[cinput](cinput.html)
+
+[finput](finput.html)
+
+[ninput](ninput.html)
+
+|
+sample
+
+[binput](binput.html)
+
+[cinput](cinput.html)
+
+[finput](finput.html)
+
+[ninput](ninput.html)

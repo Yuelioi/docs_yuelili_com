@@ -1,44 +1,139 @@
 ---
 title: addvertex
-order: 3
+order: 4
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Adds a vertex to a primitive in a geometry.
+`int addvertex(int geohandle, int prim\_num, int point\_num)`
 
-```c
-int  addvertex(int geohandle, int prim_num, int point_num)
-```
+## Arguments
 
 `geohandle`
 
-A handle to the geometry to write to. Currently the only valid value is `0` or
-[geoself](geoself.html) "Returns a handle to the current geometry."), which
-means the current geometry in a node. (This argument may be used in the future
-to allow writing to other geometries.)
-
-要写入的几何体的句柄。目前唯一有效的值是 0orgeoself，也就是一个节点中的当前几何体。(这个参数将来可能会被使用，以允许写入其他几何体。)
+A handle to the geometry to write to. Currently the only valid value is `0` or [geoself](geoself.html "Returns a handle to the current geometry."), which means the current geometry in a node. (This argument may be used in the future to allow writing to other geometries.)
 
 `prim_num`
 
 The primitive number to add the vertex to.
 
-要添加顶点的基元编号。
-
 `point_num`
 
 The point number to wire the new vertex to.
 
-将新顶点连接到的点的编号。
+## Returns
 
-Returns
+Returns a _linear_ vertex index, or `-1` if the vertex could not be added. You can use this number with [setvertexattrib](setvertexattrib.html "Sets a vertex attribute in a geometry.") to set attributes on the new vertex, however this number may not be the final vertex index.
 
-Returns a _linear_ vertex index, or `-1` if the vertex could not be added. You
-can use this number with [setvertexattrib](setvertexattrib.html "Sets a vertex
-attribute in a geometry.") to set attributes on the new vertex, however this
-number may not be the final vertex index.
 
-返回平行顶点索引，如果顶点不能被添加，则返回 1。您可以使用此数字和 setvertexattrib 来设置新顶点的属性，但是此数字可能不是最终的顶点索引。
+
+## See also
+
+- [addprim](addprim.html)
+- [addpoint](addpoint.html)
+
+|
+create
+
+[addpoint](addpoint.html)
+
+[addpointattrib](addpointattrib.html)
+
+[addprim](addprim.html)
+
+[addprimattrib](addprimattrib.html)
+
+[addvertex](addvertex.html)
+
+[addvertexattrib](addvertexattrib.html)
+
+[blackbody](blackbody.html)
+
+[pcgenerate](pcgenerate.html)
+
+[removedetailattrib](removedetailattrib.html)
+
+[removepointattrib](removepointattrib.html)
+
+[removepointgroup](removepointgroup.html)
+
+[removeprimattrib](removeprimattrib.html)
+
+[removeprimgroup](removeprimgroup.html)
+
+[removevertexattrib](removevertexattrib.html)
+
+[removevertexgroup](removevertexgroup.html)
+
+|
+vertex
+
+[addvertex](addvertex.html)
+
+[addvertexattrib](addvertexattrib.html)
+
+[hasvertexattrib](hasvertexattrib.html)
+
+[hedge_postdstvertex](hedge_postdstvertex.html)
+
+[hex_faceindex](hex_faceindex.html)
+
+[invertexgroup](invertexgroup.html)
+
+[nvertices](nvertices.html)
+
+[nverticesgroup](nverticesgroup.html)
+
+[osd_limitsurfacevertex](osd_limitsurfacevertex.html)
+
+[pointvertex](pointvertex.html)
+
+[pointvertices](pointvertices.html)
+
+[primvertex](primvertex.html)
+
+[primvertexcount](primvertexcount.html)
+
+[primvertices](primvertices.html)
+
+[removevertex](removevertex.html)
+
+[removevertexattrib](removevertexattrib.html)
+
+[removevertexgroup](removevertexgroup.html)
+
+[setprimvertex](setprimvertex.html)
+
+[setvertexattrib](setvertexattrib.html)
+
+[setvertexgroup](setvertexgroup.html)
+
+[setvertexpoint](setvertexpoint.html)
+
+[tet_faceindex](tet_faceindex.html)
+
+[vertex](vertex.html)
+
+[vertexattrib](vertexattrib.html)
+
+[vertexattribsize](vertexattribsize.html)
+
+[vertexattribtype](vertexattribtype.html)
+
+[vertexattribtypeinfo](vertexattribtypeinfo.html)
+
+[vertexcurveparam](vertexcurveparam.html)
+
+[vertexhedge](vertexhedge.html)
+
+[vertexindex](vertexindex.html)
+
+[vertexnext](vertexnext.html)
+
+[vertexpoint](vertexpoint.html)
+
+[vertexprev](vertexprev.html)
+
+[vertexprim](vertexprim.html)
+
+[vertexprimindex](vertexprimindex.html)

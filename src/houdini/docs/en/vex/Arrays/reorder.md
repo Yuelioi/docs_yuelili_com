@@ -30,7 +30,7 @@ page for an example.
 
 ## See also
 
-- [Arrays ](../arrays.html)
-- [argsort ](argsort.html)
-- [reverse ](reverse.html)
-- [sort ](sort.html)
+- [Arrays](../arrays.html)
+- [argsort](argsort.html)
+- [reverse](reverse.html)
+- [sort](sort.html)

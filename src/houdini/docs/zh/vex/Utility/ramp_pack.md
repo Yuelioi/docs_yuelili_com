@@ -1,31 +1,36 @@
 ---
 title: ramp_pack
-order: 14
+order: 15
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Packs a set of arrays into a string-encoded ramp.
 
-| Since | 19.0 |
-| ----- | ---- |
 
-```c
-string  ramp_pack(string basis[], float pos[], float value[])
-```
+Since 19.0
 
-```c
-string  ramp_pack(string basis[], float pos[], vector value[])
-```
+`string ramp\_pack(string basis[], float pos[], float value[])`
 
-```c
-string  ramp_pack(string basis[], float pos[], vector4 value[])
-```
+`string ramp\_pack(string basis[], float pos[], vector value[])`
 
-Ramps are commonly packed as JSON formatted strings by Houdini operations.This
-will pack them three arrays of basis, position, and value into
-thecorresponding string.
+`string ramp\_pack(string basis[], float pos[], vector4 value[])`
 
-匝道通常被胡迪尼操作打包成 JSON 格式的字符串。
+Ramps are commonly packed as JSON formatted strings by Houdini operations.
+This will pack them three arrays of basis, position, and value into the
+corresponding string.
+
+
+
+## See also
+
+- [spline](spline.html)
+- [ramp_lookup](ramp_lookup.html)
+
+|
+ramp
+
+[ramp_lookup](ramp_lookup.html)
+
+[ramp_pack](ramp_pack.html)
+
+[ramp_unpack](ramp_unpack.html)

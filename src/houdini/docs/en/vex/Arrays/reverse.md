@@ -25,6 +25,6 @@ reverse("hello") == "olleh"; reverse({1,2,3,4}) == {4, 3, 2, 1};
 
 ## See also
 
-- [Arrays ](../arrays.html)
-- [reorder ](reorder.html)
-- [sort ](sort.html)
+- [Arrays](../arrays.html)
+- [reorder](reorder.html)
+- [sort](sort.html)

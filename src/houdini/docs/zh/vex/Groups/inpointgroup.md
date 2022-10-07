@@ -1,45 +1,125 @@
 ---
 title: inpointgroup
-order: 4
+order: 5
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Returns 1 if the point specified by the point number is in the group specified
-by the string.
+`int inpointgroup(<geometry>geometry, string groupname, int pointnum)`
 
-```c
-int  inpointgroup(<geometry>geometry, string groupname, int pointnum)
-```
+## Arguments
 
 `<geometry>`
 
-When running in the context of a node (such as a wrangle SOP), this argument
-can be an integer representing the input number (starting at 0) to read the
-geometry from.
+When running in the context of a node (such as a wrangle SOP), this argument can be an integer representing the input number (starting at 0) to read the geometry from.
 
-当在一个节点的上下文中运行时（比如 wrangle SOP），这个参数可以是一个整数，代表要读取几何体的输入数字（从 0 开始）。
+Alternatively, the argument can be a string specifying a geometry file (for example, a `.bgeo`) to read from. When running inside Houdini, this can be an `op:/path/to/sop` reference.
 
-Alternatively, the argument can be a string specifying a geometry file (for
-example, a `.bgeo`) to read from. When running inside Houdini, this can be an
-
-```c
-op:/path/to/sop
-```
-
-reference.
-
-或者，该参数可以是一个字符串，指定要读取的几何体文件（例如，a.bgeo）。当在 Houdini 内部运行时，这可以是一个 op:/path/to/sopreference。
-
-Returns
+## Returns
 
 `1` if the group exists and the point is in the group, or `0` otherwise.
 
-如果该组存在并且该点在该组中，则为 1，否则为 0。
+This can use ad-hoc groups, like `0-3` or `@Cd.x>0.5`. It matches the SOP
+group naming convention, in particular that an empty string means all points.
 
-This can use ad-hoc groups, like `0-3` or `@Cd.x>0.5`.It matches the SOPgroup
-naming convention, in particular that an empty string means all points.
 
-这可以使用特设的组，like0-3or@Cd.x>0.5。 它与 SOP
+groups
+
+[expandpointgroup](expandpointgroup.html)
+
+[expandprimgroup](expandprimgroup.html)
+
+[expandvertexgroup](expandvertexgroup.html)
+
+[inpointgroup](inpointgroup.html)
+
+[inprimgroup](inprimgroup.html)
+
+[invertexgroup](invertexgroup.html)
+
+[npointsgroup](npointsgroup.html)
+
+[nprimitivesgroup](nprimitivesgroup.html)
+
+[nverticesgroup](nverticesgroup.html)
+
+[setpointgroup](setpointgroup.html)
+
+[setprimgroup](setprimgroup.html)
+
+[setvertexgroup](setvertexgroup.html)
+
+|
+point
+
+[addpoint](addpoint.html)
+
+[addpointattrib](addpointattrib.html)
+
+[haspointattrib](haspointattrib.html)
+
+[idtopoint](idtopoint.html)
+
+[inpointgroup](inpointgroup.html)
+
+[nametopoint](nametopoint.html)
+
+[ndcdepth](ndcdepth.html)
+
+[nearpoint](nearpoint.html)
+
+[nearpoints](nearpoints.html)
+
+[neighbour](neighbour.html)
+
+[neighbourcount](neighbourcount.html)
+
+[neighbours](neighbours.html)
+
+[npoints](npoints.html)
+
+[npointsgroup](npointsgroup.html)
+
+[planepointdistance](planepointdistance.html)
+
+[point](point.html)
+
+[pointattrib](pointattrib.html)
+
+[pointattribsize](pointattribsize.html)
+
+[pointattribtype](pointattribtype.html)
+
+[pointattribtypeinfo](pointattribtypeinfo.html)
+
+[pointhedge](pointhedge.html)
+
+[pointhedgenext](pointhedgenext.html)
+
+[pointprims](pointprims.html)
+
+[pointvertex](pointvertex.html)
+
+[pointvertices](pointvertices.html)
+
+[primpoint](primpoint.html)
+
+[primpoints](primpoints.html)
+
+[ptransform](ptransform.html)
+
+[removeattrib](removeattrib.html)
+
+[removepoint](removepoint.html)
+
+[removepointattrib](removepointattrib.html)
+
+[removepointgroup](removepointgroup.html)
+
+[setpointattrib](setpointattrib.html)
+
+[setpointgroup](setpointgroup.html)
+
+[setvertexpoint](setvertexpoint.html)
+
+[vertexpoint](vertexpoint.html)

@@ -1,26 +1,192 @@
 ---
 title: getpackedtransform
-order: 3
+order: 4
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Gets the transform of a packed primitive.
 
-| Since | 17.0 |
-| ----- | ---- |
 
-```c
-matrix  getpackedtransform(int input, int primnum)
-```
+Since 17.0
 
-Gets the transform of a packed primitive. This is constructed from the
-`P`attribute of the primitive‘spoint and its intrinsic `transform`.
+`matrix getpackedtransform(int input, int primnum)`
 
-获取一个打包的基元的变换。这是从基元的点的属性和它的内在变换构造出来的。
+Gets the transform of a packed primitive. This is constructed from the `P`
+attribute of the primitive’s point and its intrinsic `transform`.
+
+Warning
+
+This function builds a transform from _only_ the `P` (position) attribute and the `transform` intrinsic attribute. It ignores various details that the `packedfulltransform` intrinsic attribute includes:
+
+- The packed primitive’s `pivot` intrinsic attribute.
+- Instancing attributes such as `orient` (when the `pointinstancetransform` intrinsic attribute is on, as with crowd agents).
+- The `packedlocaltransform` intrinsic attribute (Alembic primitives).
+
+So this function will not return the expected transform in several different cases.
+
+The [setpackedtransform](setpackedtransform.html "Sets the transform of a packed primitive.") function has the same issues since it _only_ overwrites `P` and `transform`. So, for example, the `packedfulltransform` won’t contain the matrix you would expect if there is a non-zero packed pivot, or in the other cases listed above.
 
 ## Examples
 
-    // matrix to transform bymatrix transform = ident();rotate(transform, radians(45), {0,1,0});translate(transform, {0,1,0});matrix tf = getpackedtransform(0, @primnum);setpackedtransform(0, @primnum, transform * tf);
+[¶](#examples)
+
+```c
+// matrix to transform by
+matrix transform = ident();
+rotate(transform, radians(45), {0,1,0});
+translate(transform, {0,1,0});
+
+matrix tf = getpackedtransform(0, @primnum);
+setpackedtransform(0, @primnum, transform \* tf);
+
+```
+
+
+
+## See also
+
+- [setpackedtransform](setpackedtransform.html)
+- [packedtransform](packedtransform.html)
+
+|
+transform
+
+[agentcliptransformgroups](agentcliptransformgroups.html)
+
+[agentfindtransformgroup](agentfindtransformgroup.html)
+
+[agentlocaltransform](agentlocaltransform.html)
+
+[agentlocaltransforms](agentlocaltransforms.html)
+
+[agentrestlocaltransform](agentrestlocaltransform.html)
+
+[agentrestworldtransform](agentrestworldtransform.html)
+
+[agentsolvefbik](agentsolvefbik.html)
+
+[agenttransformcount](agenttransformcount.html)
+
+[agenttransformgroupmember](agenttransformgroupmember.html)
+
+[agenttransformgroupmemberchannel](agenttransformgroupmemberchannel.html)
+
+[agenttransformgroups](agenttransformgroups.html)
+
+[agenttransformgroupweight](agenttransformgroupweight.html)
+
+[agenttransformnames](agenttransformnames.html)
+
+[agenttransformtolocal](agenttransformtolocal.html)
+
+[agenttransformtoworld](agenttransformtoworld.html)
+
+[agentworldtransform](agentworldtransform.html)
+
+[agentworldtransforms](agentworldtransforms.html)
+
+[cregioncapturetransform](cregioncapturetransform.html)
+
+[cregiondeformtransform](cregiondeformtransform.html)
+
+[cregionoverridetransform](cregionoverridetransform.html)
+
+[ctransform](ctransform.html)
+
+[fromNDC](fromNDC.html)
+
+[getpackedtransform](getpackedtransform.html)
+
+[getspace](getspace.html)
+
+[mspace](mspace.html)
+
+[ndcdepth](ndcdepth.html)
+
+[ntransform](ntransform.html)
+
+[opparentbonetransform](opparentbonetransform.html)
+
+[opparenttransform](opparenttransform.html)
+
+[opparmtransform](opparmtransform.html)
+
+[oppreconstrainttransform](oppreconstrainttransform.html)
+
+[oppreparmtransform](oppreparmtransform.html)
+
+[opprerawparmtransform](opprerawparmtransform.html)
+
+[oppretransform](oppretransform.html)
+
+[oprawparmtransform](oprawparmtransform.html)
+
+[optransform](optransform.html)
+
+[orthographic](orthographic.html)
+
+[ow_nspace](ow_nspace.html)
+
+[ow_space](ow_space.html)
+
+[ow_vspace](ow_vspace.html)
+
+[packedtransform](packedtransform.html)
+
+[perspective](perspective.html)
+
+[polardecomp](polardecomp.html)
+
+[ptransform](ptransform.html)
+
+[qinvert](qinvert.html)
+
+[qrotate](qrotate.html)
+
+[rotate_x_to](rotate_x_to.html)
+
+[setagentchannelvalue](setagentchannelvalue.html)
+
+[setagentchannelvalues](setagentchannelvalues.html)
+
+[setagentlocaltransform](setagentlocaltransform.html)
+
+[setagentlocaltransforms](setagentlocaltransforms.html)
+
+[setagentworldtransform](setagentworldtransform.html)
+
+[setagentworldtransforms](setagentworldtransforms.html)
+
+[setpackedtransform](setpackedtransform.html)
+
+[solveconstraint](solveconstraint.html)
+
+[solvecurve](solvecurve.html)
+
+[solvefbik](solvefbik.html)
+
+[solveik](solveik.html)
+
+[solvephysfbik](solvephysfbik.html)
+
+[toNDC](toNDC.html)
+
+[tw_nspace](tw_nspace.html)
+
+[tw_space](tw_space.html)
+
+[tw_vspace](tw_vspace.html)
+
+[vtransform](vtransform.html)
+
+[wo_nspace](wo_nspace.html)
+
+[wo_space](wo_space.html)
+
+[wo_vspace](wo_vspace.html)
+
+[wt_nspace](wt_nspace.html)
+
+[wt_space](wt_space.html)
+
+[wt_vspace](wt_vspace.html)

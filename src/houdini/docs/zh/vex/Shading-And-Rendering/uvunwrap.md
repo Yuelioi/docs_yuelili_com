@@ -1,85 +1,213 @@
 ---
 title: uvunwrap
-order: 78
+order: 79
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Computes the position and normal at given (u, v) coordinates, for use in a
-lens shader.
+`int uvunwrap(string object\_path, float u, float v, float time, vector &P, vector &I)`
 
-`int uvunwrap(string object_path, float u, float v, float time, vector &P, vector &I)`
+`int uvunwrap(string object\_path, float u, float v, float time, vector &P, vector &I, vector &mikkelsenUtan, vector &mikkelsenVtan)`
 
-`int uvunwrap(string object_path, float u, float v, float time, vector &P, vector &I, vector &mikkelsenUtan, vector &mikkelsenVtan)`
+This function **only makes sense in a Mantra context**, for use in **texture baking** or in a **lens shader**. The function unfortunately must be “context-less” so it’s available to the CVEX lens shader, but in any other context it will fail and return `0`.
 
-This function **only makes sense in a Mantra context** , for use in **texture
-baking** or in a **lens shader**. The function unfortunately must be “context-
-less” so it‘savailable to the CVEX lens shader, but in any other context it
-will fail and return `0`.
+For any other kind of texture sampling, use the superior [uvsample](uvsample.html "Interpolates the value of an attribute at certain UV coordinates using a UV attribute.") or [uvintersect](uvintersect.html "This function computes the intersection of the specified ray with the geometry in uv space.") functions instead of this.
 
-这个函数只在 Mantra 上下文中才有意义，用于 texture baking 或 alens shader 中。不幸的是，这个函数必须是 "无上下文
-"的，所以它可以用于 CVEX 镜头着色器，但在任何其他上下文中，它都会失败并返回 0。
-
-For any other kind of texture sampling, use the superior
-[uvsample](uvsample.html "Interpolates the value of an attribute at certain UV
-coordinates using a UV attribute.") or [uvintersect](uvintersect.html "This
-function computes the intersection of the specified ray with the geometry in
-uv space.") functions instead of this.
-
-对于任何其他类型的纹理取样，请使用 superioruvsample 或 uvintersect 函数来代替这个函数。
+## Arguments
 
 `object_path`
 
 The object being unwrapped.
 
-被解包的物体。
-
 `u`, `v`
 
-The UV coordinates specifying where on the surface to get the position and
-normal.
-
-UV 坐标，指定在表面上获取位置和法线。
+The UV coordinates specifying where on the surface to get the position and normal.
 
 `time`
 
 The time along the timeline at which to measure the geometry, in seconds.
 
-在时间轴上测量几何体的时间，单位是秒。
-
 `&P`
 
-If it succeeds, the function overwrites this variable with the world space
-position of the given point.
-
-如果成功的话，函数会用给定点的世界空间位置覆盖这个变量。
+If it succeeds, the function overwrites this variable with the world space position of the given point.
 
 `&I`
 
-If it succeeds, the function overwrites this variable with the normal at the
-given point.
+If it succeeds, the function overwrites this variable with the normal at the given point.
 
-如果成功，该函数会用给定点的法线覆盖这个变量。
-
-```c
-&mikkelsenUtan
-```
-
-,
-
-```c
-&mikkelsenVtan
-```
+`&mikkelsenUtan`, `&mikkelsenVtan`
 
 The function overwrites these variables with the Mikkelsen tangent vectors.
 
-该函数用 Mikkelsen 切线向量覆盖这些变量。
+## Returns
 
-Returns
+`1` if the UV coordinates specified a valid point on the surface, or `0` otherwise.
 
-`1` if the UV coordinates specified a valid point on the surface, or `0`
-otherwise.
 
-如果 UV 坐标指定了曲面上的一个有效点，则为 1，否则为 0。
+
+## See also
+
+- [uvsample](uvsample.html)
+- [uvintersect](uvintersect.html)
+
+|
+raytracing
+
+[getlocalcurvature](getlocalcurvature.html)
+
+[getobjectid](getobjectid.html)
+
+[getuvtangents](getuvtangents.html)
+
+[intersect_lights](intersect_lights.html)
+
+[scatter](scatter.html)
+
+[shadow_light](shadow_light.html)
+
+[uvunwrap](uvunwrap.html)
+
+|
+shading
+
+[Du](Du.html)
+
+[Dv](Dv.html)
+
+[Dw](Dw.html)
+
+[area](area.html)
+
+[ashikhmin](ashikhmin.html)
+
+[atten](atten.html)
+
+[blinn](blinn.html)
+
+[blinnBRDF](blinnBRDF.html)
+
+[chiang](chiang.html)
+
+[computenormal](computenormal.html)
+
+[cone](cone.html)
+
+[cvex_bsdf](cvex_bsdf.html)
+
+[diffuse](diffuse.html)
+
+[diffuseBRDF](diffuseBRDF.html)
+
+[dsmpixel](dsmpixel.html)
+
+[environment](environment.html)
+
+[fastshadow](fastshadow.html)
+
+[filtershadow](filtershadow.html)
+
+[filterstep](filterstep.html)
+
+[fresnel](fresnel.html)
+
+[frontface](frontface.html)
+
+[getderiv](getderiv.html)
+
+[getfogname](getfogname.html)
+
+[getglobalraylevel](getglobalraylevel.html)
+
+[getgroupid](getgroupid.html)
+
+[getlocalcurvature](getlocalcurvature.html)
+
+[getmaterialid](getmaterialid.html)
+
+[getobjectid](getobjectid.html)
+
+[getobjectname](getobjectname.html)
+
+[getprimid](getprimid.html)
+
+[getptextureid](getptextureid.html)
+
+[getraylevel](getraylevel.html)
+
+[getrayweight](getrayweight.html)
+
+[getsamplestore](getsamplestore.html)
+
+[getsmoothP](getsmoothP.html)
+
+[getuvtangents](getuvtangents.html)
+
+[ggx](ggx.html)
+
+[gradient](gradient.html)
+
+[hair](hair.html)
+
+[henyeygreenstein](henyeygreenstein.html)
+
+[isotropic](isotropic.html)
+
+[israytracing](israytracing.html)
+
+[isshadingRHS](isshadingRHS.html)
+
+[lightstate](lightstate.html)
+
+[matchvex_blinn](matchvex_blinn.html)
+
+[matchvex_specular](matchvex_specular.html)
+
+[objectstate](objectstate.html)
+
+[phong](phong.html)
+
+[phongBRDF](phongBRDF.html)
+
+[phonglobe](phonglobe.html)
+
+[ptexture](ptexture.html)
+
+[rayhittest](rayhittest.html)
+
+[rayimport](rayimport.html)
+
+[reflect](reflect.html)
+
+[refract](refract.html)
+
+[renderstate](renderstate.html)
+
+[resolvemissedray](resolvemissedray.html)
+
+[sample_geometry](sample_geometry.html)
+
+[scatter](scatter.html)
+
+[setsamplestore](setsamplestore.html)
+
+[specular](specular.html)
+
+[specularBRDF](specularBRDF.html)
+
+[sssapprox](sssapprox.html)
+
+[teximport](teximport.html)
+
+[texture](texture.html)
+
+[trace](trace.html)
+
+[translucent](translucent.html)
+
+[uvunwrap](uvunwrap.html)
+
+[volume](volume.html)
+
+[wireblinn](wireblinn.html)
+
+[wirediffuse](wirediffuse.html)

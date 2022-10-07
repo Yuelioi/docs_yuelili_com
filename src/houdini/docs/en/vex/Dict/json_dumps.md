@@ -46,4 +46,4 @@ Compact typeless JSON on multiple lines.
 
 ## See also
 
-- [json_loads ](json_loads.html)
+- [json_loads](json_loads.html)

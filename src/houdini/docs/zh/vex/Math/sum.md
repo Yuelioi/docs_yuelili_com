@@ -1,51 +1,139 @@
 ---
 title: sum
-order: 66
+order: 72
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Returns the sum of a list of numbers.
+`float sum(float n)`
 
-```c
-float  sum(float n)
-```
-
-```c
-int  sum(int n)
-```
+`int sum(int n)`
 
 Returns the argument.
 
-返回参数。
+`float sum(<vector>v)`
 
-```c
-float  sum(<vector>v)
-```
+Returns the sum of the vector’s components.
 
-Returns the sum of the vector‘scomponents.
+`int sum(int nums[])`
 
-Returns the sum of the vectorâs components.
-
-```c
-int  sum(int nums[])
-```
-
-```c
-float  sum(float nums[])
-```
+`float sum(float nums[])`
 
 Returns the sum of the items of the array.
 
-返回数组中各项的总和。
+`<vector> sum(<vector>arr[])`
 
-```c
-<vector> sum(<vector>arr[])
-```
+Returns a vector where the components are the sums of the corresponding components in the vectors in the array.
 
-Returns a vector where the components are the sums of the corresponding
-components in the vectors in the array.
 
-返回一个向量，其中的分量是数组中相应分量的总和。
+
+## See also
+
+- [product](product.html)
+
+|
+math
+
+[Du](Du.html)
+
+[Dv](Dv.html)
+
+[Dw](Dw.html)
+
+[abs](abs.html)
+
+[acos](acos.html)
+
+[asin](asin.html)
+
+[atan](atan.html)
+
+[atten](atten.html)
+
+[avg](avg.html)
+
+[cbrt](cbrt.html)
+
+[ceil](ceil.html)
+
+[cos](cos.html)
+
+[cosh](cosh.html)
+
+[cracktransform](cracktransform.html)
+
+[cross](cross.html)
+
+[degrees](degrees.html)
+
+[dot](dot.html)
+
+[erf](erf.html)
+
+[erf_inv](erf_inv.html)
+
+[erfc](erfc.html)
+
+[exp](exp.html)
+
+[floor](floor.html)
+
+[frac](frac.html)
+
+[fuzzify](fuzzify.html)
+
+[getderiv](getderiv.html)
+
+[isfinite](isfinite.html)
+
+[isnan](isnan.html)
+
+[log](log.html)
+
+[log10](log10.html)
+
+[max](max.html)
+
+[min](min.html)
+
+[pow](pow.html)
+
+[product](product.html)
+
+[radians](radians.html)
+
+[resample_linear](resample_linear.html)
+
+[rint](rint.html)
+
+[shl](shl.html)
+
+[shr](shr.html)
+
+[shrz](shrz.html)
+
+[sign](sign.html)
+
+[sin](sin.html)
+
+[sinh](sinh.html)
+
+[solvecubic](solvecubic.html)
+
+[solvepoly](solvepoly.html)
+
+[solvequadratic](solvequadratic.html)
+
+[solvetriangleSSS](solvetriangleSSS.html)
+
+[sqrt](sqrt.html)
+
+[sum](sum.html)
+
+[tan](tan.html)
+
+[tanh](tanh.html)
+
+[trunc](trunc.html)
+
+[variance](variance.html)

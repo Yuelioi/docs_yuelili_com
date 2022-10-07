@@ -1,45 +1,134 @@
 ---
 title: inprimgroup
-order: 5
+order: 6
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Returns 1 if the primitive specified by the primitive number is in the group
-specified by the string.
+`int inprimgroup(<geometry>geometry, string groupname, int primnum)`
 
-```c
-int  inprimgroup(<geometry>geometry, string groupname, int primnum)
-```
+## Arguments
 
 `<geometry>`
 
-When running in the context of a node (such as a wrangle SOP), this argument
-can be an integer representing the input number (starting at 0) to read the
-geometry from.
+When running in the context of a node (such as a wrangle SOP), this argument can be an integer representing the input number (starting at 0) to read the geometry from.
 
-当在一个节点的上下文中运行时（比如 wrangle SOP），这个参数可以是一个整数，代表要读取几何体的输入数字（从 0 开始）。
+Alternatively, the argument can be a string specifying a geometry file (for example, a `.bgeo`) to read from. When running inside Houdini, this can be an `op:/path/to/sop` reference.
 
-Alternatively, the argument can be a string specifying a geometry file (for
-example, a `.bgeo`) to read from. When running inside Houdini, this can be an
-
-```c
-op:/path/to/sop
-```
-
-reference.
-
-或者，该参数可以是一个字符串，指定要读取的几何体文件（例如，a.bgeo）。当在 Houdini 内部运行时，这可以是一个 op:/path/to/sopreference。
-
-Returns
+## Returns
 
 `1` if the groups exists and the primitive is in the group, or `0` otherwise.
 
-如果组存在且基元在组内，则为 1，否则为 0。
+This can use ad-hoc groups, like `0-3` or `@Cd.x>0.5`. It matches the SOP
+group naming convention, in particular that an empty string means all
+primitives.
 
-This can use ad-hoc groups, like `0-3` or `@Cd.x>0.5`.It matches the SOPgroup
-naming convention, in particular that an empty string means allprimitives.
 
-这可以使用特设的组，like0-3or@Cd.x>0.5。 它与 SOP
+groups
+
+[expandpointgroup](expandpointgroup.html)
+
+[expandprimgroup](expandprimgroup.html)
+
+[expandvertexgroup](expandvertexgroup.html)
+
+[inpointgroup](inpointgroup.html)
+
+[inprimgroup](inprimgroup.html)
+
+[invertexgroup](invertexgroup.html)
+
+[npointsgroup](npointsgroup.html)
+
+[nprimitivesgroup](nprimitivesgroup.html)
+
+[nverticesgroup](nverticesgroup.html)
+
+[setpointgroup](setpointgroup.html)
+
+[setprimgroup](setprimgroup.html)
+
+[setvertexgroup](setvertexgroup.html)
+
+|
+prim
+
+[addprim](addprim.html)
+
+[addprimattrib](addprimattrib.html)
+
+[curvearclen](curvearclen.html)
+
+[hasprimattrib](hasprimattrib.html)
+
+[hedge_prim](hedge_prim.html)
+
+[idtoprim](idtoprim.html)
+
+[inprimgroup](inprimgroup.html)
+
+[nametoprim](nametoprim.html)
+
+[nprimitives](nprimitives.html)
+
+[nprimitivesgroup](nprimitivesgroup.html)
+
+[pointprims](pointprims.html)
+
+[prim](prim.html)
+
+[prim_attribute](prim_attribute.html)
+
+[prim_normal](prim_normal.html)
+
+[primarclen](primarclen.html)
+
+[primattrib](primattrib.html)
+
+[primattribsize](primattribsize.html)
+
+[primattribtype](primattribtype.html)
+
+[primattribtypeinfo](primattribtypeinfo.html)
+
+[primduv](primduv.html)
+
+[primfind](primfind.html)
+
+[primhedge](primhedge.html)
+
+[priminteriorweights](priminteriorweights.html)
+
+[primintrinsic](primintrinsic.html)
+
+[primpoint](primpoint.html)
+
+[primpoints](primpoints.html)
+
+[primuv](primuv.html)
+
+[primuvconvert](primuvconvert.html)
+
+[primvertex](primvertex.html)
+
+[primvertexcount](primvertexcount.html)
+
+[primvertices](primvertices.html)
+
+[removeprim](removeprim.html)
+
+[setprimattrib](setprimattrib.html)
+
+[setprimgroup](setprimgroup.html)
+
+[setprimintrinsic](setprimintrinsic.html)
+
+[setprimvertex](setprimvertex.html)
+
+[vertexcurveparam](vertexcurveparam.html)
+
+[vertexindex](vertexindex.html)
+
+[vertexprim](vertexprim.html)
+
+[vertexprimindex](vertexprimindex.html)

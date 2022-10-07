@@ -1,19 +1,85 @@
 ---
 title: splitpath
-order: 32
+order: 36
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Splits a file path into the directory and name parts.
+`void splitpath(string fullpath, string &dir, string &name)`
 
-```c
-void  splitpath(string fullpath, string &dir, string &name)
-```
+Splits a string representing a path into the `directory` and `name` components.
 
-Splits a string representing a path into the `directory` and `name`
-components.
 
-将代表路径的字符串分割成 directory 和 namecomponents。
+string
+
+[atof](atof.html)
+
+[atoi](atoi.html)
+
+[concat](concat.html)
+
+[decode](decode.html)
+
+[decodeattrib](decodeattrib.html)
+
+[decodeparm](decodeparm.html)
+
+[decodeutf8](decodeutf8.html)
+
+[encode](encode.html)
+
+[encodeattrib](encodeattrib.html)
+
+[encodeparm](encodeparm.html)
+
+[encodeutf8](encodeutf8.html)
+
+[error](error.html)
+
+[expand_udim](expand_udim.html)
+
+[find](find.html)
+
+[has_udim](has_udim.html)
+
+[insert](insert.html)
+
+[isvalidindex](isvalidindex.html)
+
+[itoa](itoa.html)
+
+[join](join.html)
+
+[lstrip](lstrip.html)
+
+[makevalidvarname](makevalidvarname.html)
+
+[match](match.html)
+
+[pluralize](pluralize.html)
+
+[print_once](print_once.html)
+
+[printf](printf.html)
+
+[relativepath](relativepath.html)
+
+[replace](replace.html)
+
+[replace_match](replace_match.html)
+
+[rstrip](rstrip.html)
+
+[split](split.html)
+
+[splitpath](splitpath.html)
+
+[sprintf](sprintf.html)
+
+[strip](strip.html)
+
+[strlen](strlen.html)
+
+[texprintf](texprintf.html)
+
+[warning](warning.html)

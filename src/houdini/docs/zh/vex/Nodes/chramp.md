@@ -1,39 +1,92 @@
 ---
 title: chramp
-order: 11
+order: 15
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
+
+`float chramp(string channel, float ramppos)`
+
+`float chramp(string channel, float ramppos, float time)`
+
+`vector chramp(string channel, float ramppos)`
+
+`vector chramp(string channel, float ramppos, float time)`
 
 Evaluates a ramp parameter and return its value.
 
-```c
-float  chramp(string channel, float ramppos)
-```
+The ramppos is where on the ramp to evaluate. The ramppos is clamped to the range `[0,1]`.
 
-```c
-float  chramp(string channel, float ramppos, float time)
-```
+The time parameter can be used if the ramp is animated to evaluate
+at other than the current time.
 
-```c
-vector  chramp(string channel, float ramppos)
-```
 
-```c
-vector  chramp(string channel, float ramppos, float time)
-```
+utility
 
-Evaluates a ramp parameter and return its value.
+[assert_enabled](assert_enabled.html)
 
-评估一个斜坡参数并返回其值。
+[ch](ch.html)
 
-The ramppos is where on the ramp to evaluate.
+[ch2](ch2.html)
 
-ramppos 是指要评估的坡道的位置。
+[ch3](ch3.html)
 
-The time parameter can be used if the ramp is animated to evaluateat other
-than the current time.
+[ch4](ch4.html)
 
-如果斜面被动画化，可以使用时间参数来评估
+[chdict](chdict.html)
+
+[chexpr](chexpr.html)
+
+[chexprf](chexprf.html)
+
+[chexprt](chexprt.html)
+
+[chf](chf.html)
+
+[chi](chi.html)
+
+[chid](chid.html)
+
+[chp](chp.html)
+
+[chramp](chramp.html)
+
+[chrampderiv](chrampderiv.html)
+
+[chs](chs.html)
+
+[chsop](chsop.html)
+
+[chsraw](chsraw.html)
+
+[chu](chu.html)
+
+[chv](chv.html)
+
+[error](error.html)
+
+[expand_udim](expand_udim.html)
+
+[has_udim](has_udim.html)
+
+[isbound](isbound.html)
+
+[isconnected](isconnected.html)
+
+[ninputs](ninputs.html)
+
+[opid](opid.html)
+
+[print_once](print_once.html)
+
+[printf](printf.html)
+
+[select](select.html)
+
+[sleep](sleep.html)
+
+[sprintf](sprintf.html)
+
+[texprintf](texprintf.html)
+
+[warning](warning.html)

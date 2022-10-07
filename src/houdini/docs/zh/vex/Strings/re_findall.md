@@ -2,26 +2,22 @@
 title: re_findall
 order: 26
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Finds all instances of the given regular expression in the string
+`string [] re\_findall(string regex, string input)`
 
-```c
-string [] re_findall(string regex, string input)
-```
+`string [] re\_findall(string regex, string input, int start)`
 
-```c
-string [] re_findall(string regex, string input, int start)
-```
+`string [] re\_findall(string regex, string input, int start, int end)`
 
-```c
-string [] re_findall(string regex, string input, int start, int end)
-```
+Returns an array of all strings that match the entire `regex` expression (no capture groups).
 
-Returns an array of all strings that match the entire `regex` expression (no
-capture groups).
 
-返回符合 entiregexexpression 的所有字符串的数组（没有捕获组）。
+
+## See also
+
+- [re_find](re_find.html)
+- [re_match](re_match.html)
+- [re_replace](re_replace.html)
+- [re_split](re_split.html)

@@ -1,43 +1,52 @@
 ---
 title: quaterniontoeuler
-order: 8
+order: 9
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Creates a euler angle representing a quaternion.
 
-| Since | 17.0 |
-| ----- | ---- |
 
-```c
-vector  quaterniontoeuler(vector4 orient, int order)
-```
+Since 17.0
 
-Creates a vector representing euler angles from a vector4 representing a
-quaternion.
+`vector quaterniontoeuler(vector4 orient, int order)`
 
-从一个代表四元数的向量 4 创建一个代表欧拉角的向量。
+Creates a vector representing euler angles from a vector4 representing a quaternion.
 
-The angles are in radians.Use the `degrees()` function to convert radians into
-degrees.
+The angles are in radians. Use the `degrees()` function to convert radians into degrees.
 
-角度的单位是弧度。 使用 degrees()函数将弧度转换为度。
+Specify the rotation order with the order integer. Use the constants defined in `$HH/vex/include/math.h` (for example, `XFORM_XYZ`).
 
-Specify the rotation order with the order integer. Use the constants defined
-in
+For more information, see [Data types](../lang.html#data-types) and [Dot operator](../lang.html#dot-operator).
 
-```c
-$HH/vex/include/math.h
-```
 
-(for example, `XFORM_XYZ`).
 
-用 orderinteger 指定旋转顺序。使用$HH/vex/include/math.h 中定义的常数（例如，XFORM_XYZ）。
+## See also
 
-For more information, see [Data types](../lang.html#data-types) and [Dot
-operator](../lang.html#dot-operator).
+- [dihedral](dihedral.html)
+- [qconvert](qconvert.html)
+- [quaternion](quaternion.html)
+- [quaternion](eulertoquaternion.html)
 
-更多信息，请参阅数据类型和点运算符。
+|
+quaternion
+
+[dihedral](dihedral.html)
+
+[eulertoquaternion](eulertoquaternion.html)
+
+[qconvert](qconvert.html)
+
+[qdistance](qdistance.html)
+
+[qinvert](qinvert.html)
+
+[qmultiply](qmultiply.html)
+
+[qrotate](qrotate.html)
+
+[quaternion](quaternion.html)
+
+[quaterniontoeuler](quaterniontoeuler.html)
+
+[slerp](slerp.html)

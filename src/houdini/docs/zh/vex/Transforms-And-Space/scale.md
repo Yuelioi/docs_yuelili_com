@@ -1,28 +1,78 @@
 ---
 title: scale
-order: 23
+order: 24
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Scales the given matrix in three directions simultaneously (X, Y, Z -  
-given by the components of the scale_vector).
+`void scale(matrix2 &m, vector2 scale\_vector)`
 
-```c
-void  scale(matrix2 &m, vector2 scale_vector)
-```
+`void scale(matrix &m, vector scale\_vector)`
 
-```c
-void  scale(matrix &m, vector scale_vector)
-```
+`void scale(matrix3 &m, vector scale\_vector)`
 
-```c
-void  scale(matrix3 &m, vector scale_vector)
-```
+Scales the matrix in three directions simultaneously by the factors in the vector.
+This modifies the matrix in-place, rather than returning a new matrix.
 
-Scales the matrix in three directions simultaneously by the factors in the
-vector.This modifies the matrix in-place, rather than returning a new matrix.
 
-通过向量中的因子在三个方向上同时缩放矩阵。
+
+## See also
+
+- [pretranslate](pretranslate.html)
+- [prerotate](prerotate.html)
+- [prescale](prescale.html)
+- [translate](translate.html)
+- [rotate](rotate.html)
+
+|
+matrix
+
+[\_\_uniform\_mul](### uniform_mul.html)
+
+[\_\_uniform\_premul](### uniform_premul.html)
+
+[combinelocaltransform](combinelocaltransform.html)
+
+[cracktransform](cracktransform.html)
+
+[determinant](determinant.html)
+
+[diagonalizesymmetric](diagonalizesymmetric.html)
+
+[dihedral](dihedral.html)
+
+[eigenvalues](eigenvalues.html)
+
+[extractlocaltransform](extractlocaltransform.html)
+
+[ident](ident.html)
+
+[instance](instance.html)
+
+[invert](invert.html)
+
+[lookat](lookat.html)
+
+[maketransform](maketransform.html)
+
+[outerproduct](outerproduct.html)
+
+[premul](premul.html)
+
+[prerotate](prerotate.html)
+
+[prescale](prescale.html)
+
+[pretranslate](pretranslate.html)
+
+[rotate](rotate.html)
+
+[scale](scale.html)
+
+[smoothrotation](smoothrotation.html)
+
+[svddecomp](svddecomp.html)
+
+[translate](translate.html)
+
+[transpose](transpose.html)

@@ -1,113 +1,244 @@
 ---
 title: printf
-order: 11
+order: 13
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Prints values to the console which started the VEX program.
+`void printf(string format, ...)`
 
-```c
-void  printf(string format, ...)
-```
+The format string is a simpler version of the C `printf` format string.
+When a `%` symbol is found in the string, an argument will be printed
+out in a format specified by the characters following the `%` symbol.
+The conversion of the argument is specified by a single letter: `g`, `f`,
+`s`, `d`, `x`, `c`, `p`.
 
-The format string is a simpler version of the C `printf` format string.When a
-`%` symbol is found in the string, an argument will be printedout in a format
-specified by the characters following the `%` symbol.The conversion of the
-argument is specified by a single letter: `g`, `f`,`s`, `d`, `x`, `c`, `p`.
-
-格式字符串是 Cprintfformat 字符串的一个简单版本。
-
-You can prefix the format option with an optional prefix characters to
-controlthe formatting of the output.The general form of a prefix
-is
-
-```c
-[flags][width][.precision][format]
-```
-
-, where Flags can be:
-
-当在字符串中发现一个%符号时，一个参数将被打印出来，其格式由%符号后面的字符指定。
+You can prefix the format option with an optional prefix characters to control
+the formatting of the output. The general form of a prefix is
+`[flags][width][.precision][format]`, where Flags can be:
 
 - `-`: The result will be left justified in the field
-
-的格式打印出来。
-
-- `+`: A numeric value will be prefixed with either `+` for positivevalues.A non-standard behavior of this flag is that stringarguments will be quoted when the `+` flag is set.
-
-参数的转换是由一个字母指定的：g,f,s,d,x,c,p。
-
+- `+`: A numeric value will be prefixed with either `+` for positive
+  values. A non-standard behavior of this flag is that string
+  arguments will be quoted when the `+` flag is set.
 - `0`: For numeric values, leading zeros are used to pad the field.
-
-你可以在 format 选项前加上一个可选的前缀字符来控制输出的格式。
 
 Width
 
-The width can be specified by one or more decimal digits.Alternately, ifan
-asterisk (`*`) is given, the width will be taken from the next valuein the
-`printf` argument list.
-
-来控制输出的格式化。 前缀的一般形式是[flags][width][.precision][format]，其中 Flags 可以是。
+The width can be specified by one or more decimal digits. Alternately, if
+an asterisk (`*`) is given, the width will be taken from the next value
+in the `printf` argument list.
 
 Precision
 
-The precision can be specified by one or more decimal digits.Alternately,if an
-asterisk (`*`) is given, the width will be taken from the next valuein the
-`printf` argument list.
-
--: 结果将在字段中被左对齐
+The precision can be specified by one or more decimal digits. Alternately,
+if an asterisk (`*`) is given, the width will be taken from the next value
+in the `printf` argument list.
 
 The different format characters supported are
 
-+: 数字值的前缀是+，代表正值。
-
 `%g`, `%p`, `%c`
 
-Print an integer float, vector, vector4, matrix3, matrix or stringin “general”
-form.
-
-值。 这个标志的一个非标准行为是，当+标志被设置时，字符串
+Print an integer float, vector, vector4, matrix3, matrix or string
+in “general” form.
 
 `%f`, `%e`, `%E`
 
-Print a float, vector, vector4, matrix3 or matrix in floating pointform.
-
-参数在设置+标志时将被加引号。
+Print a float, vector, vector4, matrix3 or matrix in floating point
+form.
 
 `%s`
 
 Print a string.
 
-0：对于数字值，前导零用于填充字段。
-
 `%d`, `%i`
 
 Print an integer variable in decimal.
 
-宽度可以由一个或多个小数位指定。 另外，如果
-
 `%x`, `%X`
 
-Print an integer variable in hexidecimal.The value will be prefixed with“0x”
-(i.e. 0Ã42).
-
-则宽度将取自 printfargument 列表中的下一个值。
+Print an integer variable in hexidecimal. The value will be prefixed with
+“0x” (i.e. 0×42).
 
 `%o`
 
 Print an integer variable in octal.
 
-中的下一个值。
-
 `%%`
 
 Print a percent sign (%).
 
-精度可以用一个或多个小数位来指定。 另一种方法是。
-
 ## Examples
 
-    printf("P = %g, dot(N, P) = %g, %d = %x\n", P, dot(N, P), ptnum, ptnum);printf("RGB = {%g,%g,%g}\n", clr.r, clr.g, clr.b);printf("P = %20s\n", "20 chars");printf("%-+20s\n", "Left justified and quoted");printf("%+08.3g\n", velocity);printf("%*.*g\n", width, precision, value);Cf = texture(sprintf("/maps/map%d.rat", i));Cf = texture(sprintf("/maps/map%04d.rat", i));
+[¶](#examples)
+
+```c
+printf("P = %g, dot(N, P) = %g, %d = %x\n", P, dot(N, P), ptnum, ptnum);
+printf("RGB = {%g,%g,%g}\n", clr.r, clr.g, clr.b);
+printf("P = %20s\n", "20 chars");
+printf("%-+20s\n", "Left justified and quoted");
+printf("%+08.3g\n", velocity);
+printf("%\*.\*g\n", width, precision, value);
+Cf = texture(sprintf("/maps/map%d.rat", i));
+Cf = texture(sprintf("/maps/map%04d.rat", i));
+
+```
+
+
+print
+
+[error](error.html)
+
+[print_once](print_once.html)
+
+[printf](printf.html)
+
+[sprintf](sprintf.html)
+
+[warning](warning.html)
+
+|
+string
+
+[atof](atof.html)
+
+[atoi](atoi.html)
+
+[concat](concat.html)
+
+[decode](decode.html)
+
+[decodeattrib](decodeattrib.html)
+
+[decodeparm](decodeparm.html)
+
+[decodeutf8](decodeutf8.html)
+
+[encode](encode.html)
+
+[encodeattrib](encodeattrib.html)
+
+[encodeparm](encodeparm.html)
+
+[encodeutf8](encodeutf8.html)
+
+[error](error.html)
+
+[expand_udim](expand_udim.html)
+
+[find](find.html)
+
+[has_udim](has_udim.html)
+
+[insert](insert.html)
+
+[isvalidindex](isvalidindex.html)
+
+[itoa](itoa.html)
+
+[join](join.html)
+
+[lstrip](lstrip.html)
+
+[makevalidvarname](makevalidvarname.html)
+
+[match](match.html)
+
+[pluralize](pluralize.html)
+
+[print_once](print_once.html)
+
+[printf](printf.html)
+
+[relativepath](relativepath.html)
+
+[replace](replace.html)
+
+[replace_match](replace_match.html)
+
+[rstrip](rstrip.html)
+
+[split](split.html)
+
+[splitpath](splitpath.html)
+
+[sprintf](sprintf.html)
+
+[strip](strip.html)
+
+[strlen](strlen.html)
+
+[texprintf](texprintf.html)
+
+[warning](warning.html)
+
+|
+utility
+
+[assert_enabled](assert_enabled.html)
+
+[ch](ch.html)
+
+[ch2](ch2.html)
+
+[ch3](ch3.html)
+
+[ch4](ch4.html)
+
+[chdict](chdict.html)
+
+[chexpr](chexpr.html)
+
+[chexprf](chexprf.html)
+
+[chexprt](chexprt.html)
+
+[chf](chf.html)
+
+[chi](chi.html)
+
+[chid](chid.html)
+
+[chp](chp.html)
+
+[chramp](chramp.html)
+
+[chrampderiv](chrampderiv.html)
+
+[chs](chs.html)
+
+[chsop](chsop.html)
+
+[chsraw](chsraw.html)
+
+[chu](chu.html)
+
+[chv](chv.html)
+
+[error](error.html)
+
+[expand_udim](expand_udim.html)
+
+[has_udim](has_udim.html)
+
+[isbound](isbound.html)
+
+[isconnected](isconnected.html)
+
+[ninputs](ninputs.html)
+
+[opid](opid.html)
+
+[print_once](print_once.html)
+
+[printf](printf.html)
+
+[select](select.html)
+
+[sleep](sleep.html)
+
+[sprintf](sprintf.html)
+
+[texprintf](texprintf.html)
+
+[warning](warning.html)

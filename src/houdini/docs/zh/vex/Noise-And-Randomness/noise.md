@@ -1,87 +1,119 @@
 ---
 title: noise
-order: 15
+order: 23
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-There are two forms of Perlin-style noise: a non-periodic noise which  
-changes randomly throughout N-dimensional space, and a periodic form  
-which repeats over a given range of space.
+`float noise(float pos)`
 
-```c
-float  noise(float pos)
-```
-
-```c
-vector  noise(float pos)
-```
+`vector noise(float pos)`
 
 Sample one or three numbers at the given position from 1D noise.
 
-从一维噪声中对给定位置的一个或三个数字进行采样。
+`float noise(float posx, float posy)`
 
-```c
-float  noise(float posx, float posy)
-```
-
-```c
-vector  noise(float posx, float posy)
-```
+`vector noise(float posx, float posy)`
 
 Sample one or three numbers at the given position from 2D noise.
 
-从二维噪声中对给定位置的一个或三个数字进行采样。
+`float noise(vector pos)`
 
-```c
-float  noise(vector pos)
-```
-
-```c
-vector  noise(vector pos)
-```
+`vector noise(vector pos)`
 
 Sample one or three numbers at the given position from 3D noise.
 
-从三维噪声中对指定位置的一个或三个数字进行采样。
+`float noise(vector4 pos)`
 
-```c
-float  noise(vector4 pos)
-```
-
-```c
-vector  noise(vector4 pos)
-```
+`vector noise(vector4 pos)`
 
 Sample one or three numbers at the given position from 4D noise.
 
-从 4D 噪声中对给定位置的一个或三个数字进行采样。
+There are two forms of Perlin-style noise: a non-periodic noise which
+changes randomly throughout N-dimensional space, and a periodic form
+which repeats over a given range of space.
 
-There are two forms of Perlin-style noise: a non-periodic noise whichchanges
-randomly throughout N-dimensional space, and a periodic formwhich repeats over
-a given range of space.
+::: info Note
 
-有两种形式的佩林式噪声：一种非周期性的噪声，它在整个 N 维空间内随机变化。
+This function generates non-periodic noise. Use the
+[pnoise](pnoise.html "There are two forms of Perlin-style noise: a non-periodic noise which
+changes randomly throughout N-dimensional space, and a periodic form
+which repeats over a given range of space.") function to generate periodic Perlin noise.
 
-Note
+The various functions return the noise value at a 4D (vector4 argument),
+3D (vector argument), 2D (two float arguments) or 1D (float argument)
+position. You can get a random float value or a vector of three random
+values.
 
-This function generates non-periodic noise. Use the[pnoise](pnoise.html "There
-are two forms of Perlin-style noise: a non-periodic noise whichchanges
-randomly throughout N-dimensional space, and a periodic formwhich repeats over
-a given range of space.") function to generate periodic Perlin noise.
+The noise is in the range 0-1 with a median of 0.5. The distribution of
+the noise depends on the dimension, with higher dimensions approaching a
+Gaussian distribution of noise values.
 
-在整个 N 维空间内随机变化的非周期性噪声，以及一个周期性的形式
 
-The various functions return the noise value at a 4D (vector4 argument),3D
-(vector argument), 2D (two float arguments) or 1D (float argument)position.
-You can get a random float value or a vector of three randomvalues.
 
-在一个给定的空间范围内重复出现。
+## See also
 
-The noise is in the range 0-1 with a median of 0.5. The distribution ofthe
-noise depends on the dimension, with higher dimensions approaching aGaussian
-distribution of noise values.
+- [Noise and randomness](../random.html)
+- [anoise](anoise.html)
+- [curlnoise](curlnoise.html)
+- [flownoise](flownoise.html)
+- [noise](noise.html)
+- [onoise](onoise.html)
+- [pnoise](pnoise.html)
+- [snoise](snoise.html)
+- [vnoise](vnoise.html)
+- [wnoise](wnoise.html)
+- [xnoise](xnoise.html)
 
-这个函数可以生成非周期性噪声。使用 pnoisefunction 来生成周期性的佩林噪声。
+|
+noise
+
+[anoise](anoise.html)
+
+[curlnoise](curlnoise.html)
+
+[curlnoise2d](curlnoise2d.html)
+
+[curlxnoise](curlxnoise.html)
+
+[curlxnoise2d](curlxnoise2d.html)
+
+[cwnoise](cwnoise.html)
+
+[flownoise](flownoise.html)
+
+[flowpnoise](flowpnoise.html)
+
+[hscript_noise](hscript_noise.html)
+
+[hscript_rand](hscript_rand.html)
+
+[hscript_snoise](hscript_snoise.html)
+
+[hscript_sturb](hscript_sturb.html)
+
+[hscript_turb](hscript_turb.html)
+
+[mwnoise](mwnoise.html)
+
+[noise](noise.html)
+
+[noised](noised.html)
+
+[onoise](onoise.html)
+
+[pnoise](pnoise.html)
+
+[xnoise](pxnoise.html)
+
+[pxnoised](pxnoised.html)
+
+[snoise](snoise.html)
+
+[vnoise](vnoise.html)
+
+[wnoise](wnoise.html)
+
+[xnoise](xnoise.html)
+
+[xnoised](xnoised.html)

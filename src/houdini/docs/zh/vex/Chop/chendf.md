@@ -1,29 +1,94 @@
 ---
 title: chendf
-order: 5
+order: 6
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Returns the frame corresponding to the last sample of the input specified.
 
-| Context(s) | [chop](../contexts/chop.html) |
-| ---------- | ----------------------------- |
 
-```c
-float  chendf(int opinput=0)
-```
+Context(s)
+[chop](../contexts/chop.html)
 
-Returns the frame number corresponding to the last sample of the given CHOP
-input.
+`float chendf(int opinput=0)`
 
-返回对应于给定 CHOP 输入的最后一个样本的帧号。
+Returns the frame number corresponding to the last sample of the given CHOP input.
 
-To get the end sample number, use [chend](chend.html) "Returns the sample
-number of the last sample in a given CHOP input."). To get the end time in
-seconds, use [chendt](chendt.html) "Returns the time corresponding to the last
-sample of the inputspecified.").
+To get the end sample number, use [chend](chend.html "Returns the sample number of the last sample in a given CHOP input."). To get the end time in seconds, use [chendt](chendt.html "Returns the time corresponding to the last sample of the input
+specified.").
 
-要获得最后的样本数，使用 echend。要获得结束时间（秒），使用 echendt。
+
+
+## See also
+
+- [chend](chend.html)
+- [chendt](chendt.html)
+
+|
+chop
+
+[chadd](chadd.html)
+
+[chattr](chattr.html)
+
+[chattrnames](chattrnames.html)
+
+[chend](chend.html)
+
+[chendf](chendf.html)
+
+[chendt](chendt.html)
+
+[chindex](chindex.html)
+
+[chinput](chinput.html)
+
+[chinputlimits](chinputlimits.html)
+
+[chname](chname.html)
+
+[chnames](chnames.html)
+
+[chnumchan](chnumchan.html)
+
+[chop](chop.html)
+
+[choplocal](choplocal.html)
+
+[choplocalt](choplocalt.html)
+
+[chopt](chopt.html)
+
+[chrate](chrate.html)
+
+[chreadbuf](chreadbuf.html)
+
+[chremove](chremove.html)
+
+[chremoveattr](chremoveattr.html)
+
+[chrename](chrename.html)
+
+[chresizebuf](chresizebuf.html)
+
+[chsetattr](chsetattr.html)
+
+[chsetlength](chsetlength.html)
+
+[chsetrate](chsetrate.html)
+
+[chsetstart](chsetstart.html)
+
+[chstart](chstart.html)
+
+[chstartf](chstartf.html)
+
+[chstartt](chstartt.html)
+
+[chwritebuf](chwritebuf.html)
+
+[isframes](isframes.html)
+
+[issamples](issamples.html)
+
+[isseconds](isseconds.html)

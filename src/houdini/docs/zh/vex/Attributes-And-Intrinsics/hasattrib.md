@@ -1,59 +1,188 @@
 ---
 title: hasattrib
-order: 24
+order: 25
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Checks whether a geometry attribute exists.
+If you know the attribute class ahead of time, using [hasdetailattrib](hasdetailattrib.html "Returns if a geometry detail attribute exists."), [hasprimattrib](hasprimattrib.html "Returns if a geometry prim attribute exists."), [haspointattrib](haspointattrib.html "Returns if a geometry point attribute exists."), or [hasvertexattrib](hasvertexattrib.html "Returns if a geometry vertex attribute exists.") may be faster.
 
-If you know the attribute class ahead of time, using
-[hasdetailattrib](hasdetailattrib.html) "Returns if a geometry detail attribute
-exists."), [hasprimattrib](hasprimattrib.html) "Returns if a geometry prim
-attribute exists."), [haspointattrib](haspointattrib.html) "Returns if a
-geometry point attribute exists."), or [hasvertexattrib](hasvertexattrib.html) "Returns if a geometry vertex attribute exists.") may be faster.
+`int hasattrib(<geometry>geometry, string attribclass, string attribute\_name)`
 
-如果你提前知道属性类别，使用 hasdetailattrib、hasprimattrib、haspointattrib 或 hasvertexattrib 可能会更快。
-
-`int hasattrib(<geometry>geometry, string attribclass, string attribute_name)`
+## Arguments
 
 `<geometry>`
 
-When running in the context of a node (such as a wrangle SOP), this argument
-can be an integer representing the input number (starting at 0) to read the
-geometry from.
+When running in the context of a node (such as a wrangle SOP), this argument can be an integer representing the input number (starting at 0) to read the geometry from.
 
-当在一个节点的上下文中运行时（比如 wrangle SOP），这个参数可以是一个整数，代表要读取几何图形的输入数字（从 0 开始）。
-
-Alternatively, the argument can be a string specifying a geometry file (for
-example, a `.bgeo`) to read from. When running inside Houdini, this can be an
-
-```c
-op:/path/to/sop
-```
-
-reference.
-
-或者，该参数可以是一个字符串，指定要读取的几何体文件（例如，a.bgeo）。当在 Houdini 内部运行时，这个参数可以是 op:/path/to/sopreference。
+Alternatively, the argument can be a string specifying a geometry file (for example, a `.bgeo`) to read from. When running inside Houdini, this can be an `op:/path/to/sop` reference.
 
 `attribclass`
 
 One of `"detail"` (or `"global"`), `"point"`, `"prim"`, or `"vertex"`.
 
-详细"（或 "全局"）、"点"、"底层 "或 "顶点 "中的一个。
-
-You can also use `"primgroup"`, `"pointgroup"` or `"vertexgroup"` to [read
-from groups](../groups.html "You can read the contents of
-primitive/point/vertex groups in VEX as if they were attributes.").
-
-你也可以使用 "primgroup"、"pointgroup "或 "vertexgroup "来从组中读取。
+You can also use `"primgroup"`, `"pointgroup"` or `"vertexgroup"` to [read from groups](../groups.html "You can read the contents of primitive/point/vertex groups in VEX as if they were attributes.").
 
 Returns `1` if the attribute exists, or `0` otherwise.
 
-如果属性存在，则返回 1，否则返回 0。
-
 ## Examples
 
-    // Check whether the point group "pointstouse" exists.if (hasattrib("defgeo.bgeo", "pointgroup", "pointstouse")) {  // Do something with the point group}
+[¶](#examples)
+
+```c
+// Check whether the point group "pointstouse" exists.
+if (hasattrib("defgeo.bgeo", "pointgroup", "pointstouse")) {
+ // Do something with the point group
+}
+
+```
+
+
+
+## See also
+
+- [hasdetailattrib](hasdetailattrib.html)
+- [hasprimattrib](hasprimattrib.html)
+- [haspointattrib](haspointattrib.html)
+- [hasvertexattrib](hasvertexattrib.html)
+
+|
+attrib
+
+[addattrib](addattrib.html)
+
+[adddetailattrib](adddetailattrib.html)
+
+[addpointattrib](addpointattrib.html)
+
+[addprimattrib](addprimattrib.html)
+
+[addvertexattrib](addvertexattrib.html)
+
+[addvisualizer](addvisualizer.html)
+
+[attrib](attrib.html)
+
+[attribclass](attribclass.html)
+
+[attribdataid](attribdataid.html)
+
+[attribsize](attribsize.html)
+
+[attribtype](attribtype.html)
+
+[attribtypeinfo](attribtypeinfo.html)
+
+[detail](detail.html)
+
+[detailattrib](detailattrib.html)
+
+[detailattribsize](detailattribsize.html)
+
+[detailattribtype](detailattribtype.html)
+
+[detailattribtypeinfo](detailattribtypeinfo.html)
+
+[detailintrinsic](detailintrinsic.html)
+
+[findattribval](findattribval.html)
+
+[findattribvalcount](findattribvalcount.html)
+
+[getattrib](getattrib.html)
+
+[getattribute](getattribute.html)
+
+[hasattrib](hasattrib.html)
+
+[hasdetailattrib](hasdetailattrib.html)
+
+[haspointattrib](haspointattrib.html)
+
+[hasprimattrib](hasprimattrib.html)
+
+[hasvertexattrib](hasvertexattrib.html)
+
+[nuniqueval](nuniqueval.html)
+
+[point](point.html)
+
+[pointattrib](pointattrib.html)
+
+[pointattribsize](pointattribsize.html)
+
+[pointattribtype](pointattribtype.html)
+
+[pointattribtypeinfo](pointattribtypeinfo.html)
+
+[pointlocaltransforms](pointlocaltransforms.html)
+
+[pointtransform](pointtransform.html)
+
+[pointtransformrigid](pointtransformrigid.html)
+
+[pointtransforms](pointtransforms.html)
+
+[pointtransformsrigid](pointtransformsrigid.html)
+
+[prim](prim.html)
+
+[prim_attribute](prim_attribute.html)
+
+[primattrib](primattrib.html)
+
+[primattribsize](primattribsize.html)
+
+[primattribtype](primattribtype.html)
+
+[primattribtypeinfo](primattribtypeinfo.html)
+
+[priminteriorweights](priminteriorweights.html)
+
+[primintrinsic](primintrinsic.html)
+
+[primuv](primuv.html)
+
+[primuvconvert](primuvconvert.html)
+
+[removedetailattrib](removedetailattrib.html)
+
+[removepointattrib](removepointattrib.html)
+
+[removeprimattrib](removeprimattrib.html)
+
+[removevertexattrib](removevertexattrib.html)
+
+[setattrib](setattrib.html)
+
+[setattribtypeinfo](setattribtypeinfo.html)
+
+[setdetailattrib](setdetailattrib.html)
+
+[setpointattrib](setpointattrib.html)
+
+[setpointlocaltransforms](setpointlocaltransforms.html)
+
+[setpointtransform](setpointtransform.html)
+
+[setpointtransforms](setpointtransforms.html)
+
+[setprimattrib](setprimattrib.html)
+
+[setvertexattrib](setvertexattrib.html)
+
+[uniqueval](uniqueval.html)
+
+[uniquevals](uniquevals.html)
+
+[uvsample](uvsample.html)
+
+[vertex](vertex.html)
+
+[vertexattrib](vertexattrib.html)
+
+[vertexattribsize](vertexattribsize.html)
+
+[vertexattribtype](vertexattribtype.html)
+
+[vertexattribtypeinfo](vertexattribtypeinfo.html)

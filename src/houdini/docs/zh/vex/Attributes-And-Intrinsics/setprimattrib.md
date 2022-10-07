@@ -1,136 +1,292 @@
 ---
 title: setprimattrib
-order: 63
+order: 72
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Sets a primitive attribute in a geometry.
+If you don’t know the attribute class ahead of time, use [setattrib](setattrib.html "Writes an attribute value to geometry.").
 
-If you don‘t know the attribute class ahead of time, use
-[setattrib](setattrib.html "Writes an attribute value to geometry.").
+`int setprimattrib(int geohandle, string name, int prim\_num, <type>value, string mode="set")`
 
-如果你没有提前知道属性类，请使用 etattrib。
-
-`int setprimattrib(int geohandle, string name, int prim_num, <type>value, string mode="set")`
-
-`int setprimattrib(int geohandle, string name, int prim_num, <type>value[], string mode="set")`
+`int setprimattrib(int geohandle, string name, int prim\_num, <type>value[], string mode="set")`
 
 Returns the value of `geohandle` on success or `-1` on failure.
 
-成功时返回 geohandle 的值，失败时返回 1。
+::: info Note
 
-Note
+If the attribute does not exist, this function **creates the attribute** with a default value of zero, empty string, or an empty array.
+If you want to control the default value of a numeric attribute, use [addattrib](addattrib.html "Adds an attribute to a geometry.") before setting the attribute.
 
-If the attribute does not exist, this function **creates the attribute** with
-a default value of zero, empty string, or an empty array.If you want to
-control the default value of a numeric attribute, use
-[addattrib](addattrib.html "Adds an attribute to a geometry.") before setting
-the attribute.
-
-如果属性不存在，这个函数将创建一个默认值为零、空字符串或空数组的属性。
+## Arguments
 
 `geohandle`
 
-A handle to the geometry to write to. Currently the only valid value is `0` or
-[geoself](geoself.html) "Returns a handle to the current geometry."), which
-means the current geometry in a node. (This argument may be used in the future
-to allow writing to other geometries.)
-
-如果你想控制一个数字属性的默认值，请在设置该属性之前使用 addattribb。
+A handle to the geometry to write to. Currently the only valid value is `0` or [geoself](geoself.html "Returns a handle to the current geometry."), which means the current geometry in a node. (This argument may be used in the future to allow writing to other geometries.)
 
 `name`
 
 The attribute to set on the given primitive.
 
-要写入的几何体的句柄。目前唯一有效的值是 0orgeoself，也就是一个节点中的当前几何体。(这个参数将来可能会被用来允许写到其他几何体上)。
-
 `prim_num`
 
 The number of the primitive to set the attribute on.
-
-要在给定基元上设置的属性。
 
 `value`
 
 The value to set the attribute to.
 
-要对其设置属性的基元的编号。
-
-Note that within a VEX program only one type may be written to a single
-attribute.Ie, you cannot mix writes of float an integer.This can be surprising
-as a literal like `1` will be an integer write so be ignored if floats were
-previously written.
-
-要将属性设置为的值。
+::: info Note that within a VEX program only one type may be written to a single attribute. Ie, you cannot mix writes of float an integer. This can be surprising as a literal like `1` will be an integer write so be ignored if floats were previously written.
 
 `mode`
 
-(Optional) if given, this controls how the function modifies any existing
-value in the attribute.
+(Optional) if given, this controls how the function modifies any existing value in the attribute.
 
-请注意，在一个 VEX 程序中，只能向一个单一属性写入一种类型。 也就是说，您不能混合写入浮点和整数。
-这可能会让人感到惊讶，因为像 1 这样的文字将是一个整数的写法，所以如果之前写了浮点数，就会被忽略。
 
-`"set"`
+`"set"` Overwrite the attribute with the given value.
+|
+`"add"` Add to the attribute the value.
+|
+`"min"`, `"minimum"` Set the attribute to the minimum of itself and the value.
+|
+`"max"`, `"maximum"` Set the attribute to the maximum of itself and the value.
+|
+`"mult"`, `"multiply"` Multiply the attribute by the value. For matrices, this will do matrix multiplication. For vectors, component-wise.
+|
+`"toggle"` Toggles the attribute, independent of the source value. Useful for toggling group membership.
+|
+`"append"` Valid for string and array attributes. Appends the source value to the end of the original value.
+
+
+
+## See also
+
+- [setattrib](setattrib.html)
+- [setpointattrib](setpointattrib.html)
+- [setvertexattrib](setvertexattrib.html)
+- [setdetailattrib](setdetailattrib.html)
+- [prim](prim.html)
 
 |
+attrib
 
-Overwrite the attribute with the given value.
+[addattrib](addattrib.html)
 
-(可选）如果给定，这控制了函数如何修改属性中的任何现有值。
+[adddetailattrib](adddetailattrib.html)
 
----|---
+[addpointattrib](addpointattrib.html)
 
-`"add"`
+[addprimattrib](addprimattrib.html)
+
+[addvertexattrib](addvertexattrib.html)
+
+[addvisualizer](addvisualizer.html)
+
+[attrib](attrib.html)
+
+[attribclass](attribclass.html)
+
+[attribdataid](attribdataid.html)
+
+[attribsize](attribsize.html)
+
+[attribtype](attribtype.html)
+
+[attribtypeinfo](attribtypeinfo.html)
+
+[detail](detail.html)
+
+[detailattrib](detailattrib.html)
+
+[detailattribsize](detailattribsize.html)
+
+[detailattribtype](detailattribtype.html)
+
+[detailattribtypeinfo](detailattribtypeinfo.html)
+
+[detailintrinsic](detailintrinsic.html)
+
+[findattribval](findattribval.html)
+
+[findattribvalcount](findattribvalcount.html)
+
+[getattrib](getattrib.html)
+
+[getattribute](getattribute.html)
+
+[hasattrib](hasattrib.html)
+
+[hasdetailattrib](hasdetailattrib.html)
+
+[haspointattrib](haspointattrib.html)
+
+[hasprimattrib](hasprimattrib.html)
+
+[hasvertexattrib](hasvertexattrib.html)
+
+[nuniqueval](nuniqueval.html)
+
+[point](point.html)
+
+[pointattrib](pointattrib.html)
+
+[pointattribsize](pointattribsize.html)
+
+[pointattribtype](pointattribtype.html)
+
+[pointattribtypeinfo](pointattribtypeinfo.html)
+
+[pointlocaltransforms](pointlocaltransforms.html)
+
+[pointtransform](pointtransform.html)
+
+[pointtransformrigid](pointtransformrigid.html)
+
+[pointtransforms](pointtransforms.html)
+
+[pointtransformsrigid](pointtransformsrigid.html)
+
+[prim](prim.html)
+
+[prim_attribute](prim_attribute.html)
+
+[primattrib](primattrib.html)
+
+[primattribsize](primattribsize.html)
+
+[primattribtype](primattribtype.html)
+
+[primattribtypeinfo](primattribtypeinfo.html)
+
+[priminteriorweights](priminteriorweights.html)
+
+[primintrinsic](primintrinsic.html)
+
+[primuv](primuv.html)
+
+[primuvconvert](primuvconvert.html)
+
+[removedetailattrib](removedetailattrib.html)
+
+[removepointattrib](removepointattrib.html)
+
+[removeprimattrib](removeprimattrib.html)
+
+[removevertexattrib](removevertexattrib.html)
+
+[setattrib](setattrib.html)
+
+[setattribtypeinfo](setattribtypeinfo.html)
+
+[setdetailattrib](setdetailattrib.html)
+
+[setpointattrib](setpointattrib.html)
+
+[setpointlocaltransforms](setpointlocaltransforms.html)
+
+[setpointtransform](setpointtransform.html)
+
+[setpointtransforms](setpointtransforms.html)
+
+[setprimattrib](setprimattrib.html)
+
+[setvertexattrib](setvertexattrib.html)
+
+[uniqueval](uniqueval.html)
+
+[uniquevals](uniquevals.html)
+
+[uvsample](uvsample.html)
+
+[vertex](vertex.html)
+
+[vertexattrib](vertexattrib.html)
+
+[vertexattribsize](vertexattribsize.html)
+
+[vertexattribtype](vertexattribtype.html)
+
+[vertexattribtypeinfo](vertexattribtypeinfo.html)
 
 |
+prim
 
-Add to the attribute the value.
+[addprim](addprim.html)
 
-用给定的值覆盖该属性。
+[addprimattrib](addprimattrib.html)
 
-`"min"`, `"minimum"`
+[curvearclen](curvearclen.html)
 
-|
+[hasprimattrib](hasprimattrib.html)
 
-Set the attribute to the minimum of itself and the value.
+[hedge_prim](hedge_prim.html)
 
-在属性中加入该值。
+[idtoprim](idtoprim.html)
 
-`"max"`, `"maximum"`
+[inprimgroup](inprimgroup.html)
 
-|
+[nametoprim](nametoprim.html)
 
-Set the attribute to the maximum of itself and the value.
+[nprimitives](nprimitives.html)
 
-将属性设置为自身和值的最小值。
+[nprimitivesgroup](nprimitivesgroup.html)
 
-`"mult"`, `"multiply"`
+[pointprims](pointprims.html)
 
-|
+[prim](prim.html)
 
-Multiply the attribute by the value.For matrices, this will do matrix
-multiplication.For vectors, component-wise.
+[prim_attribute](prim_attribute.html)
 
-将属性设置为自身和值的最大值。
+[prim_normal](prim_normal.html)
 
-`"toggle"`
+[primarclen](primarclen.html)
 
-|
+[primattrib](primattrib.html)
 
-Toggles the attribute, independent of the source value.Useful for toggling
-group membership.
+[primattribsize](primattribsize.html)
 
-用属性乘以值。 对于矩阵，这将做矩阵乘法。 对于向量来说，是分量式的。
+[primattribtype](primattribtype.html)
 
-`"append"`
+[primattribtypeinfo](primattribtypeinfo.html)
 
-|
+[primduv](primduv.html)
 
-Valid for string and array attributes.Appends the source value to the end of
-the original value.
+[primfind](primfind.html)
 
-切换属性，与源值无关。 对于切换组的成员资格很有用。
+[primhedge](primhedge.html)
+
+[priminteriorweights](priminteriorweights.html)
+
+[primintrinsic](primintrinsic.html)
+
+[primpoint](primpoint.html)
+
+[primpoints](primpoints.html)
+
+[primuv](primuv.html)
+
+[primuvconvert](primuvconvert.html)
+
+[primvertex](primvertex.html)
+
+[primvertexcount](primvertexcount.html)
+
+[primvertices](primvertices.html)
+
+[removeprim](removeprim.html)
+
+[setprimattrib](setprimattrib.html)
+
+[setprimgroup](setprimgroup.html)
+
+[setprimintrinsic](setprimintrinsic.html)
+
+[setprimvertex](setprimvertex.html)
+
+[vertexcurveparam](vertexcurveparam.html)
+
+[vertexindex](vertexindex.html)
+
+[vertexprim](vertexprim.html)
+
+[vertexprimindex](vertexprimindex.html)

@@ -1,57 +1,96 @@
 ---
 title: hedge_equivcount
-order: 3
+order: 4
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Returns the number of half-edges equivalent to a given half-edge.
+`int hedge\_equivcount(<geometry>geometry, int hedge)`
 
-```c
-int  hedge_equivcount(<geometry>geometry, int hedge)
-```
+::: info Note
 
-Note
+Equivalent half-edges may be oppositely oriented, i.e. the source of one can be the destination of the other and vice versa.
 
-Equivalent half-edges may be oppositely oriented, i.e. the source of one can
-be the destination of the other and vice versa.
-
-相等的半边可以是相反的方向，也就是说，一个的源头可以是另一个的终点，反之亦然。
+## Arguments
 
 `<geometry>`
 
-When running in the context of a node (such as a wrangle SOP), this argument
-can be an integer representing the input number (starting at 0) to read the
-geometry from.
+When running in the context of a node (such as a wrangle SOP), this argument can be an integer representing the input number (starting at 0) to read the geometry from.
 
-当在一个节点的上下文中运行时（如 wrangle SOP），这个参数可以是一个整数，代表要读取几何体的输入号码（从 0 开始）。
-
-Alternatively, the argument can be a string specifying a geometry file (for
-example, a `.bgeo`) to read from. When running inside Houdini, this can be an
-
-```c
-op:/path/to/sop
-```
-
-reference.
-
-或者，该参数可以是一个字符串，指定要读取的几何体文件（例如，a.bgeo）。当在 Houdini 内部运行时，这个参数可以是 anop:/path/to/sopreference。
+Alternatively, the argument can be a string specifying a geometry file (for example, a `.bgeo`) to read from. When running inside Houdini, this can be an `op:/path/to/sop` reference.
 
 `hedge`
 
 Input half-edge.
 
-输入半边。
+## Returns
 
-Returns
-
-The number of half-edges that have the same endpoint as `hedge` (including
-`hedge`), or `-1` if the half-edge is not valid.
-
-与 hedge（包括 hedge）具有相同端点的半边的数量，如果半边无效，则为 1。
+The number of half-edges that have the same endpoint as `hedge` (including `hedge`), or `-1` if the half-edge is not valid.
 
 ## Examples
 
-    int is_boundary = 0;int is_interior = 0;int is_nonmanifold = 0;// Determine the type of edge represented by half-edge number 3:int numeq;numeq = hedge_equivcount("defgeo.bgeo", 3);if (numeq == 1)is_boundary = 1;else if (numeq >= 3)is_nonmanifold = 1;elseis_interior = 1;
+[¶](#examples)
+
+```c
+int is\_boundary = 0;
+int is\_interior = 0;
+int is\_nonmanifold = 0;
+
+// Determine the type of edge represented by half-edge number 3:
+int numeq;
+numeq = hedge\_equivcount("defgeo.bgeo", 3);
+if (numeq == 1)
+is\_boundary = 1;
+else if (numeq >= 3)
+is\_nonmanifold = 1;
+else
+is\_interior = 1;
+
+```
+
+
+hedge
+
+[hedge_dstpoint](hedge_dstpoint.html)
+
+[hedge_dstvertex](hedge_dstvertex.html)
+
+[hedge_equivcount](hedge_equivcount.html)
+
+[hedge_isequiv](hedge_isequiv.html)
+
+[hedge_isprimary](hedge_isprimary.html)
+
+[hedge_isvalid](hedge_isvalid.html)
+
+[hedge_next](hedge_next.html)
+
+[hedge_nextequiv](hedge_nextequiv.html)
+
+[hedge_postdstpoint](hedge_postdstpoint.html)
+
+[hedge_postdstvertex](hedge_postdstvertex.html)
+
+[hedge_presrcpoint](hedge_presrcpoint.html)
+
+[hedge_presrcvertex](hedge_presrcvertex.html)
+
+[hedge_prev](hedge_prev.html)
+
+[hedge_prim](hedge_prim.html)
+
+[hedge_primary](hedge_primary.html)
+
+[hedge_srcpoint](hedge_srcpoint.html)
+
+[hedge_srcvertex](hedge_srcvertex.html)
+
+[pointedge](pointedge.html)
+
+[pointhedge](pointhedge.html)
+
+[pointhedgenext](pointhedgenext.html)
+
+[primhedge](primhedge.html)
+
+[vertexhedge](vertexhedge.html)

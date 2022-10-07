@@ -1,92 +1,183 @@
 ---
 title: pcgenerate
-order: 13
+order: 14
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Generates a point cloud.
+`int pcgenerate(string filename, int npoints)`
 
-```c
-int  pcgenerate(string filename, int npoints)
-```
+This function returns a handle to the point cloud with the specified name or
+creates a new point cloud with the specified name and number of points.
+Initially, the point cloud has no channels, but channels can be added using
+[pcexport](pcexport.html "Writes data to a point cloud inside a pciterate or a pcunshaded loop.") in a [pcunshaded](pcunshaded.html "Iterate over all of the points of a read-write channel which haven’t
+had any data written to the channel yet.") loop. Note that if pcgenerate() is called
+with the name of a point cloud that already exists, that point cloud will not
+be re-sized to contain the specified number of points.
 
-This function returns a handle to the point cloud with the specified name
-orcreates a new point cloud with the specified name and number of
-points.Initially, the point cloud has no channels, but channels can be added
-using[pcexport](pcexport.html "Writes data to a point cloud inside a pciterate
-or a pcunshaded loop.") in a [pcunshaded](pcunshaded.html "Iterate over all of
-the points of a read-write channel which haven‘thad any data written to the
-channel yet.") loop.Note that if pcgenerate() is calledwith the name of a
-point cloud that already exists, that point cloud will notbe re-sized to
-contain the specified number of points.
+Once a position channel has been established, call [pcopen](pcopen.html "Returns a handle to a point cloud file.") to query the
+generated point cloud. Note that calling [pcopen](pcopen.html "Returns a handle to a point cloud file.") will lock the specified
+position channel. Once a point cloud has been opened, it is considered to be
+generated. Calling pcgenerate() with the name of a generated point cloud is
+similar to calling pcopen() and requesting 0 points: no points will be available
+in a [pcunshaded](pcunshaded.html "Iterate over all of the points of a read-write channel which haven’t
+had any data written to the channel yet.") or [pciterate](pciterate.html "This function can be used to iterate over all the points which were
+found in the pcopen query.") loop.
 
-该函数返回一个指定名称的点云的句柄，或
+This function only stores a point cloud in RAM. To write points to disk, use [pcwrite()](pcwrite.html "Writes data to a point cloud file.").
 
-Once a position channel has been established, call [pcopen](pcopen.html) "Returns a handle to a point cloud file.") to query thegenerated point
-cloud.Note that calling [pcopen](pcopen.html) "Returns a handle to a point
-cloud file.") will lock the specifiedposition channel.Once a point cloud has
-been opened, it is considered to begenerated.Calling pcgenerate() with the
-name of a generated point cloud issimilar to calling pcopen() and requesting 0
-points: no points will be availablein a [pcunshaded](pcunshaded.html "Iterate
-over all of the points of a read-write channel which haven‘thad any data
-written to the channel yet.") or [pciterate](pciterate.html "This function can
-be used to iterate over all the points which werefound in the pcopen query.")
-loop.
+::: info Note
 
-创建一个具有指定名称和点数的新点云。
+We refer to the parameter as a filename to be consistent with `pcopen()`. The two functions share the same namespace. That is, if you call `pcgenerate("myfile.pc", ...)`, you can then query `"myfile.pc"` by calling `pcopen("myfile.pc", ...)` or `pcopenlod("myfile.pc", ...)`.
 
-This function only stores a point cloud in RAM. To write points to disk, use
-[pcwrite()](pcwrite.html "Writes data to a point cloud file.").
-
-最初，点云没有通道，但是可以使用 apcunshadedloop 中的 pcexport 添加通道。 请注意，如果 pcgenerate()被调用时，点云的名称是
-
-Note
-
-We refer to the parameter as a filename to be consistent with `pcopen()`. The
-two functions share the same namespace. That is, if you call
-
-```c
-pcgenerate("myfile.pc", ...)
-```
-
-, you can then query `"myfile.pc"` by calling
-
-```c
-pcopen("myfile.pc", ...)
-```
-
-or
-
-```c
-pcopenlod("myfile.pc", ...)
-```
-
-.
-
-时，该点云将不会被重新调整为包含指定数量的点。
-
-This works the other way as well. If you call
-
-```c
-pcopen("myfile.pc", ...)
-```
-
-and
-then call
-
-```c
-pcgenerate("myfile.pc", ...)
-```
-
-, the `pcgenerate()` call will use the
-point cloud that is already loaded into memory through the `pcopen()` call
-rather than creating a new point cloud.
-
-将不会被重新调整以包含指定的点的数量。
+This works the other way as well. If you call `pcopen("myfile.pc", ...)` and then call `pcgenerate("myfile.pc", ...)`, the `pcgenerate()` call will use the point cloud that is already loaded into memory through the `pcopen()` call rather than creating a new point cloud.
 
 ## Examples
 
-    vector position;int ohandle, ghandle, rval;ghandle = pcgenerate(texturename, npoints);while (pcunshaded(ghandle, "P")){  // Compute 'position'...  rval = pcexport(ghandle, "P", position);}ohandle = pcopen(texturename, "P", P, maxdistance, maxpoints);while (pciterate(ohandle)){  rval = pcimport(ohandle, "P", position);  // Do something with 'position'...}pcclose(ohandle);pcclose(ghandle);
+[¶](#examples)
+
+```c
+vector position;
+int ohandle, ghandle, rval;
+
+ghandle = pcgenerate(texturename, npoints);
+while (pcunshaded(ghandle, "P"))
+{
+ // Compute 'position'...
+ rval = pcexport(ghandle, "P", position);
+}
+
+ohandle = pcopen(texturename, "P", P, maxdistance, maxpoints);
+while (pciterate(ohandle))
+{
+ rval = pcimport(ohandle, "P", position);
+ // Do something with 'position'...
+}
+
+pcclose(ohandle);
+pcclose(ghandle);
+
+```
+
+
+
+## See also
+
+- [pcopen](pcopen.html)
+- [pcwrite](pcwrite.html)
+- [pcfilter](pcfilter.html)
+- [pciterate](pciterate.html)
+- [pcunshaded](pcunshaded.html)
+- [pcimport](pcimport.html)
+- [pcexport](pcexport.html)
+- [pcclose](pcclose.html)
+
+|
+create
+
+[addpoint](addpoint.html)
+
+[addpointattrib](addpointattrib.html)
+
+[addprim](addprim.html)
+
+[addprimattrib](addprimattrib.html)
+
+[addvertex](addvertex.html)
+
+[addvertexattrib](addvertexattrib.html)
+
+[blackbody](blackbody.html)
+
+[pcgenerate](pcgenerate.html)
+
+[removedetailattrib](removedetailattrib.html)
+
+[removepointattrib](removepointattrib.html)
+
+[removepointgroup](removepointgroup.html)
+
+[removeprimattrib](removeprimattrib.html)
+
+[removeprimgroup](removeprimgroup.html)
+
+[removevertexattrib](removevertexattrib.html)
+
+[removevertexgroup](removevertexgroup.html)
+
+|
+ptcloud
+
+[mattrib](mattrib.html)
+
+[mdensity](mdensity.html)
+
+[mspace](mspace.html)
+
+[pcclose](pcclose.html)
+
+[pccone](pccone.html)
+
+[pccone_radius](pccone_radius.html)
+
+[pcconvex](pcconvex.html)
+
+[pcexport](pcexport.html)
+
+[pcfarthest](pcfarthest.html)
+
+[pcfilter](pcfilter.html)
+
+[pcfind](pcfind.html)
+
+[pcfind_radius](pcfind_radius.html)
+
+[pcgenerate](pcgenerate.html)
+
+[pcimport](pcimport.html)
+
+[pcimportbyidx3](pcimportbyidx3.html)
+
+[pcimportbyidx4](pcimportbyidx4.html)
+
+[pcimportbyidxf](pcimportbyidxf.html)
+
+[pcimportbyidxi](pcimportbyidxi.html)
+
+[pcimportbyidxp](pcimportbyidxp.html)
+
+[pcimportbyidxs](pcimportbyidxs.html)
+
+[pcimportbyidxv](pcimportbyidxv.html)
+
+[pciterate](pciterate.html)
+
+[pcline](pcline.html)
+
+[pcline_radius](pcline_radius.html)
+
+[pcnumfound](pcnumfound.html)
+
+[pcopen](pcopen.html)
+
+[pcopenlod](pcopenlod.html)
+
+[pcsampleleaf](pcsampleleaf.html)
+
+[pcsegment](pcsegment.html)
+
+[pcsegment_radius](pcsegment_radius.html)
+
+[pcsize](pcsize.html)
+
+[pcunshaded](pcunshaded.html)
+
+[pcwrite](pcwrite.html)
+
+[pgfind](pgfind.html)
+
+[photonmap](photonmap.html)
+
+[texture3d](texture3d.html)
+
+[texture3dBox](texture3dBox.html)

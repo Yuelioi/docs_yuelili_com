@@ -1,26 +1,100 @@
 ---
 title: decode
-order: 4
+order: 5
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Decodes a variable name that was previously encoded.
 
-| Since | 17.5 |
-| ----- | ---- |
 
-```c
-string  decode(string str)
-```
+Since 17.5
 
-Houdini VEX variable names are only allowed to contain letters, numbers,
-andunderscores, and must not begin with a number. Arbitrary strings can be
-passedthrough the `encode` function to generate a string that obeys
-theserestriction. This function takes one of these encoded strings, and
-returns theoriginal string. A string that has not been encoded will be
-returnedunmodified.
+`string decode(string str)`
 
-Houdini VEX 的变量名只允许包含字母、数字和下划线。
+Houdini VEX variable names are only allowed to contain letters, numbers, and
+underscores, and must not begin with a number. Arbitrary strings can be passed
+through the `encode` function to generate a string that obeys these
+restriction. This function takes one of these encoded strings, and returns the
+original string. A string that has not been encoded will be returned
+unmodified.
+
+
+
+## See also
+
+- [encode](encode.html)
+
+|
+string
+
+[atof](atof.html)
+
+[atoi](atoi.html)
+
+[concat](concat.html)
+
+[decode](decode.html)
+
+[decodeattrib](decodeattrib.html)
+
+[decodeparm](decodeparm.html)
+
+[decodeutf8](decodeutf8.html)
+
+[encode](encode.html)
+
+[encodeattrib](encodeattrib.html)
+
+[encodeparm](encodeparm.html)
+
+[encodeutf8](encodeutf8.html)
+
+[error](error.html)
+
+[expand_udim](expand_udim.html)
+
+[find](find.html)
+
+[has_udim](has_udim.html)
+
+[insert](insert.html)
+
+[isvalidindex](isvalidindex.html)
+
+[itoa](itoa.html)
+
+[join](join.html)
+
+[lstrip](lstrip.html)
+
+[makevalidvarname](makevalidvarname.html)
+
+[match](match.html)
+
+[pluralize](pluralize.html)
+
+[print_once](print_once.html)
+
+[printf](printf.html)
+
+[relativepath](relativepath.html)
+
+[replace](replace.html)
+
+[replace_match](replace_match.html)
+
+[rstrip](rstrip.html)
+
+[split](split.html)
+
+[splitpath](splitpath.html)
+
+[sprintf](sprintf.html)
+
+[strip](strip.html)
+
+[strlen](strlen.html)
+
+[texprintf](texprintf.html)
+
+[warning](warning.html)

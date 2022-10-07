@@ -1,36 +1,204 @@
 ---
 title: warning
-order: 22
+order: 23
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Reports a custom runtime VEX warning.
+`void warning(string format, ...)`
 
-```c
-void  warning(string format, ...)
-```
+Reports a custom runtime VEX warning. This uses the same format string syntax as [printf](printf.html "Prints values to the console which started the VEX program.").
 
-Reports a custom runtime VEX warning. This uses the same format string syntax
-as [printf](printf.html "Prints values to the console which started the VEX
-program.").
+If something is so problematic that there is no acceptable fallback behavior, it may be worth reporting an [error](error.html "Reports a custom runtime VEX error."), instead of a warning.
 
-报告一个自定义的运行时 VEX 警告。 它使用与 rintf 相同的格式字符串语法。
+::: info Note
 
-If something is so problematic that there is no acceptable fallback behavior,
-it may be worth reporting an [error](error.html "Reports a custom runtime VEX
-error."), instead of a warning.
-
-如果某件事情很有问题，以至于没有可接受的后退行为，可能值得报告一个错误，而不是一个警告。
-
-Note
-
-It‘squite easy to accidentally report thousands of different warnings.
-
-很容易不小心报告成千上万个不同的警告。
+It’s quite easy to accidentally report thousands of different warnings.
 
 ## Examples
 
-    if (primintrinsic(0,"typeid",@primnum) != 1) {  warning("Primitives that aren't polygons are being ignored.");  return;}if (primintrinsic(0,"closed",@primnum) == 0 || @numvtx < 3) {  warning("Open or degenerate polygons are being ignored.");  return;}float minimumValue = chf("min");float maximumValue = chf("max");if (minimumValue > maximumValue) {  warning("Minimum (%f) can't be greater than maximum (%f); replacing minimum with maximum.", minimumValue, maximumValue);  minimumValue = maximumValue;}
+[¶](#examples)
+
+```c
+if (primintrinsic(0,"typeid",@primnum) != 1) {
+ warning("Primitives that aren't polygons are being ignored.");
+ return;
+}
+if (primintrinsic(0,"closed",@primnum) == 0| @numvtx < 3) {
+ warning("Open or degenerate polygons are being ignored.");
+ return;
+}
+float minimumValue = chf("min");
+float maximumValue = chf("max");
+if (minimumValue > maximumValue) {
+ warning("Minimum (%f) can't be greater than maximum (%f); replacing minimum with maximum.", minimumValue, maximumValue);
+ minimumValue = maximumValue;
+}
+
+```
+
+
+
+## See also
+
+- [error](error.html)
+- [printf](printf.html)
+
+|
+print
+
+[error](error.html)
+
+[print_once](print_once.html)
+
+[printf](printf.html)
+
+[sprintf](sprintf.html)
+
+[warning](warning.html)
+
+|
+string
+
+[atof](atof.html)
+
+[atoi](atoi.html)
+
+[concat](concat.html)
+
+[decode](decode.html)
+
+[decodeattrib](decodeattrib.html)
+
+[decodeparm](decodeparm.html)
+
+[decodeutf8](decodeutf8.html)
+
+[encode](encode.html)
+
+[encodeattrib](encodeattrib.html)
+
+[encodeparm](encodeparm.html)
+
+[encodeutf8](encodeutf8.html)
+
+[error](error.html)
+
+[expand_udim](expand_udim.html)
+
+[find](find.html)
+
+[has_udim](has_udim.html)
+
+[insert](insert.html)
+
+[isvalidindex](isvalidindex.html)
+
+[itoa](itoa.html)
+
+[join](join.html)
+
+[lstrip](lstrip.html)
+
+[makevalidvarname](makevalidvarname.html)
+
+[match](match.html)
+
+[pluralize](pluralize.html)
+
+[print_once](print_once.html)
+
+[printf](printf.html)
+
+[relativepath](relativepath.html)
+
+[replace](replace.html)
+
+[replace_match](replace_match.html)
+
+[rstrip](rstrip.html)
+
+[split](split.html)
+
+[splitpath](splitpath.html)
+
+[sprintf](sprintf.html)
+
+[strip](strip.html)
+
+[strlen](strlen.html)
+
+[texprintf](texprintf.html)
+
+[warning](warning.html)
+
+|
+utility
+
+[assert_enabled](assert_enabled.html)
+
+[ch](ch.html)
+
+[ch2](ch2.html)
+
+[ch3](ch3.html)
+
+[ch4](ch4.html)
+
+[chdict](chdict.html)
+
+[chexpr](chexpr.html)
+
+[chexprf](chexprf.html)
+
+[chexprt](chexprt.html)
+
+[chf](chf.html)
+
+[chi](chi.html)
+
+[chid](chid.html)
+
+[chp](chp.html)
+
+[chramp](chramp.html)
+
+[chrampderiv](chrampderiv.html)
+
+[chs](chs.html)
+
+[chsop](chsop.html)
+
+[chsraw](chsraw.html)
+
+[chu](chu.html)
+
+[chv](chv.html)
+
+[error](error.html)
+
+[expand_udim](expand_udim.html)
+
+[has_udim](has_udim.html)
+
+[isbound](isbound.html)
+
+[isconnected](isconnected.html)
+
+[ninputs](ninputs.html)
+
+[opid](opid.html)
+
+[print_once](print_once.html)
+
+[printf](printf.html)
+
+[select](select.html)
+
+[sleep](sleep.html)
+
+[sprintf](sprintf.html)
+
+[texprintf](texprintf.html)
+
+[warning](warning.html)

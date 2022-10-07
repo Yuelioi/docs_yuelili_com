@@ -1,22 +1,65 @@
 ---
 title: transpose
-order: 70
+order: 76
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Transposes the given matrix.
+`void transpose(<matrix>&m)`
 
-```c
-void  transpose(<matrix>&m)
-```
+`<matrix> transpose(<matrix>m)`
 
-```c
-<matrix> transpose(<matrix>m)
-```
+[Transposes](http://en.wikipedia.org/wiki/Transpose) the given matrix.
 
-[Transposes \_\_](http://en.wikipedia.org/wiki/Transpose)the given matrix.
 
-转移给定的矩阵。
+matrix
+
+[\_\_uniform\_mul](### uniform_mul.html)
+
+[\_\_uniform\_premul](### uniform_premul.html)
+
+[combinelocaltransform](combinelocaltransform.html)
+
+[cracktransform](cracktransform.html)
+
+[determinant](determinant.html)
+
+[diagonalizesymmetric](diagonalizesymmetric.html)
+
+[dihedral](dihedral.html)
+
+[eigenvalues](eigenvalues.html)
+
+[extractlocaltransform](extractlocaltransform.html)
+
+[ident](ident.html)
+
+[instance](instance.html)
+
+[invert](invert.html)
+
+[lookat](lookat.html)
+
+[maketransform](maketransform.html)
+
+[outerproduct](outerproduct.html)
+
+[premul](premul.html)
+
+[prerotate](prerotate.html)
+
+[prescale](prescale.html)
+
+[pretranslate](pretranslate.html)
+
+[rotate](rotate.html)
+
+[scale](scale.html)
+
+[smoothrotation](smoothrotation.html)
+
+[svddecomp](svddecomp.html)
+
+[translate](translate.html)
+
+[transpose](transpose.html)

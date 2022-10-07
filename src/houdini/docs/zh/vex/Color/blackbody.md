@@ -1,31 +1,95 @@
 ---
 title: blackbody
-order: 1
+order: 2
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Compute the color value of an incandescent black body.
+`vector blackbody(float temperature, float luminance)`
 
-```c
-vector  blackbody(float temperature, float luminance)
-```
+Given a temperature, in Kelvin, and a luminance value, computes the
+color of an incandescent black body as CIE XYZ tristimulus values.
 
-Given a temperature, in Kelvin, and a luminance value, computes thecolor of an
-incandescent black body as CIE XYZ tristimulus values.
+The computation uses a fast approximation, which is valid for
+temperature values between 1666K and 25000K. Values outside of this
+range are clamped to the nearest valid in-range value.
 
-给出一个温度（开尔文）和一个亮度值，计算出白炽灯黑体的颜色的 CIE XYZ 三模值。
+The returned value can be converted to linear sRGB values using
+the [xyztorgb](xyztorgb.html "Convert CIE XYZ tristimulus values to a linear sRGB triplet.") function.
 
-The computation uses a fast approximation, which is valid fortemperature
-values between 1666K and 25000K. Values outside of thisrange are clamped to
-the nearest valid in-range value.
 
-计算白炽灯黑体的颜色，作为 CIE XYZ 的三模值。
 
-The returned value can be converted to linear sRGB values usingthe
-[xyztorgb](xyztorgb.html "Convert CIE XYZ tristimulus values to a linear sRGB
-triplet.") function.
+## See also
 
-该计算使用快速近似法，对 1666K 和 25000K 之间的温度值有效。
+- [xyztorgb](xyztorgb.html)
+- [blackbody](blackbody.html)
+
+|
+color
+
+[blackbody](blackbody.html)
+
+[colormap](colormap.html)
+
+[ctransform](ctransform.html)
+
+[environment](environment.html)
+
+[hsvtorgb](hsvtorgb.html)
+
+[luminance](luminance.html)
+
+[ocio_activedisplays](ocio_activedisplays.html)
+
+[ocio_activeviews](ocio_activeviews.html)
+
+[ocio_import](ocio_import.html)
+
+[ocio_transform](ocio_parsecolorspace.html)
+
+[ocio_roles](ocio_roles.html)
+
+[ocio_spaces](ocio_spaces.html)
+
+[ocio_transform](ocio_transform.html)
+
+[rawcolormap](rawcolormap.html)
+
+[rgbtohsv](rgbtohsv.html)
+
+[rgbtoxyz](rgbtoxyz.html)
+
+[xyztorgb](xyztorgb.html)
+
+|
+create
+
+[addpoint](addpoint.html)
+
+[addpointattrib](addpointattrib.html)
+
+[addprim](addprim.html)
+
+[addprimattrib](addprimattrib.html)
+
+[addvertex](addvertex.html)
+
+[addvertexattrib](addvertexattrib.html)
+
+[blackbody](blackbody.html)
+
+[pcgenerate](pcgenerate.html)
+
+[removedetailattrib](removedetailattrib.html)
+
+[removepointattrib](removepointattrib.html)
+
+[removepointgroup](removepointgroup.html)
+
+[removeprimattrib](removeprimattrib.html)
+
+[removeprimgroup](removeprimgroup.html)
+
+[removevertexattrib](removevertexattrib.html)
+
+[removevertexgroup](removevertexgroup.html)

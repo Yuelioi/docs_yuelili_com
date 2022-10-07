@@ -1,37 +1,138 @@
 ---
 title: erf_inv
-order: 21
+order: 22
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Inverse Gauss error function.
+`float erf\_inv(float v)`
 
-```c
-float  erf_inv(float v)
-```
+The inverse of the [Gauss error function](http://en.wikipedia.org/wiki/Error_function).
 
-The inverse of the [Gauss error function
-\_\_](http://en.wikipedia.org/wiki/Error_function).
+`erf_inv(erf(v)) = v = erf(erf_inv(v))`
 
-高斯误差函数的倒数。
+To generate a normally-distributed random number, `n`, with mean `mu` and standard deviation `sigma`,
+from a uniformly-distributed random number, `u`, between 0 and 1,
 
-```c
-erf_inv(erf(v)) = v = erf(erf_inv(v))
-```
+`n = mu + sqrt(2)*sigma*erf_inv(2*u - 1)`
 
-erf_inv(erf(v)) = v = erf(erf_inv(v))
 
-To generate a normally-distributed random number, `n`, with mean `mu` and
-standard deviation `sigma`,from a uniformly-distributed random number, `u`,
-between 0 and 1,
 
-产生一个正态分布的随机数 n，其平均值为 mu，标准差为 igma。
+## See also
 
-```c
-n = mu + sqrt(2)*sigma*erf_inv(2*u - 1)
-```
+- [erf](erf.html)
+- [erfc](erfc.html)
 
-从一个均匀分布的随机数 u 中生成一个正态分布的随机数 n，其平均值为 mu，标准差为 igma，介于 0 和 1 之间。
+|
+gauss
+
+[erf_inv](erf_inv.html)
+
+[erfc](erfc.html)
+
+|
+math
+
+[Du](Du.html)
+
+[Dv](Dv.html)
+
+[Dw](Dw.html)
+
+[abs](abs.html)
+
+[acos](acos.html)
+
+[asin](asin.html)
+
+[atan](atan.html)
+
+[atten](atten.html)
+
+[avg](avg.html)
+
+[cbrt](cbrt.html)
+
+[ceil](ceil.html)
+
+[cos](cos.html)
+
+[cosh](cosh.html)
+
+[cracktransform](cracktransform.html)
+
+[cross](cross.html)
+
+[degrees](degrees.html)
+
+[dot](dot.html)
+
+[erf](erf.html)
+
+[erf_inv](erf_inv.html)
+
+[erfc](erfc.html)
+
+[exp](exp.html)
+
+[floor](floor.html)
+
+[frac](frac.html)
+
+[fuzzify](fuzzify.html)
+
+[getderiv](getderiv.html)
+
+[isfinite](isfinite.html)
+
+[isnan](isnan.html)
+
+[log](log.html)
+
+[log10](log10.html)
+
+[max](max.html)
+
+[min](min.html)
+
+[pow](pow.html)
+
+[product](product.html)
+
+[radians](radians.html)
+
+[resample_linear](resample_linear.html)
+
+[rint](rint.html)
+
+[shl](shl.html)
+
+[shr](shr.html)
+
+[shrz](shrz.html)
+
+[sign](sign.html)
+
+[sin](sin.html)
+
+[sinh](sinh.html)
+
+[solvecubic](solvecubic.html)
+
+[solvepoly](solvepoly.html)
+
+[solvequadratic](solvequadratic.html)
+
+[solvetriangleSSS](solvetriangleSSS.html)
+
+[sqrt](sqrt.html)
+
+[sum](sum.html)
+
+[tan](tan.html)
+
+[tanh](tanh.html)
+
+[trunc](trunc.html)
+
+[variance](variance.html)

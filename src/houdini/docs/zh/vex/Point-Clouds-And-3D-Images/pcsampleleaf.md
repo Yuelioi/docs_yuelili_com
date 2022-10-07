@@ -1,42 +1,191 @@
 ---
 title: pcsampleleaf
-order: 26
+order: 29
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Changes the current iteration point to a leaf descendant of the current
-aggregate point.
+`void pcsampleleaf(int handle, float sample)`
+
+This function can only be used with the pcopenlod() function, and then only
+within a pciterate() loop. It replaces the current iteration point with an
+importance sampled leaf descendent of that point. The weighting used to
+select the leaf point is the “area” channel provided to the pcopenlod()
+function’s “measure” parameter, or a uniform weight if no area channel
+was specified when opening the point cloud. The sample parameter is
+expected to be a uniform random value between 0 and 1.
+
+If the current iteration point is already a leaf point or the point cloud
+was not opened with pcopenlod(), pcsampleleaf() has no effect.
+
+This function is useful when aggregate point information cannot be used in
+a meaningful way, and provides a mechanism to access the information
+contained in child nodes in the point tree. For example, it wouldn’t make
+sense to trace shadow rays from an averaged point position, but it is
+useful to choose one of the child points and then send the shadow ray to
+that point.
+
+##
+
+Example: Shadow Rays
+
+[¶](#example-shadow-rays)
 
 ```c
-void  pcsampleleaf(int handle, float sample)
+// Open a point cloud and retrieve a single aggregate point representing the
+// entire cloud
+string texturename = "points.pc";
+int handle = pcopenlod(texturename, "P", P, 8,
+"measure", "solidangle",
+"area", "A",
+"samples", 1,
+"aggregate:A", "sum",
+"aggregate:P", "mean");
+
+Cf = 0;
+
+// This loop will iterate only once
+while (pciterate(handle))
+{
+ // Query A from the averaged point
+ float ptarea;
+ pcimport(handle, "A", ptarea);
+
+ pcsampleleaf(handle, nrandom());
+
+ // Query P from a sampled leaf point
+ vector pos;
+ pcimport(handle, "P", pos);
+
+ if (trace(pos, P-pos, Time))
+ Cf += ptarea / length2(P-pos);
+}
+
 ```
 
-This function can only be used with the pcopenlod() function, and then
-onlywithin a pciterate() loop.It replaces the current iteration point with
-animportance sampled leaf descendent of that point.The weighting used toselect
-the leaf point is the “area” channel provided to the pcopenlod()function‘s
-“measure” parameter, or a uniform weight if no area channelwas specified when
-opening the point cloud.The sample parameter isexpected to be a uniform random
-value between 0 and 1.
 
-这个函数只能与 pcopenlod()函数一起使用，而且只能在 pciterate()循环中使用。
 
-If the current iteration point is already a leaf point or the point cloudwas
-not opened with pcopenlod(), pcsampleleaf() has no effect.
+## See also
 
-在 pciterate() 循环中使用。 它将当前的迭代点替换为一个
+- [pcopenlod](pcopenlod.html)
+- [pciterate](pciterate.html)
 
-This function is useful when aggregate point information cannot be used ina
-meaningful way, and provides a mechanism to access the informationcontained in
-child nodes in the point tree.For example, it wouldn‘t makesense to trace
-shadow rays from an averaged point position, but it isuseful to choose one of
-the child points and then send the shadow ray tothat point.
+|
+file
 
-替换当前的迭代点为该点的重要性取样叶子的后裔。 用来选择叶子点的权重
+[colormap](colormap.html)
 
-## Example: Shadow Rays
+[depthmap](depthmap.html)
 
-    // Open a point cloud and retrieve a single aggregate point representing the// entire cloudstring texturename = "points.pc";int handle = pcopenlod(texturename, "P", P, 8,"measure", "solidangle","area", "A","samples", 1,"aggregate:A", "sum","aggregate:P", "mean");Cf = 0;// This loop will iterate only oncewhile (pciterate(handle)){  // Query A from the averaged point  float    ptarea;  pcimport(handle, "A", ptarea);  pcsampleleaf(handle, nrandom());  // Query P from a sampled leaf point  vector    pos;  pcimport(handle, "P", pos);  if (trace(pos, P-pos, Time))    Cf += ptarea / length2(P-pos);}
+[dsmpixel](dsmpixel.html)
+
+[environment](environment.html)
+
+[filter_remap](filter_remap.html)
+
+[importance_remap](importance_remap.html)
+
+[pcclose](pcclose.html)
+
+[pcexport](pcexport.html)
+
+[pcopen](pcopen.html)
+
+[pcopenlod](pcopenlod.html)
+
+[pcsampleleaf](pcsampleleaf.html)
+
+[pcwrite](pcwrite.html)
+
+[ptexture](ptexture.html)
+
+[rawcolormap](rawcolormap.html)
+
+[sensor_panorama_create](sensor_panorama_create.html)
+
+[shadowmap](shadowmap.html)
+
+[teximport](teximport.html)
+
+[texture](texture.html)
+
+[texture3d](texture3d.html)
+
+[writepixel](writepixel.html)
+
+|
+ptcloud
+
+[mattrib](mattrib.html)
+
+[mdensity](mdensity.html)
+
+[mspace](mspace.html)
+
+[pcclose](pcclose.html)
+
+[pccone](pccone.html)
+
+[pccone_radius](pccone_radius.html)
+
+[pcconvex](pcconvex.html)
+
+[pcexport](pcexport.html)
+
+[pcfarthest](pcfarthest.html)
+
+[pcfilter](pcfilter.html)
+
+[pcfind](pcfind.html)
+
+[pcfind_radius](pcfind_radius.html)
+
+[pcgenerate](pcgenerate.html)
+
+[pcimport](pcimport.html)
+
+[pcimportbyidx3](pcimportbyidx3.html)
+
+[pcimportbyidx4](pcimportbyidx4.html)
+
+[pcimportbyidxf](pcimportbyidxf.html)
+
+[pcimportbyidxi](pcimportbyidxi.html)
+
+[pcimportbyidxp](pcimportbyidxp.html)
+
+[pcimportbyidxs](pcimportbyidxs.html)
+
+[pcimportbyidxv](pcimportbyidxv.html)
+
+[pciterate](pciterate.html)
+
+[pcline](pcline.html)
+
+[pcline_radius](pcline_radius.html)
+
+[pcnumfound](pcnumfound.html)
+
+[pcopen](pcopen.html)
+
+[pcopenlod](pcopenlod.html)
+
+[pcsampleleaf](pcsampleleaf.html)
+
+[pcsegment](pcsegment.html)
+
+[pcsegment_radius](pcsegment_radius.html)
+
+[pcsize](pcsize.html)
+
+[pcunshaded](pcunshaded.html)
+
+[pcwrite](pcwrite.html)
+
+[pgfind](pgfind.html)
+
+[photonmap](photonmap.html)
+
+[texture3d](texture3d.html)
+
+[texture3dBox](texture3dBox.html)

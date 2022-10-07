@@ -1,29 +1,63 @@
 ---
 title: isshadowray
-order: 45
+order: 46
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Returns 1 if the shader is being called to evaluate opacity for  
-shadow rays, or 0 if the shader is being called to evaluate for surface  
-color.
 
-| Context(s) | [surface](../contexts/surface.html) |
-| ---------- | ----------------------------------- |
 
-```c
-int  isshadowray()
-```
+Context(s)
+[surface](../contexts/surface.html)
 
-Returns 1 if the shader is being called to evaluate opacity for shadowrays, or
-0 if the shader is being called to evaluate for surface color.
+`int isshadowray()`
 
-如果该着色器被调用来评估阴影的不透明度，则返回 1。
+Returns 1 if the shader is being called to evaluate opacity for shadow
+rays, or 0 if the shader is being called to evaluate for surface color.
 
-Use this function to compute different opacity if the surface isshadowing
-another surface.
+Use this function to compute different opacity if the surface is
+shadowing another surface.
 
-射线，或者如果着色器被调用来评估表面颜色，则返回 0。
+
+shadow
+
+[dsmpixel](dsmpixel.html)
+
+[fastshadow](fastshadow.html)
+
+[filtershadow](filtershadow.html)
+
+[islpeactive](islpeactive.html)
+
+[isshadowray](isshadowray.html)
+
+[limport](limport.html)
+
+[shadowmap](shadowmap.html)
+
+|
+surface
+
+[ambient](ambient.html)
+
+[irradiance](irradiance.html)
+
+[isfogray](isfogray.html)
+
+[islpeactive](islpeactive.html)
+
+[isshadowray](isshadowray.html)
+
+[isuvrendering](isuvrendering.html)
+
+[limport](limport.html)
+
+[occlusion](occlusion.html)
+
+[reflectlight](reflectlight.html)
+
+[refractlight](refractlight.html)
+
+[shadow](shadow.html)
+
+[shimport](shimport.html)

@@ -166,40 +166,40 @@ curve’s total arc length.
 
 [primfind](primfind.html)
 
-[primhedge ](primhedge.html)
+[primhedge](primhedge.html)
 
-[priminteriorweights ](priminteriorweights.html)
+[priminteriorweights](priminteriorweights.html)
 
-[primintrinsic ](primintrinsic.html)
+[primintrinsic](primintrinsic.html)
 
-[primpoint ](primpoint.html)
+[primpoint](primpoint.html)
 
-[primpoints ](primpoints.html)
+[primpoints](primpoints.html)
 
-[primuv ](primuv.html)
+[primuv](primuv.html)
 
-[primuvconvert ](primuvconvert.html)
+[primuvconvert](primuvconvert.html)
 
-[primvertex ](primvertex.html)
+[primvertex](primvertex.html)
 
-[primvertexcount ](primvertexcount.html)
+[primvertexcount](primvertexcount.html)
 
-[primvertices ](primvertices.html)
+[primvertices](primvertices.html)
 
-[removeprim ](removeprim.html)
+[removeprim](removeprim.html)
 
-[setprimattrib ](setprimattrib.html)
+[setprimattrib](setprimattrib.html)
 
-[setprimgroup ](setprimgroup.html)
+[setprimgroup](setprimgroup.html)
 
-[setprimintrinsic ](setprimintrinsic.html)
+[setprimintrinsic](setprimintrinsic.html)
 
-[setprimvertex ](setprimvertex.html)
+[setprimvertex](setprimvertex.html)
 
-[vertexcurveparam ](vertexcurveparam.html)
+[vertexcurveparam](vertexcurveparam.html)
 
-[vertexindex ](vertexindex.html)
+[vertexindex](vertexindex.html)
 
-[vertexprim ](vertexprim.html)
+[vertexprim](vertexprim.html)
 
-[vertexprimindex ](vertexprimindex.html)
+[vertexprimindex](vertexprimindex.html)

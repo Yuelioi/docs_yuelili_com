@@ -1,34 +1,37 @@
 ---
 title: ramp_lookup
-order: 13
+order: 14
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Evaluates a Houdini-style ramp at a specific location.
 
-| Since | 18.5 |
-| ----- | ---- |
 
-```c
-float  ramp_lookup(float pos, string ramp)
-```
+Since 18.5
 
-```c
-vector  ramp_lookup(float pos, string ramp)
-```
+`float ramp\_lookup(float pos, string ramp)`
 
-```c
-float  ramp_lookup(float pos, string basis[], float key[], float val[])
-```
+`vector ramp\_lookup(float pos, string ramp)`
 
-```c
-vector  ramp_lookup(float pos, string basis[], float key[], vector val[])
-```
+`float ramp\_lookup(float pos, string basis[], float key[], float val[])`
 
-Evaluates a provided ramp at the given position.The ramp can be an encoded
-string or a triple of basis, key, and value arrays.
+`vector ramp\_lookup(float pos, string basis[], float key[], vector val[])`
 
-在给定的位置评估一个提供的斜面。 斜坡可以是一个编码的字符串，也可以是一个由基础、关键和值组成的三重数组。
+Evaluates a provided ramp at the given position. The ramp can be an encoded string or a triple of basis, key, and value arrays.
+
+
+
+## See also
+
+- [spline](spline.html)
+- [ramp_pack](ramp_pack.html)
+- [ramp_unpack](ramp_unpack.html)
+
+|
+ramp
+
+[ramp_lookup](ramp_lookup.html)
+
+[ramp_pack](ramp_pack.html)
+
+[ramp_unpack](ramp_unpack.html)

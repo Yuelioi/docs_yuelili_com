@@ -1,64 +1,110 @@
 ---
 title: chremove
-order: 18
+order: 19
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Removes channels from a CHOP node.
 
-| Context(s) | [chop](../contexts/chop.html) |
-| ---------- | ----------------------------- |
 
-```c
-int  chremove(int channel_index)
-```
+Context(s)
+[chop](../contexts/chop.html)
 
-```c
-int  chremove(int channel_indices[])
-```
+`int chremove(int channel\_index)`
 
-```c
-int  chremove(string channel_name)
-```
+`int chremove(int channel\_indices[])`
 
-```c
-int  chremove(string channel_names[])
-```
+`int chremove(string channel\_name)`
 
-This function removeschannels from a CHOP node. It works only when iterating
-over Clip, Channel or Samples, not when iterating over ChannelSample.
+`int chremove(string channel\_names[])`
 
-这个函数从一个 CHOP 节点中移除通道。它只在迭代 Clip、Channel 或 Samples 时起作用，在迭代 ChannelSample 时不起作用。
+This function removes channels from a CHOP node. It works only when iterating over Clip, Channel or Samples, not when iterating over ChannelSample.
 
 Returns 1 if all channels were removed or 0 otherwise.
 
-如果所有通道都被移除，返回 1，否则返回 0。
+## Arguments
 
 `channel_index`
 
 The channel index to remove.
 
-要删除的通道索引。
-
-```c
-channel_indices
-```
+`channel_indices`
 
 The array of channel indices to remove.
-
-要删除的通道索引的数组。
 
 `channel_name`
 
 The channel name to remove.
 
-要移除的通道名称。
-
 `channel_names`
 
 The array of channel names to remove.
 
-要删除的通道名称的数组。
+
+chop
+
+[chadd](chadd.html)
+
+[chattr](chattr.html)
+
+[chattrnames](chattrnames.html)
+
+[chend](chend.html)
+
+[chendf](chendf.html)
+
+[chendt](chendt.html)
+
+[chindex](chindex.html)
+
+[chinput](chinput.html)
+
+[chinputlimits](chinputlimits.html)
+
+[chname](chname.html)
+
+[chnames](chnames.html)
+
+[chnumchan](chnumchan.html)
+
+[chop](chop.html)
+
+[choplocal](choplocal.html)
+
+[choplocalt](choplocalt.html)
+
+[chopt](chopt.html)
+
+[chrate](chrate.html)
+
+[chreadbuf](chreadbuf.html)
+
+[chremove](chremove.html)
+
+[chremoveattr](chremoveattr.html)
+
+[chrename](chrename.html)
+
+[chresizebuf](chresizebuf.html)
+
+[chsetattr](chsetattr.html)
+
+[chsetlength](chsetlength.html)
+
+[chsetrate](chsetrate.html)
+
+[chsetstart](chsetstart.html)
+
+[chstart](chstart.html)
+
+[chstartf](chstartf.html)
+
+[chstartt](chstartt.html)
+
+[chwritebuf](chwritebuf.html)
+
+[isframes](isframes.html)
+
+[issamples](issamples.html)
+
+[isseconds](isseconds.html)

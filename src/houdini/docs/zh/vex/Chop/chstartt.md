@@ -1,38 +1,98 @@
 ---
 title: chstartt
-order: 28
+order: 29
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Returns the time corresponding to the first sample of the input  
-specified.
 
-| Context(s) | [chop](../contexts/chop.html) |
-| ---------- | ----------------------------- |
 
-```c
-float  chstartt()
-```
+Context(s)
+[chop](../contexts/chop.html)
+
+`float chstartt()`
 
 Uses `-1` as the `opinput`.
 
-使用-1 作为输入。
+`float chstartt(int opinput)`
 
-```c
-float  chstartt(int opinput)
-```
+Returns the time (in seconds) corresponding to the first sample of the given CHOP input.
 
-Returns the time (in seconds) corresponding to the first sample of the given
-CHOP input.
+To get the start sample number, use [chstart](chstart.html "Returns the start sample of the input specified."). To get the start sample frame number, use [chstartf](chstartf.html "Returns the frame corresponding to the first sample of the input
+specified.").
 
-返回与给定的 CHOP 输入的第一个样本对应的时间（以秒为单位）。
 
-To get the start sample number, use [chstart](chstart.html) "Returns the start
-sample of the input specified."). To get the start sample frame number, use
-[chstartf](chstartf.html) "Returns the frame corresponding to the first sample
-of the inputspecified.").
 
-要获得起始样本数，使用 echstart。要获得起始样本帧的编号，使用 echstartf。
+## See also
+
+- [chstart](chstart.html)
+- [chstartf](chstartf.html)
+
+|
+chop
+
+[chadd](chadd.html)
+
+[chattr](chattr.html)
+
+[chattrnames](chattrnames.html)
+
+[chend](chend.html)
+
+[chendf](chendf.html)
+
+[chendt](chendt.html)
+
+[chindex](chindex.html)
+
+[chinput](chinput.html)
+
+[chinputlimits](chinputlimits.html)
+
+[chname](chname.html)
+
+[chnames](chnames.html)
+
+[chnumchan](chnumchan.html)
+
+[chop](chop.html)
+
+[choplocal](choplocal.html)
+
+[choplocalt](choplocalt.html)
+
+[chopt](chopt.html)
+
+[chrate](chrate.html)
+
+[chreadbuf](chreadbuf.html)
+
+[chremove](chremove.html)
+
+[chremoveattr](chremoveattr.html)
+
+[chrename](chrename.html)
+
+[chresizebuf](chresizebuf.html)
+
+[chsetattr](chsetattr.html)
+
+[chsetlength](chsetlength.html)
+
+[chsetrate](chsetrate.html)
+
+[chsetstart](chsetstart.html)
+
+[chstart](chstart.html)
+
+[chstartf](chstartf.html)
+
+[chstartt](chstartt.html)
+
+[chwritebuf](chwritebuf.html)
+
+[isframes](isframes.html)
+
+[issamples](issamples.html)
+
+[isseconds](isseconds.html)

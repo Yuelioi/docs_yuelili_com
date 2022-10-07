@@ -1,22 +1,46 @@
 ---
 title: ichname
-order: 14
+order: 15
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Returns the channel name of the indexed plane of the given input.
 
-| Context(s) | [cop](../contexts/cop.html) |
-| ---------- | --------------------------- |
 
-```c
-string  ichname(int inputnum, int plane_index, int component_index)
-```
+Context(s)
+[cop](../contexts/cop.html)
 
-Returns the component name (for example, “r” or “x”) of a component of a
-plane.
+`string ichname(int inputnum, int plane\_index, int component\_index)`
 
-返回一个平面的一个分量的名称（例如，"r "或 "x"）。
+Returns the component name (for example, “r” or “x”) of a component of a plane.
+
+
+input_plane
+
+[iaspect](iaspect.html)
+
+[ichname](ichname.html)
+
+[iend](iend.html)
+
+[iendtime](iendtime.html)
+
+[ihasplane](ihasplane.html)
+
+[inumplanes](inumplanes.html)
+
+[iplaneindex](iplaneindex.html)
+
+[iplanename](iplanename.html)
+
+[iplanesize](iplanesize.html)
+
+[irate](irate.html)
+
+[istart](istart.html)
+
+[istarttime](istarttime.html)
+
+[ixres](ixres.html)
+
+[iyres](iyres.html)

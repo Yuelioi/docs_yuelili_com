@@ -1,23 +1,47 @@
 ---
 title: planesize
-order: 34
+order: 35
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Returns the number of components in the plane (1 for scalar planes  
-and up to 4 for vector planes).
 
-| Context(s) | [cop](../contexts/cop.html) |
-| ---------- | --------------------------- |
 
-```c
-int  planesize(int planeindex)
-```
+Context(s)
+[cop](../contexts/cop.html)
 
-Returns the number of components in the plane (1 for scalar planes andup to 4
-for vector planes). Returns 0 if the index is out of range.
+`int planesize(int planeindex)`
 
-返回平面内的分量数（标量平面为 1，矢量平面为 4）。
+Returns the number of components in the plane (1 for scalar planes and
+up to 4 for vector planes). Returns 0 if the index is out of range.
+
+
+output_plane
+
+[alphaname](alphaname.html)
+
+[bumpname](bumpname.html)
+
+[chname](chname.html)
+
+[colorname](colorname.html)
+
+[depthname](depthname.html)
+
+[hasplane](hasplane.html)
+
+[lumname](lumname.html)
+
+[maskname](maskname.html)
+
+[normalname](normalname.html)
+
+[planeindex](planeindex.html)
+
+[planename](planename.html)
+
+[planesize](planesize.html)
+
+[pointname](pointname.html)
+
+[velocityname](velocityname.html)

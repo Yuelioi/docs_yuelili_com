@@ -1,46 +1,100 @@
 ---
 title: limport
-order: 50
+order: 51
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Imports a variable from the light shader for the surface.
 
-Context(s) | [displace](../contexts/displace.html)[
-fog](../contexts/fog.html)[ shadow](../contexts/shadow.html)[
-surface](../contexts/surface.html)  
----|---
 
-Note
+Context(s)
+[displace](../contexts/displace.html)
+[fog](../contexts/fog.html)
+[shadow](../contexts/shadow.html)
+[surface](../contexts/surface.html)
 
-This function is only valid inside an [illuminance](illuminance.html "Loops
-through all light sources in the scene, calling the light shader for each
-light source to set the Cl and L global variables.") loop.
+::: info Note
 
-这个函数只在 illuminanceloop 内部有效。
+This function is only valid inside an [illuminance](illuminance.html "Loops through all light sources in the scene, calling the light shader for each light source to set the Cl and L global variables.") loop.
 
-```c
-int  limport(string name, <type>&value)
-```
+`int limport(string name, <type>&value)`
+
+## Arguments
 
 `name`
 
 The name of the shader variable to read.
 
-要读取的着色器变量的名称。
-
 `&value`
 
-If the named variable is defined and exported, the function overwrites this
-variable with the variable‘svalue.
+If the named variable is defined and exported, the function overwrites this variable with the variable’s value.
 
-如果命名的变量被定义并导出，该函数将用该变量的值覆盖这个变量。
-
-Returns
+## Returns
 
 Returns `1` if the shader variable is defined and exported, or `0` otherwise.
 
-如果着色器变量被定义并导出，则返回 1，否则返回 0。
+
+fog
+
+[getfogname](getfogname.html)
+
+[isfogray](isfogray.html)
+
+[limport](limport.html)
+
+[shimport](shimport.html)
+
+[simport](simport.html)
+
+|
+shadedata
+
+[limport](limport.html)
+
+[shimport](shimport.html)
+
+[simport](simport.html)
+
+|
+shadow
+
+[dsmpixel](dsmpixel.html)
+
+[fastshadow](fastshadow.html)
+
+[filtershadow](filtershadow.html)
+
+[islpeactive](islpeactive.html)
+
+[isshadowray](isshadowray.html)
+
+[limport](limport.html)
+
+[shadowmap](shadowmap.html)
+
+|
+surface
+
+[ambient](ambient.html)
+
+[irradiance](irradiance.html)
+
+[isfogray](isfogray.html)
+
+[islpeactive](islpeactive.html)
+
+[isshadowray](isshadowray.html)
+
+[isuvrendering](isuvrendering.html)
+
+[limport](limport.html)
+
+[occlusion](occlusion.html)
+
+[reflectlight](reflectlight.html)
+
+[refractlight](refractlight.html)
+
+[shadow](shadow.html)
+
+[shimport](shimport.html)

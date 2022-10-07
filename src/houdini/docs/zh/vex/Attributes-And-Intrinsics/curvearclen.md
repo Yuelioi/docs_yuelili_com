@@ -1,17 +1,13 @@
 ---
 title: curvearclen
-order: 13
+order: 14
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Evaluates the length of an arc on a primitive defined by an array of points
-using parametric uv coordinates.
 
-| Since | 18.5 |
-| ----- | ---- |
+
+Since 18.5
 
 `float curvearclen(vector positions[], float uv1, float uv2, int closedflag, int fmt, int order)`
 
@@ -21,82 +17,195 @@ using parametric uv coordinates.
 
 `float curvearclen(vector positions[], float uv1, float uv2, int closedflag, int fmt, int order, int divs, int primuvmode, float primuvtol)`
 
-Returns the arc length between two parametric UV coordinates on a given
-primitive. This lets you measure the distance across a polygon face or along a
-curve.
+Returns the arc length between two parametric UV coordinates on a given primitive. This lets you measure the distance across a polygon face or along a curve.
 
-返回给定基元上两个参数化 UV 坐标之间的弧长。这可以让您测量跨越多边形面或沿曲线的距离。
+## Arguments
 
 `geometry`
 
-A string specifying a geometry file (for example, a `.bgeo`) to read from.
-When running inside Houdini, this can be an
-
-```c
-op:/path/to/sop
-```
-
-reference.
-
-一个字符串，指定要读取的几何文件（例如，a.bgeo）。在胡迪尼内部运行时，这可以是 anop:/path/to/sopreference。
+A string specifying a geometry file (for example, a `.bgeo`) to read from. When running inside Houdini, this can be an `op:/path/to/sop` reference.
 
 `points`
 
 The array of control points to define the curve.
 
-用于定义曲线的控制点阵列。
-
 `uv1`
 
-The start coordinate in the primitive‘sparametric space to measure between.
-
-基元的参数空间中的起始坐标，以便在两者之间进行测量。
+The start coordinate in the primitive’s parametric space to measure between.
 
 `uv2`
 
-The end coordinate in the primitive‘sparametric space to measure between.
-
-基元的参数空间中的终点坐标，以在两者之间进行测量。
+The end coordinate in the primitive’s parametric space to measure between.
 
 `closedflag`
 
-The curve can be closed or open. In a closed curve, the last control point
-will be connected to the first one.
-
-曲线可以是封闭的或开放的。在一条封闭的曲线中，最后一个控制点将与第一个控制点相连。
+The curve can be closed or open. In a closed curve, the last control point will be connected to the first one.
 
 `fmt`
 
-The curve type to create. You can used constants defined in math.h, or 0 to
-create a polygon curve, 1 to create a bezier curve or 2 to create a NURBS
-curve.
-
-要创建的曲线类型。你可以使用 math.h 中定义的常数，或者用 0 来创建多边形曲线，用 1 来创建贝塞尔曲线，用 2 来创建 NURBS 曲线。
+The curve type to create. You can used constants defined in math.h, or 0 to create a polygon curve, 1 to create a bezier curve or 2 to create a NURBS curve.
 
 `order`
 
-The curve order for NURBS or Bezier curves. This is ignored for polygon
-curves.
-
-NURBS 或 Bezier 曲线的曲线顺序。如果是多边形曲线，这个选项会被忽略。
+The curve order for NURBS or Bezier curves. This is ignored for polygon curves.
 
 `divs`
 
 The number of divisions per segment to use or 10 if not supplied.
 
-每段要使用的分割数，如果没有提供，则为 10。
-
 `primuvmode`
 
-Define the uv1 and uv2 coordinates units. See
-[primuvconvert](primuvconvert.html "Convert parametric UV locations on curve
-primitives between different spaces.") for the list of modes.
-
-定义 uv1 和 uv2 座标单位。请参阅 primuvconvert 的模式列表。
+Define the uv1 and uv2 coordinates units. See [primuvconvert](primuvconvert.html "Convert parametric UV locations on curve primitives between different spaces.") for the list of modes.
 
 `primuvtol`
 
-A tolerance used when computing the curve length to do uv coordinates
-conversions.
+A tolerance used when computing the curve length to do uv coordinates conversions.
 
-计算曲线长度时用来做 uv 坐标转换的公差。
+
+
+## See also
+
+- [primarclen](primarclen.html)
+- [primuvconvert](primuvconvert.html)
+
+|
+measure
+
+[curvearclen](curvearclen.html)
+
+[distance](distance.html)
+
+[distance2](distance2.html)
+
+[getbbox](getbbox.html)
+
+[getbbox_center](getbbox_center.html)
+
+[getbbox_max](getbbox_max.html)
+
+[getbbox_min](getbbox_min.html)
+
+[getbbox_size](getbbox_size.html)
+
+[getbounds](getbounds.html)
+
+[getpointbbox](getpointbbox.html)
+
+[getpointbbox_center](getpointbbox_center.html)
+
+[getpointbbox_max](getpointbbox_max.html)
+
+[getpointbbox_min](getpointbbox_min.html)
+
+[getpointbbox_size](getpointbbox_size.html)
+
+[length](length.html)
+
+[length2](length2.html)
+
+[mdensity](mdensity.html)
+
+[pcfarthest](pcfarthest.html)
+
+[planepointdistance](planepointdistance.html)
+
+[predicate_orient2d](predicate_orient2d.html)
+
+[predicate_orient3d](predicate_orient3d.html)
+
+[primarclen](primarclen.html)
+
+[qdistance](qdistance.html)
+
+[relbbox](relbbox.html)
+
+[relpointbbox](relpointbbox.html)
+
+[surfacedist](surfacedist.html)
+
+[uvdist](uvdist.html)
+
+[xyzdist](xyzdist.html)
+
+|
+prim
+
+[addprim](addprim.html)
+
+[addprimattrib](addprimattrib.html)
+
+[curvearclen](curvearclen.html)
+
+[hasprimattrib](hasprimattrib.html)
+
+[hedge_prim](hedge_prim.html)
+
+[idtoprim](idtoprim.html)
+
+[inprimgroup](inprimgroup.html)
+
+[nametoprim](nametoprim.html)
+
+[nprimitives](nprimitives.html)
+
+[nprimitivesgroup](nprimitivesgroup.html)
+
+[pointprims](pointprims.html)
+
+[prim](prim.html)
+
+[prim_attribute](prim_attribute.html)
+
+[prim_normal](prim_normal.html)
+
+[primarclen](primarclen.html)
+
+[primattrib](primattrib.html)
+
+[primattribsize](primattribsize.html)
+
+[primattribtype](primattribtype.html)
+
+[primattribtypeinfo](primattribtypeinfo.html)
+
+[primduv](primduv.html)
+
+[primfind](primfind.html)
+
+[primhedge](primhedge.html)
+
+[priminteriorweights](priminteriorweights.html)
+
+[primintrinsic](primintrinsic.html)
+
+[primpoint](primpoint.html)
+
+[primpoints](primpoints.html)
+
+[primuv](primuv.html)
+
+[primuvconvert](primuvconvert.html)
+
+[primvertex](primvertex.html)
+
+[primvertexcount](primvertexcount.html)
+
+[primvertices](primvertices.html)
+
+[removeprim](removeprim.html)
+
+[setprimattrib](setprimattrib.html)
+
+[setprimgroup](setprimgroup.html)
+
+[setprimintrinsic](setprimintrinsic.html)
+
+[setprimvertex](setprimvertex.html)
+
+[vertexcurveparam](vertexcurveparam.html)
+
+[vertexindex](vertexindex.html)
+
+[vertexprim](vertexprim.html)
+
+[vertexprimindex](vertexprimindex.html)

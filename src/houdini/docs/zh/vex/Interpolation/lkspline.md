@@ -1,68 +1,95 @@
 ---
 title: lkspline
-order: 8
+order: 12
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Samples a polyline between the key points.
+`float lkspline(float sample\_pos, float value1, float key\_pos1, ...)`
 
-```c
-float  lkspline(float sample_pos, float value1, float key_pos1, ...)
-```
+Samples a polyline defined by a series of value/position pairs.
+This is useful for specifying a 1D data ramp.
 
-Samples a polyline defined by a series of value/position pairs.This is useful
-for specifying a 1D data ramp.
+`vector lkspline(float sample\_pos, vector value1, float key\_pos1, ...)`
 
-对由一系列值/位置对定义的折线进行采样。
+`vector4 lkspline(float sample\_pos, vector4 value1, float key\_pos1, ...)`
 
-```c
-vector  lkspline(float sample_pos, vector value1, float key_pos1, ...)
-```
+Samples a polyline defined by a series of vector value/position pairs.
+This is useful for specifying a color ramp.
 
-```c
-vector4  lkspline(float sample_pos, vector4 value1, float key_pos1, ...)
-```
+If you just want linearly spaced keys, use [lspline](lspline.html "Samples a polyline defined by linearly spaced values.") instead.
 
-Samples a polyline defined by a series of vector value/position pairs.This is
-useful for specifying a color ramp.
-
-这对于指定一个一维数据斜面很有用。
-
-If you just want linearly spaced keys, use [lspline](lspline.html "Samples a
-polyline defined by linearly spaced values.") instead.
-
-对由一系列矢量值/位置对定义的折线进行采样。
+## Arguments
 
 `sample_pos`
 
 The position along the curve at which to sample.
 
-这对指定一个颜色斜率很有用。
-
 `valuen`, `key_posn`
 
-To define the shape of the curve, you pass a number of value/position pairs
-specifying the key points through which the curve passes.
+To define the shape of the curve, you pass a number of value/position pairs specifying the key points through which the curve passes.
 
-如果你只想要线性间隔的键，可以用 elsplineinstead。
+You must specify key positions in ascending order or the results will be unpredictable.
 
-You must specify key positions in ascending order or the results will be
-unpredictable.
-
-沿着曲线取样的位置。
-
-Returns
+## Returns
 
 The value of the curve at the sampled position.
 
-为了定义曲线的形状，你要传递一些值/位置对，指定曲线经过的关键点。
+:::tip
 
-Tip
+The [spline](spline.html "Samples a value along a polyline or spline curve.") function is a more flexible superset of this function.
 
-The [spline](spline.html "Samples a value along a polyline or spline curve.")
-function is a more flexible superset of this function.
 
-你必须以升序的方式指定关键位置，否则结果将无法预料。
+
+## See also
+
+- [spline](spline.html)
+- [kspline](kspline.html)
+
+|
+interp
+
+[ckspline](ckspline.html)
+
+[clamp](clamp.html)
+
+[cspline](cspline.html)
+
+[efit](efit.html)
+
+[fit](fit.html)
+
+[fit01](fit01.html)
+
+[fit10](fit10.html)
+
+[fit11](fit11.html)
+
+[invlerp](invlerp.html)
+
+[lerp](lerp.html)
+
+[lkspline](lkspline.html)
+
+[lspline](lspline.html)
+
+[slerp](slerp.html)
+
+[smooth](smooth.html)
+
+|
+spline
+
+[ckspline](ckspline.html)
+
+[cspline](cspline.html)
+
+[kspline](kspline.html)
+
+[lkspline](lkspline.html)
+
+[lspline](lspline.html)
+
+[spline](spline.html)
+
+[spline_cdf](spline_cdf.html)

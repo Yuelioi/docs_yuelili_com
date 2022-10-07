@@ -1,65 +1,112 @@
 ---
 title: chf
-order: 7
+order: 11
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Evaluates a channel (or parameter) and return its value.
+`float chf(string channel)`
 
-```c
-float  chf(string channel)
-```
+`float chf(string channel, float time\_in\_sec)`
 
-```c
-float  chf(string channel, float time_in_sec)
-```
+`float chf(int op\_id, int parm\_index, int vector\_index)`
 
-```c
-float  chf(int op_id, int parm_index, int vector_index)
-```
+`float chf(int op\_id, int parm\_index, int vector\_index, float time\_in\_sec)`
 
-```c
-float  chf(int op_id, int parm_index, int vector_index, float time_in_sec)
-```
+Evaluates a channel (or parameter) and return its value. The time is specified in _seconds_, not in frames. If you don’t specify the time, the function returns the value at the current time.
 
-Evaluates a channel (or parameter) and return its value. The time is specified
-in _seconds_ , not in frames. If you don‘t specify the time, the function
-returns the value at the current time.
-
-评估一个通道（或参数）并返回其值。时间是以秒为单位指定的，而不是以帧为单位。如果您不指定时间，该函数将返回当前时间的值。
-
-Houdini includes several functions to evaluate channels/parameters of
-different types.
-
-Houdini 包括几个函数来评估不同类型的通道/参数。
+Houdini includes several functions to evaluate channels/parameters of different types.
 
 - To get a float or string without needing to know the parameter type, use [ch](ch.html "Evaluates a channel (or parameter) and return its value.").
-
-要获得一个浮点数或字符串而不需要知道参数的类型，使用 ech。
-
 - To get a float, use [chf](chf.html "Evaluates a channel (or parameter) and return its value.").
-
-要获得一个浮点数，请使用 echf。
-
 - To get a string, use [chs](chs.html "Evaluates a channel (or parameter) and return its value.").
-
-要获得一个字符串，使用 echs。
-
 - For integer parameters, use [chi](chi.html "Evaluates a channel (or parameter) and return its value.")
-
-对于整数参数，使用 echi
-
 - For matrix type parameters, use [ch3](ch3.html "Evaluates a channel (or parameter) and return its value.") or [ch4](ch4.html "Evaluates a channel (or parameter) and return its value.").
-
-对于矩阵型参数，使用 ech3 或 ch4。
-
 - For a ramp parameter, use [chramp](chramp.html "Evaluates a ramp parameter and return its value.") or [chrampderiv](chrampderiv.html "Evaluates the derivative of a parm parameter with respect to position.").
-
-对于斜率参数，使用 echramporchrampderiv。
-
 - Use [chid](chid.html "Resolves a channel string (or parameter) and return op_id, parm_index and vector_index.") to get an `op_id`, `parm_index` and `vector_index` to evaluate the channel without having to do string resolution.
 
-使用 chid 来获取 op_id、parm_index 和 vector_index 来评估通道，而不需要做字符串解析。
+
+
+## See also
+
+- [ch](ch.html)
+- [chs](chs.html)
+- [chi](chi.html)
+- [chv](chv.html)
+- [ch3](ch3.html)
+- [ch4](ch4.html)
+- [chramp](chramp.html)
+- [chrampderiv](chrampderiv.html)
+- [chid](chid.html)
+- [opid](opid.html)
+
+|
+utility
+
+[assert_enabled](assert_enabled.html)
+
+[ch](ch.html)
+
+[ch2](ch2.html)
+
+[ch3](ch3.html)
+
+[ch4](ch4.html)
+
+[chdict](chdict.html)
+
+[chexpr](chexpr.html)
+
+[chexprf](chexprf.html)
+
+[chexprt](chexprt.html)
+
+[chf](chf.html)
+
+[chi](chi.html)
+
+[chid](chid.html)
+
+[chp](chp.html)
+
+[chramp](chramp.html)
+
+[chrampderiv](chrampderiv.html)
+
+[chs](chs.html)
+
+[chsop](chsop.html)
+
+[chsraw](chsraw.html)
+
+[chu](chu.html)
+
+[chv](chv.html)
+
+[error](error.html)
+
+[expand_udim](expand_udim.html)
+
+[has_udim](has_udim.html)
+
+[isbound](isbound.html)
+
+[isconnected](isconnected.html)
+
+[ninputs](ninputs.html)
+
+[opid](opid.html)
+
+[print_once](print_once.html)
+
+[printf](printf.html)
+
+[select](select.html)
+
+[sleep](sleep.html)
+
+[sprintf](sprintf.html)
+
+[texprintf](texprintf.html)
+
+[warning](warning.html)

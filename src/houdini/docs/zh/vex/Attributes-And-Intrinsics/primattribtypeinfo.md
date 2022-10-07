@@ -1,38 +1,242 @@
 ---
 title: primattribtypeinfo
-order: 49
+order: 51
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Returns the type info of a geometry attribute.
+`string primattribtypeinfo(<geometry>geometry, string attribute\_name)`
 
-```c
-string  primattribtypeinfo(<geometry>geometry, string attribute_name)
-```
+## Arguments
 
 `<geometry>`
 
-When running in the context of a node (such as a wrangle SOP), this argument
-can be an integer representing the input number (starting at 0) to read the
-geometry from.
+When running in the context of a node (such as a wrangle SOP), this argument can be an integer representing the input number (starting at 0) to read the geometry from.
 
-当在一个节点的上下文中运行时（比如 wrangle SOP），这个参数可以是一个整数，代表要读取几何体的输入数字（从 0 开始）。
+Alternatively, the argument can be a string specifying a geometry file (for example, a `.bgeo`) to read from. When running inside Houdini, this can be an `op:/path/to/sop` reference.
 
-Alternatively, the argument can be a string specifying a geometry file (for
-example, a `.bgeo`) to read from. When running inside Houdini, this can be an
+See [attribtypeinfo](attribtypeinfo.html "Returns the transformation metadata of a geometry attribute.") for more information.
 
-```c
-op:/path/to/sop
-```
 
-reference.
+attrib
 
-或者，该参数可以是一个字符串，指定要读取的几何体文件（例如，a.bgeo）。当在 Houdini 内部运行时，这可以是一个 op:/path/to/sopreference。
+[addattrib](addattrib.html)
 
-See [attribtypeinfo](attribtypeinfo.html) "Returns the transformation metadata
-of a geometry attribute.") for more information.
+[adddetailattrib](adddetailattrib.html)
 
-更多信息见 attribtypeinfof。
+[addpointattrib](addpointattrib.html)
+
+[addprimattrib](addprimattrib.html)
+
+[addvertexattrib](addvertexattrib.html)
+
+[addvisualizer](addvisualizer.html)
+
+[attrib](attrib.html)
+
+[attribclass](attribclass.html)
+
+[attribdataid](attribdataid.html)
+
+[attribsize](attribsize.html)
+
+[attribtype](attribtype.html)
+
+[attribtypeinfo](attribtypeinfo.html)
+
+[detail](detail.html)
+
+[detailattrib](detailattrib.html)
+
+[detailattribsize](detailattribsize.html)
+
+[detailattribtype](detailattribtype.html)
+
+[detailattribtypeinfo](detailattribtypeinfo.html)
+
+[detailintrinsic](detailintrinsic.html)
+
+[findattribval](findattribval.html)
+
+[findattribvalcount](findattribvalcount.html)
+
+[getattrib](getattrib.html)
+
+[getattribute](getattribute.html)
+
+[hasattrib](hasattrib.html)
+
+[hasdetailattrib](hasdetailattrib.html)
+
+[haspointattrib](haspointattrib.html)
+
+[hasprimattrib](hasprimattrib.html)
+
+[hasvertexattrib](hasvertexattrib.html)
+
+[nuniqueval](nuniqueval.html)
+
+[point](point.html)
+
+[pointattrib](pointattrib.html)
+
+[pointattribsize](pointattribsize.html)
+
+[pointattribtype](pointattribtype.html)
+
+[pointattribtypeinfo](pointattribtypeinfo.html)
+
+[pointlocaltransforms](pointlocaltransforms.html)
+
+[pointtransform](pointtransform.html)
+
+[pointtransformrigid](pointtransformrigid.html)
+
+[pointtransforms](pointtransforms.html)
+
+[pointtransformsrigid](pointtransformsrigid.html)
+
+[prim](prim.html)
+
+[prim_attribute](prim_attribute.html)
+
+[primattrib](primattrib.html)
+
+[primattribsize](primattribsize.html)
+
+[primattribtype](primattribtype.html)
+
+[primattribtypeinfo](primattribtypeinfo.html)
+
+[priminteriorweights](priminteriorweights.html)
+
+[primintrinsic](primintrinsic.html)
+
+[primuv](primuv.html)
+
+[primuvconvert](primuvconvert.html)
+
+[removedetailattrib](removedetailattrib.html)
+
+[removepointattrib](removepointattrib.html)
+
+[removeprimattrib](removeprimattrib.html)
+
+[removevertexattrib](removevertexattrib.html)
+
+[setattrib](setattrib.html)
+
+[setattribtypeinfo](setattribtypeinfo.html)
+
+[setdetailattrib](setdetailattrib.html)
+
+[setpointattrib](setpointattrib.html)
+
+[setpointlocaltransforms](setpointlocaltransforms.html)
+
+[setpointtransform](setpointtransform.html)
+
+[setpointtransforms](setpointtransforms.html)
+
+[setprimattrib](setprimattrib.html)
+
+[setvertexattrib](setvertexattrib.html)
+
+[uniqueval](uniqueval.html)
+
+[uniquevals](uniquevals.html)
+
+[uvsample](uvsample.html)
+
+[vertex](vertex.html)
+
+[vertexattrib](vertexattrib.html)
+
+[vertexattribsize](vertexattribsize.html)
+
+[vertexattribtype](vertexattribtype.html)
+
+[vertexattribtypeinfo](vertexattribtypeinfo.html)
+
+|
+prim
+
+[addprim](addprim.html)
+
+[addprimattrib](addprimattrib.html)
+
+[curvearclen](curvearclen.html)
+
+[hasprimattrib](hasprimattrib.html)
+
+[hedge_prim](hedge_prim.html)
+
+[idtoprim](idtoprim.html)
+
+[inprimgroup](inprimgroup.html)
+
+[nametoprim](nametoprim.html)
+
+[nprimitives](nprimitives.html)
+
+[nprimitivesgroup](nprimitivesgroup.html)
+
+[pointprims](pointprims.html)
+
+[prim](prim.html)
+
+[prim_attribute](prim_attribute.html)
+
+[prim_normal](prim_normal.html)
+
+[primarclen](primarclen.html)
+
+[primattrib](primattrib.html)
+
+[primattribsize](primattribsize.html)
+
+[primattribtype](primattribtype.html)
+
+[primattribtypeinfo](primattribtypeinfo.html)
+
+[primduv](primduv.html)
+
+[primfind](primfind.html)
+
+[primhedge](primhedge.html)
+
+[priminteriorweights](priminteriorweights.html)
+
+[primintrinsic](primintrinsic.html)
+
+[primpoint](primpoint.html)
+
+[primpoints](primpoints.html)
+
+[primuv](primuv.html)
+
+[primuvconvert](primuvconvert.html)
+
+[primvertex](primvertex.html)
+
+[primvertexcount](primvertexcount.html)
+
+[primvertices](primvertices.html)
+
+[removeprim](removeprim.html)
+
+[setprimattrib](setprimattrib.html)
+
+[setprimgroup](setprimgroup.html)
+
+[setprimintrinsic](setprimintrinsic.html)
+
+[setprimvertex](setprimvertex.html)
+
+[vertexcurveparam](vertexcurveparam.html)
+
+[vertexindex](vertexindex.html)
+
+[vertexprim](vertexprim.html)
+
+[vertexprimindex](vertexprimindex.html)

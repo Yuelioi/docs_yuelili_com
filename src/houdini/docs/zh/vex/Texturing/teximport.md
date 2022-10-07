@@ -1,235 +1,393 @@
 ---
 title: teximport
-order: 11
+order: 12
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Imports attributes from texture files.
 
-On this page |
 
-- Queryable attributes
+On this page
 
-可查询的属性
+- [Queryable attributes](#queryable-attributes)
+- [Examples](#examples)
 
-- Examples
-
----|---
-
-```c
-int  teximport(string map, string attribute, <type>&value)
-```
+`int teximport(string map, string attribute, <type>&value)`
 
 Reads a single value. Returns `1` on success or `0` on failure.
 
-读取一个单一的值。成功时返回 1，失败时返回 0。
-
-```c
-int  teximport(string map, string token, int|string&values[])
-```
+`int teximport(string map, string token, int|string&values[])`
 
 Returns the number of strings in the array.
 
-返回数组中的字符串的数量。
+::: info Note that if the values cannot be imported, `values` will not be written to and may remain uninitialized.
 
-Note that if the values cannot be imported, `values` will not be written to
-and may remain uninitialized.
+This function queries metadata stored in an image file, and works with most texture formats.
 
-注意，如果数值不能被导入，数值将不会被写入，并可能保持未初始化状态。
+You can choose what properties are stored using the `vm_saveoptions`
+Houdini property on a camera or light
+(`image:saveoptions` in [IFD](../../render/ifd.html)).
+However, the defaults probably contain all the information you'd want.
+See [rendering properties](../../props/index.html "Properties let you set up flexible and powerful hierarchies of rendering, shading, lighting, and camera parameters.").
 
-This function queries metadata stored in an image file, and works with most
-texture formats.
+##
 
-这个函数查询存储在图像文件中的元数据，适用于大多数纹理格式。
+Queryable attributes
 
-You can choose what properties are stored using the
-
-```c
-vm_saveoptions
-```
-
-Houdini
-property on a camera or light(
-
-```c
-image:saveoptions
-```
-
-in
-[IFD](../../render/ifd.html)).However, the defaults probably contain all the
-information you'd want.See [rendering properties](../../props/index.html "Properties let you set up flexible and powerful hierarchies of rendering,
-shading, lighting, and camera parameters.").
-
-你可以使用摄像机或灯光上的 vm_saveoptionsHoudini 属性来选择存储的属性。
-
-## Queryable attributes
+[¶](#queryable-attributes)
 
 There are several generic attributes you can always query:
 
-(image:saveoptionsinIFD)。
+## Arguments
 
-```c
-int texture:xres
-```
-
-不过，默认值可能包含了你想要的所有信息。
+`int texture:xres`
 
 X resolution of the texture map.
 
-见渲染属性。
-
-```c
-int texture:yres
-```
-
-有几个通用属性你可以随时查询。
+`int texture:yres`
 
 Y resolution of the texture map.
 
-int texture:xres
-
-```c
-int texture:channels
-```
-
-纹理贴图的 X 分辨率。
+`int texture:channels`
 
 Number of channels in the texture map.
 
-int texture:yres
+`vector texture:resolution`
 
-```c
-vector texture:resolution
-```
+Resolution of the texture as the vector `(xres, yres, channels)`.
 
-纹理贴图的 Y 分辨率。
+`matrix texture:worldtoview`
 
-Resolution of the texture as the vector
+The transform matrix that will take world space points into the camera
+space used to generate the image.
 
-```c
-(xres, yres, channels)
-```
+`matrix texture:projection`
 
-.
-
-int texture:channels
-
-```c
-matrix texture:worldtoview
-```
-
-纹理地图中的通道数。
-
-The transform matrix that will take world space points into the cameraspace
+The transform matrix representing the projection matrix of the camera
 used to generate the image.
 
-vector texture:resolution（纹理分辨率）。
+`matrix texture:worldtondc`
+
+The transform matrix that will transform world spaced points into the NDC
+space of the camera used to make the image. The points are generated in
+homogeneous coordinates. That is, to get the values in the range 0 to 1:
 
 ```c
-matrix texture:projection
+matrix ndc;
+if (teximport(map, "texture:worldtoNDC", ndc))
+{
+ vector P\_ndc = pos \* ndc;
+ // If the camera is a perspective camera,
+ // dehomogenize the point
+ if (getcomp(ndc, 2, 3) != 0)
+ {
+ P\_ndc.x = P\_ndc.x / P\_ndc.z;
+ P\_ndc.y = P\_ndc.y / P\_ndc.z;
+ }
+ // Finally, scale and offset XY
+ // from [-1,1] to [0,1]
+ P\_ndc \*= {.5, .5, 1};
+ P\_ndc += {.5, .5, 0};
+}
+
 ```
 
-纹理的分辨率，即向量（xres, yres, channels）。
-
-The transform matrix representing the projection matrix of the cameraused to
-generate the image.
-
-matrix texture:worldtoview 矩阵
-
-```c
-matrix texture:worldtondc
-```
-
-将世界空间的点转化为用于生成图像的相机空间的变换矩阵。
-
-The transform matrix that will transform world spaced points into the NDCspace
-of the camera used to make the image. The points are generated inhomogeneous
-coordinates.That is, to get the values in the range 0 to 1:
-
-转换矩阵，将世界范围内的点转换到制作图像的摄像机的 NDC 空间。
-
-    matrix ndc;if (teximport(map, "texture:worldtoNDC", ndc)){vector P_ndc = pos * ndc;// If the camera is a perspective camera,// dehomogenize the pointif (getcomp(ndc, 2, 3) != 0){P_ndc.x = P_ndc.x / P_ndc.z;P_ndc.y = P_ndc.y / P_ndc.z;}// Finally, scale and offset XY// from [-1,1] to [0,1]P_ndc *= {.5, .5, 1};P_ndc += {.5, .5, 0};}
-
-```c
-string texture:tokens
-```
-
-的空间。这些点是以
+`string texture:tokens`
 
 A space separated list of all attribute names you can query.
 
-同质坐标生成。 也就是说，要在 0 到 1 的范围内获取数值。
+The `string &values[]` version can query the following
 
-The
-
-```c
-string &values[]
-```
-
-version can query the following
-
-string texture:tokens
-
-```c
-texture:channelnames
-```
+`texture:channelnames`
 
 List of all the raster plane channel names.
 
-一个以空格分隔的所有属性名称的列表，你可以查询。
-
-```c
-texture:channelsize
-```
+`texture:channelsize`
 
 This returns an array of the number of floats in each image channel.
 
-string &values[]版本可以查询到
+`texture:channelstorage`
 
-```c
-texture:channelstorage
-```
+This returns an array with a string for the underlying storage type for
+each channel (i.e. “uint8” or “real16”).
 
-This returns an array with a string for the underlying storage type foreach
-channel (i.e.“uint8” or “real16”).
-
-所有栅格平面通道名称的列表。
-
-```c
-texture:tokens
-```
+`texture:tokens`
 
 List of all the built-in tokens understood by `teximport()`.
 
-这将返回一个数组，其中包含每个图像通道的浮点数。
+## Arguments
 
-Show/hide arguments
+`string texture:device`
 
-```c
-string texture:device
-```
+The device that’s used to evaluate the texture. Possible values are:
 
-返回一个数组，其中包含每个通道的底层存储类型的字符串。
-
-The device that‘sused to evaluate the texture.Possible values are:
-
-每个通道的基础存储类型（即 "uint8 "或 "real16"）。
-
-- `native` \- Evaluated using the built-in Houdini texture engine
-
-所有被 teximport()理解的内置令牌的列表。
-
-- `oiio` \- Evaluated using OpenImageIO
-
-string texture:device
-
-- `ptex` \- Evaluated using Ptex
-
-用于评估纹理的设备。 可能的值是。
+- `native` - Evaluated using the built-in Houdini texture engine
+- `oiio` - Evaluated using OpenImageIO
+- `ptex` - Evaluated using Ptex
 
 ## Examples
 
-    cvex test(string map="Mandril.rat"){  for (string token : {          "texture:xres",          "texture:yres",          "texture:channels",          "texture:resolution",          "texture:tokens",          "image:pixelaspect",          "space:world"        })  {    float fval;    vector vval;    matrix mval;    printf("----------------- %s ---------------------\n", token);    if (teximport(map, token, fval))      printf("'%s' = %g\n", token, fval);    else if (teximport(map, token, vval))      printf("'%s' = %g\n", token, vval);    else if (teximport(map, token, mval))      printf("'%s' = %g\n", token, mval);  }}
+[¶](#examples)
+
+```c
+cvex
+ test(string map="Mandril.rat")
+{
+ for (string token : {
+ "texture:xres",
+ "texture:yres",
+ "texture:channels",
+ "texture:resolution",
+ "texture:tokens",
+ "image:pixelaspect",
+ "space:world"
+ })
+ {
+ float fval;
+ vector vval;
+ matrix mval;
+
+ printf("----------------- %s ---------------------\n", token);
+ if (teximport(map, token, fval))
+ printf("'%s' = %g\n", token, fval);
+ else if (teximport(map, token, vval))
+ printf("'%s' = %g\n", token, vval);
+ else if (teximport(map, token, mval))
+ printf("'%s' = %g\n", token, mval);
+ }
+}
+
+```
+
+
+
+## See also
+
+- [dsmpixel](dsmpixel.html)
+
+|
+file
+
+[colormap](colormap.html)
+
+[depthmap](depthmap.html)
+
+[dsmpixel](dsmpixel.html)
+
+[environment](environment.html)
+
+[filter_remap](filter_remap.html)
+
+[importance_remap](importance_remap.html)
+
+[pcclose](pcclose.html)
+
+[pcexport](pcexport.html)
+
+[pcopen](pcopen.html)
+
+[pcopenlod](pcopenlod.html)
+
+[pcsampleleaf](pcsampleleaf.html)
+
+[pcwrite](pcwrite.html)
+
+[ptexture](ptexture.html)
+
+[rawcolormap](rawcolormap.html)
+
+[sensor_panorama_create](sensor_panorama_create.html)
+
+[shadowmap](shadowmap.html)
+
+[teximport](teximport.html)
+
+[texture](texture.html)
+
+[texture3d](texture3d.html)
+
+[writepixel](writepixel.html)
+
+|
+map
+
+[colormap](colormap.html)
+
+[depthmap](depthmap.html)
+
+[dsmpixel](dsmpixel.html)
+
+[environment](environment.html)
+
+[filter_remap](filter_remap.html)
+
+[importance_remap](importance_remap.html)
+
+[ptexture](ptexture.html)
+
+[rawcolormap](rawcolormap.html)
+
+[sensor_panorama_create](sensor_panorama_create.html)
+
+[shadowmap](shadowmap.html)
+
+[teximport](teximport.html)
+
+[texture](texture.html)
+
+[tw_nspace](tw_nspace.html)
+
+[tw_space](tw_space.html)
+
+[tw_vspace](tw_vspace.html)
+
+[wt_nspace](wt_nspace.html)
+
+[wt_space](wt_space.html)
+
+[wt_vspace](wt_vspace.html)
+
+|
+shading
+
+[Du](Du.html)
+
+[Dv](Dv.html)
+
+[Dw](Dw.html)
+
+[area](area.html)
+
+[ashikhmin](ashikhmin.html)
+
+[atten](atten.html)
+
+[blinn](blinn.html)
+
+[blinnBRDF](blinnBRDF.html)
+
+[chiang](chiang.html)
+
+[computenormal](computenormal.html)
+
+[cone](cone.html)
+
+[cvex_bsdf](cvex_bsdf.html)
+
+[diffuse](diffuse.html)
+
+[diffuseBRDF](diffuseBRDF.html)
+
+[dsmpixel](dsmpixel.html)
+
+[environment](environment.html)
+
+[fastshadow](fastshadow.html)
+
+[filtershadow](filtershadow.html)
+
+[filterstep](filterstep.html)
+
+[fresnel](fresnel.html)
+
+[frontface](frontface.html)
+
+[getderiv](getderiv.html)
+
+[getfogname](getfogname.html)
+
+[getglobalraylevel](getglobalraylevel.html)
+
+[getgroupid](getgroupid.html)
+
+[getlocalcurvature](getlocalcurvature.html)
+
+[getmaterialid](getmaterialid.html)
+
+[getobjectid](getobjectid.html)
+
+[getobjectname](getobjectname.html)
+
+[getprimid](getprimid.html)
+
+[getptextureid](getptextureid.html)
+
+[getraylevel](getraylevel.html)
+
+[getrayweight](getrayweight.html)
+
+[getsamplestore](getsamplestore.html)
+
+[getsmoothP](getsmoothP.html)
+
+[getuvtangents](getuvtangents.html)
+
+[ggx](ggx.html)
+
+[gradient](gradient.html)
+
+[hair](hair.html)
+
+[henyeygreenstein](henyeygreenstein.html)
+
+[isotropic](isotropic.html)
+
+[israytracing](israytracing.html)
+
+[isshadingRHS](isshadingRHS.html)
+
+[lightstate](lightstate.html)
+
+[matchvex_blinn](matchvex_blinn.html)
+
+[matchvex_specular](matchvex_specular.html)
+
+[objectstate](objectstate.html)
+
+[phong](phong.html)
+
+[phongBRDF](phongBRDF.html)
+
+[phonglobe](phonglobe.html)
+
+[ptexture](ptexture.html)
+
+[rayhittest](rayhittest.html)
+
+[rayimport](rayimport.html)
+
+[reflect](reflect.html)
+
+[refract](refract.html)
+
+[renderstate](renderstate.html)
+
+[resolvemissedray](resolvemissedray.html)
+
+[sample_geometry](sample_geometry.html)
+
+[scatter](scatter.html)
+
+[setsamplestore](setsamplestore.html)
+
+[specular](specular.html)
+
+[specularBRDF](specularBRDF.html)
+
+[sssapprox](sssapprox.html)
+
+[teximport](teximport.html)
+
+[texture](texture.html)
+
+[trace](trace.html)
+
+[translucent](translucent.html)
+
+[uvunwrap](uvunwrap.html)
+
+[volume](volume.html)
+
+[wireblinn](wireblinn.html)
+
+[wirediffuse](wirediffuse.html)

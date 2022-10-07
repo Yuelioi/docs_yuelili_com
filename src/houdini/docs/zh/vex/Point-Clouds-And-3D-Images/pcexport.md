@@ -1,117 +1,175 @@
 ---
 title: pcexport
-order: 8
+order: 9
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Writes data to a point cloud inside a `pciterate` or a `pcunshaded` loop.
+`int pcexport(int handle, string channel\_name, <type>value, ...)`
 
-```c
-int  pcexport(int handle, string channel_name, <type>value, ...)
-```
+`int pcexport(int handle, string channel\_name, vector value, float radius, ...)`
 
-`int pcexport(int handle, string channel_name, vector value, float radius, ...)`
+Returns 1 if the export succeeded or 0 if the export failed.
+The export will fail if channel_name is not read-write or if (in the
+version of pcexport taking a radius) the point being exported is at a
+distance less than the specified radius from a point that is already in the
+point cloud.
 
-Returns 1 if the export succeeded or 0 if the export failed.The export will
-fail if channel_name is not read-write or if (in theversion of pcexport taking
-a radius) the point being exported is at adistance less than the specified
-radius from a point that is already in thepoint cloud.
+This function writes to the channels of points opened with [pcopen](pcopen.html "Returns a handle to a point cloud file.") or
+[pcgenerate](pcgenerate.html "Generates a point cloud."). The second version of this function takes a radius parameter and uses it to accept or reject the point being exported according to its distance to the points that are already in the point cloud. It must be separated from all other points by at least the specified radius. To write new point data into a point cloud file, use [pcwrite](pcwrite.html "Writes data to a point cloud file.").
 
-如果导出成功则返回 1，如果导出失败则返回 0。
+##
 
-This function writes to the channels of points opened with
-[pcopen](pcopen.html) "Returns a handle to a point cloud file.")
-or[pcgenerate](pcgenerate.html "Generates a point cloud."). The second version
-of this function takes a radius parameter and uses it to accept or reject the
-point being exported according to its distance to the points that are already
-in the point cloud.It must be separated from all other points by at least the
-specified radius.To write new point data into a point cloud file, use
-[pcwrite](pcwrite.html "Writes data to a point cloud file.").
+Storage type
 
-如果 channel_name 不是可读可写的，或者如果（在采取半径的 pcexport 版本中）被导出的点在一个半径上，那么导出将失败。
+[¶](#storage-type)
 
-## Storage type
+If you add the `"storage"` optional keyword, the next argument specifies a storage type for the data.
+Storage types are the standard tile based format data types:
 
-If you add the `"storage"` optional keyword, the next argument specifies a
-storage type for the data.Storage types are the standard tile based format
-data types:
 
-的版本中）被导出的点与已经存在的点的距离小于指定的半径。
+`int8, uint8` 8 bit signed/unsigned integers
+|
+`int16, uint16` 16 bit signed/unsigned integers
+|
+`int32, uint32` 32 bit signed/unsigned integers
+|
+`int64, uint64` 64 bit signed/unsigned integers
+|
+`real16` 16 bit floating point values
+|
+`real32` 32 bit floating point values
+|
+`real64` 64 bit floating point values
+|
+`int`, `uint`, `real` Default precision integer/floating point values
 
-`int8, uint8`
 
-与已经在点云中的某个点的距离小于指定的半径。
+
+## See also
+
+- [pcwrite](pcwrite.html)
+- [pcopen](pcopen.html)
+- [pciterate](pciterate.html)
+- [pcunshaded](pcunshaded.html)
+- [pcimport](pcimport.html)
 
 |
+file
 
-8 bit signed/unsigned integers
+[colormap](colormap.html)
 
-点云中的点。
+[depthmap](depthmap.html)
 
----|---
+[dsmpixel](dsmpixel.html)
 
-`int16, uint16`
+[environment](environment.html)
 
-这个函数写到用 pcopenorpcgenerate 打开的点的通道。这个函数的第二个版本接受一个半径参数，并根据它与点云中已存在的点的距离来接受或拒绝被导出的点。
-它必须与其他所有的点相隔至少有指定的半径。 要将新的点数据写进点云文件，请使用 epcwrite。
+[filter_remap](filter_remap.html)
 
-|
+[importance_remap](importance_remap.html)
 
-16 bit signed/unsigned integers
+[pcclose](pcclose.html)
 
-如果你添加了 "存储 "这个可选的关键字，下一个参数将指定数据的存储类型。
+[pcexport](pcexport.html)
 
-`int32, uint32`
+[pcopen](pcopen.html)
 
-存储类型是标准的基于瓦片格式的数据类型。
+[pcopenlod](pcopenlod.html)
 
-|
+[pcsampleleaf](pcsampleleaf.html)
 
-32 bit signed/unsigned integers
+[pcwrite](pcwrite.html)
 
-int8, uint8
+[ptexture](ptexture.html)
 
-`int64, uint64`
+[rawcolormap](rawcolormap.html)
 
-8 位有符号/无符号整数
+[sensor_panorama_create](sensor_panorama_create.html)
 
-|
+[shadowmap](shadowmap.html)
 
-64 bit signed/unsigned integers
+[teximport](teximport.html)
 
-int16, uint16
+[texture](texture.html)
 
-`real16`
+[texture3d](texture3d.html)
 
-|
-
-16 bit floating point values
-
-16 位有符号/无符号整数
-
-`real32`
+[writepixel](writepixel.html)
 
 |
+ptcloud
 
-32 bit floating point values
+[mattrib](mattrib.html)
 
-int32, uint32
+[mdensity](mdensity.html)
 
-`real64`
+[mspace](mspace.html)
 
-|
+[pcclose](pcclose.html)
 
-64 bit floating point values
+[pccone](pccone.html)
 
-32 位有符号/无符号整数
+[pccone_radius](pccone_radius.html)
 
-`int`, `uint`, `real`
+[pcconvex](pcconvex.html)
 
-|
+[pcexport](pcexport.html)
 
-Default precision integer/floating point values
+[pcfarthest](pcfarthest.html)
 
-int64, uint64
+[pcfilter](pcfilter.html)
+
+[pcfind](pcfind.html)
+
+[pcfind_radius](pcfind_radius.html)
+
+[pcgenerate](pcgenerate.html)
+
+[pcimport](pcimport.html)
+
+[pcimportbyidx3](pcimportbyidx3.html)
+
+[pcimportbyidx4](pcimportbyidx4.html)
+
+[pcimportbyidxf](pcimportbyidxf.html)
+
+[pcimportbyidxi](pcimportbyidxi.html)
+
+[pcimportbyidxp](pcimportbyidxp.html)
+
+[pcimportbyidxs](pcimportbyidxs.html)
+
+[pcimportbyidxv](pcimportbyidxv.html)
+
+[pciterate](pciterate.html)
+
+[pcline](pcline.html)
+
+[pcline_radius](pcline_radius.html)
+
+[pcnumfound](pcnumfound.html)
+
+[pcopen](pcopen.html)
+
+[pcopenlod](pcopenlod.html)
+
+[pcsampleleaf](pcsampleleaf.html)
+
+[pcsegment](pcsegment.html)
+
+[pcsegment_radius](pcsegment_radius.html)
+
+[pcsize](pcsize.html)
+
+[pcunshaded](pcunshaded.html)
+
+[pcwrite](pcwrite.html)
+
+[pgfind](pgfind.html)
+
+[photonmap](photonmap.html)
+
+[texture3d](texture3d.html)
+
+[texture3dBox](texture3dBox.html)

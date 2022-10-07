@@ -1,22 +1,85 @@
 ---
 title: chresizebuf
-order: 21
+order: 22
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Resize the CHOP context temporary buffer
 
-| Context(s) | [chop](../contexts/chop.html) |
-| ---------- | ----------------------------- |
 
-```c
-int  chresizebuf(int size)
-```
+Context(s)
+[chop](../contexts/chop.html)
 
-Resizes the CHOP context temporary buffer.Return 1 if the resize succeeded, 0
-otherwise.
+`int chresizebuf(int size)`
 
-调整 CHOP 上下文临时缓冲区的大小。
+Resizes the CHOP context temporary buffer.
+Return 1 if the resize succeeded, 0 otherwise.
+
+
+chop
+
+[chadd](chadd.html)
+
+[chattr](chattr.html)
+
+[chattrnames](chattrnames.html)
+
+[chend](chend.html)
+
+[chendf](chendf.html)
+
+[chendt](chendt.html)
+
+[chindex](chindex.html)
+
+[chinput](chinput.html)
+
+[chinputlimits](chinputlimits.html)
+
+[chname](chname.html)
+
+[chnames](chnames.html)
+
+[chnumchan](chnumchan.html)
+
+[chop](chop.html)
+
+[choplocal](choplocal.html)
+
+[choplocalt](choplocalt.html)
+
+[chopt](chopt.html)
+
+[chrate](chrate.html)
+
+[chreadbuf](chreadbuf.html)
+
+[chremove](chremove.html)
+
+[chremoveattr](chremoveattr.html)
+
+[chrename](chrename.html)
+
+[chresizebuf](chresizebuf.html)
+
+[chsetattr](chsetattr.html)
+
+[chsetlength](chsetlength.html)
+
+[chsetrate](chsetrate.html)
+
+[chsetstart](chsetstart.html)
+
+[chstart](chstart.html)
+
+[chstartf](chstartf.html)
+
+[chstartt](chstartt.html)
+
+[chwritebuf](chwritebuf.html)
+
+[isframes](isframes.html)
+
+[issamples](issamples.html)
+
+[isseconds](isseconds.html)

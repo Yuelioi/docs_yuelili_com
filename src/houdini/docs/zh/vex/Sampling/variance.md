@@ -1,27 +1,119 @@
 ---
 title: variance
-order: 32
+order: 33
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Computes the mean value and variance for a value.
+`float variance(float variable, float &mean, int &sample\_size)`
 
-```c
-float  variance(float variable, float &mean, int &sample_size)
-```
+This function will compute the mean and variance from nearby samples. Similar to the way that VEX is able to compute derivatives, this function is able to inspect the `variable` for a nearby area and compute the mean and variance of the `variable`.
 
-This function will compute the mean and variance from nearby samples.Similar
-to the way that VEX is able to compute derivatives, this function is able to
-inspect the `variable` for a nearby area and compute the mean and variance of
-the `variable`.
+The function returns the `variance` (σ2). The `mean` value will also be returned along with the `sample_size` indicating how many nearby samples were considered.
 
-这个函数将从附近的样本中计算出平均值和方差。 与 VEX 能够计算导数的方式类似，这个函数能够检查附近区域的变量并计算变量的平均数和方差。
 
-The function returns the `variance` (Ï2).The `mean` value will also be
-returned along with the `sample_size` indicating how many nearby samples were
-considered.
+math
 
-该函数返回方差(Ï2)。 主题值也将与样本大小一起返回，表明考虑了多少个附近的样本。
+[Du](Du.html)
+
+[Dv](Dv.html)
+
+[Dw](Dw.html)
+
+[abs](abs.html)
+
+[acos](acos.html)
+
+[asin](asin.html)
+
+[atan](atan.html)
+
+[atten](atten.html)
+
+[avg](avg.html)
+
+[cbrt](cbrt.html)
+
+[ceil](ceil.html)
+
+[cos](cos.html)
+
+[cosh](cosh.html)
+
+[cracktransform](cracktransform.html)
+
+[cross](cross.html)
+
+[degrees](degrees.html)
+
+[dot](dot.html)
+
+[erf](erf.html)
+
+[erf_inv](erf_inv.html)
+
+[erfc](erfc.html)
+
+[exp](exp.html)
+
+[floor](floor.html)
+
+[frac](frac.html)
+
+[fuzzify](fuzzify.html)
+
+[getderiv](getderiv.html)
+
+[isfinite](isfinite.html)
+
+[isnan](isnan.html)
+
+[log](log.html)
+
+[log10](log10.html)
+
+[max](max.html)
+
+[min](min.html)
+
+[pow](pow.html)
+
+[product](product.html)
+
+[radians](radians.html)
+
+[resample_linear](resample_linear.html)
+
+[rint](rint.html)
+
+[shl](shl.html)
+
+[shr](shr.html)
+
+[shrz](shrz.html)
+
+[sign](sign.html)
+
+[sin](sin.html)
+
+[sinh](sinh.html)
+
+[solvecubic](solvecubic.html)
+
+[solvepoly](solvepoly.html)
+
+[solvequadratic](solvequadratic.html)
+
+[solvetriangleSSS](solvetriangleSSS.html)
+
+[sqrt](sqrt.html)
+
+[sum](sum.html)
+
+[tan](tan.html)
+
+[tanh](tanh.html)
+
+[trunc](trunc.html)
+
+[variance](variance.html)

@@ -1,28 +1,64 @@
 ---
 title: islpeactive
-order: 42
+order: 43
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Returns 1 if Light Path Expressions are enabled. 0 Otherwise.
 
-| Context(s) | [surface](../contexts/surface.html) |
-| ---------- | ----------------------------------- |
 
-```c
-int  islpeactive()
-```
+Context(s)
+[surface](../contexts/surface.html)
 
-Returns 1 if there are any image planes with vex variable that starts
-with`"lpe:"`, which indicates that Light Path Expression (LPE) is enabled.
-Returns 0if no such image plane exists.
+`int islpeactive()`
 
-如果有任何图像平面的 vex 变量以 "lpe: "开头，则返回 1，这表明光路表达（LPE）被启用。返回 0
+Returns 1 if there are any image planes with vex variable that starts with
+`"lpe:"`, which indicates that Light Path Expression (LPE) is enabled. Returns 0
+if no such image plane exists.
 
-This function is used to optimize out any LPE related function calls if
-thecurrent render doesn‘t have any AOVs that uses LPE.
+This function is used to optimize out any LPE related function calls if the
+current render doesn’t have any AOVs that uses LPE.
 
-如果没有这样的图像平面存在。
+
+shadow
+
+[dsmpixel](dsmpixel.html)
+
+[fastshadow](fastshadow.html)
+
+[filtershadow](filtershadow.html)
+
+[islpeactive](islpeactive.html)
+
+[isshadowray](isshadowray.html)
+
+[limport](limport.html)
+
+[shadowmap](shadowmap.html)
+
+|
+surface
+
+[ambient](ambient.html)
+
+[irradiance](irradiance.html)
+
+[isfogray](isfogray.html)
+
+[islpeactive](islpeactive.html)
+
+[isshadowray](isshadowray.html)
+
+[isuvrendering](isuvrendering.html)
+
+[limport](limport.html)
+
+[occlusion](occlusion.html)
+
+[reflectlight](reflectlight.html)
+
+[refractlight](refractlight.html)
+
+[shadow](shadow.html)
+
+[shimport](shimport.html)

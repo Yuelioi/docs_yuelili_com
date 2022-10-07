@@ -1,22 +1,136 @@
 ---
 title: shr
-order: 53
+order: 59
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Bit-shifts an integer right.
-
-```c
-int  shr(int a, int bits)
-```
+`int shr(int a, int bits)`
 
 Bit-shifts `a` to the right by `bits`.
 
-位向右移位。
+This is an arithmetic shift, the sign is shifted with it. Thus, `shr(-1, 2)`
+will give -1, not zero.
 
-This is an arithmetic shift, the sign is shifted with it.Thus, `shr(-1, 2)`will give -1, not zero.
 
-这是一个算术移位，符号也随之移位。 因此，shr(-1, 2)将给出-1，而不是 0。
+
+## See also
+
+- [shl](shl.html)
+- [shrz](shrz.html)
+
+|
+integer
+
+[shl](shl.html)
+
+[shr](shr.html)
+
+[shrz](shrz.html)
+
+|
+math
+
+[Du](Du.html)
+
+[Dv](Dv.html)
+
+[Dw](Dw.html)
+
+[abs](abs.html)
+
+[acos](acos.html)
+
+[asin](asin.html)
+
+[atan](atan.html)
+
+[atten](atten.html)
+
+[avg](avg.html)
+
+[cbrt](cbrt.html)
+
+[ceil](ceil.html)
+
+[cos](cos.html)
+
+[cosh](cosh.html)
+
+[cracktransform](cracktransform.html)
+
+[cross](cross.html)
+
+[degrees](degrees.html)
+
+[dot](dot.html)
+
+[erf](erf.html)
+
+[erf_inv](erf_inv.html)
+
+[erfc](erfc.html)
+
+[exp](exp.html)
+
+[floor](floor.html)
+
+[frac](frac.html)
+
+[fuzzify](fuzzify.html)
+
+[getderiv](getderiv.html)
+
+[isfinite](isfinite.html)
+
+[isnan](isnan.html)
+
+[log](log.html)
+
+[log10](log10.html)
+
+[max](max.html)
+
+[min](min.html)
+
+[pow](pow.html)
+
+[product](product.html)
+
+[radians](radians.html)
+
+[resample_linear](resample_linear.html)
+
+[rint](rint.html)
+
+[shl](shl.html)
+
+[shr](shr.html)
+
+[shrz](shrz.html)
+
+[sign](sign.html)
+
+[sin](sin.html)
+
+[sinh](sinh.html)
+
+[solvecubic](solvecubic.html)
+
+[solvepoly](solvepoly.html)
+
+[solvequadratic](solvequadratic.html)
+
+[solvetriangleSSS](solvetriangleSSS.html)
+
+[sqrt](sqrt.html)
+
+[sum](sum.html)
+
+[tan](tan.html)
+
+[tanh](tanh.html)
+
+[trunc](trunc.html)
+
+[variance](variance.html)

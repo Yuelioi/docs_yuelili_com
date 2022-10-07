@@ -24,154 +24,154 @@ in the UI.
 
 ## See also
 
-- [degrees ](degrees.html)
+- [degrees](degrees.html)
 
 ### convert
 
-[ctransform ](ctransform.html)
+[ctransform](ctransform.html)
 
-[degrees ](degrees.html)
+[degrees](degrees.html)
 
-[hsvtorgb ](hsvtorgb.html)
+[hsvtorgb](hsvtorgb.html)
 
-[luminance ](luminance.html)
+[luminance](luminance.html)
 
-[radians ](radians.html)
+[radians](radians.html)
 
-[rgbtohsv ](rgbtohsv.html)
+[rgbtohsv](rgbtohsv.html)
 
-[rgbtoxyz ](rgbtoxyz.html)
+[rgbtoxyz](rgbtoxyz.html)
 
-[xyztorgb ](xyztorgb.html)
+[xyztorgb](xyztorgb.html)
 
 ### math
 
-[Du ](Du.html)
+[Du](Du.html)
 
-[Dv ](Dv.html)
+[Dv](Dv.html)
 
-[Dw ](Dw.html)
+[Dw](Dw.html)
 
-[abs ](abs.html)
+[abs](abs.html)
 
-[acos ](acos.html)
+[acos](acos.html)
 
-[asin ](asin.html)
+[asin](asin.html)
 
-[atan ](atan.html)
+[atan](atan.html)
 
-[atten ](atten.html)
+[atten](atten.html)
 
-[avg ](avg.html)
+[avg](avg.html)
 
-[cbrt ](cbrt.html)
+[cbrt](cbrt.html)
 
-[ceil ](ceil.html)
+[ceil](ceil.html)
 
-[cos ](cos.html)
+[cos](cos.html)
 
-[cosh ](cosh.html)
+[cosh](cosh.html)
 
-[cracktransform ](cracktransform.html)
+[cracktransform](cracktransform.html)
 
-[cross ](cross.html)
+[cross](cross.html)
 
-[degrees ](degrees.html)
+[degrees](degrees.html)
 
-[dot ](dot.html)
+[dot](dot.html)
 
-[erf ](erf.html)
+[erf](erf.html)
 
-[erf_inv ](erf_inv.html)
+[erf_inv](erf_inv.html)
 
-[erfc ](erfc.html)
+[erfc](erfc.html)
 
-[exp ](exp.html)
+[exp](exp.html)
 
-[floor ](floor.html)
+[floor](floor.html)
 
-[frac ](frac.html)
+[frac](frac.html)
 
-[fuzzify ](fuzzify.html)
+[fuzzify](fuzzify.html)
 
-[getderiv ](getderiv.html)
+[getderiv](getderiv.html)
 
-[isfinite ](isfinite.html)
+[isfinite](isfinite.html)
 
-[isnan ](isnan.html)
+[isnan](isnan.html)
 
-[log ](log.html)
+[log](log.html)
 
-[log10 ](log10.html)
+[log10](log10.html)
 
-[max ](max.html)
+[max](max.html)
 
-[min ](min.html)
+[min](min.html)
 
-[pow ](pow.html)
+[pow](pow.html)
 
-[product ](product.html)
+[product](product.html)
 
-[radians ](radians.html)
+[radians](radians.html)
 
-[resample_linear ](resample_linear.html)
+[resample_linear](resample_linear.html)
 
-[rint ](rint.html)
+[rint](rint.html)
 
-[shl ](shl.html)
+[shl](shl.html)
 
-[shr ](shr.html)
+[shr](shr.html)
 
-[shrz ](shrz.html)
+[shrz](shrz.html)
 
-[sign ](sign.html)
+[sign](sign.html)
 
-[sin ](sin.html)
+[sin](sin.html)
 
-[sinh ](sinh.html)
+[sinh](sinh.html)
 
-[solvecubic ](solvecubic.html)
+[solvecubic](solvecubic.html)
 
-[solvepoly ](solvepoly.html)
+[solvepoly](solvepoly.html)
 
-[solvequadratic ](solvequadratic.html)
+[solvequadratic](solvequadratic.html)
 
-[solvetriangleSSS ](solvetriangleSSS.html)
+[solvetriangleSSS](solvetriangleSSS.html)
 
-[sqrt ](sqrt.html)
+[sqrt](sqrt.html)
 
-[sum ](sum.html)
+[sum](sum.html)
 
-[tan ](tan.html)
+[tan](tan.html)
 
-[tanh ](tanh.html)
+[tanh](tanh.html)
 
-[trunc ](trunc.html)
+[trunc](trunc.html)
 
-[variance ](variance.html)
+[variance](variance.html)
 
 ### trig
 
-[acos ](acos.html)
+[acos](acos.html)
 
-[asin ](asin.html)
+[asin](asin.html)
 
-[atan ](atan.html)
+[atan](atan.html)
 
-[atan2 ](atan2.html)
+[atan2](atan2.html)
 
-[cos ](cos.html)
+[cos](cos.html)
 
-[cosh ](cosh.html)
+[cosh](cosh.html)
 
-[degrees ](degrees.html)
+[degrees](degrees.html)
 
-[radians ](radians.html)
+[radians](radians.html)
 
-[sin ](sin.html)
+[sin](sin.html)
 
-[sinh ](sinh.html)
+[sinh](sinh.html)
 
-[tan ](tan.html)
+[tan](tan.html)
 
-[tanh ](tanh.html)
+[tanh](tanh.html)

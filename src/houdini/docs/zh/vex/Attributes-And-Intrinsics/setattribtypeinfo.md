@@ -1,149 +1,195 @@
 ---
 title: setattribtypeinfo
-order: 56
+order: 65
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
-
-Sets the meaning of an attribute in geometry.
 
 `int setattribtypeinfo(int geohandle, string attribclass, string name, string typeinfo)`
 
+## Arguments
+
 `geohandle`
 
-A handle to the geometry to write to. Currently the only valid value is `0` or
-[geoself](geoself.html) "Returns a handle to the current geometry."), which
-means the current geometry in a node. (This argument may be used in the future
-to allow writing to other geometries.)
-
-要写入的几何体的句柄。目前唯一有效的值是 0orgeoself，也就是一个节点中的当前几何体。(这个参数将来可能会被用来允许写到其他几何体。)
+A handle to the geometry to write to. Currently the only valid value is `0` or [geoself](geoself.html "Returns a handle to the current geometry."), which means the current geometry in a node. (This argument may be used in the future to allow writing to other geometries.)
 
 `attribclass`
 
 One of `"detail"` (or `"global"`), `"point"`, `"prim"`, or `"vertex"`.
 
-详细"（或 "全局"）、"点"、"底层 "或 "顶点 "中的一个。
-
-You can also use `"primgroup"`, `"pointgroup"` or `"vertexgroup"` to [read
-from groups](../groups.html "You can read the contents of
-primitive/point/vertex groups in VEX as if they were attributes.").
-
-你也可以使用 "primgroup"、"pointgroup "或 "vertexgroup "来从组中读取。
+You can also use `"primgroup"`, `"pointgroup"` or `"vertexgroup"` to [read from groups](../groups.html "You can read the contents of primitive/point/vertex groups in VEX as if they were attributes.").
 
 `name`
 
 The name of the attribute for which to change the transformation info.
 
-要改变转换信息的属性的名称。
-
 `typeinfo`
 
-The meaning of the attribute, which is used by transform nodes to determine
-how to modify the attribute. It is one of:
+The meaning of the attribute, which is used by transform nodes to determine how to modify the attribute. It is one of:
 
-属性的含义，它被转换节点用来确定如何修改属性。它是其中之一。
 
-`"none"`
-
+`"none"` Don’t transform.
 |
-
-Don‘t transform.
-
-不要变换。
-
----|---
-
-`"point"`
-
+`"point"` Apply scales, rotations, and transformations.
 |
-
-Apply scales, rotations, and transformations.
-
-应用缩放、旋转和变换。
-
-`"hpoint"`
-
+`"hpoint"` Apply scales, rotations, and transformations to this vector4.
 |
-
-Apply scales, rotations, and transformations to this vector4.
-
-对这个矢量应用缩放、旋转和变换 4。
-
-`"vector"`
-
+`"vector"` Apply scales and rotations, but not transformations.
 |
-
-Apply scales and rotations, but not transformations.
-
-应用缩放和旋转，但不转换。
-
-`"normal"`
-
+`"normal"` Apply rotations, apply scales with inverse-transpose.
 |
-
-Apply rotations, apply scales with inverse-transpose.
-
-应用旋转，应用逆向变换的比例。
-
-`"color"`
-
+`"color"` Don’t transform.
 |
-
-Don‘t transform.
-
-不要变换。
-
-`"matrix"`
-
+`"matrix"` Apply scales, rotations, and transformations to this matrix.
 |
-
-Apply scales, rotations, and transformations to this matrix.
-
-对这个矩阵应用缩放、旋转和变换。
-
-`"quaternion"`
-
+`"quaternion"` Apply rotations.
 |
-
-Apply rotations.
-
-应用旋转。
-
-`"indexpair"`
-
+`"indexpair"` Don’t transform.
 |
-
-Don‘t transform.
-
-不要变换。
-
-`"integer"`
-
+`"integer"` Do not blend this value when points are averaged.
 |
-
-Do not blend this value when points are averaged.
-
-当点的平均值时，不要混合这个值。
-
-```c
-"integer-blend"
-```
-
+`"integer-blend"` Integer values that blend when points are averaged.
 |
+`"texturecoord"` Don’t transform, and try to preserve seams when interpolating.
+Attributes with this type will show up in the UV viewport menu.
 
-Integer values that blend when points are averaged.
 
-当点被平均时，混合的整数值。
+attrib
 
-```c
-"texturecoord"
-```
+[addattrib](addattrib.html)
 
-|
+[adddetailattrib](adddetailattrib.html)
 
-Don‘t transform, and try to preserve seams when interpolating.Attributes
-with this type will show up in the UV viewport menu.
+[addpointattrib](addpointattrib.html)
 
-不要变换，并在插值时尽量保留接缝。
+[addprimattrib](addprimattrib.html)
+
+[addvertexattrib](addvertexattrib.html)
+
+[addvisualizer](addvisualizer.html)
+
+[attrib](attrib.html)
+
+[attribclass](attribclass.html)
+
+[attribdataid](attribdataid.html)
+
+[attribsize](attribsize.html)
+
+[attribtype](attribtype.html)
+
+[attribtypeinfo](attribtypeinfo.html)
+
+[detail](detail.html)
+
+[detailattrib](detailattrib.html)
+
+[detailattribsize](detailattribsize.html)
+
+[detailattribtype](detailattribtype.html)
+
+[detailattribtypeinfo](detailattribtypeinfo.html)
+
+[detailintrinsic](detailintrinsic.html)
+
+[findattribval](findattribval.html)
+
+[findattribvalcount](findattribvalcount.html)
+
+[getattrib](getattrib.html)
+
+[getattribute](getattribute.html)
+
+[hasattrib](hasattrib.html)
+
+[hasdetailattrib](hasdetailattrib.html)
+
+[haspointattrib](haspointattrib.html)
+
+[hasprimattrib](hasprimattrib.html)
+
+[hasvertexattrib](hasvertexattrib.html)
+
+[nuniqueval](nuniqueval.html)
+
+[point](point.html)
+
+[pointattrib](pointattrib.html)
+
+[pointattribsize](pointattribsize.html)
+
+[pointattribtype](pointattribtype.html)
+
+[pointattribtypeinfo](pointattribtypeinfo.html)
+
+[pointlocaltransforms](pointlocaltransforms.html)
+
+[pointtransform](pointtransform.html)
+
+[pointtransformrigid](pointtransformrigid.html)
+
+[pointtransforms](pointtransforms.html)
+
+[pointtransformsrigid](pointtransformsrigid.html)
+
+[prim](prim.html)
+
+[prim_attribute](prim_attribute.html)
+
+[primattrib](primattrib.html)
+
+[primattribsize](primattribsize.html)
+
+[primattribtype](primattribtype.html)
+
+[primattribtypeinfo](primattribtypeinfo.html)
+
+[priminteriorweights](priminteriorweights.html)
+
+[primintrinsic](primintrinsic.html)
+
+[primuv](primuv.html)
+
+[primuvconvert](primuvconvert.html)
+
+[removedetailattrib](removedetailattrib.html)
+
+[removepointattrib](removepointattrib.html)
+
+[removeprimattrib](removeprimattrib.html)
+
+[removevertexattrib](removevertexattrib.html)
+
+[setattrib](setattrib.html)
+
+[setattribtypeinfo](setattribtypeinfo.html)
+
+[setdetailattrib](setdetailattrib.html)
+
+[setpointattrib](setpointattrib.html)
+
+[setpointlocaltransforms](setpointlocaltransforms.html)
+
+[setpointtransform](setpointtransform.html)
+
+[setpointtransforms](setpointtransforms.html)
+
+[setprimattrib](setprimattrib.html)
+
+[setvertexattrib](setvertexattrib.html)
+
+[uniqueval](uniqueval.html)
+
+[uniquevals](uniquevals.html)
+
+[uvsample](uvsample.html)
+
+[vertex](vertex.html)
+
+[vertexattrib](vertexattrib.html)
+
+[vertexattribsize](vertexattribsize.html)
+
+[vertexattribtype](vertexattribtype.html)
+
+[vertexattribtypeinfo](vertexattribtypeinfo.html)

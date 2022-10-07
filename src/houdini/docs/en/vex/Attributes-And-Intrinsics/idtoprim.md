@@ -37,112 +37,112 @@ example, a `.bgeo`) to read from. When running inside Houdini, this can be an
 
 ## See also
 
-- [nametoprim ](nametoprim.html)
-- [idtopoint ](idtopoint.html)
-- [findattribval ](findattribval.html)
+- [nametoprim](nametoprim.html)
+- [idtopoint](idtopoint.html)
+- [findattribval](findattribval.html)
 
 ### prim
 
-[addprim ](addprim.html)
+[addprim](addprim.html)
 
-[addprimattrib ](addprimattrib.html)
+[addprimattrib](addprimattrib.html)
 
-[curvearclen ](curvearclen.html)
+[curvearclen](curvearclen.html)
 
-[hasprimattrib ](hasprimattrib.html)
+[hasprimattrib](hasprimattrib.html)
 
-[hedge_prim ](hedge_prim.html)
+[hedge_prim](hedge_prim.html)
 
-[idtoprim ](idtoprim.html)
+[idtoprim](idtoprim.html)
 
-[inprimgroup ](inprimgroup.html)
+[inprimgroup](inprimgroup.html)
 
-[nametoprim ](nametoprim.html)
+[nametoprim](nametoprim.html)
 
-[nprimitives ](nprimitives.html)
+[nprimitives](nprimitives.html)
 
-[nprimitivesgroup ](nprimitivesgroup.html)
+[nprimitivesgroup](nprimitivesgroup.html)
 
-[pointprims ](pointprims.html)
+[pointprims](pointprims.html)
 
-[prim ](prim.html)
+[prim](prim.html)
 
-[prim_attribute ](prim_attribute.html)
+[prim_attribute](prim_attribute.html)
 
-[prim_normal ](prim_normal.html)
+[prim_normal](prim_normal.html)
 
-[primarclen ](primarclen.html)
+[primarclen](primarclen.html)
 
-[primattrib ](primattrib.html)
+[primattrib](primattrib.html)
 
-[primattribsize ](primattribsize.html)
+[primattribsize](primattribsize.html)
 
-[primattribtype ](primattribtype.html)
+[primattribtype](primattribtype.html)
 
-[primattribtypeinfo ](primattribtypeinfo.html)
+[primattribtypeinfo](primattribtypeinfo.html)
 
-[primduv ](primduv.html)
+[primduv](primduv.html)
 
-[primfind ](primfind.html)
+[primfind](primfind.html)
 
-[primhedge ](primhedge.html)
+[primhedge](primhedge.html)
 
-[priminteriorweights ](priminteriorweights.html)
+[priminteriorweights](priminteriorweights.html)
 
-[primintrinsic ](primintrinsic.html)
+[primintrinsic](primintrinsic.html)
 
-[primpoint ](primpoint.html)
+[primpoint](primpoint.html)
 
-[primpoints ](primpoints.html)
+[primpoints](primpoints.html)
 
-[primuv ](primuv.html)
+[primuv](primuv.html)
 
-[primuvconvert ](primuvconvert.html)
+[primuvconvert](primuvconvert.html)
 
-[primvertex ](primvertex.html)
+[primvertex](primvertex.html)
 
-[primvertexcount ](primvertexcount.html)
+[primvertexcount](primvertexcount.html)
 
-[primvertices ](primvertices.html)
+[primvertices](primvertices.html)
 
-[removeprim ](removeprim.html)
+[removeprim](removeprim.html)
 
-[setprimattrib ](setprimattrib.html)
+[setprimattrib](setprimattrib.html)
 
-[setprimgroup ](setprimgroup.html)
+[setprimgroup](setprimgroup.html)
 
-[setprimintrinsic ](setprimintrinsic.html)
+[setprimintrinsic](setprimintrinsic.html)
 
-[setprimvertex ](setprimvertex.html)
+[setprimvertex](setprimvertex.html)
 
-[vertexcurveparam ](vertexcurveparam.html)
+[vertexcurveparam](vertexcurveparam.html)
 
-[vertexindex ](vertexindex.html)
+[vertexindex](vertexindex.html)
 
-[vertexprim ](vertexprim.html)
+[vertexprim](vertexprim.html)
 
-[vertexprimindex ](vertexprimindex.html)
+[vertexprimindex](vertexprimindex.html)
 
 ### search
 
-[findattribval ](findattribval.html)
+[findattribval](findattribval.html)
 
-[findattribvalcount ](findattribvalcount.html)
+[findattribvalcount](findattribvalcount.html)
 
-[idtopoint ](idtopoint.html)
+[idtopoint](idtopoint.html)
 
-[idtoprim ](idtoprim.html)
+[idtoprim](idtoprim.html)
 
-[intersect ](intersect.html)
+[intersect](intersect.html)
 
-[nametopoint ](nametopoint.html)
+[nametopoint](nametopoint.html)
 
-[nametoprim ](nametoprim.html)
+[nametoprim](nametoprim.html)
 
-[nuniqueval ](nuniqueval.html)
+[nuniqueval](nuniqueval.html)
 
-[primfind ](primfind.html)
+[primfind](primfind.html)
 
-[uniqueval ](uniqueval.html)
+[uniqueval](uniqueval.html)
 
-[uniquevals ](uniquevals.html)
+[uniquevals](uniquevals.html)

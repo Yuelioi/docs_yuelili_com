@@ -1,77 +1,118 @@
 ---
 title: pnoise
-order: 19
+order: 27
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-There are two forms of Perlin-style noise: a non-periodic noise which  
-changes randomly throughout N-dimensional space, and a periodic form  
+`float|vector pnoise(float x, int px)`
+
+`float|vector pnoise(vector x, vector p)`
+
+`float|vector pnoise(vector4 xyzt, vector4 p)`
+
+`float|vector pnoise(float x, float y, int px, int py)`
+
+`float|vector pnoise(vector xyz, int px, int py, int pz)`
+
+`float|vector pnoise(vector4 xyzt, int px, int py, int pz, int pt)`
+
+There are two forms of Perlin-style noise: a non-periodic noise which
+changes randomly throughout N-dimensional space, and a periodic form
 which repeats over a given range of space.
 
-```c
-float|vector pnoise(float x, int px)
-```
+This function generates periodic noise. Use the [noise](noise.html "There are two forms of Perlin-style noise: a non-periodic noise which
+changes randomly throughout N-dimensional space, and a periodic form
+which repeats over a given range of space.")
+function to generate non-periodic Perlin noise.
+
+The various functions return the noise value at a 4D (vector4 argument),
+3D (vector argument), 2D (two float arguments) or 1D (float argument)
+position. You can get a random float value or a vector of three random
+values.
+
+The “p” int or vector arguments specify the range of periodicity. For
+example, if you're making a 2D image and you want it to tile:
 
 ```c
-float|vector pnoise(vector x, vector p)
+clr = pnoise(X \* 4, Y \* 5, \_4, 5\_)
+
 ```
 
-```c
-float|vector pnoise(vector4 xyzt, vector4 p)
-```
+In this example, X is in the range 0-4, Y is in the range 0-5, and the
+noise is periodic within that segment.
 
-```c
-float|vector pnoise(float x, float y, int px, int py)
-```
+If a period argument is 0, VEX treats that as _no_ periodicity. Use
+this to make the noise periodic in one dimension but not another.
 
-```c
-float|vector pnoise(vector xyz, int px, int py, int pz)
-```
+The distribution of the noise depends on the dimension, with higher
+dimensions approaching a Gaussian distribution of noise values.
 
-```c
-float|vector pnoise(vector4 xyzt, int px, int py, int pz, int pt)
-```
 
-There are two forms of Perlin-style noise: a non-periodic noise whichchanges
-randomly throughout N-dimensional space, and a periodic formwhich repeats over
-a given range of space.
 
-有两种形式的佩林式噪声：一种是非周期性的噪声，在整个 N 维空间内随机变化。
+## See also
 
-This function generates periodic noise. Use the [noise](noise.html "There are
-two forms of Perlin-style noise: a non-periodic noise whichchanges randomly
-throughout N-dimensional space, and a periodic formwhich repeats over a given
-range of space.")function to generate non-periodic Perlin noise.
+- [Noise and randomness](../random.html)
+- [anoise](anoise.html)
+- [curlnoise](curlnoise.html)
+- [flownoise](flownoise.html)
+- [noise](noise.html)
+- [onoise](onoise.html)
+- [pnoise](pnoise.html)
+- [snoise](snoise.html)
+- [vnoise](vnoise.html)
+- [wnoise](wnoise.html)
+- [xnoise](xnoise.html)
 
-在整个 N 维空间内随机变化的非周期性噪声，以及在特定空间范围内重复的周期性形式
+|
+noise
 
-The various functions return the noise value at a 4D (vector4 argument),3D
-(vector argument), 2D (two float arguments) or 1D (float argument)position.
-You can get a random float value or a vector of three randomvalues.
+[anoise](anoise.html)
 
-在一定的空间范围内重复出现。
+[curlnoise](curlnoise.html)
 
-The “p” int or vector arguments specify the range of periodicity. Forexample,
-if you're making a 2D image and you want it to tile:
+[curlnoise2d](curlnoise2d.html)
 
-这个函数生成周期性噪声。使用 thenoisefunction 来生成非周期性的佩林噪声。
+[curlxnoise](curlxnoise.html)
 
-    clr = pnoise(X * 4, Y * 5, _4, 5_)
+[curlxnoise2d](curlxnoise2d.html)
 
-In this example, X is in the range 0-4, Y is in the range 0-5, and thenoise is
-periodic within that segment.
+[cwnoise](cwnoise.html)
 
-各种函数返回 4D（向量 4 参数）处的噪声值。
+[flownoise](flownoise.html)
 
-If a period argument is 0, VEX treats that as _no_ periodicity. Usethis to
-make the noise periodic in one dimension but not another.
+[flowpnoise](flowpnoise.html)
 
-三维（矢量参数）、二维（两个浮点参数）或一维（浮点参数）的噪声值。
+[hscript_noise](hscript_noise.html)
 
-The distribution of the noise depends on the dimension, with higherdimensions
-approaching a Gaussian distribution of noise values.
+[hscript_rand](hscript_rand.html)
 
-位置。你可以得到一个随机的浮动值或三个随机值的向量。
+[hscript_snoise](hscript_snoise.html)
+
+[hscript_sturb](hscript_sturb.html)
+
+[hscript_turb](hscript_turb.html)
+
+[mwnoise](mwnoise.html)
+
+[noise](noise.html)
+
+[noised](noised.html)
+
+[onoise](onoise.html)
+
+[pnoise](pnoise.html)
+
+[xnoise](pxnoise.html)
+
+[pxnoised](pxnoised.html)
+
+[snoise](snoise.html)
+
+[vnoise](vnoise.html)
+
+[wnoise](wnoise.html)
+
+[xnoise](xnoise.html)
+
+[xnoised](xnoised.html)

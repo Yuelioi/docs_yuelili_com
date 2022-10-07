@@ -1,48 +1,102 @@
 ---
 title: chrename
-order: 20
+order: 21
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Renames a CHOP channel.
 
-| Context(s) | [chop](../contexts/chop.html) |
-| ---------- | ----------------------------- |
 
-```c
-int  chrename(int channel_index, string new_name)
-```
+Context(s)
+[chop](../contexts/chop.html)
 
-```c
-int  chrename(string channel_name, string new_name)
-```
+`int chrename(int channel\_index, string new\_name)`
 
-This function renames a CHOP channel . It works only when iterating over Clip,
-Channel or Samples, not when iterating over ChannelSample.
+`int chrename(string channel\_name, string new\_name)`
 
-这个函数重命名一个 CHOP 通道。它只在遍历 Clip、Channel 或 Samples 时起作用，在遍历 ChannelSample 时不起作用。
+This function renames a CHOP channel . It works only when iterating over Clip, Channel or Samples, not when iterating over ChannelSample.
 
 Returns 1 if channel was renamed or 0 otherwise.
 
-如果通道被重命名，返回 1，否则返回 0。
+## Arguments
 
 `channel_index`
 
 The channel index to rename.
 
-要重命名的通道索引。
-
 `channel_name`
 
 The channel to rename.
-
-要重命名的通道。
 
 `new_name`
 
 The new name.
 
-新的名称。
+
+chop
+
+[chadd](chadd.html)
+
+[chattr](chattr.html)
+
+[chattrnames](chattrnames.html)
+
+[chend](chend.html)
+
+[chendf](chendf.html)
+
+[chendt](chendt.html)
+
+[chindex](chindex.html)
+
+[chinput](chinput.html)
+
+[chinputlimits](chinputlimits.html)
+
+[chname](chname.html)
+
+[chnames](chnames.html)
+
+[chnumchan](chnumchan.html)
+
+[chop](chop.html)
+
+[choplocal](choplocal.html)
+
+[choplocalt](choplocalt.html)
+
+[chopt](chopt.html)
+
+[chrate](chrate.html)
+
+[chreadbuf](chreadbuf.html)
+
+[chremove](chremove.html)
+
+[chremoveattr](chremoveattr.html)
+
+[chrename](chrename.html)
+
+[chresizebuf](chresizebuf.html)
+
+[chsetattr](chsetattr.html)
+
+[chsetlength](chsetlength.html)
+
+[chsetrate](chsetrate.html)
+
+[chsetstart](chsetstart.html)
+
+[chstart](chstart.html)
+
+[chstartf](chstartf.html)
+
+[chstartt](chstartt.html)
+
+[chwritebuf](chwritebuf.html)
+
+[isframes](isframes.html)
+
+[issamples](issamples.html)
+
+[isseconds](isseconds.html)

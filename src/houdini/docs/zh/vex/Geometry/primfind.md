@@ -1,101 +1,243 @@
 ---
 title: primfind
-order: 26
+order: 27
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Returns a list of primitives potentially intersecting a given bounding box.
-
-```c
-int [] primfind(<geometry>geometry, vector min, vector max)
-```
+`int [] primfind(<geometry>geometry, vector min, vector max)`
 
 Find all the primitives whose bounding boxes overlap the given box.
 
-查找其边界框与给定框重叠的所有基元。
-
-```c
-int [] primfind(<geometry>geometry, string group, vector min, vector max)
-```
+`int [] primfind(<geometry>geometry, string group, vector min, vector max)`
 
 Find all primitives in a group whose bounding boxes overlap the given box.
 
-查找一个组中边界框与给定框重叠的所有基元。
+## Arguments
 
 `<geometry>`
 
-When running in the context of a node (such as a wrangle SOP), this argument
-can be an integer representing the input number (starting at 0) to read the
-geometry from.
+When running in the context of a node (such as a wrangle SOP), this argument can be an integer representing the input number (starting at 0) to read the geometry from.
 
-在节点的上下文中运行时（例如 wrangle SOP），这个参数可以是一个整数，代表要从那里读取几何图形的输入数字（从 0 开始）。
-
-Alternatively, the argument can be a string specifying a geometry file (for
-example, a `.bgeo`) to read from. When running inside Houdini, this can be an
-
-```c
-op:/path/to/sop
-```
-
-reference.
-
-或者，该参数可以是一个字符串，指定要读取的几何体文件（例如，a.bgeo）。当在 Houdini 内部运行时，这可以是 anop:/path/to/sopreference。
+Alternatively, the argument can be a string specifying a geometry file (for example, a `.bgeo`) to read from. When running inside Houdini, this can be an `op:/path/to/sop` reference.
 
 `min`, `max`
 
-These vectors define the minimum and maximum corners of the bounding box to
-search.
-
-这些向量定义了要搜索的边界盒的最小和最大角。
+These vectors define the minimum and maximum corners of the bounding box to search.
 
 `group`
 
-If given, only match primitives in this group.An empty group string will
-include all primitives.The string supports Ad-hoc patterns like `0-10` and
-`@Cd.x>0`.
+If given, only match primitives in this group.
+An empty group string will include all primitives.
+The string supports Ad-hoc patterns like `0-10` and `@Cd.x>0`.
 
-如果给定，则只匹配此组中的基元。
-
-Returns
+## Returns
 
 An array of primitive numbers.
 
-一个空的组字符串将包括所有基元。
+::: info Note
 
-Note
-
-These functions are intended to be used as an optimization to finding
-primitivesin a particular area for processing.For instance, to find all the
-curvesfrom one input intersecting polygons on another input, we may naively
-iterateover all polygons for each curve to determine their intersection.To
-speed thisprocess, we may find which primitives may intersect a particular
-curve usingthese functions, and iterate solely over the potentially
-intersectingprimitives.This significantly improves performance since
-`primfind` uses anunderlying tree structure to speed up search.
-
-该字符串支持特设模式 like0-10and@Cd.x>0。
+These functions are intended to be used as an optimization to finding primitives
+in a particular area for processing. For instance, to find all the curves
+from one input intersecting polygons on another input, we may naively iterate
+over all polygons for each curve to determine their intersection. To speed this
+process, we may find which primitives may intersect a particular curve using
+these functions, and iterate solely over the potentially intersecting
+primitives. This significantly improves performance since `primfind` uses an
+underlying tree structure to speed up search.
 
 ## Examples
 
-Remove primitives that may be intersecting the unit box centered at the
-origin:
+[¶](#examples)
 
-一个基元数组。
+Remove primitives that may be intersecting the unit box centered at the origin:
 
-    int[] prims = primfind(geometry, {-0.5, -0.5, -0.5}, {0.5, 0.5, 0.5});foreach ( int prim; prims ){removeprim("primitives.bgeo", prim, 1);}
+```c
+int[] prims = primfind(geometry, {-0.5, -0.5, -0.5}, {0.5, 0.5, 0.5});
+foreach ( int prim; prims )
+{
+ removeprim("primitives.bgeo", prim, 1);
+}
+
+```
 
 Alternatively, we can use a query bounding box from an auxiliary source:
 
-这些函数旨在被用作优化，以寻找特定区域内的基元进行处理
+```c
+vector min, max;
+getbbox("bbox.bgeo", min, max);
+int[] prims = primfind(geometry, min, max);
+foreach ( int prim; prims )
+{
+ removeprim("primitives.bgeo", prim, 1);
+}
 
-    vector min, max;getbbox("bbox.bgeo", min, max);int[] prims = primfind(geometry, min, max);foreach ( int prim; prims ){removeprim("primitives.bgeo", prim, 1);}
+```
 
-To see the performance benefit of `primfind`, compare it to the following
-equivalentimplementation of the function above:
+To see the performance benefit of `primfind`, compare it to the following equivalent
+implementation of the function above:
 
-在一个特定区域内进行处理的优化。 例如，要找到所有的曲线
+```c
+float tol = 1e-5;
+vector min, max;
+getbbox("bbox.bgeo",min,max);
+int n = nprimitives(0);
+for ( int prim = 0; prim < n; ++prim )
+{
+ int[] verts = primvertices("primitives.bgeo", prim);
 
-    float tol = 1e-5;vector min, max;getbbox("bbox.bgeo",min,max);int n = nprimitives(0);for ( int prim = 0; prim < n; ++prim ){  int[] verts = primvertices("primitives.bgeo", prim);  // compute primitive bounding box and store it in prim_min and prim_max  vector vert_pos = point("primitives.bgeo", "P", vertexpoint("primitives.bgeo", verts[0]));  vector prim_min = vert_pos, prim_max = vert_pos;  for ( int v = 1; v < len(verts); ++v )  {    vert_pos = point("primitives.bgeo", "P", vertexpoint("primitives.bgeo", verts[v]));    prim_min = min(prim_min, vert_pos);    prim_max = max(prim_max, vert_pos);  }  // bounding box intersection test  if ( prim_max.x - min.x < -tol ) continue;  if ( prim_max.y - min.y < -tol ) continue;  if ( prim_max.z - min.z < -tol ) continue;  if ( prim_min.x - max.x > tol ) continue;  if ( prim_min.y - max.y > tol ) continue;  if ( prim_min.z - max.z > tol ) continue;  removeprim("primitives.bgeo", prim, 1);}
+ // compute primitive bounding box and store it in prim\_min and prim\_max
+ vector vert\_pos = point("primitives.bgeo", "P", vertexpoint("primitives.bgeo", verts[0]));
+ vector prim\_min = vert\_pos, prim\_max = vert\_pos;
+ for ( int v = 1; v < len(verts); ++v )
+ {
+ vert\_pos = point("primitives.bgeo", "P", vertexpoint("primitives.bgeo", verts[v]));
+ prim\_min = min(prim\_min, vert\_pos);
+ prim\_max = max(prim\_max, vert\_pos);
+ }
+
+ // bounding box intersection test
+ if ( prim\_max.x - min.x < -tol ) continue;
+ if ( prim\_max.y - min.y < -tol ) continue;
+ if ( prim\_max.z - min.z < -tol ) continue;
+ if ( prim\_min.x - max.x > tol ) continue;
+ if ( prim\_min.y - max.y > tol ) continue;
+ if ( prim\_min.z - max.z > tol ) continue;
+ removeprim("primitives.bgeo", prim, 1);
+}
+
+```
+
+
+
+## See also
+
+- [getbbox](getbbox.html)
+- [pcfind](pcfind.html)
+
+|
+intersect
+
+[clip](clip.html)
+
+[intersect](intersect.html)
+
+[intersect_all](intersect_all.html)
+
+[planesphereintersect](planesphereintersect.html)
+
+[predicate_incircle](predicate_incircle.html)
+
+[predicate_insphere](predicate_insphere.html)
+
+[primfind](primfind.html)
+
+[uvintersect](uvintersect.html)
+
+|
+prim
+
+[addprim](addprim.html)
+
+[addprimattrib](addprimattrib.html)
+
+[curvearclen](curvearclen.html)
+
+[hasprimattrib](hasprimattrib.html)
+
+[hedge_prim](hedge_prim.html)
+
+[idtoprim](idtoprim.html)
+
+[inprimgroup](inprimgroup.html)
+
+[nametoprim](nametoprim.html)
+
+[nprimitives](nprimitives.html)
+
+[nprimitivesgroup](nprimitivesgroup.html)
+
+[pointprims](pointprims.html)
+
+[prim](prim.html)
+
+[prim_attribute](prim_attribute.html)
+
+[prim_normal](prim_normal.html)
+
+[primarclen](primarclen.html)
+
+[primattrib](primattrib.html)
+
+[primattribsize](primattribsize.html)
+
+[primattribtype](primattribtype.html)
+
+[primattribtypeinfo](primattribtypeinfo.html)
+
+[primduv](primduv.html)
+
+[primfind](primfind.html)
+
+[primhedge](primhedge.html)
+
+[priminteriorweights](priminteriorweights.html)
+
+[primintrinsic](primintrinsic.html)
+
+[primpoint](primpoint.html)
+
+[primpoints](primpoints.html)
+
+[primuv](primuv.html)
+
+[primuvconvert](primuvconvert.html)
+
+[primvertex](primvertex.html)
+
+[primvertexcount](primvertexcount.html)
+
+[primvertices](primvertices.html)
+
+[removeprim](removeprim.html)
+
+[setprimattrib](setprimattrib.html)
+
+[setprimgroup](setprimgroup.html)
+
+[setprimintrinsic](setprimintrinsic.html)
+
+[setprimvertex](setprimvertex.html)
+
+[vertexcurveparam](vertexcurveparam.html)
+
+[vertexindex](vertexindex.html)
+
+[vertexprim](vertexprim.html)
+
+[vertexprimindex](vertexprimindex.html)
+
+|
+search
+
+[findattribval](findattribval.html)
+
+[findattribvalcount](findattribvalcount.html)
+
+[idtopoint](idtopoint.html)
+
+[idtoprim](idtoprim.html)
+
+[intersect](intersect.html)
+
+[nametopoint](nametopoint.html)
+
+[nametoprim](nametoprim.html)
+
+[nuniqueval](nuniqueval.html)
+
+[primfind](primfind.html)
+
+[uniqueval](uniqueval.html)
+
+[uniquevals](uniquevals.html)

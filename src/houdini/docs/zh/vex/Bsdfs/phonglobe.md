@@ -1,36 +1,13 @@
 ---
 title: phonglobe
-order: 17
+order: 18
 category:
-  - houdini
+  - vex
 ---
-    
-    [  
-Houdini 19.0  
-](../../index.html)  
-**  
-[  
-VEX  
-](../index.html)  
-**  
-[  
-VEX Functions  
-](index.html)  
-\_\_
 
-# phonglobe
+`bsdf phonglobe(vector dir, float exponent, ...)`
 
-VEX function
-
-#
-
-```c
-bsdf  phonglobe(vector dir, float exponent, ...)
-```
-
-```c
-bsdf  phonglobe(vector nml, vector dir, float exponent, ...)
-```
+`bsdf phonglobe(vector nml, vector dir, float exponent, ...)`
 
 `bsdf phonglobe(vector dir, float exponentx, float exponenty, vector framex, vector framey, ...)`
 
@@ -38,56 +15,358 @@ bsdf  phonglobe(vector nml, vector dir, float exponent, ...)
 
 ![](../../images/rendering/phonglobe.png)
 
-A phong (blurred) reflection along a given direction vector. This will produce
-the same result as `phong()` when the direction vector is the reflection
-vector, but with this function you can also gather illumination from other
-directions (such as transmission).
+A phong (blurred) reflection along a given direction vector. This will produce the same result as `phong()` when the direction vector is the reflection vector, but with this function you can also gather illumination from other directions (such as transmission).
 
-沿着一个给定的方向向量进行 Phong（模糊）反射。当方向向量是反射向量时，这将产生与 asphong()相同的结果，但用这个函数你也可以从其他方向收集照明（比如透射）。
+It is possible to create anisotropic phong lobes by providing x and y exponents and tangent vectors.
 
-It is possible to create anisotropic phong lobes by providing x and y
-exponents and tangent vectors.
-
-通过提供 x 和 y 指数和切线向量，可以创建各向异性的 phong 裂片。
+## Arguments
 
 `dir`
 
 the direction of specularity.
 
-镜面的方向。
-
 `nml`
 
 optional normal to specify the hemisphere for reflection directions.
-
-可选的法线，用于指定反射方向的半球。
 
 `exponent`
 
 phong exponent.
 
-phong 指数。
-
 `exponentx`
 
 phong exponent along the `framex` vector.
-
-沿着 framexvector 的 phong 指数。
 
 `exponenty`
 
 phong exponent along the `framey` vector.
 
-沿着 frameyvector 的 phong 指数。
-
 `framex`
 
 highlight X direction
-
-突出 X 方向
 
 `framey`
 
 highlight Y direction
 
-突出 Y 方向
+
+
+## See also
+
+- [phong](phong.html)
+- [ashikhmin](ashikhmin.html)
+- [Writing a PBR shader](../pbr.html)
+
+|
+bsdf
+
+[albedo](albedo.html)
+
+[ashikhmin](ashikhmin.html)
+
+[blinn](blinn.html)
+
+[bouncelabel](bouncelabel.html)
+
+[bouncemask](bouncemask.html)
+
+[chiang](chiang.html)
+
+[cone](cone.html)
+
+[create_cdf](create_cdf.html)
+
+[create_pdf](create_pdf.html)
+
+[cvex_bsdf](cvex_bsdf.html)
+
+[diffuse](diffuse.html)
+
+[eval_bsdf](eval_bsdf.html)
+
+[getbounces](getbounces.html)
+
+[getcomponents](getcomponents.html)
+
+[ggx](ggx.html)
+
+[hair](hair.html)
+
+[henyeygreenstein](henyeygreenstein.html)
+
+[isotropic](isotropic.html)
+
+[mask_bsdf](mask_bsdf.html)
+
+[nbouncetypes](nbouncetypes.html)
+
+[normal_bsdf](normal_bsdf.html)
+
+[phong](phong.html)
+
+[phonglobe](phonglobe.html)
+
+[sample_bsdf](sample_bsdf.html)
+
+[sample_cdf](sample_cdf.html)
+
+[solid_angle](solid_angle.html)
+
+[specular](specular.html)
+
+[split_bsdf](split_bsdf.html)
+
+[sssapprox](sssapprox.html)
+
+[translucent](translucent.html)
+
+|
+pbr
+
+[albedo](albedo.html)
+
+[ashikhmin](ashikhmin.html)
+
+[blinn](blinn.html)
+
+[bouncelabel](bouncelabel.html)
+
+[bouncemask](bouncemask.html)
+
+[chiang](chiang.html)
+
+[cone](cone.html)
+
+[create_cdf](create_cdf.html)
+
+[create_pdf](create_pdf.html)
+
+[diffuse](diffuse.html)
+
+[eval_bsdf](eval_bsdf.html)
+
+[getbounces](getbounces.html)
+
+[getcomponents](getcomponents.html)
+
+[getlight](getlight.html)
+
+[getlights](getlights.html)
+
+[getlightscope](getlightscope.html)
+
+[getmaterial](getmaterial.html)
+
+[getphotonlight](getphotonlight.html)
+
+[getscope](getscope.html)
+
+[ggx](ggx.html)
+
+[hair](hair.html)
+
+[haslight](haslight.html)
+
+[interpolate](interpolate.html)
+
+[intersect_lights](intersect_lights.html)
+
+[mask_bsdf](mask_bsdf.html)
+
+[matchvex_blinn](matchvex_blinn.html)
+
+[matchvex_specular](matchvex_specular.html)
+
+[nbouncetypes](nbouncetypes.html)
+
+[newsampler](newsampler.html)
+
+[nextsample](nextsample.html)
+
+[normal_bsdf](normal_bsdf.html)
+
+[phong](phong.html)
+
+[phonglobe](phonglobe.html)
+
+[sample_bsdf](sample_bsdf.html)
+
+[sample_cdf](sample_cdf.html)
+
+[sample_geometry](sample_geometry.html)
+
+[sample_light](sample_light.html)
+
+[sample_photon](sample_photon.html)
+
+[shadow_light](shadow_light.html)
+
+[solid_angle](solid_angle.html)
+
+[specular](specular.html)
+
+[split_bsdf](split_bsdf.html)
+
+[sssapprox](sssapprox.html)
+
+[storelightexport](storelightexport.html)
+
+[translucent](translucent.html)
+
+[wireblinn](wireblinn.html)
+
+[wirediffuse](wirediffuse.html)
+
+|
+phong
+
+[phong](phong.html)
+
+[phongBRDF](phongBRDF.html)
+
+[phonglobe](phonglobe.html)
+
+|
+shading
+
+[Du](Du.html)
+
+[Dv](Dv.html)
+
+[Dw](Dw.html)
+
+[area](area.html)
+
+[ashikhmin](ashikhmin.html)
+
+[atten](atten.html)
+
+[blinn](blinn.html)
+
+[blinnBRDF](blinnBRDF.html)
+
+[chiang](chiang.html)
+
+[computenormal](computenormal.html)
+
+[cone](cone.html)
+
+[cvex_bsdf](cvex_bsdf.html)
+
+[diffuse](diffuse.html)
+
+[diffuseBRDF](diffuseBRDF.html)
+
+[dsmpixel](dsmpixel.html)
+
+[environment](environment.html)
+
+[fastshadow](fastshadow.html)
+
+[filtershadow](filtershadow.html)
+
+[filterstep](filterstep.html)
+
+[fresnel](fresnel.html)
+
+[frontface](frontface.html)
+
+[getderiv](getderiv.html)
+
+[getfogname](getfogname.html)
+
+[getglobalraylevel](getglobalraylevel.html)
+
+[getgroupid](getgroupid.html)
+
+[getlocalcurvature](getlocalcurvature.html)
+
+[getmaterialid](getmaterialid.html)
+
+[getobjectid](getobjectid.html)
+
+[getobjectname](getobjectname.html)
+
+[getprimid](getprimid.html)
+
+[getptextureid](getptextureid.html)
+
+[getraylevel](getraylevel.html)
+
+[getrayweight](getrayweight.html)
+
+[getsamplestore](getsamplestore.html)
+
+[getsmoothP](getsmoothP.html)
+
+[getuvtangents](getuvtangents.html)
+
+[ggx](ggx.html)
+
+[gradient](gradient.html)
+
+[hair](hair.html)
+
+[henyeygreenstein](henyeygreenstein.html)
+
+[isotropic](isotropic.html)
+
+[israytracing](israytracing.html)
+
+[isshadingRHS](isshadingRHS.html)
+
+[lightstate](lightstate.html)
+
+[matchvex_blinn](matchvex_blinn.html)
+
+[matchvex_specular](matchvex_specular.html)
+
+[objectstate](objectstate.html)
+
+[phong](phong.html)
+
+[phongBRDF](phongBRDF.html)
+
+[phonglobe](phonglobe.html)
+
+[ptexture](ptexture.html)
+
+[rayhittest](rayhittest.html)
+
+[rayimport](rayimport.html)
+
+[reflect](reflect.html)
+
+[refract](refract.html)
+
+[renderstate](renderstate.html)
+
+[resolvemissedray](resolvemissedray.html)
+
+[sample_geometry](sample_geometry.html)
+
+[scatter](scatter.html)
+
+[setsamplestore](setsamplestore.html)
+
+[specular](specular.html)
+
+[specularBRDF](specularBRDF.html)
+
+[sssapprox](sssapprox.html)
+
+[teximport](teximport.html)
+
+[texture](texture.html)
+
+[trace](trace.html)
+
+[translucent](translucent.html)
+
+[uvunwrap](uvunwrap.html)
+
+[volume](volume.html)
+
+[wireblinn](wireblinn.html)
+
+[wirediffuse](wirediffuse.html)

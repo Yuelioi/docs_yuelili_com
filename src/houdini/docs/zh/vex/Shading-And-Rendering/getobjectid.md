@@ -1,23 +1,22 @@
 ---
 title: getobjectid
-order: 24
+order: 25
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Returns the object id for the current shading context.
 
-Context(s) | [displace](../contexts/displace.html)[
-fog](../contexts/fog.html)[ light](../contexts/light.html)[
-shadow](../contexts/shadow.html)[ surface](../contexts/surface.html)  
----|---
 
-```c
-int  getobjectid()
-```
+Context(s)
+[displace](../contexts/displace.html)
+[fog](../contexts/fog.html)
+[light](../contexts/light.html)
+[shadow](../contexts/shadow.html)
+[surface](../contexts/surface.html)
+
+`int getobjectid()`
 
 Returns the object id.
 
-返回对象的 ID。
+
+shading raytracing

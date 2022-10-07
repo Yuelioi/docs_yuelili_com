@@ -1,58 +1,88 @@
 ---
 title: lspline
-order: 9
+order: 13
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Samples a polyline defined by linearly spaced values.
+`float lspline(float sample\_pos, float value1, ...)`
 
-```c
-float  lspline(float sample_pos, float value1, ...)
-```
+Samples a polyline defined by a series of (linearly spaced) values.
+This is useful for specifying a 1D data ramp.
 
-Samples a polyline defined by a series of (linearly spaced) values.This is
-useful for specifying a 1D data ramp.
+`vector lspline(float sample\_pos, vector value1, ...)`
 
-对由一系列（线性间隔的）数值定义的多线进行采样。
+`vector4 lspline(float sample\_pos, vector4 value1, ...)`
 
-```c
-vector  lspline(float sample_pos, vector value1, ...)
-```
+Samples a polyline defined by a series of (linearly spaced) vector values.
+This is useful for specifying a color ramp.
 
-```c
-vector4  lspline(float sample_pos, vector4 value1, ...)
-```
+If you need variably-spaced keys, use [lkspline](lkspline.html "Samples a polyline between the key points.") instead.
 
-Samples a polyline defined by a series of (linearly spaced) vector values.This
-is useful for specifying a color ramp.
-
-这对指定一个一维数据斜面很有用。
-
-If you need variably-spaced keys, use [lkspline](lkspline.html "Samples a
-polyline between the key points.") instead.
-
-对由一系列（线性间隔的）矢量值定义的多线进行采样。
+## Arguments
 
 `sample_pos`
 
 The position along the curve at which to sample the value.
 
-这对指定一个颜色斜率很有用。
-
 `valuen`
 
-To define the shape of the curve, you pass a number of values specifying the
-key points through which the curve passes. The function automatically spaces
-the keys evenly.
+To define the shape of the curve, you pass a number of values specifying the key points through which the curve passes. The function automatically spaces the keys evenly.
 
-如果你需要不同间隔的键，可以用 elksplineinstead 来代替。
+:::tip
 
-Tip
+The [spline](spline.html "Samples a value along a polyline or spline curve.") function is a more flexible superset of this function.
 
-The [spline](spline.html "Samples a value along a polyline or spline curve.")
-function is a more flexible superset of this function.
 
-沿着曲线的位置，在这个位置上采样。
+
+## See also
+
+- [spline](spline.html)
+
+|
+interp
+
+[ckspline](ckspline.html)
+
+[clamp](clamp.html)
+
+[cspline](cspline.html)
+
+[efit](efit.html)
+
+[fit](fit.html)
+
+[fit01](fit01.html)
+
+[fit10](fit10.html)
+
+[fit11](fit11.html)
+
+[invlerp](invlerp.html)
+
+[lerp](lerp.html)
+
+[lkspline](lkspline.html)
+
+[lspline](lspline.html)
+
+[slerp](slerp.html)
+
+[smooth](smooth.html)
+
+|
+spline
+
+[ckspline](ckspline.html)
+
+[cspline](cspline.html)
+
+[kspline](kspline.html)
+
+[lkspline](lkspline.html)
+
+[lspline](lspline.html)
+
+[spline](spline.html)
+
+[spline_cdf](spline_cdf.html)

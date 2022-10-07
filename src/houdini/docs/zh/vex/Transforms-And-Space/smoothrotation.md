@@ -1,36 +1,101 @@
 ---
 title: smoothrotation
-order: 25
+order: 26
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Returns the closest equivalent Euler rotations to a reference rotation.
+`vector smoothrotation(int order, vector r, vector r\_reference)`
 
-```c
-vector  smoothrotation(int order, vector r, vector r_reference)
-```
+Returns the Euler rotations that have the closest values to r_reference while still describing the same orientation as r.
+Typically, r_reference will be the rotations from the previous sample or frame.
 
-Returns the Euler rotations that have the closest values to r_reference while
-still describing the same orientation as r.Typically, r_reference will be the
-rotations from the previous sample or frame.
+The angles are in radians. Use the `radians()` function to convert degrees into radians.
 
-返回与参考值最接近的欧拉旋转，同时描述的方向与 r 相同。
+The rotation order is specified by the order parameter. Use the constants defined in `$HH/vex/include/math.h` (for example, `XFORM_XYZ`).
 
-The angles are in radians.Use the `radians()` function to convert degrees into
-radians.
 
-通常情况下，r_reference 将是前一个样本或框架的旋转。
+matrix
 
-The rotation order is specified by the order parameter. Use the constants
-defined in
+[\_\_uniform\_mul](### uniform_mul.html)
 
-```c
-$HH/vex/include/math.h
-```
+[\_\_uniform\_premul](### uniform_premul.html)
 
-(for example, `XFORM_XYZ`).
+[combinelocaltransform](combinelocaltransform.html)
 
-角度的单位是弧度。 使用 theradians()函数将度数转换成弧度。
+[cracktransform](cracktransform.html)
+
+[determinant](determinant.html)
+
+[diagonalizesymmetric](diagonalizesymmetric.html)
+
+[dihedral](dihedral.html)
+
+[eigenvalues](eigenvalues.html)
+
+[extractlocaltransform](extractlocaltransform.html)
+
+[ident](ident.html)
+
+[instance](instance.html)
+
+[invert](invert.html)
+
+[lookat](lookat.html)
+
+[maketransform](maketransform.html)
+
+[outerproduct](outerproduct.html)
+
+[premul](premul.html)
+
+[prerotate](prerotate.html)
+
+[prescale](prescale.html)
+
+[pretranslate](pretranslate.html)
+
+[rotate](rotate.html)
+
+[scale](scale.html)
+
+[smoothrotation](smoothrotation.html)
+
+[svddecomp](svddecomp.html)
+
+[translate](translate.html)
+
+[transpose](transpose.html)
+
+|
+vector
+
+[Du](Du.html)
+
+[Dw](Dw.html)
+
+[avg](avg.html)
+
+[cross](cross.html)
+
+[distance2](distance2.html)
+
+[dot](dot.html)
+
+[length](length.html)
+
+[length2](length2.html)
+
+[normalize](normalize.html)
+
+[outerproduct](outerproduct.html)
+
+[pretranslate](pretranslate.html)
+
+[rotate_x_to](rotate_x_to.html)
+
+[smoothrotation](smoothrotation.html)
+
+[swizzle](swizzle.html)
+
+[translate](translate.html)

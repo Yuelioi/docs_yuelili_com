@@ -1,92 +1,99 @@
 ---
 title: minpos
-order: 11
+order: 12
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Finds the closest position on the surface of a geometry.
-
-```c
-vector  minpos(<geometry>geometry, vector point)
-```
+`vector minpos(<geometry>geometry, vector point)`
 
 Returns the position of the closest point in the given geometry to the point.
 
-返回给定几何体中离该点最近的点的位置。
+`vector minpos(<geometry>geometry, vector point, float maxdist)`
 
-```c
-vector  minpos(<geometry>geometry, vector point, float maxdist)
-```
+Returns the position of the closest point in the given geometry to the point,
+within the maxdist radius.
 
-Returns the position of the closest point in the given geometry to the
-point,within the maxdist radius.
+`vector minpos(<geometry>geometry, string primgroup, vector point)`
 
-返回给定几何体中离该点最近的点的位置。
-
-```c
-vector  minpos(<geometry>geometry, string primgroup, vector point)
-```
-
-Returns the position of the closest point in the given geometry to the
-point,limiting the search to primitives in the named group.
-
-在 maxdistradius 之内。
+Returns the position of the closest point in the given geometry to the point,
+limiting the search to primitives in the named group.
 
 `vector minpos(<geometry>geometry, string primgroup, vector point, float maxdist)`
 
-Returns the position of the closest point in the given geometry to the
-point,limiting the search to primitives in the named group and to the maxdist
-radius.
+Returns the position of the closest point in the given geometry to the point,
+limiting the search to primitives in the named group and to the maxdist radius.
 
-返回给定几何体中离点最近的点的位置。
+## Arguments
 
 `<geometry>`
 
-When running in the context of a node (such as a wrangle SOP), this argument
-can be an integer representing the input number (starting at 0) to read the
-geometry from.
+When running in the context of a node (such as a wrangle SOP), this argument can be an integer representing the input number (starting at 0) to read the geometry from.
 
-将搜索范围限制在指定组中的基元。
-
-Alternatively, the argument can be a string specifying a geometry file (for
-example, a `.bgeo`) to read from. When running inside Houdini, this can be an
-
-```c
-op:/path/to/sop
-```
-
-reference.
-
-返回给定几何体中离点最近的点的位置。
+Alternatively, the argument can be a string specifying a geometry file (for example, a `.bgeo`) to read from. When running inside Houdini, this can be an `op:/path/to/sop` reference.
 
 `primgroup`
 
-If specified, only report points on You can also use group specification
-syntax like `@Cd.x>0`,but note that the `@` may need to be escaped with a
-backslash in a Wrangle snippet.An empty string matches all primitives.
-
-将搜索范围限制在指定组内的基元和最大直径上。
+If specified, only report points on
+You can also use group specification syntax like `@Cd.x>0`,
+but note that the `@` may need to be escaped with a backslash in a Wrangle snippet.
+An empty string matches all primitives.
 
 `point`
 
-The point in world space to start looking for the closest point on the
-geometry.
-
-当在节点的上下文中运行时（如 wrangle SOP），这个参数可以是一个整数，代表要读取几何体的输入数字（从 0 开始）。
+The point in world space to start looking for the closest point on the geometry.
 
 `maxdist`
 
-The maximum distance to search. Specifying this can speed up the function
-since it may allow quitting the search early.
+The maximum distance to search. Specifying this can speed up the function since it may allow quitting the search early.
 
-或者，该参数可以是一个字符串，指定要读取的几何体文件（例如，a.bgeo）。当在 Houdini 内部运行时，这可以是 anop:/path/to/sopreference。
+## Returns
 
-Returns
+The position of the nearest point on the geometry, or point if no nearest point was found.
 
-The position of the nearest point on the geometry, or point if no nearest
-point was found.
 
-如果指定了，只报告在
+proximity
+
+[hex_adjacent](hex_adjacent.html)
+
+[minpos](minpos.html)
+
+[nearpoint](nearpoint.html)
+
+[nearpoints](nearpoints.html)
+
+[neighbour](neighbour.html)
+
+[neighbourcount](neighbourcount.html)
+
+[neighbours](neighbours.html)
+
+[pccone](pccone.html)
+
+[pccone_radius](pccone_radius.html)
+
+[pcfarthest](pcfarthest.html)
+
+[pcfind](pcfind.html)
+
+[pcfind_radius](pcfind_radius.html)
+
+[pcline](pcline.html)
+
+[pcline_radius](pcline_radius.html)
+
+[pcsegment](pcsegment.html)
+
+[pcsegment_radius](pcsegment_radius.html)
+
+[pgfind](pgfind.html)
+
+[polyneighbours](polyneighbours.html)
+
+[ptlined](ptlined.html)
+
+[surfacedist](surfacedist.html)
+
+[tet_adjacent](tet_adjacent.html)
+
+[xyzdist](xyzdist.html)

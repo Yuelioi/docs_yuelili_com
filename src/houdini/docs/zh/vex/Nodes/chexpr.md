@@ -1,18 +1,88 @@
 ---
 title: chexpr
-order: 4
+order: 8
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Evaluates a channel with a new segment expression.
-
-```c
-float  chexpr(string channel, string new_expr_function)
-```
+`float chexpr(string channel, string new\_expr\_function)`
 
 Evaluates a channel with a new segment expression and return its value.
 
-用一个新的分段表达式评估一个通道，并返回其值。
+
+
+## See also
+
+- [chexprf](chexprf.html)
+- [chexprt](chexprt.html)
+
+|
+utility
+
+[assert_enabled](assert_enabled.html)
+
+[ch](ch.html)
+
+[ch2](ch2.html)
+
+[ch3](ch3.html)
+
+[ch4](ch4.html)
+
+[chdict](chdict.html)
+
+[chexpr](chexpr.html)
+
+[chexprf](chexprf.html)
+
+[chexprt](chexprt.html)
+
+[chf](chf.html)
+
+[chi](chi.html)
+
+[chid](chid.html)
+
+[chp](chp.html)
+
+[chramp](chramp.html)
+
+[chrampderiv](chrampderiv.html)
+
+[chs](chs.html)
+
+[chsop](chsop.html)
+
+[chsraw](chsraw.html)
+
+[chu](chu.html)
+
+[chv](chv.html)
+
+[error](error.html)
+
+[expand_udim](expand_udim.html)
+
+[has_udim](has_udim.html)
+
+[isbound](isbound.html)
+
+[isconnected](isconnected.html)
+
+[ninputs](ninputs.html)
+
+[opid](opid.html)
+
+[print_once](print_once.html)
+
+[printf](printf.html)
+
+[select](select.html)
+
+[sleep](sleep.html)
+
+[sprintf](sprintf.html)
+
+[texprintf](texprintf.html)
+
+[warning](warning.html)

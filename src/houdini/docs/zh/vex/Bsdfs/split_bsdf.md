@@ -1,129 +1,285 @@
 ---
 title: split_bsdf
-order: 20
+order: 21
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Splits a bsdf into its component lobes.
+`void split\_bsdf(bsdf &lobes[], bsdf source, float &weights[])`
 
-```c
-void  split_bsdf(bsdf &lobes[], bsdf source, float &weights[])
-```
+`void split\_bsdf(bsdf &lobes[], bsdf source, float &weights[], int mask)`
 
-```c
-void  split_bsdf(bsdf &lobes[], bsdf source, float &weights[], int mask)
-```
+`void split\_bsdf(bsdf &lobes[], bsdf source, float &weights[], int mask, int type)`
 
-`void split_bsdf(bsdf &lobes[], bsdf source, float &weights[], int mask, int type)`
+`void split\_bsdf(bsdf &lobes[], bsdf source, float &weights[], int mask, int type, float u)`
 
-`void split_bsdf(bsdf &lobes[], bsdf source, float &weights[], int mask, int type, float u)`
+`void split\_bsdf(bsdf &lobes[], bsdf source, float &weights[], int mask, int type, float u, float cdf[])`
 
-`void split_bsdf(bsdf &lobes[], bsdf source, float &weights[], int mask, int type, float u, float cdf[])`
+## Arguments
 
 `&lobes`
 
 The function overwrites this array with the BSDFs for the component lobes.
 
-该函数用各裂片的 BSDFs 覆盖这个数组。
-
 `source`
 
 The BSDF to split.
 
-要分割的 BSDF。
-
 `weights`
 
-The function fills this array with the weights for the split lobes (same
-length as the returned `bsdf` array). When you sample Illumination using the
-returned lobes you must scale it by these weights.
-
-该函数用分割后的裂片的权重填充该数组（与返回的 bsdfarray 长度相同）。当你使用返回的裂片进行照明采样时，你必须用这些权重进行缩放。
+The function fills this array with the weights for the split lobes (same length as the returned `bsdf` array). When you sample Illumination using the returned lobes you must scale it by these weights.
 
 `mask`
 
 A bitmask indicating which types of bounces to evaluate.
 
-一个比特掩码，表示要评估哪些类型的反弹。
-
 See [bouncemask](bouncemask.html) for information on component label bitmasks.
-
-关于组件标签位掩码的信息，请参见 ebouncemask。
 
 `type`
 
-How to split the lobes. You can
+How to split the lobes. You can `#import "pbr.h"` to get constant values representing the different split types:
 
-```c
-#import "pbr.h"
-```
-
-to get constant values
-representing the different split types:
-
-如何分割裂片。你可以#import "pbr.h "来获得代表不同分割类型的常量值。
-
--
-
-```c
-PBR_SPLIT_FULL = 0
-```
-
-pbr_split_full = 0
-
--
-
-```c
-PBR_SPLIT_RANDOM = 1
-```
-
-pbr_split_random = 1
-
--
-
-```c
-PBR_SPLIT_ALBEDO = 2
-```
-
-pbr_split_albedo = 2
-
--
-
-```c
-PBR_SPLIT_COMPONENT = 3
-```
-
-pbr_split_component = 3
-
--
-
-```c
-PBR_SPLIT_DEFAULT = PBR_SPLIT_ALBEDO
-```
-
-pbr_split_default = pbr_split_albedo
+- `PBR_SPLIT_FULL = 0`
+- `PBR_SPLIT_RANDOM = 1`
+- `PBR_SPLIT_ALBEDO = 2`
+- `PBR_SPLIT_COMPONENT = 3`
+- `PBR_SPLIT_DEFAULT = PBR_SPLIT_ALBEDO`
 
 `u`
 
 Random value to sample the CDF at.
 
-对 CDF 进行采样的随机值。
-
 `cdf`
 
 CDF used to control sampling among components of the BSDF.
 
-用于控制 BSDF 各组成部分之间的采样的 CDF。
-
-Returns
+## Returns
 
 An array of `bsdf` objects representing the lobes.
 
-一个代表裂片的 bsdfobjects 数组。
-
 ## Examples
 
-    // Split BSDF into component lobesfloat weights[];bsdf lobes[];split_bsdf(lobes, hitF, weights);// Get albedos of lobesfloat albedos[];resize(albedos, len(lobes));for (int i = 0; i < len(lobes); i++){  albedos[i] = luminance(albedo(lobes[i], -hitnI)) * weights[i];}// Compute CDFfloat cdf[] = compute_cdf(albedos);// Randomly select a BSDF based on albedo distributionint index = 0;sample_cdf(cdf, s.x, index);// Do something with the selected BSDF// lobes[index] ...
+[¶](#examples)
+
+```c
+// Split BSDF into component lobes
+float weights[];
+bsdf lobes[];
+split\_bsdf(lobes, hitF, weights);
+
+// Get albedos of lobes
+float albedos[];
+resize(albedos, len(lobes));
+for (int i = 0; i < len(lobes); i++)
+{
+ albedos[i] = luminance(albedo(lobes[i], -hitnI)) \* weights[i];
+}
+
+// Compute CDF
+float cdf[] = compute\_cdf(albedos);
+
+// Randomly select a BSDF based on albedo distribution
+int index = 0;
+sample\_cdf(cdf, s.x, index);
+
+// Do something with the selected BSDF
+// lobes[index] ...
+
+```
+
+
+
+## See also
+
+- [sample_bsdf](sample_bsdf.html)
+- [eval_bsdf](eval_bsdf.html)
+- [albedo](albedo.html)
+- [create_cdf](create_cdf.html)
+- [sample_cdf](sample_cdf.html)
+
+|
+bsdf
+
+[albedo](albedo.html)
+
+[ashikhmin](ashikhmin.html)
+
+[blinn](blinn.html)
+
+[bouncelabel](bouncelabel.html)
+
+[bouncemask](bouncemask.html)
+
+[chiang](chiang.html)
+
+[cone](cone.html)
+
+[create_cdf](create_cdf.html)
+
+[create_pdf](create_pdf.html)
+
+[cvex_bsdf](cvex_bsdf.html)
+
+[diffuse](diffuse.html)
+
+[eval_bsdf](eval_bsdf.html)
+
+[getbounces](getbounces.html)
+
+[getcomponents](getcomponents.html)
+
+[ggx](ggx.html)
+
+[hair](hair.html)
+
+[henyeygreenstein](henyeygreenstein.html)
+
+[isotropic](isotropic.html)
+
+[mask_bsdf](mask_bsdf.html)
+
+[nbouncetypes](nbouncetypes.html)
+
+[normal_bsdf](normal_bsdf.html)
+
+[phong](phong.html)
+
+[phonglobe](phonglobe.html)
+
+[sample_bsdf](sample_bsdf.html)
+
+[sample_cdf](sample_cdf.html)
+
+[solid_angle](solid_angle.html)
+
+[specular](specular.html)
+
+[split_bsdf](split_bsdf.html)
+
+[sssapprox](sssapprox.html)
+
+[translucent](translucent.html)
+
+|
+pbr
+
+[albedo](albedo.html)
+
+[ashikhmin](ashikhmin.html)
+
+[blinn](blinn.html)
+
+[bouncelabel](bouncelabel.html)
+
+[bouncemask](bouncemask.html)
+
+[chiang](chiang.html)
+
+[cone](cone.html)
+
+[create_cdf](create_cdf.html)
+
+[create_pdf](create_pdf.html)
+
+[diffuse](diffuse.html)
+
+[eval_bsdf](eval_bsdf.html)
+
+[getbounces](getbounces.html)
+
+[getcomponents](getcomponents.html)
+
+[getlight](getlight.html)
+
+[getlights](getlights.html)
+
+[getlightscope](getlightscope.html)
+
+[getmaterial](getmaterial.html)
+
+[getphotonlight](getphotonlight.html)
+
+[getscope](getscope.html)
+
+[ggx](ggx.html)
+
+[hair](hair.html)
+
+[haslight](haslight.html)
+
+[interpolate](interpolate.html)
+
+[intersect_lights](intersect_lights.html)
+
+[mask_bsdf](mask_bsdf.html)
+
+[matchvex_blinn](matchvex_blinn.html)
+
+[matchvex_specular](matchvex_specular.html)
+
+[nbouncetypes](nbouncetypes.html)
+
+[newsampler](newsampler.html)
+
+[nextsample](nextsample.html)
+
+[normal_bsdf](normal_bsdf.html)
+
+[phong](phong.html)
+
+[phonglobe](phonglobe.html)
+
+[sample_bsdf](sample_bsdf.html)
+
+[sample_cdf](sample_cdf.html)
+
+[sample_geometry](sample_geometry.html)
+
+[sample_light](sample_light.html)
+
+[sample_photon](sample_photon.html)
+
+[shadow_light](shadow_light.html)
+
+[solid_angle](solid_angle.html)
+
+[specular](specular.html)
+
+[split_bsdf](split_bsdf.html)
+
+[sssapprox](sssapprox.html)
+
+[storelightexport](storelightexport.html)
+
+[translucent](translucent.html)
+
+[wireblinn](wireblinn.html)
+
+[wirediffuse](wirediffuse.html)
+
+|
+sampling
+
+[create_cdf](create_cdf.html)
+
+[create_pdf](create_pdf.html)
+
+[newsampler](newsampler.html)
+
+[nextsample](nextsample.html)
+
+[sample_bsdf](sample_bsdf.html)
+
+[sample_cdf](sample_cdf.html)
+
+[sample_geometry](sample_geometry.html)
+
+[sample_light](sample_light.html)
+
+[sample_photon](sample_photon.html)
+
+[solid_angle](solid_angle.html)
+
+[spline_cdf](spline_cdf.html)
+
+[split_bsdf](split_bsdf.html)

@@ -1,33 +1,116 @@
 ---
 title: replace
-order: 23
+order: 32
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Replaces occurrences of a substring.
+`string replace(string str, string old, string new)`
 
-```c
-string  replace(string str, string old, string new)
-```
+`string replace(string str, string old, string new, int count)`
 
-```c
-string  replace(string str, string old, string new, int count)
-```
+Returns a copy of the string with all occurrences of the string `old` replaced with the string `new`.
 
-Returns a copy of the string with all occurrences of the string `old` replaced
-with the string `new`.
+## Arguments
 
-返回一个字符串的副本，所有出现的字符串 old 都被替换成了字符串 new。
-
-` count`
+`count`
 
 If specified, only the first `count` occurrences are replaced.
 
-如果指定，只替换第一个 countoccurrences。
-
 ## Examples
 
-    string str = "abcdef abcdef abcdef";// Returns "abcghi abcghi abcghi"string new_str = replace(str, "def", "ghi");// Replaces up to 2 occurrences of the string "def".// Returns "abcghi abcghi abcdef"new_str = replace(str, "def", "ghi", 2);
+[¶](#examples)
+
+```c
+string str = "abcdef abcdef abcdef";
+
+// Returns "abcghi abcghi abcghi"
+string new\_str = replace(str, "def", "ghi");
+
+// Replaces up to 2 occurrences of the string "def".
+// Returns "abcghi abcghi abcdef"
+new\_str = replace(str, "def", "ghi", 2);
+
+```
+
+
+
+## See also
+
+- [re_replace](re_replace.html)
+- [replace_match](replace_match.html)
+
+|
+string
+
+[atof](atof.html)
+
+[atoi](atoi.html)
+
+[concat](concat.html)
+
+[decode](decode.html)
+
+[decodeattrib](decodeattrib.html)
+
+[decodeparm](decodeparm.html)
+
+[decodeutf8](decodeutf8.html)
+
+[encode](encode.html)
+
+[encodeattrib](encodeattrib.html)
+
+[encodeparm](encodeparm.html)
+
+[encodeutf8](encodeutf8.html)
+
+[error](error.html)
+
+[expand_udim](expand_udim.html)
+
+[find](find.html)
+
+[has_udim](has_udim.html)
+
+[insert](insert.html)
+
+[isvalidindex](isvalidindex.html)
+
+[itoa](itoa.html)
+
+[join](join.html)
+
+[lstrip](lstrip.html)
+
+[makevalidvarname](makevalidvarname.html)
+
+[match](match.html)
+
+[pluralize](pluralize.html)
+
+[print_once](print_once.html)
+
+[printf](printf.html)
+
+[relativepath](relativepath.html)
+
+[replace](replace.html)
+
+[replace_match](replace_match.html)
+
+[rstrip](rstrip.html)
+
+[split](split.html)
+
+[splitpath](splitpath.html)
+
+[sprintf](sprintf.html)
+
+[strip](strip.html)
+
+[strlen](strlen.html)
+
+[texprintf](texprintf.html)
+
+[warning](warning.html)

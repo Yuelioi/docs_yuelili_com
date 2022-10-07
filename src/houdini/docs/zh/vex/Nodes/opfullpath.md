@@ -1,45 +1,28 @@
 ---
 title: opfullpath
-order: 22
+order: 26
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Returns the full path for the given relative path
+`string opfullpath(string relative\_path)`
 
-```c
-string  opfullpath(string relative_path)
-```
-
-This function returns the absolute path for a given relative path to the
-object being evaluated.
-
-该函数返回被评估对象的给定相对路径的绝对路径。
+This function returns the absolute path for a given relative path to the object being evaluated.
 
 The function is currently only meaningful in Houdini.
 
-该函数目前只在 Houdini 中具有意义。
-
 ## Examples
 
--
+[¶](#examples)
 
-```c
-opfullpath(".")
-```
+- `opfullpath(".")` - The full path of the current node being evaluated
+- `opfullpath("..")` - The full path of the current node’s parent
 
-\- The full path of the current node being evaluated
 
-opfullpath("...")--正在评估的当前节点的完整路径
 
--
+## See also
 
-```c
-opfullpath("..")
-```
-
-\- The full path of the current node‘sparent
-
-opfullpath("...")--当前节点的父节点的完整路径。
+- [split](split.html)
+- [opdigits](opdigits.html)
+- [splitpath](splitpath.html)
+- [relativepath](relativepath.html)

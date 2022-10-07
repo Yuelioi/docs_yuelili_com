@@ -1,62 +1,104 @@
 ---
 title: xnoise
-order: 32
+order: 41
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
+
+`float xnoise(float x)`
+
+`vector xnoise(float x)`
+
+`float xnoise(float x, float y)`
+
+`vector xnoise(float x, float y)`
+
+`float xnoise(vector xyz)`
+
+`vector xnoise(vector xyz)`
+
+`float xnoise(vector4 xyzt)`
+
+`vector xnoise(vector4 xyzt)`
 
 Simplex noise is very close to Perlin noise, except with the samples on a
 simplex mesh rather than a grid. This results in less grid artifacts. It also
-uses a higher order bspline to provide better derivatives.
+uses a higher order `bspline` to provide better derivatives.
 
-```c
-float  xnoise(float x)
-```
+The various functions return the noise value at a 4D (vector4 argument),
+3D (vector argument), 2D (two float arguments) or 1D (float argument)
+position. You can get a random float value or a vector of three random
+values.
 
-```c
-vector  xnoise(float x)
-```
+The noise is in the range 0-1 with a median of 0.5. The distribution of
+the noise depends on the dimension, with higher dimensions approaching a
+Gaussian distribution of noise values.
 
-```c
-float  xnoise(float x, float y)
-```
 
-```c
-vector  xnoise(float x, float y)
-```
 
-```c
-float  xnoise(vector xyz)
-```
+## See also
 
-```c
-vector  xnoise(vector xyz)
-```
+- [Noise and randomness](../random.html)
+- [anoise](anoise.html)
+- [curlnoise](curlnoise.html)
+- [flownoise](flownoise.html)
+- [noise](noise.html)
+- [onoise](onoise.html)
+- [pnoise](pnoise.html)
+- [snoise](snoise.html)
+- [vnoise](vnoise.html)
+- [wnoise](wnoise.html)
+- [xnoise](xnoise.html)
 
-```c
-float  xnoise(vector4 xyzt)
-```
+|
+noise
 
-```c
-vector  xnoise(vector4 xyzt)
-```
+[anoise](anoise.html)
 
-Simplex noise is very close to Perlin noise, except with the samples on
-asimplex mesh rather than a grid.This results in less grid artifacts.It
-alsouses a higher order `bspline` to provide better derivatives.
+[curlnoise](curlnoise.html)
 
-单元噪声与佩林噪声非常接近，只是样本在一个
+[curlnoise2d](curlnoise2d.html)
 
-The various functions return the noise value at a 4D (vector4 argument),3D
-(vector argument), 2D (two float arguments) or 1D (float argument)position.
-You can get a random float value or a vector of three randomvalues.
+[curlxnoise](curlxnoise.html)
 
-单线网而不是网格。 这导致了较少的网格伪影。 它还
+[curlxnoise2d](curlxnoise2d.html)
 
-The noise is in the range 0-1 with a median of 0.5. The distribution ofthe
-noise depends on the dimension, with higher dimensions approaching aGaussian
-distribution of noise values.
+[cwnoise](cwnoise.html)
 
-它还使用了更高的阶数 bsplin 来提供更好的导数。
+[flownoise](flownoise.html)
+
+[flowpnoise](flowpnoise.html)
+
+[hscript_noise](hscript_noise.html)
+
+[hscript_rand](hscript_rand.html)
+
+[hscript_snoise](hscript_snoise.html)
+
+[hscript_sturb](hscript_sturb.html)
+
+[hscript_turb](hscript_turb.html)
+
+[mwnoise](mwnoise.html)
+
+[noise](noise.html)
+
+[noised](noised.html)
+
+[onoise](onoise.html)
+
+[pnoise](pnoise.html)
+
+[xnoise](pxnoise.html)
+
+[pxnoised](pxnoised.html)
+
+[snoise](snoise.html)
+
+[vnoise](vnoise.html)
+
+[wnoise](wnoise.html)
+
+[xnoise](xnoise.html)
+
+[xnoised](xnoised.html)

@@ -1,50 +1,350 @@
 ---
 title: usd_makevalidprimpath
-order: 88
+order: 90
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Forces a string to conform to the rules for paths to USD primitives.
 
-| Since | 19.0 |
-| ----- | ---- |
 
-```c
-string  usd_makevalidprimpath(string path, int allow_relative)
-```
+Since 19.0
 
-This function ensures that a string meets the requirements of a legal
-USDprimitive path that can be passed to other USD functions.
+`string usd\_makevalidprimpath(string path, int allow\_relative)`
 
-这个函数确保一个字符串符合合法的 USD
+This function ensures that a string meets the requirements of a legal USD
+primitive path that can be passed to other USD functions.
+
+## Arguments
 
 `path`
 
 String that should be turned into a valid primitive path.
 
-原始路径的要求，可以传递给其他 USD 函数。
+`allow_relative`
 
-```c
-allow_relative
-```
+If this value is non-zero, the string is allowed to represent a relative
+primitive path. A relative path is one that starts with `./` or `../`. If
+this argument is zero, only absolute paths (which start with `/`) are
+allowed. Relative prefixes are simply removed from the path and the
+returned path will always start with a `/`.
 
-If this value is non-zero, the string is allowed to represent a
-relativeprimitive path. A relative path is one that starts with `./` or `../`.
-Ifthis argument is zero, only absolute paths (which start with `/`)
-areallowed. Relative prefixes are simply removed from the path and thereturned
-path will always start with a `/`.
+## Returns
 
-应转为有效原始路径的字符串。
+A possibly modified version of the original string which conforms to the
+requirements for USD primitive paths. Invalid characters such as spaces
+and most punctuation will be converted to underscores. Note that this means
+the translation is not reversible. If the original string is already a
+legal primitive path, the string is returned unchanged.
 
-Returns
 
-A possibly modified version of the original string which conforms to
-therequirements for USD primitive paths. Invalid characters such as spacesand
-most punctuation will be converted to underscores. Note that this meansthe
-translation is not reversible. If the original string is already alegal
-primitive path, the string is returned unchanged.
 
-如果此值为非零，则允许该字符串代表一个相对的
+## See also
+
+- [usd_makevalidprimname](usd_makevalidprimname.html)
+
+|
+usd
+
+[usd_addattrib](usd_addattrib.html)
+
+[usd_addcollectionexclude](usd_addcollectionexclude.html)
+
+[usd_addcollectioninclude](usd_addcollectioninclude.html)
+
+[usd_addinversetotransformorder](usd_addinversetotransformorder.html)
+
+[usd_addorient](usd_addorient.html)
+
+[usd_addprim](usd_addprim.html)
+
+[usd_addprimvar](usd_addprimvar.html)
+
+[usd_addrelationshiptarget](usd_addrelationshiptarget.html)
+
+[usd_addrotate](usd_addrotate.html)
+
+[usd_addscale](usd_addscale.html)
+
+[usd_addtotransformorder](usd_addtotransformorder.html)
+
+[usd_addtransform](usd_addtransform.html)
+
+[usd_addtranslate](usd_addtranslate.html)
+
+[usd_attrib](usd_attrib.html)
+
+[usd_attribelement](usd_attribelement.html)
+
+[usd_attriblen](usd_attriblen.html)
+
+[usd_attribnames](usd_attribnames.html)
+
+[usd_attribsize](usd_attribsize.html)
+
+[usd_attribtimesamples](usd_attribtimesamples.html)
+
+[usd_attribtypename](usd_attribtypename.html)
+
+[usd_blockattrib](usd_blockattrib.html)
+
+[usd_blockprimvar](usd_blockprimvar.html)
+
+[usd_blockprimvarindices](usd_blockprimvarindices.html)
+
+[usd_blockrelationship](usd_blockrelationship.html)
+
+[usd_boundmaterialpath](usd_boundmaterialpath.html)
+
+[usd_childnames](usd_childnames.html)
+
+[usd_clearmetadata](usd_clearmetadata.html)
+
+[usd_cleartransformorder](usd_cleartransformorder.html)
+
+[usd_collectioncomputedpaths](usd_collectioncomputedpaths.html)
+
+[usd_collectioncontains](usd_collectioncontains.html)
+
+[usd_collectionexcludes](usd_collectionexcludes.html)
+
+[usd_collectionexpansionrule](usd_collectionexpansionrule.html)
+
+[usd_collectionincludes](usd_collectionincludes.html)
+
+[usd_drawmode](usd_drawmode.html)
+
+[usd_findtransformname](usd_findtransformname.html)
+
+[usd_flattenediprimvar](usd_flattenediprimvar.html)
+
+[usd_flattenediprimvarelement](usd_flattenediprimvarelement.html)
+
+[usd_flattenedprimvar](usd_flattenedprimvar.html)
+
+[usd_flattenedprimvarelement](usd_flattenedprimvarelement.html)
+
+[usd_getbbox](usd_getbbox.html)
+
+[usd_getbbox_center](usd_getbbox_center.html)
+
+[usd_getbbox_max](usd_getbbox_max.html)
+
+[usd_getbbox_min](usd_getbbox_min.html)
+
+[usd_getbbox_size](usd_getbbox_size.html)
+
+[usd_getbounds](usd_getbounds.html)
+
+[usd_getpointinstancebounds](usd_getpointinstancebounds.html)
+
+[usd_hasapi](usd_hasapi.html)
+
+[usd_haspayload](usd_haspayload.html)
+
+[usd_iprimvar](usd_iprimvar.html)
+
+[usd_iprimvarelement](usd_iprimvarelement.html)
+
+[usd_iprimvarelementsize](usd_iprimvarelementsize.html)
+
+[usd_iprimvarindices](usd_iprimvarindices.html)
+
+[usd_iprimvarinterpolation](usd_iprimvarinterpolation.html)
+
+[usd_iprimvarlen](usd_iprimvarlen.html)
+
+[usd_iprimvarnames](usd_iprimvarnames.html)
+
+[usd_iprimvarsize](usd_iprimvarsize.html)
+
+[usd_iprimvartimesamples](usd_iprimvartimesamples.html)
+
+[usd_iprimvartypename](usd_iprimvartypename.html)
+
+[usd_isabstract](usd_isabstract.html)
+
+[usd_isactive](usd_isactive.html)
+
+[usd_isarray](usd_isarray.html)
+
+[usd_isarrayiprimvar](usd_isarrayiprimvar.html)
+
+[usd_isarraymetadata](usd_isarraymetadata.html)
+
+[usd_isarrayprimvar](usd_isarrayprimvar.html)
+
+[usd_isattrib](usd_isattrib.html)
+
+[usd_iscollection](usd_iscollection.html)
+
+[usd_iscollectionpath](usd_iscollectionpath.html)
+
+[usd_isindexediprimvar](usd_isindexediprimvar.html)
+
+[usd_isindexedprimvar](usd_isindexedprimvar.html)
+
+[usd_isinstance](usd_isinstance.html)
+
+[usd_isiprimvar](usd_isiprimvar.html)
+
+[usd_iskind](usd_iskind.html)
+
+[usd_ismetadata](usd_ismetadata.html)
+
+[usd_ismodel](usd_ismodel.html)
+
+[usd_isprim](usd_isprim.html)
+
+[usd_isprimvar](usd_isprimvar.html)
+
+[usd_isrelationship](usd_isrelationship.html)
+
+[usd_isstage](usd_isstage.html)
+
+[usd_istransformreset](usd_istransformreset.html)
+
+[usd_istype](usd_istype.html)
+
+[usd_isvisible](usd_isvisible.html)
+
+[usd_kind](usd_kind.html)
+
+[usd_localtransform](usd_localtransform.html)
+
+[usd_makeattribpath](usd_makeattribpath.html)
+
+[usd_makecollectionpath](usd_makecollectionpath.html)
+
+[usd_makepropertypath](usd_makepropertypath.html)
+
+[usd_makerelationshippath](usd_makerelationshippath.html)
+
+[usd_makevalidprimname](usd_makevalidprimname.html)
+
+[usd_makevalidprimpath](usd_makevalidprimpath.html)
+
+[usd_metadata](usd_metadata.html)
+
+[usd_metadataelement](usd_metadataelement.html)
+
+[usd_metadatalen](usd_metadatalen.html)
+
+[usd_metadatanames](usd_metadatanames.html)
+
+[usd_name](usd_name.html)
+
+[usd_parentpath](usd_parentpath.html)
+
+[usd_pointinstance_getbbox](usd_pointinstance_getbbox.html)
+
+[usd_pointinstance_getbbox_center](usd_pointinstance_getbbox_center.html)
+
+[usd_pointinstance_getbbox_max](usd_pointinstance_getbbox_max.html)
+
+[usd_pointinstance_getbbox_min](usd_pointinstance_getbbox_min.html)
+
+[usd_pointinstance_getbbox_size](usd_pointinstance_getbbox_size.html)
+
+[usd_pointinstance_relbbox](usd_pointinstance_relbbox.html)
+
+[usd_pointinstancetransform](usd_pointinstancetransform.html)
+
+[usd_primvar](usd_primvar.html)
+
+[usd_primvarattribname](usd_primvarattribname.html)
+
+[usd_primvarelement](usd_primvarelement.html)
+
+[usd_primvarelementsize](usd_primvarelementsize.html)
+
+[usd_primvarindices](usd_primvarindices.html)
+
+[usd_primvarinterpolation](usd_primvarinterpolation.html)
+
+[usd_primvarlen](usd_primvarlen.html)
+
+[usd_primvarnames](usd_primvarnames.html)
+
+[usd_primvarsize](usd_primvarsize.html)
+
+[usd_primvartimesamples](usd_primvartimesamples.html)
+
+[usd_primvartypename](usd_primvartypename.html)
+
+[usd_purpose](usd_purpose.html)
+
+[usd_relationshipforwardedtargets](usd_relationshipforwardedtargets.html)
+
+[usd_relationshipnames](usd_relationshipnames.html)
+
+[usd_relationshiptargets](usd_relationshiptargets.html)
+
+[usd_relbbox](usd_relbbox.html)
+
+[usd_removerelationshiptarget](usd_removerelationshiptarget.html)
+
+[usd_setactive](usd_setactive.html)
+
+[usd_setattrib](usd_setattrib.html)
+
+[usd_setattribelement](usd_setattribelement.html)
+
+[usd_setcollectionexcludes](usd_setcollectionexcludes.html)
+
+[usd_setcollectionexpansionrule](usd_setcollectionexpansionrule.html)
+
+[usd_setcollectionincludes](usd_setcollectionincludes.html)
+
+[usd_setdrawmode](usd_setdrawmode.html)
+
+[usd_setkind](usd_setkind.html)
+
+[usd_setmetadata](usd_setmetadata.html)
+
+[usd_setmetadataelement](usd_setmetadataelement.html)
+
+[usd_setprimvar](usd_setprimvar.html)
+
+[usd_setprimvarelement](usd_setprimvarelement.html)
+
+[usd_setprimvarelementsize](usd_setprimvarelementsize.html)
+
+[usd_setprimvarindices](usd_setprimvarindices.html)
+
+[usd_setprimvarinterpolation](usd_setprimvarinterpolation.html)
+
+[usd_setpurpose](usd_setpurpose.html)
+
+[usd_setrelationshiptargets](usd_setrelationshiptargets.html)
+
+[usd_settransformorder](usd_settransformorder.html)
+
+[usd_settransformreset](usd_settransformreset.html)
+
+[usd_setvariantselection](usd_setvariantselection.html)
+
+[usd_setvisibility](usd_setvisibility.html)
+
+[usd_setvisible](usd_setvisible.html)
+
+[usd_specifier](usd_specifier.html)
+
+[usd_transformname](usd_transformname.html)
+
+[usd_transformorder](usd_transformorder.html)
+
+[usd_transformsuffix](usd_transformsuffix.html)
+
+[usd_transformtype](usd_transformtype.html)
+
+[usd_typename](usd_typename.html)
+
+[usd_uniquetransformname](usd_uniquetransformname.html)
+
+[usd_variants](usd_variants.html)
+
+[usd_variantselection](usd_variantselection.html)
+
+[usd_variantsets](usd_variantsets.html)
+
+[usd_worldtransform](usd_worldtransform.html)

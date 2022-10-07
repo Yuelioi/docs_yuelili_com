@@ -2,28 +2,34 @@
 title: sample_orientation_uniform
 order: 27
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Generates a uniform unit vector4, given a vector of uniform numbers between 0
-and 1.
+`vector4 sample\_orientation\_uniform(vector u)`
 
-```c
-vector4  sample_orientation_uniform(vector u)
-```
+## Arguments
 
 `u`
 
 Three numbers between 0 and 1.
 
-三个介于 0 和 1 之间的数字。
+Returns a unit vector4, i.e. a vector4 of length 1, based on `u`.
+Given uniform random `u` vectors of three values in `[0,1)`, the returned unit vectors will be
+uniform random and continuous with respect to `u` on the surface of the unit hypersphere.
+In other words, they will be uniform random orientation quaternions.
 
-Returns a unit vector4, i.e. a vector4 of length 1, based on `u`.Given uniform
-random `u` vectors of three values in [0,1), the returned unit vectors will
-beuniform random and continuous with respect to `u` on the surface of the unit
-hypersphere.In other words, they will be uniform random orientation
-quaternions.
 
-返回一个单位向量 4，即一个基于 u 的长度为 1 的向量 4。
+
+## See also
+
+- [sample_circle_edge_uniform](sample_circle_edge_uniform.html)
+- [sample_direction_uniform](sample_direction_uniform.html)
+- [sample_circle_uniform](sample_circle_uniform.html)
+- [sample_sphere_uniform](sample_sphere_uniform.html)
+- [sample_hypersphere_uniform](sample_hypersphere_uniform.html)
+- [sample_circle_arc](sample_circle_arc.html)
+- [sample_direction_cone](sample_direction_cone.html)
+- [sample_orientation_cone](sample_orientation_cone.html)
+- [sample_circle_slice](sample_circle_slice.html)
+- [sample_sphere_cone](sample_sphere_cone.html)
+- [sample_hypersphere_cone](sample_hypersphere_cone.html)

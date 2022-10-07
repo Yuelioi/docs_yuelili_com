@@ -1,24 +1,48 @@
 ---
 title: colorname
-order: 7
+order: 8
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Returns the default name of the color plane (as it appears in the  
-compositor preferences).
 
-| Context(s) | [cop](../contexts/cop.html) |
-| ---------- | --------------------------- |
 
-```c
-string  colorname()
-```
+Context(s)
+[cop](../contexts/cop.html)
 
-Returns the default name of the color plane (as it appears in thecompositor
-preferences). Using this instead of hardcoding the defaultmakes your code more
-portable. Default is “C”.
+`string colorname()`
 
-返回颜色平面的默认名称（就像它出现在
+Returns the default name of the color plane (as it appears in the
+compositor preferences). Using this instead of hardcoding the default
+makes your code more portable. Default is “C”.
+
+
+output_plane
+
+[alphaname](alphaname.html)
+
+[bumpname](bumpname.html)
+
+[chname](chname.html)
+
+[colorname](colorname.html)
+
+[depthname](depthname.html)
+
+[hasplane](hasplane.html)
+
+[lumname](lumname.html)
+
+[maskname](maskname.html)
+
+[normalname](normalname.html)
+
+[planeindex](planeindex.html)
+
+[planename](planename.html)
+
+[planesize](planesize.html)
+
+[pointname](pointname.html)
+
+[velocityname](velocityname.html)

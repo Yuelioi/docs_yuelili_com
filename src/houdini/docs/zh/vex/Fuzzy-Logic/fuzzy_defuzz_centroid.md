@@ -1,32 +1,31 @@
 ---
 title: fuzzy_defuzz_centroid
-order: 3
+order: 4
 category:
-  - houdini
+  - vex
 ---
-    
-    [  
-Houdini 19.0  
-](../../index.html)  
-**  
-[  
-VEX  
-](../index.html)  
-**  
-[  
-VEX Functions  
-](index.html)  
-\_\_
 
-# fuzzy_defuzz_centroid
+`float fuzzy\_defuzz\_centroid(float aggregated\_membership[], float min\_value, float max\_value)`
 
-VEX function
+Returns a crisp value given a range for the crisp value, and an aggregated membership function for the output variable.
 
-#
 
-`float fuzzy_defuzz_centroid(float aggregated_membership[], float min_value, float max_value)`
+fuzzy
 
-Returns a crisp value given a range for the crisp value, and an aggregated
-membership function for the output variable.
+[fuzzify](fuzzify.html)
 
-返回一个脆性值，给定一个脆性值的范围，以及一个输出变量的聚合成员函数。
+[fuzzy_and](fuzzy_and.html)
+
+[fuzzy_defuzz_centroid](fuzzy_defuzz_centroid.html)
+
+[fuzzy_nand](fuzzy_nand.html)
+
+[fuzzy_nor](fuzzy_nor.html)
+
+[fuzzy_not](fuzzy_not.html)
+
+[fuzzy_nxor](fuzzy_nxor.html)
+
+[fuzzy_or](fuzzy_or.html)
+
+[fuzzy_xor](fuzzy_xor.html)

@@ -1,110 +1,70 @@
 ---
 title: getcomp
-order: 5
+order: 6
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Extracts a single component of a vector type, matrix type, or array.
+`float getcomp(<vector>v, int index)`
 
-```c
-float  getcomp(<vector>v, int index)
-```
+Returns the vector component at the given index.
+This is the same as `v[index]`.
 
-Returns the vector component at the given index.This is the same as
-`v[index]`.
-
-返回指定索引处的向量分量。
-
-```c
-float  getcomp(<matrix>m, int row, int column)
-```
+`float getcomp(<matrix>m, int row, int column)`
 
 Returns the matrix component at the given location.
 
-这与 v[index]相同。
+`<type> getcomp(<type>array[], int index)`
 
-```c
-<type> getcomp(<type>array[], int index)
-```
+Returns the array item at the given index.
+This is the same as `array[index]`.
 
-Returns the array item at the given index.This is the same as `array[index]`.
+`<type> getcomp(<vector>array[], int i, int j)`
 
-返回在给定位置的矩阵分量。
+Returns the vector component at the given location and array index. This is the same as `getcomp(array[i], j)`.
 
-```c
-<type> getcomp(<vector>array[], int i, int j)
-```
+`<type> getcomp(<matrix>array[], int i, int j, int k)`
 
-Returns the vector component at the given location and array index. This is
-the same as
+Returns the matrix component at the given location and array index. This is the same as `getcomp(array[i], j, k)`.
 
-```c
-getcomp(array[i], j)
-```
+`<type> getcomp(dict d, string index)`
 
-.
+`<type>[] getcomp(dict d, string index)`
 
-返回在给定索引处的数组项。
+Returns the dictionary item at the given index.
+This is the same as `d[index]`.
 
-```c
-<type> getcomp(<matrix>array[], int i, int j, int k)
-```
+`<type> getcomp(dict d, string index, <type>defvalue)`
 
-Returns the matrix component at the given location and array index. This is
-the same as
+`<type>[] getcomp(dict d, string index, <type>defvalue[])`
 
-```c
-getcomp(array[i], j, k)
-```
+Returns the dictionary item at the given index. If it doesn’t exist,
+return `defvalue`.
+This is the same as `isvalidindex(d, index) ? d[index] : defvalue`.
 
-.
+`string getcomp(string value, int index)`
 
-这与 array[index]相同。
+Returns the _character_ at the given index.
+This is the same as `value[index]`.
 
-```c
-<type> getcomp(dict d, string index)
-```
+Characters in VEX are strings as well. UTF-8 encoding is used,
+so if the index is part way through a UTF-8 encoding, the result
+is an empty string. Otherwise it is the entire valid UTF-8 character.
 
-```c
-<type>[] getcomp(dict d, string index)
-```
 
-Returns the dictionary item at the given index.This is the same as `d[index]`.
 
-返回在给定位置和数组索引处的向量分量。这与 getcomp(array[i], j)相同。
+## See also
 
-```c
-<type> getcomp(dict d, string index, <type>defvalue)
-```
+- [Arrays](../arrays.html)
+- [setcomp](setcomp.html)
 
-```c
-<type>[] getcomp(dict d, string index, <type>defvalue[])
-```
+|
+data
 
-Returns the dictionary item at the given index. If it doesn‘t exist,return
-`defvalue`.This is the same as
+[assign](assign.html)
 
-```c
-isvalidindex(d, index) ? d[index] : defvalue
-```
+[getcomp](getcomp.html)
 
-.
+[set](set.html)
 
-返回在给定位置和数组索引的矩阵分量。这与 getcomp(array[i], j, k)相同。
-
-```c
-string  getcomp(string value, int index)
-```
-
-Returns the _character_ at the given index.This is the same as `value[index]`.
-
-返回指定索引处的字典项。
-
-Characters in VEX are strings as well.UTF-8 encoding is used,so if the index
-is part way through a UTF-8 encoding, the resultis an empty string.Otherwise
-it is the entire valid UTF-8 character.
-
-这与 asd[index] 相同。
+[setcomp](setcomp.html)

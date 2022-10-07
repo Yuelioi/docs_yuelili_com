@@ -1,23 +1,74 @@
 ---
 title: lightbounces
-order: 47
+order: 48
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Returns the bounce mask for a light struct.
 
-| Context(s) | [shading](../contexts/shading.html) |
-| ---------- | ----------------------------------- |
 
-```c
-int  lightbounces(light lp)
-```
+Context(s)
+[shading](../contexts/shading.html)
 
-Returns the bounce mask for the light struct passed in. The bounce mask is
-based on the light object‘s**Lighting contribution** parameter.
+`int lightbounces(light lp)`
 
-Returns the bounce mask for the light struct passed
-in.返回灯光结构的反弹面具。反弹掩码是基于灯光对象的照明贡献参数。
+Returns the bounce mask for the light struct passed in. The bounce mask is based on the light object’s **Lighting contribution** parameter.
+
+
+
+## See also
+
+- [getlight](getlight.html)
+
+|
+light
+
+[ambient](ambient.html)
+
+[atten](atten.html)
+
+[fastshadow](fastshadow.html)
+
+[filtershadow](filtershadow.html)
+
+[getlight](getlight.html)
+
+[getlightid](getlightid.html)
+
+[getlightname](getlightname.html)
+
+[getlights](getlights.html)
+
+[getlightscope](getlightscope.html)
+
+[getmaterial](getmaterial.html)
+
+[getphotonlight](getphotonlight.html)
+
+[getscope](getscope.html)
+
+[haslight](haslight.html)
+
+[interpolate](interpolate.html)
+
+[intersect_lights](intersect_lights.html)
+
+[irradiance](irradiance.html)
+
+[lightbounces](lightbounces.html)
+
+[lightid](lightid.html)
+
+[occlusion](occlusion.html)
+
+[sample_geometry](sample_geometry.html)
+
+[sample_light](sample_light.html)
+
+[sample_photon](sample_photon.html)
+
+[setcurrentlight](setcurrentlight.html)
+
+[shadow_light](shadow_light.html)
+
+[storelightexport](storelightexport.html)

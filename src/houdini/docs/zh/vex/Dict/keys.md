@@ -1,22 +1,16 @@
 ---
 title: keys
-order: 3
+order: 4
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Returns all the keys in a dictionary.
 
-| Since | 18.5 |
-| ----- | ---- |
 
-```c
-string [] keys(dict d)
-```
+Since 18.5
 
-Returns all the keys in the dictionary.Returns an empty string arrayif the
-dictionary is empty.The returned keys are always sortedalphabetically.
+`string [] keys(dict d)`
 
-返回字典中的所有键。 返回一个空的字符串数组
+Returns all the keys in the dictionary. Returns an empty string array
+if the dictionary is empty. The returned keys are always sorted
+alphabetically.

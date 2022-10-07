@@ -24,4 +24,4 @@ f = serialize(v); // Now f[] has a length of 6 and equals { 1,2,3,7,8,9 }
 
 ## See also
 
-- [unserialize ](unserialize.html)
+- [unserialize](unserialize.html)

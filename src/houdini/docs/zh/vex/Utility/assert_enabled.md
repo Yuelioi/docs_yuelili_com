@@ -1,49 +1,96 @@
 ---
 title: assert_enabled
-order: 1
+order: 2
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Returns 1 if the VEX assertions are enabled (see HOUDINI_VEX_ASSERT) or 0 if
-assertions are disabled. Used the implement the assert macro.
+`int assert\_enabled()`
 
-```c
-int  assert_enabled()
-```
+Returns 1 if the environment variable `HOUDINI_VEX_ASSERT` is set or 0 if the variable isn’t set.
 
-Returns 1 if the environment variable
+The `assert()` macro uses this function to only execute assertions when `HOUDINI_VEX_ASSERT` is set:
 
 ```c
-HOUDINI_VEX_ASSERT
+#define assert(EXPR) \
+ if (assert\_enabled()) { \
+ if (!(EXPR)) print\_once(sprintf('VEX Assertion Failed %s:%d - (%s)\n', \
+ \_\_FILE\_\_, \_\_LINE\_\_, #EXPR)); \
+ }
+
 ```
 
-is set or 0 if the
-variable isn‘t set.
+You could use this function to write your own assert macro (for example, you might write a macro that used your studio’s logging infrastructure).
 
-如果环境变量 HOUDINI_VEX_ASSERT 被设置，返回 1；如果变量没有被设置，返回 0。
+See [using assertions in VEX](../assertions.html "You can use the assert() macro to print information while you are debugging VEX code.") for more information.
 
-The `assert()` macro uses this function to only execute assertions when
 
-```c
-HOUDINI_VEX_ASSERT
-```
+utility
 
-is set:
+[assert_enabled](assert_enabled.html)
 
-assert()宏使用这个函数，只在 HOUDINI_VEX_ASSERT 被设置时执行断言。
+[ch](ch.html)
 
-    #define assert(EXPR)\if (assert_enabled()) { \if (!(EXPR)) print_once(sprintf('VEX Assertion Failed %s:%d - (%s)\n', \__FILE__, __LINE__, #EXPR)); \}
+[ch2](ch2.html)
 
-You could use this function to write your own assert macro (for example, you
-might write a macro that used your studio‘slogging infrastructure).
+[ch3](ch3.html)
 
-你可以使用这个函数来编写你自己的断言宏（例如，你可以编写一个宏，使用你的工作室的日志基础设施）。
+[ch4](ch4.html)
 
-See [using assertions in VEX](../assertions.html "You can use the assert()
-macro to print information while you are debugging VEX code.") for more
-information.
+[chdict](chdict.html)
 
-更多信息请参见在 VEX 中使用断言。
+[chexpr](chexpr.html)
+
+[chexprf](chexprf.html)
+
+[chexprt](chexprt.html)
+
+[chf](chf.html)
+
+[chi](chi.html)
+
+[chid](chid.html)
+
+[chp](chp.html)
+
+[chramp](chramp.html)
+
+[chrampderiv](chrampderiv.html)
+
+[chs](chs.html)
+
+[chsop](chsop.html)
+
+[chsraw](chsraw.html)
+
+[chu](chu.html)
+
+[chv](chv.html)
+
+[error](error.html)
+
+[expand_udim](expand_udim.html)
+
+[has_udim](has_udim.html)
+
+[isbound](isbound.html)
+
+[isconnected](isconnected.html)
+
+[ninputs](ninputs.html)
+
+[opid](opid.html)
+
+[print_once](print_once.html)
+
+[printf](printf.html)
+
+[select](select.html)
+
+[sleep](sleep.html)
+
+[sprintf](sprintf.html)
+
+[texprintf](texprintf.html)
+
+[warning](warning.html)

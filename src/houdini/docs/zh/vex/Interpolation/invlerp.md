@@ -1,40 +1,62 @@
 ---
 title: invlerp
-order: 6
+order: 10
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Inverses a linear interpolation between the values.
 
-| Since | 18.5 |
-| ----- | ---- |
 
-```c
-float  invlerp(float a, float min, float max)
-```
+Since 18.5
 
-```c
-<vector> invlerp(<vector>a, <vector>min, <vector>max)
-```
+`float invlerp(float a, float min, float max)`
 
-Returns the amount to mix `min` and `max` to generate theinput value `a`.This
-is the inverse of the `lerp` function.
+`<vector> invlerp(<vector>a, <vector>min, <vector>max)`
 
-返回混合 min 和 max 的数量以产生
+Returns the amount to mix `min` and `max` to generate the
+input value `a`. This is the inverse of the `lerp` function.
 
-The vector version operates component-wise, so the resultingvector will be the
-independent mixing amount for each dimension.
+The vector version operates component-wise, so the resulting
+vector will be the independent mixing amount for each dimension.
 
-输入值 a。 这是对 lerpfunction 的逆运算。
-
-If `a` is outside the range `min` to `max`, values greater than`1` or less
-than `0` will be produced.
-
-矢量版本的操作是分量式的，因此得到的
+If `a` is outside the range `min` to `max`, values greater than
+`1` or less than `0` will be produced.
 
 If `min` and `max` are equal, the mixing value is `0.5`.
 
-向量将是每个维度的独立混合量。
+
+
+## See also
+
+- [lerp](lerp.html)
+
+|
+interp
+
+[ckspline](ckspline.html)
+
+[clamp](clamp.html)
+
+[cspline](cspline.html)
+
+[efit](efit.html)
+
+[fit](fit.html)
+
+[fit01](fit01.html)
+
+[fit10](fit10.html)
+
+[fit11](fit11.html)
+
+[invlerp](invlerp.html)
+
+[lerp](lerp.html)
+
+[lkspline](lkspline.html)
+
+[lspline](lspline.html)
+
+[slerp](slerp.html)
+
+[smooth](smooth.html)

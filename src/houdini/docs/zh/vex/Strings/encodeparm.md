@@ -1,35 +1,107 @@
 ---
 title: encodeparm
-order: 9
+order: 11
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Encodes any string into a valid node parameter name.
 
-| Since | 18.0 |
-| ----- | ---- |
 
-```c
-string  encodeparm(string str)
-```
+Since 18.0
 
-Houdini parameter names are only allowed to contain letters, numbers,
-hashcharacters (for multiparms), and underscores, and must not begin with
-anumber. This function takes any string, and encodes it into a string
-thatobeys these restrictions. The original string can be recovered using
-the`decodeparm` function.A string that already obeys the rules is
-returnedunmodified.
+`string encodeparm(string str)`
 
-胡迪尼参数名称只允许包含字母、数字、哈希字符（对于多参数），并且不能以下划线开头。
+Houdini parameter names are only allowed to contain letters, numbers, hash
+characters (for multiparms), and underscores, and must not begin with a
+number. This function takes any string, and encodes it into a string that
+obeys these restrictions. The original string can be recovered using the
+`decodeparm` function. A string that already obeys the rules is returned
+unmodified.
 
-One exception to this rule is that a string starting with `xn__` will
-beencoded even if it is already a valid parameter name. This is because
-`xn__`is the prefix used to identify an encoded string. In this case, an
-additional`xn__` prefix will be added. This means a string can be encoded any
-number oftimes, then decoded the same number of times to always return to the
-originalstring, regardless of its contents.
+One exception to this rule is that a string starting with `xn### ` will be
+encoded even if it is already a valid parameter name. This is because `xn### `
+is the prefix used to identify an encoded string. In this case, an additional
+`xn### ` prefix will be added. This means a string can be encoded any number of
+times, then decoded the same number of times to always return to the original
+string, regardless of its contents.
 
-字符（用于多参数）和下划线，并且不得以数字开头。
+
+
+## See also
+
+- [decodeparm](decodeparm.html)
+
+|
+string
+
+[atof](atof.html)
+
+[atoi](atoi.html)
+
+[concat](concat.html)
+
+[decode](decode.html)
+
+[decodeattrib](decodeattrib.html)
+
+[decodeparm](decodeparm.html)
+
+[decodeutf8](decodeutf8.html)
+
+[encode](encode.html)
+
+[encodeattrib](encodeattrib.html)
+
+[encodeparm](encodeparm.html)
+
+[encodeutf8](encodeutf8.html)
+
+[error](error.html)
+
+[expand_udim](expand_udim.html)
+
+[find](find.html)
+
+[has_udim](has_udim.html)
+
+[insert](insert.html)
+
+[isvalidindex](isvalidindex.html)
+
+[itoa](itoa.html)
+
+[join](join.html)
+
+[lstrip](lstrip.html)
+
+[makevalidvarname](makevalidvarname.html)
+
+[match](match.html)
+
+[pluralize](pluralize.html)
+
+[print_once](print_once.html)
+
+[printf](printf.html)
+
+[relativepath](relativepath.html)
+
+[replace](replace.html)
+
+[replace_match](replace_match.html)
+
+[rstrip](rstrip.html)
+
+[split](split.html)
+
+[splitpath](splitpath.html)
+
+[sprintf](sprintf.html)
+
+[strip](strip.html)
+
+[strlen](strlen.html)
+
+[texprintf](texprintf.html)
+
+[warning](warning.html)

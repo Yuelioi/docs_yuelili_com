@@ -21,28 +21,28 @@ order x, y, z).
 
 ## See also
 
-- [dihedral ](dihedral.html)
-- [qconvert ](qconvert.html)
-- [quaternion ](quaternion.html)
+- [dihedral](dihedral.html)
+- [qconvert](qconvert.html)
+- [quaternion](quaternion.html)
 
 ### quaternion
 
-[dihedral ](dihedral.html)
+[dihedral](dihedral.html)
 
-[eulertoquaternion ](eulertoquaternion.html)
+[eulertoquaternion](eulertoquaternion.html)
 
-[qconvert ](qconvert.html)
+[qconvert](qconvert.html)
 
-[qdistance ](qdistance.html)
+[qdistance](qdistance.html)
 
-[qinvert ](qinvert.html)
+[qinvert](qinvert.html)
 
-[qmultiply ](qmultiply.html)
+[qmultiply](qmultiply.html)
 
-[qrotate ](qrotate.html)
+[qrotate](qrotate.html)
 
-[quaternion ](quaternion.html)
+[quaternion](quaternion.html)
 
-[quaterniontoeuler ](quaterniontoeuler.html)
+[quaterniontoeuler](quaterniontoeuler.html)
 
-[slerp ](slerp.html)
+[slerp](slerp.html)

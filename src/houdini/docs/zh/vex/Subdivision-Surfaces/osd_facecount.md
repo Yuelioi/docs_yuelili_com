@@ -1,53 +1,69 @@
 ---
 title: osd_facecount
-order: 1
+order: 2
 category:
-  - houdini
+  - vex
 ---
-    
-    [  
-Houdini 19.0  
-](../../index.html)  
-**  
-[  
-VEX  
-](../index.html)  
-**  
-[  
-VEX Functions  
-](index.html)  
-\_\_
 
-# osd_facecount
+`int osd\_facecount(<geometry>geometry)`
 
-VEX function
+Returns the number of coarse faces in the subdivision hull. This is different that the number of patches in the subdivision surface.
 
-#
-
-```c
-int  osd_facecount(<geometry>geometry)
-```
-
-Returns the number of coarse faces in the subdivision hull.This is different
-that the number of patches in the subdivision surface.
-
-返回细分曲面中粗面的数量。 这与细分面中的斑块数不同。
+## Arguments
 
 `<geometry>`
 
-When running in the context of a node (such as a wrangle SOP), this argument
-can be an integer representing the input number (starting at 0) to read the
-geometry from.
+When running in the context of a node (such as a wrangle SOP), this argument can be an integer representing the input number (starting at 0) to read the geometry from.
 
-当在一个节点的上下文中运行时（如 wrangle SOP），这个参数可以是一个整数，代表要读取几何体的输入编号（从 0 开始）。
+Alternatively, the argument can be a string specifying a geometry file (for example, a `.bgeo`) to read from. When running inside Houdini, this can be an `op:/path/to/sop` reference.
 
-Alternatively, the argument can be a string specifying a geometry file (for
-example, a `.bgeo`) to read from. When running inside Houdini, this can be an
 
-```c
-op:/path/to/sop
-```
 
-reference.
+## See also
 
-或者，该参数可以是一个字符串，指定要读取的几何体文件（例如，a.bgeo）。当在 Houdini 内部运行时，这个参数可以是 anop:/path/to/sopreference。
+- [osd_facecount](osd_facecount.html)
+- [osd_firstpatch](osd_firstpatch.html)
+- [osd_limitsurface](osd_limitsurface.html)
+- [osd_patchcount](osd_patchcount.html)
+
+|
+count
+
+[npoints](npoints.html)
+
+[npointsgroup](npointsgroup.html)
+
+[nprimitives](nprimitives.html)
+
+[nprimitivesgroup](nprimitivesgroup.html)
+
+[nvertices](nvertices.html)
+
+[nverticesgroup](nverticesgroup.html)
+
+[osd_facecount](osd_facecount.html)
+
+[osd_patchcount](osd_patchcount.html)
+
+[pcsize](pcsize.html)
+
+[primvertexcount](primvertexcount.html)
+
+|
+subd
+
+[osd_facecount](osd_facecount.html)
+
+[osd_firstpatch](osd_firstpatch.html)
+
+[osd_limitsurface](osd_limitsurface.html)
+
+[osd_limitsurfacevertex](osd_limitsurfacevertex.html)
+
+[osd_lookupface](osd_lookupface.html)
+
+[osd_lookuppatch](osd_lookuppatch.html)
+
+[osd_patchcount](osd_patchcount.html)
+
+[osd_patches](osd_patches.html)

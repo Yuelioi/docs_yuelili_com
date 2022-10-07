@@ -36,68 +36,68 @@ Returns 1 on success or 0 on failure.
 
 ### chop
 
-[chadd ](chadd.html)
+[chadd](chadd.html)
 
-[chattr ](chattr.html)
+[chattr](chattr.html)
 
-[chattrnames ](chattrnames.html)
+[chattrnames](chattrnames.html)
 
-[chend ](chend.html)
+[chend](chend.html)
 
-[chendf ](chendf.html)
+[chendf](chendf.html)
 
-[chendt ](chendt.html)
+[chendt](chendt.html)
 
-[chindex ](chindex.html)
+[chindex](chindex.html)
 
-[chinput ](chinput.html)
+[chinput](chinput.html)
 
-[chinputlimits ](chinputlimits.html)
+[chinputlimits](chinputlimits.html)
 
-[chname ](chname.html)
+[chname](chname.html)
 
-[chnames ](chnames.html)
+[chnames](chnames.html)
 
-[chnumchan ](chnumchan.html)
+[chnumchan](chnumchan.html)
 
-[chop ](chop.html)
+[chop](chop.html)
 
-[choplocal ](choplocal.html)
+[choplocal](choplocal.html)
 
-[choplocalt ](choplocalt.html)
+[choplocalt](choplocalt.html)
 
-[chopt ](chopt.html)
+[chopt](chopt.html)
 
-[chrate ](chrate.html)
+[chrate](chrate.html)
 
-[chreadbuf ](chreadbuf.html)
+[chreadbuf](chreadbuf.html)
 
-[chremove ](chremove.html)
+[chremove](chremove.html)
 
-[chremoveattr ](chremoveattr.html)
+[chremoveattr](chremoveattr.html)
 
-[chrename ](chrename.html)
+[chrename](chrename.html)
 
-[chresizebuf ](chresizebuf.html)
+[chresizebuf](chresizebuf.html)
 
-[chsetattr ](chsetattr.html)
+[chsetattr](chsetattr.html)
 
-[chsetlength ](chsetlength.html)
+[chsetlength](chsetlength.html)
 
-[chsetrate ](chsetrate.html)
+[chsetrate](chsetrate.html)
 
-[chsetstart ](chsetstart.html)
+[chsetstart](chsetstart.html)
 
-[chstart ](chstart.html)
+[chstart](chstart.html)
 
-[chstartf ](chstartf.html)
+[chstartf](chstartf.html)
 
-[chstartt ](chstartt.html)
+[chstartt](chstartt.html)
 
-[chwritebuf ](chwritebuf.html)
+[chwritebuf](chwritebuf.html)
 
-[isframes ](isframes.html)
+[isframes](isframes.html)
 
-[issamples ](issamples.html)
+[issamples](issamples.html)
 
-[isseconds ](isseconds.html)
+[isseconds](isseconds.html)

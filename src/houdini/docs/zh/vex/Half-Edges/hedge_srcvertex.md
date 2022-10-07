@@ -1,50 +1,84 @@
 ---
 title: hedge_srcvertex
-order: 17
+order: 18
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Returns the source vertex of a half-edge.
+`int hedge\_srcvertex(<geometry>geometry, int hedge)`
 
-```c
-int  hedge_srcvertex(<geometry>geometry, int hedge)
-```
+## Arguments
 
 `<geometry>`
 
-When running in the context of a node (such as a wrangle SOP), this argument
-can be an integer representing the input number (starting at 0) to read the
-geometry from.
+When running in the context of a node (such as a wrangle SOP), this argument can be an integer representing the input number (starting at 0) to read the geometry from.
 
-当在一个节点的上下文中运行时（比如 wrangle SOP），这个参数可以是一个整数，代表要读取几何体的输入数字（从 0 开始）。
-
-Alternatively, the argument can be a string specifying a geometry file (for
-example, a `.bgeo`) to read from. When running inside Houdini, this can be an
-
-```c
-op:/path/to/sop
-```
-
-reference.
-
-或者，该参数可以是一个字符串，指定要读取的几何体文件（例如，a.bgeo）。当在 Houdini 内部运行时，这可以是 anop:/path/to/sopreference。
+Alternatively, the argument can be a string specifying a geometry file (for example, a `.bgeo`) to read from. When running inside Houdini, this can be an `op:/path/to/sop` reference.
 
 `hedge`
 
 Input half-edge.
 
-输入半边。
+## Returns
 
-Returns
-
-The vertex number of the source vertex of the `hedge`.Returns `-1` if the
-half-edge is not valid.
-
-半边形的源顶点的顶点编号。
+The vertex number of the source vertex of the `hedge`.
+Returns `-1` if the half-edge is not valid.
 
 ## Examples
 
-    int srcvtx;// Get the source vertex of half-edge number 3.srcvtx = hedge_srcvertex("defgeo.bgeo", 3);
+[¶](#examples)
+
+```c
+int srcvtx;
+
+// Get the source vertex of half-edge number 3.
+srcvtx = hedge\_srcvertex("defgeo.bgeo", 3);
+
+```
+
+
+hedge
+
+[hedge_dstpoint](hedge_dstpoint.html)
+
+[hedge_dstvertex](hedge_dstvertex.html)
+
+[hedge_equivcount](hedge_equivcount.html)
+
+[hedge_isequiv](hedge_isequiv.html)
+
+[hedge_isprimary](hedge_isprimary.html)
+
+[hedge_isvalid](hedge_isvalid.html)
+
+[hedge_next](hedge_next.html)
+
+[hedge_nextequiv](hedge_nextequiv.html)
+
+[hedge_postdstpoint](hedge_postdstpoint.html)
+
+[hedge_postdstvertex](hedge_postdstvertex.html)
+
+[hedge_presrcpoint](hedge_presrcpoint.html)
+
+[hedge_presrcvertex](hedge_presrcvertex.html)
+
+[hedge_prev](hedge_prev.html)
+
+[hedge_prim](hedge_prim.html)
+
+[hedge_primary](hedge_primary.html)
+
+[hedge_srcpoint](hedge_srcpoint.html)
+
+[hedge_srcvertex](hedge_srcvertex.html)
+
+[pointedge](pointedge.html)
+
+[pointhedge](pointhedge.html)
+
+[pointhedgenext](pointhedgenext.html)
+
+[primhedge](primhedge.html)
+
+[vertexhedge](vertexhedge.html)

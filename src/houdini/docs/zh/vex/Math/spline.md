@@ -1,76 +1,50 @@
 ---
 title: spline
-order: 63
+order: 69
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Samples a value along a polyline or spline curve.
+`float spline(string basis, float sample\_pos, float value1, ...)`
 
-```c
-float  spline(string basis, float sample_pos, float value1, ...)
-```
+`vector spline(string basis, float sample\_pos, vector value1, ...)`
 
-```c
-vector  spline(string basis, float sample_pos, vector value1, ...)
-```
+`vector4 spline(string basis, float sample\_pos, vector4 value1, ...)`
 
-```c
-vector4  spline(string basis, float sample_pos, vector4 value1, ...)
-```
+This version takes a single basis to use for all keys, and takes the (linearly spaced) key values as variadic arguments.
 
-This version takes a single basis to use for all keys, and takes the (linearly
-spaced) key values as variadic arguments.
+`float spline(string basis, float sample\_pos, float values[], ...)`
 
-```c
-float  spline(string basis, float sample_pos, float values[], ...)
-```
+`vector spline(string basis, float sample\_pos, vector values[], ...)`
 
-```c
-vector  spline(string basis, float sample_pos, vector values[], ...)
-```
+`vector4 spline(string basis, float sample\_pos, vector4 values[], ...)`
 
-```c
-vector4  spline(string basis, float sample_pos, vector4 values[], ...)
-```
+This version takes a single basis to use for all keys, and takes the (linearly spaced) key values as an array.
 
-This version takes a single basis to use for all keys, and takes the (linearly
-spaced) key values as an array.
+`float spline(string bases[], float sample\_pos, float values[], ...)`
 
-```c
-float  spline(string bases[], float sample_pos, float values[], ...)
-```
+`vector spline(string bases[], float sample\_pos, vector values[], ...)`
 
-```c
-vector  spline(string bases[], float sample_pos, vector values[], ...)
-```
+`vector4 spline(string bases[], float sample\_pos, vector4 values[], ...)`
 
-```c
-vector4  spline(string bases[], float sample_pos, vector4 values[], ...)
-```
+This version takes an array specifying the bases to use between each pair of keys, and the (linearly spaced) key values as an array.
 
-This version takes an array specifying the bases to use between each pair of
-keys, and the (linearly spaced) key values as an array.
+`float spline(string bases[], float sample\_pos, float values[], float positions[], ...)`
 
-`float spline(string bases[], float sample_pos, float values[], float positions[], ...)`
+`vector spline(string bases[], float sample\_pos, vector values[], float positions[], ...)`
 
-`vector spline(string bases[], float sample_pos, vector values[], float positions[], ...)`
+`vector4 spline(string bases[], float sample\_pos, vector4 values[], float positions[], ...)`
 
-`vector4 spline(string bases[], float sample_pos, vector4 values[], float positions[], ...)`
+This version takes an array specifying the bases to use between each pair of keys, an array of key values, and an array of key positions.
 
-This version takes an array specifying the bases to use between each pair of
-keys, an array of key values, and an array of key positions.
+These forms take an array of strings specifying the interpolation
+bases between the keys, an array of key values, and an array of key positions.
+They ensure that the interpolation curve is smooth (tangent-continuous) across
+the control points (keys) if the adjoining segments have the same basis, even if
+the key positions are not evenly spaced (i.e., are non-uniform and the distances
+between them are not equal).
 
-These forms take an array of strings specifying the interpolation bases
-between the keys, an array of key values, and an array of key positions. They
-ensure that the interpolation curve is smooth (tangent-continuous) across the
-control points (keys) if the adjoining segments have the same basis, even if
-the key positions are not evenly spaced (i.e., are non-uniform and the
-distances between them are not equal).
-
-Show/hide arguments
+## Arguments
 
 `basis`, `bases`
 
@@ -86,9 +60,12 @@ Connects the key points with a polyline.
 
 For example, if you specified four values:
 
-    spline("linear", t, v0, v1, v2, v3)
+```c
+spline("linear", t, v0, v1, v2, v3)
 
-![](https://www.sidefx.com/docs/houdini/images/vex/spline_linear.svg)
+```
+
+![](../../images/vex/spline_linear.svg)
 
 …the function returns the height of the orange dot at position sample_pos.
 
@@ -96,37 +73,40 @@ For example, if you specified four values:
 
 Connect the point values with a Catmull-Rom spline.
 
-Note that the first and last values are outside the sample area to provide the
-slope of the curve at the second point (at the start of the sample range) and
-the second-to-last point (at the end of the sample range).
+::: info Note that the first and last values are outside the sample area to
+provide the slope of the curve at the second point (at the start of the
+sample range) and the second-to-last point (at the end of the sample
+range).
 
 For example, if you specified six values:
 
-    spline("catrom", t, v0, v1, v2, v3, v4, v5)
+```c
+spline("catrom", t, v0, v1, v2, v3, v4, v5)
 
-![](https://www.sidefx.com/docs/houdini/images/vex/spline_catrom.svg)
+```
+
+![](../../images/vex/spline_catrom.svg)
 
 …the function returns the height of the orange dot at position t.
 
-(This image is for illustration only, it does not show the correct curve for
-the shown points.)
+(This image is for illustration only, it does not show the correct
+curve for the shown points.)
 
 `"linearsolve"` (or `"solvelinear"`)
 
-Maps between a set of non-uniform positions and a set of values. The
-[kspline](https://www.sidefx.com/docs/houdini/vex/functions/kspline.html) "Returns an interpolated value along a curve defined by a basis and
-key/position pairs.") function does this mapping implicitly.
+Maps between a set of non-uniform positions and a set of values.
+The [kspline](kspline.html "Returns an interpolated value along a curve defined by a basis and key/position pairs.") function does this mapping implicitly.
 
-    tk = spline("linearsolve", t, k0, k1, k2, k3, ...);
+```c
+tk = spline("linearsolve", t, k0, k1, k2, k3, ...);
+v = spline(basis, tk, v1, v2, v3, ...);
 
-    v = spline(basis, tk, v1, v2, v3, ...);
+```
 
 (Technically, `linearsolve` interprets the values as key values, solves the
 intersection of the spline, and returns the intercept point.)
 
-```c
-"monotonecubic"
-```
+`"monotonecubic"`
 
 “bezier”
 
@@ -138,15 +118,42 @@ intersection of the spline, and returns the intercept point.)
 
 The position along the curve at which to sample the value.
 
-Returns
+## Returns
 
 The value at sample_pos along a polyline or cubic spline.
 
-Note
+::: info Note
 
-For b-spline basis, this function implicitly assumes the multiplicity of 3 for
-b-spline curve end point, even though the given control points and knots are
-not explicitly repeated. This ensures the curve passes through the end control
-points, making it easier to create continuous ramp curves with mixed
-interpolation bases (e.g., b-spline basis segments surrounded by linear
-interpolation segments).
+For b-spline basis, this function implicitly assumes the multiplicity of 3
+for b-spline curve end point, even though the given control points and
+knots are not explicitly repeated. This ensures the curve passes through the
+end control points, making it easier to create continuous ramp curves with
+mixed interpolation bases (e.g., b-spline basis segments surrounded by
+linear interpolation segments).
+
+
+
+## See also
+
+- [cspline](cspline.html)
+- [kspline](kspline.html)
+- [ckspline](ckspline.html)
+- [lspline](lspline.html)
+- [lkspline](lkspline.html)
+
+|
+spline
+
+[ckspline](ckspline.html)
+
+[cspline](cspline.html)
+
+[kspline](kspline.html)
+
+[lkspline](lkspline.html)
+
+[lspline](lspline.html)
+
+[spline](spline.html)
+
+[spline_cdf](spline_cdf.html)

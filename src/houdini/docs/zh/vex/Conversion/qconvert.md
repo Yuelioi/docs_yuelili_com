@@ -1,36 +1,43 @@
 ---
 title: qconvert
-order: 7
+order: 8
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
+
+`matrix3 qconvert(vector4 quaternion)`
 
 Converts a quaternion represented by a vector4 to a matrix3 representation.
 
-```c
-matrix3  qconvert(vector4 quaternion)
-```
+`matrix qconvert(vector4 quaternion, vector offset)`
 
-Converts a quaternion represented by a vector4 to a matrix3 representation.
+Converts a quaternion represented by a vector4 to a matrix representation.
+Applies the offset as a post-translation, so the resulting matrix will
+first rotate a point by the quaternion and then add the offset.
 
-将一个由矢量 4 表示的四元数转换为矩阵 3 表示。
-
-```c
-matrix  qconvert(vector4 quaternion, vector offset)
-```
-
-Converts a quaternion represented by a vector4 to a matrix
-representation.Applies the offset as a post-translation, so the resulting
-matrix willfirst rotate a point by the quaternion and then add the offset.
-
-将一个由矢量 4 表示的四元数转换为矩阵表示。
-
-```c
-vector  qconvert(vector4 quaternion)
-```
+`vector qconvert(vector4 quaternion)`
 
 Converts a quaternion represented by a vector4 into a angle/axis vector.
 
-将偏移量作为一个后置翻译，因此产生的矩阵将
+
+quaternion
+
+[dihedral](dihedral.html)
+
+[eulertoquaternion](eulertoquaternion.html)
+
+[qconvert](qconvert.html)
+
+[qdistance](qdistance.html)
+
+[qinvert](qinvert.html)
+
+[qmultiply](qmultiply.html)
+
+[qrotate](qrotate.html)
+
+[quaternion](quaternion.html)
+
+[quaterniontoeuler](quaterniontoeuler.html)
+
+[slerp](slerp.html)

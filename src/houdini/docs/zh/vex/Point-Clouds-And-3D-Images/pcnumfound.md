@@ -1,44 +1,99 @@
 ---
 title: pcnumfound
-order: 23
+order: 26
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-This node returns the number of points found by pcopen.
+This node returns the number of points found by a [pcopen](pcopen.html "Returns a handle to a point cloud file.") query.
 
-## 说明
+For example, if 10 points are being filtered, and 6 are within the
+search radius, `pcnumfound` will return 6.
 
-This node returns the number of points found by a [[pcopen]] (pcopen.html
-"Returns a handle to a point cloud file.") query.
+`int pcnumfound(int handle)`
 
-返回由 [[pcopen]] 找到的点的数量。
+Returns the number of found points from the search performed by
+[pcopen](pcopen.html "Returns a handle to a point cloud file.").
 
-For example, if 10 points are being filtered, and 6 are within thesearch
-radius, `pcnumfound` will return 6.
 
-例如，如果过滤 10 个点，而范围内只有 6 个点在搜索半径内，则 pcnumfound 将返回 6。
 
-```c
-int  pcnumfound(int handle)
-```
+## See also
 
-## 示例
+- [pcopen](pcopen.html)
 
-查找 0 号输入口，位置周围半径 2 的点（限额 10 个），如果周围点数<5 (自身也算 1 个），则移除该点
+|
+ptcloud
 
-也就是根据距离筛选点
+[mattrib](mattrib.html)
 
-```c
-int pcloud = pcopen(0,"P",@P,2,10);
+[mdensity](mdensity.html)
 
-if (pcnumfound(pcloud) < 5)
-{
-    removepoint(0,@ptnum);
-}
+[mspace](mspace.html)
 
-```
+[pcclose](pcclose.html)
 
-[[../_Tags/点层级]]]
+[pccone](pccone.html)
+
+[pccone_radius](pccone_radius.html)
+
+[pcconvex](pcconvex.html)
+
+[pcexport](pcexport.html)
+
+[pcfarthest](pcfarthest.html)
+
+[pcfilter](pcfilter.html)
+
+[pcfind](pcfind.html)
+
+[pcfind_radius](pcfind_radius.html)
+
+[pcgenerate](pcgenerate.html)
+
+[pcimport](pcimport.html)
+
+[pcimportbyidx3](pcimportbyidx3.html)
+
+[pcimportbyidx4](pcimportbyidx4.html)
+
+[pcimportbyidxf](pcimportbyidxf.html)
+
+[pcimportbyidxi](pcimportbyidxi.html)
+
+[pcimportbyidxp](pcimportbyidxp.html)
+
+[pcimportbyidxs](pcimportbyidxs.html)
+
+[pcimportbyidxv](pcimportbyidxv.html)
+
+[pciterate](pciterate.html)
+
+[pcline](pcline.html)
+
+[pcline_radius](pcline_radius.html)
+
+[pcnumfound](pcnumfound.html)
+
+[pcopen](pcopen.html)
+
+[pcopenlod](pcopenlod.html)
+
+[pcsampleleaf](pcsampleleaf.html)
+
+[pcsegment](pcsegment.html)
+
+[pcsegment_radius](pcsegment_radius.html)
+
+[pcsize](pcsize.html)
+
+[pcunshaded](pcunshaded.html)
+
+[pcwrite](pcwrite.html)
+
+[pgfind](pgfind.html)
+
+[photonmap](photonmap.html)
+
+[texture3d](texture3d.html)
+
+[texture3dBox](texture3dBox.html)

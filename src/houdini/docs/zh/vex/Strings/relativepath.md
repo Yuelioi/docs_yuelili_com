@@ -1,35 +1,91 @@
 ---
 title: relativepath
-order: 21
+order: 30
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Computes the relative path for two full paths.
+`string relativepath(string src, string dest)`
 
-```c
-string  relativepath(string src, string dest)
-```
-
-Computes the relative path required to get from the `src` path to the `dest`
-path.
-
-计算从 srcpath 到 destpath 所需的相对路径。
+Computes the relative path required to get from the `src` path to the `dest` path.
 
 ## Examples
 
--
+[¶](#examples)
 
-```c
-relativepath("/obj/geo1/box", "/obj/ropnet1/mantra1")
-```
+- `relativepath("/obj/geo1/box", "/obj/ropnet1/mantra1")` - returns `../../ropnet1/mantra1`
 
-\- returns
 
-```c
-../../ropnet1/mantra1
-```
+string
 
-relativepath("/obj/geo1/box", "/obj/ropnet1/mantra1")--返回././ropnet1/mantra1
+[atof](atof.html)
+
+[atoi](atoi.html)
+
+[concat](concat.html)
+
+[decode](decode.html)
+
+[decodeattrib](decodeattrib.html)
+
+[decodeparm](decodeparm.html)
+
+[decodeutf8](decodeutf8.html)
+
+[encode](encode.html)
+
+[encodeattrib](encodeattrib.html)
+
+[encodeparm](encodeparm.html)
+
+[encodeutf8](encodeutf8.html)
+
+[error](error.html)
+
+[expand_udim](expand_udim.html)
+
+[find](find.html)
+
+[has_udim](has_udim.html)
+
+[insert](insert.html)
+
+[isvalidindex](isvalidindex.html)
+
+[itoa](itoa.html)
+
+[join](join.html)
+
+[lstrip](lstrip.html)
+
+[makevalidvarname](makevalidvarname.html)
+
+[match](match.html)
+
+[pluralize](pluralize.html)
+
+[print_once](print_once.html)
+
+[printf](printf.html)
+
+[relativepath](relativepath.html)
+
+[replace](replace.html)
+
+[replace_match](replace_match.html)
+
+[rstrip](rstrip.html)
+
+[split](split.html)
+
+[splitpath](splitpath.html)
+
+[sprintf](sprintf.html)
+
+[strip](strip.html)
+
+[strlen](strlen.html)
+
+[texprintf](texprintf.html)
+
+[warning](warning.html)

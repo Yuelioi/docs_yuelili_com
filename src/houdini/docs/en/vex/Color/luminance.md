@@ -15,54 +15,54 @@ category:
 
 ### color
 
-[blackbody ](blackbody.html)
+[blackbody](blackbody.html)
 
-[colormap ](colormap.html)
+[colormap](colormap.html)
 
-[ctransform ](ctransform.html)
+[ctransform](ctransform.html)
 
-[environment ](environment.html)
+[environment](environment.html)
 
-[hsvtorgb ](hsvtorgb.html)
+[hsvtorgb](hsvtorgb.html)
 
-[luminance ](luminance.html)
+[luminance](luminance.html)
 
-[ocio_activedisplays ](ocio_activedisplays.html)
+[ocio_activedisplays](ocio_activedisplays.html)
 
-[ocio_activeviews ](ocio_activeviews.html)
+[ocio_activeviews](ocio_activeviews.html)
 
-[ocio_import ](ocio_import.html)
+[ocio_import](ocio_import.html)
 
-[ocio_transform ](ocio_parsecolorspace.html)
+[ocio_transform](ocio_parsecolorspace.html)
 
-[ocio_roles ](ocio_roles.html)
+[ocio_roles](ocio_roles.html)
 
-[ocio_spaces ](ocio_spaces.html)
+[ocio_spaces](ocio_spaces.html)
 
-[ocio_transform ](ocio_transform.html)
+[ocio_transform](ocio_transform.html)
 
-[rawcolormap ](rawcolormap.html)
+[rawcolormap](rawcolormap.html)
 
-[rgbtohsv ](rgbtohsv.html)
+[rgbtohsv](rgbtohsv.html)
 
-[rgbtoxyz ](rgbtoxyz.html)
+[rgbtoxyz](rgbtoxyz.html)
 
-[xyztorgb ](xyztorgb.html)
+[xyztorgb](xyztorgb.html)
 
 ### convert
 
-[ctransform ](ctransform.html)
+[ctransform](ctransform.html)
 
-[degrees ](degrees.html)
+[degrees](degrees.html)
 
-[hsvtorgb ](hsvtorgb.html)
+[hsvtorgb](hsvtorgb.html)
 
-[luminance ](luminance.html)
+[luminance](luminance.html)
 
-[radians ](radians.html)
+[radians](radians.html)
 
-[rgbtohsv ](rgbtohsv.html)
+[rgbtohsv](rgbtohsv.html)
 
-[rgbtoxyz ](rgbtoxyz.html)
+[rgbtoxyz](rgbtoxyz.html)
 
-[xyztorgb ](xyztorgb.html)
+[xyztorgb](xyztorgb.html)

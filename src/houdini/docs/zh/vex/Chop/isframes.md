@@ -1,23 +1,85 @@
 ---
 title: isframes
-order: 30
+order: 31
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Returns 1 if the Vex CHOP‘sUnit Menu is currently set to 'frames', 0  
+
+
+Context(s)
+[chop](../contexts/chop.html)
+
+`int isframes()`
+
+Returns 1 if the Vex CHOP’s Unit Menu is currently set to 'frames', 0
 otherwise.
 
-| Context(s) | [chop](../contexts/chop.html) |
-| ---------- | ----------------------------- |
 
-```c
-int  isframes()
-```
+chop
 
-Returns 1 if the Vex CHOP‘sUnit Menu is currently set to 'frames',
-0otherwise.
+[chadd](chadd.html)
 
-如果 Vex CHOP's Unit Menu 当前设置为'frames'，返回 1，否则返回 0。
+[chattr](chattr.html)
+
+[chattrnames](chattrnames.html)
+
+[chend](chend.html)
+
+[chendf](chendf.html)
+
+[chendt](chendt.html)
+
+[chindex](chindex.html)
+
+[chinput](chinput.html)
+
+[chinputlimits](chinputlimits.html)
+
+[chname](chname.html)
+
+[chnames](chnames.html)
+
+[chnumchan](chnumchan.html)
+
+[chop](chop.html)
+
+[choplocal](choplocal.html)
+
+[choplocalt](choplocalt.html)
+
+[chopt](chopt.html)
+
+[chrate](chrate.html)
+
+[chreadbuf](chreadbuf.html)
+
+[chremove](chremove.html)
+
+[chremoveattr](chremoveattr.html)
+
+[chrename](chrename.html)
+
+[chresizebuf](chresizebuf.html)
+
+[chsetattr](chsetattr.html)
+
+[chsetlength](chsetlength.html)
+
+[chsetrate](chsetrate.html)
+
+[chsetstart](chsetstart.html)
+
+[chstart](chstart.html)
+
+[chstartf](chstartf.html)
+
+[chstartt](chstartt.html)
+
+[chwritebuf](chwritebuf.html)
+
+[isframes](isframes.html)
+
+[issamples](issamples.html)
+
+[isseconds](isseconds.html)

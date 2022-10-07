@@ -1,37 +1,44 @@
 ---
 title: fuzzy_not
-order: 6
+order: 7
 category:
-  - houdini
+  - vex
 ---
-    
-    [  
-Houdini 19.0  
-](../../index.html)  
-**  
-[  
-VEX  
-](../index.html)  
-**  
-[  
-VEX Functions  
-](index.html)  
-\_\_
 
-# fuzzy_not
+`int fuzzy\_not(int n)`
 
-VEX function
-
-#
-
-```c
-int  fuzzy_not(int n)
-```
-
-```c
-float  fuzzy_not(float n)
-```
+`float fuzzy\_not(float n)`
 
 Returns the fuzzy “NOT” (Zadeh NOT) of the input fuzzy value.
 
-返回输入模糊值的模糊 "NOT"（Zadeh NOT）。
+
+
+## See also
+
+- [fuzzy_and](fuzzy_and.html)
+- [fuzzy_nand](fuzzy_nand.html)
+- [fuzzy_or](fuzzy_or.html)
+- [fuzzy_nor](fuzzy_nor.html)
+- [fuzzy_xor](fuzzy_xor.html)
+- [fuzzy_nxor](fuzzy_nxor.html)
+
+|
+fuzzy
+
+[fuzzify](fuzzify.html)
+
+[fuzzy_and](fuzzy_and.html)
+
+[fuzzy_defuzz_centroid](fuzzy_defuzz_centroid.html)
+
+[fuzzy_nand](fuzzy_nand.html)
+
+[fuzzy_nor](fuzzy_nor.html)
+
+[fuzzy_not](fuzzy_not.html)
+
+[fuzzy_nxor](fuzzy_nxor.html)
+
+[fuzzy_or](fuzzy_or.html)
+
+[fuzzy_xor](fuzzy_xor.html)

@@ -1,20 +1,48 @@
 ---
 title: atan2
-order: 72
+order: 6
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Returns the inverse tangent of y/x.
+`float atan2(float y, float x)`
 
-```c
-float  atan2(float y, float x)
-```
+Returns the principal value of the inverse tangent of y/x, using the signs
+of the two arguments to determine the quadrant of the result. The return value
+is in the range -π to π.
 
-Returns the principal value of the inverse tangent of y/x, using the signsof
-the two arguments to determine the quadrant of the result. The return valueis
-in the range -Ï to Ï.
 
-返回 y/x 的反正切的主值，使用两个参数的符号确定结果的象限。
+
+## See also
+
+- [atan](atan.html)
+- [tan](tan.html)
+- [sin](sin.html)
+- [cos](cos.html)
+
+|
+trig
+
+[acos](acos.html)
+
+[asin](asin.html)
+
+[atan](atan.html)
+
+[atan2](atan2.html)
+
+[cos](cos.html)
+
+[cosh](cosh.html)
+
+[degrees](degrees.html)
+
+[radians](radians.html)
+
+[sin](sin.html)
+
+[sinh](sinh.html)
+
+[tan](tan.html)
+
+[tanh](tanh.html)

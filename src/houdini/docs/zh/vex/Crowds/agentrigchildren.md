@@ -1,64 +1,201 @@
 ---
 title: agentrigchildren
-order: 33
+order: 36
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Returns the child transforms of a transform in an agent primitive‘srig.
-
-```c
-int [] agentrigchildren(<geometry>geometry, int prim, int transform)
-```
+`int [] agentrigchildren(<geometry>geometry, int prim, int transform)`
 
 Returns a list of the direct children of the given transform.
 
-返回给定变换的直接子节点的列表。
+Returns an empty array if `transform` is [out of range](agenttransformcount.html "Returns the number of transforms in an agent primitive’s rig."), `prim` is out of range, or `prim` is not an agent primitive.
 
-Returns an empty array if `transform` is [out of
-range](agenttransformcount.html) "Returns the number of transforms in an agent
-primitive‘srig."), `prim` is out of range, or `prim` is not an agent
-primitive.
-
-如果 transform 超出了范围，prim 超出了范围，或者 prim 不是代理基元，则返回一个空数组。
+## Arguments
 
 `<geometry>`
 
-When running in the context of a node (such as a wrangle SOP), this argument
-can be an integer representing the input number (starting at 0) to read the
-geometry from.
+When running in the context of a node (such as a wrangle SOP), this argument can be an integer representing the input number (starting at 0) to read the geometry from.
 
-当在一个节点的上下文中运行时（比如 wrangle SOP），这个参数可以是一个整数，代表要从中读取几何图形的输入数字（从 0 开始）。
-
-Alternatively, the argument can be a string specifying a geometry file (for
-example, a `.bgeo`) to read from. When running inside Houdini, this can be an
-
-```c
-op:/path/to/sop
-```
-
-reference.
-
-或者，该参数可以是一个字符串，指定要读取的几何体文件（例如，a.bgeo）。当在 Houdini 内部运行时，这可以是 anop:/path/to/sopreference。
+Alternatively, the argument can be a string specifying a geometry file (for example, a `.bgeo`) to read from. When running inside Houdini, this can be an `op:/path/to/sop` reference.
 
 `prim`
 
 The primitive number.
 
-原始编号。
-
 `transform`
 
-Index of a transform in the agent‘srig.
-
-Agentâs rig 中的一个变换的索引。
+Index of a transform in the agent’s rig.
 
 ## Examples
 
+[¶](#examples)
+
 Visit all of the children of a given transform.
 
-访问一个给定变换的所有子节点。
+```c
+int[] queue = { transform };
 
-    int[] queue = { transform };while (len(queue) > 0) {int i = removeindex(queue, 0);printf("%d\n", i);foreach (int child; agentrigchildren(0, @primnum, i))push(queue, child);}
+while (len(queue) > 0) {
+int i = removeindex(queue, 0);
+printf("%d\n", i);
+
+foreach (int child; agentrigchildren(0, @primnum, i))
+push(queue, child);
+}
+
+```
+
+
+
+## See also
+
+- [agentlocaltransforms](agentlocaltransforms.html)
+- [agentrigfind](agentrigfind.html)
+- [agentrigparent](agentrigparent.html)
+- [agenttransformcount](agenttransformcount.html)
+- [agenttransformtolocal](agenttransformtolocal.html)
+- [agenttransformtoworld](agenttransformtoworld.html)
+- [agentworldtransforms](agentworldtransforms.html)
+
+|
+crowds
+
+[agentaddclip](agentaddclip.html)
+
+[agentchannelcount](agentchannelcount.html)
+
+[agentchannelnames](agentchannelnames.html)
+
+[agentchannelvalue](agentchannelvalue.html)
+
+[agentchannelvalues](agentchannelvalues.html)
+
+[agentclipcatalog](agentclipcatalog.html)
+
+[agentclipchannel](agentclipchannel.html)
+
+[agentclipchannelnames](agentclipchannelnames.html)
+
+[agentcliplayerblend](agentcliplayerblend.html)
+
+[agentcliplength](agentcliplength.html)
+
+[agentclipnames](agentclipnames.html)
+
+[agentclipsample](agentclipsample.html)
+
+[agentclipsamplelocal](agentclipsamplelocal.html)
+
+[agentclipsamplerate](agentclipsamplerate.html)
+
+[agentclipsampleworld](agentclipsampleworld.html)
+
+[agentclipstarttime](agentclipstarttime.html)
+
+[agentcliptimes](agentcliptimes.html)
+
+[agentcliptransformgroups](agentcliptransformgroups.html)
+
+[agentclipweights](agentclipweights.html)
+
+[agentcollisionlayer](agentcollisionlayer.html)
+
+[agentcollisionlayers](agentcollisionlayers.html)
+
+[agentcurrentlayer](agentcurrentlayer.html)
+
+[agentcurrentlayers](agentcurrentlayers.html)
+
+[agentfindclip](agentfindclip.html)
+
+[agentfindlayer](agentfindlayer.html)
+
+[agentfindtransformgroup](agentfindtransformgroup.html)
+
+[agentlayerbindings](agentlayerbindings.html)
+
+[agentlayers](agentlayers.html)
+
+[agentlayershapes](agentlayershapes.html)
+
+[agentlocaltransform](agentlocaltransform.html)
+
+[agentlocaltransforms](agentlocaltransforms.html)
+
+[agentmetadata](agentmetadata.html)
+
+[agentrestlocaltransform](agentrestlocaltransform.html)
+
+[agentrestworldtransform](agentrestworldtransform.html)
+
+[agentrigchildren](agentrigchildren.html)
+
+[agentrigfind](agentrigfind.html)
+
+[agentrigfindchannel](agentrigfindchannel.html)
+
+[agentrigparent](agentrigparent.html)
+
+[agentsolvefbik](agentsolvefbik.html)
+
+[agenttransformcount](agenttransformcount.html)
+
+[agenttransformgroupmember](agenttransformgroupmember.html)
+
+[agenttransformgroupmemberchannel](agenttransformgroupmemberchannel.html)
+
+[agenttransformgroups](agenttransformgroups.html)
+
+[agenttransformgroupweight](agenttransformgroupweight.html)
+
+[agenttransformnames](agenttransformnames.html)
+
+[agenttransformtolocal](agenttransformtolocal.html)
+
+[agenttransformtoworld](agenttransformtoworld.html)
+
+[agentworldtransform](agentworldtransform.html)
+
+[agentworldtransforms](agentworldtransforms.html)
+
+[setagentchannelvalue](setagentchannelvalue.html)
+
+[setagentchannelvalues](setagentchannelvalues.html)
+
+[setagentclipnames](setagentclipnames.html)
+
+[setagentclips](setagentclips.html)
+
+[setagentcliptimes](setagentcliptimes.html)
+
+[setagentclipweights](setagentclipweights.html)
+
+[setagentcollisionlayer](setagentcollisionlayer.html)
+
+[setagentcollisionlayers](setagentcollisionlayers.html)
+
+[setagentcurrentlayer](setagentcurrentlayer.html)
+
+[setagentcurrentlayers](setagentcurrentlayers.html)
+
+[setagentlocaltransform](setagentlocaltransform.html)
+
+[setagentlocaltransforms](setagentlocaltransforms.html)
+
+[setagentworldtransform](setagentworldtransform.html)
+
+[setagentworldtransforms](setagentworldtransforms.html)
+
+[solvefbik](solvefbik.html)
+
+[solvephysfbik](solvephysfbik.html)
+
+|
+rig
+
+[agentrigchildren](agentrigchildren.html)
+
+[agentrigfind](agentrigfind.html)
+
+[agentrigparent](agentrigparent.html)

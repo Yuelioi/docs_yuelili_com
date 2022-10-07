@@ -1,72 +1,266 @@
 ---
 title: gradient
-order: 35
+order: 36
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Returns the gradient of a field.
 
-On this page |
 
-- Derivatives options
+On this page
 
-衍生品选项
+- [Derivatives options](#derivatives-options)
+- [Examples](#examples)
 
-- Examples
+`vector gradient(float val, ...)`
 
----|---
+`vector gradient(vector P, float val, ...)`
+
+This method computes the derivative of a volume field using the partial
+derivatives with respect to a given position (`Du`, `Dv`, and `Dw`). If no
+position is provided, `P` is assumed in shading contexts. If only `Du` and
+`Dv` are defined, the derivative will be tangent to the surface being
+rendered.
+
+##
+
+Derivatives options
+
+[¶](#derivatives-options)
+
+Functions which compute derivatives take additional arguments to
+allow tuning of the derivative computation.
+
+## Arguments
+
+"`extrapolate`",
+`int`
+`=0`
+
+Whether derivatives are
+“smooth” across patch boundaries. In most cases this is true and if
+extrapolation is turned on, derivative computation should be exact
+for C2 surfaces. However, when the VEX variables are changing with a
+high frequency (for example, a high frequency displacement map
+causing high frequency changes to the P variable), extrapolation of
+derivative computation may cause exaggeration of discontinuities
+between patch boundaries.
+
+"`smooth`",
+`int`
+`=1`
+
+Adjust the magnitude of the
+differentials non-uniformly over patches. This will usually reduce
+patch discontinuities in displacement/textured shaders. However, in
+some odd cases you may want to turn this feature off.
 
 ```c
-vector  gradient(float val, ...)
+N = computenormal(P, "extrapolate", 1, "smooth", 0);
+
 ```
-
-```c
-vector  gradient(vector P, float val, ...)
-```
-
-This method computes the derivative of a volume field using the
-partialderivatives with respect to a given position (`Du`, `Dv`, and `Dw`).If
-noposition is provided, `P` is assumed in shading contexts.If only `Du`
-and`Dv` are defined, the derivative will be tangent to the surface
-beingrendered.
-
-这个方法是用一个体积场的部分导数来计算的。
-
-## Derivatives options
-
-Functions which compute derivatives take additional arguments toallow tuning
-of the derivative computation.
-
-衍生物（Du,Dv,和 Dw）。 如果没有提供
-
-"`extrapolate`",` int``=0 `
-
-Whether derivatives are“smooth” across patch boundaries. In most cases this is
-true and ifextrapolation is turned on, derivative computation should be
-exactfor C2 surfaces. However, when the VEX variables are changing with ahigh
-frequency (for example, a high frequency displacement mapcausing high
-frequency changes to the P variable), extrapolation ofderivative computation
-may cause exaggeration of discontinuitiesbetween patch boundaries.
-
-位置，则在阴影背景下假设 Pis。 如果只定义了 Du 和 Dva，导数将是与被渲染的表面相切的。
-
-"`smooth`",` int``=1 `
-
-Adjust the magnitude of thedifferentials non-uniformly over patches. This will
-usually reducepatch discontinuities in displacement/textured shaders. However,
-insome odd cases you may want to turn this feature off.
-
-渲染的表面。
-
-    N = computenormal(P, "extrapolate", 1, "smooth", 0);
 
 ## Examples
 
+[¶](#examples)
+
 Return the gradient of the density field:
 
-计算导数的函数需要额外的参数来
+```c
+surface test\_grad(float density = 0)
+{
+Cf = gradient(density);
+}
 
-    surface test_grad(float density = 0){Cf = gradient(density);}
+```
+
+
+
+## See also
+
+- [volume](volume.html)
+- [Du](Du.html)
+- [Dv](Dv.html)
+- [Dw](Dw.html)
+
+|
+shading
+
+[Du](Du.html)
+
+[Dv](Dv.html)
+
+[Dw](Dw.html)
+
+[area](area.html)
+
+[ashikhmin](ashikhmin.html)
+
+[atten](atten.html)
+
+[blinn](blinn.html)
+
+[blinnBRDF](blinnBRDF.html)
+
+[chiang](chiang.html)
+
+[computenormal](computenormal.html)
+
+[cone](cone.html)
+
+[cvex_bsdf](cvex_bsdf.html)
+
+[diffuse](diffuse.html)
+
+[diffuseBRDF](diffuseBRDF.html)
+
+[dsmpixel](dsmpixel.html)
+
+[environment](environment.html)
+
+[fastshadow](fastshadow.html)
+
+[filtershadow](filtershadow.html)
+
+[filterstep](filterstep.html)
+
+[fresnel](fresnel.html)
+
+[frontface](frontface.html)
+
+[getderiv](getderiv.html)
+
+[getfogname](getfogname.html)
+
+[getglobalraylevel](getglobalraylevel.html)
+
+[getgroupid](getgroupid.html)
+
+[getlocalcurvature](getlocalcurvature.html)
+
+[getmaterialid](getmaterialid.html)
+
+[getobjectid](getobjectid.html)
+
+[getobjectname](getobjectname.html)
+
+[getprimid](getprimid.html)
+
+[getptextureid](getptextureid.html)
+
+[getraylevel](getraylevel.html)
+
+[getrayweight](getrayweight.html)
+
+[getsamplestore](getsamplestore.html)
+
+[getsmoothP](getsmoothP.html)
+
+[getuvtangents](getuvtangents.html)
+
+[ggx](ggx.html)
+
+[gradient](gradient.html)
+
+[hair](hair.html)
+
+[henyeygreenstein](henyeygreenstein.html)
+
+[isotropic](isotropic.html)
+
+[israytracing](israytracing.html)
+
+[isshadingRHS](isshadingRHS.html)
+
+[lightstate](lightstate.html)
+
+[matchvex_blinn](matchvex_blinn.html)
+
+[matchvex_specular](matchvex_specular.html)
+
+[objectstate](objectstate.html)
+
+[phong](phong.html)
+
+[phongBRDF](phongBRDF.html)
+
+[phonglobe](phonglobe.html)
+
+[ptexture](ptexture.html)
+
+[rayhittest](rayhittest.html)
+
+[rayimport](rayimport.html)
+
+[reflect](reflect.html)
+
+[refract](refract.html)
+
+[renderstate](renderstate.html)
+
+[resolvemissedray](resolvemissedray.html)
+
+[sample_geometry](sample_geometry.html)
+
+[scatter](scatter.html)
+
+[setsamplestore](setsamplestore.html)
+
+[specular](specular.html)
+
+[specularBRDF](specularBRDF.html)
+
+[sssapprox](sssapprox.html)
+
+[teximport](teximport.html)
+
+[texture](texture.html)
+
+[trace](trace.html)
+
+[translucent](translucent.html)
+
+[uvunwrap](uvunwrap.html)
+
+[volume](volume.html)
+
+[wireblinn](wireblinn.html)
+
+[wirediffuse](wirediffuse.html)
+
+|
+volume
+
+[gradient](gradient.html)
+
+[volume](volume.html)
+
+[volumecubicsample](volumecubicsample.html)
+
+[volumecubicsamplev](volumecubicsamplev.html)
+
+[volumegradient](volumegradient.html)
+
+[volumeindex](volumeindex.html)
+
+[volumeindexactive](volumeindexactive.html)
+
+[volumeindexorigin](volumeindexorigin.html)
+
+[volumeindextopos](volumeindextopos.html)
+
+[volumeindexv](volumeindexv.html)
+
+[volumepostoindex](volumepostoindex.html)
+
+[volumeres](volumeres.html)
+
+[volumesample](volumesample.html)
+
+[volumesamplev](volumesamplev.html)
+
+[volumesmoothsample](volumesmoothsample.html)
+
+[volumesmoothsamplev](volumesmoothsamplev.html)
+
+[volumevoxeldiameter](volumevoxeldiameter.html)

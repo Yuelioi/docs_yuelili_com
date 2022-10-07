@@ -1,28 +1,160 @@
 ---
 title: frontface
-order: 8
+order: 9
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-If dot(I, Nref) is less than zero, N will be negated.
+`vector frontface(vector N, vector I)`
 
-```c
-vector  frontface(vector N, vector I)
-```
+This form (which doesn’t take a reference vector) is only available in
+the shading contexts, where the Ng variable is used.
 
-This form (which doesn‘t take a reference vector) is only available inthe
-shading contexts, where the Ng variable is used.
+`vector frontface(vector N, vector I, vector Nref)`
 
-这种形式（不需要参考向量）只在使用 Ngvariable 的情况下可用。
+If [dot](dot.html "Returns the dot product between the arguments.")(I, Nref) is less than zero, N will be negated.
 
-```c
-vector  frontface(vector N, vector I, vector Nref)
-```
 
-If [dot](dot.html) "Returns the dot product between the arguments.")(I, Nref)
-is less than zero, N will be negated.
+shading
 
-使用 Ng 变量的情况下可用。
+[Du](Du.html)
+
+[Dv](Dv.html)
+
+[Dw](Dw.html)
+
+[area](area.html)
+
+[ashikhmin](ashikhmin.html)
+
+[atten](atten.html)
+
+[blinn](blinn.html)
+
+[blinnBRDF](blinnBRDF.html)
+
+[chiang](chiang.html)
+
+[computenormal](computenormal.html)
+
+[cone](cone.html)
+
+[cvex_bsdf](cvex_bsdf.html)
+
+[diffuse](diffuse.html)
+
+[diffuseBRDF](diffuseBRDF.html)
+
+[dsmpixel](dsmpixel.html)
+
+[environment](environment.html)
+
+[fastshadow](fastshadow.html)
+
+[filtershadow](filtershadow.html)
+
+[filterstep](filterstep.html)
+
+[fresnel](fresnel.html)
+
+[frontface](frontface.html)
+
+[getderiv](getderiv.html)
+
+[getfogname](getfogname.html)
+
+[getglobalraylevel](getglobalraylevel.html)
+
+[getgroupid](getgroupid.html)
+
+[getlocalcurvature](getlocalcurvature.html)
+
+[getmaterialid](getmaterialid.html)
+
+[getobjectid](getobjectid.html)
+
+[getobjectname](getobjectname.html)
+
+[getprimid](getprimid.html)
+
+[getptextureid](getptextureid.html)
+
+[getraylevel](getraylevel.html)
+
+[getrayweight](getrayweight.html)
+
+[getsamplestore](getsamplestore.html)
+
+[getsmoothP](getsmoothP.html)
+
+[getuvtangents](getuvtangents.html)
+
+[ggx](ggx.html)
+
+[gradient](gradient.html)
+
+[hair](hair.html)
+
+[henyeygreenstein](henyeygreenstein.html)
+
+[isotropic](isotropic.html)
+
+[israytracing](israytracing.html)
+
+[isshadingRHS](isshadingRHS.html)
+
+[lightstate](lightstate.html)
+
+[matchvex_blinn](matchvex_blinn.html)
+
+[matchvex_specular](matchvex_specular.html)
+
+[objectstate](objectstate.html)
+
+[phong](phong.html)
+
+[phongBRDF](phongBRDF.html)
+
+[phonglobe](phonglobe.html)
+
+[ptexture](ptexture.html)
+
+[rayhittest](rayhittest.html)
+
+[rayimport](rayimport.html)
+
+[reflect](reflect.html)
+
+[refract](refract.html)
+
+[renderstate](renderstate.html)
+
+[resolvemissedray](resolvemissedray.html)
+
+[sample_geometry](sample_geometry.html)
+
+[scatter](scatter.html)
+
+[setsamplestore](setsamplestore.html)
+
+[specular](specular.html)
+
+[specularBRDF](specularBRDF.html)
+
+[sssapprox](sssapprox.html)
+
+[teximport](teximport.html)
+
+[texture](texture.html)
+
+[trace](trace.html)
+
+[translucent](translucent.html)
+
+[uvunwrap](uvunwrap.html)
+
+[volume](volume.html)
+
+[wireblinn](wireblinn.html)
+
+[wirediffuse](wirediffuse.html)

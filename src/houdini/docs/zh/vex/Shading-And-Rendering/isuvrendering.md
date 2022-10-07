@@ -1,29 +1,48 @@
 ---
 title: isuvrendering
-order: 46
+order: 47
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Indicates whether the shader is being evaluated while doing UV rendering (e.g.
-texture unwrapping)
 
-Context(s) | [displace](../contexts/displace.html)[
-fog](../contexts/fog.html)[ light](../contexts/light.html)[
-shadow](../contexts/shadow.html)[ surface](../contexts/surface.html)  
----|---
 
-```c
-int  isuvrendering()
-```
+Context(s)
+[displace](../contexts/displace.html)
+[fog](../contexts/fog.html)
+[light](../contexts/light.html)
+[shadow](../contexts/shadow.html)
+[surface](../contexts/surface.html)
 
-Returns 1 if the shader is being called while evaluating uv rendering (texture
-unwrapping), and 0 for normal rendering.
+`int isuvrendering()`
 
-如果在评估 uv 渲染（纹理解包）时调用着色器，则返回 1，而在评估正常渲染时返回 0。
+Returns 1 if the shader is being called while evaluating uv rendering (texture unwrapping), and 0 for normal rendering.
 
 Use this function to evaluate shaders differently when baking illumination.
 
-使用这个函数可以在烘焙光照时以不同方式评估着色器。
+
+surface
+
+[ambient](ambient.html)
+
+[irradiance](irradiance.html)
+
+[isfogray](isfogray.html)
+
+[islpeactive](islpeactive.html)
+
+[isshadowray](isshadowray.html)
+
+[isuvrendering](isuvrendering.html)
+
+[limport](limport.html)
+
+[occlusion](occlusion.html)
+
+[reflectlight](reflectlight.html)
+
+[refractlight](refractlight.html)
+
+[shadow](shadow.html)
+
+[shimport](shimport.html)

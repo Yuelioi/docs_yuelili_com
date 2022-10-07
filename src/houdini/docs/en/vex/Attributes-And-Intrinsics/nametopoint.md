@@ -34,104 +34,104 @@ certain attribute value.").
 
 ## See also
 
-- [idtoprim ](idtoprim.html)
-- [nametopoint ](nametopoint.html)
-- [findattribval ](findattribval.html)
+- [idtoprim](idtoprim.html)
+- [nametopoint](nametopoint.html)
+- [findattribval](findattribval.html)
 
 ### point
 
-[addpoint ](addpoint.html)
+[addpoint](addpoint.html)
 
-[addpointattrib ](addpointattrib.html)
+[addpointattrib](addpointattrib.html)
 
-[haspointattrib ](haspointattrib.html)
+[haspointattrib](haspointattrib.html)
 
-[idtopoint ](idtopoint.html)
+[idtopoint](idtopoint.html)
 
-[inpointgroup ](inpointgroup.html)
+[inpointgroup](inpointgroup.html)
 
-[nametopoint ](nametopoint.html)
+[nametopoint](nametopoint.html)
 
-[ndcdepth ](ndcdepth.html)
+[ndcdepth](ndcdepth.html)
 
-[nearpoint ](nearpoint.html)
+[nearpoint](nearpoint.html)
 
-[nearpoints ](nearpoints.html)
+[nearpoints](nearpoints.html)
 
-[neighbour ](neighbour.html)
+[neighbour](neighbour.html)
 
-[neighbourcount ](neighbourcount.html)
+[neighbourcount](neighbourcount.html)
 
-[neighbours ](neighbours.html)
+[neighbours](neighbours.html)
 
-[npoints ](npoints.html)
+[npoints](npoints.html)
 
-[npointsgroup ](npointsgroup.html)
+[npointsgroup](npointsgroup.html)
 
-[planepointdistance ](planepointdistance.html)
+[planepointdistance](planepointdistance.html)
 
-[point ](point.html)
+[point](point.html)
 
-[pointattrib ](pointattrib.html)
+[pointattrib](pointattrib.html)
 
-[pointattribsize ](pointattribsize.html)
+[pointattribsize](pointattribsize.html)
 
-[pointattribtype ](pointattribtype.html)
+[pointattribtype](pointattribtype.html)
 
-[pointattribtypeinfo ](pointattribtypeinfo.html)
+[pointattribtypeinfo](pointattribtypeinfo.html)
 
-[pointhedge ](pointhedge.html)
+[pointhedge](pointhedge.html)
 
-[pointhedgenext ](pointhedgenext.html)
+[pointhedgenext](pointhedgenext.html)
 
-[pointprims ](pointprims.html)
+[pointprims](pointprims.html)
 
-[pointvertex ](pointvertex.html)
+[pointvertex](pointvertex.html)
 
-[pointvertices ](pointvertices.html)
+[pointvertices](pointvertices.html)
 
-[primpoint ](primpoint.html)
+[primpoint](primpoint.html)
 
-[primpoints ](primpoints.html)
+[primpoints](primpoints.html)
 
-[ptransform ](ptransform.html)
+[ptransform](ptransform.html)
 
-[removeattrib ](removeattrib.html)
+[removeattrib](removeattrib.html)
 
-[removepoint ](removepoint.html)
+[removepoint](removepoint.html)
 
-[removepointattrib ](removepointattrib.html)
+[removepointattrib](removepointattrib.html)
 
-[removepointgroup ](removepointgroup.html)
+[removepointgroup](removepointgroup.html)
 
-[setpointattrib ](setpointattrib.html)
+[setpointattrib](setpointattrib.html)
 
-[setpointgroup ](setpointgroup.html)
+[setpointgroup](setpointgroup.html)
 
-[setvertexpoint ](setvertexpoint.html)
+[setvertexpoint](setvertexpoint.html)
 
-[vertexpoint ](vertexpoint.html)
+[vertexpoint](vertexpoint.html)
 
 ### search
 
-[findattribval ](findattribval.html)
+[findattribval](findattribval.html)
 
-[findattribvalcount ](findattribvalcount.html)
+[findattribvalcount](findattribvalcount.html)
 
-[idtopoint ](idtopoint.html)
+[idtopoint](idtopoint.html)
 
-[idtoprim ](idtoprim.html)
+[idtoprim](idtoprim.html)
 
-[intersect ](intersect.html)
+[intersect](intersect.html)
 
-[nametopoint ](nametopoint.html)
+[nametopoint](nametopoint.html)
 
-[nametoprim ](nametoprim.html)
+[nametoprim](nametoprim.html)
 
-[nuniqueval ](nuniqueval.html)
+[nuniqueval](nuniqueval.html)
 
-[primfind ](primfind.html)
+[primfind](primfind.html)
 
-[uniqueval ](uniqueval.html)
+[uniqueval](uniqueval.html)
 
-[uniquevals ](uniquevals.html)
+[uniquevals](uniquevals.html)

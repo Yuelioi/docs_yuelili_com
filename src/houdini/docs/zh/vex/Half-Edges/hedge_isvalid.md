@@ -1,50 +1,84 @@
 ---
 title: hedge_isvalid
-order: 6
+order: 7
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Determines whether a half-edge number corresponds to a valid half-edge.
+`int hedge\_isvalid(<geometry>geometry, int hedge)`
 
-```c
-int  hedge_isvalid(<geometry>geometry, int hedge)
-```
+## Arguments
 
 `<geometry>`
 
-When running in the context of a node (such as a wrangle SOP), this argument
-can be an integer representing the input number (starting at 0) to read the
-geometry from.
+When running in the context of a node (such as a wrangle SOP), this argument can be an integer representing the input number (starting at 0) to read the geometry from.
 
-当在一个节点的上下文中运行时（比如 wrangle SOP），这个参数可以是一个整数，代表要读取几何体的输入数字（从 0 开始）。
-
-Alternatively, the argument can be a string specifying a geometry file (for
-example, a `.bgeo`) to read from. When running inside Houdini, this can be an
-
-```c
-op:/path/to/sop
-```
-
-reference.
-
-或者，该参数可以是一个字符串，指定要读取的几何体文件（例如，a.bgeo）。当在 Houdini 内部运行时，这可以是 anop:/path/to/sopreference。
+Alternatively, the argument can be a string specifying a geometry file (for example, a `.bgeo`) to read from. When running inside Houdini, this can be an `op:/path/to/sop` reference.
 
 `hedge`
 
 The integer representing a half-edge.
 
-代表一个半边的整数。
+## Returns
 
-Returns
-
-`1` if `hedge` represents a valid half-edge in the referenced geometry, or `0`
-otherwise.
-
-如果整数代表被引用的几何体中的一个有效的半边，则为 1，否则为 0。
+`1` if `hedge` represents a valid half-edge in the referenced geometry, or `0` otherwise.
 
 ## Examples
 
-    int srcpt;// find the source point of a half-edge number 3 if it is validif (hedge_isvalid("defgeo.bgeo", 3))srcpt = hedge_srcpoint("defgeo.bgeo", 3);
+[¶](#examples)
+
+```c
+int srcpt;
+
+// find the source point of a half-edge number 3 if it is valid
+if (hedge\_isvalid("defgeo.bgeo", 3))
+srcpt = hedge\_srcpoint("defgeo.bgeo", 3);
+
+```
+
+
+hedge
+
+[hedge_dstpoint](hedge_dstpoint.html)
+
+[hedge_dstvertex](hedge_dstvertex.html)
+
+[hedge_equivcount](hedge_equivcount.html)
+
+[hedge_isequiv](hedge_isequiv.html)
+
+[hedge_isprimary](hedge_isprimary.html)
+
+[hedge_isvalid](hedge_isvalid.html)
+
+[hedge_next](hedge_next.html)
+
+[hedge_nextequiv](hedge_nextequiv.html)
+
+[hedge_postdstpoint](hedge_postdstpoint.html)
+
+[hedge_postdstvertex](hedge_postdstvertex.html)
+
+[hedge_presrcpoint](hedge_presrcpoint.html)
+
+[hedge_presrcvertex](hedge_presrcvertex.html)
+
+[hedge_prev](hedge_prev.html)
+
+[hedge_prim](hedge_prim.html)
+
+[hedge_primary](hedge_primary.html)
+
+[hedge_srcpoint](hedge_srcpoint.html)
+
+[hedge_srcvertex](hedge_srcvertex.html)
+
+[pointedge](pointedge.html)
+
+[pointhedge](pointhedge.html)
+
+[pointhedgenext](pointhedgenext.html)
+
+[primhedge](primhedge.html)
+
+[vertexhedge](vertexhedge.html)

@@ -1,102 +1,118 @@
 ---
 title: combinelocaltransform
-order: 8
+order: 10
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Combines Local and Parent Transforms with Scale Inheritance.
 
-| Since | 18.0 |
-| ----- | ---- |
 
-`matrix combinelocaltransform(matrix local, matrix parent_world, matrix parent_local, int scale_inherit_mode)`
+Since 18.0
+
+`matrix combinelocaltransform(matrix local, matrix parent\_world, matrix parent\_local, int scale\_inherit\_mode)`
 
 Returns a new world transform given its local and parent world transforms.
 
-返回一个新的世界变换，给定其本地和父世界的变换。
+`matrix combinelocaltransform(matrix local, matrix parent\_world, matrix parent\_local, int scale\_inherit\_mode, matrix &effective\_local\_transform)`
 
-`matrix combinelocaltransform(matrix local, matrix parent_world, matrix parent_local, int scale_inherit_mode, matrix &effective_local_transform)`
+Returns a new world transform given its local and parent world transforms. The local transform including any inherited scales is stored in the effective_local_transform matrix - this value will differ from the local matrix when the mode is set to SCALE_INHERIT_OFFSET_AND_SCALE or SCALE_INHERIT_SCALE_ONLY where we pass a parent’s local scales onto its children as part of their own local transforms.
 
-Returns a new world transform given its local and parent world transforms. The
-local transform including any inherited scales is stored in the
-effective_local_transform matrix - this value will differ from the local
-matrix when the mode is set to SCALE_INHERIT_OFFSET_AND_SCALE or
-SCALE_INHERIT_SCALE_ONLY where we pass a parent‘slocal scales onto its
-children as part of their own local transforms.
+## Arguments
 
-返回一个新的世界变换，给定其本地和父世界的变换。包括任何继承的尺度在内的局部变换被存储在 effective_local_transform 矩阵中--
-当模式被设置为 SCALE_INHERIT_OFFSET_AND_SCALE 或 SCALE_INHERIT_SCALE_ONLY 时，这个值将与局部矩阵不同，我们将父变换的局部尺度作为其自身局部变换的一部分传递给其子变换。
+`scale_inherit_mode`
+
+Specifies how scale inheritance from the parent transform is applied to the result. It is one of the following defines from `math.h`:
+
+- `SCALE_INHERIT_DEFAULT` (0) - simple inheritance:
 
 ```c
-`scale_inherit_mode
+world = local * parent_world
+
 ```
 
-`
-
-Specifies how scale inheritance from the parent transform is applied to the
-result. It is one of the following defines from `math.h`:
-
-指定如何将来自父变换的比例继承应用到结果中。它是以下来自 mmath.h 的定义之一。
-
--
+- `SCALE_INHERIT_OFFSET_ONLY` (1) - child doesn’t scale with the parent local scales, but local translation is scaled:
 
 ```c
-SCALE_INHERIT_DEFAULT
+world = local_scale_rotates * invert(parent_local_scales) * local_translates * parent_world
+
 ```
 
-(0) - simple inheritance:
-
-SCALE_INHERIT_DEFAULT(0) - 简单继承。
-
-        world = local * parent_world
-
--
+- `SCALE_INHERIT_OFFSET_AND_SCALE` (2) - local translation is scaled as before but parent local scaling is also reapplied by the child in local space:
 
 ```c
-SCALE_INHERIT_OFFSET_ONLY
+world = parent_local_scales * local_scale_rotates * invert(parent_local_scales) * T * parent_world
+
 ```
 
-(1) - child doesn‘t scale with the parent local scales, but local translation is scaled:
-
-SCALE_INHERIT_OFFSET_ONLY(1) - 子代不使用父代的局部比例，但局部翻译是有比例的。
-
-        world = local_scale_rotates * invert(parent_local_scales) * local_translates * parent_world
-
--
+- `SCALE_INHERIT_SCALE_ONLY` (3) - local translation is not scaled, but parent local scaling is reapplied by the child in local space:
 
 ```c
-SCALE_INHERIT_OFFSET_AND_SCALE
+world = parent_local_scales * local * invert(parent_local_scales) * parent_world
+
 ```
 
-(2) - local translation is scaled as before but parent local scaling is also reapplied by the child in local space:
-
-SCALE_INHERIT_OFFSET_AND_SCALE(2) - 本地翻译的比例和以前一样，但父本的本地比例也由子本空间重新应用。
-
-        world = parent_local_scales * local_scale_rotates * invert(parent_local_scales) * T * parent_world
-
--
+- `SCALE_INHERIT_IGNORE` (4) - child completely ignores any parent local scaling:
 
 ```c
-SCALE_INHERIT_SCALE_ONLY
+world = local * invert(parent_local_scales) * parent_world
+
 ```
 
-(3) - local translation is not scaled, but parent local scaling is reapplied by the child in local space:
 
-SCALE_INHERIT_SCALE_ONLY(3) - 本地平移不被缩放，但是子代在本地空间重新应用父代的本地缩放。
 
-        world = parent_local_scales * local * invert(parent_local_scales) * parent_world
+## See also
 
--
+- [extractlocaltransform](extractlocaltransform.html)
 
-```c
-SCALE_INHERIT_IGNORE
-```
+|
+matrix
 
-(4) - child completely ignores any parent local scaling:
+[\_\_uniform\_mul](### uniform_mul.html)
 
-SCALE_INHERIT_IGNORE(4) - 子代完全忽略任何父代的本地缩放。
+[\_\_uniform\_premul](### uniform_premul.html)
 
-        world = local * invert(parent_local_scales) * parent_world
+[combinelocaltransform](combinelocaltransform.html)
+
+[cracktransform](cracktransform.html)
+
+[determinant](determinant.html)
+
+[diagonalizesymmetric](diagonalizesymmetric.html)
+
+[dihedral](dihedral.html)
+
+[eigenvalues](eigenvalues.html)
+
+[extractlocaltransform](extractlocaltransform.html)
+
+[ident](ident.html)
+
+[instance](instance.html)
+
+[invert](invert.html)
+
+[lookat](lookat.html)
+
+[maketransform](maketransform.html)
+
+[outerproduct](outerproduct.html)
+
+[premul](premul.html)
+
+[prerotate](prerotate.html)
+
+[prescale](prescale.html)
+
+[pretranslate](pretranslate.html)
+
+[rotate](rotate.html)
+
+[scale](scale.html)
+
+[smoothrotation](smoothrotation.html)
+
+[svddecomp](svddecomp.html)
+
+[translate](translate.html)
+
+[transpose](transpose.html)

@@ -1,36 +1,142 @@
 ---
 title: rint
-order: 51
+order: 57
 category:
-  - houdini
+  - vex
 ---
-    
-## 概述
 
-Rounds the number to the closest whole number.
+`float rint(float n)`
 
-```c
-float  rint(float n)
-```
+`<vector> rint(<vector>v)`
 
-```c
-<vector> rint(<vector>v)
-```
-
-## 说明
-
-Returns the closest whole number to `n`. For vectors, this is done per-
-component.
-
-四舍五入取整。对于向量，每个分量都会如此。
-
-## 示例
-
-```c
-int t = 1.4;
-printf("%s",rint(t));  // 1
+Returns the closest whole number to `n`. For vectors, this is done per-component.
 
 
-vector pos = {1.1,2.5,3.8};
-printf("%s",rint(pos));  // {1,3,4}
-```
+math
+
+[Du](Du.html)
+
+[Dv](Dv.html)
+
+[Dw](Dw.html)
+
+[abs](abs.html)
+
+[acos](acos.html)
+
+[asin](asin.html)
+
+[atan](atan.html)
+
+[atten](atten.html)
+
+[avg](avg.html)
+
+[cbrt](cbrt.html)
+
+[ceil](ceil.html)
+
+[cos](cos.html)
+
+[cosh](cosh.html)
+
+[cracktransform](cracktransform.html)
+
+[cross](cross.html)
+
+[degrees](degrees.html)
+
+[dot](dot.html)
+
+[erf](erf.html)
+
+[erf_inv](erf_inv.html)
+
+[erfc](erfc.html)
+
+[exp](exp.html)
+
+[floor](floor.html)
+
+[frac](frac.html)
+
+[fuzzify](fuzzify.html)
+
+[getderiv](getderiv.html)
+
+[isfinite](isfinite.html)
+
+[isnan](isnan.html)
+
+[log](log.html)
+
+[log10](log10.html)
+
+[max](max.html)
+
+[min](min.html)
+
+[pow](pow.html)
+
+[product](product.html)
+
+[radians](radians.html)
+
+[resample_linear](resample_linear.html)
+
+[rint](rint.html)
+
+[shl](shl.html)
+
+[shr](shr.html)
+
+[shrz](shrz.html)
+
+[sign](sign.html)
+
+[sin](sin.html)
+
+[sinh](sinh.html)
+
+[solvecubic](solvecubic.html)
+
+[solvepoly](solvepoly.html)
+
+[solvequadratic](solvequadratic.html)
+
+[solvetriangleSSS](solvetriangleSSS.html)
+
+[sqrt](sqrt.html)
+
+[sum](sum.html)
+
+[tan](tan.html)
+
+[tanh](tanh.html)
+
+[trunc](trunc.html)
+
+[variance](variance.html)
+
+|
+number
+
+[abs](abs.html)
+
+[ceil](ceil.html)
+
+[exp](exp.html)
+
+[floor](floor.html)
+
+[frac](frac.html)
+
+[log](log.html)
+
+[log10](log10.html)
+
+[pow](pow.html)
+
+[rint](rint.html)
+
+[sqrt](sqrt.html)

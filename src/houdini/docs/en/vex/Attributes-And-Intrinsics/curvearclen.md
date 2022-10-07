@@ -73,145 +73,145 @@ conversions.
 
 ## See also
 
-- [primarclen ](primarclen.html)
-- [primuvconvert ](primuvconvert.html)
+- [primarclen](primarclen.html)
+- [primuvconvert](primuvconvert.html)
 
 ### measure
 
-[curvearclen ](curvearclen.html)
+[curvearclen](curvearclen.html)
 
-[distance ](distance.html)
+[distance](distance.html)
 
-[distance2 ](distance2.html)
+[distance2](distance2.html)
 
-[getbbox ](getbbox.html)
+[getbbox](getbbox.html)
 
-[getbbox_center ](getbbox_center.html)
+[getbbox_center](getbbox_center.html)
 
-[getbbox_max ](getbbox_max.html)
+[getbbox_max](getbbox_max.html)
 
-[getbbox_min ](getbbox_min.html)
+[getbbox_min](getbbox_min.html)
 
-[getbbox_size ](getbbox_size.html)
+[getbbox_size](getbbox_size.html)
 
-[getbounds ](getbounds.html)
+[getbounds](getbounds.html)
 
-[getpointbbox ](getpointbbox.html)
+[getpointbbox](getpointbbox.html)
 
-[getpointbbox_center ](getpointbbox_center.html)
+[getpointbbox_center](getpointbbox_center.html)
 
-[getpointbbox_max ](getpointbbox_max.html)
+[getpointbbox_max](getpointbbox_max.html)
 
-[getpointbbox_min ](getpointbbox_min.html)
+[getpointbbox_min](getpointbbox_min.html)
 
-[getpointbbox_size ](getpointbbox_size.html)
+[getpointbbox_size](getpointbbox_size.html)
 
-[length ](length.html)
+[length](length.html)
 
-[length2 ](length2.html)
+[length2](length2.html)
 
-[mdensity ](mdensity.html)
+[mdensity](mdensity.html)
 
-[pcfarthest ](pcfarthest.html)
+[pcfarthest](pcfarthest.html)
 
-[planepointdistance ](planepointdistance.html)
+[planepointdistance](planepointdistance.html)
 
-[predicate_orient2d ](predicate_orient2d.html)
+[predicate_orient2d](predicate_orient2d.html)
 
-[predicate_orient3d ](predicate_orient3d.html)
+[predicate_orient3d](predicate_orient3d.html)
 
-[primarclen ](primarclen.html)
+[primarclen](primarclen.html)
 
-[qdistance ](qdistance.html)
+[qdistance](qdistance.html)
 
-[relbbox ](relbbox.html)
+[relbbox](relbbox.html)
 
-[relpointbbox ](relpointbbox.html)
+[relpointbbox](relpointbbox.html)
 
-[surfacedist ](surfacedist.html)
+[surfacedist](surfacedist.html)
 
-[uvdist ](uvdist.html)
+[uvdist](uvdist.html)
 
-[xyzdist ](xyzdist.html)
+[xyzdist](xyzdist.html)
 
 ### prim
 
-[addprim ](addprim.html)
+[addprim](addprim.html)
 
-[addprimattrib ](addprimattrib.html)
+[addprimattrib](addprimattrib.html)
 
-[curvearclen ](curvearclen.html)
+[curvearclen](curvearclen.html)
 
-[hasprimattrib ](hasprimattrib.html)
+[hasprimattrib](hasprimattrib.html)
 
-[hedge_prim ](hedge_prim.html)
+[hedge_prim](hedge_prim.html)
 
-[idtoprim ](idtoprim.html)
+[idtoprim](idtoprim.html)
 
-[inprimgroup ](inprimgroup.html)
+[inprimgroup](inprimgroup.html)
 
-[nametoprim ](nametoprim.html)
+[nametoprim](nametoprim.html)
 
-[nprimitives ](nprimitives.html)
+[nprimitives](nprimitives.html)
 
-[nprimitivesgroup ](nprimitivesgroup.html)
+[nprimitivesgroup](nprimitivesgroup.html)
 
-[pointprims ](pointprims.html)
+[pointprims](pointprims.html)
 
-[prim ](prim.html)
+[prim](prim.html)
 
-[prim_attribute ](prim_attribute.html)
+[prim_attribute](prim_attribute.html)
 
-[prim_normal ](prim_normal.html)
+[prim_normal](prim_normal.html)
 
-[primarclen ](primarclen.html)
+[primarclen](primarclen.html)
 
-[primattrib ](primattrib.html)
+[primattrib](primattrib.html)
 
-[primattribsize ](primattribsize.html)
+[primattribsize](primattribsize.html)
 
-[primattribtype ](primattribtype.html)
+[primattribtype](primattribtype.html)
 
-[primattribtypeinfo ](primattribtypeinfo.html)
+[primattribtypeinfo](primattribtypeinfo.html)
 
-[primduv ](primduv.html)
+[primduv](primduv.html)
 
-[primfind ](primfind.html)
+[primfind](primfind.html)
 
-[primhedge ](primhedge.html)
+[primhedge](primhedge.html)
 
-[priminteriorweights ](priminteriorweights.html)
+[priminteriorweights](priminteriorweights.html)
 
-[primintrinsic ](primintrinsic.html)
+[primintrinsic](primintrinsic.html)
 
-[primpoint ](primpoint.html)
+[primpoint](primpoint.html)
 
-[primpoints ](primpoints.html)
+[primpoints](primpoints.html)
 
-[primuv ](primuv.html)
+[primuv](primuv.html)
 
-[primuvconvert ](primuvconvert.html)
+[primuvconvert](primuvconvert.html)
 
-[primvertex ](primvertex.html)
+[primvertex](primvertex.html)
 
-[primvertexcount ](primvertexcount.html)
+[primvertexcount](primvertexcount.html)
 
-[primvertices ](primvertices.html)
+[primvertices](primvertices.html)
 
-[removeprim ](removeprim.html)
+[removeprim](removeprim.html)
 
-[setprimattrib ](setprimattrib.html)
+[setprimattrib](setprimattrib.html)
 
-[setprimgroup ](setprimgroup.html)
+[setprimgroup](setprimgroup.html)
 
-[setprimintrinsic ](setprimintrinsic.html)
+[setprimintrinsic](setprimintrinsic.html)
 
-[setprimvertex ](setprimvertex.html)
+[setprimvertex](setprimvertex.html)
 
-[vertexcurveparam ](vertexcurveparam.html)
+[vertexcurveparam](vertexcurveparam.html)
 
-[vertexindex ](vertexindex.html)
+[vertexindex](vertexindex.html)
 
-[vertexprim ](vertexprim.html)
+[vertexprim](vertexprim.html)
 
-[vertexprimindex ](vertexprimindex.html)
+[vertexprimindex](vertexprimindex.html)

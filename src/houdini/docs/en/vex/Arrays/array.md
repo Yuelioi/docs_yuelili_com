@@ -21,6 +21,6 @@ vector v[] = vector[](array( 1, {1,2,3}, 3, s, t, Cl, P, N)); float f[]
 
 ## See also
 
-- [Arrays ](../arrays.html)
-- [len ](len.html)
-- [resize ](resize.html)
+- [Arrays](../arrays.html)
+- [len](len.html)
+- [resize](resize.html)

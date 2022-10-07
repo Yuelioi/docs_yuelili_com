@@ -37,5 +37,5 @@ len("hello") == 5; len({ {1,0,0}, {0,1,0}, {0,0,1} }) == 9; len({0, 10,
 
 ## See also
 
-- [Arrays ](../arrays.html)
-- [resize ](resize.html)
+- [Arrays](../arrays.html)
+- [resize](resize.html)

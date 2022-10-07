@@ -1,47 +1,103 @@
 ---
 title: choplocal
-order: 13
+order: 14
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Returns the value of a CHOP local transform channel at the specified sample.
 
-| Since | 17.5 |
-| ----- | ---- |
 
-```c
-matrix  choplocal(string filename, int|stringchannel, float|intsample)
-```
+Since 17.5
+
+`matrix choplocal(string filename, int|stringchannel, float|intsample)`
 
 Read a sample from the local transform channel at the given index.
 
-在给定的索引处从本地转换通道中读取一个样本。
+## Arguments
 
 `filename`
 
-The CHOP node path to query using the op: syntax.Doesn‘t support reading
-directly from CHOP files yet.
-
-使用 op: 语法查询的 CHOP 节点路径。
+The CHOP node path to query using the op: syntax.
+Doesn’t support reading directly from CHOP files yet.
 
 `channel`
 
 The channel index or channel name to query.
 
-还不支持直接从 CHOP 文件中读取。
-
 `sample`
 
-If this is fractional, the value is linearly interpolated from thetwo nearest
-points.
+If this is fractional, the value is linearly interpolated from the
+two nearest points.
 
-要查询的通道索引或通道名称。
-
-Returns
+## Returns
 
 The value of a channel at the specified sample in a CHOP node.
 
-如果是小数，值是由最近的两个点线性插值而成的。
+
+chop
+
+[chadd](chadd.html)
+
+[chattr](chattr.html)
+
+[chattrnames](chattrnames.html)
+
+[chend](chend.html)
+
+[chendf](chendf.html)
+
+[chendt](chendt.html)
+
+[chindex](chindex.html)
+
+[chinput](chinput.html)
+
+[chinputlimits](chinputlimits.html)
+
+[chname](chname.html)
+
+[chnames](chnames.html)
+
+[chnumchan](chnumchan.html)
+
+[chop](chop.html)
+
+[choplocal](choplocal.html)
+
+[choplocalt](choplocalt.html)
+
+[chopt](chopt.html)
+
+[chrate](chrate.html)
+
+[chreadbuf](chreadbuf.html)
+
+[chremove](chremove.html)
+
+[chremoveattr](chremoveattr.html)
+
+[chrename](chrename.html)
+
+[chresizebuf](chresizebuf.html)
+
+[chsetattr](chsetattr.html)
+
+[chsetlength](chsetlength.html)
+
+[chsetrate](chsetrate.html)
+
+[chsetstart](chsetstart.html)
+
+[chstart](chstart.html)
+
+[chstartf](chstartf.html)
+
+[chstartt](chstartt.html)
+
+[chwritebuf](chwritebuf.html)
+
+[isframes](isframes.html)
+
+[issamples](issamples.html)
+
+[isseconds](isseconds.html)

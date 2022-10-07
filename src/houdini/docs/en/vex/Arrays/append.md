@@ -29,7 +29,7 @@ You can set an individual item in an array using `array[n] = x`.
 
 ## See also
 
-- [Arrays ](../arrays.html)
-- [len ](len.html)
-- [push ](push.html)
-- [resize ](resize.html)
+- [Arrays](../arrays.html)
+- [len](len.html)
+- [push](push.html)
+- [resize](resize.html)

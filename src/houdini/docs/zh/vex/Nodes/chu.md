@@ -1,31 +1,88 @@
 ---
 title: chu
-order: 16
+order: 20
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
+
+`vector2 chu(string channel)`
+
+`vector2 chu(string channel, float time)`
 
 Evaluates a channel or parameter, and return its value.
 
-```c
-vector2  chu(string channel)
-```
-
-```c
-vector2  chu(string channel, float time)
-```
-
-Evaluates a channel or parameter, and return its value.
-
-评估一个通道或参数，并返回其值。
-
-If the parameter is a vector parameter, the base parameter namecan be used to
-return the all components as a vector.
-
-如果参数是一个矢量参数，基本参数名
+If the parameter is a vector parameter, the base parameter name
+can be used to return the all components as a vector.
 
 The time is specified in seconds, not in frames.
 
-可以用来作为一个向量返回所有成分。
+
+utility
+
+[assert_enabled](assert_enabled.html)
+
+[ch](ch.html)
+
+[ch2](ch2.html)
+
+[ch3](ch3.html)
+
+[ch4](ch4.html)
+
+[chdict](chdict.html)
+
+[chexpr](chexpr.html)
+
+[chexprf](chexprf.html)
+
+[chexprt](chexprt.html)
+
+[chf](chf.html)
+
+[chi](chi.html)
+
+[chid](chid.html)
+
+[chp](chp.html)
+
+[chramp](chramp.html)
+
+[chrampderiv](chrampderiv.html)
+
+[chs](chs.html)
+
+[chsop](chsop.html)
+
+[chsraw](chsraw.html)
+
+[chu](chu.html)
+
+[chv](chv.html)
+
+[error](error.html)
+
+[expand_udim](expand_udim.html)
+
+[has_udim](has_udim.html)
+
+[isbound](isbound.html)
+
+[isconnected](isconnected.html)
+
+[ninputs](ninputs.html)
+
+[opid](opid.html)
+
+[print_once](print_once.html)
+
+[printf](printf.html)
+
+[select](select.html)
+
+[sleep](sleep.html)
+
+[sprintf](sprintf.html)
+
+[texprintf](texprintf.html)
+
+[warning](warning.html)

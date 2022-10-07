@@ -1,26 +1,100 @@
 ---
 title: decodeparm
-order: 6
+order: 7
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Decodes a node parameter name that was previously encoded.
 
-| Since | 18.0 |
-| ----- | ---- |
 
-```c
-string  decodeparm(string str)
-```
+Since 18.0
 
-Houdini parameter names are only allowed to contain letters, numbers,
-hashcharacters (for multiparms), and underscores, and must not begin with
-anumber. Arbitrary strings can be passed through the `encodeparm` function
-togenerate a string that obeys these restriction. This function takes one
-ofthese encoded strings, and returns the original string. A string that has
-notbeen encoded will be returned unmodified.
+`string decodeparm(string str)`
 
-胡迪尼参数名称只允许包含字母、数字、哈希字符（对于多参数），并且不能以下划线开头。
+Houdini parameter names are only allowed to contain letters, numbers, hash
+characters (for multiparms), and underscores, and must not begin with a
+number. Arbitrary strings can be passed through the `encodeparm` function to
+generate a string that obeys these restriction. This function takes one of
+these encoded strings, and returns the original string. A string that has not
+been encoded will be returned unmodified.
+
+
+
+## See also
+
+- [encodeparm](encodeparm.html)
+
+|
+string
+
+[atof](atof.html)
+
+[atoi](atoi.html)
+
+[concat](concat.html)
+
+[decode](decode.html)
+
+[decodeattrib](decodeattrib.html)
+
+[decodeparm](decodeparm.html)
+
+[decodeutf8](decodeutf8.html)
+
+[encode](encode.html)
+
+[encodeattrib](encodeattrib.html)
+
+[encodeparm](encodeparm.html)
+
+[encodeutf8](encodeutf8.html)
+
+[error](error.html)
+
+[expand_udim](expand_udim.html)
+
+[find](find.html)
+
+[has_udim](has_udim.html)
+
+[insert](insert.html)
+
+[isvalidindex](isvalidindex.html)
+
+[itoa](itoa.html)
+
+[join](join.html)
+
+[lstrip](lstrip.html)
+
+[makevalidvarname](makevalidvarname.html)
+
+[match](match.html)
+
+[pluralize](pluralize.html)
+
+[print_once](print_once.html)
+
+[printf](printf.html)
+
+[relativepath](relativepath.html)
+
+[replace](replace.html)
+
+[replace_match](replace_match.html)
+
+[rstrip](rstrip.html)
+
+[split](split.html)
+
+[splitpath](splitpath.html)
+
+[sprintf](sprintf.html)
+
+[strip](strip.html)
+
+[strlen](strlen.html)
+
+[texprintf](texprintf.html)
+
+[warning](warning.html)

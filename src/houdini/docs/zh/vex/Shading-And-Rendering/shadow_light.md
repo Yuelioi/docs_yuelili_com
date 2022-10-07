@@ -1,58 +1,219 @@
 ---
 title: shadow_light
-order: 70
+order: 71
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Executes the shadow shader for a given light and returns the amount of
-shadowing as a multiplier of the shaded color.
 
-Context(s) | [displace](../contexts/displace.html)[
-fog](../contexts/fog.html)[ surface](../contexts/surface.html)  
----|---
 
-```c
-vector  shadow_light(int lightid, vector pos, vector dir, float time, ...)
-```
+Context(s)
+[displace](../contexts/displace.html)
+[fog](../contexts/fog.html)
+[surface](../contexts/surface.html)
 
-This operation is similar to the shadow() function but it allows executionof
-the shadow shader outside an illuminance loop.The position anddirection toward
-the light source are provided directly, and the shadowshader is executed -
-returning the shadow multiplier.To produce the finalshadowed color, multiply
-the shaded color by the value returned byshadow_light.
+`vector shadow\_light(int lightid, vector pos, vector dir, float time, ...)`
 
-这个操作类似于 shadow()函数，但它允许在照度循环之外执行阴影着色器。
+This operation is similar to the shadow() function but it allows execution
+of the shadow shader outside an illuminance loop. The position and
+direction toward the light source are provided directly, and the shadow
+shader is executed - returning the shadow multiplier. To produce the final
+shadowed color, multiply the shaded color by the value returned by
+shadow_light.
 
-Keyword variadic arguments can be passed to the shadow shader, for importin
-the shadow shader with with simport().
+Keyword variadic arguments can be passed to the shadow shader, for import
+in the shadow shader with with simport().
 
-阴影着色器在照度循环之外执行。 阴影的位置和
+## Arguments
 
 `lightid`
 
-A light identifier, as returned by [getlights](getlights.html) "Returns an
-array of light identifiers for the currently shaded surface.").
-
-直接提供朝向光源的位置和方向，并执行影子
+A light identifier, as returned by [getlights](getlights.html "Returns an array of light identifiers for the currently shaded surface.").
 
 `pos`
 
 The origin of the ray (such as the global variable `P`).
 
-着色器被执行--返回阴影乘数。 为了产生最终的
-
 `dir`
 
-Direction vector from the origin. The length of this vector should bethe
-distance from _pos_ to the light source.
-
-为了产生最终的阴影颜色，将阴影颜色乘以由
+Direction vector from the origin. The length of this vector should be
+the distance from _pos_ to the light source.
 
 `time`
 
 Time to send the ray at.
 
-返回的值。
+
+
+## See also
+
+- [shadow](shadow.html)
+- [sample_light](sample_light.html)
+- [intersect_lights](intersect_lights.html)
+
+|
+light
+
+[ambient](ambient.html)
+
+[atten](atten.html)
+
+[fastshadow](fastshadow.html)
+
+[filtershadow](filtershadow.html)
+
+[getlight](getlight.html)
+
+[getlightid](getlightid.html)
+
+[getlightname](getlightname.html)
+
+[getlights](getlights.html)
+
+[getlightscope](getlightscope.html)
+
+[getmaterial](getmaterial.html)
+
+[getphotonlight](getphotonlight.html)
+
+[getscope](getscope.html)
+
+[haslight](haslight.html)
+
+[interpolate](interpolate.html)
+
+[intersect_lights](intersect_lights.html)
+
+[irradiance](irradiance.html)
+
+[lightbounces](lightbounces.html)
+
+[lightid](lightid.html)
+
+[occlusion](occlusion.html)
+
+[sample_geometry](sample_geometry.html)
+
+[sample_light](sample_light.html)
+
+[sample_photon](sample_photon.html)
+
+[setcurrentlight](setcurrentlight.html)
+
+[shadow_light](shadow_light.html)
+
+[storelightexport](storelightexport.html)
+
+|
+pbr
+
+[albedo](albedo.html)
+
+[ashikhmin](ashikhmin.html)
+
+[blinn](blinn.html)
+
+[bouncelabel](bouncelabel.html)
+
+[bouncemask](bouncemask.html)
+
+[chiang](chiang.html)
+
+[cone](cone.html)
+
+[create_cdf](create_cdf.html)
+
+[create_pdf](create_pdf.html)
+
+[diffuse](diffuse.html)
+
+[eval_bsdf](eval_bsdf.html)
+
+[getbounces](getbounces.html)
+
+[getcomponents](getcomponents.html)
+
+[getlight](getlight.html)
+
+[getlights](getlights.html)
+
+[getlightscope](getlightscope.html)
+
+[getmaterial](getmaterial.html)
+
+[getphotonlight](getphotonlight.html)
+
+[getscope](getscope.html)
+
+[ggx](ggx.html)
+
+[hair](hair.html)
+
+[haslight](haslight.html)
+
+[interpolate](interpolate.html)
+
+[intersect_lights](intersect_lights.html)
+
+[mask_bsdf](mask_bsdf.html)
+
+[matchvex_blinn](matchvex_blinn.html)
+
+[matchvex_specular](matchvex_specular.html)
+
+[nbouncetypes](nbouncetypes.html)
+
+[newsampler](newsampler.html)
+
+[nextsample](nextsample.html)
+
+[normal_bsdf](normal_bsdf.html)
+
+[phong](phong.html)
+
+[phonglobe](phonglobe.html)
+
+[sample_bsdf](sample_bsdf.html)
+
+[sample_cdf](sample_cdf.html)
+
+[sample_geometry](sample_geometry.html)
+
+[sample_light](sample_light.html)
+
+[sample_photon](sample_photon.html)
+
+[shadow_light](shadow_light.html)
+
+[solid_angle](solid_angle.html)
+
+[specular](specular.html)
+
+[split_bsdf](split_bsdf.html)
+
+[sssapprox](sssapprox.html)
+
+[storelightexport](storelightexport.html)
+
+[translucent](translucent.html)
+
+[wireblinn](wireblinn.html)
+
+[wirediffuse](wirediffuse.html)
+
+|
+raytracing
+
+[getlocalcurvature](getlocalcurvature.html)
+
+[getobjectid](getobjectid.html)
+
+[getuvtangents](getuvtangents.html)
+
+[intersect_lights](intersect_lights.html)
+
+[scatter](scatter.html)
+
+[shadow_light](shadow_light.html)
+
+[uvunwrap](uvunwrap.html)

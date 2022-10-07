@@ -1,29 +1,53 @@
 ---
 title: ihasplane
-order: 17
+order: 18
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Returns 1 if the specified input has a plane named `planename`.
 
-| Context(s) | [cop](../contexts/cop.html) |
-| ---------- | --------------------------- |
 
-```c
-int  ihasplane(int opinput, string planename)
-```
+Context(s)
+[cop](../contexts/cop.html)
 
-Returns 1 if the specified input has a plane named `planename`. Inputnumbers
-start at 0.
+`int ihasplane(int opinput, string planename)`
 
-如果指定的输入有一个名为 planename 的平面，返回 1。输入
+Returns 1 if the specified input has a plane named `planename`. Input
+numbers start at 0.
+
+## Arguments
 
 `opinput`
 
-The input number to read from, starting from 0. For example, the first input
-is 0, the second input is 1, and so on.
+The input number to read from, starting from 0. For example, the first input is 0, the second input is 1, and so on.
 
-数字从 0 开始。
+
+input_plane
+
+[iaspect](iaspect.html)
+
+[ichname](ichname.html)
+
+[iend](iend.html)
+
+[iendtime](iendtime.html)
+
+[ihasplane](ihasplane.html)
+
+[inumplanes](inumplanes.html)
+
+[iplaneindex](iplaneindex.html)
+
+[iplanename](iplanename.html)
+
+[iplanesize](iplanesize.html)
+
+[irate](irate.html)
+
+[istart](istart.html)
+
+[istarttime](istarttime.html)
+
+[ixres](ixres.html)
+
+[iyres](iyres.html)

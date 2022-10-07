@@ -1,69 +1,269 @@
 ---
 title: ptexture
-order: 8
+order: 9
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Computes a filtered sample from a ptex texture map. Use texture instead.
+`<type> ptexture(string map, int face\_id, ...)`
 
-```c
-<type> ptexture(string map, int face_id, ...)
-```
+`<type> ptexture(string map, int face\_id, float s, float t, ...)`
 
-```c
-<type> ptexture(string map, int face_id, float s, float t, ...)
-```
+This function is deprecated since ptex support has been integrated into the `texture()` function.
 
-This function is deprecated since ptex support has been integrated into the
-`texture()` function.
+##
 
-由于 ptex 支持已经被整合到 texture()函数中，这个函数已经被废弃。
+Optional arguments
 
-## Optional arguments
-
-| Keyword | Values |
-| ------- | ------ |
-
-`channel`td>>An integer value indicating which channel of the ptex image to
-use.
-
-channeltd>>
-
-`filter`td>>
-
-`filtersharp`
+[¶](#optional-arguments)
 
 |
+Keyword
 
-A floating point value indicating the filter sharpness.This is only valid for
-the bicubic filter.The range is 0-1 (the default is 1.0).
+Values
 
-一个整数值，表示要使用 ptex 图像的哪个通道。
+| --- ---
+| `channel`
+td>>
+An integer value indicating which channel of the ptex image to use.
 
-`lerp`
+| `filter`
+td>>
 
-|
+| `filtersharp` A floating point value indicating the filter sharpness. This is only valid for the bicubic filter. The range is 0-1 (the default is 1.0).
+| `lerp` An boolean value indicating whether to interpolate between Mip maps. The default is true.
+| `blur` The texture blur value used for evaluation (default 0).
+| `width` The texture width value used for evaluation (default 1).
 
-An boolean value indicating whether to interpolate between Mip maps.The
-default is true.
 
-一个浮点值，表示过滤器的清晰度。 这只对双三次元滤波器有效。 范围是 0-1（默认是 1.0）。
 
-`blur`
+## See also
 
-|
-
-The texture blur value used for evaluation (default 0).
-
-一个布尔值，表示是否在 Mip 地图之间进行插值。 默认为 true。
-
-`width`
+- [texture](texture.html)
 
 |
+file
 
-The texture width value used for evaluation (default 1).
+[colormap](colormap.html)
 
-用于评估的纹理模糊值（默认为 0）。
+[depthmap](depthmap.html)
+
+[dsmpixel](dsmpixel.html)
+
+[environment](environment.html)
+
+[filter_remap](filter_remap.html)
+
+[importance_remap](importance_remap.html)
+
+[pcclose](pcclose.html)
+
+[pcexport](pcexport.html)
+
+[pcopen](pcopen.html)
+
+[pcopenlod](pcopenlod.html)
+
+[pcsampleleaf](pcsampleleaf.html)
+
+[pcwrite](pcwrite.html)
+
+[ptexture](ptexture.html)
+
+[rawcolormap](rawcolormap.html)
+
+[sensor_panorama_create](sensor_panorama_create.html)
+
+[shadowmap](shadowmap.html)
+
+[teximport](teximport.html)
+
+[texture](texture.html)
+
+[texture3d](texture3d.html)
+
+[writepixel](writepixel.html)
+
+|
+map
+
+[colormap](colormap.html)
+
+[depthmap](depthmap.html)
+
+[dsmpixel](dsmpixel.html)
+
+[environment](environment.html)
+
+[filter_remap](filter_remap.html)
+
+[importance_remap](importance_remap.html)
+
+[ptexture](ptexture.html)
+
+[rawcolormap](rawcolormap.html)
+
+[sensor_panorama_create](sensor_panorama_create.html)
+
+[shadowmap](shadowmap.html)
+
+[teximport](teximport.html)
+
+[texture](texture.html)
+
+[tw_nspace](tw_nspace.html)
+
+[tw_space](tw_space.html)
+
+[tw_vspace](tw_vspace.html)
+
+[wt_nspace](wt_nspace.html)
+
+[wt_space](wt_space.html)
+
+[wt_vspace](wt_vspace.html)
+
+|
+shading
+
+[Du](Du.html)
+
+[Dv](Dv.html)
+
+[Dw](Dw.html)
+
+[area](area.html)
+
+[ashikhmin](ashikhmin.html)
+
+[atten](atten.html)
+
+[blinn](blinn.html)
+
+[blinnBRDF](blinnBRDF.html)
+
+[chiang](chiang.html)
+
+[computenormal](computenormal.html)
+
+[cone](cone.html)
+
+[cvex_bsdf](cvex_bsdf.html)
+
+[diffuse](diffuse.html)
+
+[diffuseBRDF](diffuseBRDF.html)
+
+[dsmpixel](dsmpixel.html)
+
+[environment](environment.html)
+
+[fastshadow](fastshadow.html)
+
+[filtershadow](filtershadow.html)
+
+[filterstep](filterstep.html)
+
+[fresnel](fresnel.html)
+
+[frontface](frontface.html)
+
+[getderiv](getderiv.html)
+
+[getfogname](getfogname.html)
+
+[getglobalraylevel](getglobalraylevel.html)
+
+[getgroupid](getgroupid.html)
+
+[getlocalcurvature](getlocalcurvature.html)
+
+[getmaterialid](getmaterialid.html)
+
+[getobjectid](getobjectid.html)
+
+[getobjectname](getobjectname.html)
+
+[getprimid](getprimid.html)
+
+[getptextureid](getptextureid.html)
+
+[getraylevel](getraylevel.html)
+
+[getrayweight](getrayweight.html)
+
+[getsamplestore](getsamplestore.html)
+
+[getsmoothP](getsmoothP.html)
+
+[getuvtangents](getuvtangents.html)
+
+[ggx](ggx.html)
+
+[gradient](gradient.html)
+
+[hair](hair.html)
+
+[henyeygreenstein](henyeygreenstein.html)
+
+[isotropic](isotropic.html)
+
+[israytracing](israytracing.html)
+
+[isshadingRHS](isshadingRHS.html)
+
+[lightstate](lightstate.html)
+
+[matchvex_blinn](matchvex_blinn.html)
+
+[matchvex_specular](matchvex_specular.html)
+
+[objectstate](objectstate.html)
+
+[phong](phong.html)
+
+[phongBRDF](phongBRDF.html)
+
+[phonglobe](phonglobe.html)
+
+[ptexture](ptexture.html)
+
+[rayhittest](rayhittest.html)
+
+[rayimport](rayimport.html)
+
+[reflect](reflect.html)
+
+[refract](refract.html)
+
+[renderstate](renderstate.html)
+
+[resolvemissedray](resolvemissedray.html)
+
+[sample_geometry](sample_geometry.html)
+
+[scatter](scatter.html)
+
+[setsamplestore](setsamplestore.html)
+
+[specular](specular.html)
+
+[specularBRDF](specularBRDF.html)
+
+[sssapprox](sssapprox.html)
+
+[teximport](teximport.html)
+
+[texture](texture.html)
+
+[trace](trace.html)
+
+[translucent](translucent.html)
+
+[uvunwrap](uvunwrap.html)
+
+[volume](volume.html)
+
+[wireblinn](wireblinn.html)
+
+[wirediffuse](wirediffuse.html)

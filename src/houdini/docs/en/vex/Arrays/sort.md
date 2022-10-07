@@ -30,7 +30,7 @@ reverse(sort(numbers)); // {90, 5, 3, 2, 1}
 
 ## See also
 
-- [Arrays ](../arrays.html)
-- [argsort ](argsort.html)
-- [reorder ](reorder.html)
-- [reverse ](reverse.html)
+- [Arrays](../arrays.html)
+- [argsort](argsort.html)
+- [reorder](reorder.html)
+- [reverse](reverse.html)

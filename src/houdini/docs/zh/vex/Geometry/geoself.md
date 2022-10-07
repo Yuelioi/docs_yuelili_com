@@ -1,19 +1,15 @@
 ---
 title: geoself
-order: 6
+order: 7
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Returns a handle to the current geometry.
+`int geoself()`
 
-```c
-int  geoself()
-```
+Returns a handle to the current geometry, suitable for the geometry creation operations.
 
-Returns a handle to the current geometry, suitable for the geometry creation
-operations.
 
-返回当前几何体的句柄，适用于几何体的创建操作。
+util
+
+[geoself](geoself.html)

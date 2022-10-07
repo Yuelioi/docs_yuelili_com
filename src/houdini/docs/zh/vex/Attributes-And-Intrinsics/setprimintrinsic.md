@@ -1,107 +1,146 @@
 ---
 title: setprimintrinsic
-order: 64
+order: 73
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Sets the value of a writeable primitive intrinsic attribute.
+`int setprimintrinsic(int geohandle, string name, int prim\_num, <type>value, string mode="set")`
 
-`int setprimintrinsic(int geohandle, string name, int prim_num, <type>value, string mode="set")`
-
-`int setprimintrinsic(int geohandle, string name, int prim_num, <type>value[], string mode="set")`
+`int setprimintrinsic(int geohandle, string name, int prim\_num, <type>value[], string mode="set")`
 
 Despite the name, some “intrinsic” attributes on primitives are writeable.
 
-尽管有这个名字，但基元上的一些 "内在 "属性是可写的。
+## Arguments
 
 `geohandle`
 
-A handle to the geometry to write to. Currently the only valid value is `0` or
-[geoself](geoself.html) "Returns a handle to the current geometry."), which
-means the current geometry in a node. (This argument may be used in the future
-to allow writing to other geometries.)
-
-一个指向要写入的几何体的句柄。目前唯一有效的值是 0orgeoself，这意味着节点中的当前几何体。(这个参数将来可能会被用来允许写到其它几何体。)
+A handle to the geometry to write to. Currently the only valid value is `0` or [geoself](geoself.html "Returns a handle to the current geometry."), which means the current geometry in a node. (This argument may be used in the future to allow writing to other geometries.)
 
 `name`
 
 The name of the intrinsic to set.
 
-要设置的本体的名称。
-
 `prim_num`
 
 The number of the primitive to change the value on.
 
-要改变值的基元的编号。
-
 `mode`
 
-(Optional) if given, this controls how the function modifies any existing
-value in the attribute.
+(Optional) if given, this controls how the function modifies any existing value in the attribute.
 
-(可选）如果给定，这将控制函数如何修改属性中的任何现有值。
 
-`"set"`
+`"set"` Overwrite the attribute with the given value.
+|
+`"add"` Add to the attribute the value.
+|
+`"min"`, `"minimum"` Set the attribute to the minimum of itself and the value.
+|
+`"max"`, `"maximum"` Set the attribute to the maximum of itself and the value.
+|
+`"mult"`, `"multiply"` Multiply the attribute by the value. For matrices, this will do matrix multiplication. For vectors, component-wise.
+|
+`"toggle"` Toggles the attribute, independent of the source value. Useful for toggling group membership.
+|
+`"append"` Valid for string and array attributes. Appends the source value to the end of the original value.
+
+
+
+## See also
+
+- [setattrib](setattrib.html)
+- [setprimattrib](setprimattrib.html)
 
 |
+intrinsic
 
-Overwrite the attribute with the given value.
+[detailintrinsic](detailintrinsic.html)
 
-用给定的值覆写属性。
+[primintrinsic](primintrinsic.html)
 
----|---
+[setdetailintrinsic](setdetailintrinsic.html)
 
-`"add"`
-
-|
-
-Add to the attribute the value.
-
-向属性添加值。
-
-`"min"`, `"minimum"`
+[setprimintrinsic](setprimintrinsic.html)
 
 |
+prim
 
-Set the attribute to the minimum of itself and the value.
+[addprim](addprim.html)
 
-将属性设置为其本身和该值的最小值。
+[addprimattrib](addprimattrib.html)
 
-`"max"`, `"maximum"`
+[curvearclen](curvearclen.html)
 
-|
+[hasprimattrib](hasprimattrib.html)
 
-Set the attribute to the maximum of itself and the value.
+[hedge_prim](hedge_prim.html)
 
-将属性设置为自身和值的最大值。
+[idtoprim](idtoprim.html)
 
-`"mult"`, `"multiply"`
+[inprimgroup](inprimgroup.html)
 
-|
+[nametoprim](nametoprim.html)
 
-Multiply the attribute by the value.For matrices, this will do matrix
-multiplication.For vectors, component-wise.
+[nprimitives](nprimitives.html)
 
-用属性乘以值。 对于矩阵，这将做矩阵乘法。 对于向量来说，是分量式的。
+[nprimitivesgroup](nprimitivesgroup.html)
 
-`"toggle"`
+[pointprims](pointprims.html)
 
-|
+[prim](prim.html)
 
-Toggles the attribute, independent of the source value.Useful for toggling
-group membership.
+[prim_attribute](prim_attribute.html)
 
-切换属性，与源值无关。 对于切换组的成员资格很有用。
+[prim_normal](prim_normal.html)
 
-`"append"`
+[primarclen](primarclen.html)
 
-|
+[primattrib](primattrib.html)
 
-Valid for string and array attributes.Appends the source value to the end of
-the original value.
+[primattribsize](primattribsize.html)
 
-对字符串和数组属性有效。 将源值附加到原始值的末尾。
+[primattribtype](primattribtype.html)
+
+[primattribtypeinfo](primattribtypeinfo.html)
+
+[primduv](primduv.html)
+
+[primfind](primfind.html)
+
+[primhedge](primhedge.html)
+
+[priminteriorweights](priminteriorweights.html)
+
+[primintrinsic](primintrinsic.html)
+
+[primpoint](primpoint.html)
+
+[primpoints](primpoints.html)
+
+[primuv](primuv.html)
+
+[primuvconvert](primuvconvert.html)
+
+[primvertex](primvertex.html)
+
+[primvertexcount](primvertexcount.html)
+
+[primvertices](primvertices.html)
+
+[removeprim](removeprim.html)
+
+[setprimattrib](setprimattrib.html)
+
+[setprimgroup](setprimgroup.html)
+
+[setprimintrinsic](setprimintrinsic.html)
+
+[setprimvertex](setprimvertex.html)
+
+[vertexcurveparam](vertexcurveparam.html)
+
+[vertexindex](vertexindex.html)
+
+[vertexprim](vertexprim.html)
+
+[vertexprimindex](vertexprimindex.html)

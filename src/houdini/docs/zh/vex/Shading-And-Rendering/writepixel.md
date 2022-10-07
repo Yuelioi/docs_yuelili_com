@@ -1,22 +1,65 @@
 ---
 title: writepixel
-order: 81
+order: 82
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Writes color information to a pixel in the output image
 
-| Context(s) | [shading](../contexts/shading.html) |
-| ---------- | ----------------------------------- |
 
-```c
-void  writepixel(string channel, float ndc_x, float ndc_y, vector clr)
-```
+Context(s)
+[shading](../contexts/shading.html)
 
-This is an experimental function which can be used by the generator rendering
-engine to write pixel values into the image.
+`void writepixel(string channel, float ndc\_x, float ndc\_y, vector clr)`
 
-这是一个实验性的函数，可以被生成器的渲染引擎用来将像素值写入图像中。
+This is an experimental function which can be used by the generator rendering engine to write pixel values into the image.
+
+
+experimental
+
+[cvex_bsdf](cvex_bsdf.html)
+
+[writepixel](writepixel.html)
+
+|
+file
+
+[colormap](colormap.html)
+
+[depthmap](depthmap.html)
+
+[dsmpixel](dsmpixel.html)
+
+[environment](environment.html)
+
+[filter_remap](filter_remap.html)
+
+[importance_remap](importance_remap.html)
+
+[pcclose](pcclose.html)
+
+[pcexport](pcexport.html)
+
+[pcopen](pcopen.html)
+
+[pcopenlod](pcopenlod.html)
+
+[pcsampleleaf](pcsampleleaf.html)
+
+[pcwrite](pcwrite.html)
+
+[ptexture](ptexture.html)
+
+[rawcolormap](rawcolormap.html)
+
+[sensor_panorama_create](sensor_panorama_create.html)
+
+[shadowmap](shadowmap.html)
+
+[teximport](teximport.html)
+
+[texture](texture.html)
+
+[texture3d](texture3d.html)
+
+[writepixel](writepixel.html)

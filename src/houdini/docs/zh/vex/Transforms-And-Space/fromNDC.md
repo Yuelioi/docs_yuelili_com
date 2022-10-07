@@ -1,125 +1,193 @@
 ---
 title: fromNDC
-order: 2
+order: 3
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Transforms a position from normal device coordinates to the  
-coordinates in the appropriate space.
-
-```c
-vector  fromNDC(vector v)
-```
+`vector fromNDC(vector v)`
 
 Transforms the vector from NDC space to the current space.
 
-将矢量从 NDC 空间转换到当前空间。
-
-```c
-vector  fromNDC(string space, vector v)
-```
+`vector fromNDC(string space, vector v)`
 
 Transforms the vector from NDC space to the named space.
 
-将向量从 NDC 空间转换到指定空间。
+## Arguments
 
 `space`
 
 The possible values for the space arguments are:
 
-空间参数的可能值是。
 
-An object path
+An object path Use the object space of an object specified by a path string.
 
-一个对象路径
+:::tip
 
-|
-
-Use the object space of an object specified by a path string.
-
-使用由路径字符串指定的对象的空间。
-
-Tip
-
-In some cases, such as point instancing, mantra mayautomatically mangle object
-paths. You can generate an `.ifd`file and look inside to try to find what
-mantra is callingthe object you want.
-
-在某些情况下，例如点的实例化，mantra 可能会
-
----|---
-
-```c
-"space:object"
-```
+In some cases, such as point instancing, mantra may
+automatically mangle object paths. You can generate an `.ifd`
+file and look inside to try to find what mantra is calling
+the object you want.
 
 |
-
-Object space of the _current_ object.
-
-自动修改对象路径。你可以生成一个.ifd 文件，并在里面找到 mantra 调用的
-
-`"space:light"`
-
+`"space:object"` Object space of the _current_ object.
 |
-
-Object space of the _current_ light when executing a shadow or light shader.
-
-你想要的对象。
-
-`"space:world"`
-
+`"space:light"` Object space of the _current_ light when executing a shadow or light shader.
 |
-
-Houdini world space.
-
-当前对象的对象空间。
-
-```c
-"space:camera"
-```
-
+`"space:world"` Houdini world space.
 |
-
-mantra camera space.
-
-当执行阴影或灯光着色器时，当前灯光的对象空间。
-
-`"space:ndc"`
-
+`"space:camera"` mantra camera space.
 |
-
-Normal Device Coordinate space.
-
-Houdini 世界空间。
-
-```c
-"space:lightndc"
-```
-
+`"space:ndc"` Normal Device Coordinate space.
 |
-
-Normal Device Coordinate space for the _current_ light when executing a shadow
-or light shader.
-
-mantra 相机空间。
-
-```c
-"space:current"
-```
-
+`"space:lightndc"` Normal Device Coordinate space for the _current_ light when executing a shadow or light shader.
 |
-
-The current space the vector is in.
-
-Normal Device Coordinate（正常设备坐标）空间。
+`"space:current"` The current space the vector is in.
 
 Warning
 
-NDC space is only well-defined for the[Displacement, Surface, and Light
-contexts](../contexts/shading_contexts.html).
+NDC space is only well-defined for the
+[Displacement, Surface, and Light contexts](../contexts/shading_contexts.html).
 
-当前光线在执行阴影或光影着色器时的法线设备坐标空间。
+
+transform
+
+[agentcliptransformgroups](agentcliptransformgroups.html)
+
+[agentfindtransformgroup](agentfindtransformgroup.html)
+
+[agentlocaltransform](agentlocaltransform.html)
+
+[agentlocaltransforms](agentlocaltransforms.html)
+
+[agentrestlocaltransform](agentrestlocaltransform.html)
+
+[agentrestworldtransform](agentrestworldtransform.html)
+
+[agentsolvefbik](agentsolvefbik.html)
+
+[agenttransformcount](agenttransformcount.html)
+
+[agenttransformgroupmember](agenttransformgroupmember.html)
+
+[agenttransformgroupmemberchannel](agenttransformgroupmemberchannel.html)
+
+[agenttransformgroups](agenttransformgroups.html)
+
+[agenttransformgroupweight](agenttransformgroupweight.html)
+
+[agenttransformnames](agenttransformnames.html)
+
+[agenttransformtolocal](agenttransformtolocal.html)
+
+[agenttransformtoworld](agenttransformtoworld.html)
+
+[agentworldtransform](agentworldtransform.html)
+
+[agentworldtransforms](agentworldtransforms.html)
+
+[cregioncapturetransform](cregioncapturetransform.html)
+
+[cregiondeformtransform](cregiondeformtransform.html)
+
+[cregionoverridetransform](cregionoverridetransform.html)
+
+[ctransform](ctransform.html)
+
+[fromNDC](fromNDC.html)
+
+[getpackedtransform](getpackedtransform.html)
+
+[getspace](getspace.html)
+
+[mspace](mspace.html)
+
+[ndcdepth](ndcdepth.html)
+
+[ntransform](ntransform.html)
+
+[opparentbonetransform](opparentbonetransform.html)
+
+[opparenttransform](opparenttransform.html)
+
+[opparmtransform](opparmtransform.html)
+
+[oppreconstrainttransform](oppreconstrainttransform.html)
+
+[oppreparmtransform](oppreparmtransform.html)
+
+[opprerawparmtransform](opprerawparmtransform.html)
+
+[oppretransform](oppretransform.html)
+
+[oprawparmtransform](oprawparmtransform.html)
+
+[optransform](optransform.html)
+
+[orthographic](orthographic.html)
+
+[ow_nspace](ow_nspace.html)
+
+[ow_space](ow_space.html)
+
+[ow_vspace](ow_vspace.html)
+
+[packedtransform](packedtransform.html)
+
+[perspective](perspective.html)
+
+[polardecomp](polardecomp.html)
+
+[ptransform](ptransform.html)
+
+[qinvert](qinvert.html)
+
+[qrotate](qrotate.html)
+
+[rotate_x_to](rotate_x_to.html)
+
+[setagentchannelvalue](setagentchannelvalue.html)
+
+[setagentchannelvalues](setagentchannelvalues.html)
+
+[setagentlocaltransform](setagentlocaltransform.html)
+
+[setagentlocaltransforms](setagentlocaltransforms.html)
+
+[setagentworldtransform](setagentworldtransform.html)
+
+[setagentworldtransforms](setagentworldtransforms.html)
+
+[setpackedtransform](setpackedtransform.html)
+
+[solveconstraint](solveconstraint.html)
+
+[solvecurve](solvecurve.html)
+
+[solvefbik](solvefbik.html)
+
+[solveik](solveik.html)
+
+[solvephysfbik](solvephysfbik.html)
+
+[toNDC](toNDC.html)
+
+[tw_nspace](tw_nspace.html)
+
+[tw_space](tw_space.html)
+
+[tw_vspace](tw_vspace.html)
+
+[vtransform](vtransform.html)
+
+[wo_nspace](wo_nspace.html)
+
+[wo_space](wo_space.html)
+
+[wo_vspace](wo_vspace.html)
+
+[wt_nspace](wt_nspace.html)
+
+[wt_space](wt_space.html)
+
+[wt_vspace](wt_vspace.html)

@@ -1,46 +1,138 @@
 ---
 title: nametoprim
-order: 32
+order: 33
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Finds a primitive by its name attribute.
+`int nametoprim(<geometry>geometry, string name)`
 
-```c
-int  nametoprim(<geometry>geometry, string name)
-```
+## Arguments
 
 `<geometry>`
 
-When running in the context of a node (such as a wrangle SOP), this argument
-can be an integer representing the input number (starting at 0) to read the
-geometry from.
+When running in the context of a node (such as a wrangle SOP), this argument can be an integer representing the input number (starting at 0) to read the geometry from.
 
-当在一个节点的上下文中运行时（比如 wrangle SOP），这个参数可以是一个整数，代表要读取几何体的输入数字（从 0 开始）。
+Alternatively, the argument can be a string specifying a geometry file (for example, a `.bgeo`) to read from. When running inside Houdini, this can be an `op:/path/to/sop` reference.
 
-Alternatively, the argument can be a string specifying a geometry file (for
-example, a `.bgeo`) to read from. When running inside Houdini, this can be an
+## Returns
 
-```c
-op:/path/to/sop
-```
+The number of the point with the given value in the `name` attribute. Returns `-1` if no point has the given ID, or if the geometry has no `name` attribute.
 
-reference.
+To look up a point by its `id` attribute value, use [idtopoint](idtopoint.html "Finds a point by its id attribute."). To look up a point by an arbitrary string or int attribute value, use [findattribval](findattribval.html "Finds a primitive/point/vertex that has a certain attribute value.").
 
-或者，该参数可以是一个字符串，指定要读取的几何体文件（例如，a.bgeo）。当在 Houdini 内部运行时，这可以是 anop:/path/to/sopreference。
 
-Returns
 
-The number of the point with the given value in the `name` attribute. Returns
-`-1` if no point has the given ID, or if the geometry has no `name` attribute.
+## See also
 
-在 thenameattribute 中具有给定值的点的编号。如果没有给定的 ID 的点，或者几何体没有名字属性，则返回 1。
+- [idtopoint](idtopoint.html)
+- [nametoprim](nametoprim.html)
+- [findattribval](findattribval.html)
 
-To look up a point by its `id` attribute value, use [idtopoint](idtopoint.html "Finds a point by its id attribute."). To look up a point by an arbitrary
-string or int attribute value, use [findattribval](findattribval.html "Finds a
-primitive/point/vertex that has a certain attribute value.").
+|
+prim
 
-要通过它的侧面属性值查找一个点，使用 idtopoint。要通过一个任意的字符串或 int 属性值来查找一个点，使用 efindattribval。
+[addprim](addprim.html)
+
+[addprimattrib](addprimattrib.html)
+
+[curvearclen](curvearclen.html)
+
+[hasprimattrib](hasprimattrib.html)
+
+[hedge_prim](hedge_prim.html)
+
+[idtoprim](idtoprim.html)
+
+[inprimgroup](inprimgroup.html)
+
+[nametoprim](nametoprim.html)
+
+[nprimitives](nprimitives.html)
+
+[nprimitivesgroup](nprimitivesgroup.html)
+
+[pointprims](pointprims.html)
+
+[prim](prim.html)
+
+[prim_attribute](prim_attribute.html)
+
+[prim_normal](prim_normal.html)
+
+[primarclen](primarclen.html)
+
+[primattrib](primattrib.html)
+
+[primattribsize](primattribsize.html)
+
+[primattribtype](primattribtype.html)
+
+[primattribtypeinfo](primattribtypeinfo.html)
+
+[primduv](primduv.html)
+
+[primfind](primfind.html)
+
+[primhedge](primhedge.html)
+
+[priminteriorweights](priminteriorweights.html)
+
+[primintrinsic](primintrinsic.html)
+
+[primpoint](primpoint.html)
+
+[primpoints](primpoints.html)
+
+[primuv](primuv.html)
+
+[primuvconvert](primuvconvert.html)
+
+[primvertex](primvertex.html)
+
+[primvertexcount](primvertexcount.html)
+
+[primvertices](primvertices.html)
+
+[removeprim](removeprim.html)
+
+[setprimattrib](setprimattrib.html)
+
+[setprimgroup](setprimgroup.html)
+
+[setprimintrinsic](setprimintrinsic.html)
+
+[setprimvertex](setprimvertex.html)
+
+[vertexcurveparam](vertexcurveparam.html)
+
+[vertexindex](vertexindex.html)
+
+[vertexprim](vertexprim.html)
+
+[vertexprimindex](vertexprimindex.html)
+
+|
+search
+
+[findattribval](findattribval.html)
+
+[findattribvalcount](findattribvalcount.html)
+
+[idtopoint](idtopoint.html)
+
+[idtoprim](idtoprim.html)
+
+[intersect](intersect.html)
+
+[nametopoint](nametopoint.html)
+
+[nametoprim](nametoprim.html)
+
+[nuniqueval](nuniqueval.html)
+
+[primfind](primfind.html)
+
+[uniqueval](uniqueval.html)
+
+[uniquevals](uniquevals.html)

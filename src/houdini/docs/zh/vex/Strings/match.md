@@ -1,56 +1,104 @@
 ---
 title: match
-order: 17
+order: 21
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-This function returns 1 if the subject matches the pattern specified,  
-or 0 if the subject doesn‘t match.
+`int match(string pattern, string subject)`
 
-```c
-int  match(string pattern, string subject)
-```
-
-This function returns 1 if the subject matches the pattern specified, or0 if
-the subject doesn‘t match. The standard Houdini pattern matching isused.
-Multiple patterns may be separated by spaces or commas. Thespecial characters
-for matching are:
-
-如果主题与指定的模式相匹配，该函数返回 1；如果主题不匹配，则返回 0。
+This function returns 1 if the subject matches the pattern specified, or
+0 if the subject doesn’t match. The standard Houdini pattern matching is
+used. Multiple patterns may be separated by spaces or commas. The
+special characters for matching are:
 
 - `?` Match any character
-
-如果主题不匹配，则返回 0。标准的 Houdini 模式匹配被
-
 - `*` Match any substring
-
-使用。多个模式可以用空格或逗号分开。用于匹配的
-
-- ` ` Match any of the characters specified in the list.
-
-匹配的特殊字符是。
-
-- If a pattern is prefixed by a caret (^), then subjects which matchthis pattern will be excluded from the match.
-
-匹配任何字符
+- `[list]` Match any of the characters specified in the list.
+- If a pattern is prefixed by a caret (^), then subjects which match
+  this pattern will be excluded from the match.
 
 Examples:
 
-- `a*` \- Match any string beginning with a.
+- `a*` - Match any string beginning with a.
+- `a*,^aardvark` - Match any string beginning with a except for
+  aardvark.
+- `[abc]*z` - Match any string beginning with a, b or c and ending with
+  z.
+- `g*,^geo*` - Match any string beginning with g, but not any string
+  beginning with geo.
 
-\*匹配任何子串
 
-- `a*,^aardvark` \- Match any string beginning with a except foraardvark.
+string
 
-[列表]匹配列表中指定的任何字符。
+[atof](atof.html)
 
-- `[abc]*z` \- Match any string beginning with a, b or c and ending withz.
+[atoi](atoi.html)
 
-如果一个模式的前缀是圆点（^），那么与此模式相匹配的主题将被排除在匹配之外。
+[concat](concat.html)
 
-- `g*,^geo*` \- Match any string beginning with g, but not any stringbeginning with geo.
+[decode](decode.html)
 
-的主体将被排除在匹配之外。
+[decodeattrib](decodeattrib.html)
+
+[decodeparm](decodeparm.html)
+
+[decodeutf8](decodeutf8.html)
+
+[encode](encode.html)
+
+[encodeattrib](encodeattrib.html)
+
+[encodeparm](encodeparm.html)
+
+[encodeutf8](encodeutf8.html)
+
+[error](error.html)
+
+[expand_udim](expand_udim.html)
+
+[find](find.html)
+
+[has_udim](has_udim.html)
+
+[insert](insert.html)
+
+[isvalidindex](isvalidindex.html)
+
+[itoa](itoa.html)
+
+[join](join.html)
+
+[lstrip](lstrip.html)
+
+[makevalidvarname](makevalidvarname.html)
+
+[match](match.html)
+
+[pluralize](pluralize.html)
+
+[print_once](print_once.html)
+
+[printf](printf.html)
+
+[relativepath](relativepath.html)
+
+[replace](replace.html)
+
+[replace_match](replace_match.html)
+
+[rstrip](rstrip.html)
+
+[split](split.html)
+
+[splitpath](splitpath.html)
+
+[sprintf](sprintf.html)
+
+[strip](strip.html)
+
+[strlen](strlen.html)
+
+[texprintf](texprintf.html)
+
+[warning](warning.html)

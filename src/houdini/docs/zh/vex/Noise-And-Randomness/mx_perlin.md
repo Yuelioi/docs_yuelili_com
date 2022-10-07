@@ -1,48 +1,43 @@
 ---
 title: mx_perlin
-order: 14
+order: 20
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-MaterialX compatible Worley noise
+`float|vector mx\_perlin(vector2 pos)`
 
-```c
-float|vector|vector2 mx_worley(vector2 pos, float jitter, int metric)
-```
+`float|vector mx\_perlin(vector pos)`
 
-```c
-float|vector|vector2 mx_worley(vector pos, float jitter, int metric)
-```
+Returns a noise value that matches the values as in the standard MaterialX library.
 
-Returns a Worley Noise value that matches the values as in the standard
-MaterialX library.
 
-返回一个与标准 MaterialX 库中的数值相匹配的沃利噪声值。
+random
 
-Jitter should normally be clamped between 0 and 1.
+[curlgxnoise](curlgxnoise.html)
 
-抖动通常应该被钳制在 0 到 1 之间。
+[curlgxnoise2d](curlgxnoise2d.html)
 
-The metric is an integer representing how the distance is measured for Worley
-noise
+[gxnoise](gxnoise.html)
 
-指标是一个整数，代表 Worley 噪声的距离是如何测量的
+[mx_cellnoise](mx_cellnoise.html)
 
-- 0 - Euclidean Distance
+[mx_perlin](mx_perlin.html)
 
-0 - 欧几里得距离
+[mx_voronoi](mx_voronoi.html)
 
-- 1 - Distance Squared
+[mx_worley](mx_worley.html)
 
-1 - 距离的平方
+[nrandom](nrandom.html)
 
-- 2 - Manhattan Distance
+[rand](rand.html)
 
-2 - 曼哈顿距离
+[random](random.html)
 
-- 3 - Chebyshev Distance
+[random_fhash](random_fhash.html)
 
-3 - Chebyshev 距离
+[random_ihash](random_ihash.html)
+
+[random_poisson](random_poisson.html)
+
+[random_shash](random_shash.html)

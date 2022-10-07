@@ -1,67 +1,100 @@
 ---
 title: ocio_transform
-order: 6
+order: 8
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Transform colors using Open Color IO
+`vector ocio\_transform(string dest, vector clr)`
 
-```c
-vector  ocio_transform(string dest, vector clr)
-```
+`vector ocio\_transform(string src, string dest, vector clr)`
 
-```c
-vector  ocio_transform(string src, string dest, vector clr)
-```
-
-```c
-vector  ocio_transform(string src, string dest, string looks, vector clr)
-```
+`vector ocio\_transform(string src, string dest, string looks, vector clr)`
 
 Transform a three-component color into a new color space.
 
-将一个三成分的颜色转换到一个新的颜色空间。
+`vector4 ocio\_transform(string dest, vector4 clr)`
 
-```c
-vector4  ocio_transform(string dest, vector4 clr)
-```
+`vector4 ocio\_transform(string src, string dest, vector4 clr)`
 
-```c
-vector4  ocio_transform(string src, string dest, vector4 clr)
-```
-
-```c
-vector4  ocio_transform(string src, string dest, string looks, vector4 clr)
-```
+`vector4 ocio\_transform(string src, string dest, string looks, vector4 clr)`
 
 Transform a four-component color into a new color space.
 
-将四成分的颜色转换到一个新的颜色空间中。
+## Arguments
 
 `src`
 
-The name of the color space to transform from. If this is not given, the
-function assumes the space assigned to `"data"`.
-
-要转换的颜色空间的名称。如果没有给出，函数将假定分配给 "data "的空间。
+The name of the color space to transform from. If this is not given, the function assumes the space assigned to `"data"`.
 
 `dest`
 
 The name of the color space to transform to.
 
-要转换的颜色空间的名称。
-
 `looks`
 
 A comma separated list of color gradings (also known as “looks”).
-
-以逗号分隔的颜色等级列表（也称为 "外观"）。
 
 `clr`
 
 The color to transform.
 
-要转换的颜色。
+
+
+## See also
+
+- [ocio_spaces](ocio_spaces.html)
+
+|
+color
+
+[blackbody](blackbody.html)
+
+[colormap](colormap.html)
+
+[ctransform](ctransform.html)
+
+[environment](environment.html)
+
+[hsvtorgb](hsvtorgb.html)
+
+[luminance](luminance.html)
+
+[ocio_activedisplays](ocio_activedisplays.html)
+
+[ocio_activeviews](ocio_activeviews.html)
+
+[ocio_import](ocio_import.html)
+
+[ocio_transform](ocio_parsecolorspace.html)
+
+[ocio_roles](ocio_roles.html)
+
+[ocio_spaces](ocio_spaces.html)
+
+[ocio_transform](ocio_transform.html)
+
+[rawcolormap](rawcolormap.html)
+
+[rgbtohsv](rgbtohsv.html)
+
+[rgbtoxyz](rgbtoxyz.html)
+
+[xyztorgb](xyztorgb.html)
+
+|
+ocio
+
+[ocio_activedisplays](ocio_activedisplays.html)
+
+[ocio_activeviews](ocio_activeviews.html)
+
+[ocio_import](ocio_import.html)
+
+[ocio_transform](ocio_parsecolorspace.html)
+
+[ocio_roles](ocio_roles.html)
+
+[ocio_spaces](ocio_spaces.html)
+
+[ocio_transform](ocio_transform.html)

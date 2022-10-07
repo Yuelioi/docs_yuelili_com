@@ -1,24 +1,53 @@
 ---
 title: fit10
-order: 14
+order: 8
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Takes the value in the range `(1, 0)` and shifts it to the corresponding value
-in a new range.
+`float fit10(float value, float nmin, float nmax)`
 
-```c
-float  fit10(float value, float nmin, float nmax)
-```
+`<vector> fit10(<vector>value, <vector>nmin, <vector>nmax)`
 
-```c
-<vector> fit10(<vector>value, <vector>nmin, <vector>nmax)
-```
+Takes the value in the range `(1, 0)` and shifts it to the corresponding value in the new range (nmin, nmax). For vectors it does this per-component.
 
-Takes the value in the range (1, 0) and shifts it to the corresponding value
-in the new range (nmin, nmax). For vectors it does this per-component.
 
-获取范围（1, 0）中的值，并将其移到新范围（nmin,nmax）中的相应值。对于向量来说，它是按分量进行的。
+
+## See also
+
+- [clamp](clamp.html)
+- [fit](fit.html)
+- [fit01](fit01.html)
+- [fit11](fit11.html)
+- [efit](efit.html)
+
+|
+interp
+
+[ckspline](ckspline.html)
+
+[clamp](clamp.html)
+
+[cspline](cspline.html)
+
+[efit](efit.html)
+
+[fit](fit.html)
+
+[fit01](fit01.html)
+
+[fit10](fit10.html)
+
+[fit11](fit11.html)
+
+[invlerp](invlerp.html)
+
+[lerp](lerp.html)
+
+[lkspline](lkspline.html)
+
+[lspline](lspline.html)
+
+[slerp](slerp.html)
+
+[smooth](smooth.html)

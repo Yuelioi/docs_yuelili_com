@@ -1,17 +1,25 @@
 ---
 title: unpack_intfromsafefloat
-order: 21
+order: 22
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Reverses the packing of pack_inttosafefloat to get back the original integer.
+`int unpack\_intfromsafefloat(float f)`
 
-```c
-int  unpack_intfromsafefloat(float f)
-```
+See [pack_inttosafefloat](pack_inttosafefloat.html "Reversibly packs an integer into a finite, non-denormal float.")
 
-See [pack_inttosafefloat](pack_inttosafefloat.html "Reversibly packs an
-integer into a finite, non-denormal float.")
+
+
+## See also
+
+- [pack_inttosafefloat](pack_inttosafefloat.html)
+- [xyzdist](xyzdist.html)
+- [intersect](intersect.html)
+
+|
+polysoup
+
+[pack_inttosafefloat](pack_inttosafefloat.html)
+
+[unpack_intfromsafefloat](unpack_intfromsafefloat.html)

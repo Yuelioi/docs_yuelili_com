@@ -1,27 +1,80 @@
 ---
 title: prescale
-order: 18
+order: 19
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Prescales the given matrix in three directions simultaneously (X, Y, Z -  
-given by the components of the scale_vector).
 
-| Since | 17.5 |
-| ----- | ---- |
 
-```c
-void  prescale(matrix &m, vector scale_vector)
-```
+Since 17.5
 
-```c
-void  prescale(matrix3 &m, vector scale_vector)
-```
+`void prescale(matrix &m, vector scale\_vector)`
 
-Prescales the matrix in three directions simultaneously by the factors in the
-vector.This modifies the matrix in-place, rather than returning a new matrix.
+`void prescale(matrix3 &m, vector scale\_vector)`
 
-通过向量中的因子同时在三个方向上对矩阵进行预标度。
+Prescales the matrix in three directions simultaneously by the factors in the vector.
+This modifies the matrix in-place, rather than returning a new matrix.
+
+
+
+## See also
+
+- [pretranslate](pretranslate.html)
+- [prerotate](prerotate.html)
+- [translate](translate.html)
+- [rotate](rotate.html)
+- [scale](scale.html)
+
+|
+matrix
+
+[\_\_uniform\_mul](### uniform_mul.html)
+
+[\_\_uniform\_premul](### uniform_premul.html)
+
+[combinelocaltransform](combinelocaltransform.html)
+
+[cracktransform](cracktransform.html)
+
+[determinant](determinant.html)
+
+[diagonalizesymmetric](diagonalizesymmetric.html)
+
+[dihedral](dihedral.html)
+
+[eigenvalues](eigenvalues.html)
+
+[extractlocaltransform](extractlocaltransform.html)
+
+[ident](ident.html)
+
+[instance](instance.html)
+
+[invert](invert.html)
+
+[lookat](lookat.html)
+
+[maketransform](maketransform.html)
+
+[outerproduct](outerproduct.html)
+
+[premul](premul.html)
+
+[prerotate](prerotate.html)
+
+[prescale](prescale.html)
+
+[pretranslate](pretranslate.html)
+
+[rotate](rotate.html)
+
+[scale](scale.html)
+
+[smoothrotation](smoothrotation.html)
+
+[svddecomp](svddecomp.html)
+
+[translate](translate.html)
+
+[transpose](transpose.html)

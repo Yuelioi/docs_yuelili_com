@@ -1,24 +1,23 @@
 ---
 title: abspath
-order: 1
+order: 2
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Returns the full path of a file.
 
-| Since | 18.0 |
-| ----- | ---- |
 
-```c
-string  abspath(string relpath)
-```
+Since 18.0
 
-Returns the supplied path converted to an absolute path. Relative pathsare
-treated as relative to Houdini‘scurrent working directory. If thesupplied
-path is already absolute, the path is returned unchanged. The filedoes not
-need to exist.
+`string abspath(string relpath)`
 
-返回所提供的路径转换为绝对路径。相对路径
+Returns the supplied path converted to an absolute path. Relative paths
+are treated as relative to Houdini’s current working directory. If the
+supplied path is already absolute, the path is returned unchanged. The file
+does not need to exist.
+
+
+
+## See also
+
+- [relpath](relpath.html)

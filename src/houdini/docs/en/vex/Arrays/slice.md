@@ -49,8 +49,8 @@ slice(nums, 0, 0, 0, 0, 1, 2) == {20, 40, 60}; // nums[::2]
 
 ## See also
 
-- [Arrays ](../arrays.html)
-- [len ](len.html)
-- [push ](push.html)
-- [append ](append.html)
-- [resize ](resize.html)
+- [Arrays](../arrays.html)
+- [len](len.html)
+- [push](push.html)
+- [append](append.html)
+- [resize](resize.html)

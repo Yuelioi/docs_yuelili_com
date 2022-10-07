@@ -1,74 +1,398 @@
 ---
 title: usd_transformname
-order: 142
+order: 144
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Constructs a full name of a transform operation
 
-| Since | 18.0 |
-| ----- | ---- |
 
-```c
-string  usd_transformname(int transformtype, string suffix)
-```
+Since 18.0
 
-This function returns the full name of a transform operation for the given
-type and suffix.
+`string usd\_transformname(int transformtype, string suffix)`
 
-此函数返回给定类型和后缀的转换操作的全名。
+This function returns the full name of a transform operation for the given type and suffix.
+
+## Arguments
 
 `transformtype`
 
-The numerical code for the transformation type. See the VEX “usd.h” header for
-defines, such as
-
-```c
-USD_XFORM_TRANSLATE
-```
-
-,
-
-```c
-USD_XFORM_TRANSFORM
-```
-
-, or
-
-```c
-USD_XFORM_ROTATE_XYZ
-```
-
-.
-
-转换类型的数字代码。参见 VEX "usd.h
-"头中的定义，如 USD_XFORM_TRANSLATE,USD_XFORM_TRANSFORM 或 USD_XFORM_ROTATE_XYZ。
+The numerical code for the transformation type. See the VEX “usd.h” header for defines, such as `USD_XFORM_TRANSLATE`, `USD_XFORM_TRANSFORM`, or `USD_XFORM_ROTATE_XYZ`.
 
 `suffix`
 
 The transform operation suffix.
 
-转换操作后缀。
+USD primitives are transformed in space by a series of transform operations whose full names are sequentially listed in the `xformOpOrder` attribute. Full names are namespaced, encode the operation transform type (e.g., translation or rotation), and can also contain a suffix. If primitive has a few operations of the same type, it’s necessary to specify the suffix to differentiate between them. This parameter specifies such a suffix.
 
-USD primitives are transformed in space by a series of transform operations
-whose full names are sequentially listed in the `xformOpOrder` attribute.Full
-names are namespaced, encode the operation transform type (e.g., translation
-or rotation), and can also contain a suffix. If primitive has a few operations
-of the same type, it‘snecessary to specify the suffix to differentiate
-between them. This parameter specifies such a suffix.
-
-美元基元通过一系列转换操作在空间里进行转换，这些转换操作的全名按顺序列在 xformOpOrder 属性里。
-全名是命名的，对操作转换类型（如平移或旋转）进行编码，还可包含一个后缀。如果基元有几个相同类型的操作，就有必要指定后缀以区分它们。此参数指定了这样一个后缀。
-
-Returns
+## Returns
 
 The full name of transform operation.
 
-变换操作的全名。
-
 ## Examples
 
-    // Construct a full name for a translation operation with suffix "cone_pivot"string pivot_xform_name = usd_transformname(USD_XFORM_TRANSLATE, "cone_pivot");
+[¶](#examples)
+
+```c
+// Construct a full name for a translation operation with suffix "cone\_pivot"
+string pivot\_xform\_name = usd\_transformname(USD\_XFORM\_TRANSLATE, "cone\_pivot");
+
+```
+
+
+
+## See also
+
+- [usd_uniquetransformname](usd_uniquetransformname.html)
+- [usd_transformtype](usd_transformtype.html)
+- [usd_transformsuffix](usd_transformsuffix.html)
+
+|
+usd
+
+[usd_addattrib](usd_addattrib.html)
+
+[usd_addcollectionexclude](usd_addcollectionexclude.html)
+
+[usd_addcollectioninclude](usd_addcollectioninclude.html)
+
+[usd_addinversetotransformorder](usd_addinversetotransformorder.html)
+
+[usd_addorient](usd_addorient.html)
+
+[usd_addprim](usd_addprim.html)
+
+[usd_addprimvar](usd_addprimvar.html)
+
+[usd_addrelationshiptarget](usd_addrelationshiptarget.html)
+
+[usd_addrotate](usd_addrotate.html)
+
+[usd_addscale](usd_addscale.html)
+
+[usd_addtotransformorder](usd_addtotransformorder.html)
+
+[usd_addtransform](usd_addtransform.html)
+
+[usd_addtranslate](usd_addtranslate.html)
+
+[usd_attrib](usd_attrib.html)
+
+[usd_attribelement](usd_attribelement.html)
+
+[usd_attriblen](usd_attriblen.html)
+
+[usd_attribnames](usd_attribnames.html)
+
+[usd_attribsize](usd_attribsize.html)
+
+[usd_attribtimesamples](usd_attribtimesamples.html)
+
+[usd_attribtypename](usd_attribtypename.html)
+
+[usd_blockattrib](usd_blockattrib.html)
+
+[usd_blockprimvar](usd_blockprimvar.html)
+
+[usd_blockprimvarindices](usd_blockprimvarindices.html)
+
+[usd_blockrelationship](usd_blockrelationship.html)
+
+[usd_boundmaterialpath](usd_boundmaterialpath.html)
+
+[usd_childnames](usd_childnames.html)
+
+[usd_clearmetadata](usd_clearmetadata.html)
+
+[usd_cleartransformorder](usd_cleartransformorder.html)
+
+[usd_collectioncomputedpaths](usd_collectioncomputedpaths.html)
+
+[usd_collectioncontains](usd_collectioncontains.html)
+
+[usd_collectionexcludes](usd_collectionexcludes.html)
+
+[usd_collectionexpansionrule](usd_collectionexpansionrule.html)
+
+[usd_collectionincludes](usd_collectionincludes.html)
+
+[usd_drawmode](usd_drawmode.html)
+
+[usd_findtransformname](usd_findtransformname.html)
+
+[usd_flattenediprimvar](usd_flattenediprimvar.html)
+
+[usd_flattenediprimvarelement](usd_flattenediprimvarelement.html)
+
+[usd_flattenedprimvar](usd_flattenedprimvar.html)
+
+[usd_flattenedprimvarelement](usd_flattenedprimvarelement.html)
+
+[usd_getbbox](usd_getbbox.html)
+
+[usd_getbbox_center](usd_getbbox_center.html)
+
+[usd_getbbox_max](usd_getbbox_max.html)
+
+[usd_getbbox_min](usd_getbbox_min.html)
+
+[usd_getbbox_size](usd_getbbox_size.html)
+
+[usd_getbounds](usd_getbounds.html)
+
+[usd_getpointinstancebounds](usd_getpointinstancebounds.html)
+
+[usd_hasapi](usd_hasapi.html)
+
+[usd_haspayload](usd_haspayload.html)
+
+[usd_iprimvar](usd_iprimvar.html)
+
+[usd_iprimvarelement](usd_iprimvarelement.html)
+
+[usd_iprimvarelementsize](usd_iprimvarelementsize.html)
+
+[usd_iprimvarindices](usd_iprimvarindices.html)
+
+[usd_iprimvarinterpolation](usd_iprimvarinterpolation.html)
+
+[usd_iprimvarlen](usd_iprimvarlen.html)
+
+[usd_iprimvarnames](usd_iprimvarnames.html)
+
+[usd_iprimvarsize](usd_iprimvarsize.html)
+
+[usd_iprimvartimesamples](usd_iprimvartimesamples.html)
+
+[usd_iprimvartypename](usd_iprimvartypename.html)
+
+[usd_isabstract](usd_isabstract.html)
+
+[usd_isactive](usd_isactive.html)
+
+[usd_isarray](usd_isarray.html)
+
+[usd_isarrayiprimvar](usd_isarrayiprimvar.html)
+
+[usd_isarraymetadata](usd_isarraymetadata.html)
+
+[usd_isarrayprimvar](usd_isarrayprimvar.html)
+
+[usd_isattrib](usd_isattrib.html)
+
+[usd_iscollection](usd_iscollection.html)
+
+[usd_iscollectionpath](usd_iscollectionpath.html)
+
+[usd_isindexediprimvar](usd_isindexediprimvar.html)
+
+[usd_isindexedprimvar](usd_isindexedprimvar.html)
+
+[usd_isinstance](usd_isinstance.html)
+
+[usd_isiprimvar](usd_isiprimvar.html)
+
+[usd_iskind](usd_iskind.html)
+
+[usd_ismetadata](usd_ismetadata.html)
+
+[usd_ismodel](usd_ismodel.html)
+
+[usd_isprim](usd_isprim.html)
+
+[usd_isprimvar](usd_isprimvar.html)
+
+[usd_isrelationship](usd_isrelationship.html)
+
+[usd_isstage](usd_isstage.html)
+
+[usd_istransformreset](usd_istransformreset.html)
+
+[usd_istype](usd_istype.html)
+
+[usd_isvisible](usd_isvisible.html)
+
+[usd_kind](usd_kind.html)
+
+[usd_localtransform](usd_localtransform.html)
+
+[usd_makeattribpath](usd_makeattribpath.html)
+
+[usd_makecollectionpath](usd_makecollectionpath.html)
+
+[usd_makepropertypath](usd_makepropertypath.html)
+
+[usd_makerelationshippath](usd_makerelationshippath.html)
+
+[usd_makevalidprimname](usd_makevalidprimname.html)
+
+[usd_makevalidprimpath](usd_makevalidprimpath.html)
+
+[usd_metadata](usd_metadata.html)
+
+[usd_metadataelement](usd_metadataelement.html)
+
+[usd_metadatalen](usd_metadatalen.html)
+
+[usd_metadatanames](usd_metadatanames.html)
+
+[usd_name](usd_name.html)
+
+[usd_parentpath](usd_parentpath.html)
+
+[usd_pointinstance_getbbox](usd_pointinstance_getbbox.html)
+
+[usd_pointinstance_getbbox_center](usd_pointinstance_getbbox_center.html)
+
+[usd_pointinstance_getbbox_max](usd_pointinstance_getbbox_max.html)
+
+[usd_pointinstance_getbbox_min](usd_pointinstance_getbbox_min.html)
+
+[usd_pointinstance_getbbox_size](usd_pointinstance_getbbox_size.html)
+
+[usd_pointinstance_relbbox](usd_pointinstance_relbbox.html)
+
+[usd_pointinstancetransform](usd_pointinstancetransform.html)
+
+[usd_primvar](usd_primvar.html)
+
+[usd_primvarattribname](usd_primvarattribname.html)
+
+[usd_primvarelement](usd_primvarelement.html)
+
+[usd_primvarelementsize](usd_primvarelementsize.html)
+
+[usd_primvarindices](usd_primvarindices.html)
+
+[usd_primvarinterpolation](usd_primvarinterpolation.html)
+
+[usd_primvarlen](usd_primvarlen.html)
+
+[usd_primvarnames](usd_primvarnames.html)
+
+[usd_primvarsize](usd_primvarsize.html)
+
+[usd_primvartimesamples](usd_primvartimesamples.html)
+
+[usd_primvartypename](usd_primvartypename.html)
+
+[usd_purpose](usd_purpose.html)
+
+[usd_relationshipforwardedtargets](usd_relationshipforwardedtargets.html)
+
+[usd_relationshipnames](usd_relationshipnames.html)
+
+[usd_relationshiptargets](usd_relationshiptargets.html)
+
+[usd_relbbox](usd_relbbox.html)
+
+[usd_removerelationshiptarget](usd_removerelationshiptarget.html)
+
+[usd_setactive](usd_setactive.html)
+
+[usd_setattrib](usd_setattrib.html)
+
+[usd_setattribelement](usd_setattribelement.html)
+
+[usd_setcollectionexcludes](usd_setcollectionexcludes.html)
+
+[usd_setcollectionexpansionrule](usd_setcollectionexpansionrule.html)
+
+[usd_setcollectionincludes](usd_setcollectionincludes.html)
+
+[usd_setdrawmode](usd_setdrawmode.html)
+
+[usd_setkind](usd_setkind.html)
+
+[usd_setmetadata](usd_setmetadata.html)
+
+[usd_setmetadataelement](usd_setmetadataelement.html)
+
+[usd_setprimvar](usd_setprimvar.html)
+
+[usd_setprimvarelement](usd_setprimvarelement.html)
+
+[usd_setprimvarelementsize](usd_setprimvarelementsize.html)
+
+[usd_setprimvarindices](usd_setprimvarindices.html)
+
+[usd_setprimvarinterpolation](usd_setprimvarinterpolation.html)
+
+[usd_setpurpose](usd_setpurpose.html)
+
+[usd_setrelationshiptargets](usd_setrelationshiptargets.html)
+
+[usd_settransformorder](usd_settransformorder.html)
+
+[usd_settransformreset](usd_settransformreset.html)
+
+[usd_setvariantselection](usd_setvariantselection.html)
+
+[usd_setvisibility](usd_setvisibility.html)
+
+[usd_setvisible](usd_setvisible.html)
+
+[usd_specifier](usd_specifier.html)
+
+[usd_transformname](usd_transformname.html)
+
+[usd_transformorder](usd_transformorder.html)
+
+[usd_transformsuffix](usd_transformsuffix.html)
+
+[usd_transformtype](usd_transformtype.html)
+
+[usd_typename](usd_typename.html)
+
+[usd_uniquetransformname](usd_uniquetransformname.html)
+
+[usd_variants](usd_variants.html)
+
+[usd_variantselection](usd_variantselection.html)
+
+[usd_variantsets](usd_variantsets.html)
+
+[usd_worldtransform](usd_worldtransform.html)
+
+|
+usd_transform
+
+[usd_addinversetotransformorder](usd_addinversetotransformorder.html)
+
+[usd_addorient](usd_addorient.html)
+
+[usd_addrotate](usd_addrotate.html)
+
+[usd_addscale](usd_addscale.html)
+
+[usd_addtotransformorder](usd_addtotransformorder.html)
+
+[usd_addtransform](usd_addtransform.html)
+
+[usd_addtranslate](usd_addtranslate.html)
+
+[usd_cleartransformorder](usd_cleartransformorder.html)
+
+[usd_findtransformname](usd_findtransformname.html)
+
+[usd_getbounds](usd_getbounds.html)
+
+[usd_istransformreset](usd_istransformreset.html)
+
+[usd_localtransform](usd_localtransform.html)
+
+[usd_settransformorder](usd_settransformorder.html)
+
+[usd_settransformreset](usd_settransformreset.html)
+
+[usd_transformname](usd_transformname.html)
+
+[usd_transformorder](usd_transformorder.html)
+
+[usd_transformsuffix](usd_transformsuffix.html)
+
+[usd_transformtype](usd_transformtype.html)
+
+[usd_uniquetransformname](usd_uniquetransformname.html)
+
+[usd_worldtransform](usd_worldtransform.html)

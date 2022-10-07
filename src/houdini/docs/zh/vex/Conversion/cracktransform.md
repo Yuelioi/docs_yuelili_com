@@ -1,66 +1,207 @@
 ---
 title: cracktransform
-order: 3
+order: 4
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Depending on the value of c, returns the translate (c=0), rotate  
-(c=1), scale (c=2), or shears (c=3) component of the transform (xform).
+`vector cracktransform(int trs, int xyz, int c, vector pivot, vector pivot\_rotate, matrix xform)`
 
-`vector cracktransform(int trs, int xyz, int c, vector pivot, vector pivot_rotate, matrix xform)`
+`vector cracktransform(int trs, int xyz, int c, vector pivot, matrix xform)`
 
-```c
-vector  cracktransform(int trs, int xyz, int c, vector pivot, matrix xform)
-```
+Depending on the value of c, returns the translate (`c=0`), rotate
+(`c=1` or `c=4`), scale (`c=2`) or shears (`c=3`) component of the transform (xform). The
+function uses the given transform and rotation orders (trs and
+xyz) , the given pivot point (pivot) and optional pivot rotation (pr) to calculate the return
+value. The specifications for the trs and xyz parameters can be
+found in `$HFS/houdini/vex/include/math.h`.
 
-Depending on the value of c, returns the translate (`c=0`), rotate(`c=1` or
-`c=4`), scale (`c=2`) or shears (`c=3`) component of the transform (xform).
-Thefunction uses the given transform and rotation orders (trs andxyz) , the
-given pivot point (pivot) and optional pivot rotation (pr) to calculate the
-returnvalue. The specifications for the trs and xyz parameters can befound in
+::: info Note
 
-```c
-$HFS/houdini/vex/include/math.h
-```
+Rotation angles (when `c=1`) are returned in degrees, whereas many other VEX functions use radians.
+You can use the [radians](radians.html "Converts the argument from degrees into radians.") VEX function to convert the vector of angles in degrees to a vector of angles in radians.
+For example: `vector angles = radians(cracktransform(XFORM_TRS, XFORM_XYZ, 1, {0,0,0}, M));`
 
-.
-
-根据 c 的值，返回平移（c=0）、旋转
-
-Note
-
-Rotation angles (when `c=1`) are returned in degrees, whereas many other VEX
-functions use radians.You can use the [radians](radians.html "Converts the
-
-## 描述
-
-angles in degrees to a vector of angles in radians.For example: `vector angles = radians(cracktransform(XFORM_TRS, XFORM_XYZ, 1, {0,0,0}, M));`
-
-(c=1 或 c=4)、缩放(c=2)或剪切(c=3)的变换分量（xform）。该
-
-Note
+::: info Note
 
 Rotation angles (when `c=4`) are returned in radians.
 
-函数使用给定的变换和旋转命令（trs 和 xyz），给定的支点（pivot）和可选的支点旋转（pr）来计算返回值。
+`void cracktransform(int trs, int xyz, vector pivot, vector pivot\_rotate, matrix xform, vector &t, vector &r, vector &s, vector &shears)`
 
-`void cracktransform(int trs, int xyz, vector pivot, vector pivot_rotate, matrix xform, vector &t, vector &r, vector &s, vector &shears)`
-
-Returns the translate, rotate, scale, and shear components of xform in t, r,
-s, and shears, respectively.If more than one component is needed, using this
-overload is more efficient than making multiple calls to the other function
-signature.
-
-值。关于 trs 和 xyz 参数的规格可以在
+Returns the translate, rotate, scale, and shear components of xform in t, r, s, and shears, respectively.
+If more than one component is needed, using this overload is more efficient than making multiple calls to the other function signature.
 
 `void cracktransform(int trs, int xyz, vector pivot, matrix xform, vector &t, vector &r, vector &s)`
 
-Returns the translate, rotate, and scale of xform in t, r, s respectively.This
-overload doesn‘t support pivot_rotate or shears.If more than one component
-is needed, using this overload is more efficient than making multiple calls to
-the other function signature.
+Returns the translate, rotate, and scale of xform in t, r, s respectively.
+This overload doesn’t support pivot_rotate or shears.
+If more than one component is needed, using this overload is more efficient than making multiple calls to the other function signature.
 
-在$HFS/houdini/vex/include/math.h 中找到。
+
+
+## See also
+
+- [quaternion](quaternion.html)
+- [polardecomp](polardecomp.html)
+- [eulertoquaternion](eulertoquaternion.html)
+- [qconvert](qconvert.html)
+
+|
+math
+
+[Du](Du.html)
+
+[Dv](Dv.html)
+
+[Dw](Dw.html)
+
+[abs](abs.html)
+
+[acos](acos.html)
+
+[asin](asin.html)
+
+[atan](atan.html)
+
+[atten](atten.html)
+
+[avg](avg.html)
+
+[cbrt](cbrt.html)
+
+[ceil](ceil.html)
+
+[cos](cos.html)
+
+[cosh](cosh.html)
+
+[cracktransform](cracktransform.html)
+
+[cross](cross.html)
+
+[degrees](degrees.html)
+
+[dot](dot.html)
+
+[erf](erf.html)
+
+[erf_inv](erf_inv.html)
+
+[erfc](erfc.html)
+
+[exp](exp.html)
+
+[floor](floor.html)
+
+[frac](frac.html)
+
+[fuzzify](fuzzify.html)
+
+[getderiv](getderiv.html)
+
+[isfinite](isfinite.html)
+
+[isnan](isnan.html)
+
+[log](log.html)
+
+[log10](log10.html)
+
+[max](max.html)
+
+[min](min.html)
+
+[pow](pow.html)
+
+[product](product.html)
+
+[radians](radians.html)
+
+[resample_linear](resample_linear.html)
+
+[rint](rint.html)
+
+[shl](shl.html)
+
+[shr](shr.html)
+
+[shrz](shrz.html)
+
+[sign](sign.html)
+
+[sin](sin.html)
+
+[sinh](sinh.html)
+
+[solvecubic](solvecubic.html)
+
+[solvepoly](solvepoly.html)
+
+[solvequadratic](solvequadratic.html)
+
+[solvetriangleSSS](solvetriangleSSS.html)
+
+[sqrt](sqrt.html)
+
+[sum](sum.html)
+
+[tan](tan.html)
+
+[tanh](tanh.html)
+
+[trunc](trunc.html)
+
+[variance](variance.html)
+
+|
+matrix
+
+[\_\_uniform\_mul](### uniform_mul.html)
+
+[\_\_uniform\_premul](### uniform_premul.html)
+
+[combinelocaltransform](combinelocaltransform.html)
+
+[cracktransform](cracktransform.html)
+
+[determinant](determinant.html)
+
+[diagonalizesymmetric](diagonalizesymmetric.html)
+
+[dihedral](dihedral.html)
+
+[eigenvalues](eigenvalues.html)
+
+[extractlocaltransform](extractlocaltransform.html)
+
+[ident](ident.html)
+
+[instance](instance.html)
+
+[invert](invert.html)
+
+[lookat](lookat.html)
+
+[maketransform](maketransform.html)
+
+[outerproduct](outerproduct.html)
+
+[premul](premul.html)
+
+[prerotate](prerotate.html)
+
+[prescale](prescale.html)
+
+[pretranslate](pretranslate.html)
+
+[rotate](rotate.html)
+
+[scale](scale.html)
+
+[smoothrotation](smoothrotation.html)
+
+[svddecomp](svddecomp.html)
+
+[translate](translate.html)
+
+[transpose](transpose.html)

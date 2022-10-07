@@ -1,83 +1,199 @@
 ---
 title: primarclen
-order: 45
+order: 47
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Evaluates the length of an arc on a primitive using parametric uv coordinates.
+`float primarclen(<geometry>geometry, vector2 uv1, vector2 uv2, int prim\_num)`
 
-`float primarclen(<geometry>geometry, vector2 uv1, vector2 uv2, int prim_num)`
+`float primarclen(<geometry>geometry, vector2 uv1, vector2 uv2, int prim\_num, int divs)`
 
-`float primarclen(<geometry>geometry, vector2 uv1, vector2 uv2, int prim_num, int divs)`
+`float primarclen(<geometry>geometry, vector2 uv1, vector2 uv2, int prim\_num, int divs, int primuvmode)`
 
-`float primarclen(<geometry>geometry, vector2 uv1, vector2 uv2, int prim_num, int divs, int primuvmode)`
+`float primarclen(<geometry>geometry, vector2 uv1, vector2 uv2, int prim\_num, int divs, int primuvmode, float primuvtol)`
 
-`float primarclen(<geometry>geometry, vector2 uv1, vector2 uv2, int prim_num, int divs, int primuvmode, float primuvtol)`
+Returns the arc length between two parametric UV coordinates on a given primitive. This lets you measure the distance across a polygon face or along a curve.
 
-Returns the arc length between two parametric UV coordinates on a given
-primitive. This lets you measure the distance across a polygon face or along a
-curve.
-
-返回给定基元上两个参数化 UV 坐标之间的弧长。这可以让您测量跨越多边形面或沿曲线的距离。
+## Arguments
 
 `geometry`
 
-A string specifying a geometry file (for example, a `.bgeo`) to read from.
-When running inside Houdini, this can be an
-
-```c
-op:/path/to/sop
-```
-
-reference.
-
-一个字符串，指定要读取的几何文件（例如，a.bgeo）。在胡迪尼内部运行时，这可以是 anop:/path/to/sopreference。
+A string specifying a geometry file (for example, a `.bgeo`) to read from. When running inside Houdini, this can be an `op:/path/to/sop` reference.
 
 `uv1`
 
-The start coordinate in the primitive‘sparametric space to measure between.
-
-基元中要测量的参数空间的起始坐标。
+The start coordinate in the primitive’s parametric space to measure between.
 
 `uv2`
 
-The end coordinate in the primitive‘sparametric space to measure between.
-
-基元参数空间中要测量的终点坐标。
+The end coordinate in the primitive’s parametric space to measure between.
 
 `prim_num`
 
 The number of the primitive across which to measure the distance.
 
-要测量距离的基元的编号。
-
 `divs`
 
 The number of divisions per segment to use or 10 if not supplied.
 
-要使用的每段划分的数目，如果没有提供，则为 10。
-
 `primuvmode`
 
-Define the uv1 and uv2 coordinates units. See
-[primuvconvert](primuvconvert.html "Convert parametric UV locations on curve
-primitives between different spaces.") for the list of modes.
-
-定义 uv1 和 uv2 坐标单位。模式列表见 eprimuvconvert。
+Define the uv1 and uv2 coordinates units. See [primuvconvert](primuvconvert.html "Convert parametric UV locations on curve primitives between different spaces.") for the list of modes.
 
 `primuvtol`
 
-A tolerance used when computing the curve length to do uv coordinates
-conversions.
+A tolerance used when computing the curve length to do uv coordinates conversions.
 
-计算曲线长度时用于进行 uv 坐标转换的公差。
+:::tip
 
-Tip
+You can also read the `arclength` primitive intrinsic attribute to get a curve’s total arc length.
 
-You can also read the `arclength` primitive intrinsic attribute to get a
-curve‘stotal arc length.
 
-你也可以读取 arclengthprimitive 的内在属性来取得曲线的总弧长。
+
+## See also
+
+- [curvearclen](curvearclen.html)
+- [primuvconvert](primuvconvert.html)
+
+|
+measure
+
+[curvearclen](curvearclen.html)
+
+[distance](distance.html)
+
+[distance2](distance2.html)
+
+[getbbox](getbbox.html)
+
+[getbbox_center](getbbox_center.html)
+
+[getbbox_max](getbbox_max.html)
+
+[getbbox_min](getbbox_min.html)
+
+[getbbox_size](getbbox_size.html)
+
+[getbounds](getbounds.html)
+
+[getpointbbox](getpointbbox.html)
+
+[getpointbbox_center](getpointbbox_center.html)
+
+[getpointbbox_max](getpointbbox_max.html)
+
+[getpointbbox_min](getpointbbox_min.html)
+
+[getpointbbox_size](getpointbbox_size.html)
+
+[length](length.html)
+
+[length2](length2.html)
+
+[mdensity](mdensity.html)
+
+[pcfarthest](pcfarthest.html)
+
+[planepointdistance](planepointdistance.html)
+
+[predicate_orient2d](predicate_orient2d.html)
+
+[predicate_orient3d](predicate_orient3d.html)
+
+[primarclen](primarclen.html)
+
+[qdistance](qdistance.html)
+
+[relbbox](relbbox.html)
+
+[relpointbbox](relpointbbox.html)
+
+[surfacedist](surfacedist.html)
+
+[uvdist](uvdist.html)
+
+[xyzdist](xyzdist.html)
+
+|
+prim
+
+[addprim](addprim.html)
+
+[addprimattrib](addprimattrib.html)
+
+[curvearclen](curvearclen.html)
+
+[hasprimattrib](hasprimattrib.html)
+
+[hedge_prim](hedge_prim.html)
+
+[idtoprim](idtoprim.html)
+
+[inprimgroup](inprimgroup.html)
+
+[nametoprim](nametoprim.html)
+
+[nprimitives](nprimitives.html)
+
+[nprimitivesgroup](nprimitivesgroup.html)
+
+[pointprims](pointprims.html)
+
+[prim](prim.html)
+
+[prim_attribute](prim_attribute.html)
+
+[prim_normal](prim_normal.html)
+
+[primarclen](primarclen.html)
+
+[primattrib](primattrib.html)
+
+[primattribsize](primattribsize.html)
+
+[primattribtype](primattribtype.html)
+
+[primattribtypeinfo](primattribtypeinfo.html)
+
+[primduv](primduv.html)
+
+[primfind](primfind.html)
+
+[primhedge](primhedge.html)
+
+[priminteriorweights](priminteriorweights.html)
+
+[primintrinsic](primintrinsic.html)
+
+[primpoint](primpoint.html)
+
+[primpoints](primpoints.html)
+
+[primuv](primuv.html)
+
+[primuvconvert](primuvconvert.html)
+
+[primvertex](primvertex.html)
+
+[primvertexcount](primvertexcount.html)
+
+[primvertices](primvertices.html)
+
+[removeprim](removeprim.html)
+
+[setprimattrib](setprimattrib.html)
+
+[setprimgroup](setprimgroup.html)
+
+[setprimintrinsic](setprimintrinsic.html)
+
+[setprimvertex](setprimvertex.html)
+
+[vertexcurveparam](vertexcurveparam.html)
+
+[vertexindex](vertexindex.html)
+
+[vertexprim](vertexprim.html)
+
+[vertexprimindex](vertexprimindex.html)

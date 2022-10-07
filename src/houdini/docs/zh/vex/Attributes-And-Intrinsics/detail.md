@@ -1,68 +1,197 @@
 ---
 title: detail
-order: 14
+order: 15
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Reads the value of a detail attribute value from a geometry.
+`<type> detail(<geometry>geometry, string attribute\_name, int ignored=0)`
 
-读取 detail 属性
+`<type>[] detail(<geometry>geometry, string attribute\_name, int ignored=0)`
 
-```c
-
-<type> detail(<geometry>geometry, string attribute_name, int ignored=0)
-
-<type>[] detail(<geometry>geometry, string attribute_name, int ignored=0)
-```
-
-## 参数
+## Arguments
 
 `<geometry>`
 
-When running in the context of a node (such as a wrangle SOP), this argument
-can be an integer representing the input number (starting at 0) to read the
-geometry from.
+When running in the context of a node (such as a wrangle SOP), this argument can be an integer representing the input number (starting at 0) to read the geometry from.
 
-当在一个节点的上下文中运行时（比如 wrangle SOP），这个参数可以是一个整数，代表要读取几何体的输入数字（从 0 开始）。
-
-Alternatively, the argument can be a string specifying a geometry file (for
-example, a `.bgeo`) to read from. When running inside Houdini, this can be an`op:/path/to/sop`reference.
-
-或者，该参数可以是一个字符串，指定要读取的几何体文件（例如，a.bgeo）。当在 Houdini 内部运行时，这可以是 anop:/path/to/sopreference。
+Alternatively, the argument can be a string specifying a geometry file (for example, a `.bgeo`) to read from. When running inside Houdini, this can be an `op:/path/to/sop` reference.
 
 `attribute_name`
 
 The name of the attribute (or intrinsic) to read.
 
-要读取的属性（或内在属性）的名称。
-
 `ignored`
 
-The last argument is always ignored.It is just there so you can change a
-prim/point/vertex call (which each have an element number argument) to a
-detail call by changing the name without having to change the arguments as
-well.
+The last argument is always ignored.
+It is just there so you can change a prim/point/vertex call (which each have an element number argument) to a detail call by changing the name without having to change the arguments as well.
 
-最后一个参数总是被忽略的。
-它的存在是为了让你可以通过改变名称来将一个原点/点/顶点的调用（它们都有一个元素编号参数）改变为一个细节调用，而不需要同时改变参数。
+## Returns
 
-Returns
-
-`0` if importing the attribute failed, or the value of the attribute on
-success.
-
-## 示例
-
-```c
-// 普通
-`detail("../box1","input",0)`
+`0` if importing the attribute failed, or the value of the attribute on success.
 
 
-// Vex
-int output = detail(1,"input",0);  // 读取1号输入口几何体的input属性
-int output = detail(-2,"input",0);  //读取自创第2个属性（从-1开始） 可以设置-add spare input
-printf("%s",output);
-```
+attrib
+
+[addattrib](addattrib.html)
+
+[adddetailattrib](adddetailattrib.html)
+
+[addpointattrib](addpointattrib.html)
+
+[addprimattrib](addprimattrib.html)
+
+[addvertexattrib](addvertexattrib.html)
+
+[addvisualizer](addvisualizer.html)
+
+[attrib](attrib.html)
+
+[attribclass](attribclass.html)
+
+[attribdataid](attribdataid.html)
+
+[attribsize](attribsize.html)
+
+[attribtype](attribtype.html)
+
+[attribtypeinfo](attribtypeinfo.html)
+
+[detail](detail.html)
+
+[detailattrib](detailattrib.html)
+
+[detailattribsize](detailattribsize.html)
+
+[detailattribtype](detailattribtype.html)
+
+[detailattribtypeinfo](detailattribtypeinfo.html)
+
+[detailintrinsic](detailintrinsic.html)
+
+[findattribval](findattribval.html)
+
+[findattribvalcount](findattribvalcount.html)
+
+[getattrib](getattrib.html)
+
+[getattribute](getattribute.html)
+
+[hasattrib](hasattrib.html)
+
+[hasdetailattrib](hasdetailattrib.html)
+
+[haspointattrib](haspointattrib.html)
+
+[hasprimattrib](hasprimattrib.html)
+
+[hasvertexattrib](hasvertexattrib.html)
+
+[nuniqueval](nuniqueval.html)
+
+[point](point.html)
+
+[pointattrib](pointattrib.html)
+
+[pointattribsize](pointattribsize.html)
+
+[pointattribtype](pointattribtype.html)
+
+[pointattribtypeinfo](pointattribtypeinfo.html)
+
+[pointlocaltransforms](pointlocaltransforms.html)
+
+[pointtransform](pointtransform.html)
+
+[pointtransformrigid](pointtransformrigid.html)
+
+[pointtransforms](pointtransforms.html)
+
+[pointtransformsrigid](pointtransformsrigid.html)
+
+[prim](prim.html)
+
+[prim_attribute](prim_attribute.html)
+
+[primattrib](primattrib.html)
+
+[primattribsize](primattribsize.html)
+
+[primattribtype](primattribtype.html)
+
+[primattribtypeinfo](primattribtypeinfo.html)
+
+[priminteriorweights](priminteriorweights.html)
+
+[primintrinsic](primintrinsic.html)
+
+[primuv](primuv.html)
+
+[primuvconvert](primuvconvert.html)
+
+[removedetailattrib](removedetailattrib.html)
+
+[removepointattrib](removepointattrib.html)
+
+[removeprimattrib](removeprimattrib.html)
+
+[removevertexattrib](removevertexattrib.html)
+
+[setattrib](setattrib.html)
+
+[setattribtypeinfo](setattribtypeinfo.html)
+
+[setdetailattrib](setdetailattrib.html)
+
+[setpointattrib](setpointattrib.html)
+
+[setpointlocaltransforms](setpointlocaltransforms.html)
+
+[setpointtransform](setpointtransform.html)
+
+[setpointtransforms](setpointtransforms.html)
+
+[setprimattrib](setprimattrib.html)
+
+[setvertexattrib](setvertexattrib.html)
+
+[uniqueval](uniqueval.html)
+
+[uniquevals](uniquevals.html)
+
+[uvsample](uvsample.html)
+
+[vertex](vertex.html)
+
+[vertexattrib](vertexattrib.html)
+
+[vertexattribsize](vertexattribsize.html)
+
+[vertexattribtype](vertexattribtype.html)
+
+[vertexattribtypeinfo](vertexattribtypeinfo.html)
+
+|
+detail
+
+[adddetailattrib](adddetailattrib.html)
+
+[detail](detail.html)
+
+[detailattrib](detailattrib.html)
+
+[detailattribsize](detailattribsize.html)
+
+[detailattribtype](detailattribtype.html)
+
+[detailattribtypeinfo](detailattribtypeinfo.html)
+
+[detailintrinsic](detailintrinsic.html)
+
+[hasdetailattrib](hasdetailattrib.html)
+
+[removedetailattrib](removedetailattrib.html)
+
+[setdetailattrib](setdetailattrib.html)
+
+[setdetailintrinsic](setdetailintrinsic.html)

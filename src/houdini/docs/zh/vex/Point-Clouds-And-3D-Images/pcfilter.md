@@ -1,39 +1,124 @@
 ---
 title: pcfilter
-order: 10
+order: 11
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Filters points found by `pcopen` using a simple reconstruction filter.
+`<type> pcfilter(int handle, string channel\_name, ...)`
 
-```c
-<type> pcfilter(int handle, string channel_name, ...)
-```
-
-Filters the points queued up by [pcopen](pcopen.html) "Returns a handle to a
-point cloud file.")using a simple reconstruction filter.
-
-使用一个简单的重构滤波器过滤由 copen 排队的点。
+Filters the points queued up by [pcopen](pcopen.html "Returns a handle to a point cloud file.")
+using a simple reconstruction filter.
 
 This function is roughly equivalent to:
 
-这个函数大致等同于。
+```c
+float pcfilter(int handle; string channel)
+{
+ float sum, w, d;
+ float value, result = 0;
+ while (pciterate(handle))
+ {
+ pcimport(handle, "point.distance", d);
+ pcimport(handle, channel, value);
+ w = 1 - smooth(0, radius, d);
+ sum += w;
+ result += w \* value;
+ }
+ result /= sum;
+ return result;
+}
 
-    float pcfilter(int handle; string channel){floatsum, w, d;floatvalue, result = 0;while (pciterate(handle)){pcimport(handle, "point.distance", d);pcimport(handle, channel, value);w = 1 - smooth(0, radius, d);sum += w;result += w * value;}result /= sum;return result;}
+```
 
-`pcfilter` takes the points that were opened by the point cloud and produces a
-filtered value. The following equation shows how the individual points are
-weighted.
+`pcfilter` takes the points that were opened by the point cloud and produces a filtered value. The following equation shows how the individual points are weighted.
 
-pcfilter 取由点云打开的点并产生一个过滤的值。下面的公式显示了各个点是如何被加权的。
+```c
+w\_i = 1-smooth(0, maxd\*1.1, d\_i);
 
-    w_i = 1-smooth(0, maxd*1.1, d_i);
+```
 
-`maxd` is the farthest point, and `w_i` is the weight for a given point at
-distance (`d_i`). Points that are closer to the center will be weighted higher
-with that formula, rather than it being an average.
+`maxd` is the farthest point, and `w_i` is the weight for a given point at distance (`d_i`). Points that are closer to the center will be weighted higher with that formula, rather than it being an average.
 
-maxd 是最远的点，w_i 是距离（d_i）给定的点的权重。离中心较近的点在该公式中的权重会更高，而不是它是一个平均值。
+
+
+## See also
+
+- [pcopen](pcopen.html)
+
+|
+ptcloud
+
+[mattrib](mattrib.html)
+
+[mdensity](mdensity.html)
+
+[mspace](mspace.html)
+
+[pcclose](pcclose.html)
+
+[pccone](pccone.html)
+
+[pccone_radius](pccone_radius.html)
+
+[pcconvex](pcconvex.html)
+
+[pcexport](pcexport.html)
+
+[pcfarthest](pcfarthest.html)
+
+[pcfilter](pcfilter.html)
+
+[pcfind](pcfind.html)
+
+[pcfind_radius](pcfind_radius.html)
+
+[pcgenerate](pcgenerate.html)
+
+[pcimport](pcimport.html)
+
+[pcimportbyidx3](pcimportbyidx3.html)
+
+[pcimportbyidx4](pcimportbyidx4.html)
+
+[pcimportbyidxf](pcimportbyidxf.html)
+
+[pcimportbyidxi](pcimportbyidxi.html)
+
+[pcimportbyidxp](pcimportbyidxp.html)
+
+[pcimportbyidxs](pcimportbyidxs.html)
+
+[pcimportbyidxv](pcimportbyidxv.html)
+
+[pciterate](pciterate.html)
+
+[pcline](pcline.html)
+
+[pcline_radius](pcline_radius.html)
+
+[pcnumfound](pcnumfound.html)
+
+[pcopen](pcopen.html)
+
+[pcopenlod](pcopenlod.html)
+
+[pcsampleleaf](pcsampleleaf.html)
+
+[pcsegment](pcsegment.html)
+
+[pcsegment_radius](pcsegment_radius.html)
+
+[pcsize](pcsize.html)
+
+[pcunshaded](pcunshaded.html)
+
+[pcwrite](pcwrite.html)
+
+[pgfind](pgfind.html)
+
+[photonmap](photonmap.html)
+
+[texture3d](texture3d.html)
+
+[texture3dBox](texture3dBox.html)

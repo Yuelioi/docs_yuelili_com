@@ -37,308 +37,308 @@ Highlight Y direction.
 
 ## See also
 
-- [phong ](phong.html)
-- [phonglobe ](phonglobe.html)
-- [Writing a PBR shader ](../pbr.html)
+- [phong](phong.html)
+- [phonglobe](phonglobe.html)
+- [Writing a PBR shader](../pbr.html)
 
 ### bsdf
 
-[albedo ](albedo.html)
+[albedo](albedo.html)
 
-[ashikhmin ](ashikhmin.html)
+[ashikhmin](ashikhmin.html)
 
-[blinn ](blinn.html)
+[blinn](blinn.html)
 
-[bouncelabel ](bouncelabel.html)
+[bouncelabel](bouncelabel.html)
 
-[bouncemask ](bouncemask.html)
+[bouncemask](bouncemask.html)
 
-[chiang ](chiang.html)
+[chiang](chiang.html)
 
-[cone ](cone.html)
+[cone](cone.html)
 
-[create_cdf ](create_cdf.html)
+[create_cdf](create_cdf.html)
 
-[create_pdf ](create_pdf.html)
+[create_pdf](create_pdf.html)
 
-[cvex_bsdf ](cvex_bsdf.html)
+[cvex_bsdf](cvex_bsdf.html)
 
-[diffuse ](diffuse.html)
+[diffuse](diffuse.html)
 
-[eval_bsdf ](eval_bsdf.html)
+[eval_bsdf](eval_bsdf.html)
 
-[getbounces ](getbounces.html)
+[getbounces](getbounces.html)
 
-[getcomponents ](getcomponents.html)
+[getcomponents](getcomponents.html)
 
-[ggx ](ggx.html)
+[ggx](ggx.html)
 
-[hair ](hair.html)
+[hair](hair.html)
 
-[henyeygreenstein ](henyeygreenstein.html)
+[henyeygreenstein](henyeygreenstein.html)
 
-[isotropic ](isotropic.html)
+[isotropic](isotropic.html)
 
-[mask_bsdf ](mask_bsdf.html)
+[mask_bsdf](mask_bsdf.html)
 
-[nbouncetypes ](nbouncetypes.html)
+[nbouncetypes](nbouncetypes.html)
 
-[normal_bsdf ](normal_bsdf.html)
+[normal_bsdf](normal_bsdf.html)
 
-[phong ](phong.html)
+[phong](phong.html)
 
-[phonglobe ](phonglobe.html)
+[phonglobe](phonglobe.html)
 
-[sample_bsdf ](sample_bsdf.html)
+[sample_bsdf](sample_bsdf.html)
 
-[sample_cdf ](sample_cdf.html)
+[sample_cdf](sample_cdf.html)
 
-[solid_angle ](solid_angle.html)
+[solid_angle](solid_angle.html)
 
-[specular ](specular.html)
+[specular](specular.html)
 
-[split_bsdf ](split_bsdf.html)
+[split_bsdf](split_bsdf.html)
 
-[sssapprox ](sssapprox.html)
+[sssapprox](sssapprox.html)
 
-[translucent ](translucent.html)
+[translucent](translucent.html)
 
 ### pbr
 
-[albedo ](albedo.html)
+[albedo](albedo.html)
 
-[ashikhmin ](ashikhmin.html)
+[ashikhmin](ashikhmin.html)
 
-[blinn ](blinn.html)
+[blinn](blinn.html)
 
-[bouncelabel ](bouncelabel.html)
+[bouncelabel](bouncelabel.html)
 
-[bouncemask ](bouncemask.html)
+[bouncemask](bouncemask.html)
 
-[chiang ](chiang.html)
+[chiang](chiang.html)
 
-[cone ](cone.html)
+[cone](cone.html)
 
-[create_cdf ](create_cdf.html)
+[create_cdf](create_cdf.html)
 
-[create_pdf ](create_pdf.html)
+[create_pdf](create_pdf.html)
 
-[diffuse ](diffuse.html)
+[diffuse](diffuse.html)
 
-[eval_bsdf ](eval_bsdf.html)
+[eval_bsdf](eval_bsdf.html)
 
-[getbounces ](getbounces.html)
+[getbounces](getbounces.html)
 
-[getcomponents ](getcomponents.html)
+[getcomponents](getcomponents.html)
 
-[getlight ](getlight.html)
+[getlight](getlight.html)
 
-[getlights ](getlights.html)
+[getlights](getlights.html)
 
-[getlightscope ](getlightscope.html)
+[getlightscope](getlightscope.html)
 
-[getmaterial ](getmaterial.html)
+[getmaterial](getmaterial.html)
 
-[getphotonlight ](getphotonlight.html)
+[getphotonlight](getphotonlight.html)
 
-[getscope ](getscope.html)
+[getscope](getscope.html)
 
-[ggx ](ggx.html)
+[ggx](ggx.html)
 
-[hair ](hair.html)
+[hair](hair.html)
 
-[haslight ](haslight.html)
+[haslight](haslight.html)
 
-[interpolate ](interpolate.html)
+[interpolate](interpolate.html)
 
-[intersect_lights ](intersect_lights.html)
+[intersect_lights](intersect_lights.html)
 
-[mask_bsdf ](mask_bsdf.html)
+[mask_bsdf](mask_bsdf.html)
 
-[matchvex_blinn ](matchvex_blinn.html)
+[matchvex_blinn](matchvex_blinn.html)
 
-[matchvex_specular ](matchvex_specular.html)
+[matchvex_specular](matchvex_specular.html)
 
-[nbouncetypes ](nbouncetypes.html)
+[nbouncetypes](nbouncetypes.html)
 
-[newsampler ](newsampler.html)
+[newsampler](newsampler.html)
 
-[nextsample ](nextsample.html)
+[nextsample](nextsample.html)
 
-[normal_bsdf ](normal_bsdf.html)
+[normal_bsdf](normal_bsdf.html)
 
-[phong ](phong.html)
+[phong](phong.html)
 
-[phonglobe ](phonglobe.html)
+[phonglobe](phonglobe.html)
 
-[sample_bsdf ](sample_bsdf.html)
+[sample_bsdf](sample_bsdf.html)
 
-[sample_cdf ](sample_cdf.html)
+[sample_cdf](sample_cdf.html)
 
-[sample_geometry ](sample_geometry.html)
+[sample_geometry](sample_geometry.html)
 
-[sample_light ](sample_light.html)
+[sample_light](sample_light.html)
 
-[sample_photon ](sample_photon.html)
+[sample_photon](sample_photon.html)
 
-[shadow_light ](shadow_light.html)
+[shadow_light](shadow_light.html)
 
-[solid_angle ](solid_angle.html)
+[solid_angle](solid_angle.html)
 
-[specular ](specular.html)
+[specular](specular.html)
 
-[split_bsdf ](split_bsdf.html)
+[split_bsdf](split_bsdf.html)
 
-[sssapprox ](sssapprox.html)
+[sssapprox](sssapprox.html)
 
-[storelightexport ](storelightexport.html)
+[storelightexport](storelightexport.html)
 
-[translucent ](translucent.html)
+[translucent](translucent.html)
 
-[wireblinn ](wireblinn.html)
+[wireblinn](wireblinn.html)
 
-[wirediffuse ](wirediffuse.html)
+[wirediffuse](wirediffuse.html)
 
 ### shading
 
-[Du ](Du.html)
+[Du](Du.html)
 
-[Dv ](Dv.html)
+[Dv](Dv.html)
 
-[Dw ](Dw.html)
+[Dw](Dw.html)
 
-[area ](area.html)
+[area](area.html)
 
-[ashikhmin ](ashikhmin.html)
+[ashikhmin](ashikhmin.html)
 
-[atten ](atten.html)
+[atten](atten.html)
 
-[blinn ](blinn.html)
+[blinn](blinn.html)
 
-[blinnBRDF ](blinnBRDF.html)
+[blinnBRDF](blinnBRDF.html)
 
-[chiang ](chiang.html)
+[chiang](chiang.html)
 
-[computenormal ](computenormal.html)
+[computenormal](computenormal.html)
 
-[cone ](cone.html)
+[cone](cone.html)
 
-[cvex_bsdf ](cvex_bsdf.html)
+[cvex_bsdf](cvex_bsdf.html)
 
-[diffuse ](diffuse.html)
+[diffuse](diffuse.html)
 
-[diffuseBRDF ](diffuseBRDF.html)
+[diffuseBRDF](diffuseBRDF.html)
 
-[dsmpixel ](dsmpixel.html)
+[dsmpixel](dsmpixel.html)
 
-[environment ](environment.html)
+[environment](environment.html)
 
-[fastshadow ](fastshadow.html)
+[fastshadow](fastshadow.html)
 
-[filtershadow ](filtershadow.html)
+[filtershadow](filtershadow.html)
 
-[filterstep ](filterstep.html)
+[filterstep](filterstep.html)
 
-[fresnel ](fresnel.html)
+[fresnel](fresnel.html)
 
-[frontface ](frontface.html)
+[frontface](frontface.html)
 
-[getderiv ](getderiv.html)
+[getderiv](getderiv.html)
 
-[getfogname ](getfogname.html)
+[getfogname](getfogname.html)
 
-[getglobalraylevel ](getglobalraylevel.html)
+[getglobalraylevel](getglobalraylevel.html)
 
-[getgroupid ](getgroupid.html)
+[getgroupid](getgroupid.html)
 
-[getlocalcurvature ](getlocalcurvature.html)
+[getlocalcurvature](getlocalcurvature.html)
 
-[getmaterialid ](getmaterialid.html)
+[getmaterialid](getmaterialid.html)
 
-[getobjectid ](getobjectid.html)
+[getobjectid](getobjectid.html)
 
-[getobjectname ](getobjectname.html)
+[getobjectname](getobjectname.html)
 
-[getprimid ](getprimid.html)
+[getprimid](getprimid.html)
 
-[getptextureid ](getptextureid.html)
+[getptextureid](getptextureid.html)
 
-[getraylevel ](getraylevel.html)
+[getraylevel](getraylevel.html)
 
-[getrayweight ](getrayweight.html)
+[getrayweight](getrayweight.html)
 
-[getsamplestore ](getsamplestore.html)
+[getsamplestore](getsamplestore.html)
 
-[getsmoothP ](getsmoothP.html)
+[getsmoothP](getsmoothP.html)
 
-[getuvtangents ](getuvtangents.html)
+[getuvtangents](getuvtangents.html)
 
-[ggx ](ggx.html)
+[ggx](ggx.html)
 
-[gradient ](gradient.html)
+[gradient](gradient.html)
 
-[hair ](hair.html)
+[hair](hair.html)
 
-[henyeygreenstein ](henyeygreenstein.html)
+[henyeygreenstein](henyeygreenstein.html)
 
-[isotropic ](isotropic.html)
+[isotropic](isotropic.html)
 
-[israytracing ](israytracing.html)
+[israytracing](israytracing.html)
 
-[isshadingRHS ](isshadingRHS.html)
+[isshadingRHS](isshadingRHS.html)
 
-[lightstate ](lightstate.html)
+[lightstate](lightstate.html)
 
-[matchvex_blinn ](matchvex_blinn.html)
+[matchvex_blinn](matchvex_blinn.html)
 
-[matchvex_specular ](matchvex_specular.html)
+[matchvex_specular](matchvex_specular.html)
 
-[objectstate ](objectstate.html)
+[objectstate](objectstate.html)
 
-[phong ](phong.html)
+[phong](phong.html)
 
-[phongBRDF ](phongBRDF.html)
+[phongBRDF](phongBRDF.html)
 
-[phonglobe ](phonglobe.html)
+[phonglobe](phonglobe.html)
 
-[ptexture ](ptexture.html)
+[ptexture](ptexture.html)
 
-[rayhittest ](rayhittest.html)
+[rayhittest](rayhittest.html)
 
-[rayimport ](rayimport.html)
+[rayimport](rayimport.html)
 
-[reflect ](reflect.html)
+[reflect](reflect.html)
 
-[refract ](refract.html)
+[refract](refract.html)
 
-[renderstate ](renderstate.html)
+[renderstate](renderstate.html)
 
-[resolvemissedray ](resolvemissedray.html)
+[resolvemissedray](resolvemissedray.html)
 
-[sample_geometry ](sample_geometry.html)
+[sample_geometry](sample_geometry.html)
 
-[scatter ](scatter.html)
+[scatter](scatter.html)
 
-[setsamplestore ](setsamplestore.html)
+[setsamplestore](setsamplestore.html)
 
-[specular ](specular.html)
+[specular](specular.html)
 
-[specularBRDF ](specularBRDF.html)
+[specularBRDF](specularBRDF.html)
 
-[sssapprox ](sssapprox.html)
+[sssapprox](sssapprox.html)
 
-[teximport ](teximport.html)
+[teximport](teximport.html)
 
-[texture ](texture.html)
+[texture](texture.html)
 
-[trace ](trace.html)
+[trace](trace.html)
 
-[translucent ](translucent.html)
+[translucent](translucent.html)
 
-[uvunwrap ](uvunwrap.html)
+[uvunwrap](uvunwrap.html)
 
-[volume ](volume.html)
+[volume](volume.html)
 
-[wireblinn ](wireblinn.html)
+[wireblinn](wireblinn.html)
 
-[wirediffuse ](wirediffuse.html)
+[wirediffuse](wirediffuse.html)

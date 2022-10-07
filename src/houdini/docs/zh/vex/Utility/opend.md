@@ -1,25 +1,50 @@
 ---
 title: opend
-order: 8
+order: 9
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Ends a long operation.
 
-| Context(s) | [shading](../contexts/shading.html) |
-| ---------- | ----------------------------------- |
+
+Context(s)
+[shading](../contexts/shading.html)
+
+`void opend(int handle)`
+
+Informs mantra that a long operation begun with [opstart](opstart.html "Start a long operation.") has completed. Pass in the value returned by [opstart](opstart.html "Start a long operation.").
 
 ```c
-void  opend(int handle)
+int op\_handle = opstart("Performing long operation");
+perform\_long\_operation();
+if (op\_handle >= 0)
+ opend(op\_handle);
+
 ```
 
-Informs mantra that a long operation begun with [opstart](opstart.html "Start
-a long operation.") has completed. Pass in the value returned by
-[opstart](opstart.html "Start a long operation.").
 
-通知 mantra，由 opstar 开始的长操作已经完成。传入 opstart 返回的值。
 
-    int op_handle = opstart("Performing long operation");perform_long_operation();if (op_handle >= 0)  opend(op_handle);
+## See also
+
+- [opstart](opstart.html)
+
+|
+interrupt
+
+[opend](opend.html)
+
+[opstart](opstart.html)
+
+|
+progress
+
+[opend](opend.html)
+
+[opstart](opstart.html)
+
+|
+statistics
+
+[opend](opend.html)
+
+[opstart](opstart.html)

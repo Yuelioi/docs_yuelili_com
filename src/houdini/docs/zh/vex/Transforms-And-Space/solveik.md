@@ -1,16 +1,13 @@
 ---
 title: solveik
-order: 29
+order: 30
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Applies an inverse kinematics algorithm to a skeleton.
 
-| Since | 17.5 |
-| ----- | ---- |
+
+Since 17.5
 
 `vector [] solveik(float lengths[], vector targetpos, vector twistpos, float twist, int twistflag, float dampen, int resiststraight, float trackingthres, matrix relmat, vector constraints[])`
 
@@ -18,82 +15,227 @@ Applies an inverse kinematics algorithm to a skeleton.
 
 Returns a array of local bone rotations in degrees.
 
-返回一个局部骨骼旋转的数组，单位是度。
+## Arguments
 
 `lengths`
 
 The lengths of all the bones to solve.
 
-要解决的所有骨骼的长度。
-
 `targetpos`
 
 A target position in worldspace.
-
-世界空间中的目标位置。
 
 `twistpos`
 
 A twist affect position in worldspace.
 
-世界空间中的扭曲影响位置。
-
 `twist`
 
 A twist angle in degrees.
-
-扭转角度（度）。
 
 `twistflag`
 
 Apply twist using the twist affector or not.
 
-是否使用扭曲影响器应用扭曲。
-
 `dampen`
 
 Dampening factor for the whole chain.
 
-整个链条的阻尼系数。
-
-```c
-resiststraight
-```
+`resiststraight`
 
 Resist straightening.
-
-抵抗矫直。
 
 `trackingthres`
 
 Tracking threshold.
 
-跟踪阈值。
-
 `relmat`
 
-A relative matrix used to transform the target and twist positions relative to
-the origin.This is normally the invert matrix of the root of the chain.
-
-一个相对矩阵，用于转换目标和扭曲的位置，相对于原点。
+A relative matrix used to transform the target and twist positions relative to the origin.
+This is normally the invert matrix of the root of the chain.
 
 `constraints`
 
-This is a vector array used to define the per bone restangles, dampening,
-minangles, maxangles, min damp, max damp, and rolloff.If the array is empty,
-same default values present in the bone objects are used.If the array size is
-equal to the number of input bones, the rest angles are defined.If the array
-size is equal to 2 times the number of input bones, the rest angles and the
-dampening are defined.If the array size is equal to 3 times the number of
-input bones, the rest angles, the dampening, the min/max angles are defined.
-Min/Max angles share the same values.If the array size is equal to 4 times the
-number of input bones, the rest angles, the dampening, the min/max angles are
-defined. Min/Max angles have different values.If the array size is equal to 5
-times the number of input bones, the rest angles, the dampening, the min/max
-angles and damp angles are defined.If the array size is equal to 6 times the
-number of input bones, the rest angles, the dampening, the min/max angles,
-min/max damp angles are defined.If the array size is equal to 7 times the
-number of input bones, the rest angles, the dampening, the min/max angles,
-min/max damp angles, and rolloff are defined.
+This is a vector array used to define the per bone restangles, dampening, minangles, maxangles, min damp, max damp, and rolloff.
+If the array is empty, same default values present in the bone objects are used.
+If the array size is equal to the number of input bones, the rest angles are defined.
+If the array size is equal to 2 times the number of input bones, the rest angles and the dampening are defined.
+If the array size is equal to 3 times the number of input bones, the rest angles, the dampening, the min/max angles are defined. Min/Max angles share the same values.
+If the array size is equal to 4 times the number of input bones, the rest angles, the dampening, the min/max angles are defined. Min/Max angles have different values.
+If the array size is equal to 5 times the number of input bones, the rest angles, the dampening, the min/max angles and damp angles are defined.
+If the array size is equal to 6 times the number of input bones, the rest angles, the dampening, the min/max angles, min/max damp angles are defined.
+If the array size is equal to 7 times the number of input bones, the rest angles, the dampening, the min/max angles, min/max damp angles, and rolloff are defined.
 
-这通常是链根的反转矩阵。
+
+
+## See also
+
+- [solveconstraint](solveconstraint.html)
+- [solvecurve](solvecurve.html)
+- [solvefbik](solvefbik.html)
+
+|
+solve
+
+[agentsolvefbik](agentsolvefbik.html)
+
+[solveconstraint](solveconstraint.html)
+
+[solvecubic](solvecubic.html)
+
+[solvecurve](solvecurve.html)
+
+[solvefbik](solvefbik.html)
+
+[solveik](solveik.html)
+
+[solvephysfbik](solvephysfbik.html)
+
+[solvepoly](solvepoly.html)
+
+[solvequadratic](solvequadratic.html)
+
+[solvetriangleSSS](solvetriangleSSS.html)
+
+|
+transform
+
+[agentcliptransformgroups](agentcliptransformgroups.html)
+
+[agentfindtransformgroup](agentfindtransformgroup.html)
+
+[agentlocaltransform](agentlocaltransform.html)
+
+[agentlocaltransforms](agentlocaltransforms.html)
+
+[agentrestlocaltransform](agentrestlocaltransform.html)
+
+[agentrestworldtransform](agentrestworldtransform.html)
+
+[agentsolvefbik](agentsolvefbik.html)
+
+[agenttransformcount](agenttransformcount.html)
+
+[agenttransformgroupmember](agenttransformgroupmember.html)
+
+[agenttransformgroupmemberchannel](agenttransformgroupmemberchannel.html)
+
+[agenttransformgroups](agenttransformgroups.html)
+
+[agenttransformgroupweight](agenttransformgroupweight.html)
+
+[agenttransformnames](agenttransformnames.html)
+
+[agenttransformtolocal](agenttransformtolocal.html)
+
+[agenttransformtoworld](agenttransformtoworld.html)
+
+[agentworldtransform](agentworldtransform.html)
+
+[agentworldtransforms](agentworldtransforms.html)
+
+[cregioncapturetransform](cregioncapturetransform.html)
+
+[cregiondeformtransform](cregiondeformtransform.html)
+
+[cregionoverridetransform](cregionoverridetransform.html)
+
+[ctransform](ctransform.html)
+
+[fromNDC](fromNDC.html)
+
+[getpackedtransform](getpackedtransform.html)
+
+[getspace](getspace.html)
+
+[mspace](mspace.html)
+
+[ndcdepth](ndcdepth.html)
+
+[ntransform](ntransform.html)
+
+[opparentbonetransform](opparentbonetransform.html)
+
+[opparenttransform](opparenttransform.html)
+
+[opparmtransform](opparmtransform.html)
+
+[oppreconstrainttransform](oppreconstrainttransform.html)
+
+[oppreparmtransform](oppreparmtransform.html)
+
+[opprerawparmtransform](opprerawparmtransform.html)
+
+[oppretransform](oppretransform.html)
+
+[oprawparmtransform](oprawparmtransform.html)
+
+[optransform](optransform.html)
+
+[orthographic](orthographic.html)
+
+[ow_nspace](ow_nspace.html)
+
+[ow_space](ow_space.html)
+
+[ow_vspace](ow_vspace.html)
+
+[packedtransform](packedtransform.html)
+
+[perspective](perspective.html)
+
+[polardecomp](polardecomp.html)
+
+[ptransform](ptransform.html)
+
+[qinvert](qinvert.html)
+
+[qrotate](qrotate.html)
+
+[rotate_x_to](rotate_x_to.html)
+
+[setagentchannelvalue](setagentchannelvalue.html)
+
+[setagentchannelvalues](setagentchannelvalues.html)
+
+[setagentlocaltransform](setagentlocaltransform.html)
+
+[setagentlocaltransforms](setagentlocaltransforms.html)
+
+[setagentworldtransform](setagentworldtransform.html)
+
+[setagentworldtransforms](setagentworldtransforms.html)
+
+[setpackedtransform](setpackedtransform.html)
+
+[solveconstraint](solveconstraint.html)
+
+[solvecurve](solvecurve.html)
+
+[solvefbik](solvefbik.html)
+
+[solveik](solveik.html)
+
+[solvephysfbik](solvephysfbik.html)
+
+[toNDC](toNDC.html)
+
+[tw_nspace](tw_nspace.html)
+
+[tw_space](tw_space.html)
+
+[tw_vspace](tw_vspace.html)
+
+[vtransform](vtransform.html)
+
+[wo_nspace](wo_nspace.html)
+
+[wo_space](wo_space.html)
+
+[wo_vspace](wo_vspace.html)
+
+[wt_nspace](wt_nspace.html)
+
+[wt_space](wt_space.html)
+
+[wt_vspace](wt_vspace.html)

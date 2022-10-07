@@ -20,8 +20,8 @@ remove the second-to-last value.
 
 ## See also
 
-- [Arrays ](../arrays.html)
-- [len ](len.html)
-- [append ](append.html)
-- [push ](push.html)
-- [resize ](resize.html)
+- [Arrays](../arrays.html)
+- [len](len.html)
+- [append](append.html)
+- [push](push.html)
+- [resize](resize.html)

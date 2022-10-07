@@ -1,22 +1,47 @@
 ---
 title: planeindex
-order: 32
+order: 33
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Returns the index of the plane specified by the parameter, starting  
-at zero.
 
-| Context(s) | [cop](../contexts/cop.html) |
-| ---------- | --------------------------- |
 
-```c
-int  planeindex(string planename)
-```
+Context(s)
+[cop](../contexts/cop.html)
 
-Returns the index of the plane specified by the parameter, starting atzero.
+`int planeindex(string planename)`
 
-返回参数所指定的平面的索引，从
+Returns the index of the plane specified by the parameter, starting at
+zero.
+
+
+output_plane
+
+[alphaname](alphaname.html)
+
+[bumpname](bumpname.html)
+
+[chname](chname.html)
+
+[colorname](colorname.html)
+
+[depthname](depthname.html)
+
+[hasplane](hasplane.html)
+
+[lumname](lumname.html)
+
+[maskname](maskname.html)
+
+[normalname](normalname.html)
+
+[planeindex](planeindex.html)
+
+[planename](planename.html)
+
+[planesize](planesize.html)
+
+[pointname](pointname.html)
+
+[velocityname](velocityname.html)

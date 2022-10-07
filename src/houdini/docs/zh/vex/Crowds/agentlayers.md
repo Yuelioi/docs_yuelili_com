@@ -1,43 +1,193 @@
 ---
 title: agentlayers
-order: 26
+order: 29
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Returns all of the layers that have been loaded for an agent primitive.
-
-```c
-string [] agentlayers(<geometry>geometry, int prim)
-```
+`string [] agentlayers(<geometry>geometry, int prim)`
 
 Returns an empty array if `prim` is out of range or is not an agent primitive.
 
-如果 prim 超出范围或不是一个代理基元，则返回一个空数组。
+## Arguments
 
 `<geometry>`
 
-When running in the context of a node (such as a wrangle SOP), this argument
-can be an integer representing the input number (starting at 0) to read the
-geometry from.
+When running in the context of a node (such as a wrangle SOP), this argument can be an integer representing the input number (starting at 0) to read the geometry from.
 
-当在一个节点的上下文中运行时（比如 wrangle SOP），这个参数可以是一个整数，代表要读取几何体的输入数字（从 0 开始）。
-
-Alternatively, the argument can be a string specifying a geometry file (for
-example, a `.bgeo`) to read from. When running inside Houdini, this can be an
-
-```c
-op:/path/to/sop
-```
-
-reference.
-
-或者，该参数可以是一个字符串，指定要读取的几何体文件（例如，a.bgeo）。当在 Houdini 内部运行时，这可以是 anop:/path/to/sopreference。
+Alternatively, the argument can be a string specifying a geometry file (for example, a `.bgeo`) to read from. When running inside Houdini, this can be an `op:/path/to/sop` reference.
 
 `prim`
 
 The primitive number.
 
-原始编号。
+
+
+## See also
+
+- [agentcollisionlayer](agentcollisionlayer.html)
+- [agentcurrentlayer](agentcurrentlayer.html)
+- [agentlayerbindings](agentlayerbindings.html)
+- [agentlayershapes](agentlayershapes.html)
+- [setagentcollisionlayer](setagentcollisionlayer.html)
+- [setagentcurrentlayer](setagentcurrentlayer.html)
+
+|
+crowds
+
+[agentaddclip](agentaddclip.html)
+
+[agentchannelcount](agentchannelcount.html)
+
+[agentchannelnames](agentchannelnames.html)
+
+[agentchannelvalue](agentchannelvalue.html)
+
+[agentchannelvalues](agentchannelvalues.html)
+
+[agentclipcatalog](agentclipcatalog.html)
+
+[agentclipchannel](agentclipchannel.html)
+
+[agentclipchannelnames](agentclipchannelnames.html)
+
+[agentcliplayerblend](agentcliplayerblend.html)
+
+[agentcliplength](agentcliplength.html)
+
+[agentclipnames](agentclipnames.html)
+
+[agentclipsample](agentclipsample.html)
+
+[agentclipsamplelocal](agentclipsamplelocal.html)
+
+[agentclipsamplerate](agentclipsamplerate.html)
+
+[agentclipsampleworld](agentclipsampleworld.html)
+
+[agentclipstarttime](agentclipstarttime.html)
+
+[agentcliptimes](agentcliptimes.html)
+
+[agentcliptransformgroups](agentcliptransformgroups.html)
+
+[agentclipweights](agentclipweights.html)
+
+[agentcollisionlayer](agentcollisionlayer.html)
+
+[agentcollisionlayers](agentcollisionlayers.html)
+
+[agentcurrentlayer](agentcurrentlayer.html)
+
+[agentcurrentlayers](agentcurrentlayers.html)
+
+[agentfindclip](agentfindclip.html)
+
+[agentfindlayer](agentfindlayer.html)
+
+[agentfindtransformgroup](agentfindtransformgroup.html)
+
+[agentlayerbindings](agentlayerbindings.html)
+
+[agentlayers](agentlayers.html)
+
+[agentlayershapes](agentlayershapes.html)
+
+[agentlocaltransform](agentlocaltransform.html)
+
+[agentlocaltransforms](agentlocaltransforms.html)
+
+[agentmetadata](agentmetadata.html)
+
+[agentrestlocaltransform](agentrestlocaltransform.html)
+
+[agentrestworldtransform](agentrestworldtransform.html)
+
+[agentrigchildren](agentrigchildren.html)
+
+[agentrigfind](agentrigfind.html)
+
+[agentrigfindchannel](agentrigfindchannel.html)
+
+[agentrigparent](agentrigparent.html)
+
+[agentsolvefbik](agentsolvefbik.html)
+
+[agenttransformcount](agenttransformcount.html)
+
+[agenttransformgroupmember](agenttransformgroupmember.html)
+
+[agenttransformgroupmemberchannel](agenttransformgroupmemberchannel.html)
+
+[agenttransformgroups](agenttransformgroups.html)
+
+[agenttransformgroupweight](agenttransformgroupweight.html)
+
+[agenttransformnames](agenttransformnames.html)
+
+[agenttransformtolocal](agenttransformtolocal.html)
+
+[agenttransformtoworld](agenttransformtoworld.html)
+
+[agentworldtransform](agentworldtransform.html)
+
+[agentworldtransforms](agentworldtransforms.html)
+
+[setagentchannelvalue](setagentchannelvalue.html)
+
+[setagentchannelvalues](setagentchannelvalues.html)
+
+[setagentclipnames](setagentclipnames.html)
+
+[setagentclips](setagentclips.html)
+
+[setagentcliptimes](setagentcliptimes.html)
+
+[setagentclipweights](setagentclipweights.html)
+
+[setagentcollisionlayer](setagentcollisionlayer.html)
+
+[setagentcollisionlayers](setagentcollisionlayers.html)
+
+[setagentcurrentlayer](setagentcurrentlayer.html)
+
+[setagentcurrentlayers](setagentcurrentlayers.html)
+
+[setagentlocaltransform](setagentlocaltransform.html)
+
+[setagentlocaltransforms](setagentlocaltransforms.html)
+
+[setagentworldtransform](setagentworldtransform.html)
+
+[setagentworldtransforms](setagentworldtransforms.html)
+
+[solvefbik](solvefbik.html)
+
+[solvephysfbik](solvephysfbik.html)
+
+|
+layer
+
+[agentcollisionlayer](agentcollisionlayer.html)
+
+[agentcollisionlayers](agentcollisionlayers.html)
+
+[agentcurrentlayer](agentcurrentlayer.html)
+
+[agentcurrentlayers](agentcurrentlayers.html)
+
+[agentfindlayer](agentfindlayer.html)
+
+[agentlayerbindings](agentlayerbindings.html)
+
+[agentlayers](agentlayers.html)
+
+[agentlayershapes](agentlayershapes.html)
+
+[setagentcollisionlayer](setagentcollisionlayer.html)
+
+[setagentcollisionlayers](setagentcollisionlayers.html)
+
+[setagentcurrentlayer](setagentcurrentlayer.html)
+
+[setagentcurrentlayers](setagentcurrentlayers.html)

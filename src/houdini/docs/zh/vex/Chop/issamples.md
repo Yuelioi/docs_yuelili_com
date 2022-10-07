@@ -1,23 +1,85 @@
 ---
 title: issamples
-order: 31
+order: 32
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Returns 1 if the Vex CHOP‘sUnit Menu is currently set to 'samples',  
-0 otherwise.
 
-| Context(s) | [chop](../contexts/chop.html) |
-| ---------- | ----------------------------- |
 
-```c
-int  issamples()
-```
+Context(s)
+[chop](../contexts/chop.html)
 
-Returns 1 if the Vex CHOP‘sUnit Menu is currently set to 'samples',
-0otherwise.
+`int issamples()`
 
-如果 Vex CHOPâs Unit Menu 当前设置为 "样本"，则返回 1，否则返回 0。
+Returns 1 if the Vex CHOP’s Unit Menu is currently set to 'samples', 0
+otherwise.
+
+
+chop
+
+[chadd](chadd.html)
+
+[chattr](chattr.html)
+
+[chattrnames](chattrnames.html)
+
+[chend](chend.html)
+
+[chendf](chendf.html)
+
+[chendt](chendt.html)
+
+[chindex](chindex.html)
+
+[chinput](chinput.html)
+
+[chinputlimits](chinputlimits.html)
+
+[chname](chname.html)
+
+[chnames](chnames.html)
+
+[chnumchan](chnumchan.html)
+
+[chop](chop.html)
+
+[choplocal](choplocal.html)
+
+[choplocalt](choplocalt.html)
+
+[chopt](chopt.html)
+
+[chrate](chrate.html)
+
+[chreadbuf](chreadbuf.html)
+
+[chremove](chremove.html)
+
+[chremoveattr](chremoveattr.html)
+
+[chrename](chrename.html)
+
+[chresizebuf](chresizebuf.html)
+
+[chsetattr](chsetattr.html)
+
+[chsetlength](chsetlength.html)
+
+[chsetrate](chsetrate.html)
+
+[chsetstart](chsetstart.html)
+
+[chstart](chstart.html)
+
+[chstartf](chstartf.html)
+
+[chstartt](chstartt.html)
+
+[chwritebuf](chwritebuf.html)
+
+[isframes](isframes.html)
+
+[issamples](issamples.html)
+
+[isseconds](isseconds.html)

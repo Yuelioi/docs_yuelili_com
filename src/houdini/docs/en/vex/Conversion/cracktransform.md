@@ -45,165 +45,165 @@ multiple calls to the other function signature.
 
 ## See also
 
-- [quaternion ](quaternion.html)
-- [polardecomp ](polardecomp.html)
-- [eulertoquaternion ](eulertoquaternion.html)
-- [qconvert ](qconvert.html)
+- [quaternion](quaternion.html)
+- [polardecomp](polardecomp.html)
+- [eulertoquaternion](eulertoquaternion.html)
+- [qconvert](qconvert.html)
 
 ### math
 
-[Du ](Du.html)
+[Du](Du.html)
 
-[Dv ](Dv.html)
+[Dv](Dv.html)
 
-[Dw ](Dw.html)
+[Dw](Dw.html)
 
-[abs ](abs.html)
+[abs](abs.html)
 
-[acos ](acos.html)
+[acos](acos.html)
 
-[asin ](asin.html)
+[asin](asin.html)
 
-[atan ](atan.html)
+[atan](atan.html)
 
-[atten ](atten.html)
+[atten](atten.html)
 
-[avg ](avg.html)
+[avg](avg.html)
 
-[cbrt ](cbrt.html)
+[cbrt](cbrt.html)
 
-[ceil ](ceil.html)
+[ceil](ceil.html)
 
-[cos ](cos.html)
+[cos](cos.html)
 
-[cosh ](cosh.html)
+[cosh](cosh.html)
 
-[cracktransform ](cracktransform.html)
+[cracktransform](cracktransform.html)
 
-[cross ](cross.html)
+[cross](cross.html)
 
-[degrees ](degrees.html)
+[degrees](degrees.html)
 
-[dot ](dot.html)
+[dot](dot.html)
 
-[erf ](erf.html)
+[erf](erf.html)
 
-[erf_inv ](erf_inv.html)
+[erf_inv](erf_inv.html)
 
-[erfc ](erfc.html)
+[erfc](erfc.html)
 
-[exp ](exp.html)
+[exp](exp.html)
 
-[floor ](floor.html)
+[floor](floor.html)
 
-[frac ](frac.html)
+[frac](frac.html)
 
-[fuzzify ](fuzzify.html)
+[fuzzify](fuzzify.html)
 
-[getderiv ](getderiv.html)
+[getderiv](getderiv.html)
 
-[isfinite ](isfinite.html)
+[isfinite](isfinite.html)
 
-[isnan ](isnan.html)
+[isnan](isnan.html)
 
-[log ](log.html)
+[log](log.html)
 
-[log10 ](log10.html)
+[log10](log10.html)
 
-[max ](max.html)
+[max](max.html)
 
-[min ](min.html)
+[min](min.html)
 
-[pow ](pow.html)
+[pow](pow.html)
 
-[product ](product.html)
+[product](product.html)
 
-[radians ](radians.html)
+[radians](radians.html)
 
-[resample_linear ](resample_linear.html)
+[resample_linear](resample_linear.html)
 
-[rint ](rint.html)
+[rint](rint.html)
 
-[shl ](shl.html)
+[shl](shl.html)
 
-[shr ](shr.html)
+[shr](shr.html)
 
-[shrz ](shrz.html)
+[shrz](shrz.html)
 
-[sign ](sign.html)
+[sign](sign.html)
 
-[sin ](sin.html)
+[sin](sin.html)
 
-[sinh ](sinh.html)
+[sinh](sinh.html)
 
-[solvecubic ](solvecubic.html)
+[solvecubic](solvecubic.html)
 
-[solvepoly ](solvepoly.html)
+[solvepoly](solvepoly.html)
 
-[solvequadratic ](solvequadratic.html)
+[solvequadratic](solvequadratic.html)
 
-[solvetriangleSSS ](solvetriangleSSS.html)
+[solvetriangleSSS](solvetriangleSSS.html)
 
-[sqrt ](sqrt.html)
+[sqrt](sqrt.html)
 
-[sum ](sum.html)
+[sum](sum.html)
 
-[tan ](tan.html)
+[tan](tan.html)
 
-[tanh ](tanh.html)
+[tanh](tanh.html)
 
-[trunc ](trunc.html)
+[trunc](trunc.html)
 
-[variance ](variance.html)
+[variance](variance.html)
 
 ### matrix
 
-[### uniform_mul ](### uniform_mul.html)
+[### uniform_mul](### uniform_mul.html)
 
-[### uniform_premul ](### uniform_premul.html)
+[### uniform_premul](### uniform_premul.html)
 
-[combinelocaltransform ](combinelocaltransform.html)
+[combinelocaltransform](combinelocaltransform.html)
 
-[cracktransform ](cracktransform.html)
+[cracktransform](cracktransform.html)
 
-[determinant ](determinant.html)
+[determinant](determinant.html)
 
-[diagonalizesymmetric ](diagonalizesymmetric.html)
+[diagonalizesymmetric](diagonalizesymmetric.html)
 
-[dihedral ](dihedral.html)
+[dihedral](dihedral.html)
 
-[eigenvalues ](eigenvalues.html)
+[eigenvalues](eigenvalues.html)
 
-[extractlocaltransform ](extractlocaltransform.html)
+[extractlocaltransform](extractlocaltransform.html)
 
-[ident ](ident.html)
+[ident](ident.html)
 
-[instance ](instance.html)
+[instance](instance.html)
 
-[invert ](invert.html)
+[invert](invert.html)
 
-[lookat ](lookat.html)
+[lookat](lookat.html)
 
-[maketransform ](maketransform.html)
+[maketransform](maketransform.html)
 
-[outerproduct ](outerproduct.html)
+[outerproduct](outerproduct.html)
 
-[premul ](premul.html)
+[premul](premul.html)
 
-[prerotate ](prerotate.html)
+[prerotate](prerotate.html)
 
-[prescale ](prescale.html)
+[prescale](prescale.html)
 
-[pretranslate ](pretranslate.html)
+[pretranslate](pretranslate.html)
 
-[rotate ](rotate.html)
+[rotate](rotate.html)
 
-[scale ](scale.html)
+[scale](scale.html)
 
-[smoothrotation ](smoothrotation.html)
+[smoothrotation](smoothrotation.html)
 
-[svddecomp ](svddecomp.html)
+[svddecomp](svddecomp.html)
 
-[translate ](translate.html)
+[translate](translate.html)
 
-[transpose ](transpose.html)
+[transpose](transpose.html)

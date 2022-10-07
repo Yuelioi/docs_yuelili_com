@@ -1,22 +1,22 @@
 ---
 title: relpath
-order: 22
+order: 31
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Returns the relative path to a file.
 
-| Since | 18.0 |
-| ----- | ---- |
 
-```c
-string  relpath(string abspath)
-```
+Since 18.0
 
-Returns the supplied path converted to a relative path, expressed asrelative
-to Houdini‘scurrent working directory. The file does not need toexist.
+`string relpath(string abspath)`
 
-返回所提供的路径转换为相对路径，表示为
+Returns the supplied path converted to a relative path, expressed as
+relative to Houdini’s current working directory. The file does not need to
+exist.
+
+
+
+## See also
+
+- [abspath](abspath.html)

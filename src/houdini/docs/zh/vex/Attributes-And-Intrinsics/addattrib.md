@@ -1,61 +1,188 @@
 ---
 title: addattrib
-order: 1
+order: 2
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Adds an attribute to a geometry. 添加属性到几何体
+If you know the class of attribute you want to add ahead of time, using [adddetailattrib](adddetailattrib.html "Adds a detail attribute to a geometry."), [addprimattrib](addprimattrib.html "Adds a primitive attribute to a geometry."), [addpointattrib](addpointattrib.html "Adds a point attribute to a geometry."), or [addvertexattrib](addvertexattrib.html "Adds a vertex attribute to a geometry.") may be faster.
 
-如果你提前知道你要添加的属性类别，使用 adddetailattrib、addprimattrib、addpointattrib 或 addvertexattrib 可能会更快。
+`int addattrib(int geohandle, string attribclass, string name, <type>defvalue)`
 
-```c
-int  addattrib(int geohandle, string attribclass, string name,
-<type>defvalue)`
+`int addattrib(int geohandle, string attribclass, string name, <type>defvalue[])`
 
-int  addattrib(int geohandle, string attribclass, string name,
-<type>defvalue[])
-```
+## Arguments
 
-[[../_Args/geohandle]]
+`geohandle`
 
-A handle to the geometry to write to. Currently the only valid value is `0` or
-geoself, which
-means the current geometry in a node. (This argument may be used in the future
-to allow writing to other geometries.)
-
-要生效的几何体句柄。目前只能是 0 或者几何体自身的路径。(将来可能用作其他几何体)。
+A handle to the geometry to write to. Currently the only valid value is `0` or [geoself](geoself.html "Returns a handle to the current geometry."), which means the current geometry in a node. (This argument may be used in the future to allow writing to other geometries.)
 
 `attribclass`
 
 One of `"detail"` (or `"global"`), `"point"`, `"prim"`, or `"vertex"`.
 
-You can also use `"primgroup"`, `"pointgroup"` or `"vertexgroup"` to read from groups. You can read the contents of primitive/point/vertex groups in VEX as if they were attributes.").
+You can also use `"primgroup"`, `"pointgroup"` or `"vertexgroup"` to [read from groups](../groups.html "You can read the contents of primitive/point/vertex groups in VEX as if they were attributes.").
 
-datail （或 "全局"）、"点"、"prim "或 "顶点 "中的一个。 你也可以使用 "primgroup"、"pointgroup "或 "vertexgroup "来读取分组。
-
-<div class="aaa">name</div>
+`name`
 
 The name of the attribute to create.
-
-要创建的属性的名称。
 
 `defvalue`
 
 The default value for the attribute and determines the type of attribute to create. String and array attributes cannot have defaults, so only the type is used in those cases.
 
-属性的默认值，决定了要创建的属性的类型。字符串和数组属性不能有默认值，所以在这些情况下只使用类型。
+## Returns
 
-Returns
+`geohandle` on success, or `-1` on failure.
 
-geohandle on success, or ` -1` on failure.
+- If an attribute of the same name already exists, the function will try to convert it to the new type.
 
-成功时返回 [[../_Args/geohandle|geohandle]] ，失败返回 -1。
 
----
 
-If an attribute of the same name already exists, the function will try to convert it to the new type.
+## See also
 
-如果存在同名属性，会尝试将其转换为新类型。
+- [adddetailattrib](adddetailattrib.html)
+- [addprimattrib](addprimattrib.html)
+- [addpointattrib](addpointattrib.html)
+- [addvertexattrib](addvertexattrib.html)
+
+|
+attrib
+
+[addattrib](addattrib.html)
+
+[adddetailattrib](adddetailattrib.html)
+
+[addpointattrib](addpointattrib.html)
+
+[addprimattrib](addprimattrib.html)
+
+[addvertexattrib](addvertexattrib.html)
+
+[addvisualizer](addvisualizer.html)
+
+[attrib](attrib.html)
+
+[attribclass](attribclass.html)
+
+[attribdataid](attribdataid.html)
+
+[attribsize](attribsize.html)
+
+[attribtype](attribtype.html)
+
+[attribtypeinfo](attribtypeinfo.html)
+
+[detail](detail.html)
+
+[detailattrib](detailattrib.html)
+
+[detailattribsize](detailattribsize.html)
+
+[detailattribtype](detailattribtype.html)
+
+[detailattribtypeinfo](detailattribtypeinfo.html)
+
+[detailintrinsic](detailintrinsic.html)
+
+[findattribval](findattribval.html)
+
+[findattribvalcount](findattribvalcount.html)
+
+[getattrib](getattrib.html)
+
+[getattribute](getattribute.html)
+
+[hasattrib](hasattrib.html)
+
+[hasdetailattrib](hasdetailattrib.html)
+
+[haspointattrib](haspointattrib.html)
+
+[hasprimattrib](hasprimattrib.html)
+
+[hasvertexattrib](hasvertexattrib.html)
+
+[nuniqueval](nuniqueval.html)
+
+[point](point.html)
+
+[pointattrib](pointattrib.html)
+
+[pointattribsize](pointattribsize.html)
+
+[pointattribtype](pointattribtype.html)
+
+[pointattribtypeinfo](pointattribtypeinfo.html)
+
+[pointlocaltransforms](pointlocaltransforms.html)
+
+[pointtransform](pointtransform.html)
+
+[pointtransformrigid](pointtransformrigid.html)
+
+[pointtransforms](pointtransforms.html)
+
+[pointtransformsrigid](pointtransformsrigid.html)
+
+[prim](prim.html)
+
+[prim_attribute](prim_attribute.html)
+
+[primattrib](primattrib.html)
+
+[primattribsize](primattribsize.html)
+
+[primattribtype](primattribtype.html)
+
+[primattribtypeinfo](primattribtypeinfo.html)
+
+[priminteriorweights](priminteriorweights.html)
+
+[primintrinsic](primintrinsic.html)
+
+[primuv](primuv.html)
+
+[primuvconvert](primuvconvert.html)
+
+[removedetailattrib](removedetailattrib.html)
+
+[removepointattrib](removepointattrib.html)
+
+[removeprimattrib](removeprimattrib.html)
+
+[removevertexattrib](removevertexattrib.html)
+
+[setattrib](setattrib.html)
+
+[setattribtypeinfo](setattribtypeinfo.html)
+
+[setdetailattrib](setdetailattrib.html)
+
+[setpointattrib](setpointattrib.html)
+
+[setpointlocaltransforms](setpointlocaltransforms.html)
+
+[setpointtransform](setpointtransform.html)
+
+[setpointtransforms](setpointtransforms.html)
+
+[setprimattrib](setprimattrib.html)
+
+[setvertexattrib](setvertexattrib.html)
+
+[uniqueval](uniqueval.html)
+
+[uniquevals](uniquevals.html)
+
+[uvsample](uvsample.html)
+
+[vertex](vertex.html)
+
+[vertexattrib](vertexattrib.html)
+
+[vertexattribsize](vertexattribsize.html)
+
+[vertexattribtype](vertexattribtype.html)
+
+[vertexattribtypeinfo](vertexattribtypeinfo.html)

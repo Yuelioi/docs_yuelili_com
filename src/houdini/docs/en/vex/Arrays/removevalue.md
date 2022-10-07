@@ -21,8 +21,8 @@ nums == {0, 1, 3, 1, 2, 3}
 
 ## See also
 
-- [Arrays ](../arrays.html)
-- [push ](push.html)
-- [find ](find.html)
-- [append ](append.html)
-- [resize ](resize.html)
+- [Arrays](../arrays.html)
+- [push](push.html)
+- [find](find.html)
+- [append](append.html)
+- [resize](resize.html)

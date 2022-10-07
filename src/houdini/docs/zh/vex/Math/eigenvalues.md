@@ -1,40 +1,78 @@
 ---
 title: eigenvalues
-order: 18
+order: 20
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Computes the eigenvalues of a 3Ã3 matrix.
+`void eigenvalues(int &nroot, matrix3 mat, vector &real, vector &imaginary)`
 
-```c
-void  eigenvalues(int &nroot, matrix3 mat, vector &real, vector &imaginary)
-```
+Computes the [eigenvalues](http://en.wikipedia.org/wiki/Eigenvalues_and_eigenvectors) of a 3×3 matrix.
 
-Computes the [eigenvalues
-\_\_](http://en.wikipedia.org/wiki/Eigenvalues_and_eigenvectors)of a 3Ã3
-matrix.
-
-计算一个 3-3 矩阵的特征值。
+## Arguments
 
 `nroot`
 
 The function overwrites this variable with the number of real roots.
 
-该函数用实根数覆盖该变量。
-
 `mat`
 
 The matrix to compute the eigenvalues for.
 
-要计算特征值的矩阵。
-
 `real`, `imaginary`
 
-The components of these two vectors are overwritten with corresponding pairs
-of real and imaginary parts of each eigenvalue.For example, `real[0]` and
-`imaginary[0]` contain the real and imaginary parts of the first eigenvalue.
+The components of these two vectors are overwritten with corresponding pairs of real and imaginary parts of each eigenvalue.
+For example, `real[0]` and `imaginary[0]` contain the real and imaginary parts of the first eigenvalue.
 
-这两个向量的组成部分被覆盖为每个特征值的相应的实部和虚部。
+
+matrix
+
+[\_\_uniform\_mul](### uniform_mul.html)
+
+[\_\_uniform\_premul](### uniform_premul.html)
+
+[combinelocaltransform](combinelocaltransform.html)
+
+[cracktransform](cracktransform.html)
+
+[determinant](determinant.html)
+
+[diagonalizesymmetric](diagonalizesymmetric.html)
+
+[dihedral](dihedral.html)
+
+[eigenvalues](eigenvalues.html)
+
+[extractlocaltransform](extractlocaltransform.html)
+
+[ident](ident.html)
+
+[instance](instance.html)
+
+[invert](invert.html)
+
+[lookat](lookat.html)
+
+[maketransform](maketransform.html)
+
+[outerproduct](outerproduct.html)
+
+[premul](premul.html)
+
+[prerotate](prerotate.html)
+
+[prescale](prescale.html)
+
+[pretranslate](pretranslate.html)
+
+[rotate](rotate.html)
+
+[scale](scale.html)
+
+[smoothrotation](smoothrotation.html)
+
+[svddecomp](svddecomp.html)
+
+[translate](translate.html)
+
+[transpose](transpose.html)

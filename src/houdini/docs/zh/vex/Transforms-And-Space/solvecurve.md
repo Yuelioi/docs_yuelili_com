@@ -1,16 +1,13 @@
 ---
 title: solvecurve
-order: 27
+order: 28
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Applies a curve inverse kinematics algorithm to a skeleton.
 
-| Since | 17.5 |
-| ----- | ---- |
+
+Since 17.5
 
 `vector [] solvecurve(float lengths[], int closed, int orienttonormal, vector tangent, vector points[], vector normals[])`
 
@@ -32,132 +29,248 @@ Applies a curve inverse kinematics algorithm to a skeleton.
 
 `matrix3 [] solvecurve(string op, float lengths[], int closed, int orienttonormal, vector tangent, int normalcalcmethod, matrix relmat, int primnum, float lod)`
 
-Returns a array of vectors or matrix3 representing local bone rotations.
-Angles are in degrees.
+Returns a array of vectors or matrix3 representing local bone rotations. Angles are in degrees.
 
-返回一个代表局部骨骼旋转的向量或矩阵 3 阵列。角度的单位是度。
+## Arguments
 
 `op`
 
 The SOP path to a curve to evaluate.
 
-要评估的曲线的 SOP 路径。
-
 `outlength`
 
-Return the length of the curve where the solution ends. This is different than
-the sum of all lengths array.
-
-返回解决方案结束时的曲线长度。这与所有长度数组的总和不同。
+Return the length of the curve where the solution ends. This is different than the sum of all lengths array.
 
 `outpos`
 
 Return the computed position of the last joint.
 
-返回最后一个关节的计算位置。
-
 `lengths`
 
 The lengths of all the bones to solve.
-
-所有要解决的骨骼的长度。
 
 `closed`
 
 Close the curve.
 
-关闭曲线。
-
-```c
-orienttonormal
-```
+`orienttonormal`
 
 Use the normals from the curve to orient the bones.
-
-使用曲线上的法线来确定骨骼的方向。
 
 `normalmode`
 
 Define how the normals/twists are computed from the control points.
 
-定义如何从控制点计算出法线/扭力。
-
-Use the constants defined in
-
-```c
-$HH/vex/include/math.h
-```
-
-.
-
-使用$HH/vex/include/math.h 中定义的常数。
+Use the constants defined in `$HH/vex/include/math.h`.
 
 `tangent`
 
 A tangent vector to orient the end tip of the curve.
 
-一个切线向量，用来确定曲线端部的方向。
-
 `points`
 
 An array of vectors to use as points to define the curve.
-
-一个向量数组，作为定义曲线的点。
 
 `normals`
 
 An array of vectors to use as normals to define the curve.
 
-一个向量数组，用作定义曲线的法线。
-
 `twists`
 
-An optional array of floats to use as twist angles in degree to define the
-curve.
-
-一个可选的浮动数组，用来定义曲线的扭曲角度。
+An optional array of floats to use as twist angles in degree to define the curve.
 
 `initialtwists`
 
-An optional array of floats to use as initial twist angles in degree define
-the curve.
+An optional array of floats to use as initial twist angles in degree define the curve.
 
-一个可选的浮点数组，用来作为定义曲线的初始扭曲角。
+`normalcalcmethod`
 
-```c
-normalcalcmethod
-```
-
-A normal calculation method when evaluating using a SOP. (0 default, 1 none, 2
-interpolate with quaternions, 3 interpolate with twist angles in 0,180 range,
-4 interpolate with twist angles in any range.)
-
-使用 SOP 进行评估时的正常计算方法。(0 默认，1 没有，2 用四元数插值，3 用 0,180 范围内的扭角插值，4 用任何范围内的扭角插值。)
+A normal calculation method when evaluating using a SOP. (0 default, 1 none, 2 interpolate with quaternions, 3 interpolate with twist angles in 0,180 range, 4 interpolate with twist angles in any range.)
 
 `relmat`
 
-A relative matrix used to transform the points, normals and tangent relative
-to the origin.This is normally the invert matrix of the root of the chain.
-
-一个相对矩阵，用于转换相对于原点的点、法线和切线。
+A relative matrix used to transform the points, normals and tangent relative to the origin.
+This is normally the invert matrix of the root of the chain.
 
 `fmt`
 
-The curve type to create. Use constants defined in
-
-```c
-$HH/vex/include/math.h
-```
-
-,
-or 0 to create a polygon curve, 1 to create a bezier curve or 2 to create a
-NURBS curve.
-
-这通常是链根的反转矩阵。
+The curve type to create.
+Use constants defined in `$HH/vex/include/math.h`, or 0 to create a polygon curve, 1 to create a bezier curve or 2 to create a NURBS curve.
 
 `order`
 
-The curve order for NURBS or Bezier curves. This is ignored for polygon
-curves.
+The curve order for NURBS or Bezier curves. This is ignored for polygon curves.
 
-要建立的曲线类型。
+
+
+## See also
+
+- [solvefbik](solvefbik.html)
+- [solveconstraint](solveconstraint.html)
+- [solveik](solveik.html)
+
+|
+solve
+
+[agentsolvefbik](agentsolvefbik.html)
+
+[solveconstraint](solveconstraint.html)
+
+[solvecubic](solvecubic.html)
+
+[solvecurve](solvecurve.html)
+
+[solvefbik](solvefbik.html)
+
+[solveik](solveik.html)
+
+[solvephysfbik](solvephysfbik.html)
+
+[solvepoly](solvepoly.html)
+
+[solvequadratic](solvequadratic.html)
+
+[solvetriangleSSS](solvetriangleSSS.html)
+
+|
+transform
+
+[agentcliptransformgroups](agentcliptransformgroups.html)
+
+[agentfindtransformgroup](agentfindtransformgroup.html)
+
+[agentlocaltransform](agentlocaltransform.html)
+
+[agentlocaltransforms](agentlocaltransforms.html)
+
+[agentrestlocaltransform](agentrestlocaltransform.html)
+
+[agentrestworldtransform](agentrestworldtransform.html)
+
+[agentsolvefbik](agentsolvefbik.html)
+
+[agenttransformcount](agenttransformcount.html)
+
+[agenttransformgroupmember](agenttransformgroupmember.html)
+
+[agenttransformgroupmemberchannel](agenttransformgroupmemberchannel.html)
+
+[agenttransformgroups](agenttransformgroups.html)
+
+[agenttransformgroupweight](agenttransformgroupweight.html)
+
+[agenttransformnames](agenttransformnames.html)
+
+[agenttransformtolocal](agenttransformtolocal.html)
+
+[agenttransformtoworld](agenttransformtoworld.html)
+
+[agentworldtransform](agentworldtransform.html)
+
+[agentworldtransforms](agentworldtransforms.html)
+
+[cregioncapturetransform](cregioncapturetransform.html)
+
+[cregiondeformtransform](cregiondeformtransform.html)
+
+[cregionoverridetransform](cregionoverridetransform.html)
+
+[ctransform](ctransform.html)
+
+[fromNDC](fromNDC.html)
+
+[getpackedtransform](getpackedtransform.html)
+
+[getspace](getspace.html)
+
+[mspace](mspace.html)
+
+[ndcdepth](ndcdepth.html)
+
+[ntransform](ntransform.html)
+
+[opparentbonetransform](opparentbonetransform.html)
+
+[opparenttransform](opparenttransform.html)
+
+[opparmtransform](opparmtransform.html)
+
+[oppreconstrainttransform](oppreconstrainttransform.html)
+
+[oppreparmtransform](oppreparmtransform.html)
+
+[opprerawparmtransform](opprerawparmtransform.html)
+
+[oppretransform](oppretransform.html)
+
+[oprawparmtransform](oprawparmtransform.html)
+
+[optransform](optransform.html)
+
+[orthographic](orthographic.html)
+
+[ow_nspace](ow_nspace.html)
+
+[ow_space](ow_space.html)
+
+[ow_vspace](ow_vspace.html)
+
+[packedtransform](packedtransform.html)
+
+[perspective](perspective.html)
+
+[polardecomp](polardecomp.html)
+
+[ptransform](ptransform.html)
+
+[qinvert](qinvert.html)
+
+[qrotate](qrotate.html)
+
+[rotate_x_to](rotate_x_to.html)
+
+[setagentchannelvalue](setagentchannelvalue.html)
+
+[setagentchannelvalues](setagentchannelvalues.html)
+
+[setagentlocaltransform](setagentlocaltransform.html)
+
+[setagentlocaltransforms](setagentlocaltransforms.html)
+
+[setagentworldtransform](setagentworldtransform.html)
+
+[setagentworldtransforms](setagentworldtransforms.html)
+
+[setpackedtransform](setpackedtransform.html)
+
+[solveconstraint](solveconstraint.html)
+
+[solvecurve](solvecurve.html)
+
+[solvefbik](solvefbik.html)
+
+[solveik](solveik.html)
+
+[solvephysfbik](solvephysfbik.html)
+
+[toNDC](toNDC.html)
+
+[tw_nspace](tw_nspace.html)
+
+[tw_space](tw_space.html)
+
+[tw_vspace](tw_vspace.html)
+
+[vtransform](vtransform.html)
+
+[wo_nspace](wo_nspace.html)
+
+[wo_space](wo_space.html)
+
+[wo_vspace](wo_vspace.html)
+
+[wt_nspace](wt_nspace.html)
+
+[wt_space](wt_space.html)
+
+[wt_vspace](wt_vspace.html)

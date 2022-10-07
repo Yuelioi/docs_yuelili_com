@@ -1,43 +1,89 @@
 ---
 title: prerotate
-order: 17
+order: 18
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Applies a pre rotation to the given matrix.
 
-| Since | 17.5 |
-| ----- | ---- |
 
-```c
-void  prerotate(matrix3 &m, float amount, vector axis)
-```
+Since 17.5
 
-```c
-void  prerotate(matrix &m, float amount, vector axis)
-```
+`void prerotate(matrix3 &m, float amount, vector axis)`
 
-```c
-void  prerotate(matrix3 &m, vector angles, int xyz)
-```
+`void prerotate(matrix &m, float amount, vector axis)`
 
-```c
-void  prerotate(matrix &m, vector angles, int xyz)
-```
+`void prerotate(matrix3 &m, vector angles, int xyz)`
 
-```c
-void  prerotate(matrix3 &m, float angle, int axis)
-```
+`void prerotate(matrix &m, vector angles, int xyz)`
 
-```c
-void  prerotate(matrix &m, float angle, int axis)
-```
+`void prerotate(matrix3 &m, float angle, int axis)`
 
-Applies a prerotation to the given matrix. The angles must be given inradians
-and the axis must be normalized. The xyz argument is the rotate order.The axis
-can also be given as an integer where XAXIS=1, YAXIS=2 and ZAXIS=4.
+`void prerotate(matrix &m, float angle, int axis)`
 
-对给定的矩阵应用一个预旋转。角度的单位必须是
+Applies a prerotation to the given matrix. The angles must be given in
+radians and the axis must be normalized. The xyz argument is the rotate order.
+The axis can also be given as an integer where XAXIS=1, YAXIS=2 and ZAXIS=4.
+
+
+
+## See also
+
+- [pretranslate](pretranslate.html)
+- [prescale](prescale.html)
+- [translate](translate.html)
+- [rotate](rotate.html)
+- [scale](scale.html)
+
+|
+matrix
+
+[\_\_uniform\_mul](### uniform_mul.html)
+
+[\_\_uniform\_premul](### uniform_premul.html)
+
+[combinelocaltransform](combinelocaltransform.html)
+
+[cracktransform](cracktransform.html)
+
+[determinant](determinant.html)
+
+[diagonalizesymmetric](diagonalizesymmetric.html)
+
+[dihedral](dihedral.html)
+
+[eigenvalues](eigenvalues.html)
+
+[extractlocaltransform](extractlocaltransform.html)
+
+[ident](ident.html)
+
+[instance](instance.html)
+
+[invert](invert.html)
+
+[lookat](lookat.html)
+
+[maketransform](maketransform.html)
+
+[outerproduct](outerproduct.html)
+
+[premul](premul.html)
+
+[prerotate](prerotate.html)
+
+[prescale](prescale.html)
+
+[pretranslate](pretranslate.html)
+
+[rotate](rotate.html)
+
+[scale](scale.html)
+
+[smoothrotation](smoothrotation.html)
+
+[svddecomp](svddecomp.html)
+
+[translate](translate.html)
+
+[transpose](transpose.html)

@@ -1,61 +1,149 @@
 ---
 title: setvertexgroup
-order: 11
+order: 12
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Adds or removes a vertex to/from a group in a geometry.
+`int setvertexgroup(int geohandle, string name, int prim\_num, int vertex\_num, int value, string mode="set")`
 
-`int setvertexgroup(int geohandle, string name, int prim_num, int vertex_num, int value, string mode="set")`
+## Arguments
 
 `geohandle`
 
-A handle to the geometry to write to. Currently the only valid value is `0` or
-[geoself](geoself.html) "Returns a handle to the current geometry."), which
-means the current geometry in a node. (This argument may be used in the future
-to allow writing to other geometries.)
+A handle to the geometry to write to. Currently the only valid value is `0` or [geoself](geoself.html "Returns a handle to the current geometry."), which means the current geometry in a node. (This argument may be used in the future to allow writing to other geometries.)
 
-要写入的几何体的句柄。目前唯一有效的值是 0orgeoself，也就是一个节点中的当前几何体。(这个参数将来可能会被用于允许写入其他几何体)。
+**To use a linear vertex index**, set the `prim_num` to the **linear vertex number** and set `vertex_num` to `-1`. Note that **this is different** from how most other vertex functions work.
 
-**To use a linear vertex index** , set the `prim_num` to the **linear vertex
-number** and set `vertex_num` to `-1`. Note that **this is different** from
-how most other vertex functions work.
-
-要使用线性顶点索引，将 prim_num 设置为线性顶点编号，将 vertex_num 设置为 1。注意，这与其他大多数顶点函数的工作方式不同。
-
-Show/hide arguments
+## Arguments
 
 `name`
 
 The name of the group to modify.
 
-要修改的组的名称。
-
 `prim_num`
 
 The number of the primitive containing the vertex you want to add/remove.
-
-包含希望添加/删除的顶点的基元的编号。
 
 `vertex_num`
 
 The vertex offset on the primitive of the vertex you want to add/remove.
 
-希望添加/删除的顶点在基元上的顶点偏移。
-
 `value`
 
-`1` to put the vertex in the group, `0` to remove the vertex from the
-group.This is ignored if `mode` is `"toggle"`.
-
-1 表示将顶点放入组内，0 表示将顶点从组内移除。
+`1` to put the vertex in the group, `0` to remove the vertex from the group.
+This is ignored if `mode` is `"toggle"`.
 
 `mode`
 
-Use `"set"` to set the vertex‘smembership according to the `value`.Use
-`"toggle"` to toggle the vertex‘smembership, regardless of the `value`.
+Use `"set"` to set the vertex’s membership according to the `value`.
+Use `"toggle"` to toggle the vertex’s membership, regardless of the `value`.
 
-如果模式是 "切换"，这将被忽略。
+
+
+## See also
+
+- [Working with geometry groups in VEX](../groups.html)
+- [setprimgroup](setprimgroup.html)
+- [setpointgroup](setpointgroup.html)
+- [vertexindex](vertexindex.html)
+
+|
+groups
+
+[expandpointgroup](expandpointgroup.html)
+
+[expandprimgroup](expandprimgroup.html)
+
+[expandvertexgroup](expandvertexgroup.html)
+
+[inpointgroup](inpointgroup.html)
+
+[inprimgroup](inprimgroup.html)
+
+[invertexgroup](invertexgroup.html)
+
+[npointsgroup](npointsgroup.html)
+
+[nprimitivesgroup](nprimitivesgroup.html)
+
+[nverticesgroup](nverticesgroup.html)
+
+[setpointgroup](setpointgroup.html)
+
+[setprimgroup](setprimgroup.html)
+
+[setvertexgroup](setvertexgroup.html)
+
+|
+vertex
+
+[addvertex](addvertex.html)
+
+[addvertexattrib](addvertexattrib.html)
+
+[hasvertexattrib](hasvertexattrib.html)
+
+[hedge_postdstvertex](hedge_postdstvertex.html)
+
+[hex_faceindex](hex_faceindex.html)
+
+[invertexgroup](invertexgroup.html)
+
+[nvertices](nvertices.html)
+
+[nverticesgroup](nverticesgroup.html)
+
+[osd_limitsurfacevertex](osd_limitsurfacevertex.html)
+
+[pointvertex](pointvertex.html)
+
+[pointvertices](pointvertices.html)
+
+[primvertex](primvertex.html)
+
+[primvertexcount](primvertexcount.html)
+
+[primvertices](primvertices.html)
+
+[removevertex](removevertex.html)
+
+[removevertexattrib](removevertexattrib.html)
+
+[removevertexgroup](removevertexgroup.html)
+
+[setprimvertex](setprimvertex.html)
+
+[setvertexattrib](setvertexattrib.html)
+
+[setvertexgroup](setvertexgroup.html)
+
+[setvertexpoint](setvertexpoint.html)
+
+[tet_faceindex](tet_faceindex.html)
+
+[vertex](vertex.html)
+
+[vertexattrib](vertexattrib.html)
+
+[vertexattribsize](vertexattribsize.html)
+
+[vertexattribtype](vertexattribtype.html)
+
+[vertexattribtypeinfo](vertexattribtypeinfo.html)
+
+[vertexcurveparam](vertexcurveparam.html)
+
+[vertexhedge](vertexhedge.html)
+
+[vertexindex](vertexindex.html)
+
+[vertexnext](vertexnext.html)
+
+[vertexpoint](vertexpoint.html)
+
+[vertexprev](vertexprev.html)
+
+[vertexprim](vertexprim.html)
+
+[vertexprimindex](vertexprimindex.html)

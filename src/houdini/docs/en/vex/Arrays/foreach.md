@@ -53,4 +53,4 @@ This is similar to the common Python idiom `for i, x in enumerate(xs):`.
 
 ## See also
 
-- [Arrays ](../arrays.html)
+- [Arrays](../arrays.html)

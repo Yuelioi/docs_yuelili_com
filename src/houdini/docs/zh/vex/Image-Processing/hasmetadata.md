@@ -1,35 +1,47 @@
 ---
 title: hasmetadata
-order: 11
+order: 12
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Queries if metadata exists on a composite operator.
 
-| Context(s) | [cop](../contexts/cop.html) |
-| ---------- | --------------------------- |
 
-```c
-int  hasmetadata(int opinput, string name)
-```
+Context(s)
+[cop](../contexts/cop.html)
 
-This function checks if metadata named `name` exists on the COP attached tothe
-VEX COP‘sinput `opinput`. If it exists then 1 is returned, otherwise 0.
+`int hasmetadata(int opinput, string name)`
 
-这个函数检查是否有元数据 namednameexists 在 COP 上连接到
+This function checks if metadata named `name` exists on the COP attached to
+the VEX COP’s input `opinput`. If it exists then 1 is returned, otherwise 0.
+
+## Arguments
 
 `opinput`
 
-The input number to read from, starting from 0. For example, the first input
-is 0, the second input is 1, and so on.
-
-VEX COPâs inputopinput。如果它存在，则返回 1，否则返回 0。
+The input number to read from, starting from 0. For example, the first input is 0, the second input is 1, and so on.
 
 `name`
 
 The name of the metadata to check.
 
-要读取的输入号码，从 0 开始。例如，第一个输入是 0，第二个输入是 1，以此类推。
+
+
+## See also
+
+- [metadata](metadata.html)
+
+|
+cop
+
+[binput](binput.html)
+
+[cinput](cinput.html)
+
+[finput](finput.html)
+
+[hasmetadata](hasmetadata.html)
+
+[metadata](metadata.html)
+
+[ninput](ninput.html)

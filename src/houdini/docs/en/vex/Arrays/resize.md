@@ -22,7 +22,7 @@ initialized to `val`.
 
 ## See also
 
-- [Arrays ](../arrays.html)
-- [append ](append.html)
-- [push ](push.html)
-- [len ](len.html)
+- [Arrays](../arrays.html)
+- [append](append.html)
+- [push](push.html)
+- [len](len.html)

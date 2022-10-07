@@ -27,4 +27,4 @@ vector(unserialize(f)); // Now v has a length of 2 and contains { {1,2,3},
 
 ## See also
 
-- [serialize ](serialize.html)
+- [serialize](serialize.html)

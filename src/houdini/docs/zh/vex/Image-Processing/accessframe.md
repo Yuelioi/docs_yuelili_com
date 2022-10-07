@@ -1,17 +1,20 @@
 ---
 title: accessframe
-order: 1
+order: 2
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Tells the COP manager that you need access to the given frame.
 
-| Context(s) | [cop](../contexts/cop.html) |
-| ---------- | --------------------------- |
 
-```c
-void  accessframe(int frame)
-```
+Context(s)
+[cop](../contexts/cop.html)
+
+`void accessframe(int frame)`
+
+
+
+## See also
+
+- [Time Machine](../../nodes/cop2/tima.html)
+- [Time Filter](../../nodes/cop2/timefilter.html)

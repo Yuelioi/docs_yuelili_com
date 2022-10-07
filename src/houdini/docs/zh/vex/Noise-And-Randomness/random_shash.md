@@ -1,31 +1,49 @@
 ---
 title: random_shash
-order: 27
+order: 35
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Hashes a string to an integer.
-
-```c
-int  random_shash(string seed)
-```
+`int random\_shash(string seed)`
 
 Hashes the given string into an integer value.
 
-将给定的字符串散列成一个整数值。
-
-Note
+::: info Note
 
 Two different strings may hash to the same value.
 
-两个不同的字符串可能哈希成相同的值。
+::: info Note
 
-Note
+The returned value may be very large and can cause an overflow when further multiplied or is cast to float.
 
-The returned value may be very large and can cause an overflow when further
-multiplied or is cast to float.
 
-返回的值可能非常大，当进一步乘以或投以浮点数时，可能会导致溢出。
+random
+
+[curlgxnoise](curlgxnoise.html)
+
+[curlgxnoise2d](curlgxnoise2d.html)
+
+[gxnoise](gxnoise.html)
+
+[mx_cellnoise](mx_cellnoise.html)
+
+[mx_perlin](mx_perlin.html)
+
+[mx_voronoi](mx_voronoi.html)
+
+[mx_worley](mx_worley.html)
+
+[nrandom](nrandom.html)
+
+[rand](rand.html)
+
+[random](random.html)
+
+[random_fhash](random_fhash.html)
+
+[random_ihash](random_ihash.html)
+
+[random_poisson](random_poisson.html)
+
+[random_shash](random_shash.html)

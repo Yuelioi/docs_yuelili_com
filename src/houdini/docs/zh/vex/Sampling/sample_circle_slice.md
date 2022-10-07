@@ -2,40 +2,43 @@
 title: sample_circle_slice
 order: 12
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Generates a uniform vector2 with length < 1, within maxangle of center, given
-a vector2 of uniform numbers between 0 and 1.
+`vector2 sample\_circle\_slice(vector2 center, float maxangle, vector2 u)`
 
-```c
-vector2  sample_circle_slice(vector2 center, float maxangle, vector2 u)
-```
+## Arguments
 
 `center`
 
-Direction in the center of the slice.This does not need to be normalized.
-
-切片中心的方向。 这不需要被归一化。
+Direction in the center of the slice. This does not need to be normalized.
 
 `maxangle`
 
-Maximum angle, in radians, away from `center` that any sample of the slicewill
-be, so long as all `u` values are between 0 and 1.
-
-只要所有的 u 值都在 0 到 1 之间，切片的任何样本离开中心的最大角度，单位是弧度。
+Maximum angle, in radians, away from `center` that any sample of the slice
+will be, so long as all `u` values are between 0 and 1.
 
 `u`
 
 Pair of numbers between 0 and 1.
 
-的最大角度，只要所有 u 值都在 0 和 1 之间。
+Returns a vector2 of length < 1, based on `u`.
+Given uniform random `u` pairs of values in `[0,1)`, the returned vectors will be
+uniform random and continuous with respect to `u` inside the unit circle,
+in the slice within `maxangle` of the direction indicated by `center`.
 
-Returns a vector2 of length < 1, based on `u`.Given uniform random `u` pairs
-of values in [0,1), the returned vectors will beuniform random and continuous
-with respect to `u` inside the unit circle,in the slice within `maxangle` of
-the direction indicated by `center`.
 
-一对 0 到 1 之间的数字。
+
+## See also
+
+- [sample_circle_edge_uniform](sample_circle_edge_uniform.html)
+- [sample_direction_uniform](sample_direction_uniform.html)
+- [sample_orientation_uniform](sample_orientation_uniform.html)
+- [sample_circle_uniform](sample_circle_uniform.html)
+- [sample_sphere_uniform](sample_sphere_uniform.html)
+- [sample_hypersphere_uniform](sample_hypersphere_uniform.html)
+- [sample_circle_arc](sample_circle_arc.html)
+- [sample_direction_cone](sample_direction_cone.html)
+- [sample_orientation_cone](sample_orientation_cone.html)
+- [sample_sphere_cone](sample_sphere_cone.html)
+- [sample_hypersphere_cone](sample_hypersphere_cone.html)

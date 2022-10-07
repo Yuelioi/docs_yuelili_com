@@ -1,52 +1,53 @@
 ---
 title: quaternion
-order: 49
+order: 55
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Creates a vector4 representing a quaternion.
+`vector4 quaternion(matrix3 rotations)`
 
-```c
-vector4  quaternion(matrix3 rotations)
-```
+Creates a vector4 representing a quaternion from a 3×3 rotational matrix.
 
-Creates a vector4 representing a quaternion from a 3Ã3 rotational matrix.
+`vector4 quaternion(float angle, vector axis)`
 
-从 3Ã3 旋转矩阵创建一个代表四元数的向量 4。
+Creates a vector4 representing a quaternion from an angle and axis. The angle is specified in radians.
 
-```c
-vector4  quaternion(float angle, vector axis)
-```
+`vector4 quaternion(vector angleaxis)`
 
-Creates a vector4 representing a quaternion from an angle and axis. The angle
-is specified in radians.
+Creates a vector4 representing a quaternion from a combined angle/axis. This is the normalized rotation axis multiplied by the rotation angle in radians.
 
-从 anangle 和 axis 创建一个代表四元数的向量 4。角度是以弧度指定的。
+There used to be a fourth form that took a rotation vector. It has been renamed to `eulertoquaternion` and now takes radians.
 
-```c
-vector4  quaternion(vector angleaxis)
-```
+For more information, see [Data types](../lang.html#data-types) and [Dot operator](../lang.html#dot-operator).
 
-Creates a vector4 representing a quaternion from a combined angle/axis. This
-is the normalized rotation axis multiplied by the rotation angle in radians.
 
-从组合角度/轴创建一个代表四元数的向量 4。这是规范化的旋转轴乘以旋转角度（弧度）。
 
-There used to be a fourth form that took a rotation vector.It has been renamed
-to
+## See also
 
-```c
-eulertoquaternion
-```
+- [dihedral](dihedral.html)
+- [qconvert](qconvert.html)
+- [eulertoquaternion](eulertoquaternion.html)
 
-and now takes radians.
+|
+quaternion
 
-以前有一个第四种形式，采取旋转向量。 它已经被重新命名为 eulertoquaternion，现在需要弧度。
+[dihedral](dihedral.html)
 
-For more information, see [Data types](../lang.html#data-types) and [Dot
-operator](../lang.html#dot-operator).
+[eulertoquaternion](eulertoquaternion.html)
 
-更多信息，请参阅数据类型和点运算符。
+[qconvert](qconvert.html)
+
+[qdistance](qdistance.html)
+
+[qinvert](qinvert.html)
+
+[qmultiply](qmultiply.html)
+
+[qrotate](qrotate.html)
+
+[quaternion](quaternion.html)
+
+[quaterniontoeuler](quaterniontoeuler.html)
+
+[slerp](slerp.html)

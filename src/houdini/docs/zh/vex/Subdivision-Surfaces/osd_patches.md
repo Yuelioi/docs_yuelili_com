@@ -1,25 +1,58 @@
 ---
 title: osd_patches
-order: 8
+order: 9
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Returns a list of patch IDs for the patches in a subdivision hull.
+`int [] osd\_patches(<geometry>geometry, int face\_id)`
 
-```c
-int [] osd_patches(<geometry>geometry, int face_id)
-```
-
-Each face in a subdivision hull may create one or more patches. This function
-lists the patch ids for a corresponding face.
-
-在一个细分船体中的每个面都可以创建一个或多个补丁。 这个函数列出了一个相应面的补丁 ID。
+Each face in a subdivision hull may create one or more patches. This function lists the patch ids for a corresponding face.
 
 This is implemented using the following algorithm:
 
-这是用以下算法实现的。
+```c
+int []
+osd\_patches(const string file; const face\_id)
+{
+ int patches[] = {};
+ int first = osd\_firstpatch(file, face\_id);
+ if (first >= 0)
+ {
+ int npatches = osd\_patchcount(file, face\_id);
+ for (int i = 0; i < npatches; i++)
+ append(patches, first+i);
+ }
+ return patches;
+}
 
-    int []osd_patches(const string file; const face_id){  int    patches[] = {};  int    first = osd_firstpatch(file, face_id);  if (first >= 0)  {    int    npatches = osd_patchcount(file, face_id);    for (int i = 0; i < npatches; i++)      append(patches, first+i);  }  return patches;}
+```
+
+
+
+## See also
+
+- [osd_facecount](osd_facecount.html)
+- [osd_firstpatch](osd_firstpatch.html)
+- [osd_limitsurface](osd_limitsurface.html)
+- [osd_limitsurfacevertex](osd_limitsurfacevertex.html)
+- [osd_patchcount](osd_patchcount.html)
+
+|
+subd
+
+[osd_facecount](osd_facecount.html)
+
+[osd_firstpatch](osd_firstpatch.html)
+
+[osd_limitsurface](osd_limitsurface.html)
+
+[osd_limitsurfacevertex](osd_limitsurfacevertex.html)
+
+[osd_lookupface](osd_lookupface.html)
+
+[osd_lookuppatch](osd_lookuppatch.html)
+
+[osd_patchcount](osd_patchcount.html)
+
+[osd_patches](osd_patches.html)

@@ -1,38 +1,29 @@
 ---
 title: getlocalcurvature
-order: 21
+order: 22
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Evaluates local curvature of primitive grid, using the same curvature
-evaluation method as Measure SOPs.
 
-| Context(s) | [shading](../contexts/shading.html) |
-| ---------- | ----------------------------------- |
 
-```c
-vector  getlocalcurvature(float s, float t)
-```
+Context(s)
+[shading](../contexts/shading.html)
 
-Returns 0 vector if the object does not have subdivision enabled, or has no
-displacement shader assigned.Otherwise, the measured convexity and concavity
-will be returned in `x` and `y` components respectively.
+`vector getlocalcurvature(float s, float t)`
 
-如果该对象没有启用细分功能，或者没有分配位移着色器，则返回 0 向量。
+Returns 0 vector if the object does not have subdivision enabled, or has no displacement shader assigned.
+Otherwise, the measured convexity and concavity will be returned in `x` and `y` components respectively.
+
+## Arguments
 
 `s`
 
-Parametric S shading value. This should be passed from the `s` global
-variable.
-
-否则，测量的凸度和凹度将分别以 xandycomponents 返回。
+Parametric S shading value. This should be passed from the `s` global variable.
 
 `t`
 
-Parametric <type> shading value. This should be passed from the `t` global
-variable.
+Parametric <type> shading value. This should be passed from the `t` global variable.
 
-参数 S 的阴影值。这应该由 sglobal 变量传递。
+
+shading raytracing

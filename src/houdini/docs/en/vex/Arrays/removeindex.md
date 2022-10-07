@@ -23,6 +23,6 @@ Returns `0` if no such entry was present, `1` if something was removed.
 
 ## See also
 
-- [Arrays ](../arrays.html)
-- [pop ](pop.html)
-- [removevalue ](removevalue.html)
+- [Arrays](../arrays.html)
+- [pop](pop.html)
+- [removevalue](removevalue.html)

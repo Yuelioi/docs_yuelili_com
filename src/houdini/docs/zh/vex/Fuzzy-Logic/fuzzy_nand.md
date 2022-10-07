@@ -1,37 +1,44 @@
 ---
 title: fuzzy_nand
-order: 4
+order: 5
 category:
-  - houdini
+  - vex
 ---
-    
-    [  
-Houdini 19.0  
-](../../index.html)  
-**  
-[  
-VEX  
-](../index.html)  
-**  
-[  
-VEX Functions  
-](index.html)  
-\_\_
 
-# fuzzy_nand
+`int fuzzy\_nand(int a, int b, ...)`
 
-VEX function
-
-#
-
-```c
-int  fuzzy_nand(int a, int b, ...)
-```
-
-```c
-float  fuzzy_nand(float a, float b, ...)
-```
+`float fuzzy\_nand(float a, float b, ...)`
 
 Returns the fuzzy “NAND” (Zadeh NAND) of the input fuzzy values.
 
-返回输入模糊值的模糊 "NAND"（Zadeh NAND）。
+
+
+## See also
+
+- [fuzzy_and](fuzzy_and.html)
+- [fuzzy_not](fuzzy_not.html)
+- [fuzzy_or](fuzzy_or.html)
+- [fuzzy_nor](fuzzy_nor.html)
+- [fuzzy_xor](fuzzy_xor.html)
+- [fuzzy_nxor](fuzzy_nxor.html)
+
+|
+fuzzy
+
+[fuzzify](fuzzify.html)
+
+[fuzzy_and](fuzzy_and.html)
+
+[fuzzy_defuzz_centroid](fuzzy_defuzz_centroid.html)
+
+[fuzzy_nand](fuzzy_nand.html)
+
+[fuzzy_nor](fuzzy_nor.html)
+
+[fuzzy_not](fuzzy_not.html)
+
+[fuzzy_nxor](fuzzy_nxor.html)
+
+[fuzzy_or](fuzzy_or.html)
+
+[fuzzy_xor](fuzzy_xor.html)

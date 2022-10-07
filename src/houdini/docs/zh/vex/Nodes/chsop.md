@@ -1,29 +1,89 @@
 ---
 title: chsop
-order: 14
+order: 18
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
+
+
+
+Since 18.0
+
+`string chsop(string channel)`
+
+`string chsop(string channel, float time)`
 
 Evaluates an operator path parameter and return the path to the operator.
-
-| Since | 18.0 |
-| ----- | ---- |
-
-```c
-string  chsop(string channel)
-```
-
-```c
-string  chsop(string channel, float time)
-```
-
-Evaluates an operator path parameter and return the path to the operator.
-
-评估一个操作者路径参数，并将路径返回给操作者。
 
 The time is specified in seconds, not in frames.
 
-时间的单位是秒，而不是帧。
+
+utility
+
+[assert_enabled](assert_enabled.html)
+
+[ch](ch.html)
+
+[ch2](ch2.html)
+
+[ch3](ch3.html)
+
+[ch4](ch4.html)
+
+[chdict](chdict.html)
+
+[chexpr](chexpr.html)
+
+[chexprf](chexprf.html)
+
+[chexprt](chexprt.html)
+
+[chf](chf.html)
+
+[chi](chi.html)
+
+[chid](chid.html)
+
+[chp](chp.html)
+
+[chramp](chramp.html)
+
+[chrampderiv](chrampderiv.html)
+
+[chs](chs.html)
+
+[chsop](chsop.html)
+
+[chsraw](chsraw.html)
+
+[chu](chu.html)
+
+[chv](chv.html)
+
+[error](error.html)
+
+[expand_udim](expand_udim.html)
+
+[has_udim](has_udim.html)
+
+[isbound](isbound.html)
+
+[isconnected](isconnected.html)
+
+[ninputs](ninputs.html)
+
+[opid](opid.html)
+
+[print_once](print_once.html)
+
+[printf](printf.html)
+
+[select](select.html)
+
+[sleep](sleep.html)
+
+[sprintf](sprintf.html)
+
+[texprintf](texprintf.html)
+
+[warning](warning.html)

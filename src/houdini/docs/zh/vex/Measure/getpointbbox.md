@@ -1,44 +1,110 @@
 ---
 title: getpointbbox
-order: 8
+order: 10
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Sets two vectors to the minimum and maximum corners of the bounding box for
-the geometry.
-
-```c
-void  getpointbbox(<geometry>geometry, vector &min, vector &max)
-```
+`void getpointbbox(<geometry>geometry, vector &min, vector &max)`
 
 `void getpointbbox(<geometry>geometry, string pointgroup, vector &min, vector &max)`
 
-This is the same as [getbbox](getbbox.html "Sets two vectors to the minimum
-and maximum corners of the bounding box for the geometry.") except it only
-computes the bounding box of the _points_. So if a primitive has extents that
-don‘t have points (for example, the boundary of a primitive sphere), they
-will not be included in the box.
+This is the same as [getbbox](getbbox.html "Sets two vectors to the minimum and maximum corners of the bounding box for the geometry.") except it only computes the bounding box of the _points_. So if a primitive has extents that don’t have points (for example, the boundary of a primitive sphere), they will not be included in the box.
 
-这与获取 bacterex 相同，但它只计算点的包围盒。因此，如果一个基元有没有点的外延（例如，基元球体的边界），它们就不会被包括在框内。
+## Arguments
 
 `<geometry>`
 
-When running in the context of a node (such as a wrangle SOP), this argument
-can be an integer representing the input number (starting at 0) to read the
-geometry from.
+When running in the context of a node (such as a wrangle SOP), this argument can be an integer representing the input number (starting at 0) to read the geometry from.
 
-在节点的上下文中运行时（如 wrangle SOP），此参数可以是一个整数，代表要从中读取几何图形的输入数字（从 0 开始）。
+Alternatively, the argument can be a string specifying a geometry file (for example, a `.bgeo`) to read from. When running inside Houdini, this can be an `op:/path/to/sop` reference.
 
-Alternatively, the argument can be a string specifying a geometry file (for
-example, a `.bgeo`) to read from. When running inside Houdini, this can be an
 
-```c
-op:/path/to/sop
-```
+bbox
 
-reference.
+[getbbox](getbbox.html)
 
-或者，该参数可以是一个字符串，指定要读取的几何体文件（例如，a.bgeo）。当在 Houdini 内部运行时，这个参数可以是 anop:/path/to/sopreference。
+[getbbox_center](getbbox_center.html)
+
+[getbbox_max](getbbox_max.html)
+
+[getbbox_min](getbbox_min.html)
+
+[getbbox_size](getbbox_size.html)
+
+[getbounds](getbounds.html)
+
+[getpointbbox](getpointbbox.html)
+
+[getpointbbox_center](getpointbbox_center.html)
+
+[getpointbbox_max](getpointbbox_max.html)
+
+[getpointbbox_min](getpointbbox_min.html)
+
+[getpointbbox_size](getpointbbox_size.html)
+
+[relbbox](relbbox.html)
+
+[relpointbbox](relpointbbox.html)
+
+[texture3dBox](texture3dBox.html)
+
+|
+measure
+
+[curvearclen](curvearclen.html)
+
+[distance](distance.html)
+
+[distance2](distance2.html)
+
+[getbbox](getbbox.html)
+
+[getbbox_center](getbbox_center.html)
+
+[getbbox_max](getbbox_max.html)
+
+[getbbox_min](getbbox_min.html)
+
+[getbbox_size](getbbox_size.html)
+
+[getbounds](getbounds.html)
+
+[getpointbbox](getpointbbox.html)
+
+[getpointbbox_center](getpointbbox_center.html)
+
+[getpointbbox_max](getpointbbox_max.html)
+
+[getpointbbox_min](getpointbbox_min.html)
+
+[getpointbbox_size](getpointbbox_size.html)
+
+[length](length.html)
+
+[length2](length2.html)
+
+[mdensity](mdensity.html)
+
+[pcfarthest](pcfarthest.html)
+
+[planepointdistance](planepointdistance.html)
+
+[predicate_orient2d](predicate_orient2d.html)
+
+[predicate_orient3d](predicate_orient3d.html)
+
+[primarclen](primarclen.html)
+
+[qdistance](qdistance.html)
+
+[relbbox](relbbox.html)
+
+[relpointbbox](relpointbbox.html)
+
+[surfacedist](surfacedist.html)
+
+[uvdist](uvdist.html)
+
+[xyzdist](xyzdist.html)

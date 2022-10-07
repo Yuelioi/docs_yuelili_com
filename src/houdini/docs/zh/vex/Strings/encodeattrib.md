@@ -1,35 +1,106 @@
 ---
 title: encodeattrib
-order: 8
+order: 10
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Encodes any string into a valid geometry attribute name.
 
-| Since | 18.0 |
-| ----- | ---- |
 
-```c
-string  encodeattrib(string str)
-```
+Since 18.0
 
-Houdini geometry attributes and group names are only allowed to
-containletters, numbers, and underscores, and must not begin with a number.
-Thisfunction takes any string, and encodes it into a string that obeys
-theserestrictions. The original string can be recovered using the
-`decodeattrib`function.A string that already obeys the rules is returned
-unmodified.
+`string encodeattrib(string str)`
 
-Houdini 几何属性和组的名称只允许包含
+Houdini geometry attributes and group names are only allowed to contain
+letters, numbers, and underscores, and must not begin with a number. This
+function takes any string, and encodes it into a string that obeys these
+restrictions. The original string can be recovered using the `decodeattrib`
+function. A string that already obeys the rules is returned unmodified.
 
-One exception to this rule is that a string starting with `xn__` will
-beencoded even if it is already a valid attribute name. This is because
-`xn__`is the prefix used to identify an encoded string. In this case, an
-additional`xn__` prefix will be added. This means a string can be encoded any
-number oftimes, then decoded the same number of times to always return to the
-originalstring, regardless of its contents.
+One exception to this rule is that a string starting with `xn### ` will be
+encoded even if it is already a valid attribute name. This is because `xn### `
+is the prefix used to identify an encoded string. In this case, an additional
+`xn### ` prefix will be added. This means a string can be encoded any number of
+times, then decoded the same number of times to always return to the original
+string, regardless of its contents.
 
-字母、数字和下划线，并且不能以数字开头。这个
+
+
+## See also
+
+- [decodeattrib](decodeattrib.html)
+
+|
+string
+
+[atof](atof.html)
+
+[atoi](atoi.html)
+
+[concat](concat.html)
+
+[decode](decode.html)
+
+[decodeattrib](decodeattrib.html)
+
+[decodeparm](decodeparm.html)
+
+[decodeutf8](decodeutf8.html)
+
+[encode](encode.html)
+
+[encodeattrib](encodeattrib.html)
+
+[encodeparm](encodeparm.html)
+
+[encodeutf8](encodeutf8.html)
+
+[error](error.html)
+
+[expand_udim](expand_udim.html)
+
+[find](find.html)
+
+[has_udim](has_udim.html)
+
+[insert](insert.html)
+
+[isvalidindex](isvalidindex.html)
+
+[itoa](itoa.html)
+
+[join](join.html)
+
+[lstrip](lstrip.html)
+
+[makevalidvarname](makevalidvarname.html)
+
+[match](match.html)
+
+[pluralize](pluralize.html)
+
+[print_once](print_once.html)
+
+[printf](printf.html)
+
+[relativepath](relativepath.html)
+
+[replace](replace.html)
+
+[replace_match](replace_match.html)
+
+[rstrip](rstrip.html)
+
+[split](split.html)
+
+[splitpath](splitpath.html)
+
+[sprintf](sprintf.html)
+
+[strip](strip.html)
+
+[strlen](strlen.html)
+
+[texprintf](texprintf.html)
+
+[warning](warning.html)

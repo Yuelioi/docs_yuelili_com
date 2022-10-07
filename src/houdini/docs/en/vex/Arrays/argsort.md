@@ -36,6 +36,6 @@ Blue, Green, Orange, Violet, Indigo}
 
 ## See also
 
-- [Arrays ](../arrays.html)
-- [reorder ](reorder.html)
-- [sort ](sort.html)
+- [Arrays](../arrays.html)
+- [reorder](reorder.html)
+- [sort](sort.html)

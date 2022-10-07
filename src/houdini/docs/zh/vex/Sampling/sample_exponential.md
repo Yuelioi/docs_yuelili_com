@@ -2,54 +2,49 @@
 title: sample_exponential
 order: 17
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Samples the exponential distribution.
+`float sample\_exponential(float u)`
 
-```c
-float  sample_exponential(float u)
-```
+`float sample\_exponential(float mean, float u)`
 
-```c
-float  sample_exponential(float mean, float u)
-```
+`float sample\_exponential(float origmean, float maxvalue, float u)`
 
-```c
-float  sample_exponential(float origmean, float maxvalue, float u)
-```
+## Arguments
 
 `u`
 
-A number in the range [0,1).
-
-一个范围在[0,1]的数字。
+A number in the range `[0,1)`.
 
 `mean`
 
 The mean of the distribution, or 1 if not specified.
 
-分布的平均数，如果没有指定，则为 1。
-
 `origmean`
 
-The mean the distribution would have, were it not for `maxvalue`,limiting the
-range.
-
-如果没有 maxvalue，分布的平均数。
+The mean the distribution would have, were it not for `maxvalue`,
+limiting the range.
 
 `maxvalue`
 
-When given, instead of sampling the full exponential distribution,the
-distribution with its range limited to `[0,maxvalue]` will besampled.
+When given, instead of sampling the full exponential distribution,
+the distribution with its range limited to `[0,maxvalue]` will be
+sampled.
 
-限制了范围。
+Samples the exponential distribution with the specified `mean`, optionally
+with a `maxvalue`.
+Given uniform random `u` values in `[0,1)`, this will return exponentially
+distributed random numbers. The return value will be monotone increasing
+with respect to `u`.
 
-Samples the exponential distribution with the specified `mean`, optionallywith
-a `maxvalue`.Given uniform random `u` values in [0,1), this will return
-exponentiallydistributed random numbers.The return value will be monotone
-increasingwith respect to `u`.
 
-当给定时，而不是对完整的指数分布进行采样。
+
+## See also
+
+- [rand](rand.html)
+- [sample_normal](sample_normal.html)
+- [sample_cauchy](sample_cauchy.html)
+- [sample_lognormal](sample_lognormal.html)
+- [sample_lognormal_by_median](sample_lognormal_by_median.html)
+- [sample_discrete](sample_discrete.html)

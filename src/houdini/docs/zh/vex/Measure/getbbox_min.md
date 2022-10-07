@@ -1,45 +1,123 @@
 ---
 title: getbbox_min
-order: 5
+order: 7
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Returns the minimum of the bounding box for the geometry.
-
-```c
-vector  getbbox_min(<geometry>geometry)
-```
+`vector getbbox\_min(<geometry>geometry)`
 
 Computes the minimum of the bounding box for the geometry.
 
-计算几何体的包围盒的最小值。
-
-```c
-vector  getbbox_min(<geometry>geometry, string primgroup)
-```
+`vector getbbox\_min(<geometry>geometry, string primgroup)`
 
 Computes the minimum of the bounding box of the primitives in the given group.
 
-计算给定组中的基元的边界盒的最小值。
+## Arguments
 
 `<geometry>`
 
-When running in the context of a node (such as a wrangle SOP), this argument
-can be an integer representing the input number (starting at 0) to read the
-geometry from.
+When running in the context of a node (such as a wrangle SOP), this argument can be an integer representing the input number (starting at 0) to read the geometry from.
 
-当在一个节点的上下文中运行时（比如 wrangle SOP），这个参数可以是一个整数，代表要读取几何体的输入数字（从 0 开始）。
+Alternatively, the argument can be a string specifying a geometry file (for example, a `.bgeo`) to read from. When running inside Houdini, this can be an `op:/path/to/sop` reference.
 
-Alternatively, the argument can be a string specifying a geometry file (for
-example, a `.bgeo`) to read from. When running inside Houdini, this can be an
 
-```c
-op:/path/to/sop
-```
 
-reference.
+## See also
 
-或者，该参数可以是一个字符串，指定要读取的几何体文件（例如，a.bgeo）。当在 Houdini 内部运行时，这个参数可以是 anop:/path/to/sopreference。
+- [getbbox](getbbox.html)
+- [getbbox_center](getbbox_center.html)
+- [getbbox_size](getbbox_size.html)
+- [getbbox_min](getbbox_min.html)
+- [getbbox_max](getbbox_max.html)
+- [getpointbbox](getpointbbox.html)
+
+|
+bbox
+
+[getbbox](getbbox.html)
+
+[getbbox_center](getbbox_center.html)
+
+[getbbox_max](getbbox_max.html)
+
+[getbbox_min](getbbox_min.html)
+
+[getbbox_size](getbbox_size.html)
+
+[getbounds](getbounds.html)
+
+[getpointbbox](getpointbbox.html)
+
+[getpointbbox_center](getpointbbox_center.html)
+
+[getpointbbox_max](getpointbbox_max.html)
+
+[getpointbbox_min](getpointbbox_min.html)
+
+[getpointbbox_size](getpointbbox_size.html)
+
+[relbbox](relbbox.html)
+
+[relpointbbox](relpointbbox.html)
+
+[texture3dBox](texture3dBox.html)
+
+|
+measure
+
+[curvearclen](curvearclen.html)
+
+[distance](distance.html)
+
+[distance2](distance2.html)
+
+[getbbox](getbbox.html)
+
+[getbbox_center](getbbox_center.html)
+
+[getbbox_max](getbbox_max.html)
+
+[getbbox_min](getbbox_min.html)
+
+[getbbox_size](getbbox_size.html)
+
+[getbounds](getbounds.html)
+
+[getpointbbox](getpointbbox.html)
+
+[getpointbbox_center](getpointbbox_center.html)
+
+[getpointbbox_max](getpointbbox_max.html)
+
+[getpointbbox_min](getpointbbox_min.html)
+
+[getpointbbox_size](getpointbbox_size.html)
+
+[length](length.html)
+
+[length2](length2.html)
+
+[mdensity](mdensity.html)
+
+[pcfarthest](pcfarthest.html)
+
+[planepointdistance](planepointdistance.html)
+
+[predicate_orient2d](predicate_orient2d.html)
+
+[predicate_orient3d](predicate_orient3d.html)
+
+[primarclen](primarclen.html)
+
+[qdistance](qdistance.html)
+
+[relbbox](relbbox.html)
+
+[relpointbbox](relpointbbox.html)
+
+[surfacedist](surfacedist.html)
+
+[uvdist](uvdist.html)
+
+[xyzdist](xyzdist.html)

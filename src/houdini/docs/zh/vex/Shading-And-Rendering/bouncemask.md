@@ -1,132 +1,223 @@
 ---
 title: bouncemask
-order: 4
+order: 5
 category:
-  - houdini
+  - vex
 ---
-    
-    [  
-Houdini 19.0  
-](../../index.html)  
-**  
-[  
-VEX  
-](../index.html)  
-**  
-[  
-VEX Functions  
-](index.html)  
-\_\_
 
-# bouncemask
+`int bouncemask(string labels)`
 
-VEX function
-
-#
-
-```c
-int  bouncemask(string labels)
-```
+## Arguments
 
 `labels`
 
 A label or space-separated list of labels.
 
-一个标签或以空格分隔的标签列表。
-
-Returns
+## Returns
 
 A bitmask that matches any of the labels.
 
-一个匹配任何标签的位掩码。
+Mantra tags different types of rays using shading component _labels_, such as “diffuse”, “reflect”, “refract”, “volume”, and “sss”. A custom BSDF can also specify its own labels in addition to existing ones (see [cvex_bsdf](cvex_bsdf.html "Creates a bsdf object from two CVEX shader strings.") for more information).
 
-Mantra tags different types of rays using shading component _labels_ , such as
-“diffuse”, “reflect”, “refract”, “volume”, and “sss”. A custom BSDF can also
-specify its own labels in addition to existing ones (see
-[cvex_bsdf](cvex_bsdf.html "Creates a bsdf object from two CVEX shader
-strings.") for more information).
+Some VEX functions take or return a _component bitmask_, which specifies a combination of one or more of these labels using the bits of an integer.
 
-Mantra 使用着色组件标签来标记不同类型的射线，例如 "diffuse"、"reflect"、"refract"、"volume "和
-"sss"。自定义 BSDF 也可以在现有标签的基础上指定自己的标签（见 ecvex_bsdffor 更多信息）。
-
-## 描述
-
-combination of one or more of these labels using the bits of an integer.
-
-一些 VEX 函数接受或返回一个组件的比特掩码，它使用一个整数的比特来指定一个或多个这些标签的组合。
-
-To get the bit value associated with a label, use
-[bouncemask](bouncemask.html), for example
+To get the bit value associated with a label, use [bouncemask](bouncemask.html), for example `bouncemask("diffuse")`. To get a mask that matches multiple labels, use a space-separated list:
 
 ```c
-bouncemask("diffuse")
+reflect\_or\_refract = bouncemask("reflect refract")
+
 ```
 
-. To get a
-mask that matches multiple labels, use a space-separated list:
+To construct a bitmask that matches all labels, use `bouncemask("all")`. To match no labels, use `0`.
 
-要获得与一个标签相关的位值，使用 bouncemask，例如 bouncemask("diffuse")。要得到一个匹配多个标签的掩码，请使用一个空格分隔的列表。
-
-    reflect_or_refract = bouncemask("reflect refract")
-
-To construct a bitmask that matches all labels, use
+When you get a bitmask as a return value, you can check if it matches a certain label using `&`. For example:
 
 ```c
-bouncemask("all")
+mask = getbounces(mybsdf)
+if (mask & bouncemask("reflect")) {
+ ...
+}
+
 ```
 
-. To
-match no labels, use `0`.
+(As an alternative to basic uses of `bouncemask()`, you can `#import "pbr.h"` and work with the constants `PBR_DIFFUSE_MASK`, `PBR_REFLECT_MASK`, `PBR_REFRACT_MASK`, `PBR_VOLUME_MASK`, `PBR_SSS_MASK`, as well as `PBR_ALL_MASK` and `PBR_NO_MASK`. You can combine the constants using `|`, for example `reflect_or_refract = PBR_REFLECT_MASK PBR_REFRACT_MASK`.)
 
-要构建一个匹配所有标签的位掩码，使用 bouncemask("all")。要想不匹配任何标签，使用 0。
 
-When you get a bitmask as a return value, you can check if it matches a
-certain label using `&`. For example:
 
-当你得到一个比特掩码作为返回值时，你可以用&来检查它是否与某个标签匹配。比如说。
+## See also
 
-    mask = getbounces(mybsdf)if (mask & bouncemask("reflect")) {...}
+- [getbounces](getbounces.html)
+- [nbouncetypes](nbouncetypes.html)
 
-(As an alternative to basic uses of `bouncemask()`, you can
+|
+bsdf
 
-```c
-#import "pbr.h"
-```
+[albedo](albedo.html)
 
-and work with the constants
+[ashikhmin](ashikhmin.html)
 
-```c
-PBR_DIFFUSE_MASK
-```
+[blinn](blinn.html)
 
-,
+[bouncelabel](bouncelabel.html)
 
-```c
-PBR_REFLECT_MASK
-```
+[bouncemask](bouncemask.html)
 
-,
+[chiang](chiang.html)
 
-```c
-PBR_REFRACT_MASK
-```
+[cone](cone.html)
 
-,
+[create_cdf](create_cdf.html)
 
-```c
-PBR_VOLUME_MASK
-```
+[create_pdf](create_pdf.html)
 
-, `PBR_SSS_MASK`, as well as
-`PBR_ALL_MASK` and `PBR_NO_MASK`. You can combine the constants using `|`, for
-example
+[cvex_bsdf](cvex_bsdf.html)
 
-```c
-reflect_or_refract = PBR_REFLECT_MASK | PBR_REFRACT_MASK
-```
+[diffuse](diffuse.html)
 
-.)
+[eval_bsdf](eval_bsdf.html)
 
-(作为 bouncemask()基本用法的替代，你可以#import "pbr.h
-"并使用常量 PBR_DIFFUSE_MASK,PBR_REFLECT_MASK,PBR_REFRACT_MASK,PBR_VOLUME_MASK,PBR_SSS_MASK，以及 PBR_ALL_MASK 和 PBR_NO_MASK。你可以用|来组合这些常数，例如 eflect_or_refract
-= PBR_REFLECT_MASK | PBR_REFRACT_MASK)。
+[getbounces](getbounces.html)
+
+[getcomponents](getcomponents.html)
+
+[ggx](ggx.html)
+
+[hair](hair.html)
+
+[henyeygreenstein](henyeygreenstein.html)
+
+[isotropic](isotropic.html)
+
+[mask_bsdf](mask_bsdf.html)
+
+[nbouncetypes](nbouncetypes.html)
+
+[normal_bsdf](normal_bsdf.html)
+
+[phong](phong.html)
+
+[phonglobe](phonglobe.html)
+
+[sample_bsdf](sample_bsdf.html)
+
+[sample_cdf](sample_cdf.html)
+
+[solid_angle](solid_angle.html)
+
+[specular](specular.html)
+
+[split_bsdf](split_bsdf.html)
+
+[sssapprox](sssapprox.html)
+
+[translucent](translucent.html)
+
+|
+labels
+
+[bouncemask](bouncemask.html)
+
+[eval_bsdf](eval_bsdf.html)
+
+[getbounces](getbounces.html)
+
+[getcomponents](getcomponents.html)
+
+[nbouncetypes](nbouncetypes.html)
+
+|
+pbr
+
+[albedo](albedo.html)
+
+[ashikhmin](ashikhmin.html)
+
+[blinn](blinn.html)
+
+[bouncelabel](bouncelabel.html)
+
+[bouncemask](bouncemask.html)
+
+[chiang](chiang.html)
+
+[cone](cone.html)
+
+[create_cdf](create_cdf.html)
+
+[create_pdf](create_pdf.html)
+
+[diffuse](diffuse.html)
+
+[eval_bsdf](eval_bsdf.html)
+
+[getbounces](getbounces.html)
+
+[getcomponents](getcomponents.html)
+
+[getlight](getlight.html)
+
+[getlights](getlights.html)
+
+[getlightscope](getlightscope.html)
+
+[getmaterial](getmaterial.html)
+
+[getphotonlight](getphotonlight.html)
+
+[getscope](getscope.html)
+
+[ggx](ggx.html)
+
+[hair](hair.html)
+
+[haslight](haslight.html)
+
+[interpolate](interpolate.html)
+
+[intersect_lights](intersect_lights.html)
+
+[mask_bsdf](mask_bsdf.html)
+
+[matchvex_blinn](matchvex_blinn.html)
+
+[matchvex_specular](matchvex_specular.html)
+
+[nbouncetypes](nbouncetypes.html)
+
+[newsampler](newsampler.html)
+
+[nextsample](nextsample.html)
+
+[normal_bsdf](normal_bsdf.html)
+
+[phong](phong.html)
+
+[phonglobe](phonglobe.html)
+
+[sample_bsdf](sample_bsdf.html)
+
+[sample_cdf](sample_cdf.html)
+
+[sample_geometry](sample_geometry.html)
+
+[sample_light](sample_light.html)
+
+[sample_photon](sample_photon.html)
+
+[shadow_light](shadow_light.html)
+
+[solid_angle](solid_angle.html)
+
+[specular](specular.html)
+
+[split_bsdf](split_bsdf.html)
+
+[sssapprox](sssapprox.html)
+
+[storelightexport](storelightexport.html)
+
+[translucent](translucent.html)
+
+[wireblinn](wireblinn.html)
+
+[wirediffuse](wirediffuse.html)

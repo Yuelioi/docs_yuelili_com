@@ -2,18 +2,18 @@
 title: re_match
 order: 27
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Returns 1 if the entire input string matches the expression
+`int re\_match(string regex, string input)`
 
-```c
-int  re_match(string regex, string input)
-```
+Returns `1` if the entire `input` string matches the `regex`, or `0` if it doesn’t match.
 
-Returns `1` if the entire `input` string matches the `regex`, or `0` if it
-doesn‘t match.
 
-如果整个输入字符串与之匹配，则返回 1，如果不匹配，则返回 0。
+
+## See also
+
+- [re_find](re_find.html)
+- [re_findall](re_findall.html)
+- [re_replace](re_replace.html)
+- [re_split](re_split.html)

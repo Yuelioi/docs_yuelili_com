@@ -1,31 +1,57 @@
 ---
 title: volumeindexorigin
-order: 7
+order: 8
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Gets the index of the bottom left of a volume primitive.
+`vector volumeindexorigin(<geometry>geometry, int primnum)`
 
-```c
-vector  volumeindexorigin(<geometry>geometry, int primnum)
-```
+`vector volumeindexorigin(<geometry>geometry, string volumename)`
 
-```c
-vector  volumeindexorigin(<geometry>geometry, string volumename)
-```
+## Arguments
 
-Returns
+## Returns
 
-The index of the bottom left of a volume primitive.For Volume primitives, this
-is always zero.However, for VDB primitives,this represents the bottom left of
-their active bounding box of voxels.
+The index of the bottom left of a volume primitive.
+For Volume primitives, this is always zero. However, for VDB primitives,
+this represents the bottom left of their active bounding box of voxels.
 
-体积基元的左下角的索引。
+Returns 0 if `primnum` is out of range, the geometry is invalid, or the given primitive is not a volume primitive.
 
-Returns 0 if `primnum` is out of range, the geometry is invalid, or the given
-primitive is not a volume primitive.
 
-对于卷基元而言，这始终是零。 但是，对于 VDB 基元来说
+volume
+
+[gradient](gradient.html)
+
+[volume](volume.html)
+
+[volumecubicsample](volumecubicsample.html)
+
+[volumecubicsamplev](volumecubicsamplev.html)
+
+[volumegradient](volumegradient.html)
+
+[volumeindex](volumeindex.html)
+
+[volumeindexactive](volumeindexactive.html)
+
+[volumeindexorigin](volumeindexorigin.html)
+
+[volumeindextopos](volumeindextopos.html)
+
+[volumeindexv](volumeindexv.html)
+
+[volumepostoindex](volumepostoindex.html)
+
+[volumeres](volumeres.html)
+
+[volumesample](volumesample.html)
+
+[volumesamplev](volumesamplev.html)
+
+[volumesmoothsample](volumesmoothsample.html)
+
+[volumesmoothsamplev](volumesmoothsamplev.html)
+
+[volumevoxeldiameter](volumevoxeldiameter.html)

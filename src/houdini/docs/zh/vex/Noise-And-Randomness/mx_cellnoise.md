@@ -1,47 +1,55 @@
 ---
 title: mx_cellnoise
-order: 13
+order: 19
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-MaterialX compatible cellnoise
+`float mx\_cellnoise(float pos)`
 
-```c
-float  mx_cellnoise(float pos)
-```
+`float mx\_cellnoise(vector2 pos)`
 
-```c
-float  mx_cellnoise(vector2 pos)
-```
+`float mx\_cellnoise(vector pos)`
 
-```c
-float  mx_cellnoise(vector pos)
-```
+`float mx\_cellnoise(vector4 pos)`
 
-```c
-float  mx_cellnoise(vector4 pos)
-```
+`vector mx\_cellnoise(float pos)`
 
-```c
-vector  mx_cellnoise(float pos)
-```
+`vector mx\_cellnoise(vector2 pos)`
 
-```c
-vector  mx_cellnoise(vector2 pos)
-```
+`vector mx\_cellnoise(vector pos)`
 
-```c
-vector  mx_cellnoise(vector pos)
-```
+`vector mx\_cellnoise(vector4 pos)`
 
-```c
-vector  mx_cellnoise(vector4 pos)
-```
+Returns a random number between 0 and 1. This function will produce the same values as the standard MaterialX library.
 
-Returns a random number between 0 and 1.This function will produce the same
-values as the standard MaterialX library.
 
-返回一个介于 0 和 1 之间的随机数。这个函数将产生与标准 MaterialX 库相同的值。
+random
+
+[curlgxnoise](curlgxnoise.html)
+
+[curlgxnoise2d](curlgxnoise2d.html)
+
+[gxnoise](gxnoise.html)
+
+[mx_cellnoise](mx_cellnoise.html)
+
+[mx_perlin](mx_perlin.html)
+
+[mx_voronoi](mx_voronoi.html)
+
+[mx_worley](mx_worley.html)
+
+[nrandom](nrandom.html)
+
+[rand](rand.html)
+
+[random](random.html)
+
+[random_fhash](random_fhash.html)
+
+[random_ihash](random_ihash.html)
+
+[random_poisson](random_poisson.html)
+
+[random_shash](random_shash.html)

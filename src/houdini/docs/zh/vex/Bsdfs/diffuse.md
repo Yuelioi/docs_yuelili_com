@@ -1,132 +1,406 @@
 ---
 title: diffuse
-order: 7
+order: 8
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
-
-Returns a diffuse BSDF or computes diffuse shading.
 
 ![](../../images/rendering/diffuse.png)
 
-```c
-bsdf  diffuse(...)
-```
+`bsdf diffuse(...)`
 
-```c
-bsdf  diffuse(float roughness, ...)
-```
+`bsdf diffuse(float roughness, ...)`
 
-```c
-bsdf  diffuse(vector nml, ...)
-```
+`bsdf diffuse(vector nml, ...)`
 
-```c
-bsdf  diffuse(vector nml, float roughness, ...)
-```
+`bsdf diffuse(vector nml, float roughness, ...)`
 
-```c
-bsdf  diffuse(vector nml, vector geo_normal, ...)
-```
+`bsdf diffuse(vector nml, vector geo\_normal, ...)`
 
-```c
-bsdf  diffuse(vector nml, vector geo_normal, float roughness, ...)
-```
+`bsdf diffuse(vector nml, vector geo\_normal, float roughness, ...)`
 
-Diffuse reflections. This BSDF has an albedo of 0.5. If your shader orgeometry
-has smooth normals (N and Ng differ) you should avoid thesignature
-
-```c
-diffuse(vector nml)
-```
-
-since it assumes that theshading normal matches the
-geometric normal.
-
-漫反射。该 BSDF 的反照率为 0.5。如果你的着色器或
+Diffuse reflections. This BSDF has an albedo of 0.5. If your shader or
+geometry has smooth normals (N and Ng differ) you should avoid the
+signature `diffuse(vector nml)` since it assumes that the
+shading normal matches the geometric normal.
 
 See [writing a PBR shader](../pbr.html) for information on BSDFs.
 
-几何体有平滑的法线（N 和 Ng 不同），你应该避免使用
+`vector diffuse(vector nml, ...)`
 
-```c
-vector  diffuse(vector nml, ...)
-```
+`vector diffuse(vector nml, vector V, float roughness, ...)`
 
-```c
-vector  diffuse(vector nml, vector V, float roughness, ...)
-```
+This form uses the
+Oren-Nayar lighting model to compute the diffuse illumination for the
+surface. The Oren-Nayar lighting model is a more sophisticated lighting
+model than Lambertian lighting. The V vector represents a vector from
+the surface to the eye (i.e. -normalize(I)). With a roughness of 0, the
+Oren-Nayar lighting model is equivalent to the Lambertian model. As
+roughness increases toward 1, the illumination changes to mimic rougher
+materials (like clay). The Oren-Nayar form of diffuse() is more
+expensive than Lambertian diffuse lighting.
 
-This form uses theOren-Nayar lighting model to compute the diffuse
-illumination for thesurface. The Oren-Nayar lighting model is a more
-sophisticated lightingmodel than Lambertian lighting. The V vector represents
-a vector fromthe surface to the eye (i.e. -normalize(I)). With a roughness of
-0, theOren-Nayar lighting model is equivalent to the Lambertian model.
-Asroughness increases toward 1, the illumination changes to mimic
-roughermaterials (like clay). The Oren-Nayar form of diffuse() is
-moreexpensive than Lambertian diffuse lighting.
+##
 
-签名 diffuse(vector nml)，因为它假定着色法线与几何法线一致。
+Light inclusion/exclusion options
 
-## Light inclusion/exclusion options
+[¶](#light-inclusion-exclusion-options)
 
-"`categories`",` string``="*" `
+## Arguments
 
-Specifies lights to include/exclude by their “category” tags.This is the
-preferred include/exclude lights rather than pattern matchinglight names with
-the `"lightmask"` keyword argument.
+"`categories`",
+`string`
+`="*"`
 
-着色法线与几何法线一致。
-
-For example:
-
-关于 BSDF 的信息，请参见编写一个 PBR 着色器。
-
-    diff = diffuse(nml, "lightmask", "hero | fill");
-
-See [light categories](../../render/lights.html#categories) for more
-information.
-
-这种形式使用
-
-"`lightmask`",` string``="*" `
-
-When evaluating light and shadow shaders, objects have pre-defined lightmasks.
-This mask is usually specified in the geometry object andspecifies a list of
-lights which are used to illuminate a surface or fogshader. It is possible to
-override the default light mask by specifyinga “lightmask” argument.
-
-Oren-Nayar 照明模型来计算表面的漫反射光照。
+Specifies lights to include/exclude by their “category” tags.
+This is the preferred include/exclude lights rather than pattern matching
+light names with the `"lightmask"` keyword argument.
 
 For example:
 
-表面的漫反射照明。Oren-Nayar 照明模型是一个比 Lambertian 照明更复杂的照明模型。
+```c
+diff = diffuse(nml, "lightmask", "hero fill");
 
-    diff = diffuse(nml, "lightmask", "light*,^light2");
+```
 
-â¦will cause all lights whose names begin with “light” except for alight
-named “light2” to be considered for diffuse illumination.
+See [light categories](../../render/lights.html#categories) for more information.
 
-模型，比 Lambertian 照明更复杂。V 向量表示从表面到眼睛的一个向量（即
+"`lightmask`",
+`string`
+`="*"`
+
+When evaluating light and shadow shaders, objects have pre-defined light
+masks. This mask is usually specified in the geometry object and
+specifies a list of lights which are used to illuminate a surface or fog
+shader. It is possible to override the default light mask by specifying
+a “lightmask” argument.
+
+For example:
+
+```c
+diff = diffuse(nml, "lightmask", "light\*,^light2");
+
+```
+
+…will cause all lights whose names begin with “light” except for a
+light named “light2” to be considered for diffuse illumination.
 
 All Houdini scoping patterns, excepting group expansion, are supported:
 
-表面到眼睛的矢量（即-normalize(I)）。粗糙度为 0 时，
+- `*` - wild-card match
+- `?` - single character match
+- `^` - exclusion operator
+- `[list]` - character list match
 
-- `*` \- wild-card match
 
-Oren-Nayar 照明模型等同于 Lambertian 模型。随着
 
-- `?` \- single character match
+## See also
 
-粗糙度增加到 1，照明就会改变，以模仿更粗糙的材料（如粘土）。
+- [wirediffuse](wirediffuse.html)
+- [translucent](translucent.html)
+- [Writing a PBR shader](../pbr.html)
 
-- `^` \- exclusion operator
+|
+bsdf
 
-材料（如粘土）。Oren-Nayar 形式的漫反射()比 Lambertian 漫反射照明更昂贵。
+[albedo](albedo.html)
 
-- ` ` \- character list match
+[ashikhmin](ashikhmin.html)
 
-比 Lambertian 漫反射照明更昂贵。
+[blinn](blinn.html)
+
+[bouncelabel](bouncelabel.html)
+
+[bouncemask](bouncemask.html)
+
+[chiang](chiang.html)
+
+[cone](cone.html)
+
+[create_cdf](create_cdf.html)
+
+[create_pdf](create_pdf.html)
+
+[cvex_bsdf](cvex_bsdf.html)
+
+[diffuse](diffuse.html)
+
+[eval_bsdf](eval_bsdf.html)
+
+[getbounces](getbounces.html)
+
+[getcomponents](getcomponents.html)
+
+[ggx](ggx.html)
+
+[hair](hair.html)
+
+[henyeygreenstein](henyeygreenstein.html)
+
+[isotropic](isotropic.html)
+
+[mask_bsdf](mask_bsdf.html)
+
+[nbouncetypes](nbouncetypes.html)
+
+[normal_bsdf](normal_bsdf.html)
+
+[phong](phong.html)
+
+[phonglobe](phonglobe.html)
+
+[sample_bsdf](sample_bsdf.html)
+
+[sample_cdf](sample_cdf.html)
+
+[solid_angle](solid_angle.html)
+
+[specular](specular.html)
+
+[split_bsdf](split_bsdf.html)
+
+[sssapprox](sssapprox.html)
+
+[translucent](translucent.html)
+
+|
+pbr
+
+[albedo](albedo.html)
+
+[ashikhmin](ashikhmin.html)
+
+[blinn](blinn.html)
+
+[bouncelabel](bouncelabel.html)
+
+[bouncemask](bouncemask.html)
+
+[chiang](chiang.html)
+
+[cone](cone.html)
+
+[create_cdf](create_cdf.html)
+
+[create_pdf](create_pdf.html)
+
+[diffuse](diffuse.html)
+
+[eval_bsdf](eval_bsdf.html)
+
+[getbounces](getbounces.html)
+
+[getcomponents](getcomponents.html)
+
+[getlight](getlight.html)
+
+[getlights](getlights.html)
+
+[getlightscope](getlightscope.html)
+
+[getmaterial](getmaterial.html)
+
+[getphotonlight](getphotonlight.html)
+
+[getscope](getscope.html)
+
+[ggx](ggx.html)
+
+[hair](hair.html)
+
+[haslight](haslight.html)
+
+[interpolate](interpolate.html)
+
+[intersect_lights](intersect_lights.html)
+
+[mask_bsdf](mask_bsdf.html)
+
+[matchvex_blinn](matchvex_blinn.html)
+
+[matchvex_specular](matchvex_specular.html)
+
+[nbouncetypes](nbouncetypes.html)
+
+[newsampler](newsampler.html)
+
+[nextsample](nextsample.html)
+
+[normal_bsdf](normal_bsdf.html)
+
+[phong](phong.html)
+
+[phonglobe](phonglobe.html)
+
+[sample_bsdf](sample_bsdf.html)
+
+[sample_cdf](sample_cdf.html)
+
+[sample_geometry](sample_geometry.html)
+
+[sample_light](sample_light.html)
+
+[sample_photon](sample_photon.html)
+
+[shadow_light](shadow_light.html)
+
+[solid_angle](solid_angle.html)
+
+[specular](specular.html)
+
+[split_bsdf](split_bsdf.html)
+
+[sssapprox](sssapprox.html)
+
+[storelightexport](storelightexport.html)
+
+[translucent](translucent.html)
+
+[wireblinn](wireblinn.html)
+
+[wirediffuse](wirediffuse.html)
+
+|
+shading
+
+[Du](Du.html)
+
+[Dv](Dv.html)
+
+[Dw](Dw.html)
+
+[area](area.html)
+
+[ashikhmin](ashikhmin.html)
+
+[atten](atten.html)
+
+[blinn](blinn.html)
+
+[blinnBRDF](blinnBRDF.html)
+
+[chiang](chiang.html)
+
+[computenormal](computenormal.html)
+
+[cone](cone.html)
+
+[cvex_bsdf](cvex_bsdf.html)
+
+[diffuse](diffuse.html)
+
+[diffuseBRDF](diffuseBRDF.html)
+
+[dsmpixel](dsmpixel.html)
+
+[environment](environment.html)
+
+[fastshadow](fastshadow.html)
+
+[filtershadow](filtershadow.html)
+
+[filterstep](filterstep.html)
+
+[fresnel](fresnel.html)
+
+[frontface](frontface.html)
+
+[getderiv](getderiv.html)
+
+[getfogname](getfogname.html)
+
+[getglobalraylevel](getglobalraylevel.html)
+
+[getgroupid](getgroupid.html)
+
+[getlocalcurvature](getlocalcurvature.html)
+
+[getmaterialid](getmaterialid.html)
+
+[getobjectid](getobjectid.html)
+
+[getobjectname](getobjectname.html)
+
+[getprimid](getprimid.html)
+
+[getptextureid](getptextureid.html)
+
+[getraylevel](getraylevel.html)
+
+[getrayweight](getrayweight.html)
+
+[getsamplestore](getsamplestore.html)
+
+[getsmoothP](getsmoothP.html)
+
+[getuvtangents](getuvtangents.html)
+
+[ggx](ggx.html)
+
+[gradient](gradient.html)
+
+[hair](hair.html)
+
+[henyeygreenstein](henyeygreenstein.html)
+
+[isotropic](isotropic.html)
+
+[israytracing](israytracing.html)
+
+[isshadingRHS](isshadingRHS.html)
+
+[lightstate](lightstate.html)
+
+[matchvex_blinn](matchvex_blinn.html)
+
+[matchvex_specular](matchvex_specular.html)
+
+[objectstate](objectstate.html)
+
+[phong](phong.html)
+
+[phongBRDF](phongBRDF.html)
+
+[phonglobe](phonglobe.html)
+
+[ptexture](ptexture.html)
+
+[rayhittest](rayhittest.html)
+
+[rayimport](rayimport.html)
+
+[reflect](reflect.html)
+
+[refract](refract.html)
+
+[renderstate](renderstate.html)
+
+[resolvemissedray](resolvemissedray.html)
+
+[sample_geometry](sample_geometry.html)
+
+[scatter](scatter.html)
+
+[setsamplestore](setsamplestore.html)
+
+[specular](specular.html)
+
+[specularBRDF](specularBRDF.html)
+
+[sssapprox](sssapprox.html)
+
+[teximport](teximport.html)
+
+[texture](texture.html)
+
+[trace](trace.html)
+
+[translucent](translucent.html)
+
+[uvunwrap](uvunwrap.html)
+
+[volume](volume.html)
+
+[wireblinn](wireblinn.html)
+
+[wirediffuse](wirediffuse.html)

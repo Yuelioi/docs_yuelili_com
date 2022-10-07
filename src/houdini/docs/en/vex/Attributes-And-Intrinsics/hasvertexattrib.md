@@ -32,212 +32,212 @@ hasvertexattrib("defgeo.bgeo", "P");
 
 ### attrib
 
-[addattrib ](addattrib.html)
+[addattrib](addattrib.html)
 
-[adddetailattrib ](adddetailattrib.html)
+[adddetailattrib](adddetailattrib.html)
 
-[addpointattrib ](addpointattrib.html)
+[addpointattrib](addpointattrib.html)
 
-[addprimattrib ](addprimattrib.html)
+[addprimattrib](addprimattrib.html)
 
-[addvertexattrib ](addvertexattrib.html)
+[addvertexattrib](addvertexattrib.html)
 
-[addvisualizer ](addvisualizer.html)
+[addvisualizer](addvisualizer.html)
 
-[attrib ](attrib.html)
+[attrib](attrib.html)
 
-[attribclass ](attribclass.html)
+[attribclass](attribclass.html)
 
-[attribdataid ](attribdataid.html)
+[attribdataid](attribdataid.html)
 
-[attribsize ](attribsize.html)
+[attribsize](attribsize.html)
 
-[attribtype ](attribtype.html)
+[attribtype](attribtype.html)
 
-[attribtypeinfo ](attribtypeinfo.html)
+[attribtypeinfo](attribtypeinfo.html)
 
-[detail ](detail.html)
+[detail](detail.html)
 
-[detailattrib ](detailattrib.html)
+[detailattrib](detailattrib.html)
 
-[detailattribsize ](detailattribsize.html)
+[detailattribsize](detailattribsize.html)
 
-[detailattribtype ](detailattribtype.html)
+[detailattribtype](detailattribtype.html)
 
-[detailattribtypeinfo ](detailattribtypeinfo.html)
+[detailattribtypeinfo](detailattribtypeinfo.html)
 
-[detailintrinsic ](detailintrinsic.html)
+[detailintrinsic](detailintrinsic.html)
 
-[findattribval ](findattribval.html)
+[findattribval](findattribval.html)
 
-[findattribvalcount ](findattribvalcount.html)
+[findattribvalcount](findattribvalcount.html)
 
-[getattrib ](getattrib.html)
+[getattrib](getattrib.html)
 
-[getattribute ](getattribute.html)
+[getattribute](getattribute.html)
 
-[hasattrib ](hasattrib.html)
+[hasattrib](hasattrib.html)
 
-[hasdetailattrib ](hasdetailattrib.html)
+[hasdetailattrib](hasdetailattrib.html)
 
-[haspointattrib ](haspointattrib.html)
+[haspointattrib](haspointattrib.html)
 
-[hasprimattrib ](hasprimattrib.html)
+[hasprimattrib](hasprimattrib.html)
 
-[hasvertexattrib ](hasvertexattrib.html)
+[hasvertexattrib](hasvertexattrib.html)
 
-[nuniqueval ](nuniqueval.html)
+[nuniqueval](nuniqueval.html)
 
-[point ](point.html)
+[point](point.html)
 
-[pointattrib ](pointattrib.html)
+[pointattrib](pointattrib.html)
 
-[pointattribsize ](pointattribsize.html)
+[pointattribsize](pointattribsize.html)
 
-[pointattribtype ](pointattribtype.html)
+[pointattribtype](pointattribtype.html)
 
-[pointattribtypeinfo ](pointattribtypeinfo.html)
+[pointattribtypeinfo](pointattribtypeinfo.html)
 
-[pointlocaltransforms ](pointlocaltransforms.html)
+[pointlocaltransforms](pointlocaltransforms.html)
 
-[pointtransform ](pointtransform.html)
+[pointtransform](pointtransform.html)
 
-[pointtransformrigid ](pointtransformrigid.html)
+[pointtransformrigid](pointtransformrigid.html)
 
-[pointtransforms ](pointtransforms.html)
+[pointtransforms](pointtransforms.html)
 
-[pointtransformsrigid ](pointtransformsrigid.html)
+[pointtransformsrigid](pointtransformsrigid.html)
 
-[prim ](prim.html)
+[prim](prim.html)
 
-[prim_attribute ](prim_attribute.html)
+[prim_attribute](prim_attribute.html)
 
-[primattrib ](primattrib.html)
+[primattrib](primattrib.html)
 
-[primattribsize ](primattribsize.html)
+[primattribsize](primattribsize.html)
 
-[primattribtype ](primattribtype.html)
+[primattribtype](primattribtype.html)
 
-[primattribtypeinfo ](primattribtypeinfo.html)
+[primattribtypeinfo](primattribtypeinfo.html)
 
-[priminteriorweights ](priminteriorweights.html)
+[priminteriorweights](priminteriorweights.html)
 
-[primintrinsic ](primintrinsic.html)
+[primintrinsic](primintrinsic.html)
 
-[primuv ](primuv.html)
+[primuv](primuv.html)
 
-[primuvconvert ](primuvconvert.html)
+[primuvconvert](primuvconvert.html)
 
-[removedetailattrib ](removedetailattrib.html)
+[removedetailattrib](removedetailattrib.html)
 
-[removepointattrib ](removepointattrib.html)
+[removepointattrib](removepointattrib.html)
 
-[removeprimattrib ](removeprimattrib.html)
+[removeprimattrib](removeprimattrib.html)
 
-[removevertexattrib ](removevertexattrib.html)
+[removevertexattrib](removevertexattrib.html)
 
-[setattrib ](setattrib.html)
+[setattrib](setattrib.html)
 
-[setattribtypeinfo ](setattribtypeinfo.html)
+[setattribtypeinfo](setattribtypeinfo.html)
 
-[setdetailattrib ](setdetailattrib.html)
+[setdetailattrib](setdetailattrib.html)
 
-[setpointattrib ](setpointattrib.html)
+[setpointattrib](setpointattrib.html)
 
-[setpointlocaltransforms ](setpointlocaltransforms.html)
+[setpointlocaltransforms](setpointlocaltransforms.html)
 
-[setpointtransform ](setpointtransform.html)
+[setpointtransform](setpointtransform.html)
 
-[setpointtransforms ](setpointtransforms.html)
+[setpointtransforms](setpointtransforms.html)
 
-[setprimattrib ](setprimattrib.html)
+[setprimattrib](setprimattrib.html)
 
-[setvertexattrib ](setvertexattrib.html)
+[setvertexattrib](setvertexattrib.html)
 
-[uniqueval ](uniqueval.html)
+[uniqueval](uniqueval.html)
 
-[uniquevals ](uniquevals.html)
+[uniquevals](uniquevals.html)
 
-[uvsample ](uvsample.html)
+[uvsample](uvsample.html)
 
-[vertex ](vertex.html)
+[vertex](vertex.html)
 
-[vertexattrib ](vertexattrib.html)
+[vertexattrib](vertexattrib.html)
 
-[vertexattribsize ](vertexattribsize.html)
+[vertexattribsize](vertexattribsize.html)
 
-[vertexattribtype ](vertexattribtype.html)
+[vertexattribtype](vertexattribtype.html)
 
-[vertexattribtypeinfo ](vertexattribtypeinfo.html)
+[vertexattribtypeinfo](vertexattribtypeinfo.html)
 
 ### vertex
 
-[addvertex ](addvertex.html)
+[addvertex](addvertex.html)
 
-[addvertexattrib ](addvertexattrib.html)
+[addvertexattrib](addvertexattrib.html)
 
-[hasvertexattrib ](hasvertexattrib.html)
+[hasvertexattrib](hasvertexattrib.html)
 
-[hedge_postdstvertex ](hedge_postdstvertex.html)
+[hedge_postdstvertex](hedge_postdstvertex.html)
 
-[hex_faceindex ](hex_faceindex.html)
+[hex_faceindex](hex_faceindex.html)
 
-[invertexgroup ](invertexgroup.html)
+[invertexgroup](invertexgroup.html)
 
-[nvertices ](nvertices.html)
+[nvertices](nvertices.html)
 
-[nverticesgroup ](nverticesgroup.html)
+[nverticesgroup](nverticesgroup.html)
 
-[osd_limitsurfacevertex ](osd_limitsurfacevertex.html)
+[osd_limitsurfacevertex](osd_limitsurfacevertex.html)
 
-[pointvertex ](pointvertex.html)
+[pointvertex](pointvertex.html)
 
-[pointvertices ](pointvertices.html)
+[pointvertices](pointvertices.html)
 
-[primvertex ](primvertex.html)
+[primvertex](primvertex.html)
 
-[primvertexcount ](primvertexcount.html)
+[primvertexcount](primvertexcount.html)
 
-[primvertices ](primvertices.html)
+[primvertices](primvertices.html)
 
-[removevertex ](removevertex.html)
+[removevertex](removevertex.html)
 
-[removevertexattrib ](removevertexattrib.html)
+[removevertexattrib](removevertexattrib.html)
 
-[removevertexgroup ](removevertexgroup.html)
+[removevertexgroup](removevertexgroup.html)
 
-[setprimvertex ](setprimvertex.html)
+[setprimvertex](setprimvertex.html)
 
-[setvertexattrib ](setvertexattrib.html)
+[setvertexattrib](setvertexattrib.html)
 
-[setvertexgroup ](setvertexgroup.html)
+[setvertexgroup](setvertexgroup.html)
 
-[setvertexpoint ](setvertexpoint.html)
+[setvertexpoint](setvertexpoint.html)
 
-[tet_faceindex ](tet_faceindex.html)
+[tet_faceindex](tet_faceindex.html)
 
-[vertex ](vertex.html)
+[vertex](vertex.html)
 
-[vertexattrib ](vertexattrib.html)
+[vertexattrib](vertexattrib.html)
 
-[vertexattribsize ](vertexattribsize.html)
+[vertexattribsize](vertexattribsize.html)
 
-[vertexattribtype ](vertexattribtype.html)
+[vertexattribtype](vertexattribtype.html)
 
-[vertexattribtypeinfo ](vertexattribtypeinfo.html)
+[vertexattribtypeinfo](vertexattribtypeinfo.html)
 
-[vertexcurveparam ](vertexcurveparam.html)
+[vertexcurveparam](vertexcurveparam.html)
 
-[vertexhedge ](vertexhedge.html)
+[vertexhedge](vertexhedge.html)
 
-[vertexindex ](vertexindex.html)
+[vertexindex](vertexindex.html)
 
-[vertexnext ](vertexnext.html)
+[vertexnext](vertexnext.html)
 
-[vertexpoint ](vertexpoint.html)
+[vertexpoint](vertexpoint.html)
 
-[vertexprev ](vertexprev.html)
+[vertexprev](vertexprev.html)
 
-[vertexprim ](vertexprim.html)
+[vertexprim](vertexprim.html)
 
-[vertexprimindex ](vertexprimindex.html)
+[vertexprimindex](vertexprimindex.html)

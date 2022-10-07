@@ -1,198 +1,446 @@
 ---
 title: ggx
-order: 10
+order: 11
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Returns a ggx BSDF.
 
-| Since | 18.0 |
-| ----- | ---- |
+
+Since 18.0
 
 `bsdf ggx(vector ng, vector nn, vector xg, vector yg, vector F0, vector F90, float alphax, float alphay, int masking, int fresblend, float eta, float reflect, float refract, int reflectmask, int refractmask, float dispersion, ...)`
 
-Creates a BSDF for computation of the GGX microfacet model, used for rough
-specular reflection and refraction.
-
-创建一个 BSDF，用于计算 GGX microfacet 模型。
+Creates a BSDF for computation of the GGX microfacet model, used
+for rough specular reflection and refraction.
 
 See [writing a PBR shader](../pbr.html) for information on BSDFs.
 
-用于粗糙的镜面反射和折射。
+## Arguments
 
 `ng`
 
 Normalized geometry normal
 
-有关 BSDF 的信息，请参见编写 PBR 着色器。
-
 `nn`
 
 Normalized bumped/shading normal
-
-正常化的几何法线
 
 `xg`
 
 Normalized x tangent vector
 
-归一化的凹凸/阴影法线
-
 `yg`
 
 Normalized y tangent vector
-
-归一化的 X 切线矢量
 
 `F0`
 
 Color tint at oblique angles
 
-归一化的 y 切向量
-
 `F90`
 
 Color tint at grazing angles
-
-斜角上的色调
 
 `alphax`
 
 Roughness along the x tangent vector
 
-掠过角度的颜色色调
-
 `alphay`
 
-Roughness along the y tangent vector (use the same value as alphax for
-isotropic)
-
-沿着 x 切向量的粗糙度
+Roughness along the y tangent vector (use the same value as alphax for isotropic)
 
 `masking`
 
 Enable/Disable microfacet masking
 
-沿着 y 切向量的粗糙度（对于各向同性，使用与 alphax 相同的值）。
-
 `fresblend`
 
 Enable/Disable fresnel
-
-启用/禁用 microfacet masking
 
 `eta`
 
 Index of refraction
 
-启用/禁用菲涅尔
-
 `reflect`
 
-Explicit scalar on reflection (0->1).Or -1 to let the function decide itself
-on the appriate value based on geometric information.
-
-折射率
+Explicit scalar on reflection (0->1). Or -1 to let the function decide itself on the appriate value based on geometric information.
 
 `refract`
 
-Explicit scalar on refraction (0->1).Or -1 to let the function decide itself
-on the appriate value based on geometric information.
-
-反射时明确的标量（0->1）。 或-1，让函数根据几何信息自行决定合适的值。
+Explicit scalar on refraction (0->1). Or -1 to let the function decide itself on the appriate value based on geometric information.
 
 `reflectmask`
 
-Bitmask representing the desired reflection behaviour.Simply passing in
-
-```c
-bouncemask(reflectlabel)
-```
-
-will suffice
-
-折射时明确的标量（0->1）。 或-1，让函数根据几何信息自行决定合适的值。
+Bitmask representing the desired reflection behaviour. Simply passing in `bouncemask(reflectlabel)` will suffice
 
 `refractmask`
 
-Bitmask representing the desired refraction behaviour.Simply passing in
-
-```c
-bouncemask(refractlabel)
-```
-
-will suffice
-
-代表所需反射行为的比特掩码。 只需传入 bouncemask(reflectlabel)就足够了。
+Bitmask representing the desired refraction behaviour. Simply passing in `bouncemask(refractlabel)` will suffice
 
 `dispersion`
 
 Amount of dispersion
 
-代表期望的折射行为的位掩码。 只要通过 bouncemask(refractlabel)就够了。
+##
 
-## Light inclusion/exclusion options
+Light inclusion/exclusion options
 
-Show/hide arguments
+[¶](#light-inclusion-exclusion-options)
 
-"`categories`",` string``="*" `
+## Arguments
 
-Specifies lights to include/exclude by their “category” tags.This is the
-preferred include/exclude lights rather than pattern matchinglight names with
-the `"lightmask"` keyword argument.
+"`categories`",
+`string`
+`="*"`
 
-分散的数量
-
-For example:
-
-通过 "类别 "标签指定要包括/排除的灯光。
-
-    diff = diffuse(nml, "lightmask", "hero | fill");
-
-See [light categories](../../render/lights.html#categories) for more
-information.
-
-更多信息，请参见 Seelight 类别。
-
-"`lightmask`",` string``="*" `
-
-When evaluating light and shadow shaders, objects have pre-defined lightmasks.
-This mask is usually specified in the geometry object andspecifies a list of
-lights which are used to illuminate a surface or fogshader. It is possible to
-override the default light mask by specifyinga “lightmask” argument.
-
-在评估光影着色器时，对象有预定义的光影遮罩。
+Specifies lights to include/exclude by their “category” tags.
+This is the preferred include/exclude lights rather than pattern matching
+light names with the `"lightmask"` keyword argument.
 
 For example:
 
-遮罩。这个遮罩通常是在几何对象中指定的。
+```c
+diff = diffuse(nml, "lightmask", "hero fill");
 
-    diff = diffuse(nml, "lightmask", "light*,^light2");
+```
 
-â¦will cause all lights whose names begin with “light” except for alight
-named “light2” to be considered for diffuse illumination.
+See [light categories](../../render/lights.html#categories) for more information.
 
-指定一个用于照亮表面或雾化的灯光列表。
+"`lightmask`",
+`string`
+`="*"`
+
+When evaluating light and shadow shaders, objects have pre-defined light
+masks. This mask is usually specified in the geometry object and
+specifies a list of lights which are used to illuminate a surface or fog
+shader. It is possible to override the default light mask by specifying
+a “lightmask” argument.
+
+For example:
+
+```c
+diff = diffuse(nml, "lightmask", "light\*,^light2");
+
+```
+
+…will cause all lights whose names begin with “light” except for a
+light named “light2” to be considered for diffuse illumination.
 
 All Houdini scoping patterns, excepting group expansion, are supported:
 
-着色器。我们可以通过指定 "lightmask "参数来覆盖默认的光罩。
+- `*` - wild-card match
+- `?` - single character match
+- `^` - exclusion operator
+- `[list]` - character list match
 
-- `*` \- wild-card match
 
-一个 "lightmask "参数来覆盖默认的光罩。
 
-- `?` \- single character match
+## See also
 
-比如说。
+- [Writing a PBR shader](../pbr.html)
 
-- `^` \- exclusion operator
+|
+bsdf
 
-将导致所有名称以 "light "开头的灯光，除了一个名为 "light2 "的灯光之外，其余的灯光都将被忽略。
+[albedo](albedo.html)
 
-- ` ` \- character list match
+[ashikhmin](ashikhmin.html)
 
-名为 "light2 "的灯光被考虑为漫反射照明。
+[blinn](blinn.html)
+
+[bouncelabel](bouncelabel.html)
+
+[bouncemask](bouncemask.html)
+
+[chiang](chiang.html)
+
+[cone](cone.html)
+
+[create_cdf](create_cdf.html)
+
+[create_pdf](create_pdf.html)
+
+[cvex_bsdf](cvex_bsdf.html)
+
+[diffuse](diffuse.html)
+
+[eval_bsdf](eval_bsdf.html)
+
+[getbounces](getbounces.html)
+
+[getcomponents](getcomponents.html)
+
+[ggx](ggx.html)
+
+[hair](hair.html)
+
+[henyeygreenstein](henyeygreenstein.html)
+
+[isotropic](isotropic.html)
+
+[mask_bsdf](mask_bsdf.html)
+
+[nbouncetypes](nbouncetypes.html)
+
+[normal_bsdf](normal_bsdf.html)
+
+[phong](phong.html)
+
+[phonglobe](phonglobe.html)
+
+[sample_bsdf](sample_bsdf.html)
+
+[sample_cdf](sample_cdf.html)
+
+[solid_angle](solid_angle.html)
+
+[specular](specular.html)
+
+[split_bsdf](split_bsdf.html)
+
+[sssapprox](sssapprox.html)
+
+[translucent](translucent.html)
+
+|
+pbr
+
+[albedo](albedo.html)
+
+[ashikhmin](ashikhmin.html)
+
+[blinn](blinn.html)
+
+[bouncelabel](bouncelabel.html)
+
+[bouncemask](bouncemask.html)
+
+[chiang](chiang.html)
+
+[cone](cone.html)
+
+[create_cdf](create_cdf.html)
+
+[create_pdf](create_pdf.html)
+
+[diffuse](diffuse.html)
+
+[eval_bsdf](eval_bsdf.html)
+
+[getbounces](getbounces.html)
+
+[getcomponents](getcomponents.html)
+
+[getlight](getlight.html)
+
+[getlights](getlights.html)
+
+[getlightscope](getlightscope.html)
+
+[getmaterial](getmaterial.html)
+
+[getphotonlight](getphotonlight.html)
+
+[getscope](getscope.html)
+
+[ggx](ggx.html)
+
+[hair](hair.html)
+
+[haslight](haslight.html)
+
+[interpolate](interpolate.html)
+
+[intersect_lights](intersect_lights.html)
+
+[mask_bsdf](mask_bsdf.html)
+
+[matchvex_blinn](matchvex_blinn.html)
+
+[matchvex_specular](matchvex_specular.html)
+
+[nbouncetypes](nbouncetypes.html)
+
+[newsampler](newsampler.html)
+
+[nextsample](nextsample.html)
+
+[normal_bsdf](normal_bsdf.html)
+
+[phong](phong.html)
+
+[phonglobe](phonglobe.html)
+
+[sample_bsdf](sample_bsdf.html)
+
+[sample_cdf](sample_cdf.html)
+
+[sample_geometry](sample_geometry.html)
+
+[sample_light](sample_light.html)
+
+[sample_photon](sample_photon.html)
+
+[shadow_light](shadow_light.html)
+
+[solid_angle](solid_angle.html)
+
+[specular](specular.html)
+
+[split_bsdf](split_bsdf.html)
+
+[sssapprox](sssapprox.html)
+
+[storelightexport](storelightexport.html)
+
+[translucent](translucent.html)
+
+[wireblinn](wireblinn.html)
+
+[wirediffuse](wirediffuse.html)
+
+|
+shading
+
+[Du](Du.html)
+
+[Dv](Dv.html)
+
+[Dw](Dw.html)
+
+[area](area.html)
+
+[ashikhmin](ashikhmin.html)
+
+[atten](atten.html)
+
+[blinn](blinn.html)
+
+[blinnBRDF](blinnBRDF.html)
+
+[chiang](chiang.html)
+
+[computenormal](computenormal.html)
+
+[cone](cone.html)
+
+[cvex_bsdf](cvex_bsdf.html)
+
+[diffuse](diffuse.html)
+
+[diffuseBRDF](diffuseBRDF.html)
+
+[dsmpixel](dsmpixel.html)
+
+[environment](environment.html)
+
+[fastshadow](fastshadow.html)
+
+[filtershadow](filtershadow.html)
+
+[filterstep](filterstep.html)
+
+[fresnel](fresnel.html)
+
+[frontface](frontface.html)
+
+[getderiv](getderiv.html)
+
+[getfogname](getfogname.html)
+
+[getglobalraylevel](getglobalraylevel.html)
+
+[getgroupid](getgroupid.html)
+
+[getlocalcurvature](getlocalcurvature.html)
+
+[getmaterialid](getmaterialid.html)
+
+[getobjectid](getobjectid.html)
+
+[getobjectname](getobjectname.html)
+
+[getprimid](getprimid.html)
+
+[getptextureid](getptextureid.html)
+
+[getraylevel](getraylevel.html)
+
+[getrayweight](getrayweight.html)
+
+[getsamplestore](getsamplestore.html)
+
+[getsmoothP](getsmoothP.html)
+
+[getuvtangents](getuvtangents.html)
+
+[ggx](ggx.html)
+
+[gradient](gradient.html)
+
+[hair](hair.html)
+
+[henyeygreenstein](henyeygreenstein.html)
+
+[isotropic](isotropic.html)
+
+[israytracing](israytracing.html)
+
+[isshadingRHS](isshadingRHS.html)
+
+[lightstate](lightstate.html)
+
+[matchvex_blinn](matchvex_blinn.html)
+
+[matchvex_specular](matchvex_specular.html)
+
+[objectstate](objectstate.html)
+
+[phong](phong.html)
+
+[phongBRDF](phongBRDF.html)
+
+[phonglobe](phonglobe.html)
+
+[ptexture](ptexture.html)
+
+[rayhittest](rayhittest.html)
+
+[rayimport](rayimport.html)
+
+[reflect](reflect.html)
+
+[refract](refract.html)
+
+[renderstate](renderstate.html)
+
+[resolvemissedray](resolvemissedray.html)
+
+[sample_geometry](sample_geometry.html)
+
+[scatter](scatter.html)
+
+[setsamplestore](setsamplestore.html)
+
+[specular](specular.html)
+
+[specularBRDF](specularBRDF.html)
+
+[sssapprox](sssapprox.html)
+
+[teximport](teximport.html)
+
+[texture](texture.html)
+
+[trace](trace.html)
+
+[translucent](translucent.html)
+
+[uvunwrap](uvunwrap.html)
+
+[volume](volume.html)
+
+[wireblinn](wireblinn.html)
+
+[wirediffuse](wirediffuse.html)

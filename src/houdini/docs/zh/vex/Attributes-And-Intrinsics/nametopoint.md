@@ -1,49 +1,130 @@
 ---
 title: nametopoint
-order: 31
+order: 32
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Finds a point by its name attribute.
+`int nametopoint(<geometry>geometry, string name)`
 
-```c
-int  nametopoint(<geometry>geometry, string name)
-```
+## Arguments
 
 `<geometry>`
 
-When running in the context of a node (such as a wrangle SOP), this argument
-can be an integer representing the input number (starting at 0) to read the
-geometry from.
+When running in the context of a node (such as a wrangle SOP), this argument can be an integer representing the input number (starting at 0) to read the geometry from.
 
-当在一个节点的上下文中运行时（比如 wrangle SOP），这个参数可以是一个整数，代表要读取几何体的输入数字（从 0 开始）。
+Alternatively, the argument can be a string specifying a geometry file (for example, a `.bgeo`) to read from. When running inside Houdini, this can be an `op:/path/to/sop` reference.
 
-Alternatively, the argument can be a string specifying a geometry file (for
-example, a `.bgeo`) to read from. When running inside Houdini, this can be an
+## Returns
 
-```c
-op:/path/to/sop
-```
+The number of the point with the given value in the `name` attribute. Returns `-1` if no primitive has the given ID, or if the geometry has no `name` attribute.
 
-reference.
+To look up a primitive by its `id` attribute value, use [idtoprim](idtoprim.html "Finds a primitive by its id attribute."). To look up a point by an arbitrary string or int attribute value, use [findattribval](findattribval.html "Finds a primitive/point/vertex that has a certain attribute value.").
 
-或者，该参数可以是一个字符串，指定要读取的几何体文件（例如，a.bgeo）。当在 Houdini 内部运行时，这可以是 anop:/path/to/sopreference。
 
-Returns
 
-The number of the point with the given value in the `name` attribute. Returns
-`-1` if no primitive has the given ID, or if the geometry has no `name`
-attribute.
+## See also
 
-在 thename 属性中具有给定值的点的编号。如果没有基元具有给定的 ID，或者如果几何体具有非名称属性，则返回 1。
+- [idtoprim](idtoprim.html)
+- [nametopoint](nametopoint.html)
+- [findattribval](findattribval.html)
 
-To look up a primitive by its `id` attribute value, use
-[idtoprim](idtoprim.html "Finds a primitive by its id attribute."). To look up
-a point by an arbitrary string or int attribute value, use
-[findattribval](findattribval.html "Finds a primitive/point/vertex that has a
-certain attribute value.").
+|
+point
 
-要通过它的侧面属性值来查找一个基元，请使用 idtoprim。要通过一个任意的字符串或 int 属性值来查找一个点，请使用 efindattribval。
+[addpoint](addpoint.html)
+
+[addpointattrib](addpointattrib.html)
+
+[haspointattrib](haspointattrib.html)
+
+[idtopoint](idtopoint.html)
+
+[inpointgroup](inpointgroup.html)
+
+[nametopoint](nametopoint.html)
+
+[ndcdepth](ndcdepth.html)
+
+[nearpoint](nearpoint.html)
+
+[nearpoints](nearpoints.html)
+
+[neighbour](neighbour.html)
+
+[neighbourcount](neighbourcount.html)
+
+[neighbours](neighbours.html)
+
+[npoints](npoints.html)
+
+[npointsgroup](npointsgroup.html)
+
+[planepointdistance](planepointdistance.html)
+
+[point](point.html)
+
+[pointattrib](pointattrib.html)
+
+[pointattribsize](pointattribsize.html)
+
+[pointattribtype](pointattribtype.html)
+
+[pointattribtypeinfo](pointattribtypeinfo.html)
+
+[pointhedge](pointhedge.html)
+
+[pointhedgenext](pointhedgenext.html)
+
+[pointprims](pointprims.html)
+
+[pointvertex](pointvertex.html)
+
+[pointvertices](pointvertices.html)
+
+[primpoint](primpoint.html)
+
+[primpoints](primpoints.html)
+
+[ptransform](ptransform.html)
+
+[removeattrib](removeattrib.html)
+
+[removepoint](removepoint.html)
+
+[removepointattrib](removepointattrib.html)
+
+[removepointgroup](removepointgroup.html)
+
+[setpointattrib](setpointattrib.html)
+
+[setpointgroup](setpointgroup.html)
+
+[setvertexpoint](setvertexpoint.html)
+
+[vertexpoint](vertexpoint.html)
+
+|
+search
+
+[findattribval](findattribval.html)
+
+[findattribvalcount](findattribvalcount.html)
+
+[idtopoint](idtopoint.html)
+
+[idtoprim](idtoprim.html)
+
+[intersect](intersect.html)
+
+[nametopoint](nametopoint.html)
+
+[nametoprim](nametoprim.html)
+
+[nuniqueval](nuniqueval.html)
+
+[primfind](primfind.html)
+
+[uniqueval](uniqueval.html)
+
+[uniquevals](uniquevals.html)

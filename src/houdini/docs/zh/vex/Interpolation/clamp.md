@@ -1,38 +1,61 @@
 ---
 title: clamp
-order: 2
+order: 3
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
+
+`int clamp(int value, int min, int max)`
+
+`float clamp(float value, float min, float max)`
 
 Returns value clamped between min and max.
 
-```c
-int  clamp(int value, int min, int max)
-```
+`vector2 clamp(vector2 value, vector2 min, vector2 max)`
 
-```c
-float  clamp(float value, float min, float max)
-```
+`vector clamp(vector value, vector min, vector max)`
 
-Returns value clamped between min and max.
-
-返回 min 和 max 之间的钳制值。
-
-```c
-vector2  clamp(vector2 value, vector2 min, vector2 max)
-```
-
-```c
-vector  clamp(vector value, vector min, vector max)
-```
-
-```c
-vector4  clamp(vector4 value, vector4 min, vector4 max)
-```
+`vector4 clamp(vector4 value, vector4 min, vector4 max)`
 
 Returns a new vector containing the clamped value of each component.
 
-返回一个包含每个分量的钳制值的新向量。
+
+
+## See also
+
+- [fit](fit.html)
+- [fit01](fit01.html)
+- [fit10](fit10.html)
+- [fit11](fit11.html)
+- [efit](efit.html)
+
+|
+interp
+
+[ckspline](ckspline.html)
+
+[clamp](clamp.html)
+
+[cspline](cspline.html)
+
+[efit](efit.html)
+
+[fit](fit.html)
+
+[fit01](fit01.html)
+
+[fit10](fit10.html)
+
+[fit11](fit11.html)
+
+[invlerp](invlerp.html)
+
+[lerp](lerp.html)
+
+[lkspline](lkspline.html)
+
+[lspline](lspline.html)
+
+[slerp](slerp.html)
+
+[smooth](smooth.html)

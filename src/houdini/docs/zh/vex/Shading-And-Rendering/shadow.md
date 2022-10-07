@@ -1,39 +1,52 @@
 ---
 title: shadow
-order: 69
+order: 70
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Calls shadow shaders for the current light source.
 
-Context(s) | [displace](../contexts/displace.html)[
-fog](../contexts/fog.html)[ surface](../contexts/surface.html)  
----|---
 
-This function can only be called from within an [illuminance](illuminance.html "Loops through all light sources in the scene, calling the light shader for
-each light source to set the Cl and L global variables.") statement.
+Context(s)
+[displace](../contexts/displace.html)
+[fog](../contexts/fog.html)
+[surface](../contexts/surface.html)
 
-This function can only be called from within anilluminancestatement.
+This function can only be called from within an [illuminance](illuminance.html "Loops through all light sources in the scene, calling the light shader for each light source to set the Cl and L global variables.") statement.
 
-```c
-void  shadow(vector &Cl)
-```
+`void shadow(vector &Cl)`
 
-```c
-vector  shadow(vector Cl)
-```
+`vector shadow(vector Cl)`
 
 Uses the `P` and `L` global variables.
 
-Uses thePandLglobal variables.
+`void shadow(vector &Cl, vector P, vector L)`
 
-```c
-void  shadow(vector &Cl, vector P, vector L)
-```
+`vector shadow(vector Cl, vector P, vector L)`
 
-```c
-vector  shadow(vector Cl, vector P, vector L)
-```
+
+surface
+
+[ambient](ambient.html)
+
+[irradiance](irradiance.html)
+
+[isfogray](isfogray.html)
+
+[islpeactive](islpeactive.html)
+
+[isshadowray](isshadowray.html)
+
+[isuvrendering](isuvrendering.html)
+
+[limport](limport.html)
+
+[occlusion](occlusion.html)
+
+[reflectlight](reflectlight.html)
+
+[refractlight](refractlight.html)
+
+[shadow](shadow.html)
+
+[shimport](shimport.html)

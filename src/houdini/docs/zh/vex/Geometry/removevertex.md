@@ -1,53 +1,124 @@
 ---
 title: removevertex
-order: 34
+order: 36
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Removes a vertex from the geometry.
 
-| Since | 18.0 |
-| ----- | ---- |
 
-```c
-int  removevertex(int geohandle, int linear_vertex_index)
-```
+Since 18.0
+
+`int removevertex(int geohandle, int linear\_vertex\_index)`
+
+## Arguments
 
 `geohandle`
 
-A handle to the geometry to write to. Currently the only valid value is `0` or
-[geoself](geoself.html) "Returns a handle to the current geometry."), which
-means the current geometry in a node. (This argument may be used in the future
-to allow writing to other geometries.)
+A handle to the geometry to write to. Currently the only valid value is `0` or [geoself](geoself.html "Returns a handle to the current geometry."), which means the current geometry in a node. (This argument may be used in the future to allow writing to other geometries.)
 
-要写入的几何体的句柄。目前唯一有效的值是 0orgeoself，也就是一个节点中的当前几何体。(这个参数将来可能会被用来允许写到其他的几何体)。
+`linear_vertex_index`
 
-```c
-linear_vertex_index
-```
+If this is `-1`, the function has no effect. This is a linear
+vertex index, so `vertexindex` may be needed to convert from
+a primitive and vertex number.
 
-If this is `-1`, the function has no effect.This is a linearvertex index, so
-`vertexindex` may be needed to convert froma primitive and vertex number.
-
-如果这个参数是-1，该函数就没有作用。 这是一个线性的
-
-This removes the given vertex from the geometry.Note: This is done asa post
-process, not immediately when invoked.
-
-顶点索引，可能需要用 overtexindex 来转换从
+This removes the given vertex from the geometry. Note: This is done as
+a post process, not immediately when invoked.
 
 Only polygons currently support the removal of vertices.
 
-基元和顶点编号进行转换。
-
-This can result in degenerate (0 vertex) polygons, as the primitiveis not
-deleted.
-
-这将从几何体中移除给定的顶点。 注意：这是作为一个后置处理完成的
+This can result in degenerate (0 vertex) polygons, as the primitive
+is not deleted.
 
 Removing many vertices from polygons with high vertex counts can be slow.
 
-后期处理，而不是在调用时立即执行。
+
+
+## See also
+
+- [addvertex](addvertex.html)
+
+|
+delete
+
+[removeattrib](removeattrib.html)
+
+[removepoint](removepoint.html)
+
+[removeprim](removeprim.html)
+
+[removevertex](removevertex.html)
+
+|
+vertex
+
+[addvertex](addvertex.html)
+
+[addvertexattrib](addvertexattrib.html)
+
+[hasvertexattrib](hasvertexattrib.html)
+
+[hedge_postdstvertex](hedge_postdstvertex.html)
+
+[hex_faceindex](hex_faceindex.html)
+
+[invertexgroup](invertexgroup.html)
+
+[nvertices](nvertices.html)
+
+[nverticesgroup](nverticesgroup.html)
+
+[osd_limitsurfacevertex](osd_limitsurfacevertex.html)
+
+[pointvertex](pointvertex.html)
+
+[pointvertices](pointvertices.html)
+
+[primvertex](primvertex.html)
+
+[primvertexcount](primvertexcount.html)
+
+[primvertices](primvertices.html)
+
+[removevertex](removevertex.html)
+
+[removevertexattrib](removevertexattrib.html)
+
+[removevertexgroup](removevertexgroup.html)
+
+[setprimvertex](setprimvertex.html)
+
+[setvertexattrib](setvertexattrib.html)
+
+[setvertexgroup](setvertexgroup.html)
+
+[setvertexpoint](setvertexpoint.html)
+
+[tet_faceindex](tet_faceindex.html)
+
+[vertex](vertex.html)
+
+[vertexattrib](vertexattrib.html)
+
+[vertexattribsize](vertexattribsize.html)
+
+[vertexattribtype](vertexattribtype.html)
+
+[vertexattribtypeinfo](vertexattribtypeinfo.html)
+
+[vertexcurveparam](vertexcurveparam.html)
+
+[vertexhedge](vertexhedge.html)
+
+[vertexindex](vertexindex.html)
+
+[vertexnext](vertexnext.html)
+
+[vertexpoint](vertexpoint.html)
+
+[vertexprev](vertexprev.html)
+
+[vertexprim](vertexprim.html)
+
+[vertexprimindex](vertexprimindex.html)

@@ -1,33 +1,19 @@
 ---
 title: noised
-order: 16
+order: 24
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
 
-Derivatives of Perlin Noise.
+`void noised(float x, float &v, float &dvdx)`
 
-```c
-void  noised(float x, float &v, float &dvdx)
-```
+`void noised(float x, vector &v, vector &dvdx)`
 
-```c
-void  noised(float x, vector &v, vector &dvdx)
-```
+`void noised(float x, float y, float &v, float &dvdx, float &dvdy)`
 
-```c
-void  noised(float x, float y, float &v, float &dvdx, float &dvdy)
-```
+`void noised(float x, float y, vector &v, vector &dvdx, vector &dvdy)`
 
-```c
-void  noised(float x, float y, vector &v, vector &dvdx, vector &dvdy)
-```
-
-```c
-void  noised(vector xyz, float &v, float &dvdx, float &dvdy, float &dvdz)
-```
+`void noised(vector xyz, float &v, float &dvdx, float &dvdy, float &dvdz)`
 
 `void noised(vector xyz, vector &v, vector &dvdx, vector &dvdy, vector &dvdz)`
 
@@ -35,13 +21,68 @@ void  noised(vector xyz, float &v, float &dvdx, float &dvdy, float &dvdz)
 
 `void noised(vector4 xyzw, vector &v, vector &dvdx, vector &dvdy, vector &dvdz, vector &dvdw)`
 
-This computes both the perlin noise value, and the derivatives of thenoise
-along each axis.This can be performed quite efficiently asthere are analytic
-derivatives available.
+This computes both the perlin noise value, and the derivatives of the
+noise along each axis. This can be performed quite efficiently as
+there are analytic derivatives available.
 
-这将计算 perlin 噪声值，以及沿每个轴的噪声导数。
+See [noise and randomness](../random.html) in the VEX language
+guide for more information.
 
-See [noise and randomness](../random.html)in the VEX languageguide for more
-information.
 
-沿着每个轴的噪声的导数。 这可以相当有效地进行，因为
+
+## See also
+
+- [noise](noise.html)
+
+|
+noise
+
+[anoise](anoise.html)
+
+[curlnoise](curlnoise.html)
+
+[curlnoise2d](curlnoise2d.html)
+
+[curlxnoise](curlxnoise.html)
+
+[curlxnoise2d](curlxnoise2d.html)
+
+[cwnoise](cwnoise.html)
+
+[flownoise](flownoise.html)
+
+[flowpnoise](flowpnoise.html)
+
+[hscript_noise](hscript_noise.html)
+
+[hscript_rand](hscript_rand.html)
+
+[hscript_snoise](hscript_snoise.html)
+
+[hscript_sturb](hscript_sturb.html)
+
+[hscript_turb](hscript_turb.html)
+
+[mwnoise](mwnoise.html)
+
+[noise](noise.html)
+
+[noised](noised.html)
+
+[onoise](onoise.html)
+
+[pnoise](pnoise.html)
+
+[xnoise](pxnoise.html)
+
+[pxnoised](pxnoised.html)
+
+[snoise](snoise.html)
+
+[vnoise](vnoise.html)
+
+[wnoise](wnoise.html)
+
+[xnoise](xnoise.html)
+
+[xnoised](xnoised.html)

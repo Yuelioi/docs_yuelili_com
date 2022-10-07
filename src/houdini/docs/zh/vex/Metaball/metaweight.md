@@ -1,20 +1,26 @@
 ---
 title: metaweight
-order: 5
+order: 6
 category:
-  - houdini
+  - vex
 ---
-    
-## 描述
+
+`float metaweight(<geometry>geometry, vector p)`
 
 Returns the metaweight of the geometry at position p.
+This is the result of evaluating all the metaballs in the
+geometry at that position. Usually this is the sum of their
+values, but meta expressions can change that.
 
-```c
-float  metaweight(<geometry>geometry, vector p)
-```
 
-Returns the metaweight of the geometry at position p.This is the result of
-evaluating all the metaballs in thegeometry at that position.Usually this is
-the sum of theirvalues, but meta expressions can change that.
+metaball
 
-返回位置 p 处的几何体的元重量。
+[metaimport](metaimport.html)
+
+[metamarch](metamarch.html)
+
+[metanext](metanext.html)
+
+[metastart](metastart.html)
+
+[metaweight](metaweight.html)
