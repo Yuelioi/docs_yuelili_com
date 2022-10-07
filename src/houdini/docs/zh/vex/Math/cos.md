@@ -7,7 +7,7 @@ category:
 
 `float cos(float n)`
 
-Returns the cosine of `n`, where `n` is in radians.
+返回`n`的余弦，`n`的单位是弧度。
 
 `vector2 cos(vector2 n)`
 
@@ -15,9 +15,7 @@ Returns the cosine of `n`, where `n` is in radians.
 
 `vector4 cos(vector4 n)`
 
-Returns a new vector with `cos()` applied to each component.
-
-
+返回一个新的向量，并对每个分量应用`cos()'。
 
 ## See also
 

@@ -42,7 +42,6 @@ else
 
 `isbound` does not tell you if the attribute exists. It tells you if the attribute is bound. If you added an `@a` to a wrangle to bind the `a`, then `isbound` will work as you expect in CVEX. Without an `@a`, there is no parameter in your CVEX function to bind the attribute to, so it will be unbound.
 
-
 utility
 
 [assert_enabled](assert_enabled.html)

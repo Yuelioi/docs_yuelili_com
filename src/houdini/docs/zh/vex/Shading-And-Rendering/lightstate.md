@@ -5,132 +5,117 @@ category:
   - vex
 ---
 
+在这一页
 
-
-On this page
-
-- [Useful properties](#useful-properties)
-- [Packed Primitives](#packed-primitives)
-- [Examples](#examples)
+- [有用的属性](#useful-properties)
+- [打包的基元](#打包的基元)
+- [例子](#例子)
 
 |
 
-Context(s)
 [shading](../contexts/shading.html)
 
 `int lightstate(string query, <type>&value)`
 
 `int lightstate(string query, <type>&value[])`
 
-Returns a non-zero value and sets value on success, or returns `0`
-if the renderer cannot evaluate the query.
+Context(s) 返回一个非零值，并在成功时设置值，如果渲染器无法评估该查询，则返回`0`。
 
-See the [list of IFD properties](../../props/mantra.html) you can query. Use
-the **IFD** name (e.g. `image:samples`),
-not the Houdini name (e.g. `vm_samples`).
+见[IFD 属性列表]（.../.../props/mantra.html），你可以查询。使用**IFD**名称（如`image:samples`），而不是 Houdini 名称（如`vm_samples`）。
 
-##
-
-Useful properties
+## 有用的属性
 
 [¶](#useful-properties)
 
-The following properties are commonly useful and are reproduced here
-for convenience, but you can query any property from the
-[the full list of IFD properties](../../props/mantra.html).
+以下是常用的属性，为方便起见，在此转载，但你可以从[IFD 属性的完整列表]（.../.../props/mantra.html）查询任何属性。
 
 `image:name`
 
-(string) The name of the image being rendered.
+(string) 被渲染的图像的名称。
 
 `image:pixelaspect`
 
-(float) The pixel aspect ratio (X/Y) of the image.
+(float) 图像的像素长宽比（X/Y）。
 
 `image:resolution`
 
-(vector) Gives the resolution as {x_res, y_res, samples_per_pixel}.
+(vector) 给出分辨率为{x_res, y_res, samples_per_pixel}。
 
 `image:samples`
 
-(vector) Gives samples as {x_samples, y_samples, 0}.
+(vector) 给出样本为{x_samples, y_samples, 0}。
 
 `image:raysamples`
 
-(vector) Gives the raytracing samples as {x_samples, y_samples, 0}.
+(vector)给出了{x_samples, y_samples, 0}的光线追踪样本。
 
 `light:name`
 
-(string) The name of the light object which is currently active in the [illuminance](illuminance.html "Loops through all light sources in the scene, calling the light shader for each light source to set the Cl and L global variables.") loop.
+(string)当前在[illuminance](illuminance.html) ()("循环浏览场景中的所有光源，为每个光源调用光照器以设置 Cl 和 L 全局变量。")循环中处于活动状态的光对象的名称。
 
 `light:shadowscope`
 
-(string) The list of objects casting shadows from a light.
+(string)从灯光下投射阴影的物体列表。
 
 `object:name`
 
-(string) The name of the object being shaded. This is valid within light and shadow shaders and can be used to query which object is being lit (or shadowed) by the light source.
+(string) 被遮蔽的物体的名称。这在光影着色器中是有效的，可以用来查询哪个物体被光源照亮（或被阴影）。
 
 `object:reflectscope`
 
-(string) The default reflection scope pattern for the object being shaded.
+(string) 被着色对象的默认反射范围模式。
 
 `object:refractscope`
 
-(string) The default refraction scope pattern for the object being shaded.
+(string)被着色对象的默认折射范围模式。
 
 `object:reflectlimit`
 
-(float or int) The hard limit for maximum refraction bounces for the object being shaded.
+(float or int) 被遮蔽物体的最大折射反弹的硬限制。
 
 `object:shadingquality`
 
-(float) The shading quality for the object being shaded.
+(float) 被遮挡物体的遮挡质量。
 
 `object:lightmask`
 
-(string) The object’s light mask string.
+(string) 对象的光罩字符串。
 
 `object:area`
 
-(float) The object’s surface area.
+(float) 物体的表面积。
 
 `object:materialname`
 
-(string) Path to the material that’s assigned to the object being shaded.
-NOTE
+(string)分配给被遮蔽物体的材料的路径。注意
 
-This is for informational purpose only and has no effect on material assignment or appearance.
+这仅仅是为了提供信息，对材料的分配或外观没有影响。
 
 `renderer:name`
 
-(string) The name of the renderer.
+(string) 渲染器的名称。
 
 `renderer:version`
 
-As a string, gives the renderer version as “major.minor.build”
-As a vector, gives the renderer version as {major, minor, build}.
+作为一个字符串，渲染器的版本是 "major.minor.build"。 作为一个向量，渲染器的版本是{major, minor, build}。
 
 `renderer:renderengine`
 
-(string) The render method in use, such as `micropoly` or `raytrace`.
-See the [properties list](../../props/mantra.html) for the full list of possible values.
+(string) 使用中的渲染方法，例如`micropoly`或`raytrace`。参见[属性列表](.../.../props/mantra.html)，以获得完整的可能值列表。
 
 `shader:name`
 
-(string) The name of the current shader being run.
+(string) 当前正在运行的着色器的名称。
 
-##
-
-Packed Primitives
+## 打包的基元
 
 [¶](#packed-primitives)
 
-When mantra renders packed primitives, the geometry gets unpacked before rendering. This means primitive attributes on the packed primitive aren’t available to shaders (since they aren’t passed down to the unpacked geometry).
+当 mantra 渲染打包的基元时，几何体在渲染前会被解包。这意味着打包的基元上的基元属性对着色器来说是不可用的（因为它们不会被传递到未打包的几何体中）。
 
-Before unpacking, mantra will automatically convert the primitive attributes to custom object properties (see `ray_declare` on the [IFD file format](../../render/ifd.html) page). The property will be named `packed:ATTRIBNAME` (where `ATTRIBNAME` is the name of the attribute). The `lightstate()` function can be used to access these properties, just like any other object property.
+在解包之前，mantra 会自动将原始属性转换为自定义对象属性（见[IFD 文件格式](././render/ifd.html) ()()页面上的`ray_declare`）。该属性将被命名为`packed:ATTRIBNAME`（其中`ATTRIBNAME`是属性的名称）。`lightstate()`函数可以用来访问这些属性，就像其他对象的属性一样。
 
-For example:
+比如说。
 
 ```c
 vector Cd;
@@ -141,7 +126,7 @@ if (!lightstate("packed:Cd", Cd))
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 surface showversion()
@@ -165,7 +150,6 @@ vector mapToScreen(vector NDC\_P)
 }
 
 ```
-
 
 properties
 

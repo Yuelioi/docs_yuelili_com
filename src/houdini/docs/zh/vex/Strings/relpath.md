@@ -5,17 +5,11 @@ category:
   - vex
 ---
 
-
-
-Since 18.0
+自 18.0 以来
 
 `string relpath(string abspath)`
 
-Returns the supplied path converted to a relative path, expressed as
-relative to Houdini’s current working directory. The file does not need to
-exist.
-
-
+返回所提供的路径转换为相对路径，表示为相对于 Houdini 的当前工作目录。该文件不需要存在。
 
 ## See also
 

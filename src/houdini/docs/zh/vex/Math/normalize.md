@@ -7,10 +7,9 @@ category:
 
 `<vector> normalize(<vector>v)`
 
-Returns the [normalized](http://en.wikipedia.org/wiki/Unit_vector) version of `v`.
+返回`v`的[规范化](http://en.wikipedia.org/wiki/Unit_vector)版本。
 
-
-vector
+向量
 
 [Du](Du.html)
 

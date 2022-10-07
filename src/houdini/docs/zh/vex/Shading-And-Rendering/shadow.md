@@ -5,27 +5,23 @@ category:
   - vex
 ---
 
-
-
-Context(s)
 [displace](../contexts/displace.html)
 [fog](../contexts/fog.html)
 [surface](../contexts/surface.html)
 
-This function can only be called from within an [illuminance](illuminance.html "Loops through all light sources in the scene, calling the light shader for each light source to set the Cl and L global variables.") statement.
+上下文 该函数只能在[illuminance](illuminance.html)（"循环浏览场景中的所有光源，为每个光源调用光照器以设置 Cl 和 L 全局变量。"）语句中调用。
 
 `void shadow(vector &Cl)`
 
 `vector shadow(vector Cl)`
 
-Uses the `P` and `L` global variables.
+使用`P`和`L`全局变量。
 
 `void shadow(vector &Cl, vector P, vector L)`
 
 `vector shadow(vector Cl, vector P, vector L)`
 
-
-surface
+表面
 
 [ambient](ambient.html)
 

@@ -9,7 +9,7 @@ category:
 
 `int product(int n)`
 
-Returns the argument.
+返回参数。
 
 `float product(vector2 v)`
 
@@ -17,19 +17,17 @@ Returns the argument.
 
 `float product(vector4 v)`
 
-Returns the product of the vector’s components.
+返回向量的分量的乘积。
 
 `int product(int arr[])`
 
 `float product(float arr[])`
 
-Returns the product of the items of the array.
+返回数组中各项的乘积。
 
 `<vector> product(<vector>arr[])`
 
-Returns a vector where the components are the products of the corresponding components in the vectors in the array.
-
-
+返回一个向量，其中的分量是数组中向量中相应分量的乘积。
 
 ## See also
 

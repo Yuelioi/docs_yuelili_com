@@ -5,25 +5,23 @@ category:
   - vex
 ---
 
-
-
-Since 18.0
+自 18.0 以来
 
 `matrix combinelocaltransform(matrix local, matrix parent\_world, matrix parent\_local, int scale\_inherit\_mode)`
 
-Returns a new world transform given its local and parent world transforms.
+返回一个新的世界变换，给定其本地世界变换和父世界变换。
 
 `matrix combinelocaltransform(matrix local, matrix parent\_world, matrix parent\_local, int scale\_inherit\_mode, matrix &effective\_local\_transform)`
 
-Returns a new world transform given its local and parent world transforms. The local transform including any inherited scales is stored in the effective_local_transform matrix - this value will differ from the local matrix when the mode is set to SCALE_INHERIT_OFFSET_AND_SCALE or SCALE_INHERIT_SCALE_ONLY where we pass a parent’s local scales onto its children as part of their own local transforms.
+返回一个新的世界变换，给定其本地和父世界变换。包括任何继承的尺度在内的局部变换被存储在 effective_local_transform 矩阵中--当模式被设置为 SCALE_INHERIT_OFFSET_AND_SCALE 或 SCALE_INHERIT_SCALE_ONLY 时，这个值将与局部矩阵不同，我们将父级的局部尺度作为其自身局部变换的一部分传递给子级。
 
 ## Arguments
 
 `scale_inherit_mode`
 
-Specifies how scale inheritance from the parent transform is applied to the result. It is one of the following defines from `math.h`:
+指定如何将来自父变换的比例继承应用于结果。它是以下来自`math.h`的定义之一。
 
-- `SCALE_INHERIT_DEFAULT` (0) - simple inheritance:
+- `SCALE_INHERIT_DEFAULT` (0) - 简单继承。
 
 ```c
 world = local * parent_world
@@ -57,8 +55,6 @@ world = parent_local_scales * local * invert(parent_local_scales) * parent_world
 world = local * invert(parent_local_scales) * parent_world
 
 ```
-
-
 
 ## See also
 

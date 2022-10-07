@@ -21,7 +21,6 @@ The value of a specific voxel in a volume primitive.
 
 Returns 0 if `primnum` is out of range, the geometry is invalid, or the given primitive is not a volume primitive.
 
-
 volume
 
 [gradient](gradient.html)

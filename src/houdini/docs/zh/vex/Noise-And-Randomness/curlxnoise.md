@@ -9,12 +9,9 @@ category:
 
 `vector curlxnoise(vector4 xyzt)`
 
-Computes a divergence free vector field based on the cross product of the derivatives of two simplex noise functions.
+根据两个单纯噪声函数的导数的交叉乘积计算一个无发散矢量场。
 
-See [noise and randomness](../random.html) in the VEX language
-guide for more information.
-
-
+参见 VEX 语言指南中的[噪声和随机性](.../random.html)以获得更多信息。
 
 ## See also
 

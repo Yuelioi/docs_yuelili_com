@@ -7,8 +7,7 @@ category:
 
 `string [] ocio\_spaces()`
 
-
-color
+颜色
 
 [blackbody](blackbody.html)
 
@@ -44,8 +43,7 @@ color
 
 [xyztorgb](xyztorgb.html)
 
-|
-ocio
+| ǞǞǞ
 
 [ocio_activedisplays](ocio_activedisplays.html)
 

@@ -5,45 +5,43 @@ category:
   - vex
 ---
 
-
-
-Since 18.0
+自 18.0 以来
 
 `<type> usd\_attribelement(<stage>stage, string primpath, string name, int index)`
 
 `<type> usd\_attribelement(<stage>stage, string primpath, string name, int index, float timecode)`
 
-This function returns a value of an element in given array attribute on a given primitive.
+此函数返回给定基元上给定数组属性中的一个元素的值。
 
 ## Arguments
 
 `<stage>`
 
-When running in the context of a node (such as a wrangle LOP), this argument can be an integer representing the input number (starting at 0) to read the stage from. The integer is equivalent to the string form referencing a particular input, e.g., “opinput:0”.
+当在一个节点的上下文中运行时（比如 wrangle LOP），这个参数可以是一个整数，代表要读取阶段的输入号码（从 0 开始）。这个整数等同于引用特定输入的字符串形式，例如，"opinput:0"。
 
 `primpath`
 
-The path to the primitive.
+通往原始的道路。
 
 `name`
 
-Attribute name.
+属性名称。
 
 `index`
 
-The element index in the array attribute.
+数组属性中的元素索引。
 
 `timecode`
 
-The USD time code at which to evaluate the attribute. A USD time code roughly corresponds to a frame in Houdini. If not given, the time code corresponding to the current frame is used.
+用于评估该属性的美元时间代码。一个美元的时间码大致对应于 Houdini 中的一个帧。如果没有给出，就会使用与当前帧对应的时间码。
 
 ## Returns
 
-The value of an element in an existing attribute, or zero/empty value if the attribute does not exist. Use [usd_isattrib](usd_isattrib.html "Checks if the primitive has an attribute by the given name.") if you want to check whether the attribute exists.
+现有属性中的元素值，如果属性不存在，则为零/空值。如果想检查属性是否存在，请使用 [usd_isattrib](usd_isattrib.html) () ("检查基元是否有一个给定名称的属性。") 。
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Get the value of an element at index 3 in the array attribute.
@@ -54,8 +52,6 @@ float a = usd\_attribelement("opinput:0", "/geo/cube", "array\_attrib\_name", 3)
 @b\_element\_2\_at\_frame\_11 = usd\_attribelement(0, "/geo/sphere", "bar", 2, 11.0);
 
 ```
-
-
 
 ## See also
 

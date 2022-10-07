@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Since 19.0
 
 `string ramp\_pack(string basis[], float pos[], float value[])`
@@ -18,8 +16,6 @@ Since 19.0
 Ramps are commonly packed as JSON formatted strings by Houdini operations.
 This will pack them three arrays of basis, position, and value into the
 corresponding string.
-
-
 
 ## See also
 

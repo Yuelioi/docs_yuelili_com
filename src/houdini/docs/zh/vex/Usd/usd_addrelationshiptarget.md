@@ -5,47 +5,43 @@ category:
   - vex
 ---
 
-
-
-Since 18.0
+自 18.0 以来
 
 `int usd\_addrelationshiptarget(int stagehandle, string primpath, string name, string target)`
 
-This function adds a target to the primitive’s relationship.
+此函数向基元的关系添加一个目标。
 
 ## Arguments
 
 `stagehandle`
 
-A handle to the stage to write to. Currently the only valid value is `0`, which means the current stage in a node. (This argument may be used in the future to allow writing to other stages.)
+要写入的阶段的句柄。目前唯一有效的值是 "0"，这意味着在一个节点中的当前阶段。(这个参数将来可能会被用于允许写到其他阶段。)
 
 `primpath`
 
-The path to the primitive.
+通往原始的道路。
 
 `name`
 
-The relationship name.
+关系名称。
 
 `target`
 
-The the target path to add.
+要添加的目标路径。
 
 ## Returns
 
-The value of `stagehandle` on success or `-1` on failure.
+成功时是`stagehandle`的值，失败时是`-1`。
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Add the sphere to cube's relationship.
 usd\_addrelationshiptarget(0, "/geo/cube", "relationship\_name", "/geo/sphere");
 
 ```
-
-
 
 ## See also
 

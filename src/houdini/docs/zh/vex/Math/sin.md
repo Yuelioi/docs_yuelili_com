@@ -7,13 +7,11 @@ category:
 
 `float sin(float n)`
 
-Returns the sine of `n`, where `n` is in radians.
+返回`n`的正弦值，其中`n`的单位是弧度。
 
 `<vector> sin(<vector>n)`
 
-Returns a new vector with `sin()` applied to each component.
-
-
+返回一个新的向量，并对每个分量应用`sin()`。
 
 ## See also
 

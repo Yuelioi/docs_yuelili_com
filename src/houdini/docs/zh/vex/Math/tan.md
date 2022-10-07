@@ -7,7 +7,7 @@ category:
 
 `float tan(float n)`
 
-Returns the trigonometric tangent of `n`, where `n` is in radians.
+返回`n`的三角正切值，其中`n`的单位是弧度。
 
 `vector2 tan(vector2 v)`
 
@@ -15,9 +15,7 @@ Returns the trigonometric tangent of `n`, where `n` is in radians.
 
 `vector4 tan(vector4 v)`
 
-Returns a new vector with `tan()` applied to each component.
-
-
+返回一个新的向量，`tan()`应用于每个分量。
 
 ## See also
 

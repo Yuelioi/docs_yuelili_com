@@ -11,14 +11,9 @@ category:
 
 `u`
 
-Number between 0 and 1.
+0 和 1 之间的数字。
 
-Returns a unit vector2, i.e. a vector2 of length 1, based on `u`.
-Given uniform random `u` values in `[0,1)`, the returned unit vectors will be
-uniform random and continuous with respect to `u` on the edge of the unit circle.
-Specifically, it returns `(cos(angle),sin(angle))`, where `angle` is `2*pi*u`.
-
-
+返回一个单位向量 2，即长度为 1 的向量 2，基于`u`。给定在`[0,1)`中的均匀随机的`u`值，返回的单位向量将是均匀随机的，并且相对于`u`在单位圆的边缘是连续的。具体来说，它返回`(cos(angle),sin(angle))`，其中`angle`是`2*pi*u`。
 
 ## See also
 

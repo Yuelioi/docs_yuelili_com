@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Since 17.5
 
 `string [] usd\_variantsets(<stage>stage, string primpath)`
@@ -29,15 +27,13 @@ The variant set names available on a given primitive.
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Get the variant sets available on the "shape\_shifter" primitive.
 string variant\_sets[] = usd\_variantsets(0, "/geo/shape\_shifter");
 
 ```
-
-
 
 ## See also
 

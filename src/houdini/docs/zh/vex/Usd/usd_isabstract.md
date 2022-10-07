@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Since 19.0
 
 `int usd\_isabstract(<stage>stage, string primpath)`
@@ -29,15 +27,13 @@ The path to the primitive.
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Check if the sphere primitive is abstract.
 int is\_abstract = usd\_isabstract(0, "/geometry/sphere");
 
 ```
-
-
 
 ## See also
 

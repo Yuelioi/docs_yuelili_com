@@ -9,30 +9,27 @@ category:
 
 `bsdf ashikhmin(vector nml, float exponentx, float exponenty, vector framex, vector framey, ...)`
 
-![](../../images/rendering/ashikhmin1.png)
-![](../../images/rendering/ashikhmin2.png)
+![](/images/ashikhmin1.png) ![](/images/ashikhmin2.png)
 
-An anisotropic `bsdf` similar to `phong()` but with independent controls for the highlight size along 2 tangent vectors.
+一个类似于`phong()`的各向异性`bsdf`，但对沿两个切线向量的高光尺寸有独立的控制。
 
 ## Arguments
 
 `exponentx`
 
-Phong exponent along the `framex` vector.
+沿着 "framex "矢量的 Phong 指数。
 
 `exponenty`
 
-Phong exponent along the `framey` vector.
+沿着 "framey "矢量的 Phong 指数。
 
 `framex`
 
-Highlight X direction.
+突出 X 方向。
 
 `framey`
 
-Highlight Y direction.
-
-
+突出显示 Y 方向。
 
 ## See also
 
@@ -40,8 +37,7 @@ Highlight Y direction.
 - [phonglobe](phonglobe.html)
 - [Writing a PBR shader](../pbr.html)
 
-|
-bsdf
+### bsdf
 
 [albedo](albedo.html)
 

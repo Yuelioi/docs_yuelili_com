@@ -5,74 +5,67 @@ category:
   - vex
 ---
 
-
-
-Since 19.0
+自 19.0 以来
 
 `bsdf chiang(vector nn, vector tanV, float R\_v, float R\_s, float TT\_v, float TT\_s, float TRT\_v, float TRT\_s, float shift, vector absorption\_coeff, float ior, ...)`
 
-Creates a BSDF for computation of the physically based hair
-model described in paper “A Practical and Controllable Hair
-and Fur Model for Production Path Tracing” by Chiang et al.
+创建一个 BSDF，用于计算 Chiang 等人的论文 "A Practical and Controllable Hair and Fur Model for Production Path Tracing "中描述的基于物理的头发模型。
 
-Suitable only for curve geometry.
+仅适用于曲线的几何形状。
 
-See [writing a PBR shader](../pbr.html) for information on BSDFs.
+关于 BSDF 的信息，请参见[编写 PBR 着色器](../pbr.html)。
 
 ## Arguments
 
 `nn`
 
-bumped/shading normal
+凹凸不平/阴影正常
 
 `tanV`
 
-tangent vector along V
+沿着 V 的切线矢量
 
 `R_v`
 
-Longitudinal roughness value “v” for lobe R (section 4.1 of the paper)
+裂片 R 的纵向粗糙度值 "v"（文件的 4.1 节）。
 
 `R_s`
 
-Azimuthal roughness value “s” for lobe R (section 4.1 of the paper)
+裂片 R 的方位粗糙度值 "s"（文件 4.1 节）。
 
 `TT_v`
 
-Longitudinal roughness value “v” for lobe TT (section 4.1 of the paper)
+裂片 TT 的纵向粗糙度值 "v"（文件 4.1 节）。
 
 `TT_s`
 
-Azimuthal roughness value “s” for lobe TT (section 4.1 of the paper)
+裂片 TT 的方位粗糙度值 "s"（文件 4.1 节）。
 
 `TRT_v`
 
-Longitudinal roughness value “v” for lobe TRT (section 4.1 of the paper)
+裂片 TRT 的纵向粗糙度值 "v"（文件的 4.1 节）。
 
 `TRT_s`
 
-Azimuthal roughness value “s” for lobe TRT (section 4.1 of the paper)
+裂片 TRT 的方位粗糙度值 "s"（文件 4.1 节）。
 
 `shift`
 
-Represents the cuticle angle, which affects the position of the specular highlight. Input range of -1 to 1 is internally mapped to -90 to 90 (eg meaning 3-degrees would be 3/90 = 0.03333)
+代表角质层角度，它影响镜面高光的位置。输入范围为-1 到 1，内部映射为-90 到 90（例如，意味着 3 度将是 3/90=0.03333）。
 
 `absorption_coeff`
 
-The absorption coefficient (section 4.2 of the paper)
+吸收系数（文件的 4.2 节）。
 
 `ior`
 
-Index of refraction (eg 1.55)
-
-
+折射率（如 1.55）
 
 ## See also
 
 - [Writing a PBR shader](../pbr.html)
 
-|
-bsdf
+### bsdf
 
 [albedo](albedo.html)
 

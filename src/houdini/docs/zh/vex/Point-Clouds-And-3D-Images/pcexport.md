@@ -9,42 +9,17 @@ category:
 
 `int pcexport(int handle, string channel\_name, vector value, float radius, ...)`
 
-Returns 1 if the export succeeded or 0 if the export failed.
-The export will fail if channel_name is not read-write or if (in the
-version of pcexport taking a radius) the point being exported is at a
-distance less than the specified radius from a point that is already in the
-point cloud.
+如果导出成功则返回 1，如果导出失败则返回 0。如果 channel_name 不是可读可写的，或者（在 pcexport 获取半径的版本中）被导出的点与已经在点云中的点的距离小于指定的半径，导出将失败。
 
-This function writes to the channels of points opened with [pcopen](pcopen.html "Returns a handle to a point cloud file.") or
-[pcgenerate](pcgenerate.html "Generates a point cloud."). The second version of this function takes a radius parameter and uses it to accept or reject the point being exported according to its distance to the points that are already in the point cloud. It must be separated from all other points by at least the specified radius. To write new point data into a point cloud file, use [pcwrite](pcwrite.html "Writes data to a point cloud file.").
+这个函数写入用 [pcopen](pcopen.html) () ("返回一个点云文件的句柄。") 或 [pcgenerate](pcgenerate.html) () ("生成一个点云。") 打开的点的通道。这个函数的第二个版本需要一个半径参数，并根据它与已经在点云中的点的距离来接受或拒绝被导出的点。它必须与所有其他的点相隔至少有指定的半径。要将新的点数据写入点云文件，请使用[pcwrite](pcwrite.html)（"将数据写入点云文件。"）。
 
-##
-
-Storage type
+## 存储类型
 
 [¶](#storage-type)
 
-If you add the `"storage"` optional keyword, the next argument specifies a storage type for the data.
-Storage types are the standard tile based format data types:
+如果你添加了""存储""可选关键字，下一个参数将为数据指定一个存储类型。存储类型是标准的基于瓦片的格式数据类型。
 
-
-`int8, uint8` 8 bit signed/unsigned integers
-|
-`int16, uint16` 16 bit signed/unsigned integers
-|
-`int32, uint32` 32 bit signed/unsigned integers
-|
-`int64, uint64` 64 bit signed/unsigned integers
-|
-`real16` 16 bit floating point values
-|
-`real32` 32 bit floating point values
-|
-`real64` 64 bit floating point values
-|
-`int`, `uint`, `real` Default precision integer/floating point values
-
-
+`int8, uint8` 8 位有符号/无符号整数 | `int16, uint16` 16 位有符号/无符号整数 | `int32, uint32` 32 位有符号/无符号整数 | `int64, uint64` 64 位有符号/无符号整数 | `real16` 16 位浮点值 | `real32` 32 位浮点值 | `real64` 64 位浮点值 | `int`, `uint`, `real` 默认精度整数/浮点值
 
 ## See also
 

@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Since 18.0
 
 `int usd\_isarraymetadata(<stage>stage, string path, string name)`
@@ -35,7 +33,7 @@ The name can be namespaced to acces values inside (possibly nested) VtDictionari
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Check if the metadata is an array.
@@ -43,8 +41,6 @@ int is\_array = usd\_isarraymetadata(0, "/geo/sphere", "documentation");
 int is\_array\_too = usd\_isarraymetadata(0, "/geo/cube", "customData:foo:bar");
 
 ```
-
-
 
 ## See also
 

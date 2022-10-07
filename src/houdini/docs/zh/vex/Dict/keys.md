@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Since 18.5
 
 `string [] keys(dict d)`

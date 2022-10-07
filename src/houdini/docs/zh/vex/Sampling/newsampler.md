@@ -5,9 +5,6 @@ category:
   - vex
 ---
 
-
-
-Context(s)
 [displace](../contexts/displace.html)
 [fog](../contexts/fog.html)
 [light](../contexts/light.html)
@@ -18,18 +15,13 @@ Context(s)
 
 `int newsampler(int seed, ...)`
 
-Returns an initialized sampler sequence for use as the first argument
-to the [nextsample](nextsample.html) function.
+Context(s) 返回一个初始化的采样器序列，作为[nextsample](nextsample.html)函数的第一个参数使用。
 
 ## Arguments
 
 `seed`
 
-You can specify a seed value for the sequence.
-Using the same seed will generate the same sequence.
-This can be useful when random sampling into a point cloud, for consistent results.
-
-
+你可以为该序列指定一个种子值。使用相同的种子将产生相同的序列。这在对点云进行随机采样时很有用，可以获得一致的结果。
 
 ## See also
 

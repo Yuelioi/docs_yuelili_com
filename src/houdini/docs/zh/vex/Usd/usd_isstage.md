@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Since 17.5
 
 `int usd\_isstage(<stage>stage)`
@@ -25,15 +23,13 @@ When running in the context of a node (such as a wrangle LOP), this argument can
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Check if the first input has a valid stage.
 int is\_valid\_stage\_on\_first\_input = usd\_isstage(0);
 
 ```
-
-
 
 ## See also
 

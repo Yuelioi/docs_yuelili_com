@@ -5,9 +5,6 @@ category:
   - vex
 ---
 
-
-
-Context(s)
 [displace](../contexts/displace.html)
 [fog](../contexts/fog.html)
 [light](../contexts/light.html)
@@ -16,12 +13,9 @@ Context(s)
 
 `int getphotonlight()`
 
-Returns `-1` if the shader is not generating photons from a light.
+Context(s) 如果着色器没有产生光子，则返回`-1`。
 
-The return value is an integer identifying a light. You can get convert this
-integer ID to the light name with [getlightname](getlightname.html "Returns the name of the current light when called from within an illuminance loop, or converts an integer light ID into the light’s name.")
-
-
+返回值是一个识别灯光的整数。你可以用[getlightname](getlightname.html)将这个整数 ID 转换为灯光的名称（"当在照度循环中调用时，返回当前灯光的名称，或者将整数灯光 ID 转换为灯光的名称。"）。
 
 ## See also
 

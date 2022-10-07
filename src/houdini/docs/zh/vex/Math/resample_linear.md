@@ -13,10 +13,9 @@ category:
 
 `vector4 [] resample\_linear(vector4 input[], int new\_length)`
 
-Returns a new array of size new_length, uniformly sampled from the input array. Array elements are linearly interpolated from the input array.
+返回一个大小为 new_length 的新数组，从输入数组中均匀取样。数组元素是从输入数组中线性插值出来的。
 
-
-math
+数学
 
 [Du](Du.html)
 

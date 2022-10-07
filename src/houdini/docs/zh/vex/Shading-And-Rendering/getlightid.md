@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Context(s)
 [displace](../contexts/displace.html)
 [fog](../contexts/fog.html)
@@ -15,8 +13,6 @@ Context(s)
 `int getlightid(string lightname)`
 
 Returns the integer light identifier of the light referred to by the given name.
-
-
 
 ## See also
 

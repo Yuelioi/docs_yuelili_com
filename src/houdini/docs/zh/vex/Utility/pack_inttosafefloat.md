@@ -16,8 +16,6 @@ referring to a polygon soup primitive, from the inner polygon number.
   will be represented by small, non-denormal floats.
 - Any other integers, `abs(i) >= 1,946,157,056`, will not be represented correctly.
 
-
-
 ## See also
 
 - [unpack_intfromsafefloat](unpack_intfromsafefloat.html)

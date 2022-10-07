@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Since 18.0
 
 `int usd\_hasapi(<stage>stage, string primpath, string api)`
@@ -33,7 +31,7 @@ The name or an alias of the API schema to check.
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Check if the primitive has a USD Geometry Model API applied.
@@ -41,8 +39,6 @@ int has\_geom\_model\_api\_by\_name = usd\_hasapi(0, "/geo/sphere", "UsdGeomMode
 int has\_geom\_model\_api\_by\_alias = usd\_hasapi(0, "/geo/sphere", "GeomModelAPI");
 
 ```
-
-
 
 ## See also
 

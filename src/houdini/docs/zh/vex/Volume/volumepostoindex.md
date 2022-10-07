@@ -17,7 +17,6 @@ The index of a voxel at the given position.
 
 Returns 0 if `primnum` or `inputnum` is out of range, the geometry is invalid, or the given primitive is not a vector volume primitive.
 
-
 volume
 
 [gradient](gradient.html)

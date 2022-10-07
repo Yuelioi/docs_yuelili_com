@@ -5,9 +5,6 @@ category:
   - vex
 ---
 
-
-
-Context(s)
 [displace](../contexts/displace.html)
 [fog](../contexts/fog.html)
 [light](../contexts/light.html)
@@ -16,16 +13,11 @@ Context(s)
 
 `int sample\_photon(light lp, vector &pos, vector &dir, float &scale, float time)`
 
-Spawns a photon from the given light source and returns the information for the
-first intersection in the scene. The `pos`, `dir` and `scale` are filled out
-with the information about where the photon hit in the scene.
+Context(s) 从给定的光源产生一个光子，并返回场景中第一个交叉点的信息。`pos', `dir'和`scale'被填入光子在场景中的位置信息。
 
-The returned integer represents the bounce type mask (this is determined by the
-types of illumination labels on the light source).
+返回的整数代表反弹类型掩码（这是由光源上的照明标签类型决定的）。
 
-The function returns 0 if the photon didn’t intersect any geometry.
-
-
+如果光子没有与任何几何体相交，该函数返回 0。
 
 ## See also
 

@@ -15,11 +15,9 @@ category:
 
 `int random\_fhash(vector2 seed)`
 
-Hashes the given number into an integer value. The hash may vary
-for even the smallest differences in inputs.
+将给定的数字散列成一个整数值。即使是最小的输入差异，哈希值也会有所不同。
 
-
-random
+随机
 
 [curlgxnoise](curlgxnoise.html)
 

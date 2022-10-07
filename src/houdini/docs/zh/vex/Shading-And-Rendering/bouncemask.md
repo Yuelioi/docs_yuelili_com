@@ -11,17 +11,17 @@ category:
 
 `labels`
 
-A label or space-separated list of labels.
+一个标签或以空格分隔的标签列表。
 
 ## Returns
 
-A bitmask that matches any of the labels.
+一个与任何一个标签相匹配的位掩码。
 
-Mantra tags different types of rays using shading component _labels_, such as “diffuse”, “reflect”, “refract”, “volume”, and “sss”. A custom BSDF can also specify its own labels in addition to existing ones (see [cvex_bsdf](cvex_bsdf.html "Creates a bsdf object from two CVEX shader strings.") for more information).
+Mantra 使用着色组件\_标签来标记不同类型的射线，例如 "diffuse"、"reflect"、"refract"、"volume "和 "ss"。自定义 BSDF 也可以在现有标签的基础上指定自己的标签（更多信息见[cvex_bsdf](cvex_bsdf.html)（"从两个 CVEX 着色器字符串创建一个 bsdf 对象。"）。
 
-Some VEX functions take or return a _component bitmask_, which specifies a combination of one or more of these labels using the bits of an integer.
+一些 VEX 函数接受或返回一个*组件位掩码*，它使用一个整数的位来指定一个或多个这些标签的组合。
 
-To get the bit value associated with a label, use [bouncemask](bouncemask.html), for example `bouncemask("diffuse")`. To get a mask that matches multiple labels, use a space-separated list:
+要获得与一个标签相关的位值，使用[bouncemask](bouncemask.html) () ()，例如`bouncemask("diffuse")`。要得到一个匹配多个标签的掩码，使用空格分隔的列表。
 
 ```c
 reflect\_or\_refract = bouncemask("reflect refract")
@@ -42,15 +42,12 @@ if (mask & bouncemask("reflect")) {
 
 (As an alternative to basic uses of `bouncemask()`, you can `#import "pbr.h"` and work with the constants `PBR_DIFFUSE_MASK`, `PBR_REFLECT_MASK`, `PBR_REFRACT_MASK`, `PBR_VOLUME_MASK`, `PBR_SSS_MASK`, as well as `PBR_ALL_MASK` and `PBR_NO_MASK`. You can combine the constants using `|`, for example `reflect_or_refract = PBR_REFLECT_MASK PBR_REFRACT_MASK`.)
 
-
-
 ## See also
 
 - [getbounces](getbounces.html)
 - [nbouncetypes](nbouncetypes.html)
 
-|
-bsdf
+### bsdf
 
 [albedo](albedo.html)
 

@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Since 18.0
 
 `int usd\_istype(<stage>stage, string primpath, string type)`
@@ -34,7 +32,7 @@ The name or an alias of a type to check.
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Check if the primitive is a Cube and is boundable
@@ -43,8 +41,6 @@ int is\_cube\_by\_name = usd\_istype(0, "/geo/cube", "UsdGeomCube");
 int is\_boundable\_by\_name = usd\_istype(0, "/geo/cube", "UsdGeomBoundable");
 
 ```
-
-
 
 ## See also
 

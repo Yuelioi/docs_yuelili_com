@@ -5,9 +5,6 @@ category:
   - vex
 ---
 
-
-
-Context(s)
 [displace](../contexts/displace.html)
 [fog](../contexts/fog.html)
 [shadow](../contexts/shadow.html)
@@ -15,7 +12,7 @@ Context(s)
 
 ::: info Note
 
-This function is only valid inside an [illuminance](illuminance.html "Loops through all light sources in the scene, calling the light shader for each light source to set the Cl and L global variables.") loop.
+上下文 这个函数只在[illuminance](illuminance.html) ()("循环浏览场景中的所有光源，为每个光源调用光照器以设置 Cl 和 L 全局变量。")循环中有效。
 
 `int limport(string name, <type>&value)`
 
@@ -23,18 +20,17 @@ This function is only valid inside an [illuminance](illuminance.html "Loops thro
 
 `name`
 
-The name of the shader variable to read.
+要读取的着色器变量的名称。
 
 `&value`
 
-If the named variable is defined and exported, the function overwrites this variable with the variable’s value.
+如果命名的变量被定义并导出，该函数将用该变量的值覆盖该变量。
 
 ## Returns
 
-Returns `1` if the shader variable is defined and exported, or `0` otherwise.
+如果着色器变量被定义并导出，则返回`1'，否则返回`0'。
 
-
-fog
+雾
 
 [getfogname](getfogname.html)
 
@@ -46,8 +42,7 @@ fog
 
 [simport](simport.html)
 
-|
-shadedata
+| 阴影数据
 
 [limport](limport.html)
 
@@ -55,8 +50,7 @@ shadedata
 
 [simport](simport.html)
 
-|
-shadow
+| 影子
 
 [dsmpixel](dsmpixel.html)
 
@@ -72,8 +66,7 @@ shadow
 
 [shadowmap](shadowmap.html)
 
-|
-surface
+| 表面
 
 [ambient](ambient.html)
 

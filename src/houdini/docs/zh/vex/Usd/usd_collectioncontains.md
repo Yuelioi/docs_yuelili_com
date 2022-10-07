@@ -5,35 +5,33 @@ category:
   - vex
 ---
 
-
-
-Since 18.0
+自 18.0 以来
 
 `int usd\_collectioncontains(<stage>stage, string collectionpath, string path)`
 
-This function returns `1` if the given objects belongs to the collection, otherwise returns `0`.
+如果给定的对象属于该集合，该函数返回`1'，否则返回`0'。
 
 ## Arguments
 
 `<stage>`
 
-When running in the context of a node (such as a wrangle LOP), this argument can be an integer representing the input number (starting at 0) to read the stage from. The integer is equivalent to the string form referencing a particular input, e.g., “opinput:0”.
+当在一个节点的上下文中运行时（比如 wrangle LOP），这个参数可以是一个整数，代表要读取阶段的输入号码（从 0 开始）。这个整数等同于引用特定输入的字符串形式，例如，"opinput:0"。
 
 `collectionpath`
 
-The path to the collection.
+集合的路径。
 
 `path`
 
-The path to the object. I.e, a primitive, an attribute, or a relationship.
+通向对象的路径。即，一个基元、一个属性或一个关系。
 
 ## Returns
 
-`1` if the given objects belongs to the collection, otherwise returns `0`.
+如果给定的对象属于该集合，则返回`1'，否则返回`0'。
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Check if sphere3 is in cube's collection.
@@ -41,8 +39,6 @@ string collection\_path = usd\_makecollectionpath(0, "/geo/cube", "some\_collect
 int contains\_sphere3 = usd\_collectioncontains(0, collection\_path, "/geo/sphere3");
 
 ```
-
-
 
 ## See also
 

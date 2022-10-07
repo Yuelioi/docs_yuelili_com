@@ -9,20 +9,13 @@ category:
 
 `float smooth(float value1, float value2, float amount, float rolloff)`
 
-Computes a number between zero and one. Returns 0 if the amount passed
-in is less than or equal to value1, 1 if the amount is greater than or
-equal to value2.
+计算一个介于 0 和 1 之间的数字。如果传入的金额小于或等于值 1，返回 0；如果金额大于或等于值 2，返回 1。
 
-If the amount is between value1 and value2, a smooth (easin/easeout)
-interpolation is computed. If a rolloff is specified, the inflection
-point of the blend will be shifted.
+如果量在 value1 和 value2 之间，就会计算一个平滑的（easin/easeout）插值。如果指定了滚降，混合的拐点将被移开。
 
-If the rolloff is greater than 1, the shift will be to the right, if the
-rolloff is less than 1 (and greater than 0), the shift will be to the
-left.
+如果滚降大于 1，将向右移动，如果滚降小于 1（大于 0），将向左移动。
 
-
-interp
+插页
 
 [ckspline](ckspline.html)
 

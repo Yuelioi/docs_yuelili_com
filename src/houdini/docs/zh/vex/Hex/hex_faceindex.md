@@ -7,30 +7,27 @@ category:
 
 `int hex\_faceindex(int faceno, int vtxno)`
 
-Returns `-1` if an invalid number is specified.
+如果指定了一个无效的数字，则返回`-1'。
 
-Returns `0` to `7` to refer to the eight vertices of a generic hexahedron.
+返回 "0 "到 "7"，指的是一般六面体的八个顶点。
 
 ## Arguments
 
 `faceno`
 
-The face on the hexahedron. Ranges from `0` to `5`.
+六面体上的面。范围从`0`到`5`。
 
 `vtxno`
 
-Which vertex on the quadrilateral to return, `0` to `3`. Starts with
-the lowest number and follows Houdini’s winding convention.
+返回四边形上的哪个顶点，`0`到`3`。从最低的数字开始，并遵循胡迪尼的绕线惯例。
 
-
-hex
+六角
 
 [hex_adjacent](hex_adjacent.html)
 
 [hex_faceindex](hex_faceindex.html)
 
-|
-vertex
+| 顶点
 
 [addvertex](addvertex.html)
 

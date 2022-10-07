@@ -9,7 +9,7 @@
 
 .obsidian
 .cache-loader
-
+.zip
 # Misc
 .DS_Store
 .env.local

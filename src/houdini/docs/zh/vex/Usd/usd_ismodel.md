@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Since 19.0
 
 `int usd\_ismodel(<stage>stage, string primpath)`
@@ -30,15 +28,13 @@ The path to the primitive.
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Check if the sphere primitive is a model.
 int is\_model = usd\_ismodel(0, "/geometry/sphere");
 
 ```
-
-
 
 ## See also
 

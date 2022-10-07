@@ -5,18 +5,13 @@ category:
   - vex
 ---
 
-
-
-Context(s)
 [cop](../contexts/cop.html)
 
 `int planeindex(string planename)`
 
-Returns the index of the plane specified by the parameter, starting at
-zero.
+Context(s) 返回参数所指定的平面的索引，从零开始。
 
-
-output_plane
+输出平面
 
 [alphaname](alphaname.html)
 

@@ -7,13 +7,11 @@ category:
 
 `float atof(string str)`
 
-Converts a string to a floating point value.
+将一个字符串转换为一个浮点值。
 
-- This function ignores whitespace around the number.
-- Returns `0.0` if the string does not contain a number.
-- The string can contain exponential notation (for example `"1.25e+5"`).
-
-
+- 这个函数忽略了数字周围的空白。
+- 如果字符串不包含数字，则返回`0.0'。
+- 该字符串可以包含指数符号（例如`"1.25e+5"`）。
 
 ## See also
 

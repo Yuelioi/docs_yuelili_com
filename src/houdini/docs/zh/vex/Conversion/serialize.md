@@ -15,7 +15,7 @@ flat floating point array.
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 vector v[] = { {1,2,3}, {7,8,9} }; // A vector[] of length 2
@@ -25,8 +25,6 @@ f = serialize(v);
 // Now f[] has a length of 6 and equals { 1,2,3,7,8,9 }
 
 ```
-
-
 
 ## See also
 

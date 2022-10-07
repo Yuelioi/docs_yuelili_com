@@ -7,36 +7,33 @@ category:
 
 `string texprintf(float u, float v, string format, ...)`
 
-Formats a string like [sprintf](sprintf.html "Formats a string like printf but returns the result as a string
-instead of printing it."), but scans for special conversion
-characters to perform either UDIM or UVTILE style filename expansion.
+像[sprintf](sprintf.html) ("像printf一样形成一个字符串，但将结果作为一个字符串返回，而不是打印出来。")一样形成一个字符串，但扫描特殊的转换字符，以执行 UDIM 或 UVTILE 风格的文件名扩展。
 
-This can be significantly more efficient than calling sprintf() directly.
+这比直接调用 sprintf()要有效得多。
 
-The special conversion sequences are:
+特殊的转换序列是。
 
 `%(UDIM)d`
 
-The UDIM coordinate, as computed by `1000 + int(u)+1 + int(v)*10`
+UDIM 坐标，由`1000 + int(u)+1 + int(v)*10`计算得出。
 
 `%(U)d`
 
-The UVTILE style u-coordinate (`int(u)+1`)
+UVTILE 风格的 u 坐标（`int(u)+1`）。
 
 `%(V)d`
 
-The UVTILE style v-coordinate (`int(v)+1`)
+UVTILE 风格的 v 坐标（`int(v)+1`）。
 
 `%(UVTILE)d`
 
-Expands to both u and v coordinates in the form `u%d_v%d`.
+以`u%d_v%d`的形式扩展到 u 和 v 坐标。
 
-The `d` conversion specifier for texture identification can be modified with
-field modifiers. For example `%(U)02d` or `%(V)04d`.
+纹理识别的`d`转换指定器可以用字段修改。例如`%(U)02d`或`%(V)04d`。
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 !vex
@@ -61,8 +58,6 @@ string map = texprintf(u, v, "%s/%s\_%(UDIM)d.rat", texture\_path, texture\_base
 Cf = texture(map, u, v);
 
 ```
-
-
 
 ## See also
 

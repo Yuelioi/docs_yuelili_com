@@ -7,23 +7,23 @@ category:
 
 `int pointedge(<geometry>geometry, int point1, int point2)`
 
-Returns `-1` if no such half-edge exists. Otherwise returns the number of a half-edge that either has `point1` as source or has `point2` as desination, or the other way around.
+如果不存在这样的半边形，则返回`-1'。否则返回以`点 1'为源点或以`点 2'为终点的半边的编号，或者相反。
 
 ## Arguments
 
 `<geometry>`
 
-When running in the context of a node (such as a wrangle SOP), this argument can be an integer representing the input number (starting at 0) to read the geometry from.
+当在一个节点的上下文中运行时（比如一个 wrangle SOP），这个参数可以是一个整数，代表要读取几何图形的输入数字（从 0 开始）。
 
-Alternatively, the argument can be a string specifying a geometry file (for example, a `.bgeo`) to read from. When running inside Houdini, this can be an `op:/path/to/sop` reference.
+或者，该参数可以是一个字符串，指定一个几何文件（例如，一个`.bgeo'）来读取。当在Houdini内部运行时，这可以是一个`op:/path/to/sop`的引用。
 
 `point1`, `point2`
 
-The point numbers in the geometry for the two endpoints of the returned half-edge. `0` is the first point.
+返回的半边的两个端点在几何学中的点号。`0'是第一个点。
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 int edge\_count = 0;
@@ -36,7 +36,6 @@ if (h0 != -1)
 }
 
 ```
-
 
 hedge
 

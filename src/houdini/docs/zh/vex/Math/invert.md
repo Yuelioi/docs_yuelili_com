@@ -11,14 +11,13 @@ category:
 
 `m`
 
-The matrix to [invert](http://en.wikipedia.org/wiki/Invertible_matrix).
+要[反转]的矩阵(http://en.wikipedia.org/wiki/Invertible_matrix)。
 
 ## Returns
 
-The inverted matrix, or the original matrix if the matrix is singular.
+倒置的矩阵，如果矩阵是奇异的，则是原始矩阵。
 
-
-matrix
+基体
 
 [\_\_uniform\_mul](### uniform_mul.html)
 

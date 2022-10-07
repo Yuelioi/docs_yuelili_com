@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Since 19.0
 
 `string usd\_specifier(<stage>stage, string primpath)`
@@ -29,15 +27,13 @@ The specifier of the given primitive.
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Get the sphere primitive's specifier.
 string specifier = usd\_specifier(0, "/geo/sphere");
 
 ```
-
-
 
 ## See also
 

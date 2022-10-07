@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Since 19.0
 
 `int [] usd\_iprimvarindices(<stage>stage, string primpath, string name)`
@@ -35,19 +33,17 @@ The USD time code at which to evaluate the attribute. A USD time code roughly co
 
 ## Returns
 
-The index array of an indexed primvar, or zero/empty value if the primvar does not exist or is not indexed. Use [usd_isiprimvar](usd_isiprimvar.html "Checks if the primitive or its ancestor has a primvar of the given name.") if you want to check whether the primvar exists and [usd_isindexediprimvar](usd_isindexediprimvar.html "Checks if there is an indexed primvar directly on the USD primitive or on USD primitive’s ancestor.") to check whether it is indexed.
+The index array of an indexed primvar, or zero/empty value if the primvar does not exist or is not indexed. Use [usd_isiprimvar](usd_isiprimvar.html) () ("Checks if the primitive or its ancestor has a primvar of the given name.") if you want to check whether the primvar exists and [usd_isindexediprimvar](usd_isindexediprimvar.html) () ("Checks if there is an indexed primvar directly on the USD primitive or on USD primitive’s ancestor.") to check whether it is indexed.
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Get the index array of an indexed primvar.
 int indices[] = usd\_iprimvarindices(0, "/geo/cube", "indexed\_primvar\_name");
 
 ```
-
-
 
 ## See also
 

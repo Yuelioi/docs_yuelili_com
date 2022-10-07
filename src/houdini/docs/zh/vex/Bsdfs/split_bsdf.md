@@ -19,47 +19,47 @@ category:
 
 `&lobes`
 
-The function overwrites this array with the BSDFs for the component lobes.
+该函数用各裂片的 BSDFs 覆盖这个数组。
 
 `source`
 
-The BSDF to split.
+BSDF 将分裂。
 
 `weights`
 
-The function fills this array with the weights for the split lobes (same length as the returned `bsdf` array). When you sample Illumination using the returned lobes you must scale it by these weights.
+该函数用分裂的裂片的权重填充这个数组（与返回的`bsdf`数组长度相同）。当你使用返回的裂片进行照明采样时，你必须用这些权重进行缩放。
 
 `mask`
 
-A bitmask indicating which types of bounces to evaluate.
+一个比特掩码，表示要评估哪些类型的弹跳。
 
-See [bouncemask](bouncemask.html) for information on component label bitmasks.
+参见[bouncemask](bouncemask.html)以了解关于组件标签位掩码的信息。
 
 `type`
 
-How to split the lobes. You can `#import "pbr.h"` to get constant values representing the different split types:
+如何分割裂片。你可以`#import "pbr.h"`来获得代表不同分裂类型的常量值。
 
-- `PBR_SPLIT_FULL = 0`
-- `PBR_SPLIT_RANDOM = 1`
-- `PBR_SPLIT_ALBEDO = 2`
-- `PBR_SPLIT_COMPONENT = 3`
-- `PBR_SPLIT_DEFAULT = PBR_SPLIT_ALBEDO`
+- `pbr_split_full = 0`。
+- `pbr_split_random = 1`。
+- `pbr_split_albedo = 2`。
+- `pbr_split_component = 3`.
+- `pbr_split_default = pbr_split_albedo`。
 
 `u`
 
-Random value to sample the CDF at.
+对 CDF 进行采样的随机值。
 
 `cdf`
 
-CDF used to control sampling among components of the BSDF.
+用来控制 BSDF 各组成部分之间的抽样的 CDF。
 
 ## Returns
 
-An array of `bsdf` objects representing the lobes.
+一个代表裂片的`bsdf`对象数组。
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Split BSDF into component lobes
@@ -87,8 +87,6 @@ sample\_cdf(cdf, s.x, index);
 
 ```
 
-
-
 ## See also
 
 - [sample_bsdf](sample_bsdf.html)
@@ -97,8 +95,7 @@ sample\_cdf(cdf, s.x, index);
 - [create_cdf](create_cdf.html)
 - [sample_cdf](sample_cdf.html)
 
-|
-bsdf
+### bsdf
 
 [albedo](albedo.html)
 

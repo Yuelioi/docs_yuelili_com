@@ -23,8 +23,6 @@ Applies a rotation to the given matrix. The angles must be given in
 radians and the axis must be normalized. The xyz argument is the rotate order.
 The axis can also be given as an integer where XAXIS=1, YAXIS=2 and ZAXIS=4.
 
-
-
 ## See also
 
 - [pretranslate](pretranslate.html)

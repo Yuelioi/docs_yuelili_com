@@ -9,9 +9,9 @@ category:
 
 `int opdigits()`
 
-Returns the integer value of the last sequence of digits in the input string.
+返回输入字符串中最后一串数字的整数值。
 
-If no argument is passed, the code is equivalent to
+如果没有传递参数，代码等同于
 
 ```c
 string dir, name;
@@ -22,13 +22,11 @@ return opdigits(name);
 
 ## Examples
 
-[¶](#examples)
+
 
 - `opdigits("/obj/geo34/box21")` - returns 21
 - `opdigits("/obj/geo34/box")` - returns 34
 - `opdigits("/obj/geo34/box2.1")` - returns 1 (“.” is not a digit)
-
-
 
 ## See also
 

@@ -9,33 +9,31 @@ category:
 
 `bsdf blinn(vector nml, float exponent, ...)`
 
-Returns a Blinn BSDF.
+返回一个 Blinn BSDF。
 
-See [writing a PBR shader](../pbr.html) for information on BSDFs.
+关于 BSDF 的信息，请参见[编写 PBR 着色器](../pbr.html)。
 
 `vector blinn(vector nml, vector V, float roughness, ...)`
 
-Computes Blinn shading.
+计算 Blinn 的阴影。
 
 ## Arguments
 
 `nml`
 
-The normal of the surface to use for evaluate.
+用于评估的表面的法线。
 
 `V`
 
-The incidence vector.
+发生率向量。
 
 `exponent`
 
-The exponent value. The higher the value, the tighter the specular lobe.
+指数值。该值越高，镜面层越紧密。
 
-Each of the functions can also take an optional light mask.
+每个功能还可以采取一个可选的光罩。
 
-![](../../images/rendering/blinn.png)
-
-
+![](/images/blinn.png)
 
 ## See also
 
@@ -51,8 +49,7 @@ blinn
 
 [blinnBRDF](blinnBRDF.html)
 
-|
-bsdf
+### bsdf
 
 [albedo](albedo.html)
 

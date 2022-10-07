@@ -7,19 +7,16 @@ category:
 
 `int nbouncetypes()`
 
-Return the number of different bounce types supported by the renderer.
+返回渲染器支持的不同弹跳类型的数量。
 
-See [bouncemask](bouncemask.html) for information on component label bitmasks.
-
-
+参见[bouncemask](bouncemask.html)以了解关于组件标签位掩码的信息。
 
 ## See also
 
 - [bouncemask](bouncemask.html)
 - [getbounces](getbounces.html)
 
-|
-bsdf
+### bsdf
 
 [albedo](albedo.html)
 

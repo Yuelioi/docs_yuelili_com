@@ -13,47 +13,23 @@ category:
 
 `int pcopen(int opinput, string Pchannel, vector P, float radius, int maxpoints)`
 
-This function opens a point cloud file (`.pc`) and queues up access to the
-points contained in it. You can then iterate over the points with
-[pcunshaded](pcunshaded.html "Iterate over all of the points of a read-write channel which haven’t
-had any data written to the channel yet.") or [pciterate](pciterate.html "This function can be used to iterate over all the points which were
-found in the pcopen query.").
+这个函数打开一个点云文件（`.pc`）并排队访问其中的点。然后你可以用[pcunshaded](pcunshaded.html) ("遍历一个读写通道中尚未有任何数据写入该通道的所有点。")或[pciterate](pciterate.html) ("这个函数可以用来遍历在pcopen查询中发现的所有点。")来迭代这些点。
 
-The first two versions of this function queue up points centered around a
-certain location P within radius, based on point positions found in
-Pchannel. Only the maxpoints closest points within the given
-radius will be queued. When using `pcopen()` with `pciterate()`, points will
-be sorted from nearest to farthest. The file name may use the `op:` syntax
-to reference SOP geometry in the OP contexts. The Pchannel parameter
-indicates the channel in the texture which contains the positions to be
-searched. Pchannel will be made read-only if it is not already. Any
-subsequent attempts to use the channel with [pcexport](pcexport.html "Writes data to a point cloud inside a pciterate or a pcunshaded loop.") or
-[pcunshaded](pcunshaded.html "Iterate over all of the points of a read-write channel which haven’t
-had any data written to the channel yet.") will fail. Optionally, the Nchannel specifies a
-direction channel and the N vector specifies a search direction. Only
-points which are pointed in the same direction (i.e. `dot(N, Npoint) > 0`)
-will be queued.
+这个函数的前两个版本是根据在 Pchannel 中找到的点的位置，在半径范围内排队等待以某个位置 P 为中心的点。只有在给定半径内最接近的点的 maxpoints 才会被排队。当使用`pcopen()`和`pciterate()`时，点将从最近的到最远的排序。文件名可以使用`op:`语法来引用 OP 上下文中的 SOP 几何图形。Pchannel 参数表示纹理中包含要搜索的位置的通道。如果 Pchannel 还没有被设置为只读，它将被设置为只读。之后任何试图使用[pcexport](pcexport.html) ()("将数据写入 pciterate 或 pcunshaded 循环中的点云")或[pcunshaded](pcunshaded.html) ("遍历一个读写通道中尚未有任何数据写入该通道的所有点")来使用该通道的尝试将会失败。可选的是，Nchannel 指定了一个方向通道，N 向量指定了一个搜索方向。只有指向同一方向的点（即`dot(N, Npoint) > 0`）将被排队。
 
-In some cases, you may need to add additional channels to a point cloud. You can do this by using [pcexport](pcexport.html "Writes data to a point cloud inside a pciterate or a pcunshaded loop.") and [pcunshaded](pcunshaded.html "Iterate over all of the points of a read-write channel which haven’t
-had any data written to the channel yet."). Often,
-you will not need to add extra channel data to every point in the point cloud. For example, if only part of the point cloud is inside the camera’s frustum.
-In these cases, it is best to only add channel data to points returned by
-a proximity query. However, sometimes all points in a point cloud must
-receive extra channel data before meaningful queries can be made. For example, when adding a position channel. In these cases, the third version of this function can be used to queue up all shaded (shaded != 0) or unshaded (shaded == 0) points of a certain channel, channel. If channel does not exist, all points will be queued. This function, unlike the first two, does not lock channel.
+在某些情况下，你可能需要向点云添加额外的通道。你可以通过使用[pcexport](pcexport.html) () ("在 pciterate 或 pcunshaded 循环内将数据写入点云。") 和[pcunshaded](pcunshaded.html) ("遍历一个读写通道的所有点，这些点还没有任何数据写入通道。") 来实现。通常，你不需要为点云中的每一个点添加额外的通道数据。例如，如果只有部分点云是在摄像机的范围内。在这些情况下，最好只将通道数据添加到接近查询所返回的点上。然而，有时点云中的所有点都必须在进行有意义的查询之前接受额外的通道数据。例如，当添加一个位置通道时。在这些情况下，这个函数的第三个版本可以用来排队等候某个通道的所有有阴影（shaded != 0）或无阴影（shaded == 0）的点，通道。如果通道不存在，所有的点都将被排队。这个函数与前两个不同，不锁定通道。
 
-You can specify an additional string parameter `"prefix"`, with the next
-parameter being a channel prefix string, used to reference tiled block
-files.
+你可以指定一个额外的字符串参数`"prefix"`，下一个参数是通道前缀字符串，用于引用平铺块文件。
 
 ::: info Note
 
-The preload option loads the entire point cloud into memory. Disabling this option will cause it to use a tile cache.
+预加载选项将整个点云加载到内存中。禁用这个选项将导致它使用一个瓦片缓存。
 
 ## Examples
 
-[¶](#examples)
 
-Performing a proximity query
+
+进行近似查询
 
 ```c
 int handle = pcopen(texturename, "P", P, maxdistance, maxpoints);
@@ -97,8 +73,6 @@ Controlling the minimum dot product between the point normal and the normal pass
 int handle = pcopen("test.pc", "P", P, "N", N, 1e6, 100, "ndot", 0.8);
 
 ```
-
-
 
 ## See also
 

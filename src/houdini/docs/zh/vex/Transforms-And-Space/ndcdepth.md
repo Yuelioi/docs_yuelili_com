@@ -5,23 +5,19 @@ category:
   - vex
 ---
 
-
-
-Since 18.0
+自 18.0 以来
 
 `float ndcdepth(float z)`
 
-When Karma converts a position to NDC space, the z depth value is
+当卡尔玛将一个位置转换为 NDC 空间时，Z 深度值为
 
-transformed based on the render camera projection and clipping planes. This
-function converts the NDC z-depth into the camera space. That is, the distance
-down the z-axis in the space of the camera.
+根据渲染相机的投影和剪裁平面进行转换。这个函数将 NDC 的 Z 深度转换为摄像机空间。也就是说，在摄像机的空间里，沿着 Z 轴的距离。
 
-function returns the argument passed in.
+函数返回传入的参数。
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 vector ndc = ptransform("space:ndc", P);
@@ -31,8 +27,6 @@ float pz\_camera = ndcspace(ndc.z);
 float pz\_camera = -ptransform("space:camera", P).z;
 
 ```
-
-
 
 ## See also
 

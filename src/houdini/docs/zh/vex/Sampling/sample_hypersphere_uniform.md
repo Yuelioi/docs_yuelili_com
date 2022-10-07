@@ -11,13 +11,9 @@ category:
 
 `u`
 
-Four numbers between 0 and 1.
+0 和 1 之间的四个数字。
 
-Returns a vector4 of length < 1, based on `u`.
-Given uniform random `u` vectors of four values in `[0,1)`, the returned vectors will be
-uniform random and continuous with respect to `u` inside the unit hypersphere.
-
-
+返回一个长度<1 的向量 4，基于`u`。给出在`[0,1)`中的四个均匀随机的`u`向量，返回的向量将是均匀随机的，并且相对于`u`在单位超球内是连续的。
 
 ## See also
 

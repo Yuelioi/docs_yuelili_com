@@ -9,47 +9,35 @@ category:
 
 `vector noise(float pos)`
 
-Sample one or three numbers at the given position from 1D noise.
+在给定的位置从一维噪声中抽取一个或三个数字。
 
 `float noise(float posx, float posy)`
 
 `vector noise(float posx, float posy)`
 
-Sample one or three numbers at the given position from 2D noise.
+在给定的位置从二维噪声中抽取一个或三个数字。
 
 `float noise(vector pos)`
 
 `vector noise(vector pos)`
 
-Sample one or three numbers at the given position from 3D noise.
+在给定的位置从三维噪声中抽出一个或三个数字。
 
 `float noise(vector4 pos)`
 
 `vector noise(vector4 pos)`
 
-Sample one or three numbers at the given position from 4D noise.
+在给定的位置从 4D 噪声中抽取一个或三个数字。
 
-There are two forms of Perlin-style noise: a non-periodic noise which
-changes randomly throughout N-dimensional space, and a periodic form
-which repeats over a given range of space.
+有两种形式的佩林式噪声：一种是在整个 N 维空间随机变化的非周期性噪声，另一种是在特定空间范围内重复的周期性形式。
 
 ::: info Note
 
-This function generates non-periodic noise. Use the
-[pnoise](pnoise.html "There are two forms of Perlin-style noise: a non-periodic noise which
-changes randomly throughout N-dimensional space, and a periodic form
-which repeats over a given range of space.") function to generate periodic Perlin noise.
+这个函数生成非周期性噪声。使用[pnoise](pnoise.html) ("有两种形式的佩林式噪声：一种是在整个N维空间随机变化的非周期性噪声，另一种是在给定空间范围内重复的周期性形式。")函数来生成周期性佩林噪声。
 
-The various functions return the noise value at a 4D (vector4 argument),
-3D (vector argument), 2D (two float arguments) or 1D (float argument)
-position. You can get a random float value or a vector of three random
-values.
+各种函数返回 4D（vector4 参数）、3D（vector 参数）、2D（两个浮点参数）或 1D（浮点参数）位置的噪声值。你可以得到一个随机的浮点值或三个随机值的矢量。
 
-The noise is in the range 0-1 with a median of 0.5. The distribution of
-the noise depends on the dimension, with higher dimensions approaching a
-Gaussian distribution of noise values.
-
-
+噪声的范围是 0-1，中位数是 0.5。噪声的分布取决于维度，维度越高，噪声值的分布越接近高斯分布。
 
 ## See also
 

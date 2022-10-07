@@ -5,20 +5,13 @@ category:
   - vex
 ---
 
-
-
-Context(s)
 [shading](../contexts/shading.html)
 
 `vector resolvemissedray(vector dir, float time, int mask, ...)`
 
-Returns the color of the background environment for rays that exit the
-scene. When no environment or background color is specified, any
-environment lights in the scene using the mode “Ray Tracing Background”
-will be used to look up the environment color. mask indicates the type
-of ray that is being resolved as an integer mask.
+Context(s) 返回离开场景的光线的背景环境的颜色。当没有指定环境或背景颜色时，场景中任何使用 "光线跟踪背景 "模式的环境灯将被用来查找环境颜色。 mask 表示被解析的光线的类型，是一个整数掩码。
 
-To use the default background (environment light) for a reflection ray:
+使用默认背景（环境光）进行反射光线。
 
 ```c
 resolvemissedray(I, 0.0, PBR_REFLECT_MASK);
@@ -30,8 +23,6 @@ To define your own background:
 resolvemissedray(I, 0.0, PBR_ALL_MASK, "environment", "Mandril.rat", "envtint", {1,2,1});
 resolvemissedray(I, 0.0, PBR_ALL_MASK, "background", {1,1,1});
 ```
-
-
 
 ## See also
 

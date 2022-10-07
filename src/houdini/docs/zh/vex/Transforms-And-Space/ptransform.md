@@ -9,64 +9,44 @@ category:
 
 `vector4 ptransform(vector4 vec, matrix transform)`
 
-Transforms the vector using the given transform matrix.
+使用给定的变换矩阵对向量进行变换。
 
 `vector ptransform(string tospace, vector vec)`
 
 `vector4 ptransform(string tospace, vector4 vec)`
 
-Transforms from `"space:current"`.
+从`"space:current"`转换。
 
 `vector ptransform(string fromspace, string tospace, vector vec)`
 
 `vector4 ptransform(string fromspace, string tospace, vector4 vec)`
 
-Transforms the vector from `fromspace` into `tospace`.
+将矢量从 "fromspace "转换到 "tospace"。
 
 ## Arguments
 
 `fromspace`, `tospace`
 
-The possible values for the space arguments are:
+空间参数的可能值为：。
 
-
-An object path Use the object space of an object specified by a path string.
+一个对象路径 使用由路径字符串指定的对象空间。
 
 :::tip
 
-In some cases, such as point instancing, mantra may
-automatically mangle object paths. You can generate an `.ifd`
-file and look inside to try to find what mantra is calling
-the object you want.
+在某些情况下，例如点实例化，mantra 可能会自动改变对象的路径。你可以生成一个`.ifd'文件，并在里面查找 mantra 调用你想要的对象的内容。
 
-|
-`"space:object"` Object space of the _current_ object.
-|
-`"space:light"` Object space of the _current_ light when executing a shadow or light shader.
-|
-`"space:world"` Houdini world space.
-|
-`"space:camera"` mantra camera space.
-|
-`"space:ndc"` Normal Device Coordinate space.
-|
-`"space:lightndc"` Normal Device Coordinate space for the _current_ light when executing a shadow or light shader.
-|
-`"space:current"` The current space the vector is in.
+| `"space:object"` 当前对象的空间。| `"space:light"` 当执行阴影或灯光着色器时，当前灯光的对象空间。| `"space:world"` 胡迪尼世界空间。| `"space:camera"` mantra 相机空间。| `"space:ndc"` 法线设备坐标空间。| `"space:lightndc"` 当执行阴影或灯光着色器时，当前灯光的正常设备坐标空间。| `"space:current"` 矢量所处的当前空间。
 
-- [ptransform](ptransform.html "Transforms a vector from one space to another.") interprets the vector as a position.
-- [vtransform](vtransform.html "Transforms a directional vector.") interprets the vector as a direction
-  vector, and so doesn’t apply the translations from the matrix.
-- [ntransform](ntransform.html "Transforms a normal vector.") interprets the vector as a normal vector,
-  and so multiplies by the inverse transpose of the matrix (ignoring the
-  translations).
+- [transform](transform.html) （"将一个向量从一个空间转换到另一个空间。"）将向量解释为一个位置。
+- [vtransform](vtransform.html) () ("转换一个方向性的矢量。") 将矢量解释为一个方向
+- [ntransform](ntransform.html) () ("Transform a normal vector.") 将该向量解释为法向量。
+  向量，所以不应用矩阵的平移，而是乘以矩阵的反转置（忽略平移）。
 
 ## Examples
 
-[¶](#examples)
 
-The version with only a tospace argument assumes fromspace is
-`"space:current"`. For example:
+
+只有 tospace 参数的版本假定 fromspace 是`"space:current"`。比如说。
 
 ```c
 Pworld = ptransform("space:world", P);
@@ -94,8 +74,6 @@ space (“camera” space):
 ospace = ptransform("space:object", "space:current", P)
 
 ```
-
-
 
 ## See also
 

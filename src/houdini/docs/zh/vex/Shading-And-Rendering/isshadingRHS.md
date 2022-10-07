@@ -5,9 +5,6 @@ category:
   - vex
 ---
 
-
-
-Context(s)
 [fog](../contexts/fog.html)
 [light](../contexts/light.html)
 [shadow](../contexts/shadow.html)
@@ -16,12 +13,9 @@ Context(s)
 
 `int isshadingRHS()`
 
-Shading can occur in either a left or right handed vector space. This function
-can be used to check the native orientation in shading space. By default,
-Mantra is left-handed space while Karma is in right-handed space.
+上下文 阴影可以发生在左手或右手的矢量空间。这个函数可以用来检查着色空间中的原生方向。默认情况下，Mantra 是左手空间，而 Karma 是右手空间。
 
-
-shading
+遮阳
 
 [Du](Du.html)
 

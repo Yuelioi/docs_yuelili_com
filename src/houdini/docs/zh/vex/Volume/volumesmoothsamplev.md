@@ -37,7 +37,7 @@ Returns 0 if `primnum` or `inputnum` is out of range, the geometry is invalid, o
 
 ## Examples
 
-[¶](#examples)
+
 
 Approximating a volume value at the point `P + u` using volume values at the point `P`.
 
@@ -57,7 +57,6 @@ vector val2 = volumesmoothsamplev(0, "vel", P + u);
 // is appriximately equal to `val2`
 
 ```
-
 
 volume
 

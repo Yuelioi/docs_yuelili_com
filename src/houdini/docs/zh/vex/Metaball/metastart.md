@@ -7,15 +7,9 @@ category:
 
 `int metastart(string filename, vector p)`
 
-Open a geometry file and return a “handle” for the metaballs of
-interest, at the position p. You can then use
-[metanext](metanext.html "Iterate to the next metaball in the list of metaballs returned by the metastart() function.") to move the handle to the next metaball for
-evaluation, and [metaimport](metaimport.html "Once you get a handle to a metaball using metastart and metanext, you
-can query attributes of the metaball with metaimport.") to query attributes of the
-metaball.
+然后你可以使用[metanext](metanext.html) () ("在 metastart()函数返回的 metaball 列表中迭代到下一个 metaball。"）来移动句柄到下一个元宝进行评估，而[metaimport](metaimport.html) ("一旦你用metastart和metanext得到一个元宝的句柄，你就可以用metaimport查询元宝的属性。")来查询元宝的属性。
 
-
-metaball
+元宝
 
 [metaimport](metaimport.html)
 

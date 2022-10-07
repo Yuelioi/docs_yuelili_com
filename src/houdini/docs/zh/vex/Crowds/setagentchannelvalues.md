@@ -5,29 +5,25 @@ category:
   - vex
 ---
 
-
-
-Since 18.0
+自 18.0 以来
 
 `void setagentchannelvalues(int geohandle, int prim, float values[])`
 
-When modifying a single channel, using [setagentchannelvalue](setagentchannelvalue.html "Overrides the value of an agent primitive’s channel.") instead can be significantly faster.
+修改单个通道时，使用[setagentchannelvalue](setagentchannelvalue.html) ()("覆盖代理基元的通道值。")反而会大大加快。
 
 ## Arguments
 
 `geohandle`
 
-Handle to the geometry to write to. `geoself()` can be used to get a handle to the current geometry.
+要写入的几何体的句柄。`geoself()`可以用来获取当前几何体的句柄。
 
 `prim`
 
-The primitive number.
+原始的数字。
 
 `values`
 
-The new value of each channel in the agent’s rig.
-
-
+代理人的钻机中每个通道的新值。
 
 ## See also
 

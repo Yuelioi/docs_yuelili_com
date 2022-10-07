@@ -5,71 +5,50 @@ category:
   - vex
 ---
 
+在这一页
 
-
-On this page
-
-- [Light inclusion/exclusion options](#light-inclusion-exclusion-options)
-- [Area sampling options](#area-sampling-options)
+- [灯光包含/排除选项](#灯光包含-排除-选项)
+- [区域采样选项](#area-sampling-options)
 - [Ray options](#ray-options)
-- [Examples](#examples)
+- [例子](#例子)
 
 |
 
-Context(s)
 [shading](../contexts/shading.html)
 
 `void refractlight(vector &cf, vector &of, float &af, vector P, vector D, float bias, float max\_contrib, ...)`
 
 `void refractlight(vector &cf, vector &of, float &af, vector P, vector N, vector I, float eta, float bias, float max\_contrib, ...)`
 
-Computes the illumination of surfaces refracted by the current surface.
-Computes and outputs the output color (cf), opacity (of) and
-alpha (af). See [opacity vs. alpha](../contexts/shading_contexts.html#opacity) .
+内涵(s) 计算被当前表面折射的表面的照度。计算并输出输出颜色（cf）、不透明度（of）和 alpha（af）。参见[不透明度与阿尔法](../contexts/shading_contexts.html) () (#opacity) 。
 
-bias is typically a small number (for example 0.005) used to help
-eliminate self-reflection.
+偏差通常是一个小数字（例如 0.005），用来帮助消除自我反省。
 
-max_contrib tells the renderer how much the reflected light will
-contribute to the final color of the pixel. This has no effect on the
-resultant color.
+max_contrib 告诉渲染器，反射光对像素的最终颜色有多大贡献。这对最终的颜色没有影响。
 
-The first form of the refractlight() function takes a position and
-direction, typically computed by the [refract](refract.html "Returns the refraction ray given an incoming direction, the
-normalized normal and an index of refraction.") or
-[fresnel](fresnel.html "Computes the fresnel reflection/refraction contributions given an
-incoming vector, surface normal (both normalized), and an index of
-refraction (eta).") functions.
+refractlight()函数的第一种形式需要一个位置和方向，通常由[refract](refract.html) ("返回给定入射方向、归一化法线和折射率的折射光线。")或[fresnel](fresnel.html) ("计算给定入射矢量、表面法线（均归一化）和折射率（eta）的fresnel反射/折射贡献。")函数计算出来。
 
-To prevent the renderer from computing standard transparency (i.e.
-non-refracted transparency), the Of variable must be set to {1,1,1} to
-make the surface “opaque”. The Af variable can be set to any arbitrary
-value.
+为了防止渲染器计算出标准的透明度（即非折射的透明度），Of 变量必须设置为{1,1,1}，以使表面 "不透明"。Af 变量可以被设置为任意值。
 
-##
-
-Light inclusion/exclusion options
+## 灯光包含/排除选项
 
 [¶](#light-inclusion-exclusion-options)
 
 ## Arguments
 
-"`categories`",
 `string`
 `="*"`
 
-Specifies lights to include/exclude by their “category” tags.
-This is the preferred include/exclude lights rather than pattern matching
-light names with the `"lightmask"` keyword argument.
+"`categories'", 指定通过其 "类别 "标签包含/排除的灯光。这是首选的包括/排除灯光，而不是用`"lightmask"`关键字参数的模式匹配灯光名称。
 
-For example:
+比如说。
 
 ```c
 diff = diffuse(nml, "lightmask", "hero fill");
 
 ```
 
-See [light categories](../../render/lights.html#categories) for more information.
+See [light categories](../../render/lights.html) () (#categories) for more information.
 
 "`lightmask`",
 `string`
@@ -98,9 +77,7 @@ All Houdini scoping patterns, excepting group expansion, are supported:
 - `^` - exclusion operator
 - `[list]` - character list match
 
-##
-
-Area sampling options
+## Area sampling options
 
 [¶](#area-sampling-options)
 
@@ -115,16 +92,14 @@ blurry\_mirror(float angle = 3; int samples = 16; float bias=0.05)
 
 ```
 
-##
-
-Ray options
+## Ray options
 
 [¶](#ray-options)
 
 :::tip
 
 When you specify a texture, such as with the `"environment"` keyword,
-you can also use the image filtering keyword arguments. See [environment](environment.html "Returns the color of the environment texture.")
+you can also use the image filtering keyword arguments. See [environment](environment.html) () ("Returns the color of the environment texture.")
 for a listing of the image filter keyword arguments.
 
 ## Arguments
@@ -134,7 +109,7 @@ for a listing of the image filter keyword arguments.
 
 A list of objects which can be hit by the rays. When specified, `scope` overrides the default scope that would have been selected for the given `raystyle`. The `"scope:default"` value will cause the `scope` argument to use the default scope for the current context - as if the argument were not specified.
 
-Allows an override of the [scope](../contexts/shading_contexts.html#scope) for ray-intersections.
+Allows an override of the [scope](../contexts/shading_contexts.html) () (#scope) for ray-intersections.
 A special scope argument, `scope:self`, will match the currently
 shading object.
 
@@ -160,7 +135,7 @@ computing reflections, global illumination, refraction etc.
 "`variancevar`",
 `string`
 
-The name of a VEX export variable to use for variance anti-aliasing. The renderer compares the value with adjacent micropolygons in micropolygon rendering to decide what shading points need additional samples (using `vm_variance` [property](../../props/index.html "Properties let you set up flexible and powerful hierarchies of rendering, shading, lighting, and camera parameters.") as a threshold). If more samples are required, the algorithm takes samples up to the specified maximum ray samples.
+The name of a VEX export variable to use for variance anti-aliasing. The renderer compares the value with adjacent micropolygons in micropolygon rendering to decide what shading points need additional samples (using `vm_variance` [property](../../props/index.html) () ("Properties let you set up flexible and powerful hierarchies of rendering, shading, lighting, and camera parameters.") as a threshold). If more samples are required, the algorithm takes samples up to the specified maximum ray samples.
 
 This variable must be imported from the hit surface, so it must be in the list of imported names (see “importing information back from the ray” below). If the named variable is not imported, this option will be ignored.
 
@@ -244,7 +219,7 @@ background color specified.
 "`distribution`",
 `string`
 
-**Functions**: [irradiance](irradiance.html "Computes irradiance (global illumination) at the point P with the normal N."), [occlusion](occlusion.html "Computes ambient occlusion.")
+**Functions**: [irradiance](irradiance.html) () ("Computes irradiance (global illumination) at the point P with the normal N."), [occlusion](occlusion.html) () ("Computes ambient occlusion.")
 
 Distribution for computing irradiance. The default is to use
 a cosine distribution (diffuse illumination). The possible
@@ -253,7 +228,7 @@ or `"cosine"` for cosine weighted sampling.
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 surface
@@ -272,8 +247,6 @@ glass(float eta=1.3, bias = 0.005)
 }
 
 ```
-
-
 
 ## See also
 

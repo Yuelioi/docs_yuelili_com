@@ -7,23 +7,21 @@ category:
 
 `float hscript\_turb(vector pos, int depth)`
 
-Matches the output of [turb](../../expressions/turb.html "Generates spatially coherent 3D noise."). This function can be useful if you convert a workflow to VEX, or have VEX work in tandem with Hscript expressions, and need the turbulence to look the same as in an expression.
+匹配[turb](.../.../expressions/turb.html)的输出（"生成空间连贯的三维噪声。"）。如果你将工作流程转换为 VEX，或者让 VEX 与 Hscript 表达式协同工作，并且需要湍流看起来与表达式中的一样，那么这个函数就会很有用。
 
 ## Arguments
 
 `pos`
 
-Position at which to sample the turbulent noise.
+对湍流噪声进行采样的位置。
 
 `depth`
 
-Number of fractal iterations of noise.
+噪声的分形迭代次数。
 
 ## Returns
 
-The range is usually within -1 to 1, but can exceed it depending on the depth. The maximum range is -2 to 2 for high depths.
-
-
+范围通常在-1 到 1 之内，但根据深度的不同可以超过这个范围。高深度的最大范围是-2 到 2。
 
 ## See also
 

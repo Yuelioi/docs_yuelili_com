@@ -5,41 +5,39 @@ category:
   - vex
 ---
 
-
-
-Since 17.5
+自 17.5 以来
 
 `int usd\_addtransform(int stagehandle, string primpath, string suffix, matrix xform)`
 
-This function applies a transformation to the primitive. It creates and sets a value of a transform operation attribute that defines the transformation, and appends it to the primitive’s transform order.
+此函数将一个转换应用于基元。它创建并设置了一个定义了变换的变换操作属性的值，并将其附加到基元的变换顺序。
 
 ## Arguments
 
 `stagehandle`
 
-A handle to the stage to write to. Currently the only valid value is `0`, which means the current stage in a node. (This argument may be used in the future to allow writing to other stages.)
+要写入的阶段的句柄。目前唯一有效的值是 "0"，这意味着在一个节点中的当前阶段。(这个参数将来可能会被用于允许写到其他阶段。)
 
 `primpath`
 
-The path to the primitive.
+通往原始的道路。
 
 `suffix`
 
-The transform operation suffix.
+转换操作的后缀。
 
-USD primitives are transformed in space by a series of transform operations whose full names are sequentially listed in the `xformOpOrder` attribute. Full names are namespaced, encode the operation transform type (e.g., translation or rotation), and can also contain a suffix. If primitive has a few operations of the same type, it’s necessary to specify the suffix to differentiate between them. This parameter specifies such a suffix.
+美元基元通过一系列变换操作在空间中进行变换，这些变换操作的全名按顺序列在`xformOpOrder`属性中。全名是命名的，对操作转换类型（例如平移或旋转）进行编码，还可以包含一个后缀。如果基元有几个相同类型的操作，有必要指定后缀以区分它们。此参数指定了这样一个后缀。
 
 `xform`
 
-The the matrix that encodes the space transformation.
+编码空间转换的矩阵。
 
 ## Returns
 
-The value of `stagehandle` on success or `-1` on failure.
+成功时是`stagehandle`的值，失败时是`-1`。
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Transform the cube.
@@ -61,8 +59,6 @@ usd\_settransformreset(0, "/dst/cone", 1);
 usd\_addtransform(0, "/dst/cone", "", xform);
 
 ```
-
-
 
 ## See also
 

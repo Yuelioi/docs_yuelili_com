@@ -11,7 +11,7 @@ category:
 
 `void mx\_voronoi(vector2 position, float jitter, int metric, float &d1, vector2 &p1)`
 
-Generates 3D noise.
+产生 3D 噪音。
 
 `void mx\_voronoi(vector position, float jitter, int metric, float &d1, float &d2, float &d3, vector &p1, vector &p2, vector &p3)`
 
@@ -19,38 +19,36 @@ Generates 3D noise.
 
 `void mx\_voronoi(vector position, float jitter, int metric, float &d1, vector &p1)`
 
-Returns a Voronoi Noise values of distances which are similar to Worley noise, but has additional outputs of cells positions.
-There is no analogue of this noise in the standard MaterialX library yet.
+返回 Voronoi 噪声的距离值，它类似于 Worley 噪声，但有额外的单元格位置输出。在标准 MaterialX 库中还没有这种噪声的类似物。
 
 ## Arguments
 
 `position`
 
-The position at which to sample the noise.
+对噪声进行采样的位置。
 
 `jitter`
 
-The jitter should normally be clamped between 0 and 1.
+抖动通常应被钳制在 0 和 1 之间。
 
 `metric`
 
-The metric is an integer representing how the distance is measured for Worley noise
+该指标是一个整数，代表 Worley 噪声的距离是如何测量的
 
-- 0 - Euclidean Distance
-- 1 - Distance Squared
-- 2 - Manhattan Distance
-- 3 - Chebyshev Distance
+- 0 - 欧几里得距离
+- 1 - 距离的平方
+- 2 - 曼哈顿的距离
+- 3 - Chebyshev 距离
 
 `d1`, `d2`, `d3`
 
-These variables are overwritten with the distances to the nearest cell points, in order of closeness.
+这些变量被覆盖为与最近的单元格点的距离，按接近程度排序。
 
 `p1`, `p2`, `p3`
 
-These variables are overwritten with the cell positions, in order of closeness to the input position.
+这些变量被覆盖在单元格的位置上，按照与输入位置接近的顺序。
 
-
-random
+随机
 
 [curlgxnoise](curlgxnoise.html)
 

@@ -9,10 +9,9 @@ category:
 
 `<matrix> transpose(<matrix>m)`
 
-[Transposes](http://en.wikipedia.org/wiki/Transpose) the given matrix.
+[transposes](http://en.wikipedia.org/wiki/Transpose)给定的矩阵。
 
-
-matrix
+基体
 
 [\_\_uniform\_mul](### uniform_mul.html)
 

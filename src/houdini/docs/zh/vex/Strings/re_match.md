@@ -9,8 +9,6 @@ category:
 
 Returns `1` if the entire `input` string matches the `regex`, or `0` if it doesn’t match.
 
-
-
 ## See also
 
 - [re_find](re_find.html)

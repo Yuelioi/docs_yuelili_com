@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Since 18.0
 
 `<type> usd\_metadataelement(<stage>stage, string path, string name, int index)`
@@ -35,19 +33,17 @@ The index into the array.
 
 ## Returns
 
-The value of an element in an existing array metadata, or zero/empty value if the metadata does not exist. Use [usd_ismetadata](usd_ismetadata.html "Checks if the primitive has metadata by the given name.") if you want to check whether the metadata exists.
+The value of an element in an existing array metadata, or zero/empty value if the metadata does not exist. Use [usd_ismetadata](usd_ismetadata.html) () ("Checks if the primitive has metadata by the given name.") if you want to check whether the metadata exists.
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Get the value of an element at index 3 in the "foo:bar" array custom data.
 string docs = usd\_metadataelement(0, "/geo/cube", "customData:foo:bar", 3);
 
 ```
-
-
 
 ## See also
 

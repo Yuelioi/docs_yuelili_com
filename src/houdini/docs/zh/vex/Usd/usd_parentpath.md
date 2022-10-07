@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Since 17.5
 
 `string usd\_parentpath(<stage>stage, string primpath)`
@@ -31,15 +29,13 @@ The path of the primitive’s parent.
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Get the path of the primitive's parent, ie "/geo".
 string path = usd\_parentpath(0, "/geo/cube");
 
 ```
-
-
 
 ## See also
 

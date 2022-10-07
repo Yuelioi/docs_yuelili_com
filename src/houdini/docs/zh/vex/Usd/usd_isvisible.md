@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Since 17.5
 
 `int usd\_isvisible(<stage>stage, string primpath)`
@@ -35,15 +33,13 @@ The USD time code at which to evaluate the attribute. A USD time code roughly co
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Check if the sphere primitive is visible.
 int is\_visible = usd\_isvisible(0, "/geometry/sphere");
 
 ```
-
-
 
 ## See also
 

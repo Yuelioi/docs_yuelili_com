@@ -7,18 +7,15 @@ category:
 
 `int getbounces(bsdf b)`
 
-Returns the bounce mask for the specified `bsdf`.
+返回指定的`bsdf'的弹跳掩码。
 
-See [bouncemask](bouncemask.html) for information on component label bitmasks.
-
-
+参见[bouncemask](bouncemask.html)以了解关于组件标签位掩码的信息。
 
 ## See also
 
 - [nbouncetypes](nbouncetypes.html)
 
-|
-bsdf
+### bsdf
 
 [albedo](albedo.html)
 

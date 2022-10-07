@@ -7,29 +7,23 @@ category:
 
 `int match(string pattern, string subject)`
 
-This function returns 1 if the subject matches the pattern specified, or
-0 if the subject doesn’t match. The standard Houdini pattern matching is
-used. Multiple patterns may be separated by spaces or commas. The
-special characters for matching are:
+如果主题与指定的模式相匹配，这个函数将返回 1，如果主题不匹配，则返回 0。使用的是标准的 Houdini 模式匹配。多个模式可以用空格或逗号分隔。用于匹配的特殊字符是。
 
-- `?` Match any character
-- `*` Match any substring
-- `[list]` Match any of the characters specified in the list.
-- If a pattern is prefixed by a caret (^), then subjects which match
-  this pattern will be excluded from the match.
+- `? ` 匹配任何字符
+- `*`匹配任何子串
+- `[列表]`匹配列表中指定的任何字符。
+- 如果一个模式的前缀是省略号(^)，那么与之相匹配的主题就会是
+  该模式将被排除在匹配之外。
 
-Examples:
+例子。
 
-- `a*` - Match any string beginning with a.
-- `a*,^aardvark` - Match any string beginning with a except for
-  aardvark.
-- `[abc]*z` - Match any string beginning with a, b or c and ending with
-  z.
-- `g*,^geo*` - Match any string beginning with g, but not any string
-  beginning with geo.
+- `a*` - 匹配任何以 a 开头的字符串。
+- `a*,^aardvark` - 匹配任何以 a 开头的字符串，除了
+- `[abc]*z` - 匹配任何以 a、b 或 c 开头，以 a、b 或 c 结尾的字符串。
+- `g*,^geo*` - 匹配任何以 g 开头的字符串，但不匹配任何字符串
+  aardvark. z. 以 geo 开头。
 
-
-string
+绳子
 
 [atof](atof.html)
 

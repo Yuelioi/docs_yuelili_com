@@ -7,18 +7,16 @@ category:
 
 `string opfullpath(string relative\_path)`
 
-This function returns the absolute path for a given relative path to the object being evaluated.
+该函数返回被评估对象的给定相对路径的绝对路径。
 
-The function is currently only meaningful in Houdini.
+该功能目前只在 Houdini 中是有意义的。
 
 ## Examples
 
-[¶](#examples)
-
-- `opfullpath(".")` - The full path of the current node being evaluated
-- `opfullpath("..")` - The full path of the current node’s parent
 
 
+- `opfullpath(".")` - 被评估的当前节点的完整路径。
+- `opfullpath("...")` - 当前节点的父节点的完整路径。
 
 ## See also
 

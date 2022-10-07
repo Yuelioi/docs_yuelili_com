@@ -17,11 +17,9 @@ category:
 
 `vector|vector4 rawcolormap(string filename, float u0, float v0, float u1, float v1, float u2, float v2, float u3, float v3, int samples, ...)`
 
-This function has the same arguments as [colormap](colormap.html "Looks up a (filtered) color from a texture file."), but does not do bilinear interpolation of the pixel values. See [colormap](colormap.html "Looks up a (filtered) color from a texture file.") for information on the arguments.
+这个函数的参数与 [colormap](colormap.html) () ("Look up a (filtered) color from a texture file.") 相同，但不对像素值进行双线性插值。有关参数的信息，请参见 [colormap](colormap.html) （"从纹理文件中查找（过滤）颜色"）。
 
-If you call the function with a `vector4` return type, the fourth component is the alpha channel of the texture. If the image does not have alpha, the fourth component is always `1`.
-
-
+如果你以`vector4`的返回类型调用该函数，第四个分量就是纹理的 alpha 通道。如果图像没有 alpha，第四个分量总是`1'。
 
 ## See also
 

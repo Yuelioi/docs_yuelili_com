@@ -5,18 +5,13 @@ category:
   - vex
 ---
 
-
-
-Context(s)
 [shading](../contexts/shading.html)
 
 `string getobjectname()`
 
-Returns the name of the current object whose shader is being run, or the
-empty string if there is no current object.
+Context(s) 返回正在运行的着色器的当前对象的名称，如果没有当前对象，则返回空字符串。
 
-
-shading
+遮阳
 
 [Du](Du.html)
 

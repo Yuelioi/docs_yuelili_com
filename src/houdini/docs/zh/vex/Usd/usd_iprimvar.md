@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Since 19.0
 
 `<type> usd\_iprimvar(<stage>stage, string primpath, string name)`
@@ -39,11 +37,11 @@ The USD time code at which to evaluate the attribute. A USD time code roughly co
 
 ## Returns
 
-The value of an existing primvar, or zero/empty value if the primvar does not exist. Use [usd_isiprimvar](usd_isiprimvar.html "Checks if the primitive or its ancestor has a primvar of the given name.") if you want to check whether the primvar exists.
+The value of an existing primvar, or zero/empty value if the primvar does not exist. Use [usd_isiprimvar](usd_isiprimvar.html) () ("Checks if the primitive or its ancestor has a primvar of the given name.") if you want to check whether the primvar exists.
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Get the value of some primvars on the cube primitive or cube's ancestor.
@@ -55,8 +53,6 @@ v[]@foo\_at\_current\_frame = usd\_iprimvar(0, "/geo/sphere", "foo");
 v[]@foo\_at\_frame\_8 = usd\_iprimvar(0, "/geo/sphere", "foo", 8.0);
 
 ```
-
-
 
 ## See also
 

@@ -7,10 +7,9 @@ category:
 
 `<type> pcfilter(int handle, string channel\_name, ...)`
 
-Filters the points queued up by [pcopen](pcopen.html "Returns a handle to a point cloud file.")
-using a simple reconstruction filter.
+使用一个简单的重建过滤器过滤由[pcopen](pcopen.html)（"返回一个点云文件的句柄"）排队的点。
 
-This function is roughly equivalent to:
+这个函数大致相当于。
 
 ```c
 float pcfilter(int handle; string channel)
@@ -39,8 +38,6 @@ w\_i = 1-smooth(0, maxd\*1.1, d\_i);
 ```
 
 `maxd` is the farthest point, and `w_i` is the weight for a given point at distance (`d_i`). Points that are closer to the center will be weighted higher with that formula, rather than it being an average.
-
-
 
 ## See also
 

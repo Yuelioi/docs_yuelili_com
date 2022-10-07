@@ -11,23 +11,17 @@ category:
 
 `center`
 
-Direction in the center of the arc. This does not need to be normalized.
+弧线中心的方向。这不需要被规范化。
 
 `maxangle`
 
-Maximum angle, in radians, away from `center` that any sample of the arc
-will be, so long as `u` is between 0 and 1.
+只要 "u "在 0 和 1 之间，弧线的任何样本离开 "中心 "的最大角度，单位是弧度。
 
 `u`
 
-Number between 0 and 1.
+0 和 1 之间的数字。
 
-Returns a unit vector2, i.e. a vector2 of length 1, based on `u`.
-Given uniform random `u` values in `[0,1)`, the returned unit vectors will be
-uniform random and continuous with respect to `u` on the edge of the unit circle,
-in the arc within `maxangle` of the direction indicated by `center`.
-
-
+返回一个单位向量 2，即长度为 1 的向量 2，基于`u`。给定在`[0,1)`中的均匀随机的`u'值，返回的单位向量将是均匀随机的，并且相对于`u'在单位圆的边缘，在`中心'指示的方向的`maxangle'内的圆弧上是连续的。
 
 ## See also
 

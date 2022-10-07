@@ -5,7 +5,7 @@ category:
   - vex
 ---
 
-This function specifies the position using _intrinsic primitive UVs_. To use UVs stored in UV attribute, use [uvsample](uvsample.html "Interpolates the value of an attribute at certain UV coordinates using a UV attribute.") instead.
+这个函数使用*intrinsic primitive UVs*指定位置。要使用存储在 UV 属性中的 UV，请使用[uvsample](uvsample.html)（"使用 UV 属性在某些 UV 坐标上插值。"）来代替。
 
 `<type> primuv(<geometry>geometry, string attribute\_name, int prim\_num, vector uvw)`
 
@@ -15,26 +15,24 @@ This function specifies the position using _intrinsic primitive UVs_. To use UVs
 
 `<geometry>`
 
-When running in the context of a node (such as a wrangle SOP), this argument can be an integer representing the input number (starting at 0) to read the geometry from.
+当在一个节点的上下文中运行时（比如一个 wrangle SOP），这个参数可以是一个整数，代表要读取几何图形的输入数字（从 0 开始）。
 
-Alternatively, the argument can be a string specifying a geometry file (for example, a `.bgeo`) to read from. When running inside Houdini, this can be an `op:/path/to/sop` reference.
+或者，该参数可以是一个字符串，指定一个几何文件（例如，一个`.bgeo'）来读取。当在Houdini内部运行时，这可以是一个`op:/path/to/sop`的引用。
 
 `attribute_name`
 
-The name of the attribute to read. **For point and vertex attributes, the value will at the given UV coordinates will be interpolated** from the surrounding points/vertices.
+要读取的属性的名称。**对于点和顶点属性，在给定的 UV 坐标处的值将从周围的点/顶点中插值**。
 
 `prim_num`
 
-The primitive number to read the attribute from.
+要从中读取属性的原始编号。
 
 `uvw`
 
-The primitive UVW coordinates at which to read the attribute.
+读取属性的原始 UVW 坐标。
 
-- Returns the (possibly interpolated) value of the attribute at the given coordinates. If the attribute or primitive number don’t exist, returns `0`.
-- If you need to test for errors, you can use [prim_attribute](prim_attribute.html "Interpolates the value of an attribute at a certain parametric (u, v) position and copies it into a variable.") instead.
-
-
+- 返回属性在给定坐标处的（可能是内插的）值。如果属性或基元数不存在，则返回`0'。
+- 如果需要测试错误，可以用[prim_attribute](prim_attribute.html)（"在某个参数（u，v）位置插值一个属性的值，并将其复制到一个变量中。"）代替。
 
 ## See also
 
@@ -42,8 +40,7 @@ The primitive UVW coordinates at which to read the attribute.
 - [uvsample](uvsample.html)
 - [xyzdist](xyzdist.html)
 
-|
-attrib
+### attrib
 
 [addattrib](addattrib.html)
 

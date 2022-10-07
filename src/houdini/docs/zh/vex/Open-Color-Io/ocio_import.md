@@ -5,12 +5,10 @@ category:
   - vex
 ---
 
+在这一页
 
-
-On this page
-
-- [Queryable attributes](#queryable-attributes)
-- [Examples](#examples)
+- [可查询属性](#queryable-attributes)
+- [例子](#例子)
 
 `int ocio\_import(string space, string property, int &value)`
 
@@ -18,54 +16,51 @@ On this page
 
 `int ocio\_import(string space, string property, string &value)`
 
-This function queries data associated with a color space.
+该函数查询与一个颜色空间相关的数据。
 
-If the function fails, the value variable will not be modified,
-and may be left uninitialized.
+如果函数失败，值变量将不会被修改，可能会被留作未初始化。
 
-##
-
-Queryable attributes
+## 可查询的属性
 
 [¶](#queryable-attributes)
 
-There list of properties includes most of the properties defined in the OCIO configuration file:
+这里的属性列表包括 OCIO 配置文件中定义的大部分属性。
 
 `string name`
 
-The name of the color space.
+色彩空间的名称。
 
 `string family`
 
-The color space family.
+色彩空间系列。
 
 `string equalitygroup`
 
-The equality group for the color space.
+色彩空间的平等组。
 
 `string description`
 
-A description of the color space.
+对色彩空间的描述。
 
 `int isdata`
 
-True if the color space is suitable for non-color pixel data (such as normals, point positions, etc.)
+如果颜色空间适用于非颜色像素数据（如法线、点位置等），则为真。
 
 `string bitdepth`
 
-A string representing the color space bit depth.
+代表色彩空间比特深度的字符串。
 
 `string allocation`
 
-Either `uniform` or `lg2` (log2).
+要么是`uniform`，要么是`lg2`（log2）。
 
 `vector allocationvars`
 
-The allocation variables (min, max, offset).
+分配变量（最小、最大、偏移）。
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 cvex test()
@@ -97,8 +92,6 @@ cvex test()
  }
 
 ```
-
-
 
 ## See also
 

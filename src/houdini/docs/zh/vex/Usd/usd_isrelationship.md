@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Since 18.0
 
 `int usd\_isrelationship(<stage>stage, string primpath, string name)`
@@ -33,15 +31,13 @@ The relationship name.
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Check if the cube has a relationship "some\_relationship".
 int is\_valid\_relationship = usd\_isrelationship(0, "/geo/cube", "some\_relationship");
 
 ```
-
-
 
 ## See also
 

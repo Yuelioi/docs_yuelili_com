@@ -5,22 +5,18 @@ category:
   - vex
 ---
 
-
-
-Context(s)
 [displace](../contexts/displace.html)
 [fog](../contexts/fog.html)
 [surface](../contexts/surface.html)
 
 `int setcurrentlight(int lightid)`
 
-Sets the current light, and returns true when the light exists and was successfully set. The lightid should be in the set of the values returned by [getlights](getlights.html "Returns an array of light identifiers for the currently shaded surface."). The current light is used by the following shading functions:
+Context(s) 设置当前的灯光，当灯光存在并且被成功设置时返回 true。lightid 应该在[getlights](getlights.html) ()("返回当前着色表面的灯光标识符数组")所返回的值的集合中。当前的光照会被以下遮蔽函数使用。
 
-- [renderstate](renderstate.html "Queries the renderer for a named property.")
-- [getlightname](getlightname.html "Returns the name of the current light when called from within an illuminance loop, or converts an integer light ID into the light’s name.")
+- [renderstate](renderstate.html) () ("查询指定属性的渲染器。")
+- [getlightname](getlightname.html) () ("当在照度循环中调用时，返回当前灯光的名称，或将一个整数的灯光 ID 转换为灯光的名称。")
 
-
-light
+光
 
 [ambient](ambient.html)
 

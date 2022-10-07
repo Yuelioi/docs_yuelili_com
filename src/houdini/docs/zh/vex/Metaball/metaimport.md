@@ -9,34 +9,25 @@ category:
 
 `<type>[] metaimport(string file, string attribute, vector P)`
 
-Rather than iterating over all the values, this form imports the values from all metaballs simultaneously. As with the scalar form, you can use the keywords…
+这种形式不是对所有的值进行迭代，而是同时从所有的 metaballs 导入值。与标量形式一样，你可以使用关键字...
 
-- `meta:density`
-- `meta:prim`
-- `meta:transform`
+- `meta:density`（密度）。
+- `meta:prim'(中文)
+- `meta:transform`。
 
-…to import non-attribute information from the metaballs.
+...从 metaballs 导入非属性信息。
 
-Once you get a handle to a metaball using [metastart](metastart.html "Open a geometry file and return a handle for the metaballs of
-interest, at the position p.") and
-[metanext](metanext.html "Iterate to the next metaball in the list of metaballs returned by the metastart() function."), you can query attributes of the metaball with
-`metaimport`.
+一旦你使用[metastart](metastart.html) ("打开一个几何文件，并返回一个在位置p的感兴趣的metaballs的句柄。")和[metanext](metanext.html) () ("在 metastart()函数返回的 metaballs 列表中迭代到下一个 metaballs。")得到一个 metaball 的句柄，你可以用`metaimport`查询 metaball 的属性。
 
-There are three “special” attributes you can query:
+有三个 "特殊 "属性可以查询。
 
-`float meta:density` :
-The density of the current metaball
+`float meta:density` : 当前元宝的密度。
 
-`float meta:prim` :
-The primitive number of the current metaball
+`float meta:prim` : 当前元宝的原始编号。
 
-`matrix meta:transform` :
-The transform associated with the current metaball. Applying the
-inverse of this transform will transform a point into the “space” of
-the metaball.
+`matrix meta:transform`：与当前元宝相关的变换。应用这个变换的逆运算可以将一个点变换到元宝的 "空间 "里。
 
-For example, the [metaweight](metaweight.html "Returns the metaweight of the geometry at position p.") function can be expressed in the following
-way:
+例如，[metaweight](metaweight.html)（"返回位置 p 处的几何体的元重量"）函数可以用以下方式表示。
 
 ```c
 float
@@ -87,7 +78,6 @@ return result;
 In the i3d context, there is a default metaball geometry (specified
 by the `-g` option on the command line to the i3dgen program). If the
 filename is an empty string, the default geometry will be used.
-
 
 metaball
 

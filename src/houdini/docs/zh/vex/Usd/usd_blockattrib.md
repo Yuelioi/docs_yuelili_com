@@ -5,43 +5,39 @@ category:
   - vex
 ---
 
-
-
-Since 18.0
+自 18.0 以来
 
 `int usd\_blockattrib(int stagehandle, string primpath, string name)`
 
-This function blocks the attribute. I.e., removes all time samples and sets the _block_ as default value.
+这个函数阻止了这个属性。即，删除所有的时间样本，并将*block*设置为默认值。
 
 ## Arguments
 
 `stagehandle`
 
-A handle to the stage to write to. Currently the only valid value is `0`, which means the current stage in a node. (This argument may be used in the future to allow writing to other stages.)
+要写入的阶段的句柄。目前唯一有效的值是 "0"，这意味着在一个节点中的当前阶段。(这个参数将来可能会被用于允许写到其他阶段。)
 
 `primpath`
 
-The path to the primitive.
+通往原始的道路。
 
 `name`
 
-Attribute name.
+属性名称。
 
 ## Returns
 
-The value of `stagehandle` on success, or `-1` on failure.
+成功时为`stagehandle'的值，失败时为`-1'。
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Block the attribute.
 usd\_blockattrib(0, "/geo/sphere", "attribute\_name");
 
 ```
-
-
 
 ## See also
 

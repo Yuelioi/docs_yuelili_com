@@ -5,35 +5,33 @@ category:
   - vex
 ---
 
-
-
-Since 18.0
+自 18.0 以来
 
 `int usd\_addcollectionexclude(int stagehandle, string collectionpath, string path)`
 
-This function excludes the object from the collection. This is usually achieved by adding an explicit path to the collection’s exclude list, but it may just remove a path from the collection’s include list, if it’s sufficient.
+这个函数将对象从集合中排除。这通常是通过在集合的排除列表中添加一个明确的路径来实现的，但如果足够的话，它也可以直接从集合的包含列表中删除一个路径。
 
 ## Arguments
 
 `stagehandle`
 
-A handle to the stage to write to. Currently the only valid value is `0`, which means the current stage in a node. (This argument may be used in the future to allow writing to other stages.)
+要写入的阶段的句柄。目前唯一有效的值是 "0"，这意味着在一个节点中的当前阶段。(这个参数将来可能会被用于允许写到其他阶段。)
 
 `collectionpath`
 
-The path to the collection.
+集合的路径。
 
 `path`
 
-The path to the object. I.e, a primitive, an attribute, or a relationship.
+通向对象的路径。即，一个基元、一个属性或一个关系。
 
 ## Returns
 
-The value of `stagehandle` on success or `-1` on failure.
+成功时是`stagehandle`的值，失败时是`-1`。
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Exclude sphere3 from cube's collection.
@@ -41,8 +39,6 @@ string collection\_path = usd\_makecollectionpath(0, "/geo/cube", "some\_collect
 usd\_addcollectionexclude(0, collection\_path, "/geo/sphere3");
 
 ```
-
-
 
 ## See also
 

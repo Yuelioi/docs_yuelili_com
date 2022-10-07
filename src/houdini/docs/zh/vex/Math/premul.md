@@ -5,9 +5,7 @@ category:
   - vex
 ---
 
-
-
-Since 18.0
+自 18.0 以来
 
 `void premul(matrix2 &a, matrix2 b)`
 
@@ -21,10 +19,9 @@ Since 18.0
 
 `void premul(matrix3 &m, matrix3 a, matrix3 b)`
 
-Multiplies two matrices and returns modify the first matrix.
+将两个矩阵相乘，并返回修改后的第一个矩阵。
 
-
-matrix
+基体
 
 [\_\_uniform\_mul](### uniform_mul.html)
 

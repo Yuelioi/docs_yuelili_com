@@ -4,7 +4,7 @@ order: 3
 category:
   - houdini
 ---
-    
+
 ## 描述
 
 Efficiently creates an array from its arguments.
@@ -21,10 +21,11 @@ You should use function-style casting to ensure the array members have the corre
 
 返回给定类型的项目数组。应该确保数组成员具有正确类型。
 
-```ad-note
+::: tip
+
 - 可以使用变量
 - 可以使用函数
-```
+:::
 
 ```c
 vector v[] = vector[](array( 1, {1,2,3}, 3, s, t, Cl, P, N));

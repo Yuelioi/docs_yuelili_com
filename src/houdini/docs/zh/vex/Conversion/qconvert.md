@@ -7,20 +7,17 @@ category:
 
 `matrix3 qconvert(vector4 quaternion)`
 
-Converts a quaternion represented by a vector4 to a matrix3 representation.
+将一个由矢量 4 表示的四元数转换为矩阵 3 表示。
 
 `matrix qconvert(vector4 quaternion, vector offset)`
 
-Converts a quaternion represented by a vector4 to a matrix representation.
-Applies the offset as a post-translation, so the resulting matrix will
-first rotate a point by the quaternion and then add the offset.
+将一个由矢量 4 表示的四元数转换为一个矩阵表示。将偏移量作为一个后置的翻译，因此产生的矩阵将首先通过四元数旋转一个点，然后再加上偏移量。
 
 `vector qconvert(vector4 quaternion)`
 
-Converts a quaternion represented by a vector4 into a angle/axis vector.
+将一个由矢量 4 表示的四元数转换成一个角度/轴矢量。
 
-
-quaternion
+四元数
 
 [dihedral](dihedral.html)
 

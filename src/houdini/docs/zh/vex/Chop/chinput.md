@@ -5,60 +5,47 @@ category:
   - vex
 ---
 
-
-
-Context(s)
 [chop](../contexts/chop.html)
 
 `<type> chinput(int channel\_index, float|intsample)`
 
 `<type> chinput(int opinput, int channel\_index, float|intsample)`
 
-Read a sample from the channel at the given index.
-The version without `opinput` assumes the first input (0).
+Context(s) 从给定索引的通道上读取一个样本。没有`opinput'的版本假设是第一个输入（0）。
 
 `<type> chinput(string channel\_name, float|intsample)`
 
 `<type> chinput(int opinput, string channel\_name, float|intsample)`
 
-Read a sample from the channel with the given name.
-The version without `opinput` assumes the first input (0).
+从给定名称的通道上读取一个样本。没有`opinput'的版本假设是第一个输入（0）。
 
 `int chinput(int channel\_index, float|intsample, vector &t, vector &r, vector &s)`
 
 `int chinput(int opinput, int channel\_index, float|intsample, vector &t, vector &r, vector &s)`
 
-Read samples from the 9 channels starting at the given index.
-The samples are returned in the 3 vector output arguments.
-Returns 1 on success or 0 on failure.
-The version without `opinput` assumes the first input (0).
+读取从给定索引开始的 9 个通道的样本。这些样本将在 3 个矢量输出参数中返回。成功时返回 1，失败时返回 0。没有`opinput`的版本假设第一个输入（0）。
 
 `int chinput(string channel\_name, float|intsample, vector &t, vector &r, vector &s)`
 
 `int chinput(int opinput, string channel\_name, float|intsample, vector &t, vector &r, vector &s)`
 
-Read samples from the 9 channels starting at the given channel name.
-The samples are returned in the 3 vector output arguments.
-Returns 1 on success or 0 on failure.
-The version without `opinput` assumes the first input (0).
+读取从给定的通道名称开始的 9 个通道的样本。这些样本将在 3 个矢量输出参数中返回。成功时返回 1，失败时返回 0。没有`opinput`的版本假设第一个输入（0）。
 
 ## Arguments
 
 `opinput`
 
-The input number to read from, starting from 0. For example, the first input is 0, the second input is 1, and so on.
+要读取的输入号码，从 0 开始。例如，第一个输入是 0，第二个输入是 1，以此类推。
 
 `sample`
 
-If this is fractional, the value is linearly interpolated from the
-two nearest points.
+如果是小数，则从两个最近的点进行线性插值。
 
 ## Returns
 
-The value of a channel at the specified sample in an input.
+在一个输入中的指定样本处的通道值。
 
-
-chop
+劈劈啪啪
 
 [chadd](chadd.html)
 

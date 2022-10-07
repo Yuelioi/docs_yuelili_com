@@ -37,7 +37,7 @@ The value of `stagehandle` on success, or `-1` on failure.
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Set the value of element at index 2 in the array attribute.

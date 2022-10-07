@@ -5,9 +5,7 @@ category:
   - vex
 ---
 
-
-
-Since 17.0
+自 17.0 以来
 
 `vector sample\_sphere\_shell\_uniform(vector u, float alpha)`
 
@@ -15,17 +13,13 @@ Since 17.0
 
 `u`
 
-Three numbers between 0 and 1.
+0 和 1 之间的三个数字。
 
 `alpha`
 
-The inner radius to be bounded by. A number between 0 and 1.
+要约束的内半径。一个介于 0 和 1 之间的数字。
 
-Returns a vector of length < 1, based on `u`.
-Given uniform random `u` vectors of three values in `[0,1)`, and a number in `[0,1]`, the returned vectors will be
-uniform random and continuous with respect to `u` inside the unit sphere shell with the inner raidus alpha.
-
-
+返回一个长度<1 的向量，基于`u`。给出在`[0,1)`中的三个均匀随机的`u`向量，以及在`[0,1]`中的一个数字，返回的向量将是均匀随机的，并且相对于`u`在单位球壳内是连续的，内部的雷达为 α。
 
 ## See also
 

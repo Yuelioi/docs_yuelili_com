@@ -9,18 +9,15 @@ category:
 
 `vector curlxnoise2d(vector xyt)`
 
-Computes a divergence free vector field based on the cross product of the derivatives of two simplex noise functions.
+根据两个单纯噪声函数的导数的交叉乘积计算一个无发散矢量场。
 
-The resulting vectors all lie along the X-Y plane.
+所得的矢量都位于 X-Y 平面。
 
 ::: info Note
 
-This is not the same as projecting a `curlnoise` to a plane!
+这与将 "卷曲噪声 "投射到一个平面上是不一样的。
 
-See [noise and randomness](../random.html) in the VEX language
-guide for more information.
-
-
+参见 VEX 语言指南中的[噪声和随机性](.../random.html)以获得更多信息。
 
 ## See also
 

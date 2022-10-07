@@ -21,35 +21,19 @@ category:
 
 `matrix maketransform(int trs, int xyz, vector t, vector r, vector s, vector p, vector pr, vector shears)`
 
-Builds a 3×3 or 4×4 transform matrix.
+构建一个 3×3 或 4×4 的变换矩阵。
 
-`maketransform(int trs, ...)` builds a general 4×4 transform matrix
-given an order of transformations (trs), an order for rotations
-(xyz), a vector representing the translation (t), rotation
-(r), scale (s) (and optionally a pivot (p), pivot rotation
-(pr), and shears (shears)). The specifications for the trs and
-xyz parameters can be found in `$HFS/houdini/vex/include/math.h`. For example, XFORM_SRT will do the trs order Scale, Rotate, Translate; and XFORM_XYZ will do the xyz rotation order X, Y, Z.
+`maketransform(int trs, ...)`建立一个一般的 4×4 变换矩阵，给定一个变换顺序(trs)，一个旋转顺序(xyz)，一个代表平移(t)、旋转(r)、比例(s)的向量(可以选择支点(p)、支点旋转(pr)和剪切力(shears))。trs 和 xyz 参数的规格可以在`$HFS/houdini/vex/include/math.h`中找到。例如，XFORM_SRT 将进行 trs 顺序的缩放、旋转、平移；而 XFORM_XYZ 将进行 xyz 顺序的 X、Y、Z 旋转。
 
-`maketransform(int xyz, vector angles)` builds a 3×3 rotation matrix
-using the same rules as `maketransform(int trs, ...)` but only using
-the rotation parameters.
+`maketransform(int xyz, vector angles)`使用与`maketransform(int trs, ...)`相同的规则建立一个 3×3 旋转矩阵，但只使用旋转参数。
 
-`maketransform(vector zaxis, yaxis, ...)` builds either a 3×3 transform
-matrix or a 4×4 transform matrix. The matrix will be constructed so that the
-z-axis will be transformed to the z-axis specified with the given up vector
-(yaxis). Thus, maketransform({0,0,1}, {0,1,0}) will result in an identity
-matrix. The version which returns a 4×4 transform will apply the translation
-to the 4×4 matrix. This function is very similar to the [lookat](lookat.html "Computes a rotation matrix or angles to orient the negative z-axis along the vector (to-from) under the transformation.")
-function. The vectors passed in are _not_ normalized meaning that scales
-should be preserved in construction of the transform.
+`maketransform(vector zaxis, yaxis, ...)`建立一个 3×3 变换矩阵或 4×4 变换矩阵。矩阵将被构建，从而使 Z 轴被转换为与给定的向上矢量（Y 轴）指定的 Z 轴。因此，maketransform({0,0,1}, {0,1,0})将产生一个相同的矩阵。返回 4×4 变换的版本将把平移应用到 4×4 矩阵上。这个函数与[lookat](lookat.html) () ("计算一个旋转矩阵或角度，使负 Z 轴沿着变换下的矢量(to-from)定向。")函数非常相似。传入的向量不是归一化的，这意味着在构建变换时应该保留比例。
 
 ::: info Note
 
-Unlike most VEX functions, this function expects rotations
-in _degrees_, not radians.
+与大多数 VEX 函数不同，这个函数希望旋转的单位是度，而不是弧度。
 
-
-matrix
+基体
 
 [\_\_uniform\_mul](### uniform_mul.html)
 

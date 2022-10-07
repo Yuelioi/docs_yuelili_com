@@ -7,22 +7,17 @@ category:
 
 `void clip(int &result, vector &p0, vector &p1, vector4 plane)`
 
-clip the line segment against an arbitrary 3D plane specified by the
-plane equation (plane.x\*x + plane.y\*y + plane.z\*z + plane.w).
+将线段对着一个由平面方程（plane.x\*x + plane.y\*y + plane.z\*z + plane.w）指定的任意三维平面进行剪辑。
 
 `void clip(int &result, vector &p0, vector &p1, vector min, vector max)`
 
-clip the line segment to the bounding box specified by the min and max
-corner points.
+将线段夹在由最小和最大角点指定的边界框内。
 
-clip the line segment between p0 and p1.
+夹住 p0 和 p1 之间的线段。
 
-If the line is entirely clipped out of the result will be set to 0.
-otherwise, the values p0 and p1 will be clipped to the constraints
-specified and the result will be 1.
+如果该行完全被剪掉，结果将被设置为 0。否则，值 p0 和 p1 将被剪到指定的约束条件，结果将是 1。
 
-
-intersect
+相交
 
 [clip](clip.html)
 

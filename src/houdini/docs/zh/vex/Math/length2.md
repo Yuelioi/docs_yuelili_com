@@ -15,14 +15,12 @@ Returns the squared distance of the vector.
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 length2({0.5, 0.75, 0}) == 0.8125;
 
 ```
-
-
 
 ## See also
 

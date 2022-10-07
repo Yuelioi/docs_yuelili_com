@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Since 18.0
 
 `string usd\_uniquetransformname(<stage>stage, string primpath, int transformtype, string suffix)`
@@ -39,15 +37,13 @@ A unique full name of transform operation.
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Construct a unique full name for a translation operation with suffix "cone\_pivot"
 string unique\_xform\_name = usd\_uniquetransformname(0, "/geo/cone", USD\_XFORM\_TRANSLATE, "cone\_pivot");
 
 ```
-
-
 
 ## See also
 

@@ -7,10 +7,9 @@ category:
 
 `void splitpath(string fullpath, string &dir, string &name)`
 
-Splits a string representing a path into the `directory` and `name` components.
+将代表路径的字符串分割成`directory`和`name`两个部分。
 
-
-string
+绳子
 
 [atof](atof.html)
 

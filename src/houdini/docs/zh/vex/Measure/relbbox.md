@@ -7,29 +7,25 @@ category:
 
 `vector relbbox(<geometry>geometry, vector position)`
 
-Returns the relative position of the point given with respect to the
-bounding box of the primitives in the geometry.
+返回给定的点相对于几何体中的基元包围盒的相对位置。
 
 `vector relbbox(<geometry>geometry, string primgroup, vector position)`
 
-Use the bounding box of the primitives in the named primitive group.
+使用命名的基元组中的基元的包围盒。
 
 `vector relbbox(vector position)`
 
-Warning
+警告
 
-This form of `relbbox` is deprecated and may be removed in the future.
-Use the other forms as needed.
+这种形式的`relbbox`已经被废弃，将来可能会被删除。根据需要使用其他的形式。
 
 ## Arguments
 
 `<geometry>`
 
-When running in the context of a node (such as a wrangle SOP), this argument can be an integer representing the input number (starting at 0) to read the geometry from.
+当在一个节点的上下文中运行时（比如一个 wrangle SOP），这个参数可以是一个整数，代表要读取几何图形的输入数字（从 0 开始）。
 
-Alternatively, the argument can be a string specifying a geometry file (for example, a `.bgeo`) to read from. When running inside Houdini, this can be an `op:/path/to/sop` reference.
-
-
+或者，该参数可以是一个字符串，指定一个几何文件（例如，一个`.bgeo'）来读取。当在Houdini内部运行时，这可以是一个`op:/path/to/sop`的引用。
 
 ## See also
 

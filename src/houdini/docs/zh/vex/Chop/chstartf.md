@@ -5,23 +5,17 @@ category:
   - vex
 ---
 
-
-
-Context(s)
 [chop](../contexts/chop.html)
 
 `float chstartf()`
 
-Uses `-1` as the `opinput`.
+上下文 使用`-1`作为`opinput`。
 
 `float chstartf(int opinput)`
 
-Returns the frame corresponding to the first sample of the given CHOP input.
+返回对应于给定 CHOP 输入的第一个样本的帧。
 
-To get the first sample number, use [chstart](chstart.html "Returns the start sample of the input specified."). To get the start time in seconds, use [chstartt](chstartt.html "Returns the time corresponding to the first sample of the input
-specified.").
-
-
+要获得第一个样本号，使用[chstart](chstart.html) () ("返回指定输入的起始样本。")。要获得以秒为单位的开始时间，使用[chstartt](chstartt.html) ("返回指定输入的第一个样本对应的时间。")。
 
 ## See also
 

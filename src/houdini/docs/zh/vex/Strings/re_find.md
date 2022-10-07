@@ -11,7 +11,7 @@ category:
 
 `int re\_find(string regex, string input, int start, int end)`
 
-Returns `1` if `regex` matches in `input`, or `0` otherwise.
+如果`regex`在`input`中匹配，则返回`1`，否则返回`0`。
 
 `string re\_find(string regex, string input)`
 
@@ -19,7 +19,7 @@ Returns `1` if `regex` matches in `input`, or `0` otherwise.
 
 `string re\_find(string regex, string input, int start, int end)`
 
-Returns the first substring that matches `regex` in `input`.
+返回在`input`中与`regex`匹配的第一个子串。
 
 `int re\_find(int &start\_pos[], int &end\_pos[], string regex, string input)`
 
@@ -27,7 +27,7 @@ Returns the first substring that matches `regex` in `input`.
 
 `int re\_find(int &start\_pos[], int &end\_pos[], string regex, string input, int start, int end)`
 
-Returns `1` if `regex` matches in input, or `0` otherwise. Fills the `start_pos` and `end_pos` array variables with the start and end positions of each match.
+如果 "regex "在输入中匹配，返回 "1"，否则返回 "0"。在`start_pos'和`end_pos'数组中填入每个匹配的开始和结束位置。
 
 `string [] re\_find(string regex, string input)`
 
@@ -35,9 +35,7 @@ Returns `1` if `regex` matches in input, or `0` otherwise. Fills the `start_pos`
 
 `string [] re\_find(string regex, string input, int start, int end)`
 
-Returns an array of substrings that match `regex` in `input`.
-
-
+返回与`input`中的`regex`相匹配的子串数组。
 
 ## See also
 

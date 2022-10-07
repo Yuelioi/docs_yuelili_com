@@ -15,8 +15,6 @@ camera to the pixel in question. There is no area sampling done when
 sampling depth values. As well, if the u/v values are not in the range 0
 to 1, a value of 1E6 will be returned (indicating a “far” value).
 
-
-
 ## See also
 
 - [shadowmap](shadowmap.html)

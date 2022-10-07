@@ -9,12 +9,11 @@ category:
 
 `<vector> pow(<vector>v, float exponent)`
 
-Raises `n` to the power of `exponent`. For vectors, this is done per-component.
+将`n'提高到`指数'的幂。对于向量，这是按分量进行的。
 
-When `n` is less than zero, the exponent will be rounded to the closest integer.
+当`n'小于 0 时，指数将被四舍五入为最接近的整数。
 
-
-math
+数学
 
 [Du](Du.html)
 
@@ -120,8 +119,7 @@ math
 
 [variance](variance.html)
 
-|
-number
+| 数
 
 [abs](abs.html)
 

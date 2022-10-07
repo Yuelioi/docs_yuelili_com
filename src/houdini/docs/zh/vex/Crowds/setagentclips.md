@@ -9,61 +9,57 @@ category:
 
 `int setagentclips(int geohandle, int prim, int clip\_ids[], float clip\_times[], float clip\_weights[], int clip\_transform\_group\_ids[], int clip\_layer\_ids[], int layer\_blend\_modes[], float layer\_weights[], int layer\_parent\_ids[])`
 
-This function can provide improved performance compared to using a combination of [setagentclipnames](setagentclipnames.html "Sets the current animation clips for an agent primitive."), [setagentcliptimes](setagentcliptimes.html "Sets the current times for an agent primitive’s animation clips."), and [setagentclipweights](setagentclipweights.html "Sets the blend weights for an agent primitive’s animation clips."), and also modifies the [primitive intrinsics used for layering animation clips](../../crowds/agents.html#currentclips).
+与使用 [setagentclipnames](setagentclipnames.html) () ("为代理基元设置当前的动画片段。")、[setagentcliptimes](setagentcliptimes.html) () ("为代理基元的动画片段设置当前的时间。"）和[setagentclipweights](setagentclipweights.html) （"为代理基元的动画剪辑设置混合权重。"），还修改了[用于分层动画剪辑的基元内在因素](.../.../crowds/agents.html) （#currentclips）。
 
 ## Arguments
 
 `geohandle`
 
-Handle to the geometry to write to. `geoself()` can be used to get a handle to the current geometry.
+要写入的几何体的句柄。`geoself()`可以用来获取当前几何体的句柄。
 
 `prim`
 
-The primitive number.
+原始的数字。
 
 `clip_names`
 
-A list of animation clip names.
+动画片段名称的列表。
 
 `clip_ids`
 
-A list of animation clip indices in the agent definition.
-A clip’s index can be obtained via [agentfindclip](agentfindclip.html "Finds the index of a clip in an agent’s definition.").
+代理定义中的动画片段索引列表。一个片段的索引可以通过[agentfindclip](agentfindclip.html)获得（"查找代理定义中一个片段的索引。"）。
 
 `clip_times`
 
-A list of times that the clips should be sampled at.
+夹子应该被采样的时间列表。
 
 `clip_weights`
 
-A list of blend weights for the animation clips.
+动画片段的混合权重列表。
 
 `clip_transform_groups`
 
-A list of transform groups, which specify the joints that each clip should be applied to.
+变换组的列表，指定每个剪辑应该应用到的关节。
 
 `clip_transform_group_ids`
 
-A list of transform group indices in the agent definition.
-A transform group’s index can be obtained via [agentfindtransformgroup](agentfindtransformgroup.html "Finds the index of a transform group in an agent’s definition.").
+代理人定义中的转换组索引列表。一个变换组的索引可以通过[agentfindtransformgroup](agentfindtransformgroup.html)获得（"查找代理定义中变换组的索引。"）。
 
 `clip_layer_ids`
 
-A list containing the layer that each animation clip is an input for.
+一个包含每个动画片段作为输入的层的列表。
 
 `layer_blend_modes`
 
-A list of blend modes for each layer. The available blend modes are defined in `$HH/vex/include/crowd_cliplayers.h`.
+每个层的混合模式的列表。可用的混合模式在`$HH/vex/include/crowd_cliplayers.h`中定义。
 
 `layer_weights`
 
-A list of blend weights for each layer. The blend weight is not used for the topmost layer.
+每层的混合权重的列表。混合权重不用于最上面的一层。
 
 `layer_parent_ids`
 
-A list containing the parent layer for each layer (or -1 for the topmost layer). This specifies a tree of animation layers.
-
-
+一个包含每个层的父层的列表（或者-1 代表最上面的层）。这指定了一棵动画层的树。
 
 ## See also
 

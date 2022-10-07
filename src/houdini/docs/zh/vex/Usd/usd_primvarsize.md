@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Since 18.0
 
 `int usd\_primvarsize(<stage>stage, string primpath, string name)`
@@ -37,19 +35,17 @@ The tuple size of the primvar.
 
 If the primvar does not exist, returns `0`.
 
-Use [usd_primvarlen](usd_primvarlen.html "Returns the length of the array primvar directly on the USD primitive.") if you want to obtain the array primvar length.
+Use [usd_primvarlen](usd_primvarlen.html) () ("Returns the length of the array primvar directly on the USD primitive.") if you want to obtain the array primvar length.
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Get the tuple size of a primvar on the cube primitive.
 int tuple\_size = usd\_primvarsize(0, "/geo/cube", "primvar\_name");
 
 ```
-
-
 
 ## See also
 

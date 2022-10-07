@@ -7,10 +7,9 @@ category:
 
 `vector wo\_nspace(vector v)`
 
-Transforms a normal vector from _World_ to _Object_ space.
+将一个法向量从*世界*空间转换到*物体*空间。
 
-
-transform
+转变
 
 [agentcliptransformgroups](agentcliptransformgroups.html)
 

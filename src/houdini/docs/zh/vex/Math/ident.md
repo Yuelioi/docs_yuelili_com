@@ -7,10 +7,9 @@ category:
 
 `<matrix> ident()`
 
-Returns the identity matrix for the given matrix type.
+返回给定矩阵类型的身份矩阵。
 
-
-matrix
+基体
 
 [\_\_uniform\_mul](### uniform_mul.html)
 

@@ -5,21 +5,15 @@ category:
   - vex
 ---
 
-
-
-Context(s)
 [surface](../contexts/surface.html)
 
 `int isshadowray()`
 
-Returns 1 if the shader is being called to evaluate opacity for shadow
-rays, or 0 if the shader is being called to evaluate for surface color.
+Context(s) 如果着色器被调用来评估阴影射线的不透明度，则返回 1；如果着色器被调用来评估表面颜色，则返回 0。
 
-Use this function to compute different opacity if the surface is
-shadowing another surface.
+如果曲面对另一曲面有阴影，则使用此函数计算不同的不透明度。
 
-
-shadow
+阴影
 
 [dsmpixel](dsmpixel.html)
 
@@ -35,8 +29,7 @@ shadow
 
 [shadowmap](shadowmap.html)
 
-|
-surface
+| 表面
 
 [ambient](ambient.html)
 

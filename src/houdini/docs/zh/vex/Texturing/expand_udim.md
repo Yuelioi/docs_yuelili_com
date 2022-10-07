@@ -7,58 +7,49 @@ category:
 
 `string expand\_udim(float u, float v, string path, ...)`
 
-Scans the input path for special conversion characters to perform either UDIM
-or UVTILE style filename expansion.
+扫描输入路径的特殊转换字符，以执行 UDIM 或 UVTILE 风格的文件名扩展。
 
-This is similar to [texprintf](texprintf.html "Similar to sprintf, but does expansion of UDIM or UVTILE texture filename expansion."), with two significant differences:
+这与[texprintf](texprintf.html) ()("类似于 sprintf，但做 UDIM 或 UVTILE 纹理文件名的扩展。")相似，有两个明显的区别。
 
-- There are no variadic print arguments. Only UDIM/UVTILE expansion is performed.
-- If UDIM/UVTILE expansion was performed, the function checks to see if the texture exists and is accessible.
+- 没有可变的打印参数。只进行 UDIM/UVTILE 扩展。
+- 如果执行了 UDIM/UVTILE 扩展，该函数将检查纹理是否存在并可以访问。
 
 ## Arguments
 
 `u`, `v`
 
-The texture coordinates to translate into a UDIM tile specification.
+要翻译成 UDIM 瓦片规格的纹理坐标。
 
 `path`
 
-A file path. Special character sequences in the path will be expanded into UDIM specifiers based on the given UV coordinates. The special conversion sequences are:
-
+一个文件路径。路径中的特殊字符序列将根据给定的 UV 坐标扩展成 UDIM 指定符。特殊的转换序列是：。
 
 `%(UDIM)d` or `<UDIM>` The UDIM coordinate, as computed by `1000 + int(u)+1 + int(v)*10`
-|
-`%(U)d` The UVTILE style u-coordinate (`int(u)+1`)
-|
-`%(V)d` The UVTILE style v-coordinate (`int(v)+1`)
-|
-`%(UVTILE)d` or `<UVTILE>` Expands both u and v coordinates in the form `u%d_v%d`.
+| `%(U)d` UVTILE 风格的 u 坐标(`int(u)+1`)| `%(V)d` UVTILE 风格的 v 坐标(`int(v)+1`)| `%(UVTILE)d`或`<UVTILE>`以`u%d_v%d`的形式展开 u 和 v 坐标。
 
-The `d` conversion specifier for texture identification can be modified with
-field modifiers. For example `%(U)02d` or `%(V)04d`.
+纹理识别的`d`转换指定器可以用字段修改。例如`%(U)02d`或`%(V)04d`。
 
-"checkfile",
 `int`
 `=1`
 
-Normally, the function checks whether the expanded path exists and is readable. If you pass the `"checkfile", 0` pair, the function will not perform this check.
+"checkfile", 通常情况下，函数会检查扩展后的路径是否存在并可读。如果你传递`"checkfile", 0`对，函数将不执行这个检查。
 
 ## Returns
 
-The path with any UDIM control sequences replaced.
+替换了任何 UDIM 控制序列的路径。
 
-If the expanded file path does not exist or is not readable, the function will return an empty string, unless you turn off the `checkfile` variadic argument.
+如果扩展的文件路径不存在或不可读，该函数将返回一个空字符串，除非你关闭`checkfile`变量参数。
 
 ## Examples
 
-[¶](#examples)
 
-- `expand_udim(3.1, 4.15, "map_%(UDIM)d.rat")` - Returns “map_1044.rat”
-- `expand_udim(3.1, 4.15, "map_%(U)02d_%(V)02d.rat")` - Returns “map_04_05.rat”
-- `expand_udim(3.14, 11.5, "map_u%(U)d_v%(V)d.rat")` - Returns “map_u4_v12.rat”
-- `expand_udim(3.14, 11.5, "missing_file%(UDIM)d.rat")` - Returns “” for missing files.
-- `expand_udim(3.14, 11.5, "missing_file%(UDIM)d.rat", "checkfile", 0)` - Returns “missing_file1044.rat” since “checkfile” is disabled.
-- `expand_udim(3.14, 11.5, "/path/file.rat")` - Returns “/path/file.rat” whether the file exists or not since there are no UDIM/UVTILE expansions.
+
+- `expand_udim(3.1, 4.15, "map_%(UDIM)d.rat")` - 返回 "map_1044.rat"
+- `expand_udim(3.1, 4.15, "map_%(U)02d_%(V)02d.rat")` - 返回 "map_04_05.rat"
+- `expand_udim(3.14, 11.5, "map_u%(U)d_v%(V)d.rat")` - 返回 "map_u4_v12.rat"
+- `expand_udim(3.14, 11.5, "missing_file%(UDIM)d.rat")` - 缺少文件时返回""。
+- `expand_udim(3.14, 11.5, "missing_file%(UDIM)d.rat", "checkfile", 0)` - 返回 "missing_file1044.rat"，因为 "checkfile "被禁用。
+- `expand_udim(3.14, 11.5, "/path/file.rat")` - 返回"/path/file.rat"，无论该文件是否存在，因为没有 UDIM/UVTILE 扩展。
 
 ```c
 // sprintf() will leave the %(UDIM)d format sequence unmodified.
@@ -69,8 +60,6 @@ if (map != "")
 Cf = texture(map, u, v);
 
 ```
-
-
 
 ## See also
 

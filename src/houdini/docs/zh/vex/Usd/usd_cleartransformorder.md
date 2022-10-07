@@ -5,38 +5,34 @@ category:
   - vex
 ---
 
-
-
-Since 17.5
+自 17.5 以来
 
 `int usd\_cleartransformorder(int stagehandle, string primpath)`
 
-This function clears the primitive’s transform order. Transform order is a sequence of transform operations, whose full names are stored in `xformOpOrder` attribute as a string array. Thus, this function clears that attribute.
+此函数清除了基元的转换顺序。变换顺序是一个变换操作序列，其全名作为一个字符串数组存储在`xformOpOrder`属性中。因此，此函数会清除该属性。
 
 ## Arguments
 
 `stagehandle`
 
-A handle to the stage to write to. Currently the only valid value is `0`, which means the current stage in a node. (This argument may be used in the future to allow writing to other stages.)
+要写入的阶段的句柄。目前唯一有效的值是 "0"，这意味着在一个节点中的当前阶段。(这个参数将来可能会被用于允许写到其他阶段。)
 
 `primpath`
 
-The path to the primitive.
+通往原始的道路。
 
 ## Returns
 
-The value of `stagehandle` on success or `-1` on failure.
+成功时是`stagehandle`的值，失败时是`-1`。
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 usd\_cleartransformorder(0, "/geo/cone");
 
 ```
-
-
 
 ## See also
 

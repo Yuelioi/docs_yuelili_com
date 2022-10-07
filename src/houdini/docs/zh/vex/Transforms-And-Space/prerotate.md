@@ -5,9 +5,7 @@ category:
   - vex
 ---
 
-
-
-Since 17.5
+自 17.5 以来
 
 `void prerotate(matrix3 &m, float amount, vector axis)`
 
@@ -21,11 +19,7 @@ Since 17.5
 
 `void prerotate(matrix &m, float angle, int axis)`
 
-Applies a prerotation to the given matrix. The angles must be given in
-radians and the axis must be normalized. The xyz argument is the rotate order.
-The axis can also be given as an integer where XAXIS=1, YAXIS=2 and ZAXIS=4.
-
-
+对给定的矩阵应用一个预旋转。角度必须以弧度为单位，轴必须被规范化。xyz 参数是旋转的顺序。轴也可以用整数给出，其中 XAXIS=1，YAXIS=2，ZAXIS=4。
 
 ## See also
 

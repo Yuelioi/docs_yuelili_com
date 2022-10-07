@@ -5,36 +5,33 @@ category:
   - vex
 ---
 
-
-
-Since 18.0
+自 18.0 以来
 
 `float [] usd\_attribtimesamples(<stage>stage, string primpath, string name)`
 
-This function returns an array of time codes at which the attribute values are
-authored.
+该函数返回一个数组，该数组中的时间代码是属性值自动生成的。
 
 ## Arguments
 
 `<stage>`
 
-When running in the context of a node (such as a wrangle LOP), this argument can be an integer representing the input number (starting at 0) to read the stage from. The integer is equivalent to the string form referencing a particular input, e.g., “opinput:0”.
+当在一个节点的上下文中运行时（比如 wrangle LOP），这个参数可以是一个整数，代表要读取阶段的输入号码（从 0 开始）。这个整数等同于引用特定输入的字符串形式，例如，"opinput:0"。
 
 `primpath`
 
-The path to the primitive.
+通往原始的道路。
 
 `name`
 
-Attribute name.
+属性名称。
 
 ## Returns
 
-The array of time codes at which the attribute values are authored, or an empty array if the attribute does not exist or has no time samples.
+撰写属性值的时间代码数组，如果属性不存在或没有时间样本，则为空数组。
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Get the time codes of a foo attribute.
@@ -59,8 +56,6 @@ float[] usd\_attribtimesamplevalues(const int input; const string primpath, attr
 }
 
 ```
-
-
 
 ## See also
 

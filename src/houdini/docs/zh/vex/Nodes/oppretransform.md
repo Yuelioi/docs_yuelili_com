@@ -13,16 +13,11 @@ category:
 
 `matrix oppretransform(int opid, float time)`
 
-Returns the transform associated with an OP. If the OP specified has no
-transform associated with it (for example a COP), then an identity
-matrix is returned. It is possible to specify the time to evaluate the
-transform at (in seconds, not frames).
+返回与一个 OP 相关的变换。如果指定的 OP 没有与之相关的变换（例如 COP），那么将返回一个相同的矩阵。可以指定评估变换的时间（单位是秒，而不是帧）。
 
 ::: info Note
 
-The op: syntax can be used to simulate this behavior using the standard transform functions.
-
-
+op: 语法可以用来模拟这种行为，使用标准的转换函数。
 
 ## See also
 

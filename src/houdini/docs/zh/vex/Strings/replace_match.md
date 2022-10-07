@@ -7,15 +7,13 @@ category:
 
 `string replace\_match(string str, string pattern\_from, string pattern\_to)`
 
-If the string matches `pattern_from`, it is replaced with `pattern_to` with the matching wildcards substituted in.
+如果字符串与 "pattern_from "匹配，则用 "pattern_to "替换，并将匹配的通配符替换进去。
 
-The pattern can use wildcards such as `str*` or `str?`, similar to the [match](match.html "This function returns 1 if the subject matches the pattern specified,
-or 0 if the subject doesn’t match.") function.
-The wildcards may also be referred to with an index (e.g. `(2)`) to allow reordering.
+模式可以使用通配符，如`str*`或`str?`，类似于[match](match.html) ("如果主题与指定的模式匹配，该函数返回1，如果主题不匹配，则返回0。")函数。通配符也可以用一个索引（如`(2)`）来指代，以允许重新排序。
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Returns "carol is my name";
@@ -28,8 +26,6 @@ s = replace\_match("a\_to\_b", "\*\_to\_\*", "\*-\*");
 s = replace\_match("a\_to\_b", "\*\_to\_\*", "\*(1)\_to\_\*(0)");
 
 ```
-
-
 
 ## See also
 

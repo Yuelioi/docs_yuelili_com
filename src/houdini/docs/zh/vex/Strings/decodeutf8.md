@@ -5,16 +5,11 @@ category:
   - vex
 ---
 
-
-
-Since 19.0
+自 19.0 以来
 
 `int [] decodeutf8(string str)`
 
-Converts a UTF8 string into a series of code points. VEX treats its strings as UTF8 by default, but this means indexing into strings can have unusual behavior. Generating code points ensures there
-is one index for each logical character.
-
-
+将一个 UTF8 字符串转换为一系列的代码点。VEX 默认将其字符串视为 UTF8，但这意味着对字符串进行索引会有不寻常的行为。生成代码点可以确保每个逻辑字符都有一个索引。
 
 ## See also
 

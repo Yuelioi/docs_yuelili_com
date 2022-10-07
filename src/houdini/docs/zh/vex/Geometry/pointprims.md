@@ -11,23 +11,21 @@ category:
 
 `<geometry>`
 
-When running in the context of a node (such as a wrangle SOP), this argument can be an integer representing the input number (starting at 0) to read the geometry from.
+当在一个节点的上下文中运行时（比如一个 wrangle SOP），这个参数可以是一个整数，代表要读取几何图形的输入数字（从 0 开始）。
 
-Alternatively, the argument can be a string specifying a geometry file (for example, a `.bgeo`) to read from. When running inside Houdini, this can be an `op:/path/to/sop` reference.
+或者，该参数可以是一个字符串，指定一个几何文件（例如，`.bgeo'），以便从中读取。当在Houdini内部运行时，这可以是一个`op:/path/to/sop`的引用。
 
 `ptnum`
 
-The point number to get a primitive from.
+要从中获取基元的点号。
 
 ## Returns
 
-An array of primitive numbers. These will be in ascending order
-and not contain duplicates.
+一个原始数的数组。这些数字将按升序排列，不包含重复的数字。
 
-If no primitives own the given point the array will be empty.
+如果没有基元拥有给定的点，那么数组将是空的。
 
-
-point
+点
 
 [addpoint](addpoint.html)
 
@@ -101,8 +99,7 @@ point
 
 [vertexpoint](vertexpoint.html)
 
-|
-prim
+| 初步
 
 [addprim](addprim.html)
 

@@ -5,12 +5,10 @@ category:
   - vex
 ---
 
+在这一页
 
-
-On this page
-
-- [Image filtering options](#image-filtering-options)
-- [Examples](#examples)
+- [图片过滤选项](#image-filtering-options)
+- [例子](#例子)
 
 `vector environment(string texture\_filename, vector reflect\_dir, ...)`
 
@@ -24,21 +22,19 @@ On this page
 
 `vector4 environment(string texture\_filename, vector reflect\_dir, float filter\_angle, ...)`
 
-Returns the color of the environment texture in the direction given by the `reflect_dir` argument. The signatures that specify four vectors filter the map pixels found within the cone defined by the vectors. Rather than specifying a filtering cone by providing four vectors, it is also possible to indicate an angle to filter over using the filter_angle argument with a single reflection direction.
+返回环境纹理在`reflect_dir`参数所给方向上的颜色。指定四个向量的签名可以过滤在向量定义的锥体中发现的地图像素。与其通过提供四个向量来指定一个过滤锥体，还可以使用 filter_angle 参数和一个反射方向来表示过滤的角度。
 
-The environment function can also be used to look up intensity values in an IES photometric light map, with the correct angular mapping applied.
+环境功能也可用于查询 IES 光度图中的强度值，并应用正确的角度映射。
 
 ::: info Note
 
-To perform environment map lookups in object space, you’ll need to first transform the direction vector using the vtransform() function.
+为了在物体空间中进行环境图查询，你需要首先使用 vtransform()函数对方向向量进行转换。
 
-##
-
-Image filtering options
+## 图像过滤选项
 
 [¶](#image-filtering-options)
 
-Examples of specifying filter parameters:
+指定过滤器参数的例子。
 
 ```c
 colormap(map, u, v, "smode", "decal", "tmode", "repeat", "border", {.1,1,1});
@@ -418,14 +414,12 @@ energy output.
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 vector dir = vtransform("space:current", "space:object", {0, 1, 0});
 vector clr = environment("sky.rat", dir);
 ```
-
-
 
 ## See also
 

@@ -11,14 +11,9 @@ category:
 
 `u`
 
-Three numbers between 0 and 1.
+0 和 1 之间的三个数字。
 
-Returns a unit vector4, i.e. a vector4 of length 1, based on `u`.
-Given uniform random `u` vectors of three values in `[0,1)`, the returned unit vectors will be
-uniform random and continuous with respect to `u` on the surface of the unit hypersphere.
-In other words, they will be uniform random orientation quaternions.
-
-
+返回一个单位向量 4，即长度为 1 的向量 4，基于`u`。给出在`[0,1)`中三个值的均匀随机`u`向量，返回的单位向量将是均匀随机的，并且相对于`u`在单位超球的表面上是连续的。换句话说，它们将是均匀随机的定向四元数。
 
 ## See also
 

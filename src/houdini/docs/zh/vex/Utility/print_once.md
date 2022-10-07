@@ -30,7 +30,7 @@ are checked across all instances of the `print_once()` functions.
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Only print "Hello world" one time
@@ -41,7 +41,6 @@ for (int i = 0; i < 100; ++i)
 print\_once( sprintf("Missing texture map: %s\n", texture\_map), "global", 1);
 
 ```
-
 
 print
 

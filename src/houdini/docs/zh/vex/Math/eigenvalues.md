@@ -7,25 +7,23 @@ category:
 
 `void eigenvalues(int &nroot, matrix3 mat, vector &real, vector &imaginary)`
 
-Computes the [eigenvalues](http://en.wikipedia.org/wiki/Eigenvalues_and_eigenvectors) of a 3×3 matrix.
+计算一个 3×3 矩阵的[特征值](http://en.wikipedia.org/wiki/Eigenvalues_and_eigenvectors)。
 
 ## Arguments
 
 `nroot`
 
-The function overwrites this variable with the number of real roots.
+该函数用实数根的数量覆盖了这个变量。
 
 `mat`
 
-The matrix to compute the eigenvalues for.
+要计算特征值的矩阵。
 
 `real`, `imaginary`
 
-The components of these two vectors are overwritten with corresponding pairs of real and imaginary parts of each eigenvalue.
-For example, `real[0]` and `imaginary[0]` contain the real and imaginary parts of the first eigenvalue.
+这两个向量的分量被覆盖为每个特征值的相应的实部和虚部对。例如，`real[0]`和`imaginary[0]`包含第一个特征值的实部和虚部。
 
-
-matrix
+基体
 
 [\_\_uniform\_mul](### uniform_mul.html)
 

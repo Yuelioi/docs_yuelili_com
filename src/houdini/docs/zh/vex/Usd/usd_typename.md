@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Since 17.5
 
 `string usd\_typename(<stage>stage, string primpath)`
@@ -29,15 +27,13 @@ The name of the primitive’s type.
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Get the primitive's type name, eg "Cube".
 string type\_name = usd\_typename(0, "/geo/cube");
 
 ```
-
-
 
 ## See also
 

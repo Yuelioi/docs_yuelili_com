@@ -9,34 +9,33 @@ category:
 
 `<type>[] vertexattrib(<geometry>geometry, string attribute\_name, int linear\_vertex\_index, int &success)`
 
-Unlike [vertex](vertex.html "Reads a vertex attribute value from a geometry."), this function does not have a version that takes a primitive number and primitive vertex number. If you have a primitive number and primitive vertex number, you can convert them into a linear index using [vertexindex](vertexindex.html "Converts a primitive/vertex pair into a linear vertex.").
+与 [vertex](vertex.html) () （"从几何体中读取顶点属性值"）不同的是，此函数没有一个接受原始数和原始顶点数的版本。如果你有一个基元数和基元顶点数，你可以使用 [vertexindex](vertexindex.html) （"将基元/顶点对转换为线性顶点"）将它们转换为一个线性索引。
 
 ## Arguments
 
 `<geometry>`
 
-When running in the context of a node (such as a wrangle SOP), this argument can be an integer representing the input number (starting at 0) to read the geometry from.
+当在一个节点的上下文中运行时（比如一个 wrangle SOP），这个参数可以是一个整数，代表要读取几何图形的输入数字（从 0 开始）。
 
-Alternatively, the argument can be a string specifying a geometry file (for example, a `.bgeo`) to read from. When running inside Houdini, this can be an `op:/path/to/sop` reference.
+或者，该参数可以是一个字符串，指定一个几何文件（例如，一个`.bgeo'）来读取。当在Houdini内部运行时，这可以是一个`op:/path/to/sop`的引用。
 
 `attribute_name`
 
-The name of the attribute (or intrinsic) to read.
+要读取的属性（或内在属性）的名称。
 
 `linear_vertex_index`
 
-A linear index into the list of all vertices. If you have a primitive number and primitive vertex number, you can convert them into a linear index using [vertexindex](vertexindex.html "Converts a primitive/vertex pair into a linear vertex.").
+一个进入所有顶点列表的线性索引。如果你有一个基元数和基元顶点数，你可以使用[vertexindex](vertexindex.html) ()("将基元/顶点对转换为线性顶点。")将它们转换成线性索引。
 
 `success`
 
-The function overwrites this variable with `1` if the attribute exists and was read successfully, or `0` otherwise.
+如果该属性存在并被成功读取，该函数将用`1'覆盖该变量，否则用`0'覆盖。
 
 ## Returns
 
-The value of the given attribute on the given point number.
+在给定的点号上给定属性的值。
 
-
-attrib
+附注
 
 [addattrib](addattrib.html)
 
@@ -176,8 +175,7 @@ attrib
 
 [vertexattribtypeinfo](vertexattribtypeinfo.html)
 
-|
-vertex
+| 顶点
 
 [addvertex](addvertex.html)
 

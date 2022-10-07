@@ -5,13 +5,11 @@ category:
   - vex
 ---
 
-If you don’t know the class of attribute until runtime, use [removeattrib](removeattrib.html "Removes an attribute or group from the geometry.").
+如果你在运行前不知道属性的类别，可以使用[removeattrib](removeattrib.html)（"从几何体中删除一个属性或组。"）。
 
 `int removeprimattrib(int geohandle, string name)`
 
-Removes a primitive attribute from the given geometry.
-
-
+从给定的几何体中删除一个原始属性。
 
 ## See also
 
@@ -24,8 +22,7 @@ Removes a primitive attribute from the given geometry.
 - [removeprimattrib](removeprimattrib.html)
 - [removeprimgroup](removeprimgroup.html)
 
-|
-attrib
+### attrib
 
 [addattrib](addattrib.html)
 

@@ -5,13 +5,11 @@ category:
   - vex
 ---
 
-If you don’t know the class of group until runtime, use [removeattrib](removeattrib.html "Removes an attribute or group from the geometry.").
+如果你在运行前不知道组的类别，可以使用[removeattrib](removeattrib.html)（"从几何体中删除一个属性或组。"）。
 
 `int removepointgroup(int geohandle, string name)`
 
-Removes a point group from the given geometry.
-
-
+从给定的几何体中删除一个点组。
 
 ## See also
 

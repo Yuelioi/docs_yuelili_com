@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Since 18.0
 
 `string [] usd\_relationshipnames(<stage>stage, string primpath)`
@@ -29,15 +27,13 @@ String array containing the names of the primitive’s relationships.
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Get the relationship names from the primitive.
 string relationship\_names[] = usd\_relationshipnames(0, "/geo/cube");
 
 ```
-
-
 
 ## See also
 

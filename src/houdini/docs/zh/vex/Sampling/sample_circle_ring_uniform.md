@@ -5,9 +5,7 @@ category:
   - vex
 ---
 
-
-
-Since 17.0
+自 17.0 以来
 
 `vector2 sample\_circle\_ring\_uniform(vector2 u, float alpha)`
 
@@ -15,20 +13,13 @@ Since 17.0
 
 `u`
 
-Pair of numbers between 0 and 1.
+0 和 1 之间的一对数字。
 
 `alpha`
 
-The inner radius to be bounded by. A number between 0 and 1.
+要约束的内半径。一个介于 0 和 1 之间的数字。
 
-Returns a vector2 of length < 1, based on `u`.
-Given uniform random `u` pairs of values in `[0,1)`,
-and value `alpha` in `[0,1]`, the returned vectors will be
-uniform random and continuous with respect to `u` inside the unit circle ring with inner radius of `alpha`.
-Specifically, it returns `scale*(cos(angle),sin(angle))`, where `angle` is `2*pi*u.x`
-and `scale` is `sqrt((1-alpha^2)*u.y+alpha^2)`.
-
-
+返回一个长度<1 的向量 2，基于`u`。给出`[0,1)`中的均匀随机的`u`对，以及`[0,1]`中的值`alpha`，返回的向量将是均匀随机的，并且相对于`u`在以`alpha`为内半径的单位圆环中是连续的。具体来说，它返回`scale*(cos(angle),sin(angle))`，其中`angle`是`2*pi*u.x`，`scale`是`sqrt((1-alpha^2)*u.y+alpha^2)`。
 
 ## See also
 

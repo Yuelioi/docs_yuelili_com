@@ -5,9 +5,6 @@ category:
   - vex
 ---
 
-
-
-Context(s)
 [displace](../contexts/displace.html)
 [fog](../contexts/fog.html)
 [light](../contexts/light.html)
@@ -16,47 +13,47 @@ Context(s)
 
 `void getuvtangents(string objName, vector P, vector dir, vector &Tu, vector &Tv)`
 
-This variant additionally sets Tn to the evaluation point’s surface normal:
+内涵(s) 这个变体额外地将 Tn 设置为评估点的表面法线。
 
 `void getuvtangents(string objName, vector P, vector dir, vector &Tu, vector &Tv, vector &Tn)`
 
 ::: info Note
 
-The object must have a vector attribute named “uv”.
+该对象必须有一个名为 "uv "的矢量属性。
 
 :::tip
 
-Passing “” as the `objName` parameter will cause the function to use the current shaded object.
+传递""作为`objName`参数将导致该函数使用当前的阴影对象。
 
 ## Arguments
 
 `objName`
 
-Name of object to evaluate UV tangents for.
+评估 UV 切线的对象的名称。
 
 `P`
 
-Point at which to evaluate UV tangents.
+评估 UV 切线的点。
 
 `dir`
 
-The direction to use for searching the object’s surface.
+用于搜索物体表面的方向。
 
-The surface of the object is searched for by casting rays from `P` in this direction as well as the opposite direction.
+通过从`P`向这个方向以及相反的方向投射射线来寻找物体的表面。
 
-When available, it makes sense to use the normal at the point being evaluated.
+如果有的话，使用被评估点的正常值是有意义的。
 
 `Tu`
 
-UV tangent in U direction.
+在 U 方向的 UV 切线。
 
 `Tv`
 
-UV tangent in V direction.
+在 V 方向的 UV 切线。
 
 `Tn`
 
-The surface normal at the point where tangents are evaluated.
+评估切线的点的表面法线。
 
 ```c
 // Get UV tangent at 'P', searching the surface in the direction of 'N'
@@ -72,8 +69,6 @@ vector Tu, Tv, Tn;
 getuvtangents("/obj/geo1", ray\_orig, ray\_dir, Tu, Tv, Tn);
 
 ```
-
-
 
 ## See also
 

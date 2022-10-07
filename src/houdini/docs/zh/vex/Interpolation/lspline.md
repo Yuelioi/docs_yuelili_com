@@ -7,33 +7,29 @@ category:
 
 `float lspline(float sample\_pos, float value1, ...)`
 
-Samples a polyline defined by a series of (linearly spaced) values.
-This is useful for specifying a 1D data ramp.
+对由一系列（线性间隔的）数值定义的多段线进行采样。这对于指定一个一维数据斜面很有用。
 
 `vector lspline(float sample\_pos, vector value1, ...)`
 
 `vector4 lspline(float sample\_pos, vector4 value1, ...)`
 
-Samples a polyline defined by a series of (linearly spaced) vector values.
-This is useful for specifying a color ramp.
+对由一系列（线性间隔）矢量值定义的折线进行采样。这对指定一个颜色斜率很有用。
 
-If you need variably-spaced keys, use [lkspline](lkspline.html "Samples a polyline between the key points.") instead.
+如果你需要不同间隔的键，请使用[lkspline](lkspline.html)（"在键点之间采样一条折线。"）代替。
 
 ## Arguments
 
 `sample_pos`
 
-The position along the curve at which to sample the value.
+沿着曲线的位置，在这个位置上进行采样。
 
 `valuen`
 
-To define the shape of the curve, you pass a number of values specifying the key points through which the curve passes. The function automatically spaces the keys evenly.
+为了定义曲线的形状，你要传递一些数值，指定曲线经过的关键点。该函数会自动将这些关键点均匀地放在一起。
 
 :::tip
 
-The [spline](spline.html "Samples a value along a polyline or spline curve.") function is a more flexible superset of this function.
-
-
+[spline](spline.html) () ("沿折线或花键曲线采样一个值。")函数是这个函数的一个更灵活的超集。
 
 ## See also
 

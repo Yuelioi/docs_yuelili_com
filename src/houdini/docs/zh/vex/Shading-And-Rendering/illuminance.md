@@ -5,23 +5,19 @@ category:
   - vex
 ---
 
+在这一页
 
+- [概览](#overview)
+- [灯光包含/排除选项](#灯光包含-排除-选项)
+- [向灯光的着色器发送信息](#sending-information-to-the light-s-shader)
+- 信息传递](#信息传递)
+- [lightexport 关键词参数](#lightexport-keyword-argument)
 
-On this page
-
-- [Overview](#overview)
-- [Light inclusion/exclusion options](#light-inclusion-exclusion-options)
-- [Sending information to the light’s shader](#sending-information-to-the-light-s-shader)
-- [Message passing](#message-passing)
-- [lightexport keyword argument](#lightexport-keyword-argument)
-
-##
-
-Overview
+## 概述
 
 [¶](#overview)
 
-// Need to indent this so the include below doesn’t go under this heading
+// 需要缩进这个，以便下面的 include 不会在这个标题下。
 
 ```c
 illuminance(position, [axis], [angle], [light\_typemask], [lightmask])
@@ -34,15 +30,13 @@ illuminance(position, [axis], [angle], [light\_typemask], [lightmask])
 
 ```
 
-The shadow shader is not called unless you explicitly call it. However, once the shadow shader has been called, the value of `Cl` will be changed for the duration of the surface shader. The shadow shader is automatically called when using any of the built-in lighting calls (e.g. [diffuse](diffuse.html "Returns a diffuse BSDF or computes diffuse shading."), [specular](specular.html "Returns a specular BSDF or computes specular shading."), [ambient](ambient.html "Returns the color of ambient light in the scene.")).
+The shadow shader is not called unless you explicitly call it. However, once the shadow shader has been called, the value of `Cl` will be changed for the duration of the surface shader. The shadow shader is automatically called when using any of the built-in lighting calls (e.g. [diffuse](diffuse.html) () ("Returns a diffuse BSDF or computes diffuse shading."), [specular](specular.html) () ("Returns a specular BSDF or computes specular shading."), [ambient](ambient.html) () ("Returns the color of ambient light in the scene.")).
 
 The default value for the axis is the surface normal. The default value for the angle is PI/2. The default value for the light mask is LIGHT_DIFFUSE|LIGHT_SPECULAR (please see shading.h for the light definitions).
 
 The `illuminance` statement loops through all light sources for which `dot(L, axis) > cos(angle)`.
 
-##
-
-Light inclusion/exclusion options
+## Light inclusion/exclusion options
 
 [¶](#light-inclusion-exclusion-options)
 
@@ -63,7 +57,7 @@ diff = diffuse(nml, "lightmask", "hero fill");
 
 ```
 
-See [light categories](../../render/lights.html#categories) for more information.
+See [light categories](../../render/lights.html) () (#categories) for more information.
 
 "`lightmask`",
 `string`
@@ -92,9 +86,7 @@ All Houdini scoping patterns, excepting group expansion, are supported:
 - `^` - exclusion operator
 - `[list]` - character list match
 
-##
-
-Sending information to the light’s shader
+## Sending information to the light’s shader
 
 [¶](#sending-information-to-the-light-s-shader)
 
@@ -107,7 +99,7 @@ illuminance (P, nf, M\_PI/2, "orgN", N) {
 
 ```
 
-In the light’s shader, you can receive the value from the illuminance loop with the [simport](simport.html "Imports a variable sent by a surface shader in an illuminance loop.") function.
+In the light’s shader, you can receive the value from the illuminance loop with the [simport](simport.html) () ("Imports a variable sent by a surface shader in an illuminance loop.") function.
 
 ```c
 vector orgN;
@@ -142,17 +134,15 @@ Cl = orgN;
 
 ```
 
-##
-
-Message passing
+## Message passing
 
 [¶](#message-passing)
 
 Within the illuminance loop, you can retrieve values from the light shader
-with the [limport](limport.html "Imports a variable from the light shader for the surface.") function.
+with the [limport](limport.html) () ("Imports a variable from the light shader for the surface.") function.
 
 The light shader can retrieve any “keyword” arguments passed to the illuminance
-statement with the [simport](simport.html "Imports a variable sent by a surface shader in an illuminance loop.") function.
+statement with the [simport](simport.html) () ("Imports a variable sent by a surface shader in an illuminance loop.") function.
 
 For example, to send down the vector variable `uv` to the light shader…
 
@@ -171,9 +161,7 @@ printf("Imported: %g from surface\n", uv);
 
 ```
 
-##
-
-lightexport keyword argument
+## lightexport keyword argument
 
 [¶](#lightexport-keyword-argument)
 
@@ -216,8 +204,6 @@ spec = clr;
 }
 
 ```
-
-
 
 ## See also
 

@@ -4,7 +4,7 @@ order: 2
 category:
   - houdini
 ---
-    
+
 ## 描述
 
 Returns the indices of a sorted version of an array.

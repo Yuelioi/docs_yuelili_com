@@ -11,21 +11,19 @@ category:
 
 `geohandle`
 
-A handle to the geometry to write to. Currently the only valid value is `0` or [geoself](geoself.html "Returns a handle to the current geometry."), which means the current geometry in a node. (This argument may be used in the future to allow writing to other geometries.)
+要写入的几何体的句柄。目前唯一有效的值是`0`或[geoself](geoself.html) () ("返回当前几何体的句柄。")，这意味着当前节点中的几何体。(这个参数将来可能会被用来允许写到其他的几何体)。
 
 `prim_num`
 
-The primitive number to add the vertex to.
+要添加顶点的原始编号。
 
 `point_num`
 
-The point number to wire the new vertex to.
+连接新顶点的点号。
 
 ## Returns
 
-Returns a _linear_ vertex index, or `-1` if the vertex could not be added. You can use this number with [setvertexattrib](setvertexattrib.html "Sets a vertex attribute in a geometry.") to set attributes on the new vertex, however this number may not be the final vertex index.
-
-
+返回一个*linear*顶点索引，如果顶点不能被添加，则返回`-1`。你可以在[setvertexattrib](setvertexattrib.html)（"在几何体中设置顶点属性。"）中使用这个数字来设置新顶点的属性，但是这个数字可能不是最终的顶点索引。
 
 ## See also
 

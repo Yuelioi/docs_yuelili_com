@@ -9,35 +9,23 @@ category:
 
 `vector cracktransform(int trs, int xyz, int c, vector pivot, matrix xform)`
 
-Depending on the value of c, returns the translate (`c=0`), rotate
-(`c=1` or `c=4`), scale (`c=2`) or shears (`c=3`) component of the transform (xform). The
-function uses the given transform and rotation orders (trs and
-xyz) , the given pivot point (pivot) and optional pivot rotation (pr) to calculate the return
-value. The specifications for the trs and xyz parameters can be
-found in `$HFS/houdini/vex/include/math.h`.
+根据 c 的值，返回变换（xform）的平移（`c=0`）、旋转（`c=1`或`c=4`）、缩放（`c=2`）或剪切（`c=3`）部分。该函数使用给定的变换和旋转命令（trs 和 xyz），给定的支点（pivot）和可选的支点旋转（pr）来计算返回值。trs 和 xyz 参数的规格可以在`$HFS/houdini/vex/include/math.h`中找到。
 
 ::: info Note
 
-Rotation angles (when `c=1`) are returned in degrees, whereas many other VEX functions use radians.
-You can use the [radians](radians.html "Converts the argument from degrees into radians.") VEX function to convert the vector of angles in degrees to a vector of angles in radians.
-For example: `vector angles = radians(cracktransform(XFORM_TRS, XFORM_XYZ, 1, {0,0,0}, M));`
+旋转角度（当`c=1`时）以度数返回，而许多其他 VEX 函数使用弧度。你可以使用[radians](radians.html) () ("将参数从度数转换为弧度。") VEX 函数将度数的角度向量转换为弧度的角度向量。例如：`vector angles = radians(cracktransform(XFORM_TRS, XFORM_XYZ, 1, {0,0,0}, M));`。
 
 ::: info Note
 
-Rotation angles (when `c=4`) are returned in radians.
+旋转角度（当`c=4`时）以弧度返回。
 
 `void cracktransform(int trs, int xyz, vector pivot, vector pivot\_rotate, matrix xform, vector &t, vector &r, vector &s, vector &shears)`
 
-Returns the translate, rotate, scale, and shear components of xform in t, r, s, and shears, respectively.
-If more than one component is needed, using this overload is more efficient than making multiple calls to the other function signature.
+返回 xform 的平移、旋转、缩放和剪切分量，分别为 t、r、s 和剪切。如果需要一个以上的分量，使用这个重载比多次调用其他函数签名更有效。
 
 `void cracktransform(int trs, int xyz, vector pivot, matrix xform, vector &t, vector &r, vector &s)`
 
-Returns the translate, rotate, and scale of xform in t, r, s respectively.
-This overload doesn’t support pivot_rotate or shears.
-If more than one component is needed, using this overload is more efficient than making multiple calls to the other function signature.
-
-
+分别返回 xform 在 t、r、s 中的平移、旋转和比例。这个重载不支持 pivot_rotate 或 shears。如果需要一个以上的组件，使用这个重载比多次调用其他函数签名更有效。
 
 ## See also
 

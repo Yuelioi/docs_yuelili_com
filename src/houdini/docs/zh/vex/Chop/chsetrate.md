@@ -5,19 +5,15 @@ category:
   - vex
 ---
 
-
-
-Context(s)
 [chop](../contexts/chop.html)
 
 `int chsetrate(int clip\_rate)`
 
 `int chsetrate(float clip\_rate)`
 
-Sets the sampling rate of the channel data.
+Context(s) 设置通道数据的采样率。
 
-
-chop
+劈劈啪啪
 
 [chadd](chadd.html)
 

@@ -5,25 +5,23 @@ category:
   - vex
 ---
 
-Warning
+警告
 
-This function has been deprecated. Use [setagentcurrentlayers](setagentcurrentlayers.html "Sets the current display layers of an agent primitive.") instead.
+此函数已被弃用。请使用 [setagentcurrentlayers](setagentcurrentlayers.html) () ("设置代理基元的当前显示层。") 代替。
 
 ## Arguments
 
 `geohandle`
 
-Handle to the geometry to write to. `geoself()` can be used to get a handle to the current geometry.
+要写入的几何体的句柄。`geoself()`可以用来获取当前几何体的句柄。
 
 `prim`
 
-The primitive number.
+原始的数字。
 
 `layername`
 
-The name of one of the agent’s layers.
-
-
+代理人的一个层的名称。
 
 ## See also
 

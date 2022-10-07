@@ -7,10 +7,9 @@ category:
 
 `float fuzzify(string ramp\_basis[], float ramp\_values[], float ramp\_positions[], float crisp\_value, float min\_value, float max\_value)`
 
-Converts a crisp value to a fuzzy value based on an input membership function.
+根据输入的成员函数，将一个脆性值转换为模糊值。
 
-
-fuzzy
+模糊的
 
 [fuzzify](fuzzify.html)
 
@@ -30,8 +29,7 @@ fuzzy
 
 [fuzzy_xor](fuzzy_xor.html)
 
-|
-math
+| 数学
 
 [Du](Du.html)
 

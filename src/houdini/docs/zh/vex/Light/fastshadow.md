@@ -5,16 +5,13 @@ category:
   - vex
 ---
 
+在这一页
 
-
-On this page
-
-- [Area sampling options](#area-sampling-options)
+- [区域采样选项](#area-sampling-options)
 - [Ray options](#ray-options)
 
 |
 
-Context(s)
 [displace](../contexts/displace.html)
 [fog](../contexts/fog.html)
 [light](../contexts/light.html)
@@ -23,20 +20,15 @@ Context(s)
 
 `float fastshadow(vector P, vector D, float bias, ...)`
 
-Sends a ray from the position P along the direction specified by the
-direction D. The length of the D vector represents the farthest
-distance considered when check for occlusion.
+D 向量的长度代表检查遮挡时考虑的最远距离。
 
-Returns 1 if there are no occluding objects found, or 0 if the ray hit
-an object in between.
+如果没有发现任何遮挡物体，则返回 1；如果射线在两者之间击中了一个物体，则返回 0。
 
-##
-
-Area sampling options
+## 地区采样选项
 
 [¶](#area-sampling-options)
 
-For area sampling, you must specify both the angle and sample variadic parameters. For example:
+对于区域采样，你必须同时指定角度和采样变量参数。比如说
 
 ```c
 surface
@@ -47,16 +39,14 @@ blurry\_mirror(float angle = 3; int samples = 16; float bias=0.05)
 
 ```
 
-##
-
-Ray options
+## Ray options
 
 [¶](#ray-options)
 
 :::tip
 
 When you specify a texture, such as with the `"environment"` keyword,
-you can also use the image filtering keyword arguments. See [environment](environment.html "Returns the color of the environment texture.")
+you can also use the image filtering keyword arguments. See [environment](environment.html) () ("Returns the color of the environment texture.")
 for a listing of the image filter keyword arguments.
 
 ## Arguments
@@ -66,7 +56,7 @@ for a listing of the image filter keyword arguments.
 
 A list of objects which can be hit by the rays. When specified, `scope` overrides the default scope that would have been selected for the given `raystyle`. The `"scope:default"` value will cause the `scope` argument to use the default scope for the current context - as if the argument were not specified.
 
-Allows an override of the [scope](../contexts/shading_contexts.html#scope) for ray-intersections.
+Allows an override of the [scope](../contexts/shading_contexts.html) () (#scope) for ray-intersections.
 A special scope argument, `scope:self`, will match the currently
 shading object.
 
@@ -92,7 +82,7 @@ computing reflections, global illumination, refraction etc.
 "`variancevar`",
 `string`
 
-The name of a VEX export variable to use for variance anti-aliasing. The renderer compares the value with adjacent micropolygons in micropolygon rendering to decide what shading points need additional samples (using `vm_variance` [property](../../props/index.html "Properties let you set up flexible and powerful hierarchies of rendering, shading, lighting, and camera parameters.") as a threshold). If more samples are required, the algorithm takes samples up to the specified maximum ray samples.
+The name of a VEX export variable to use for variance anti-aliasing. The renderer compares the value with adjacent micropolygons in micropolygon rendering to decide what shading points need additional samples (using `vm_variance` [property](../../props/index.html) () ("Properties let you set up flexible and powerful hierarchies of rendering, shading, lighting, and camera parameters.") as a threshold). If more samples are required, the algorithm takes samples up to the specified maximum ray samples.
 
 This variable must be imported from the hit surface, so it must be in the list of imported names (see “importing information back from the ray” below). If the named variable is not imported, this option will be ignored.
 
@@ -176,13 +166,12 @@ background color specified.
 "`distribution`",
 `string`
 
-**Functions**: [irradiance](irradiance.html "Computes irradiance (global illumination) at the point P with the normal N."), [occlusion](occlusion.html "Computes ambient occlusion.")
+**Functions**: [irradiance](irradiance.html) () ("Computes irradiance (global illumination) at the point P with the normal N."), [occlusion](occlusion.html) () ("Computes ambient occlusion.")
 
 Distribution for computing irradiance. The default is to use
 a cosine distribution (diffuse illumination). The possible
 values for the style are `"nonweighted"` for uniform sampling
 or `"cosine"` for cosine weighted sampling.
-
 
 light
 

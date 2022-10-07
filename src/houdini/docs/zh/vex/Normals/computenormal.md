@@ -7,56 +7,38 @@ category:
 
 `vector computenormal(vector P, ...)`
 
-In shading contexts, computes the normal for position P using the cross product of the derivatives of P.
+在阴影背景下，使用 P 的导数的交叉积来计算位置 P 的法线。
 
 `vector computenormal(vector P, vector N, vector Ng, ...)`
 
-In shading contexts, computes the normal for position P using the cross product of the derivatives of P.
-N is the original surface normal and Ng is the geometric normal.
-This version “adjusts” the computed normal so interpolated normals will be relatively correct.
+在着色的情况下，使用 P 的导数的交叉乘积来计算位置 P 的法线。这个版本 "调整 "了计算出来的法线，所以插值的法线会相对正确。
 
 `void computenormal(int i)`
 
-(Obsolete) In SOP context, sets the hint for whether normals should be recomputed when `P` or `N` change (0=never, 1=automatic, 2=always).
+(过时）在 SOP 上下文中，设置当`P`或`N`改变时是否应该重新计算法线的提示（0=从不，1=自动，2=总是）。
 
-##
-
-Derivatives options
+## 衍生品期权
 
 [¶](#derivatives-options)
 
-Functions which compute derivatives take additional arguments to
-allow tuning of the derivative computation.
+计算导数的函数需要额外的参数，以便对导数计算进行调整。
 
 ## Arguments
 
-"`extrapolate`",
 `int`
 `=0`
 
-Whether derivatives are
-“smooth” across patch boundaries. In most cases this is true and if
-extrapolation is turned on, derivative computation should be exact
-for C2 surfaces. However, when the VEX variables are changing with a
-high frequency (for example, a high frequency displacement map
-causing high frequency changes to the P variable), extrapolation of
-derivative computation may cause exaggeration of discontinuities
-between patch boundaries.
+"`extrapolate`", 导数是否 "平滑 "地跨越补丁边界。在大多数情况下，这是真的，如果外推法被打开，导数计算对 C2 表面来说应该是精确的。然而，当 VEX 变量以高频率变化时（例如，高频率的位移图导致 P 变量的高频率变化），导数计算的外推可能导致补丁边界之间不连续的夸张。
 
-"`smooth`",
 `int`
 `=1`
 
-Adjust the magnitude of the
-differentials non-uniformly over patches. This will usually reduce
-patch discontinuities in displacement/textured shaders. However, in
-some odd cases you may want to turn this feature off.
+"`smooth'"，在斑块上非均匀地调整差值的大小。这通常会减少位移/纹理明暗器中的补丁不连续。然而，在一些奇怪的情况下，你可能想把这个功能关掉。
 
 ```c
 N = computenormal(P, "extrapolate", 1, "smooth", 0);
 
 ```
-
 
 normals
 

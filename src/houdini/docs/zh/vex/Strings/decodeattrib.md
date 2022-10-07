@@ -5,20 +5,11 @@ category:
   - vex
 ---
 
-
-
-Since 18.0
+自 18.0 以来
 
 `string decodeattrib(string str)`
 
-Houdini geometry attributes and group names are only allowed to contain
-letters, numbers, and underscores, and must not begin with a number. Arbitrary
-strings can be passed through the `encodeattrib` function to generate a string
-that obeys these restriction. This function takes one of these encoded
-strings, and returns the original string. A string that has not been encoded
-will be returned unmodified.
-
-
+Houdini 几何属性和组名只允许包含字母、数字和下划线，并且不能以数字开头。任意字符串可以通过`encodeattrib`函数来生成一个遵守这些限制的字符串。这个函数接收这些编码的字符串之一，并返回原始字符串。一个没有被编码的字符串将被返回，没有被修改。
 
 ## See also
 

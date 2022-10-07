@@ -5,20 +5,17 @@ category:
   - vex
 ---
 
-
-
-Since 18.0
+自 18.0 以来
 
 `string chsop(string channel)`
 
 `string chsop(string channel, float time)`
 
-Evaluates an operator path parameter and return the path to the operator.
+评估一个操作者的路径参数并返回操作者的路径。
 
-The time is specified in seconds, not in frames.
+时间的单位是秒，而不是帧。
 
-
-utility
+公用事业
 
 [assert_enabled](assert_enabled.html)
 

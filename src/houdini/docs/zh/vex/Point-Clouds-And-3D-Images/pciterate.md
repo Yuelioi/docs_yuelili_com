@@ -7,28 +7,13 @@ category:
 
 `int pciterate(int handle)`
 
-This function can be used to iterate over all the points which were
-found in a [pcopen](pcopen.html "Returns a handle to a point cloud file.") query. The first argument is the handle
-returned by `pcopen`.
-The function returns 1 while there are points left in the iteration loop,
-or 0 when there are no further points. This lets you use the function as
-the condition in a [while loop](../statement.html).
+这个函数可以用来遍历在[pcopen](pcopen.html) ()（"返回一个点云文件的句柄。"）查询中发现的所有点。第一个参数是由`pcopen`返回的句柄。当迭代循环中有剩余的点时，该函数返回 1，当没有更多的点时返回 0。这使你可以在[while 循环]中使用该函数作为条件(.../statement.html)。
 
-Warnings:
+警告。
 
-- It is not possible to nest pcunshaded or pciterate loops for the same
-  handle. That is, for a single [pcopen](pcopen.html "Returns a handle to a point cloud file.") call, only one
-  [pcunshaded](pcunshaded.html "Iterate over all of the points of a read-write channel which haven’t
-had any data written to the channel yet.") or `pciterate` loop may be entered.
-- Computations involving derivatives inside [pcunshaded](pcunshaded.html "Iterate over all of the points of a read-write channel which haven’t
-had any data written to the channel yet.")
-  loops may have slightly different results. If derivatives are required
-  for variables which aren’t set by [pcimport](pcimport.html "Imports channel data from a point cloud inside a pciterate or a pcunshaded loop.") it may be
-  better to pre-compute the derivatives before the
-  [pcunshaded](pcunshaded.html "Iterate over all of the points of a read-write channel which haven’t
-had any data written to the channel yet.") loop is entered.
-
-
+- 不可能在同一时间对 pcunshaded 或 pciterate 循环进行嵌套。
+- 涉及导数的计算在[pcunshaded](pcunshaded.html "遍历一个读写通道的所有点，这些点没有
+  柄。也就是说，对于一个[pcopen](pcopen.html) () ("返回一个点云文件的句柄。")的调用，只能输入一个[pcunshaded](pcunshaded.html) ("遍历一个读写通道中尚未有任何数据写入该通道的所有点。")或`pciterate`循环可能有稍微不同的结果。如果变量需要导数，而这些变量不是由[pcimport](pcimport.html) ()设置的（"在 pciterate 或 pcunshaded 循环中从点云中导入通道数据。"），在进入[pcunshaded](pcunshaded.html "遍历一个读写通道中所有尚未有数据写入该通道的点。")循环之前预先计算导数可能更好。
 
 ## See also
 

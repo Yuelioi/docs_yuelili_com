@@ -5,9 +5,6 @@ category:
   - vex
 ---
 
-
-
-Context(s)
 [shading](../contexts/shading.html)
 
 `int getsamplestore(string channel, vector P, int &value)`
@@ -18,23 +15,13 @@ Context(s)
 
 `int getsamplestore(string channel, vector P, vector4 &value)`
 
-Looks up a value in a named channel at a specified point.
-Returns a non-zero value and sets value on success, or returns 0
-if the data could not be set.
+Context(s) 在一个指定的点上查找一个指定通道的值。返回一个非零值，成功时设置值，如果不能设置数据，则返回 0。
 
-The sample store can be thought of as an in-memory point cloud, storing
-shading data at points. This allows data to be accessed across shader
-boundaries, unlike the internal export/import system. For example,
-a lens shader could store data to be passed to the surface shader,
-an operation that is not supported using export variables due to the
-layout of the shading pipeline.
+样本存储可以被认为是一个内存中的点云，在点上存储着色数据。这使得数据可以跨着色器边界进行访问，与内部的导出/导入系统不同。例如，镜头着色器可以存储数据并传递给表面着色器，由于着色管道的布局，这种操作不支持使用导出变量。
 
-Please note that the stored samples can only be accessed within the same render
-tile.
+请注意，存储的样本只能在同一渲染瓦片内访问。
 
-##
-
-Example
+## 例子
 
 [¶](#example)
 
@@ -76,8 +63,6 @@ surface mysurface()
 }
 
 ```
-
-
 
 ## See also
 

@@ -7,14 +7,13 @@ category:
 
 `matrix3 dihedral(vector a, vector b)`
 
-Computes the rotation matrix which rotates the vector a onto the vector b.
+计算旋转矩阵，将向量 a 旋转到向量 b 上。
 
 `vector4 dihedral(vector a, vector b)`
 
-Computes the quaternion which rotates the vector a onto the vector b.
+计算四元数，将矢量 a 旋转到矢量 b 上。
 
-
-matrix
+基体
 
 [\_\_uniform\_mul](### uniform_mul.html)
 
@@ -66,8 +65,7 @@ matrix
 
 [transpose](transpose.html)
 
-|
-quaternion
+| 四元数
 
 [dihedral](dihedral.html)
 

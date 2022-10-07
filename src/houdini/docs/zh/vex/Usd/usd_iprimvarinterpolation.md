@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Since 19.0
 
 `string usd\_iprimvarinterpolation(<stage>stage, string primpath, string name)`
@@ -39,15 +37,13 @@ The primvar’s interpolation. The standard interpolation styles are:
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Get the interpolation style of the primvar on the cube or its parent.
 string interpolation = usd\_iprimvarinterpolation(0, "/geo/cube", "primvar\_name");
 
 ```
-
-
 
 ## See also
 

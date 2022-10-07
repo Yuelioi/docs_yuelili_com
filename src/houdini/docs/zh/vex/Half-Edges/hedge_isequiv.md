@@ -11,28 +11,25 @@ category:
 
 `<geometry>`
 
-When running in the context of a node (such as a wrangle SOP), this argument can be an integer representing the input number (starting at 0) to read the geometry from.
+当在一个节点的上下文中运行时（比如一个 wrangle SOP），这个参数可以是一个整数，代表要读取几何图形的输入数字（从 0 开始）。
 
-Alternatively, the argument can be a string specifying a geometry file (for example, a `.bgeo`) to read from. When running inside Houdini, this can be an `op:/path/to/sop` reference.
+或者，该参数可以是一个字符串，指定一个几何文件（例如，一个`.bgeo'）来读取。当在Houdini内部运行时，这可以是一个`op:/path/to/sop`的引用。
 
 `hedge1`
 
-The integer representing the first half-edge.
+代表第一个半边的整数。
 
 `hedge2`
 
-The integer representing the second half-edge.
+代表第二条半边的整数。
 
 ## Returns
 
-`1` if `hedge1` and `hedge2` are equivalent, i.e. represent the same
-edge in the geometry. This is the case when either source and destination points
-of `hedge1` and `hedge2` are respectively the same, or source of each of `hedge1`
-and `hedge2` is the same as the destination of the other.
+如果 "hedge1 "和 "hedge2 "是等价的，即代表几何体中的同一条边。当 "hedge1 "和 "hedge2 "的源点和目的点分别相同，或者 "hedge1 "和 "hedge2 "的源点与另一条的目的点相同，就属于这种情况。
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 int opposite = 0;
@@ -45,7 +42,6 @@ opposite = 1;
 }
 
 ```
-
 
 hedge
 

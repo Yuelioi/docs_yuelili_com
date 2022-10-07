@@ -9,8 +9,6 @@ category:
 
 Returns 1 if the string ends with the given string. 0 otherwise.
 
-
-
 ## See also
 
 - [startswith](startswith.html)

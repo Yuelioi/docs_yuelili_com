@@ -5,18 +5,13 @@ category:
   - vex
 ---
 
-
-
-Context(s)
 [chop](../contexts/chop.html)
 
 `int isseconds()`
 
-Returns 1 if the Vex CHOP’s Unit Menu is currently set to 'seconds', 0
-otherwise.
+Context(s) 如果 Vex CHOP 的单位菜单当前设置为 "秒"，则返回 1，否则返回 0。
 
-
-chop
+劈劈啪啪
 
 [chadd](chadd.html)
 

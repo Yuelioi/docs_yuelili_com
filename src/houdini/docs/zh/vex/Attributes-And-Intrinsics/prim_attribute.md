@@ -5,62 +5,58 @@ category:
   - vex
 ---
 
-This function specifies the position using _intrinsic primitive UVs_. To use UVs stored in UV attribute, use [uvsample](uvsample.html "Interpolates the value of an attribute at certain UV coordinates using a UV attribute.") instead.
+这个函数使用*intrinsic primitive UVs*指定位置。要使用存储在 UV 属性中的 UV，请使用[uvsample](uvsample.html)（"使用 UV 属性在某些 UV 坐标上插值。"）来代替。
 
 `int prim\_attribute(<geometry>geometry, <type>&value, string attribute\_name, int prim\_number, float u, float v)`
 
 `int prim\_attribute(<geometry>geometry, <type>&value[], string attribute\_name, int prim\_number, float u, float v)`
 
-Samples the attribute value at the given UV coordinates on the primitive.
+在基元上给定的 UV 坐标处对属性值进行采样。
 
 `int prim\_attribute(<geometry>geometry, <type>&value, string attribute\_name, int prim\_number, vector uvw)`
 
 `int prim\_attribute(<geometry>geometry, <type>&value[], string attribute\_name, int prim\_number, vector uvw)`
 
-Specify the UVW coordinates using a vector instead of two floats.
+使用一个矢量而不是两个浮点数来指定 UVW 坐标。
 
-If you don’t need to test for errors, you can use [primuv](primuv.html "Interpolates the value of an attribute at a certain parametric (uvw) position.") instead.
-This function does not work with certain primitive types such as tetrahedra and polysoups.
+如果不需要测试错误，可以使用 [primuv](primuv.html) () ("在某个参数(uvw)位置插值一个属性的值。")代替。此函数对某些基元类型（如四面体和多面体）不起作用。
 
 ## Arguments
 
 `<geometry>`
 
-When running in the context of a node (such as a wrangle SOP), this argument can be an integer representing the input number (starting at 0) to read the geometry from.
+当在一个节点的上下文中运行时（比如一个 wrangle SOP），这个参数可以是一个整数，代表要读取几何图形的输入数字（从 0 开始）。
 
-Alternatively, the argument can be a string specifying a geometry file (for example, a `.bgeo`) to read from. When running inside Houdini, this can be an `op:/path/to/sop` reference.
+或者，该参数可以是一个字符串，指定一个几何文件（例如，一个`.bgeo'）来读取。当在Houdini内部运行时，这可以是一个`op:/path/to/sop`的引用。
 
 `value`
 
-The function overwrites this variable with the interpolated value from the primitive.
+该函数用来自基元的插值覆盖此变量。
 
 `attribute_name`
 
-The name of the attribute to read. **For point and vertex attributes, the value will at the given UV coordinates will be interpolated** from the surrounding points/vertices.
+要读取的属性的名称。**对于点和顶点属性，在给定的 UV 坐标处的值将从周围的点/顶点中插值**。
 
 `prim_number`
 
-The primitive number to read the attribute from.
+要从中读取属性的原始编号。
 
 `u`, `v`
 
-The primitive UV coordinates at which to read the attribute.
+读取属性的原始 UV 坐标。
 
 ## Returns
 
-Returns `1` on success or `0` on an error (for example, the attribute doesn’t exist).
+成功时返回`1`，错误时返回`0`（例如，属性不存在）。
 
-Returns `0` if the type of `value` is larger than the primitive type. For example, you can’t read a vector attribute into a matrix variable.
-
-
+如果`value`的类型大于原始类型，则返回`0'。例如，你不能将一个向量属性读入一个矩阵变量。
 
 ## See also
 
 - [primuv](primuv.html)
 - [uvsample](uvsample.html)
 
-|
-attrib
+### attrib
 
 [addattrib](addattrib.html)
 

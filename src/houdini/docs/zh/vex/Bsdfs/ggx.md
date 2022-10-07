@@ -5,107 +5,99 @@ category:
   - vex
 ---
 
-
-
-Since 18.0
+自 18.0 以来
 
 `bsdf ggx(vector ng, vector nn, vector xg, vector yg, vector F0, vector F90, float alphax, float alphay, int masking, int fresblend, float eta, float reflect, float refract, int reflectmask, int refractmask, float dispersion, ...)`
 
-Creates a BSDF for computation of the GGX microfacet model, used
-for rough specular reflection and refraction.
+创建一个用于计算 GGX microfacet 模型的 BSDF，用于粗糙的镜面反射和折射。
 
-See [writing a PBR shader](../pbr.html) for information on BSDFs.
+关于 BSDF 的信息，请参见[编写 PBR 着色器](../pbr.html)。
 
 ## Arguments
 
 `ng`
 
-Normalized geometry normal
+归一化的几何学法线
 
 `nn`
 
-Normalized bumped/shading normal
+正常化的凸起/阴影正常
 
 `xg`
 
-Normalized x tangent vector
+归一化的 X 切向量
 
 `yg`
 
-Normalized y tangent vector
+归一化的 y 切向量
 
 `F0`
 
-Color tint at oblique angles
+斜角处的颜色色调
 
 `F90`
 
-Color tint at grazing angles
+掠过角度的颜色色调
 
 `alphax`
 
-Roughness along the x tangent vector
+沿着 x 切线矢量的粗糙度
 
 `alphay`
 
-Roughness along the y tangent vector (use the same value as alphax for isotropic)
+沿着 y 切线矢量的粗糙度（对于各向同性，使用与 alphax 相同的值）。
 
 `masking`
 
-Enable/Disable microfacet masking
+启用/禁用 microfacet masking
 
 `fresblend`
 
-Enable/Disable fresnel
+启用/禁用菲涅尔
 
 `eta`
 
-Index of refraction
+折射率
 
 `reflect`
 
-Explicit scalar on reflection (0->1). Or -1 to let the function decide itself on the appriate value based on geometric information.
+反射时明确的标量（0->1）。或者-1，让函数根据几何信息自行决定合适的值。
 
 `refract`
 
-Explicit scalar on refraction (0->1). Or -1 to let the function decide itself on the appriate value based on geometric information.
+对折射率进行明确的标量（0->1）。或者-1，让函数根据几何信息自行决定合适的值。
 
 `reflectmask`
 
-Bitmask representing the desired reflection behaviour. Simply passing in `bouncemask(reflectlabel)` will suffice
+代表所需反射行为的比特掩码。只需传入`bouncemask(reflectlabel)`就足够了。
 
 `refractmask`
 
-Bitmask representing the desired refraction behaviour. Simply passing in `bouncemask(refractlabel)` will suffice
+代表所需折射行为的比特掩码。只需传入`bouncemask(refractlabel)`就足够了。
 
 `dispersion`
 
-Amount of dispersion
+分散的数量
 
-##
-
-Light inclusion/exclusion options
+## 灯光包含/排除选项
 
 [¶](#light-inclusion-exclusion-options)
 
 ## Arguments
 
-"`categories`",
 `string`
 `="*"`
 
-Specifies lights to include/exclude by their “category” tags.
-This is the preferred include/exclude lights rather than pattern matching
-light names with the `"lightmask"` keyword argument.
+"`categories'", 指定通过其 "类别 "标签包含/排除的灯光。这是首选的包括/排除灯光，而不是用`"lightmask"`关键字参数的模式匹配灯光名称。
 
-For example:
+比如说。
 
 ```c
 diff = diffuse(nml, "lightmask", "hero fill");
 
 ```
 
-See [light categories](../../render/lights.html#categories) for more information.
+See [light categories](../../render/lights.html) () (#categories) for more information.
 
 "`lightmask`",
 `string`
@@ -134,14 +126,11 @@ All Houdini scoping patterns, excepting group expansion, are supported:
 - `^` - exclusion operator
 - `[list]` - character list match
 
-
-
 ## See also
 
 - [Writing a PBR shader](../pbr.html)
 
-|
-bsdf
+### bsdf
 
 [albedo](albedo.html)
 

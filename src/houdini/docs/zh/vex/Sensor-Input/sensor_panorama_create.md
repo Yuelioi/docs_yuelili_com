@@ -7,55 +7,51 @@ category:
 
 `int sensor\_panorama\_create(float time, vector pos, int size, float near, float far, string candidateobj, string includeobj, string excludeobj, int uselit)`
 
-This function will render the surrounding environment using the GL render and
-provides a handle to use for querying the results.
+这个函数将使用 GL 渲染器渲染周围的环境，并提供一个用于查询结果的句柄。
 
 ::: info Note
 
-Because this needs to render the scene, it only works in interactive sessions of Houdini.
+因为这需要渲染场景，所以它只能在胡迪尼的交互式会话中工作。
 
 ## Arguments
 
 `time`
 
-The period in time when the render should be performed.
+应该进行渲染的时间段。
 
 `pos`
 
-The location in world space coordinates where the render should be performed.
+在世界空间坐标中应该进行渲染的位置。
 
 `size`
 
-The resolution of the performed render.
+所执行的渲染的分辨率。
 
 `near`
 
-The near plane restriction.
+近平面的限制。
 
 `far`
 
-The far plane restriction.
+远平面的限制。
 
 `candidateobj`
 
-A bundle, group, or expression that represents what objects will be displayed if their display setting is enabled.
+一个包、组或表达式，表示如果其显示设置被启用，哪些对象将被显示。
 
 `includeobj`
 
-A bundle, group, or expression that represents what objects will always be displayed.
+一个包、组或表达式，代表哪些对象将永远被显示。
 
 `excludeobj`
 
-A bundle, group, or expression that represents what objects will never be displayed.
+一个包、组或表达式，表示哪些对象将永远不会被显示。
 
 `uselit`
 
-Usually for AI purposes you want to not have any lighting as you are using
-color as a key to differentiate actors. However, if you want to display
-what a creature sees, lighting makes things more visually accurate.
+通常情况下，出于人工智能的目的，你希望不要有任何照明，因为你是用颜色作为区分演员的关键。然而，如果你想显示一个生物看到的东西，照明会使事情在视觉上更加准确。
 
-
-file
+文件
 
 [colormap](colormap.html)
 
@@ -97,8 +93,7 @@ file
 
 [writepixel](writepixel.html)
 
-|
-map
+| 地图
 
 [colormap](colormap.html)
 
@@ -136,8 +131,7 @@ map
 
 [wt_vspace](wt_vspace.html)
 
-|
-photon
+| 光子
 
 [photonmap](photonmap.html)
 

@@ -11,50 +11,25 @@ category:
 
 `geohandle`
 
-A handle to the geometry to write to. Currently the only valid value is `0` or [geoself](geoself.html "Returns a handle to the current geometry."), which means the current geometry in a node. (This argument may be used in the future to allow writing to other geometries.)
+要写入的几何体的句柄。目前唯一有效的值是`0`或[geoself](geoself.html) () ("返回当前几何体的句柄。")，这意味着当前节点中的几何体。(这个参数将来可能会被用来允许写到其他的几何体)。
 
 `attribclass`
 
-One of `"detail"` (or `"global"`), `"point"`, `"prim"`, or `"vertex"`.
+是 "细节"（或 "全局"）、"点"、"基元 "或 "顶点 "之一。
 
-You can also use `"primgroup"`, `"pointgroup"` or `"vertexgroup"` to [read from groups](../groups.html "You can read the contents of primitive/point/vertex groups in VEX as if they were attributes.").
+你也可以使用`"primgroup"`、`"pointgroup"`或`"vertexgroup"`来[从组中读取]（.../groups.html）（"你可以在 VEX 中读取 primitive/point/vertex 组的内容，就像它们是属性一样。"）。
 
 `name`
 
-The name of the attribute for which to change the transformation info.
+要改变转换信息的属性的名称。
 
 `typeinfo`
 
-The meaning of the attribute, which is used by transform nodes to determine how to modify the attribute. It is one of:
+属性的含义，它被转换节点用来确定如何修改该属性。它是其中之一。
 
+`"无"`不要变换。| `"point"`应用缩放、旋转和变换。| `"hpoint"`对这个向量 4 应用缩放、旋转和变换。| `"vector"`应用缩放和旋转，但不应用变换。| `"法线"`应用旋转，用反转法应用缩放。| `"颜色"` 不做变换。| `"矩阵"`对这个矩阵应用缩放、旋转和变换。| `"四元数"`应用旋转。| `"indexpair"`不要变换。| `"整数"`在对点进行平均时不要混合这个值。| `"integer-blend"`当点被平均化时，整数值被混合。| `"texturecoord"` 不要变换，在插值时尽量保留接缝。具有这种类型的属性将显示在 UV 视口菜单中。
 
-`"none"` Don’t transform.
-|
-`"point"` Apply scales, rotations, and transformations.
-|
-`"hpoint"` Apply scales, rotations, and transformations to this vector4.
-|
-`"vector"` Apply scales and rotations, but not transformations.
-|
-`"normal"` Apply rotations, apply scales with inverse-transpose.
-|
-`"color"` Don’t transform.
-|
-`"matrix"` Apply scales, rotations, and transformations to this matrix.
-|
-`"quaternion"` Apply rotations.
-|
-`"indexpair"` Don’t transform.
-|
-`"integer"` Do not blend this value when points are averaged.
-|
-`"integer-blend"` Integer values that blend when points are averaged.
-|
-`"texturecoord"` Don’t transform, and try to preserve seams when interpolating.
-Attributes with this type will show up in the UV viewport menu.
-
-
-attrib
+附注
 
 [addattrib](addattrib.html)
 

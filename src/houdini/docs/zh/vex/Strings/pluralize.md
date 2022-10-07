@@ -11,7 +11,7 @@ The English language is full of nonstandard rules for pluralizing nouns. This fu
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 string boxes = pluralize("box");
@@ -22,7 +22,6 @@ string geometries = pluralize("geometry");
 string phrase = pluralize("Pluralize the last word");
 
 ```
-
 
 string
 

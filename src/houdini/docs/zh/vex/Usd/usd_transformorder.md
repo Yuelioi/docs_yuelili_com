@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Since 17.5
 
 `string [] usd\_transformorder(<stage>stage, string primpath)`
@@ -29,15 +27,13 @@ The primitive’s transform order.
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Get the cube's transform order.
 string cube\_xform\_ops[] = usd\_transformorder(0, "/geo/cube");
 
 ```
-
-
 
 ## See also
 

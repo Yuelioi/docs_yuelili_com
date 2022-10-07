@@ -5,9 +5,6 @@ category:
   - vex
 ---
 
-
-
-Context(s)
 [displace](../contexts/displace.html)
 [fog](../contexts/fog.html)
 [light](../contexts/light.html)
@@ -18,25 +15,25 @@ Context(s)
 
 `void nextsample(int &sid, vector &svec, ...)`
 
-[newsampler](newsampler.html "Initializes a sampling sequence for the nextsample function.") and this function expose the high-quality deterministic sampling patterns used by mantra for pixel anti-aliasing. When rendering in raytracing mode, it’s possible to generate deterministic 2D samples with `nextsample` routine by initializing the sampling sequence with the `SID` global variable.
+Context(s) [newsampler](newsampler.html) () ("Initializes a sampling sequence for the nextsample function.") 和这个函数暴露了 mantra 用于像素抗锯齿的高质量确定性采样模式。当在光线追踪模式下渲染时，通过用`SID`全局变量初始化采样序列，可以用`nextsample`例程生成确定性的 2D 采样。
 
-This method can generate either 2D or 3D sampling patterns. To generate 2D samples, use the signature with 2 float write-only arguments. To generate 3D samples, use the signature with a vector write-only argument.
+这个方法可以生成 2D 或 3D 采样模式。要生成二维样本，请使用带有 2 个浮点数只写参数的签名。要生成三维样本，请使用带有一个矢量只写参数的签名。
 
-You can add an extra argument, `"mode"`, followed by one of the following:
+你可以添加一个额外的参数，`"mode"`，后面是以下的一个。
 
 ## Arguments
 
 `“qstrat”`
 
-Advances to the next sample in the pattern. You should use this mode when using [newsampler](newsampler.html "Initializes a sampling sequence for the nextsample function.").
+推进到模式中的下一个样本。你应该在使用[newsampler](newsampler.html)（"为 nextsample 函数初始化一个采样序列"）时使用这种模式。
 
 `“nextpixel”`
 
-Advances to a new pixel sampling pattern. You should use this mode when using SID with raytracing to generate good-quality sampling patterns within a pixel. This mode takes into account other samples within the current pixel and will appropriately stratify itself. If rendering with micropolygon rendering, “nextpixel” will behave the same as “qstrat”.
+推进到一个新的像素采样模式。在使用 SID 和光线追踪时，你应该使用这种模式，以便在一个像素内产生高质量的采样模式。这种模式考虑到了当前像素内的其他样本，并会适当地进行分层。如果使用微多边形渲染，"nextpixel "的行为与 "qstrat "相同。
 
 `“decorrelate”`
 
-Advances to a new decorrelated sample. You should use this mode to deterministically generate a new sampling sequence that is unrelated to an existing sequence. Similarly to “nextpixel”, this mode preserves high-quality pixel sampling when used with SID and raytracing.
+推进到一个新的装饰相关采样。你应该使用这种模式来确定地生成一个与现有序列无关的新采样序列。与 "nextpixel "类似，当与 SID 和光线追踪一起使用时，这种模式可以保留高质量的像素采样。
 
 ```c
 int nsamples = 10;
@@ -52,8 +49,6 @@ nextsample(sid, sx, sy, "mode", "qstrat");
 }
 
 ```
-
-
 
 ## See also
 

@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Since 18.5
 
 `float ramp\_lookup(float pos, string ramp)`
@@ -18,8 +16,6 @@ Since 18.5
 `vector ramp\_lookup(float pos, string basis[], float key[], vector val[])`
 
 Evaluates a provided ramp at the given position. The ramp can be an encoded string or a triple of basis, key, and value arrays.
-
-
 
 ## See also
 

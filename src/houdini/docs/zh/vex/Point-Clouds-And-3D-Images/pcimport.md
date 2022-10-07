@@ -5,36 +5,33 @@ category:
   - vex
 ---
 
-This function is only valid while looping with `pciterate` or `pcunshaded`.
+这个函数只在用`pciterate`或`pcunshaded`循环时有效。
 
 `int pcimport(int handle, string channel\_name, <type>&value)`
 
-Imports data from the point cloud file into the given variable.
+将点云文件中的数据导入给定的变量。
 
 ## Arguments
 
 `channel_name`
 
-There are two special channel names you can import:
+有两个特殊的通道名称可以导入。
 
 `point.number`
 
-The number of the point being processed.
+被处理的点的编号。
 
 `point.distance`
 
-The distance of the point being processed from the query point.
-This is only available when iterating over unshaded points.
+被处理的点与查询点的距离。这只有在对无阴影的点进行迭代时才可用。
 
 `value`
 
-If the import succeeds the function overwrites this variable with the channel value.
+如果导入成功，该函数将用通道的值覆盖这个变量。
 
 ## Returns
 
-`1` if the import succeeded or `0` if the import failed (usually due to the given channel name not existing).
-
-
+`1`如果导入成功或`0`如果导入失败（通常是由于给定的通道名称不存在）。
 
 ## See also
 

@@ -5,45 +5,38 @@ category:
   - vex
 ---
 
-
-
-Since 18.5
+自 18.5 以来
 
 `int setpointtransform(int geohandle, int pt, matrix transform)`
 
 `int setpointtransform(int geohandle, int pt, matrix transform, int constrain)`
 
-Sets the `v@P` and the `3@transform` attributes on the given point from the given 4×4 matrix.
+根据给定的 4×4 矩阵，在给定的点上设置`v@P'和`3@transform'属性。
 
 ## Arguments
 
 `geohandle`
 
-A handle to the geometry to write to. Currently the only valid value is `0` or [geoself](geoself.html "Returns a handle to the current geometry."), which means the current geometry in a node. (This argument may be used in the future to allow writing to other geometries.)
+要写入的几何体的句柄。目前唯一有效的值是`0`或[geoself](geoself.html) () ("返回当前几何体的句柄。")，这意味着当前节点中的几何体。(这个参数将来可能会被用来允许写到其他的几何体)。
 
 `pt`
 
-The point index to modify.
+要修改的点的索引。
 
 `transform`
 
-The 4×4 transform.
+4×4 转换。
 
 `constrain`
 
-When True, update the children point transforms when modifying a point world
-transform. When False, the children points stay in place like when using
-Child Compensation on a transform handle. Defaults to True;
-
-
+当 "真 "时，在修改一个点世界的变换时更新子点的变换。当为假时，子点保持原位，就像在变换句柄上使用子点补偿时一样。默认为真。
 
 ## See also
 
 - [pointtransforms](pointtransforms.html)
 - [pointlocaltransforms](pointlocaltransforms.html)
 
-|
-attrib
+### attrib
 
 [addattrib](addattrib.html)
 

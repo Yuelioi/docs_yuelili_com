@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Since 17.5
 
 `string usd\_variantselection(<stage>stage, string primpath, string variantset)`
@@ -33,15 +31,13 @@ The currently selected variant in a given variant set on a given primitive.
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Get the currently selected variant in the variant set "shapes" on a "shape\_shifter" primitive.
 string selected\_variant = usd\_variantselection(0, "/geo/shape\_shifter", "shapes");
 
 ```
-
-
 
 ## See also
 

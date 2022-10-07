@@ -5,20 +5,13 @@ category:
   - vex
 ---
 
-
-
-Context(s)
 [shading](../contexts/shading.html)
 
 `int israytracing()`
 
-Returns true when the current shader is shading ray hits. For micropolygon
-rendering, the return value will be false. This function can be used to
-disambiguate shading styles for renders that use the vm_rayshade property -
-where only some objects are ray traced.
+Context(s) 当当前着色器正在对光线进行着色时返回 true。对于微多边形渲染，返回值为 false。这个函数可以用来区分使用 vm_rayshade 属性的渲染器的着色样式--在这种情况下，只有一些物体是被光线追踪的。
 
-
-shading
+遮阳
 
 [Du](Du.html)
 

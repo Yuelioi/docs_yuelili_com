@@ -5,31 +5,22 @@ category:
   - vex
 ---
 
+在这一页
 
-
-On this page
-
-- [Image filtering options](#image-filtering-options)
-- [Examples](#examples)
+- [图片过滤选项](#image-filtering-options)
+- [例子](#例子)
 
 `float filterstep(float edge, float x, ...)`
 
 `float filterstep(float edge, float x0, float x1, ...)`
 
-Returns the anti-aliased weight of the step function. The
-step function returns 0 if x is less than edge and 1 if x is greater
-than edge. `filterstep` returns a fraction representing the
-filtered area under the step function. Filtering is computed using
-derivatives `Du()` and `Dv()` which are only non-zero in shading and COP
-contexts, so `filterstep` will not perform filtering in other contexts.
+返回阶梯函数的抗混叠权重。如果 x 小于边缘，阶梯函数返回 0，如果 x 大于边缘，返回 1。`filterstep`返回一个分数，代表阶梯函数下的过滤区域。过滤是使用导数`Du()`和`Dv()`计算的，这些导数只有在阴影和 COP 背景下才是非零的，所以`filterstep`不会在其他背景下执行过滤。
 
-##
-
-Image filtering options
+## 图像过滤选项
 
 [¶](#image-filtering-options)
 
-Examples of specifying filter parameters:
+指定过滤器参数的例子。
 
 ```c
 colormap(map, u, v, "smode", "decal", "tmode", "repeat", "border", {.1,1,1});
@@ -409,7 +400,7 @@ energy output.
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 f = filterstep(0.5, s+t, "filter", "gauss", "width", 2);
@@ -422,7 +413,6 @@ The `filterstep(float edge, x, ...)` form is roughly equivalent to:
 f = filterstep(edge, x, x + abs(Du(x) + Dv(x)));
 
 ```
-
 
 shading
 

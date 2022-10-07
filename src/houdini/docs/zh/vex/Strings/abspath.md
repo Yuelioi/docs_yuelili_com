@@ -5,18 +5,11 @@ category:
   - vex
 ---
 
-
-
-Since 18.0
+自 18.0 以来
 
 `string abspath(string relpath)`
 
-Returns the supplied path converted to an absolute path. Relative paths
-are treated as relative to Houdini’s current working directory. If the
-supplied path is already absolute, the path is returned unchanged. The file
-does not need to exist.
-
-
+返回所提供的路径转换为绝对路径。相对路径被视为相对于 Houdini 的当前工作目录。如果提供的路径已经是绝对路径，那么返回的路径将不会改变。该文件不需要存在。
 
 ## See also
 

@@ -5,30 +5,27 @@ category:
   - vex
 ---
 
-
-
-Since 17.0
+自 17.0 以来
 
 `matrix getpackedtransform(int input, int primnum)`
 
-Gets the transform of a packed primitive. This is constructed from the `P`
-attribute of the primitive’s point and its intrinsic `transform`.
+获取一个包装好的基元的变换。这是从基元的点的`P`属性和其固有的`变换`构建的。
 
-Warning
+警告
 
-This function builds a transform from _only_ the `P` (position) attribute and the `transform` intrinsic attribute. It ignores various details that the `packedfulltransform` intrinsic attribute includes:
+这个函数只从`P`（位置）属性和`transform`内在属性建立一个变换。它忽略了`packedfulltransform`内在属性包括的各种细节。
 
-- The packed primitive’s `pivot` intrinsic attribute.
-- Instancing attributes such as `orient` (when the `pointinstancetransform` intrinsic attribute is on, as with crowd agents).
-- The `packedlocaltransform` intrinsic attribute (Alembic primitives).
+- 打包基元的`pivot'内在属性。
+- 实例化属性，如 "方向"（当 "pointinstancetransform "内在属性开启时，如人群代理）。
+- `packedlocaltransform`内在属性（Alembic 基元）。
 
-So this function will not return the expected transform in several different cases.
+所以这个函数在几种不同的情况下都不会返回预期的变换。
 
-The [setpackedtransform](setpackedtransform.html "Sets the transform of a packed primitive.") function has the same issues since it _only_ overwrites `P` and `transform`. So, for example, the `packedfulltransform` won’t contain the matrix you would expect if there is a non-zero packed pivot, or in the other cases listed above.
+[setpackedtransform](setpackedtransform.html) () ("设置一个打包的基元的变换。") 函数也有同样的问题，因为它\_只覆盖`P`和`transform`。因此，例如，如果有一个非零的打包枢轴，或者在上面列出的其他情况下，`packedfulltransform`不会包含你期望的矩阵。
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // matrix to transform by
@@ -40,8 +37,6 @@ matrix tf = getpackedtransform(0, @primnum);
 setpackedtransform(0, @primnum, transform \* tf);
 
 ```
-
-
 
 ## See also
 

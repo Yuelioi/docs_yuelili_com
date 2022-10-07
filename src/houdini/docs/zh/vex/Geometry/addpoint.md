@@ -7,25 +7,23 @@ category:
 
 `int addpoint(int geohandle, int point\_number)`
 
-Creates a new point with all the attributes and group memberships of the point with the given point number.
+创建一个新的点，具有给定点号的点的所有属性和组成员资格。
 
 `int addpoint(int geohandle, vector pos)`
 
-Creates a new point with the given position.
+在给定的位置上创建一个新的点。
 
 ## Arguments
 
 `geohandle`
 
-A handle to the geometry to write to. Currently the only valid value is `0` or [geoself](geoself.html "Returns a handle to the current geometry."), which means the current geometry in a node. (This argument may be used in the future to allow writing to other geometries.)
+要写入的几何体的句柄。目前唯一有效的值是`0`或[geoself](geoself.html) () ("返回当前几何体的句柄。")，这意味着当前节点中的几何体。(这个参数将来可能会被用来允许写到其他的几何体)。
 
 ## Returns
 
-A point number for the created point, or `-1` if the point could not be created.
+创建的点的编号，如果不能创建点，则为`-1`。
 
-You can use the return value with [setpointattrib](setpointattrib.html "Sets a point attribute in a geometry.") to set attributes on the new point, however it may not be the final number of the point.
-
-
+你可以用[setpointattrib](setpointattrib.html) ()("在一个几何体中设置一个点属性。")的返回值来设置新点的属性，然而它可能不是该点的最终编号。
 
 ## See also
 

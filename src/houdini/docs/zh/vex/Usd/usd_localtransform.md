@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Since 17.5
 
 `matrix usd\_localtransform(<stage>stage, string primpath)`
@@ -35,15 +33,13 @@ The primitive’s local transform.
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Get the cube's local transform.
 matrix cube\_local\_xform = usd\_localtransform(0, "/src/cube");
 
 ```
-
-
 
 ## See also
 

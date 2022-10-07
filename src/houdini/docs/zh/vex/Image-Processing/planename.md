@@ -5,17 +5,13 @@ category:
   - vex
 ---
 
-
-
-Context(s)
 [cop](../contexts/cop.html)
 
 `string planename(int planeindex)`
 
-Returns the name of the plane specified by the index (e.g. “C”, “A”).
+Context(s) 返回由索引指定的平面名称（例如，"C"，"A"）。
 
-
-output_plane
+输出平面
 
 [alphaname](alphaname.html)
 

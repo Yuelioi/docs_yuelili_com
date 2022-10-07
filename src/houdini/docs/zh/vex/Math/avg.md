@@ -9,11 +9,11 @@ category:
 
 `float avg(float a)`
 
-Returns `a`.
+返回`a`。
 
 `float avg(float a, float b, ...)`
 
-Returns the average of the arguments.
+返回参数的平均值。
 
 `float avg(vector2 v)`
 
@@ -21,7 +21,7 @@ Returns the average of the arguments.
 
 `float avg(vector4 v)`
 
-Returns the average of the values in the components of `v`.
+返回 "v "中各部分数值的平均值。
 
 `vector2 avg(vector2 a, vector2 b, ...)`
 
@@ -29,14 +29,13 @@ Returns the average of the values in the components of `v`.
 
 `vector4 avg(vector4 a, vector4 b, ...)`
 
-Returns a new vector where each component is the average of the corresponding components in the arguments.
+返回一个新的向量，其中每个分量是参数中相应分量的平均值。
 
 `<type> avg(<type>arr[])`
 
-Returns the average of the values in the array.
+返回数组中数值的平均值。
 
-
-math
+数学
 
 [Du](Du.html)
 
@@ -142,8 +141,7 @@ math
 
 [variance](variance.html)
 
-|
-vector
+| 向量
 
 [Du](Du.html)
 

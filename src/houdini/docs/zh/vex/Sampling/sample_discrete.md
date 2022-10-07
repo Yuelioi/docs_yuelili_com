@@ -13,29 +13,17 @@ category:
 
 `nvalues`
 
-The returned integer will be uniform in the range `[0,nvalues-1]`,
-returning 0 if `u==0`, and returning `nvalues-1` if `u==1`. The
-output will be clamped to that range in case `u` is out of the range
-`[0,1)`, to reduce the risk of roundoff on `u` causing problems.
+返回的整数将在`[0,nvalues-1]`范围内统一，如果`u==0`则返回 0，如果`u==1`则返回`nvalues-1`。如果`u'超出了`[0,1)'的范围，输出将被钳制在这个范围内，以减少`u'的四舍五入导致问题的风险。
 
 `weights`
 
-Relative weights, (the sum does not need to be 1), of each integer
-value in the range `[0,len(weights)-1]`.
+在`[0,len(weights)-1]`范围内的每个整数值的相对权重，（和不需要是 1）。
 
 `u`
 
-A number between 0 and 1.
+一个介于 0 和 1 之间的数字。
 
-Returns an integer, based on `u`, either uniformly weighted from 0 to
-`nvalues-1`, or weighted based on the `weights` array from 0 to
-`len(weights)-1`.
-Given uniform random `u` values in `[0,1)`, the version taking `nvalues`
-will return uniform random integers in `[0,nvalues-1]`, and the version
-taking `weights` will return random integers in `[0,len(weights)-1]`, where
-the probability of `i` is `weights[i]/sum_of_weights`.
-
-
+返回一个整数，基于`u`，从 0 到`nvalues-1`均匀加权，或者基于`weights`阵列从 0 到`len(weights)-1`加权。给定在`[0,1]中的均匀随机的`u'值，取`nvalues'的版本将返回在`[0,nvalues-1]中的均匀随机整数，取`weights'的版本将返回在`[0,len(weights)-1]中的随机整数，其中`i'的概率为`weights[i]/sum_of_weights`。
 
 ## See also
 

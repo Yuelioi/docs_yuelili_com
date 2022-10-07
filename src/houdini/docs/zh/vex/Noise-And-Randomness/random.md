@@ -13,7 +13,7 @@ category:
 
 `vector4 random(float|intposition)`
 
-Generate 1D, 2D, 3D, or 4D noise based on a 1D position.
+根据一维位置生成一维、二维、三维或四维噪音。
 
 `float random(float|intxpos, float|intypos)`
 
@@ -21,7 +21,7 @@ Generate 1D, 2D, 3D, or 4D noise based on a 1D position.
 
 `vector4 random(float|intxpos, float|intypos)`
 
-Specify a 2D position in the noise field using two numbers.
+用两个数字指定噪声场中的一个 2D 位置。
 
 `float random(vector position)`
 
@@ -29,7 +29,7 @@ Specify a 2D position in the noise field using two numbers.
 
 `vector4 random(vector position)`
 
-Specify a 3D position in the noise field using a vector.
+用一个矢量指定噪声场中的三维位置。
 
 `float random(vector4 position)`
 
@@ -37,22 +37,15 @@ Specify a 3D position in the noise field using a vector.
 
 `vector4 random(vector4 position)`
 
-Specify a 4D position in the noise field using a vector4.
+用一个矢量 4 指定噪声场中的 4D 位置。
 
-Generate a random number based on the integer position in `N` dimensional space
-(where N is 1 to 4 dimensions). Unlike the noise functions, the random
-functions do not smoothly interpolate the random values between integer
-lattice points. The `random()` functions are very efficient ways of doing
-something like `noise(floor(position))`.
+根据`N`维空间中的整数位置（其中 N 为 1 到 4 维）生成一个随机数。与噪声函数不同，随机函数不会在整数格点之间平滑地插值随机值。`random()`函数是做类似`noise(floor(position))`的非常有效的方法。
 
-While `random()` takes floats, it only varies the random effect for
-integer changes. To have a random result that varies with even the
-smallest float changes, use `rand()`.
+虽然`random()`接受浮点数，但它只对整数变化的随机效果进行改变。要想有一个随机的结果，甚至随着最小的浮点数变化而变化，请使用`rand()`。
 
-The result of this is in the half-open interval `[0, 1)`.
+这样做的结果是在半开区间`[0, 1]`。
 
-
-random
+随机
 
 [curlgxnoise](curlgxnoise.html)
 

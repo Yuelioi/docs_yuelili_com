@@ -9,23 +9,21 @@ category:
 
 `int sum(int n)`
 
-Returns the argument.
+返回参数。
 
 `float sum(<vector>v)`
 
-Returns the sum of the vector’s components.
+返回向量的分量之和。
 
 `int sum(int nums[])`
 
 `float sum(float nums[])`
 
-Returns the sum of the items of the array.
+返回数组中各项的总和。
 
 `<vector> sum(<vector>arr[])`
 
-Returns a vector where the components are the sums of the corresponding components in the vectors in the array.
-
-
+返回一个向量，其中的分量是数组中向量的相应分量之和。
 
 ## See also
 

@@ -9,15 +9,13 @@ category:
 
 `vector4 chp(string channel, float time)`
 
-Evaluates a channel (or parameter) and return its value.
+评估一个通道（或参数）并返回其值。
 
-If the parameter is a vector parameter, the base parameter name
-can be used to return the all components as a vector.
+如果参数是一个矢量参数，可以使用基本参数名来返回所有的成分，作为一个矢量。
 
-The time is specified in seconds, not in frames.
+时间的单位是秒，而不是帧。
 
-
-utility
+公用事业
 
 [assert_enabled](assert_enabled.html)
 

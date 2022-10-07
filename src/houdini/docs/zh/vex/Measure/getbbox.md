@@ -7,32 +7,25 @@ category:
 
 `void getbbox(<geometry>geometry, vector &min, vector &max)`
 
-Sets the vectors to the minimum and maximum corners of the bounding box
-for the geometry. This outputs the primitive bounding box, which includes
-the extents of spheres and volumes.
+设置向量为几何体的边界盒的最小和最大角。这将输出原始的边界盒，其中包括球体和体积的外延。
 
 `void getbbox(<geometry>geometry, string primgroup, vector &min, vector &max)`
 
-Outputs the bounding box of the primitive in the given group.
-An empty primgroup string will include all primitives.
-The string supports Ad-hoc patterns like `0-10` and `@Cd.x>0`.
+输出给定组中的基元的包围盒。一个空的基元组字符串将包括所有基元。字符串支持`0-10'和`@Cd.x>0'等临时模式。
 
 `void getbbox(vector &min, vector &max)`
 
-Warning
+警告
 
-This form of `getbbox` is deprecated and may be removed in the future.
-Use the other forms as needed.
+这种形式的`getbbox`已经被废弃，将来可能会被删除。根据需要使用其他的形式。
 
 ## Arguments
 
 `<geometry>`
 
-When running in the context of a node (such as a wrangle SOP), this argument can be an integer representing the input number (starting at 0) to read the geometry from.
+当在一个节点的上下文中运行时（比如一个 wrangle SOP），这个参数可以是一个整数，代表要读取几何图形的输入数字（从 0 开始）。
 
-Alternatively, the argument can be a string specifying a geometry file (for example, a `.bgeo`) to read from. When running inside Houdini, this can be an `op:/path/to/sop` reference.
-
-
+或者，该参数可以是一个字符串，指定一个几何文件（例如，一个`.bgeo'）来读取。当在Houdini内部运行时，这可以是一个`op:/path/to/sop`的引用。
 
 ## See also
 

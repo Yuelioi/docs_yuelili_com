@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Since 19.0
 
 `string usd\_makevalidprimname(string name)`
@@ -27,8 +25,6 @@ requirements for naming USD primitives. Invalid characters such as spaces
 and most punctuation will be converted to underscores. Note that this means
 the translation is not reversible. If the original string is already a
 legal primitive name, the string is returned unchanged.
-
-
 
 ## See also
 

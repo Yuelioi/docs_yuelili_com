@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Since 18.0
 
 `int usd\_getpointinstancebounds(<stage>stage, string primpath, int instance\_index, string purpose, vector &min, vector &max)`
@@ -47,7 +45,7 @@ Always 1.
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Get the second sphere's bounding box.
@@ -55,8 +53,6 @@ vector min, max;
 usd\_getpointinstancebounds(0, "/src/instanced\_spheres", 1, "render", min, max);
 
 ```
-
-
 
 ## See also
 

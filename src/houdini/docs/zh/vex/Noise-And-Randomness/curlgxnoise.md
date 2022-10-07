@@ -9,11 +9,9 @@ category:
 
 `vector curlgxnoise(vector4 xyzt)`
 
-Evaluates a divergence free vector field by computing curl of simplex noise
-(see [gxnoise](gxnoise.html "Evaluates a simplex noise field.")).
+通过计算单纯噪声的卷曲来评估无发散矢量场（见[gxnoise](gxnoise.html) （"评估单纯噪声场"））。
 
-
-random
+随机
 
 [curlgxnoise](curlgxnoise.html)
 

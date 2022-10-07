@@ -5,7 +5,7 @@ category:
   - vex
 ---
 
-This function specifies the position using UVs from a UV attribute. To use _intrinsic primitive UVs_, use [primuv](primuv.html "Interpolates the value of an attribute at a certain parametric (uvw) position.") instead.
+这个函数使用 UV 属性的 UV 来指定位置。要使用*内在的原始 UV*，请使用[primuv](primuv.html) () ("在某个参数(uvw)位置内插一个属性的值。")代替。
 
 `<type> uvsample(<geometry>geometry, string attr\_name, string uv\_attr\_name, vector uvw)`
 
@@ -19,41 +19,34 @@ This function specifies the position using UVs from a UV attribute. To use _intr
 
 `<geometry>`
 
-When running in the context of a node (such as a wrangle SOP), this argument can be an integer representing the input number (starting at 0) to read the geometry from.
+当在一个节点的上下文中运行时（比如一个 wrangle SOP），这个参数可以是一个整数，代表要读取几何图形的输入数字（从 0 开始）。
 
-Alternatively, the argument can be a string specifying a geometry file (for example, a `.bgeo`) to read from. When running inside Houdini, this can be an `op:/path/to/sop` reference.
+或者，该参数可以是一个字符串，指定一个几何文件（例如，一个`.bgeo'）来读取。当在Houdini内部运行时，这可以是一个`op:/path/to/sop`的引用。
 
 `primgroup`
 
-The name of a primitive group or a pattern to generate a primitive
-group. Uses the same semantics as a SOP group, so empty strings
-will match all primitives. Attribute groups like `@Cd.x>0` can
-also be used, but note that the `@` may need to be escaped with
-a backslash in a [![](../../icons/COMMON/wrangle.svg)Snippet VOP](../../nodes/vop/snippet.html "Runs a VEX snippet to modify the incoming values.").
+基元组的名称或用于生成基元组的模式。使用与 SOP 组相同的语义，因此空字符串将匹配所有基元。也可以使用像`@Cd.x>0`这样的属性组，但注意`@`可能需要在Snippet VOP（"运行一个 VEX 片段来修改传入值。"）。
 
 `attr_name`
 
-The name of a point or vertex attribute to sample. For primitive attributes, the value is taken from the primitive under the given UVs. **For point and vertex attributes, the value at the given UV coordinates will be interpolated from the surrounding points/vertices**. The values are taken from the “lowest” level at which an attribute with this name exists.
+要采样的点或顶点属性的名称。对于基元属性，其值取自给定 UV 下的基元。**对于点和顶点属性，给定的 UV 坐标处的值将从周围的点/顶点插值**。这些值取自具有此名称的属性存在的 "最低 "级别。
 
-This must be a 3-float attribute.
+这必须是一个 3-float 属性。
 
 `uv_attr_name`
 
-The name of a point or vertex attribute containing UVs. The default UVs created by Houdini are in an attribute named `uv`. The named attribute can be 2D (UV) or 3D (UVW) in any vector type.
+包含 UVs 的点或顶点属性的名称。Houdini 创建的默认 UV 是在一个名为 "uv "的属性中。这个命名的属性可以是任何矢量类型的 2D（UV）或 3D（UVW）。
 
 `uvw`
 
-The position in UV(W) space at which to sample the attribute.
-
-
+在 UV(W)空间中，对属性进行采样的位置。
 
 ## See also
 
 - [primuv](primuv.html)
 - [prim_attribute](prim_attribute.html)
 
-|
-attrib
+### attrib
 
 [addattrib](addattrib.html)
 

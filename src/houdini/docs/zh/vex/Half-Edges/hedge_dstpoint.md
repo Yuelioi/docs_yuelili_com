@@ -7,21 +7,19 @@ category:
 
 `int hedge\_dstpoint(<geometry>geometry, int hedge)`
 
-Returns `-1` if the half-edge hedge is invalid. Otherwise, returns the point number of the destination point of the half-edge `hedge`.
+如果半边对冲无效，则返回`-1'。否则，返回半边形`对冲'的目标点的点号。
 
 ## Arguments
 
 `geometry`
 
-The name of the geometry file to reference. Inside Houdini, this may be `op:full_path_to_sop` to reference a SOP.
+要参考的几何文件的名称。在 Houdini 中，这可能是`op:full_path_to_sop`来引用一个 SOP。
 
 `hedge`
 
-Input half-edge.
+输入半边缘。
 
 ## Examples
-
-[¶](#examples)
 
 ```c
 int dstpt;
@@ -30,7 +28,6 @@ int dstpt;
 dstpt = hedge\_dstpoint("defgeo.bgeo", 3);
 
 ```
-
 
 hedge
 

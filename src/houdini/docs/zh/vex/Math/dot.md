@@ -21,18 +21,15 @@ category:
 
 `float dot(matrix a, matrix b)`
 
-Returns the [dot product](http://en.wikipedia.org/wiki/Dot_product) of the arguments.
+返回参数的[点积](http://en.wikipedia.org/wiki/Dot_product)。
 
-When dotting a `vector` with a `vector4`, only the first three
-components are used.
+当用 "vector4 "点缀 "vector "时，只使用前三个部分。
 
 `float dot(<type>a[], <type>b[])`
 
 `int dot(int a[], int b[])`
 
-Returns the sum of dot products i.e. `dot(a, b) = dot(a[0], b[0]) + ... + dot(a[n-1], b[n-1])` where `n = min(len(a), len(b))`.
-
-
+返回点积的总和，即`dot(a, b) = dot(a[0], b[0]) + ...+ dot(a[n-1], b[n-1])` 其中`n = min(len(a), len(b))`。
 
 ## See also
 

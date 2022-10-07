@@ -7,17 +7,11 @@ category:
 
 `string [] re\_split(string regex, string input, int maxsplits=0)`
 
-Splits the `input` string into substrings between matches of `regex`.
+将 "输入 "字符串分割成 "regex "匹配之间的子字符串。
 
-If `maxsplits` is given and not 0, it specifies the maximum number of splits to do.
+如果 "maxsplits "被给定而不是 0，它指定了最大的分割次数。
 
-NOTE: This does not match Python and other split methods as it behaves
-differently with trailing delimiters. `a,b,` will only split into two
-strings. The regex string can be augmented with `|($(?!\s))` to split
-three tokens. In VEX you frequently will need \\s. In a wrangle another
-escape is needed and \\\\s is required.
-
-
+注意：这与 Python 和其他分割方法不匹配，因为它对尾部定界符的行为不同。`a,b,`将只分割成两个字符串。regex 字符串可以用`|($(?!\s))`来分割三个标记。在 VEX 中，你经常会需要 \s。在 wrangle 中需要另一个转义，需要\\\\s。
 
 ## See also
 

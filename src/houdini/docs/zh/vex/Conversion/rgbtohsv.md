@@ -9,11 +9,9 @@ category:
 
 `vector rgbtohsv(float r, float g, float b)`
 
-Convert RGB color space to HSV color space. A vector representing the
-HSV color is returned. The hue will be in the range 0 to 1.
+将 RGB 颜色空间转换为 HSV 颜色空间。一个代表 HSV 颜色的向量被返回。色调将在 0 到 1 的范围内。
 
-
-color
+颜色
 
 [blackbody](blackbody.html)
 
@@ -49,8 +47,7 @@ color
 
 [xyztorgb](xyztorgb.html)
 
-|
-convert
+|转换
 
 [ctransform](ctransform.html)
 

@@ -4,7 +4,7 @@ order: 14
 category:
   - houdini
 ---
-    
+
 ## 描述
 
 Returns an array or string in reverse order.

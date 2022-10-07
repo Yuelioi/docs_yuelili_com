@@ -7,23 +7,20 @@ category:
 
 `float [] create\_pdf(float values[])`
 
-Create a PDF for the input `values` array and return it as a float array.
+为输入的`values`数组创建一个 PDF，并将其作为一个浮点数组返回。
 
 ## Arguments
 
 `values`
 
-Array of values to create the PDF for.
-
-
+创建 PDF 的值的数组。
 
 ## See also
 
 - [spline_cdf](spline_cdf.html)
 - [sample_cdf](sample_cdf.html)
 
-|
-bsdf
+### bsdf
 
 [albedo](albedo.html)
 

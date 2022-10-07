@@ -13,43 +13,41 @@ category:
 
 `float primarclen(<geometry>geometry, vector2 uv1, vector2 uv2, int prim\_num, int divs, int primuvmode, float primuvtol)`
 
-Returns the arc length between two parametric UV coordinates on a given primitive. This lets you measure the distance across a polygon face or along a curve.
+返回给定基元上两个参数化 UV 坐标之间的弧长。这可以让您测量跨越多边形面或沿曲线的距离。
 
 ## Arguments
 
 `geometry`
 
-A string specifying a geometry file (for example, a `.bgeo`) to read from. When running inside Houdini, this can be an `op:/path/to/sop` reference.
+一个字符串，指定要读取的几何文件（例如，".bgeo"）。当在 Houdini 内部运行时，这可以是一个`op:/path/to/sop`的引用。
 
 `uv1`
 
-The start coordinate in the primitive’s parametric space to measure between.
+基元的参数空间中要测量的起始坐标。
 
 `uv2`
 
-The end coordinate in the primitive’s parametric space to measure between.
+基元的参数空间中要测量的末端坐标。
 
 `prim_num`
 
-The number of the primitive across which to measure the distance.
+要测量距离的基元的编号。
 
 `divs`
 
-The number of divisions per segment to use or 10 if not supplied.
+每段要使用的分割数，如果不提供则为 10。
 
 `primuvmode`
 
-Define the uv1 and uv2 coordinates units. See [primuvconvert](primuvconvert.html "Convert parametric UV locations on curve primitives between different spaces.") for the list of modes.
+定义 uv1 和 uv2 坐标单位。模式列表见 [primuvconvert](primuvconvert.html) () ("在不同空间之间转换曲线基元上的参数化 UV 位置。") 。
 
 `primuvtol`
 
-A tolerance used when computing the curve length to do uv coordinates conversions.
+计算曲线长度时用于做 uv 坐标转换的公差。
 
 :::tip
 
-You can also read the `arclength` primitive intrinsic attribute to get a curve’s total arc length.
-
-
+你也可以读取`arclength`原始的内在属性来获得曲线的总弧长。
 
 ## See also
 

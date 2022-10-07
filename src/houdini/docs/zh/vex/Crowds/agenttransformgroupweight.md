@@ -5,34 +5,31 @@ category:
   - vex
 ---
 
-See [Transform Groups](../../crowds/agents.html#xformgroups) for more information.
+更多信息见[Transform Groups](.../.../crowds/agents.html) () (#xformgroups)。
 
 `float agenttransformgroupweight(<geometry>geometry, int prim, int transformgroup, int transform)`
 
-Returns the transform’s weight if it is a member of the specified transform group, and zero otherwise.
+如果该变换是指定变换组的成员，则返回该变换的权重，否则返回 0。
 
 ## Arguments
 
 `<geometry>`
 
-When running in the context of a node (such as a wrangle SOP), this argument can be an integer representing the input number (starting at 0) to read the geometry from.
+当在一个节点的上下文中运行时（比如一个 wrangle SOP），这个参数可以是一个整数，代表要读取几何图形的输入数字（从 0 开始）。
 
-Alternatively, the argument can be a string specifying a geometry file (for example, a `.bgeo`) to read from. When running inside Houdini, this can be an `op:/path/to/sop` reference.
+或者，该参数可以是一个字符串，指定一个几何文件（例如，一个`.bgeo'）来读取。当在Houdini内部运行时，这可以是一个`op:/path/to/sop`的引用。
 
 `prim`
 
-The primitive number.
+原始的数字。
 
 `transformgroup`
 
-Index of a transform group in the agent’s definition.
-A transform group’s index can be obtained via [agentfindtransformgroup](agentfindtransformgroup.html "Finds the index of a transform group in an agent’s definition.").
+代理商定义中的转换组的索引。变换组的索引可以通过[agentfindtransformgroup](agentfindtransformgroup.html)获得（"查找代理定义中的变换组的索引"）。
 
 `transform`
 
-Index of a transform in the agent’s rig.
-
-
+代理人的装备中的一个变换的索引。
 
 ## See also
 

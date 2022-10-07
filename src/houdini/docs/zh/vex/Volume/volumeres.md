@@ -26,7 +26,6 @@ For VDBs, the valid range of indices is not `0..res-1`, but
 
 Returns 0 if `primnum` or `inputnum` is out of range, the geometry is invalid, or the given primitive is not a vector volume primitive.
 
-
 volume
 
 [gradient](gradient.html)

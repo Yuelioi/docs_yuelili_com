@@ -7,29 +7,29 @@ category:
 
 `int agentrigfind(<geometry>geometry, int prim, string transformname)`
 
-Returns `-1` if `transformname` was not found in the rig, `prim` is out of range, or `prim` is not an agent primitive.
+如果`transformname`在钻机中没有找到，`prim`超出范围，或者`prim`不是一个代理基元，则返回`-1`。
 
 ## Arguments
 
 `<geometry>`
 
-When running in the context of a node (such as a wrangle SOP), this argument can be an integer representing the input number (starting at 0) to read the geometry from.
+当在一个节点的上下文中运行时（比如一个 wrangle SOP），这个参数可以是一个整数，代表要读取几何图形的输入数字（从 0 开始）。
 
-Alternatively, the argument can be a string specifying a geometry file (for example, a `.bgeo`) to read from. When running inside Houdini, this can be an `op:/path/to/sop` reference.
+或者，该参数可以是一个字符串，指定一个几何文件（例如，一个`.bgeo'）来读取。当在Houdini内部运行时，这可以是一个`op:/path/to/sop`的引用。
 
 `prim`
 
-The primitive number.
+原始的数字。
 
 `transformname`
 
-The name of a transform in the agent’s rig.
+代理人装备中的一个转变的名称。
 
 ## Examples
 
-[¶](#examples)
 
-Find the current local transform of a given bone.
+
+查找给定骨骼的当前局部变换。
 
 ```c
 int idx = agentrigfind(0, @primnum, "Hips");
@@ -39,8 +39,6 @@ matrix xform = local\_xforms[idx];
 }
 
 ```
-
-
 
 ## See also
 

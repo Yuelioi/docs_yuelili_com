@@ -11,8 +11,7 @@ category:
 
 `float luminance(float r, float g, float b)`
 
-
-color
+颜色
 
 [blackbody](blackbody.html)
 
@@ -48,8 +47,7 @@ color
 
 [xyztorgb](xyztorgb.html)
 
-|
-convert
+|转换
 
 [ctransform](ctransform.html)
 

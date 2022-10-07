@@ -11,21 +11,19 @@ category:
 
 `geohandle`
 
-Handle to the geometry to write to. `geoself()` can be used to get a handle to the current geometry.
+要写入的几何体的句柄。`geoself()`可以用来获取当前几何体的句柄。
 
 `prim`
 
-The primitive number.
+原始的数字。
 
 `transform`
 
-The new transform (in world space) of the bone.
+骨头的新变换（在世界空间）。
 
 `index`
 
-Index of a transform in the agent’s rig.
-
-
+代理人的装备中的一个变换的索引。
 
 ## See also
 

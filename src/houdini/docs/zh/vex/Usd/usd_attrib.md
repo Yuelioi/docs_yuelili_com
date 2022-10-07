@@ -5,9 +5,7 @@ category:
   - vex
 ---
 
-
-
-Since 17.5
+自 17.5 以来
 
 `<type> usd\_attrib(<stage>stage, string primpath, string name)`
 
@@ -17,33 +15,33 @@ Since 17.5
 
 `<type>[] usd\_attrib(<stage>stage, string primpath, string name, float timecode)`
 
-This function returns a value of a given attribute on a given primitive.
+此函数返回给定基元上的一个给定属性的值。
 
 ## Arguments
 
 `<stage>`
 
-When running in the context of a node (such as a wrangle LOP), this argument can be an integer representing the input number (starting at 0) to read the stage from. The integer is equivalent to the string form referencing a particular input, e.g., “opinput:0”.
+当在一个节点的上下文中运行时（比如 wrangle LOP），这个参数可以是一个整数，代表要读取阶段的输入号码（从 0 开始）。这个整数等同于引用特定输入的字符串形式，例如，"opinput:0"。
 
 `primpath`
 
-The path to the primitive.
+通往原始的道路。
 
 `name`
 
-Attribute name.
+属性名称。
 
 `timecode`
 
-The USD time code at which to evaluate the attribute. A USD time code roughly corresponds to a frame in Houdini. If not given, the time code corresponding to the current frame is used.
+用于评估该属性的美元时间代码。一个美元的时间码大致对应于 Houdini 中的一个帧。如果没有给出，就会使用与当前帧对应的时间码。
 
 ## Returns
 
-The value of an existing attribute, or zero/empty value if the attribute does not exist. Use [usd_isattrib](usd_isattrib.html "Checks if the primitive has an attribute by the given name.") if you want to check whether the attribute exists.
+现有属性的值，如果属性不存在，则为零/空值。如果希望检查属性是否存在，请使用 [usd_isattrib](usd_isattrib.html) () ("检查基元是否有一个给定名称的属性。") 。
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Get the value of some attributes on the cube primitive.
@@ -55,8 +53,6 @@ f[]@b\_at\_current\_frame = usd\_attrib(0, "/geo/sphere", "bar");
 f[]@b\_at\_frame\_7 = usd\_attrib(0, "/geo/sphere", "bar", 7.0);
 
 ```
-
-
 
 ## See also
 

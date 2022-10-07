@@ -9,12 +9,9 @@ category:
 
 `string strip(string value, string whitespace)`
 
-Returns a string with the leading and trailing whitespace removed. If
-whitespace is provided, it is a string of characters that will be stripped.
+返回一个去除前导和尾部空白的字符串。如果提供了空白，它是一个将被剥离的字符串。
 
-This is also equivalent of doing both [rstrip](rstrip.html "Strips trailing whitespace from a string.") and [lstrip](lstrip.html "Strips leading whitespace from a string.") on a string.
-
-
+这也相当于在一个字符串上做[rstrip](rstrip.html) ()（"去除字符串的尾部空格"）和[lstrip](lstrip.html)（"去除字符串的头部空格"）。
 
 ## See also
 

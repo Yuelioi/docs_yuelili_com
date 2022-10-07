@@ -31,7 +31,7 @@ matrix3 m = set(1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0);
 
 ```
 
-The [assign](assign.html "An efficient way of extracting the components of a vector or matrix into float variables.") function performs the opposite of this operation (pulling components out into variables).
+The [assign](assign.html) () ("An efficient way of extracting the components of a vector or matrix into float variables.") function performs the opposite of this operation (pulling components out into variables).
 
 `<vector> set(float nums[])`
 
@@ -155,7 +155,7 @@ float[] nums = set(m3); // -> array [ 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.
 
 `<matrix>[] set(float nums[])`
 
-Creates an array of vector/matrix types by taking one component at a time from an array of floats. This is the same as using the [unserialize](unserialize.html "Turns a flat array of floats into an array of vectors or matrices.") function.
+Creates an array of vector/matrix types by taking one component at a time from an array of floats. This is the same as using the [unserialize](unserialize.html) () ("Turns a flat array of floats into an array of vectors or matrices.") function.
 
 ```c
 float[] nums = {1.0, 2.0, 3.0, 4.0};
@@ -202,8 +202,6 @@ If you call `set()` with the same argument type and return type, it simply retur
 string s = set("Hello"); // -> "Hello"
 
 ```
-
-
 
 ## See also
 

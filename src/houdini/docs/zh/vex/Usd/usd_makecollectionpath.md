@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Since 18.0
 
 `string usd\_makecollectionpath(<stage>stage, string primpath, string name)`
@@ -33,15 +31,13 @@ The full path of a given collection.
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Obtain the full path to the collection "some\_collection" on the cube primitive.
 string collection\_path = usd\_makecollectionpath(0, "/geo/cube", "some\_collection");
 
 ```
-
-
 
 ## See also
 

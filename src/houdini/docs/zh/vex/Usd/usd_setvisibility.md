@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Since 19.0
 
 `int usd\_setvisibility(int stagehandle, string primpath, int code)`
@@ -43,7 +41,7 @@ The value of `stagehandle` on success or `-1` on failure.
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 #include <usd.h>
@@ -54,8 +52,6 @@ usd\_setvisibility(0, "/geo/sphere", USD\_VISIBILITY\_VISIBLE);
 usd\_setvisibility(0, "/geo/cube", USD\_VISIBILITY\_INHERIT);
 
 ```
-
-
 
 ## See also
 

@@ -5,9 +5,7 @@ category:
   - vex
 ---
 
-
-
-Since 18.0
+自 18.0 以来
 
 `vector solvetriangleSSS(vector sides)`
 
@@ -17,10 +15,9 @@ Since 18.0
 
 ## Returns
 
-The 3 angles of a triangle in radians given the value of its 3 sides using the Law of Cosines.
+用余弦定律给定一个三角形的 3 个角的弧度，它的 3 条边的值。
 
-
-math
+数学
 
 [Du](Du.html)
 
@@ -126,8 +123,7 @@ math
 
 [variance](variance.html)
 
-|
-solve
+|解决
 
 [agentsolvefbik](agentsolvefbik.html)
 

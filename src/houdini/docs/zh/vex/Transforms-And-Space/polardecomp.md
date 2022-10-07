@@ -7,18 +7,17 @@ category:
 
 `matrix3 polardecomp(matrix3 transform)`
 
-Computes the stretch matrix (S) and the orthogonal matrix (Q) such that `M = S*Q`.
-This is very useful for shape matching or blending of transforms.
+计算拉伸矩阵（S）和正交矩阵（Q），使`M = S*Q`。这对于形状匹配或混合变换非常有用。
 
 ## Arguments
 
 `transform`
 
-The matrix (M) to undergo polar decomposition.
+要进行极地分解的矩阵（M）。
 
 ## Returns
 
-'Q', the orthogonal matrix that best matches the given transform.
+Q"，即最符合给定变换的正交矩阵。
 
 `void polardecomp(matrix3 transform, matrix3 &rot, matrix3 &stretch, int check\_determinant=1)`
 
@@ -26,18 +25,17 @@ The matrix (M) to undergo polar decomposition.
 
 `&rot`
 
-Returns the orthogonal matrix of the polar decomposition.
+返回极坐标分解的正交矩阵。
 
 `&stretch`
 
-Returns the stretch matrix of the polar decomposition.
+返回极坐标分解的拉伸矩阵。
 
 `check_determinant`
 
-Whether or not to check if there is a negative determinant (scale). If there is and this is not set to 0, the orthogonal and scale matrices will be negated.
+是否检查是否有一个负的行列式（比例）。如果有，并且没有设置为 0，正交矩阵和比例矩阵将被否定。
 
-
-transform
+转变
 
 [agentcliptransformgroups](agentcliptransformgroups.html)
 

@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Since 18.0
 
 `int usd\_setprimvar(int stagehandle, string primpath, string name, <type>value)`
@@ -35,7 +33,7 @@ The value of `stagehandle` on success, or `-1` on failure.
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Set the value of some primvars.
@@ -47,8 +45,6 @@ float f\_arr[] = {0, 0.25, 0.5, 0.75, 1};
 usd\_setprimvar(0, "/geo/sphere", "float\_array\_primvar", f\_arr);
 
 ```
-
-
 
 ## See also
 

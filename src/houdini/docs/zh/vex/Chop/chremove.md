@@ -5,9 +5,6 @@ category:
   - vex
 ---
 
-
-
-Context(s)
 [chop](../contexts/chop.html)
 
 `int chremove(int channel\_index)`
@@ -18,30 +15,29 @@ Context(s)
 
 `int chremove(string channel\_names[])`
 
-This function removes channels from a CHOP node. It works only when iterating over Clip, Channel or Samples, not when iterating over ChannelSample.
+Context(s) 这个函数从一个 CHOP 节点中移除通道。它只在迭代 Clip、Channel 或 Samples 时起作用，在迭代 ChannelSample 时不起作用。
 
-Returns 1 if all channels were removed or 0 otherwise.
+如果所有通道都被移除，则返回 1，否则返回 0。
 
 ## Arguments
 
 `channel_index`
 
-The channel index to remove.
+要删除的通道索引。
 
 `channel_indices`
 
-The array of channel indices to remove.
+要删除的通道索引数组。
 
 `channel_name`
 
-The channel name to remove.
+要删除的频道名称。
 
 `channel_names`
 
-The array of channel names to remove.
+要删除的通道名称数组。
 
-
-chop
+劈劈啪啪
 
 [chadd](chadd.html)
 

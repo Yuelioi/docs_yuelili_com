@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Since 18.0
 
 `vector usd\_pointinstance\_getbbox\_max(<stage>stage, string primpath, int instance\_index, string purpose)`
@@ -37,15 +35,13 @@ The maximum position of the instance’s bounding box.
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Get the max of the first instance's boundsng box.
 vector max = usd\_pointinstance\_getbbox\_max(0, "/src/instanced\_spheres", 0, "render");
 
 ```
-
-
 
 ## See also
 

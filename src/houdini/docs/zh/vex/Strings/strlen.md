@@ -7,10 +7,9 @@ category:
 
 `int strlen(string string)`
 
-Returns the length of the string in bytes.
+返回字符串的长度，单位是字节。
 
-
-string
+绳子
 
 [atof](atof.html)
 

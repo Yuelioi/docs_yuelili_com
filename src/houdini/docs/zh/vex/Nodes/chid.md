@@ -5,9 +5,7 @@ category:
   - vex
 ---
 
-
-
-Since 17.5
+自 17.5 以来
 
 `void chid(string channel\_path, int &op\_id, int &parm\_index, int &vector\_index)`
 
@@ -15,14 +13,9 @@ Since 17.5
 
 `int chid(int op\_id, int parm\_index, int vector\_index)`
 
-Resolves a channel given by a channel path or operator path and returns
+解决一个由通道路径或操作者路径给出的通道，并返回
 
-its corresponding operator id, parameter id and vector_index through output
-arguments. Return -1 values on failure. You can also use the last overloaded
-function that doesn’t take a channel_path to test for validity of the keys.
-Returns 1 if the ids are valid, otherwise returns 0.
-
-
+其对应的运算符 id、参数 id 和 vector*index 通过输出参数。失败时返回-1 值。你也可以使用最后一个不接受通道*路径的重载函数来测试键的有效性。如果 id 是有效的，返回 1，否则返回 0。
 
 ## See also
 

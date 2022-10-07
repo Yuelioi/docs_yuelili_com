@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Since 17.5
 
 `int usd\_setattrib(int stagehandle, string primpath, string name, <type>value)`
@@ -35,7 +33,7 @@ The value of `stagehandle` on success, or `-1` on failure.
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Set the value of some attributes.
@@ -47,8 +45,6 @@ float f\_arr[] = {0, 0.25, 0.5, 0.75, 1};
 usd\_setattrib(0, "/geo/sphere", "float\_array\_attrib", f\_arr);
 
 ```
-
-
 
 ## See also
 

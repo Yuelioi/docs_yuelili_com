@@ -7,29 +7,29 @@ category:
 
 `int agentrigparent(<geometry>geometry, int prim, int transform)`
 
-Returns `-1` if `transform` is a root of the transform hierarchy, `transform` is [out of range](agenttransformcount.html "Returns the number of transforms in an agent primitive’s rig."), `prim` is out of range, or `prim` is not an agent primitive.
+如果`transform`是变换层次的根，`transform`是[超出范围](agenttransformcount.html) () ("返回一个代理基元中变换的数量。")，`prim`超出范围，或者`prim`不是一个代理基元，则返回`-1`。
 
 ## Arguments
 
 `<geometry>`
 
-When running in the context of a node (such as a wrangle SOP), this argument can be an integer representing the input number (starting at 0) to read the geometry from.
+当在一个节点的上下文中运行时（比如一个 wrangle SOP），这个参数可以是一个整数，代表要读取几何图形的输入数字（从 0 开始）。
 
-Alternatively, the argument can be a string specifying a geometry file (for example, a `.bgeo`) to read from. When running inside Houdini, this can be an `op:/path/to/sop` reference.
+或者，该参数可以是一个字符串，指定一个几何文件（例如，一个`.bgeo'）来读取。当在Houdini内部运行时，这可以是一个`op:/path/to/sop`的引用。
 
 `prim`
 
-The primitive number.
+原始的数字。
 
 `transform`
 
-Index of a transform in the agent’s rig.
+代理人的装备中的一个变换的索引。
 
 ## Examples
 
-[¶](#examples)
 
-Find the world transform of the rig’s root, beginning from a given bone.
+
+从一个给定的骨骼开始，找到钻机根部的世界变换。
 
 ```c
 int root;
@@ -48,8 +48,6 @@ transform = parent;
 matrix root\_xform = agentworldtransform(0, @primnum, root);
 
 ```
-
-
 
 ## See also
 

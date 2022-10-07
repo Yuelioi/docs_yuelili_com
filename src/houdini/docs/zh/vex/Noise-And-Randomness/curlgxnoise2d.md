@@ -13,12 +13,9 @@ category:
 
 `vector curlgxnoise2d(vector4 xyzt)`
 
-Evaluates a divergence free vector field by computing curl of one-dimensional
-simplex noise (see [gxnoise](gxnoise.html "Evaluates a simplex noise field.")). The first two components of the
-output vector contain the divergence free noise, and its final component is 0.
+通过计算一维单纯噪声的卷曲来评估无发散矢量场（见[gxnoise](gxnoise.html) （"评估单纯噪声场。"））。输出向量的前两个分量包含无发散噪声，其最后一个分量为 0。
 
-
-random
+随机
 
 [curlgxnoise](curlgxnoise.html)
 

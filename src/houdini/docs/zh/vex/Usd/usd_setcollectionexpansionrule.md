@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Since 18.0
 
 `int usd\_setcollectionexpansionrule(int stagehandle, string collectionpath, string rule)`
@@ -39,7 +37,7 @@ The value of `stagehandle` on success or `-1` on failure.
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Set the expansion rule on the cube's collection.
@@ -47,8 +45,6 @@ string collection\_path = usd\_makecollectionpath(0, "/geo/cube", "some\_collect
 usd\_setcollectionexpansionrule(0, collection\_foo, "explicitOnly");
 
 ```
-
-
 
 ## See also
 

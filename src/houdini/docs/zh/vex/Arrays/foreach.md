@@ -4,8 +4,8 @@ order: 4
 category:
   - houdini
 ---
-    
-    # foreach
+
+## foreach
 
 Loops over the items in an array, with optional enumeration.
 循环处理一个数组中的元素，可以选择枚举法。

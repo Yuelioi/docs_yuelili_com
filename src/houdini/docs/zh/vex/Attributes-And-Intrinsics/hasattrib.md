@@ -5,7 +5,7 @@ category:
   - vex
 ---
 
-If you know the attribute class ahead of time, using [hasdetailattrib](hasdetailattrib.html "Returns if a geometry detail attribute exists."), [hasprimattrib](hasprimattrib.html "Returns if a geometry prim attribute exists."), [haspointattrib](haspointattrib.html "Returns if a geometry point attribute exists."), or [hasvertexattrib](hasvertexattrib.html "Returns if a geometry vertex attribute exists.") may be faster.
+如果你提前知道属性类别，使用 [hasdetailattrib](hasdetailattrib.html) () ("返回是否存在一个几何细节属性。"), [hasprimattrib](hasprimattrib.html) () ("返回是否存在一个几何基元属性。"），[haspointattrib](haspointattrib.html)（"返回是否存在几何体点属性。"），或者[hasvertexattrib](hasvertexattrib.html)（"返回是否存在几何体顶点属性。"）可能更快。
 
 `int hasattrib(<geometry>geometry, string attribclass, string attribute\_name)`
 
@@ -13,21 +13,21 @@ If you know the attribute class ahead of time, using [hasdetailattrib](hasdetail
 
 `<geometry>`
 
-When running in the context of a node (such as a wrangle SOP), this argument can be an integer representing the input number (starting at 0) to read the geometry from.
+当在一个节点的上下文中运行时（比如一个 wrangle SOP），这个参数可以是一个整数，代表要读取几何图形的输入数字（从 0 开始）。
 
-Alternatively, the argument can be a string specifying a geometry file (for example, a `.bgeo`) to read from. When running inside Houdini, this can be an `op:/path/to/sop` reference.
+或者，该参数可以是一个字符串，指定一个几何文件（例如，一个`.bgeo'）来读取。当在Houdini内部运行时，这可以是一个`op:/path/to/sop`的引用。
 
 `attribclass`
 
-One of `"detail"` (or `"global"`), `"point"`, `"prim"`, or `"vertex"`.
+是 "细节"（或 "全局"）、"点"、"基元 "或 "顶点 "之一。
 
-You can also use `"primgroup"`, `"pointgroup"` or `"vertexgroup"` to [read from groups](../groups.html "You can read the contents of primitive/point/vertex groups in VEX as if they were attributes.").
+你也可以使用`"primgroup"`、`"pointgroup"`或`"vertexgroup"`来[从组中读取]（.../groups.html）（"你可以在 VEX 中读取 primitive/point/vertex 组的内容，就像它们是属性一样。"）。
 
-Returns `1` if the attribute exists, or `0` otherwise.
+如果属性存在，返回`1'，否则返回`0'。
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Check whether the point group "pointstouse" exists.
@@ -37,8 +37,6 @@ if (hasattrib("defgeo.bgeo", "pointgroup", "pointstouse")) {
 
 ```
 
-
-
 ## See also
 
 - [hasdetailattrib](hasdetailattrib.html)
@@ -46,8 +44,7 @@ if (hasattrib("defgeo.bgeo", "pointgroup", "pointstouse")) {
 - [haspointattrib](haspointattrib.html)
 - [hasvertexattrib](hasvertexattrib.html)
 
-|
-attrib
+### attrib
 
 [addattrib](addattrib.html)
 

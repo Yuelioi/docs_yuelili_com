@@ -9,10 +9,9 @@ category:
 
 `float|vector mx\_perlin(vector pos)`
 
-Returns a noise value that matches the values as in the standard MaterialX library.
+返回一个与标准 MaterialX 库中的数值相匹配的噪声值。
 
-
-random
+随机
 
 [curlgxnoise](curlgxnoise.html)
 

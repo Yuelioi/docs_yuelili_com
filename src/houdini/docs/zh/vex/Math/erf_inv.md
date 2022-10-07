@@ -7,16 +7,13 @@ category:
 
 `float erf\_inv(float v)`
 
-The inverse of the [Gauss error function](http://en.wikipedia.org/wiki/Error_function).
+高斯误差函数]的逆值(http://en.wikipedia.org/wiki/Error_function)。
 
 `erf_inv(erf(v)) = v = erf(erf_inv(v))`
 
-To generate a normally-distributed random number, `n`, with mean `mu` and standard deviation `sigma`,
-from a uniformly-distributed random number, `u`, between 0 and 1,
+从 0 到 1 之间的均匀分布的随机数`u`产生一个正态分布的随机数`n`，其平均值为`mu`，标准偏差为`sigma`。
 
 `n = mu + sqrt(2)*sigma*erf_inv(2*u - 1)`
-
-
 
 ## See also
 

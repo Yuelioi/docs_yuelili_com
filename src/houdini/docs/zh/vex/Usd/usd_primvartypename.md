@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Since 18.0
 
 `string usd\_primvartypename(<stage>stage, string primpath, string name)`
@@ -33,15 +31,13 @@ The primvar type name used in the value type registry. E.g., “float”, “vec
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Get the type name of the primvar on cube.
 string type\_name = usd\_primvartypename(0, "/geo/cube", "primvar\_name");
 
 ```
-
-
 
 ## See also
 

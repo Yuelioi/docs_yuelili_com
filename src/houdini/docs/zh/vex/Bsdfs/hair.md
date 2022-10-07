@@ -11,15 +11,13 @@ category:
 
 `bsdf hair(vector N, vector tip, float lobe\_shift, float lobe\_width\_lon, float lobe\_with\_azi, float glint\_shift, float glint\_intensity, ...)`
 
-Details of the hair BSDF can be found in the source file (`hair_eval.vfl`).
+头发 BSDF 的细节可以在源文件（`hair_eval.vfl`）中找到。
 
-Any variadic arguments to the functions are passed through to the CVEX evaluation function.
+对函数的任何变量参数都会传递给 CVEX 的评估函数。
 
 ## Examples
 
-[¶](#examples)
-
-These different signatures are equivalent to the following code:
+这些不同的签名等同于以下代码。
 
 ```c
 bsdf hair(vector N; vector tip; float lobe\_shift; float lobe\_width\_lon, ...)
@@ -57,16 +55,13 @@ bsdf hair(vector N; vector tip; float lobe\_shift; float lobe\_width\_lon, float
 
 ```
 
-
-
 ## See also
 
 - [phong](phong.html)
 - [phonglobe](phonglobe.html)
 - [Writing a PBR shader](../pbr.html)
 
-|
-bsdf
+### bsdf
 
 [albedo](albedo.html)
 

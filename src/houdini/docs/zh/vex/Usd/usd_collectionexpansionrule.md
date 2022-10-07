@@ -5,37 +5,35 @@ category:
   - vex
 ---
 
-
-
-Since 18.0
+自 18.0 以来
 
 `string usd\_collectionexpansionrule(<stage>stage, string collectionpath)`
 
-This function returns the collection’s expansion rule.
+该函数返回集合的扩展规则。
 
-USD supports a few standard expansion rules
+美元支持一些标准的扩展规则
 
-- `explicitOnly` - only paths in the include list and not in the exclude list belong to the collection
-- `expandPrims` - all the primitives at or below the includes (but not excludes) belong to the collection
-- `expanPrimsAndProperties` - like `expandPrims` but also includes properties of matched primitives
+- `explicitOnly` - 只有包括列表中的路径和不包括列表中的路径才属于集合。
+- `expandPrims`--位于包括（但不包括）或低于包括的所有基元都属于集合。
+- `expanPrimsAndProperties` - 与`expandPrims`类似，但也包括匹配基元的属性
 
 ## Arguments
 
 `<stage>`
 
-When running in the context of a node (such as a wrangle LOP), this argument can be an integer representing the input number (starting at 0) to read the stage from. The integer is equivalent to the string form referencing a particular input, e.g., “opinput:0”.
+当在一个节点的上下文中运行时（比如 wrangle LOP），这个参数可以是一个整数，代表要读取阶段的输入号码（从 0 开始）。这个整数等同于引用特定输入的字符串形式，例如，"opinput:0"。
 
 `collectionpath`
 
-The path to the collection.
+集合的路径。
 
 ## Returns
 
-The collection’s expansion rule.
+收集的扩展规则。
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Get collection's expansion rule.
@@ -43,8 +41,6 @@ string collection\_path = usd\_makecollectionpath(0, "/geo/cube", "some\_collect
 string expansion\_rule = usd\_collectionexpansionrule(0, collection\_path);
 
 ```
-
-
 
 ## See also
 

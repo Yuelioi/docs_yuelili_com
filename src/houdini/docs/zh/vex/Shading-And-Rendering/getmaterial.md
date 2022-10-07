@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Context(s)
 [displace](../contexts/displace.html)
 [fog](../contexts/fog.html)
@@ -16,9 +14,7 @@ Context(s)
 
 `material getmaterial()`
 
-The material handle returned is opaque, but can be used by other functions to query information about the material (see details on the [mantra specific type](../lang.html#mantratypes)).
-
-
+The material handle returned is opaque, but can be used by other functions to query information about the material (see details on the [mantra specific type](../lang.html) () (#mantratypes)).
 
 ## See also
 

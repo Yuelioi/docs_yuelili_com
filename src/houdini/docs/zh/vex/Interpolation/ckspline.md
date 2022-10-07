@@ -5,7 +5,7 @@ category:
   - vex
 ---
 
-To specify the curve using uniformly spaced value keys, use [cspline](cspline.html "Samples a Catmull-Rom (Cardinal) spline defined by uniformly spaced keys.").
+要使用均匀间隔的值键来指定曲线，请使用 [cspline](cspline.html) () ("Samples a Catmull-Rom (Cardinal) spline defined by uniformly spaced keys.") 。
 
 `float ckspline(float t, float value, float pos, ...)`
 
@@ -17,32 +17,25 @@ To specify the curve using uniformly spaced value keys, use [cspline](cspline.ht
 
 `t`
 
-The position along the spline to sample.
+沿着花键的位置进行采样。
 
 `value`, `pos`, `...`
 
-A series of pairs of key values and positions that defines the curve to sample.
+一系列的键值和位置对，定义了要采样的曲线。
 
 ## Returns
 
-The interpolated value at position `t` along the curve.
+沿着曲线`t`位置的内插值。
 
-Computes a Catmull-Rom (Cardinal) spline between the key points
-specified. The values are spaced according to the keys given. The domain
-of the interpolant (t) should be between the second and second last key
-value specified. The keys should be specified in ascending order or
-results will be unpredictable.
+在指定的关键点之间计算 Catmull-Rom（Cardinal）花键。这些值是根据给定的键值间隔的。插值（t）的域应该在指定的第二个和倒数第二个键值之间。键值应按升序指定，否则结果将是不可预知的。
 
-Because of the nature of the Cardinal spline, the value associated with
-the first and last keys will never be returned. However, these keys are
-used to determine the shape of the curve on entry and exit. For
-example:
+由于卡迪纳尔花键的性质，与第一个和最后一个键相关的值将永远不会被返回。然而，这些键是用来确定进入和退出时曲线的形状。比如说。
 
 ## Examples
 
-[¶](#examples)
 
-Find the value at position `t` along a curve
+
+找出沿曲线的位置`t`的值
 
 ```c
 Cf = ckspline(t,
@@ -59,8 +52,6 @@ The Catmull-Rom spline defined by the above keys would be valid for
 interpolants in the range 0 to 1. The first and last keys are used
 solely to determine the slope of the curve at the second and second last
 keys.
-
-
 
 ## See also
 

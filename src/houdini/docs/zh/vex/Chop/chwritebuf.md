@@ -5,20 +5,15 @@ category:
   - vex
 ---
 
-
-
-Context(s)
 [chop](../contexts/chop.html)
 
 `int chwritebuf(int index, float value)`
 
 `int chwritebuf(int index, vector t, vector r, vector s)`
 
-Writes a value of a CHOP context temporary buffer at the specified index.
-Return 1 if the write succeeded, 0 otherwise.
+Context(s) 在指定的索引处写入一个 CHOP 上下文临时缓冲区的值。如果写入成功，返回 1，否则返回 0。
 
-
-chop
+劈劈啪啪
 
 [chadd](chadd.html)
 

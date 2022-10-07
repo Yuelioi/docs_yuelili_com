@@ -5,7 +5,7 @@ category:
   - vex
 ---
 
-![](../../images/rendering/diffuse.png)
+![](/images/diffuse.png)
 
 `bsdf diffuse(...)`
 
@@ -19,51 +19,35 @@ category:
 
 `bsdf diffuse(vector nml, vector geo\_normal, float roughness, ...)`
 
-Diffuse reflections. This BSDF has an albedo of 0.5. If your shader or
-geometry has smooth normals (N and Ng differ) you should avoid the
-signature `diffuse(vector nml)` since it assumes that the
-shading normal matches the geometric normal.
+漫反射。这个 BSDF 的反照率为 0.5。如果你的着色器或几何体有平滑的法线（N 和 Ng 不同），你应该避免使用签名`diffuse(vector nml)`，因为它假定着色法线与几何法线一致。
 
-See [writing a PBR shader](../pbr.html) for information on BSDFs.
+关于 BSDF 的信息，请参见[编写 PBR 着色器](../pbr.html)。
 
 `vector diffuse(vector nml, ...)`
 
 `vector diffuse(vector nml, vector V, float roughness, ...)`
 
-This form uses the
-Oren-Nayar lighting model to compute the diffuse illumination for the
-surface. The Oren-Nayar lighting model is a more sophisticated lighting
-model than Lambertian lighting. The V vector represents a vector from
-the surface to the eye (i.e. -normalize(I)). With a roughness of 0, the
-Oren-Nayar lighting model is equivalent to the Lambertian model. As
-roughness increases toward 1, the illumination changes to mimic rougher
-materials (like clay). The Oren-Nayar form of diffuse() is more
-expensive than Lambertian diffuse lighting.
+这个表格使用 Oren-Nayar 照明模型来计算表面的漫反射照明。Oren-Nayar 照明模型是一个比 Lambertian 照明更复杂的照明模型。V 向量代表从表面到眼睛的一个向量（即-normalize(I)）。粗糙度为 0 时，Oren-Nayar 照明模型等同于 Lambertian 模型。当粗糙度向 1 增加时，照明就会改变，以模仿更粗糙的材料（如粘土）。Oren-Nayar 形式的漫反射（）比 Lambertian 漫反射照明更昂贵。
 
-##
-
-Light inclusion/exclusion options
+## 灯光包含/排除选项
 
 [¶](#light-inclusion-exclusion-options)
 
 ## Arguments
 
-"`categories`",
 `string`
 `="*"`
 
-Specifies lights to include/exclude by their “category” tags.
-This is the preferred include/exclude lights rather than pattern matching
-light names with the `"lightmask"` keyword argument.
+"`categories'", 指定通过其 "类别 "标签包含/排除的灯光。这是首选的包括/排除灯光，而不是用`"lightmask"`关键字参数的模式匹配灯光名称。
 
-For example:
+比如说。
 
 ```c
 diff = diffuse(nml, "lightmask", "hero fill");
 
 ```
 
-See [light categories](../../render/lights.html#categories) for more information.
+See [light categories](../../render/lights.html) () (#categories) for more information.
 
 "`lightmask`",
 `string`
@@ -92,16 +76,13 @@ All Houdini scoping patterns, excepting group expansion, are supported:
 - `^` - exclusion operator
 - `[list]` - character list match
 
-
-
 ## See also
 
 - [wirediffuse](wirediffuse.html)
 - [translucent](translucent.html)
 - [Writing a PBR shader](../pbr.html)
 
-|
-bsdf
+### bsdf
 
 [albedo](albedo.html)
 

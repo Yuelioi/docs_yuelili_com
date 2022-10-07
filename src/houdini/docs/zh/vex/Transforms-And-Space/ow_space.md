@@ -11,10 +11,9 @@ category:
 
 `vector4 ow\_space(vector4 v)`
 
-Transforms a position value from _Object_ to _World_ space.
+将一个位置值从*Object*转换到*World*空间。
 
-
-transform
+转变
 
 [agentcliptransformgroups](agentcliptransformgroups.html)
 

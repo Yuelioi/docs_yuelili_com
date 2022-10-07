@@ -5,21 +5,15 @@ category:
   - vex
 ---
 
-
-
-Since 17.5
+自 17.5 以来
 
 `int opid(string op\_path)`
 
 `int opid(int op\_id)`
 
-Resolves an operator path and returns its corresponding operator id.
+解析一个操作者路径，并返回其相应的操作者 ID。
 
-Return -1 on failure. The form that takes an operator id as an input returns 1
-if it is a valid operator id, otherwise it returns 0. This can be used to test
-if an operator id is valid.
-
-
+失败时返回-1。将操作员 ID 作为输入的表单，如果是有效的操作员 ID，则返回 1，否则返回 0，这可以用来测试操作员 ID 是否有效。
 
 ## See also
 

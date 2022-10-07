@@ -14,8 +14,6 @@ category:
 Scales the matrix in three directions simultaneously by the factors in the vector.
 This modifies the matrix in-place, rather than returning a new matrix.
 
-
-
 ## See also
 
 - [pretranslate](pretranslate.html)

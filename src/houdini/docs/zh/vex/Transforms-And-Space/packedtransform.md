@@ -5,16 +5,13 @@ category:
   - vex
 ---
 
-
-
-Since 17.0
+自 17.0 以来
 
 `void packedtransform(int input, int primnum, matrix transform)`
 
-Transforms a packed primitive by the specified transform. This modifies the `P`
-attribute of the primitive’s point as well as its intrinsic `transform`.
+用指定的变换对一个已打包的基元进行变换。这修改了基元的点的`P`属性以及其内在的`变换`。
 
-This is equivalent to the following code.
+这相当于以下代码。
 
 ```c
 // matrix to transform by
@@ -30,8 +27,6 @@ vector pos = point(0, "P", primpoint);
 setpointattrib(0, "P", primpoint, pos \* transform);
 
 ```
-
-
 
 ## See also
 

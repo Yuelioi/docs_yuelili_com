@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Since 18.0
 
 `matrix usd\_pointinstancetransform(<stage>stage, string primpath, int index)`
@@ -39,15 +37,13 @@ The transform of the point instance.
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Get the transform of the third instance.
 matrix xform = usd\_pointinstancetransform(0, "/src/instanced\_cubes", 2);
 
 ```
-
-
 
 ## See also
 

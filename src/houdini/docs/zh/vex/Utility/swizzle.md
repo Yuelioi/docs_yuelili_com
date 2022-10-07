@@ -17,13 +17,12 @@ Integer arguments less than `0` or greater than the number of components are cla
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 swizzle({10, 20, 30, 40}, 3, 2, 1, 0) == {40, 30, 20, 10}
 swizzle({10, 20, 30, 40}, 0, 0, 0, 0) == {10, 10, 10, 10}
 ```
-
 
 vector
 

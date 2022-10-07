@@ -7,7 +7,7 @@ category:
 
 `float tanh(float n)`
 
-Returns the hyperbolic tangent of `n`.
+返回`n'的双曲正切值。
 
 `vector2 tanh(vector2 n)`
 
@@ -15,9 +15,7 @@ Returns the hyperbolic tangent of `n`.
 
 `vector4 tanh(vector4 n)`
 
-Returns a new vector with `tanh()` applied to each component.
-
-
+返回一个新的向量，`tanh()`应用于每个分量。
 
 ## See also
 

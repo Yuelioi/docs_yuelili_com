@@ -5,9 +5,6 @@ category:
   - vex
 ---
 
-
-
-Context(s)
 [chop](../contexts/chop.html)
 
 `int chinputlimits(int opinput, int channel, float &channel\_min, float &channel\_max)`
@@ -16,27 +13,25 @@ Context(s)
 
 `opinput`
 
-CHOP Input index or -1 if omitted.
+Context(s) CHOP 输入索引，如果省略则为-1。
 
 `channel`
 
-When reading a `channel` or `channelsample` attribute, this is the index of the channel.
-If you are reading a `clip` or `sample` attribute, use `-1` here.
+当读取一个`通道'或`通道样本'属性时，这是该通道的索引。如果你正在读取一个`clip'或`sample'属性，在这里使用`-1'。
 
 `channel_min`
 
-Computed minimum channel value;
+计算出的最小通道值。
 
 `channel_max`
 
-Computed maximum channel value;
+计算出的最大通道值。
 
 ## Returns
 
-Returns 1 on success or 0 on failure.
+成功时返回 1，失败时返回 0。
 
-
-chop
+劈劈啪啪
 
 [chadd](chadd.html)
 

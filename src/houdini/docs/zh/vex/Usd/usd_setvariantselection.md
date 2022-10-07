@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Since 17.5
 
 `int usd\_setvariantselection(<stage>stage, string primpath, string variantset, string variant)`
@@ -37,15 +35,13 @@ The value of `stagehandle` on success or `-1` on failure.
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Set the variant "cone" in a variant set "shapes" on the "shape\_shifter" primitive.
 usd\_setvariantselection(0, "/geo/shape\_shifter", "shapes", "cone");
 
 ```
-
-
 
 ## See also
 

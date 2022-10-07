@@ -7,10 +7,9 @@ category:
 
 `vector tw\_vspace(vector v)`
 
-Transforms a direction vector from _Texture_ to _World_ space.
+将一个方向向量从*Texture*转换到*World*空间。
 
-
-map
+地图
 
 [colormap](colormap.html)
 
@@ -48,8 +47,7 @@ map
 
 [wt_vspace](wt_vspace.html)
 
-|
-transform
+| 转化
 
 [agentcliptransformgroups](agentcliptransformgroups.html)
 

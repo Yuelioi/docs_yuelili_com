@@ -5,37 +5,35 @@ category:
   - vex
 ---
 
-
-
-Since 18.0
+自 18.0 以来
 
 `int usd\_addtotransformorder(int stagehandle, string primpath, string name)`
 
-This function appends a transformation to the primitive’s transform order. Transform order is a sequence of transform operations, whose full names are stored in `xformOpOrder` attribute as a string array. Thus, this function appends a new operation name to that attribute.
+此函数将一个转换附加到基元的转换顺序中。变换顺序是变换操作的序列，其全名作为一个字符串数组存储在`xformOpOrder`属性中。因此，此函数向该属性添加了一个新的操作名称。
 
-NOTE: unlike most VEX functions that deal with primitive transforms and take an operation suffix as a parameter, this function takes the full operation name. Use [usd_transformname](usd_transformname.html "Constructs a full name of a transform operation") to obtain the full name if you know the suffix.
+注意：与大多数处理原始变换并将操作后缀作为参数的 VEX 函数不同，这个函数需要完整的操作名称。如果你知道后缀，可以使用[usd_transformname](usd_transformname.html)（"构造一个变换操作的全名"）来获得全名。
 
 ## Arguments
 
 `stagehandle`
 
-A handle to the stage to write to. Currently the only valid value is `0`, which means the current stage in a node. (This argument may be used in the future to allow writing to other stages.)
+要写入的阶段的句柄。目前唯一有效的值是 "0"，这意味着在一个节点中的当前阶段。(这个参数将来可能会被用于允许写到其他阶段。)
 
 `primpath`
 
-The path to the primitive.
+通往原始的道路。
 
 `name`
 
-The full name of the transform operation. Use [usd_transformname](usd_transformname.html "Constructs a full name of a transform operation") to obtain the full name from the operation suffix.
+变换操作的全名。使用[usd_transformname](usd_transformname.html)（"构建一个转换操作的全名"）从操作后缀中获得全名。
 
 ## Returns
 
-The value of `stagehandle` on success or `-1` on failure.
+成功时是`stagehandle`的值，失败时是`-1`。
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Note, the USD\_XFORM\_TRANSLATE and USD\_AXIS\_Z constants used below
@@ -54,8 +52,6 @@ usd\_addrotate(0, "/geo/cone", "second\_rotation", USD\_AXIS\_Z, 45);
 usd\_addtotransformorder(0, "/geo/cone", step\_name);
 
 ```
-
-
 
 ## See also
 

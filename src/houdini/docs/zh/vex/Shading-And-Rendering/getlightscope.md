@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Context(s)
 [displace](../contexts/displace.html)
 [fog](../contexts/fog.html)
@@ -17,8 +15,6 @@ Context(s)
 `void getlightscope(material mat, string &scope, string &categories)`
 
 Given a material handle, determine the lights illuminating the surface. The light selection is given by the scope/categories returned.
-
-
 
 ## See also
 

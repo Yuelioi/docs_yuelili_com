@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Since 18.0
 
 `int usd\_setattribelement(int stagehandle, string primpath, string name, int index, <type>value)`
@@ -37,15 +35,13 @@ The value of `stagehandle` on success, or `-1` on failure.
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Set the value of element at index 2 in the array attribute.
 usd\_setattribelement(0, "/geo/sphere", "float\_array\_attrib", 2, 0.25);
 
 ```
-
-
 
 ## See also
 

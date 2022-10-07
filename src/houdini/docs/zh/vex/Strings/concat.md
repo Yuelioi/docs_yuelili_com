@@ -7,13 +7,11 @@ category:
 
 `string concat(string s1, string s2, ...)`
 
-Concatenate the arguments to form a single string.
+将参数串联起来，形成一个单一的字符串。
 
-This is equivalent to `s1 + s2 + s3 ...`.
-However, `concat()` is slightly more efficient with more than 2 strings.
+这相当于`s1 + s2 + s3 ...'。然而，`concat()`在处理 2 个以上的字符串时，效率略高。
 
-
-string
+绳子
 
 [atof](atof.html)
 

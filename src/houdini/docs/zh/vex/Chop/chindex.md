@@ -5,9 +5,6 @@ category:
   - vex
 ---
 
-
-
-Context(s)
 [chop](../contexts/chop.html)
 
 `int chindex(int opinput, string name)`
@@ -16,24 +13,23 @@ Context(s)
 
 `int [] chindex(string names[])`
 
-Returns the channel index from a input given a channel name or -1 on failure.
+Context(s) 从一个给定的通道名称的输入中返回通道索引，或者在失败时返回-1。
 
 ## Arguments
 
 `opinput`
 
-CHOP Input index or -1 if omitted.
+CHOP 输入索引，如果省略则为-1。
 
 `name`
 
-Channel name to lookup.
+要查询的频道名称。
 
 `names`
 
-Array of Channel names to lookup.
+要查询的通道名称的数组。
 
-
-chop
+劈劈啪啪
 
 [chadd](chadd.html)
 

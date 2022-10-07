@@ -5,7 +5,7 @@ category:
   - vex
 ---
 
-Intrinsic values are similar to attributes, but are computed on-demand by Houdini rather than stored.
+本质值与属性类似，但它是由胡迪尼按需计算的，而不是存储的。
 
 `<type> detailintrinsic(<geometry>geometry, string intrinsic\_name)`
 
@@ -15,26 +15,23 @@ Intrinsic values are similar to attributes, but are computed on-demand by Houdin
 
 `<geometry>`
 
-When running in the context of a node (such as a wrangle SOP), this argument can be an integer representing the input number (starting at 0) to read the geometry from.
+当在一个节点的上下文中运行时（比如一个 wrangle SOP），这个参数可以是一个整数，代表要读取几何图形的输入数字（从 0 开始）。
 
-Alternatively, the argument can be a string specifying a geometry file (for example, a `.bgeo`) to read from. When running inside Houdini, this can be an `op:/path/to/sop` reference.
+或者，该参数可以是一个字符串，指定一个几何文件（例如，`.bgeo'），以便从中读取。当在Houdini内部运行时，这可以是一个`op:/path/to/sop`的引用。
 
 `intrinsic_name`
 
-The name of the intrinsic to read. For example, `"pointattributes"`, `"pointcount"`, or `"bounds"`.
+要读取的本征的名称。例如，"pointattributes"，"pointcount"，或 "bounds"。
 
 ## Returns
 
-The intrinsic value, or `0` if the given intrinsic does not exist.
-
-
+本征值，如果给定的本征不存在，则为`0`。
 
 ## See also
 
 - [primintrinsic](primintrinsic.html)
 
-|
-attrib
+### attrib
 
 [addattrib](addattrib.html)
 

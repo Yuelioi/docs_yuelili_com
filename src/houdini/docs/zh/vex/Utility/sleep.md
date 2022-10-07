@@ -9,7 +9,6 @@ category:
 
 Yields processing for a certain number of milliseconds.
 
-
 utility
 
 [assert_enabled](assert_enabled.html)

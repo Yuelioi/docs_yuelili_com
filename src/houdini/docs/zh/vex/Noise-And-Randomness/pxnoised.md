@@ -5,9 +5,7 @@ category:
   - vex
 ---
 
-
-
-Since 17.0
+自 17.0 以来
 
 `void pxnoised(float x, int px, float &v, float &dvdx)`
 
@@ -25,16 +23,11 @@ Since 17.0
 
 `void pxnoised(vector4 xyzw, int px, int py, int pz, int pw, vector &v, vector &dvdx, vector &dvdy, vector &dvdz, vector &dvdw)`
 
-This computes both the simplex noise value, and the derivatives of the
-noise along each axis. This can be performed quite efficiently as
-there are analytic derivatives available.
+这将计算单纯的噪声值，以及沿每个轴的噪声导数。这可以相当有效地进行，因为有分析性导数可用。
 
-See [xnoise](xnoise.html "Simplex noise is very close to Perlin noise, except with the samples on a simplex mesh rather than a grid.  This results in less grid artifacts.  It also uses a higher order bspline to provide better derivatives.") and [pxnoise](pxnoise.html "Simplex noise is very close to Perlin noise, except with the samples on a simplex mesh rather than a grid.  This results in less grid artifacts.  It also uses a higher order bspline to provide better derivatives. This is the periodic simplex noise") for other versions of xnoise.
+见[xnoise](xnoise.html) ()（"Simplex 噪声与 Perlin 噪声非常接近，只是样本在一个 Simplex 网格而不是网格上。这导致较少的网格伪影。它还使用更高阶的 bspline 来提供更好的导数。"）和[pxnoise](pxnoise.html) （"Simplex 噪声非常接近于 Perlin 噪声，除了样本在一个单纯的网格而不是网格上。这导致较少的网格伪影。它还使用高阶 bspline 来提供更好的导数。这就是周期性的单线噪声"）用于其他版本的 xnoise。
 
-See [noise and randomness](../random.html) in the VEX language
-guide for more information.
-
-
+参见 VEX 语言指南中的[噪声和随机性](.../random.html)以获得更多信息。
 
 ## See also
 

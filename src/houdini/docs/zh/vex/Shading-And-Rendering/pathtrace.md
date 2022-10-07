@@ -5,124 +5,80 @@ category:
   - vex
 ---
 
-
-
-Context(s)
 [shading](../contexts/shading.html)
 
 `vector pathtrace(vector P, vector N, ...)`
 
-`pathtrace` works like [irradiance](irradiance.html "Computes irradiance (global illumination) at the point P with the normal N."), but uses the physically based
-rendering (PBR) engine to do secondary bounces.
+上下文`pathtrace`的工作方式与[irradiance](irradiance.html)类似（"计算法线 N 下 P 点的辐照度（全局照度）"），但使用基于物理的渲染（PBR）引擎来做二次弹跳。
 
-`pathtrace` provides a simple (and not very flexible) method of invoking the
-PBR rendering engine from micro-polygon rendering. It uses path tracing and
-the `F` (BSDF) output, not `Cf`/`Of` on the hit shaders. Maximum path depth
-is controlled by the “diffuse bounces” parameter on the PBR tab of the
-[![](../../icons/ROP/mantra.svg)mantra output driver](../../nodes/out/ifd.html "Renders the scene using Houdini’s standard mantra renderer and generates IFD files.").
+`pathtrace`提供了一个简单的（也不是很灵活）方法，从微多角形渲染中调用 PBR 渲染引擎。它使用路径追踪和`F`（BSDF）输出，而不是`Cf`/`Of`在打击着色器上。最大的路径深度由 [mantra 输出驱动](https://www.sidefx.com/docs/houdini/nodes/out/ifd.html)（"使用 Houdini 的标准 mantra 渲染器渲染场景并生成 IFD 文件"）的 PBR 标签上的 "漫反射反弹 "参数控制。
 
-Irradiance caching works the same way it works with [occlusion](occlusion.html "Computes ambient occlusion.").
+辐照度缓存的工作方式与[occlusion](occlusion.html)（"计算环境遮挡"）的工作方式相同。
 
-##
-
-Ray options
+## 雷的选择
 
 [¶](#ray-options)
 
 :::tip
 
-When you specify a texture, such as with the `"environment"` keyword,
-you can also use the image filtering keyword arguments. See [environment](environment.html "Returns the color of the environment texture.")
-for a listing of the image filter keyword arguments.
+当你指定一个纹理时，比如用`"环境"`关键字，你也可以使用图像过滤关键字参数。参见[environment](environment.html) () ("返回环境纹理的颜色。") 以了解图像过滤关键字参数的清单。
 
 ## Arguments
 
-"`scope`",
 `string`
 
-A list of objects which can be hit by the rays. When specified, `scope` overrides the default scope that would have been selected for the given `raystyle`. The `"scope:default"` value will cause the `scope` argument to use the default scope for the current context - as if the argument were not specified.
+"`scope'", 一个可以被射线击中的物体的列表。当指定时，"scope "覆盖了为给定的 "raystyle "选择的默认范围。`"scope:default"`值将导致`scope`参数使用当前上下文的默认范围 - 就像没有指定该参数一样。
 
-Allows an override of the [scope](../contexts/shading_contexts.html#scope) for ray-intersections.
-A special scope argument, `scope:self`, will match the currently
-shading object.
+允许覆盖[scope](../contexts/shading_contexts.html) ()(#scope)的射线断面。一个特殊的范围参数，`scope:self`，将匹配当前的着色对象。
 
-"`currentobject`",
 `material`
 
-Used to specify what the current shading object is. For example, when used with the scope argument, `scope:self` will match the object passed in by this argument.
+"`currentobject`", 用于指定当前的着色对象是什么。例如，当与范围参数一起使用时，`scope:self`将与该参数传入的对象相匹配。
 
-"`maxdist`",
 `float`
 `=-1`
 
-The maximum distance to search for objects. This can be used to limit the search of objects to nearby objects only. If the `maxdist` given is negative, then it will act as if there is no maximum distance.
+"`maxdist'", 搜索物体的最大距离。这可以用来限制对物体的搜索只限于附近的物体。如果给定的`maxdist'是负数，那么它将像没有最大距离一样行事。
 
-Allows an override of the maximum distance the ray can
-travel when testing for intersections. Some functions (such as
-[fastshadow](fastshadow.html "Sends a ray from the position P along the direction specified by the
-direction D.")) have the maximum distance implicitly defined (by
-the length of the ray) and should probably avoid using this
-option. However, this option can be used effectively when
-computing reflections, global illumination, refraction etc.
+允许覆盖射线在测试交叉点时可以移动的最大距离。一些函数（比如[fastshadow](fastshadow.html) ("从位置P沿着方向D指定的方向发送一条射线。")）隐含地定义了最大距离（通过射线的长度），可能应该避免使用这个选项。然而，在计算反射、全局照明、折射等时，这个选项可以有效使用。
 
-"`variancevar`",
 `string`
 
-The name of a VEX export variable to use for variance anti-aliasing. The renderer compares the value with adjacent micropolygons in micropolygon rendering to decide what shading points need additional samples (using `vm_variance` [property](../../props/index.html "Properties let you set up flexible and powerful hierarchies of rendering, shading, lighting, and camera parameters.") as a threshold). If more samples are required, the algorithm takes samples up to the specified maximum ray samples.
+"`variancevar`", VEX 导出变量的名称，用于方差抗锯齿。渲染器将该值与微多边形渲染中相邻的微多边形进行比较，以决定哪些着色点需要额外的样本（使用`vm_variance` [property](.../.../props/index.html)（"属性让你设置灵活而强大的渲染、着色、照明和相机参数的层次结构。"）作为阈值）。如果需要更多的样本，算法会在指定的最大射线样本范围内取样。
 
-This variable must be imported from the hit surface, so it must be in the list of imported names (see “importing information back from the ray” below). If the named variable is not imported, this option will be ignored.
+这个变量必须从撞击面导入，所以它必须在导入的名称列表中（见下文 "从射线导入信息"）。如果命名的变量没有被导入，这个选项将被忽略。
 
-Variance antialiasing puts more samples in areas of the image with high variance, for example a sharp shadow edge. It is only used when `vm_dorayvariance` is enabled. Otherwise, only the min ray samples (or an explicitly supplied `"samples"` value) are used for antialiasing of the gather loop.
+差异抗锯齿将更多的样本放在图像的高差异区域，例如尖锐的阴影边缘。它只在`vm_dorayvariance`被启用时使用。否则，只有最小射线样本（或明确提供的 "样本 "值）被用于采集循环的抗锯齿。
 
-Overrides the global variance control (mantra’s -v option)
-which is used to determine anti-aliasing quality of ray tracing.
-For more information please refer to the documentation on
-mantra.
+覆盖全局差异控制（mantra 的-v 选项），该控制用于确定光线追踪的抗锯齿质量。更多信息请参考 mantra 的文档。
 
-"`angle`",
 `float`
 `=0`
 
-The distribution angle (specified in radians). For gather(), rays will be distributed over this angle. For trace(), the angle is used to indicate the rate at which the filter width should increase with increasing intersection distance. Larger angles will cause farther hit surfaces to use larger derivatives, leading to improved texturing and displacement performance.
+"`angle`", 分布角度（用弧度指定）。对于 gather()，射线将被分布在这个角度上。对于 trace()，该角度用于指示滤波宽度应随着交叉点距离的增加而增加的速度。较大的角度会导致较远的撞击面使用较大的导数，从而提高纹理和位移性能。
 
-To be effective, the samples parameter should also be specified.
+为了有效，还应该指定样本参数。
 
-"`samples`",
 `int|float`
 `=1`
 
-How many samples should be sent out to filter rays. For the
-irradiance and occlusion functions, specifying a samples
-parameter will override the default irradiance sampling.
+"`samples'", 应该发送多少个样本来过滤射线。对于辐照度和闭塞函数，指定一个样本参数将覆盖默认的辐照度采样。
 
-"`environment`",
 `string`
 
-If the ray sent out to the scene misses everything, then
-it’s possible to specify an environment map to evaluate.
+"`environment`", 如果发送到场景的射线错过了一切，那么就可以指定一个环境图来评估。
 
-Using the ray’s direction, the environment map specified
-will be evaluated and the resulting color will be returned.
-Most likely, it will be necessary to specify a transform
-space for the environment map evaluations.
+使用射线的方向，指定的环境贴图将被评估，结果的颜色将被返回。最有可能的是，有必要为环境图的评估指定一个变换空间。
 
-In the case of refractlight and trace the Of and Af
-variables will be set to 0 regardless of the background
-color specified. the resulting color.
+在 refractlight 和 trace 的情况下，Of 和 Af 变量将被设置为 0，不管指定的背景颜色如何。
 
-When an environment map is specified, the filtering options
-from texture() are also supported.
+当指定一个环境贴图时，也支持 texture()的过滤选项。
 
-See [how to create an environment/reflection map](../../render/envmaps.html).
+参见[如何创建环境/反射图](././render/envmaps.html)。
 
-"`envobject`",
 `string`
 
-If an environment map is used, the orientation of the
-environment map can be specified by transforming the ray
-into the space of another object, light or fog object in the
-scene. In Houdini, null objects can be used to specify the
-orientation. For example:
+"`envobject'", 如果使用了环境贴图，那么环境贴图的方向可以通过将射线转换为场景中另一个物体、光或雾物体的空间来指定。在 Houdini 中，可以使用空对象来指定方向。比如说。
 
 ```c
 Cf = R\*reflectlight(bias, max(R), "environment", "map.rat", "envobject", "null\_object\_name");
@@ -152,14 +108,12 @@ background color specified.
 "`distribution`",
 `string`
 
-**Functions**: [irradiance](irradiance.html "Computes irradiance (global illumination) at the point P with the normal N."), [occlusion](occlusion.html "Computes ambient occlusion.")
+**Functions**: [irradiance](irradiance.html) () ("Computes irradiance (global illumination) at the point P with the normal N."), [occlusion](occlusion.html) () ("Computes ambient occlusion.")
 
 Distribution for computing irradiance. The default is to use
 a cosine distribution (diffuse illumination). The possible
 values for the style are `"nonweighted"` for uniform sampling
 or `"cosine"` for cosine weighted sampling.
-
-
 
 ## See also
 

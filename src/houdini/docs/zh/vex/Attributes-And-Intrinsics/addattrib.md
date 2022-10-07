@@ -5,7 +5,7 @@ category:
   - vex
 ---
 
-If you know the class of attribute you want to add ahead of time, using [adddetailattrib](adddetailattrib.html "Adds a detail attribute to a geometry."), [addprimattrib](addprimattrib.html "Adds a primitive attribute to a geometry."), [addpointattrib](addpointattrib.html "Adds a point attribute to a geometry."), or [addvertexattrib](addvertexattrib.html "Adds a vertex attribute to a geometry.") may be faster.
+如果你提前知道你要添加的属性类别，使用 [adddetailattrib](adddetailattrib.html) () ("给几何体添加一个细节属性。"), [addprimattrib](addprimattrib.html) () ("给几何体添加一个原始属性。")html）（"给几何体添加一个基元属性。"），[addpointattrib](addpointattrib.html) ()（"给几何体添加一个点属性。"），或者[addvertexattrib](addvertexattrib.html)（"给几何体添加一个顶点属性。"）可能更快。
 
 `int addattrib(int geohandle, string attribclass, string name, <type>defvalue)`
 
@@ -15,29 +15,27 @@ If you know the class of attribute you want to add ahead of time, using [adddeta
 
 `geohandle`
 
-A handle to the geometry to write to. Currently the only valid value is `0` or [geoself](geoself.html "Returns a handle to the current geometry."), which means the current geometry in a node. (This argument may be used in the future to allow writing to other geometries.)
+要写入的几何体的句柄。目前唯一有效的值是`0`或[geoself](geoself.html) () ("返回当前几何体的句柄。")，这意味着当前节点中的几何体。(这个参数将来可能会被用来允许写到其他的几何体)。
 
 `attribclass`
 
-One of `"detail"` (or `"global"`), `"point"`, `"prim"`, or `"vertex"`.
+是 "细节"（或 "全局"）、"点"、"基元 "或 "顶点 "之一。
 
-You can also use `"primgroup"`, `"pointgroup"` or `"vertexgroup"` to [read from groups](../groups.html "You can read the contents of primitive/point/vertex groups in VEX as if they were attributes.").
+你也可以使用`"primgroup"`、`"pointgroup"`或`"vertexgroup"`来[从组中读取](.../groups.html)（"你可以在 VEX 中读取 primitive/point/vertex 组的内容，就像它们是属性一样。"）。
 
 `name`
 
-The name of the attribute to create.
+要创建的属性的名称。
 
 `defvalue`
 
-The default value for the attribute and determines the type of attribute to create. String and array attributes cannot have defaults, so only the type is used in those cases.
+属性的默认值，决定了要创建的属性的类型。字符串和数组属性不能有默认值，所以在这些情况下只使用类型。
 
 ## Returns
 
-`geohandle` on success, or `-1` on failure.
+成功时为 "geohandle"，失败时为"-1"。
 
-- If an attribute of the same name already exists, the function will try to convert it to the new type.
-
-
+- 如果一个同名的属性已经存在，该函数将尝试将其转换为新的类型。
 
 ## See also
 
@@ -46,8 +44,7 @@ The default value for the attribute and determines the type of attribute to crea
 - [addpointattrib](addpointattrib.html)
 - [addvertexattrib](addvertexattrib.html)
 
-|
-attrib
+### attrib
 
 [addattrib](addattrib.html)
 

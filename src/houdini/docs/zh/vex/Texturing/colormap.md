@@ -5,48 +5,43 @@ category:
   - vex
 ---
 
-This function does bilinear interpolation of the pixel values. To get unfiltered pixel values, use [rawcolormap](rawcolormap.html "Looks up an unfiltered color from a texture file.").
+这个函数对像素值进行双线性插值。要获得未经过滤的像素值，请使用 [rawcolormap](rawcolormap.html) （"从纹理文件中查找未经过滤的颜色。"）。
 
 `vector|vector4 colormap(string filename, vector uvw, ...)`
 
-Uses the first two components of uvw as unit (0-1) coordinates to point sample the texture file.
+使用 uvw 的前两个分量作为单位（0-1）坐标来对纹理文件进行取样。
 
 `vector|vector4 colormap(string filename, float u, float v, ...)`
 
-Uses u and v as unit (0-1) coordinates to point sample the texture file.
+使用 u 和 v 作为单位（0-1）坐标对纹理文件进行取样。
 
 `vector|vector4 colormap(string filename, vector uv, vector du, vector dv, int samples, ...)`
 
-Uses the quadrilateral formed by `(uv)-(uv+du)-(uv+du+dv)-(uv+dv)` to area sample the texture file.
-Takes samples number of stochastic samples (unless the image is a .rat file).
+使用`(uv)-(uv+du)-(uv+du+dv)-(uv+dv)`形成的四边形来对纹理文件进行区域采样。采取随机采样的数量（除非图像是.rat 文件）。
 
 `vector|vector4 colormap(string filename, vector uv0, vector uv1, vector uv2, vector uv3, ...)`
 
-Uses the quadrilateral formed by `(uv0)-(uv1)-(uv2)-(uv3)` to area sample the texture file.
+使用`(uv0)-(uv1)-(uv2)-(uv3)`形成的四边形来对纹理文件进行区域采样。
 
 `vector|vector4 colormap(string filename, vector uv0, vector uv1, vector uv2, vector uv3, int samples, ...)`
 
-Uses the quadrilateral formed by `(uv0)-(uv1)-(uv2)-(uv3)` to area sample the texture file.
-Takes samples number of stochastic samples (unless the image is a .rat file).
+使用`(uv0)-(uv1)-(uv2)-(uv3)`形成的四边形来对纹理文件进行区域采样。采取随机采样的数量（除非图像是.rat 文件）。
 
 `vector|vector4 colormap(string filename, float u0, float v0, float u1, float v1, float u2, float v2, float u3, float v3, int samples, ...)`
 
-Uses the quadrilateral formed by `(uv0)-(uv1)-(uv2)-(uv3)` to area sample the texture file.
-Takes samples number of stochastic samples (unless the image is a .rat file).
+使用`(uv0)-(uv1)-(uv2)-(uv3)`所形成的四边形对纹理文件进行区域采样。采取随机采样的数量（除非图像是.rat 文件）。
 
 ## Arguments
 
 ## Returns
 
-If you call the function with a `vector4` return type, the fourth component is the alpha channel of the texture. If the image does not have alpha, the fourth component is always `1`.
+如果你用`vector4`返回类型调用该函数，第四个分量就是纹理的 alpha 通道。如果图像没有 alpha，第四个分量总是`1'。
 
-##
-
-Image filtering options
+## 图像过滤选项
 
 [¶](#image-filtering-options)
 
-Examples of specifying filter parameters:
+指定过滤器参数的例子。
 
 ```c
 colormap(map, u, v, "smode", "decal", "tmode", "repeat", "border", {.1,1,1});
@@ -423,8 +418,6 @@ by mantra’s default light shader.
 Normalized by values integrated over coverage angles, so that IES
 profile affects shaping of the light while preserving its overall
 energy output.
-
-
 
 ## See also
 

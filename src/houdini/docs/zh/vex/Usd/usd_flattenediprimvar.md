@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Since 19.0
 
 `<type>[] usd\_flattenediprimvar(<stage>stage, string primpath, string name)`
@@ -37,11 +35,11 @@ The USD time code at which to evaluate the attribute. A USD time code roughly co
 
 ## Returns
 
-The flattened value of an existing primvar, or zero/empty value if the primvar does not exist. Use [usd_isiprimvar](usd_isiprimvar.html "Checks if the primitive or its ancestor has a primvar of the given name.") if you want to check whether the primvar exists.
+The flattened value of an existing primvar, or zero/empty value if the primvar does not exist. Use [usd_isiprimvar](usd_isiprimvar.html) () ("Checks if the primitive or its ancestor has a primvar of the given name.") if you want to check whether the primvar exists.
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Get the value of a flattened primvar on the cube primitive or cube's ancestor.
@@ -51,8 +49,6 @@ f[]@flat\_primvar\_at\_current\_frame = usd\_flattenediprimvar(0, "/geo/sphere",
 f[]@flat\_primvar\_at\_frame\_7 = usd\_flattenediprimvar(0, "/geo/sphere", "bar", 7.0);
 
 ```
-
-
 
 ## See also
 

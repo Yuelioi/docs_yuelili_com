@@ -16,7 +16,6 @@ evaluate both a and b, regardless of the value of the conditional. Judicious
 use of `select` can avoid comparisons, allowing larger sections of code to be
 converted to native code.
 
-
 utility
 
 [assert_enabled](assert_enabled.html)

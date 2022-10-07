@@ -11,8 +11,6 @@ category:
 
 Returns a string with the leading whitespace removed. If whitespace is provided, it is a string of characters that will be stripped.
 
-
-
 ## See also
 
 - [rstrip](rstrip.html)

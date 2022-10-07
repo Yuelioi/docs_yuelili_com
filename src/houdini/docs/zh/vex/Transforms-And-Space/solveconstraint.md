@@ -5,46 +5,33 @@ category:
   - vex
 ---
 
-
-
-Since 17.5
+自 17.5 以来
 
 `vector [] solveconstraint(float lengths[], vector targetpos, float tolerance, matrix relmat, vector constraints[])`
 
-Returns a array of local bone rotations in degrees.
+返回一个以度为单位的局部骨骼旋转阵列。
 
 ## Arguments
 
 `lengths`
 
-The lengths of all the bones to solve.
+所有骨头的长度来解决。
 
 `targetpos`
 
-A target position in worldspace.
+世界空间中的一个目标位置。
 
 `tolerance`
 
-Tolerance.
+容忍。
 
 `relmat`
 
-A relative matrix used to transform the target and twist positions relative to the origin.
-This is normally the invert matrix of the root of the chain.
+一个相对矩阵，用于转换相对于原点的目标和扭曲的位置。这通常是链根的反转矩阵。
 
 `constraints`
 
-This is a vector array used to define the per bone restangles, dampening, minangles, maxangles, min damp, max damp, and rolloff.
-If the array is empty, same default values present in the bone objects are used.
-If the array size is equal to the number of input bones, the rest angles are defined.
-If the array size is equal to 2 times the number of input bones, the rest angles and the dampening are defined.
-If the array size is equal to 3 times the number of input bones, the rest angles, the dampening, the min/max angles are defined. Min/Max angles share the same values.
-If the array size is equal to 4 times the number of input bones, the rest angles, the dampening, the min/max angles are defined. Min/Max angles have different values.
-If the array size is equal to 5 times the number of input bones, the rest angles, the dampening, the min/max angles and damp angles are defined.
-If the array size is equal to 6 times the number of input bones, the rest angles, the dampening, the min/max angles, min/max damp angles are defined.
-If the array size is equal to 7 times the number of input bones, the rest angles, the dampening, the min/max angles, min/max damp angles, and rolloff are defined.
-
-
+这是一个矢量数组，用于定义每个骨骼的重角、阻尼、最小角、最大角、最小阻尼、最大阻尼和滚降。如果该数组为空，则使用骨骼对象中的相同默认值。如果数组的大小等于输入骨骼的数量，则定义其余的角度。如果数组的大小等于输入骨骼数量的 2 倍，则定义休息角和阻尼。如果数组大小等于输入骨骼数量的 3 倍，则定义休息角、阻尼、最小/最大角。最小/最大角共享相同的值。如果数组大小等于输入骨骼数量的 4 倍，则定义了休息角、阻尼、最小/最大角。最小/最大角度有不同的值。如果数组大小等于输入骨骼数量的 5 倍，则定义了休息角、阻尼、最小/最大角和阻尼角。如果数组大小等于输入骨骼数量的 6 倍，则定义了休息角、阻尼、最小/最大角、最小/最大阻尼角。如果阵列大小等于输入骨骼数量的 7 倍，则定义了休息角、阻尼、最小/最大角、最小/最大阻尼角和滚降。
 
 ## See also
 

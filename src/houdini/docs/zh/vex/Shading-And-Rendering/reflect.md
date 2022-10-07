@@ -7,11 +7,9 @@ category:
 
 `vector reflect(vector direction, vector normal)`
 
-Returns the vector representing the reflection of the direction
-against the normal.
+返回代表方向对法线的反射的向量。
 
-
-shading
+遮阳
 
 [Du](Du.html)
 

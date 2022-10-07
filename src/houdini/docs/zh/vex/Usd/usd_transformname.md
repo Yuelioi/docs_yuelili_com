@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Since 18.0
 
 `string usd\_transformname(int transformtype, string suffix)`
@@ -31,15 +29,13 @@ The full name of transform operation.
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Construct a full name for a translation operation with suffix "cone\_pivot"
 string pivot\_xform\_name = usd\_transformname(USD\_XFORM\_TRANSLATE, "cone\_pivot");
 
 ```
-
-
 
 ## See also
 

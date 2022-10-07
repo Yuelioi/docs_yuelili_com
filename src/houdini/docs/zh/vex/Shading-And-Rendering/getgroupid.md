@@ -5,19 +5,13 @@ category:
   - vex
 ---
 
-
-
-Context(s)
 [shading](../contexts/shading.html)
 
 `int getgroupid()`
 
-Returns the id of a primitive group containing the current face being shaded.
-The id is the index of the group in the detail. If the primitive belongs
-to several groups, their indices are added up to calculate the returned id.
+Context(s) 返回包含当前被遮蔽的面的原始组的 id。id 是细节中的组的索引。如果该基元属于多个组，则将它们的索引加起来，以计算返回的 id。
 
-
-shading
+遮阳
 
 [Du](Du.html)
 

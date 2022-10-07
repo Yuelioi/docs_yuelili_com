@@ -5,29 +5,25 @@ category:
   - vex
 ---
 
-
-
-Context(s)
 [chop](../contexts/chop.html)
 
 `int chnumchan()`
 
-Uses `-1` for `opinput`
+上下文中，"opinput "使用了"-1"。
 
 `int chnumchan(int opinput)`
 
-Returns the number of channels in the input specified.
+返回指定的输入中的通道数。
 
 ## Arguments
 
 `opinput`
 
-The input number to read from, starting from 0. For example, the first input is 0, the second input is 1, and so on.
+要读取的输入号码，从 0 开始。例如，第一个输入是 0，第二个输入是 1，以此类推。
 
-If you specify `-1`, the function uses the current CHOP node or input `0` if it is connected.
+如果你指定`-1`，函数使用当前的 CHOP 节点或输入`0`，如果它是连接的。
 
-
-chop
+劈劈啪啪
 
 [chadd](chadd.html)
 

@@ -11,25 +11,23 @@ category:
 
 `<geometry>`
 
-When running in the context of a node (such as a wrangle SOP), this argument can be an integer representing the input number (starting at 0) to read the geometry from.
+当在一个节点的上下文中运行时（比如一个 wrangle SOP），这个参数可以是一个整数，代表要读取几何图形的输入数字（从 0 开始）。
 
-Alternatively, the argument can be a string specifying a geometry file (for example, a `.bgeo`) to read from. When running inside Houdini, this can be an `op:/path/to/sop` reference.
+或者，该参数可以是一个字符串，指定一个几何文件（例如，一个`.bgeo'）来读取。当在Houdini内部运行时，这可以是一个`op:/path/to/sop`的引用。
 
 `primnum`
 
-The primitive number to get a vertex from.
+要获得一个顶点的原始编号。
 
 `vertex`
 
-The vertex number inside of a primitive. 0 is the first vertex.
+基元内部的顶点编号。0 是第一个顶点。
 
 ## Returns
 
-The point number the vertex is wired to.
-Returns `-1` if failed to find the corresponding point.
+顶点所连接的点的编号。如果找不到相应的点，则返回`-1'。
 
-
-point
+点
 
 [addpoint](addpoint.html)
 
@@ -103,8 +101,7 @@ point
 
 [vertexpoint](vertexpoint.html)
 
-|
-prim
+| 初步
 
 [addprim](addprim.html)
 

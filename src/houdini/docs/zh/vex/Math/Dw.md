@@ -15,51 +15,34 @@ category:
 
 ## Returns
 
-Returns the derivative of `p` with respect to W.
+返回`p`相对于 W 的导数。
 
-When rendering surfaces, this function returns 0.
+当渲染表面时，此函数返回 0。
 
-In shading contexts, this is the change in the variable over the volume being shaded.
+在阴影的背景下，这是变量在被阴影的体积上的变化。
 
-##
-
-Derivatives options
+## 衍生品期权
 
 [¶](#derivatives-options)
 
-Functions which compute derivatives take additional arguments to
-allow tuning of the derivative computation.
+计算导数的函数需要额外的参数，以便对导数计算进行调整。
 
 ## Arguments
 
-"`extrapolate`",
 `int`
 `=0`
 
-Whether derivatives are
-“smooth” across patch boundaries. In most cases this is true and if
-extrapolation is turned on, derivative computation should be exact
-for C2 surfaces. However, when the VEX variables are changing with a
-high frequency (for example, a high frequency displacement map
-causing high frequency changes to the P variable), extrapolation of
-derivative computation may cause exaggeration of discontinuities
-between patch boundaries.
+"`extrapolate`", 导数是否 "平滑 "地跨越补丁边界。在大多数情况下，这是真的，如果外推法被打开，导数计算对 C2 表面来说应该是精确的。然而，当 VEX 变量以高频率变化时（例如，高频率的位移图导致 P 变量的高频率变化），导数计算的外推可能导致补丁边界之间不连续的夸张。
 
-"`smooth`",
 `int`
 `=1`
 
-Adjust the magnitude of the
-differentials non-uniformly over patches. This will usually reduce
-patch discontinuities in displacement/textured shaders. However, in
-some odd cases you may want to turn this feature off.
+"`smooth'"，在斑块上非均匀地调整差值的大小。这通常会减少位移/纹理明暗器中的补丁不连续。然而，在一些奇怪的情况下，你可能想把这个功能关掉。
 
 ```c
 N = computenormal(P, "extrapolate", 1, "smooth", 0);
 
 ```
-
-
 
 ## See also
 

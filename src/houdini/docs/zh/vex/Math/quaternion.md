@@ -7,21 +7,19 @@ category:
 
 `vector4 quaternion(matrix3 rotations)`
 
-Creates a vector4 representing a quaternion from a 3×3 rotational matrix.
+从一个 3×3 的旋转矩阵中创建一个代表四元数的向量 4。
 
 `vector4 quaternion(float angle, vector axis)`
 
-Creates a vector4 representing a quaternion from an angle and axis. The angle is specified in radians.
+从一个角度和轴创建一个代表四元数的向量 4。角度的单位是弧度。
 
 `vector4 quaternion(vector angleaxis)`
 
-Creates a vector4 representing a quaternion from a combined angle/axis. This is the normalized rotation axis multiplied by the rotation angle in radians.
+从一个组合的角度/轴创建一个代表四元数的向量 4。这是标准化的旋转轴乘以旋转角度（弧度）。
 
-There used to be a fourth form that took a rotation vector. It has been renamed to `eulertoquaternion` and now takes radians.
+以前有一个第四种形式，采取旋转矢量。它已被重新命名为 "欧拉转四元数"，现在需要弧度。
 
-For more information, see [Data types](../lang.html#data-types) and [Dot operator](../lang.html#dot-operator).
-
-
+更多信息，请参阅[数据类型](.../lang.html) () (#data-types)和[点运算器](.../lang.html) () (#dot-operator)。
 
 ## See also
 

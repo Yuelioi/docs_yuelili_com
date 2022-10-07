@@ -47,8 +47,6 @@ This is the same as `d[index] = value`.
 hand side, you may have to fully specify the type of value to
 avoid ambiguity.
 
-
-
 ## See also
 
 - [Arrays](../arrays.html)

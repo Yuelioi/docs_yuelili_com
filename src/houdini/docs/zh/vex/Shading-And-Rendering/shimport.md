@@ -5,13 +5,10 @@ category:
   - vex
 ---
 
-
-
-Context(s)
 [fog](../contexts/fog.html)
 [surface](../contexts/surface.html)
 
-This function is only valid inside an [illuminance](illuminance.html "Loops through all light sources in the scene, calling the light shader for each light source to set the Cl and L global variables.") loop.
+上下文 这个函数只在[illuminance](illuminance.html)（"循环浏览场景中的所有光源，为每个光源调用光照器以设置 Cl 和 L 全局变量。"）的循环中有效。
 
 `int shimport(string variable\_name, <type>&value)`
 
@@ -19,18 +16,17 @@ This function is only valid inside an [illuminance](illuminance.html "Loops thro
 
 `variable_name`
 
-The variable to import from the shadow shader.
+要从阴影着色器中导入的变量。
 
 `value`
 
-If the variable is successfully read, the value is copied into this variable.
+如果该变量被成功读取，其值将被复制到该变量中。
 
 ## Returns
 
-`1` if the variable is defined and exported, `0` otherwise.
+`1'如果该变量被定义并被导出，`0'否则。
 
-
-fog
+雾
 
 [getfogname](getfogname.html)
 
@@ -42,8 +38,7 @@ fog
 
 [simport](simport.html)
 
-|
-shadedata
+| 阴影数据
 
 [limport](limport.html)
 
@@ -51,8 +46,7 @@ shadedata
 
 [simport](simport.html)
 
-|
-surface
+| 表面
 
 [ambient](ambient.html)
 

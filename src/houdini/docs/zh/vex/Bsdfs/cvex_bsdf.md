@@ -5,41 +5,32 @@ category:
   - vex
 ---
 
+在这一页
 
-
-On this page
-
-- [Evaluation Function](#eval_fn)
-- [Sampling Function](#sample_fn)
-- [Component mask implicit argument](#component-mask-implicit-argument)
-- [Custom variadic arguments](#custom-variadic-arguments)
+- [评估函数](#eval_fn)
+- [取样功能](#sample_fn)
+- [组件屏蔽隐含参数](#component-mask-implicit-argument)
+- [自定义变量参数](#custom-variadic-arguments)
 - [Validation](#validation)
-- [Examples](#examples)
+- [例子](#例子)
 
-  - [Example: Diffuse](#example-diffuse)
-  - [Example: Specular](#example-specular)
+  - [例子：漫反射](#example-diffuse) - [例子：镜面](#example-specular)
 
 `bsdf cvex\_bsdf(string eval\_cvex\_shader, string sampler\_cvex\_shader, ...)`
 
-This function lets you define a BSDF reflectance function through a pair of `cvex` shaders:
-One to [evaluate the reflectance function](cvex_bsdf.html#eval_fn) and another to [sample](cvex_bsdf.html#sample_fn) it.
+这个函数让你通过一对`cvex`着色器定义 BSDF 反射函数。一个用来[评估反射函数](cvex_bsdf.html) () (#eval_fn)，另一个用来[采样](cvex_bsdf.html) () (#sample_fn)。
 
-You pass the shaders as VEX source strings in the first two arguments.
-You can then use variadic arguments to define arbitrary data that will be passed to the shaders when they are invoked.
+你在前两个参数中以 VEX 源字符串的形式传递着色器。然后你可以使用 variadic 参数来定义任意的数据，当它们被调用时，这些数据将被传递给着色器。
 
-Warning
+警告
 
-This interface is subject to change in future versions of Houdini,
-though any potential changes will likely not require fundamental
-changes to the structure of your shaders.
+这个界面可能会在未来的胡迪尼版本中发生变化，尽管任何潜在的变化都可能不需要从根本上改变您的着色器结构。
 
-##
-
-Evaluation Function
+## 评价功能
 
 [¶](#eval_fn)
 
-The evaluation function must accept the following arguments:
+评价函数必须接受以下参数。
 
 ```c
 (vector u, vector v, int bounces, int reverse, vector &refl, vector &eval, float &pdf)
@@ -68,7 +59,7 @@ Whether evaluating from the camera (`0`) or the light source (`1`).
 
 The function must overwrite this variable with the reflectivity (albedo) of the BSDF.
 
-This should not be dependent on the `v` vector, since it is used as an average reflectivity over all lighting directions. This is the value that the [albedo](albedo.html "Returns the albedo (percentage of reflected light) for a bsdf given the outgoing light direction.") function will return.
+This should not be dependent on the `v` vector, since it is used as an average reflectivity over all lighting directions. This is the value that the [albedo](albedo.html) () ("Returns the albedo (percentage of reflected light) for a bsdf given the outgoing light direction.") function will return.
 
 `eval`
 
@@ -80,9 +71,7 @@ Set this to `0` to indicates to mantra whether the BSDF is a delta function. Del
 
 The function must overwrite this variable with the sampling pdf for the given directions. The integral of this value over the sphere should be equal to `luminance(refl)*2*PI`. For perfect importance sampling, `pdf == luminance(eval)`.
 
-##
-
-Sampling Function
+## Sampling Function
 
 [¶](#sample_fn)
 
@@ -133,9 +122,7 @@ The sampling pdf. The integral of this value over the sphere should be a constan
 
 Since Houdini 13, it is not necessary for the sampling function to directly sample from the evaluation function’s distribution. To use a different sampling function, adjust the `pdf` outputs from both the evaluation and sampling shaders so that they reflect the distribution being sampled.
 
-##
-
-Component mask implicit argument
+## Component mask implicit argument
 
 [¶](#component-mask-implicit-argument)
 
@@ -143,9 +130,7 @@ If you add an `int mybounces` output argument to your evaluation or sample shade
 
 See [bouncemask](bouncemask.html) for information on component label bitmasks.
 
-##
-
-Custom variadic arguments
+## Custom variadic arguments
 
 [¶](#custom-variadic-arguments)
 
@@ -158,9 +143,7 @@ F = cvex\_bsdf("...", "...", "label", "diffuse", "N", N);
 
 In particular, you should provide a “label” keyword argument to specify the type of component for the new BSDF (for example, `"diffuse"` or `"reflect"`). You can specify multiple labels in a space-separated list (for example, `"label", "reflect refract"`).
 
-##
-
-Validation
+## Validation
 
 [¶](#validation)
 
@@ -186,11 +169,9 @@ There are 2 main approaches available to verify whether you have implemented the
 
 ## Examples
 
-[¶](#examples)
 
-##
 
-Example: Diffuse
+## Example: Diffuse
 
 [¶](#example-diffuse)
 
@@ -275,9 +256,7 @@ cvex diffuse\_sample(
 
 ```
 
-##
-
-Example: Specular
+## Example: Specular
 
 [¶](#example-specular)
 
@@ -341,8 +320,6 @@ cvex specular\_sample(
 
 ```
 
-
-
 ## See also
 
 - [diffuse](diffuse.html)
@@ -350,8 +327,7 @@ cvex specular\_sample(
 - [Writing a PBR shader](../pbr.html)
 - [Verify BSDF](../../nodes/sop/verify_bsdf.html)
 
-|
-bsdf
+### bsdf
 
 [albedo](albedo.html)
 

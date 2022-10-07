@@ -7,23 +7,13 @@ category:
 
 `int metamarch(int &index, string filename, vector &p0, vector &p1, float displace\_bound)`
 
-Takes the ray defined by p0 and p1 and partitions it into zero
-or more sub-intervals where each interval intersects a cluster of
-metaballs from filename. The interval may not actually intersect any
-metaballs, but will provide fairly tight bounds on the cluster.
+获取由 p0 和 p1 定义的射线，并将其划分为零个或多个子区间，其中每个区间与文件名中的元胞群相交。这个区间实际上可能不会与任何元胞相交，但会对群组提供相当严格的界限。
 
-This allows a ray-marching algorithm to “skip” uninteresting areas and
-only focus on marching through areas where metaballs might be found.
+这使得射线行进算法可以 "跳过 "无趣的区域，只关注行进在可能发现元宝的区域。
 
-The first time you call the function, use index=-1 and set p0
-and p1 to the endpoints of the ray. If the function finds an
-interval, it returns 1 and sets p0 and p1 to the endpoints of
-the interval and increments index. Otherwise it returns 0 and
-doesn’t alter the arguments.
+第一次调用该函数时，使用 index=-1 并将 p0 和 p1 设置为射线的端点。如果函数找到一个区间，它就返回 1，并将 p0 和 p1 设置为区间的端点，同时增加 index。否则它返回 0，并且不改变参数。
 
-So, you can repeatedly call the function with variables for the
-index, index, and index arguments to ray-march through areas
-of interest, skipping the dead space:
+因此，你可以重复调用这个函数，用变量来表示索引、指数和索引参数，在感兴趣的区域进行射线行进，跳过死角。
 
 ```c
 int index;
@@ -38,7 +28,6 @@ result += ray\_march(metaball\_file, p0, p1);
 }
 
 ```
-
 
 metaball
 

@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Since 18.0
 
 `string usd\_makerelationshippath(<stage>stage, string primpath, string name)`
@@ -33,15 +31,13 @@ The full path of a given relationship.
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Obtain the full path to the relationship "relationship\_name" on the cube primitive.
 string relationship\_path = usd\_makerelationshippath(0, "/geo/cube", "relationship\_name");
 
 ```
-
-
 
 ## See also
 

@@ -5,9 +5,7 @@ category:
   - vex
 ---
 
-
-
-Since 19.0
+自 19.0 以来
 
 `int setagentcollisionlayers(int geohandle, int prim, string layernames[])`
 
@@ -17,21 +15,19 @@ Since 19.0
 
 `geohandle`
 
-Handle to the geometry to write to. `geoself()` can be used to get a handle to the current geometry.
+要写入的几何体的句柄。`geoself()`可以用来获取当前几何体的句柄。
 
 `prim`
 
-The primitive number.
+原始的数字。
 
 `layernames`
 
-A list of agent layer names.
+代理层名称的列表。
 
 `layer_ids`
 
-A list of agent layer indices, as returned by [agentfindlayer](agentfindlayer.html "Finds the index of a layer in an agent’s definition.").
-
-
+代理商层索引的列表，由[agentfindlayer](agentfindlayer.html)返回（"查找代理定义中的层索引"）。
 
 ## See also
 

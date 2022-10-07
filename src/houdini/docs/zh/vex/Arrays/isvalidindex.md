@@ -4,7 +4,7 @@ order: 6
 category:
   - houdini
 ---
-    
+
 ## 描述
 
 检查数组或字符串中的索引是否合法

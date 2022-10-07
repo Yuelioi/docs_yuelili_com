@@ -5,27 +5,13 @@ category:
   - vex
 ---
 
-
-
-Since 18.0
+自 18.0 以来
 
 `string encodeparm(string str)`
 
-Houdini parameter names are only allowed to contain letters, numbers, hash
-characters (for multiparms), and underscores, and must not begin with a
-number. This function takes any string, and encodes it into a string that
-obeys these restrictions. The original string can be recovered using the
-`decodeparm` function. A string that already obeys the rules is returned
-unmodified.
+胡迪尼参数名称只允许包含字母、数字、哈希字符（用于多参数）和下划线，并且不得以数字开头。这个函数接收任何字符串，并将其编码为一个遵守这些限制的字符串。原始字符串可以通过`decodeparm`函数恢复。一个已经遵守这些规则的字符串将被返回，不作任何修改。
 
-One exception to this rule is that a string starting with `xn### ` will be
-encoded even if it is already a valid parameter name. This is because `xn### `
-is the prefix used to identify an encoded string. In this case, an additional
-`xn### ` prefix will be added. This means a string can be encoded any number of
-times, then decoded the same number of times to always return to the original
-string, regardless of its contents.
-
-
+这个规则的一个例外是，以`xn###`开头的字符串将被编码，即使它已经是一个有效的参数名称。这是因为`xn### `是用来识别编码字符串的前缀。在这种情况下，一个额外的`xn### `前缀将被添加。这意味着一个字符串可以被编码任意次数，然后解码相同的次数，总是返回到原来的字符串，无论其内容如何。
 
 ## See also
 

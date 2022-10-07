@@ -7,7 +7,7 @@ category:
 
 `float sinh(float n)`
 
-Returns the hyperbolic sine of `n`.
+返回`n'的双曲正弦。
 
 `vector2 sinh(vector2 v)`
 
@@ -15,9 +15,7 @@ Returns the hyperbolic sine of `n`.
 
 `vector4 sinh(vector4 v)`
 
-Returns a new vector with `sinh()` applied to each component.
-
-
+返回一个新的向量，并对每个分量应用`sinh()`。
 
 ## See also
 

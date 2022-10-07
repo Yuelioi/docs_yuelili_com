@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Since 18.0
 
 `int usd\_iskind(<stage>stage, string primpath, string kind)`
@@ -34,15 +32,13 @@ The name of a kind to check.
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Check if the sphere primitive is of an assembly kind.
 int is\_assembly = usd\_iskind(0, "/geometry/sphere", "assembly");
 
 ```
-
-
 
 ## See also
 

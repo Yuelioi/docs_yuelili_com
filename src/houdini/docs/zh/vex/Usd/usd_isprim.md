@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Since 17.5
 
 `int usd\_isprim(<stage>stage, string primpath)`
@@ -29,7 +27,7 @@ The path to the primitive.
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Check if the stage coming on the first input has a sphere primitive
@@ -37,8 +35,6 @@ The path to the primitive.
 int is\_valid\_primitive = usd\_isprim(0, "/geometry/sphere");
 
 ```
-
-
 
 ## See also
 

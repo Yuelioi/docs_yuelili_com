@@ -7,31 +7,29 @@ category:
 
 `vector|vector4 texture(string map, ...)`
 
-Samples the texture at the global S and T coordinates from the shading context. These signatures are only available in [shading contexts](../contexts/shading_contexts.html).
+在着色背景的全局 S 和 T 坐标上对纹理进行采样。这些签名只在[shading contexts]（.../contexts/shading_contexts.html）中可用。
 
 `vector|vector4 texture(string map, float ss, float tt, ...)`
 
-Samples the texture at the given S and T coordinates, using a filter width based on the derivatives of S and T at that point. If you use this function outside a [shading context](../contexts/shading_contexts.html), the filter width will be 0.
+在给定的 S 和 T 坐标处对纹理进行采样，使用基于该点的 S 和 T 的导数的滤波器宽度。如果你在[shading context]（.../contexts/shading_contexts.html）之外使用此函数，滤镜宽度将为 0。
 
 `vector|vector4 texture(string map, float s0, float t0, float s1, float t1, float s2, float t2, float s3, float t3, ...)`
 
-Takes an explicit sampling quadrilateral with corners (s0, t0), (s1, t1), (s2, t2), and (s3, t3).
+取一个明确的采样四边形，角为（s0，t0）、（s1，t1）、（s2，t2）和（s3，t3）。
 
 ## Arguments
 
 ## Returns
 
-A sampled color value from the texture.
+纹理中的一个采样颜色值。
 
-If you call the function with a `vector4` return type, the function includes the texture alpha in the fourth component.
+如果你用`vector4`返回类型调用该函数，该函数在第四个分量中包括了纹理 alpha。
 
-##
-
-Image filtering options
+## 图像过滤选项
 
 [¶](#image-filtering-options)
 
-Examples of specifying filter parameters:
+指定过滤器参数的例子。
 
 ```c
 colormap(map, u, v, "smode", "decal", "tmode", "repeat", "border", {.1,1,1});
@@ -408,8 +406,6 @@ by mantra’s default light shader.
 Normalized by values integrated over coverage angles, so that IES
 profile affects shaping of the light while preserving its overall
 energy output.
-
-
 
 ## See also
 

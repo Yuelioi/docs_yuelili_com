@@ -7,37 +7,33 @@ category:
 
 `bsdf cone(vector normal, vector dir, float angle, ...)`
 
-Returns a `bsdf` representing a cone reflection along a given direction vector. This BSDF is constant within the given angle, producing a similar result to the [gather](gather.html "Sends rays into the scene and returns information from the shaders of
-surfaces hit by the rays.") or [irradiance](irradiance.html "Computes irradiance (global illumination) at the point P with the normal N.") loops.
+返回一个代表沿给定方向矢量的锥体反射的`bsdf`。这个 BSDF 在给定的角度内是恒定的，产生的结果与[gather](gather.html) ("将光线送入场景，并从被光线击中的表面的着色器返回信息。")或[irradiance](irradiance.html) () ("计算法线为 N 的点 P 的辐照度（全局照度）。")循环相似。
 
 `bsdf cone(vector dir, float angle, ...)`
 
-In shading contexts, fills in the current surface normal automatically.
+在着色的情况下，自动填充当前表面的法线。
 
-![](../../images/rendering/cone.png)
+![](/images/cone.png)
 
 ## Arguments
 
 `normal`
 
-The surface normal direction.
+表面法线方向。
 
 `dir`
 
-The direction of specularity.
+镜面的方向。
 
 `angle`
 
-Cone angle **in radians**.
-
-
+锥体角度**，弧度**。
 
 ## See also
 
 - [Writing a PBR shader](../pbr.html)
 
-|
-bsdf
+### bsdf
 
 [albedo](albedo.html)
 

@@ -5,7 +5,7 @@ category:
   - vex
 ---
 
-To specify the curve using unevenly spaced keys, use [ckspline](ckspline.html "Samples a Catmull-Rom (Cardinal) spline defined by position/value keys.").
+要使用不均匀的键指定曲线，请使用 [ckspline](ckspline.html) () ("采样一个由位置/值键定义的 Catmull-Rom (Cardinal) 花键。")。
 
 `float cspline(float t, float val1, ...)`
 
@@ -17,24 +17,19 @@ To specify the curve using unevenly spaced keys, use [ckspline](ckspline.html "S
 
 `t`
 
-The position along the spline to sample.
+沿着花键的位置进行采样。
 
 `val1`, `val2`, `...`
 
-A series of of key values. The keys are assumed to be uniformly spaced along a range from 0 to 1.
+一系列的键值。假设键值是沿着 0 到 1 的范围均匀间隔的。
 
 ## Returns
 
-The interpolated value at position `t` along the curve.
+沿着曲线`t`位置的内插值。
 
-Computes a Catmull-Rom (Cardinal) spline between the key points
-specified.
+在指定的关键点之间计算一个 Catmull-Rom（Cardinal）花键。
 
-Because of the nature of the Cardinal spline, the value associated with
-the first and last keys will never be returned. However, these keys are
-used to determine the shape of the curve on entry and exit.
-
-
+由于 Cardinal spline 的性质，与第一个和最后一个键相关的值将永远不会被返回。然而，这些键被用来确定进入和退出时的曲线形状。
 
 ## See also
 

@@ -5,28 +5,23 @@ category:
   - vex
 ---
 
-
-
-Since 18.5
+自 18.5 以来
 
 `matrix pointtransformrigid(<geometry>geometry, int pnt)`
 
-Returns a rigid transform associated with the point index.
-This function uses the [standard instancing point attributes](../../copy/instanceattrs.html) to build the matrix, and [polar decomposition](polardecomp.html "Computes the polar decomposition of a matrix.") is performed to make it rigid.
+返回一个与点索引相关的刚性变换。这个函数使用[标准实例化点属性](.../.../copy/instanceattrs.html) ()()来建立矩阵，并进行[极坐标分解](polardecomp.html) ("计算矩阵的极坐标分解。")来使其具有刚性。
 
 ## Arguments
 
 `<geometry>`
 
-When running in the context of a node (such as a wrangle SOP), this argument can be an integer representing the input number (starting at 0) to read the geometry from.
+当在一个节点的上下文中运行时（比如一个 wrangle SOP），这个参数可以是一个整数，代表要读取几何图形的输入数字（从 0 开始）。
 
-Alternatively, the argument can be a string specifying a geometry file (for example, a `.bgeo`) to read from. When running inside Houdini, this can be an `op:/path/to/sop` reference.
+或者，该参数可以是一个字符串，指定一个几何文件（例如，一个`.bgeo'）来读取。当在Houdini内部运行时，这可以是一个`op:/path/to/sop`的引用。
 
 `pnt`
 
-The point index to query.
-
-
+要查询的点索引。
 
 ## See also
 
@@ -36,8 +31,7 @@ The point index to query.
 - [pointlocaltransforms](pointlocaltransforms.html)
 - [setpointtransforms](setpointtransforms.html)
 
-|
-attrib
+### attrib
 
 [addattrib](addattrib.html)
 

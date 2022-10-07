@@ -9,14 +9,11 @@ category:
 
 Returns the label associated with the given bounce mask.
 
-
-
 ## See also
 
 - [bouncemask](bouncemask.html)
 
-|
-bsdf
+### bsdf
 
 [albedo](albedo.html)
 

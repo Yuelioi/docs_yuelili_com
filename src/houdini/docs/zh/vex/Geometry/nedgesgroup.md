@@ -9,11 +9,9 @@ category:
 
 `int nedgesgroup(int input, string groupname)`
 
-Returns the number of edges in the specified group in the input or geometry file.
+返回输入或几何文件中指定组的边的数量。
 
-This must refer to an exact group name, not an adhoc group pattern.
-
-
+这必须指的是一个确切的组名，而不是一个临时的组模式。
 
 ## See also
 

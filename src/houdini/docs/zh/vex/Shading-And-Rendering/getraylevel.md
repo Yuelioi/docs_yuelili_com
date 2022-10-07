@@ -5,21 +5,13 @@ category:
   - vex
 ---
 
-
-
-Context(s)
 [shading](../contexts/shading.html)
 
 `int getraylevel()`
 
-Returns the depth of the ray tree for the current shading. If the
-returned value is 0, this represents a ray from the camera to the scene.
-If the ray level is 1, the ray represents either a reflection/refraction
-ray. If the level is 2, then this represents a reflection/refraction
-which appears in a previous reflection/refraction etc.
+Context(s) 返回当前着色的光线树的深度。如果返回值为 0，则代表从摄像机到场景的光线。如果射线级别为 1，那么该射线代表反射/折射射线。如果级别是 2，那么这代表了一条反射/折射，它出现在之前的反射/折射等。
 
-
-shading
+遮阳
 
 [Du](Du.html)
 

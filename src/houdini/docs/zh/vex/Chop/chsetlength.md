@@ -5,17 +5,13 @@ category:
   - vex
 ---
 
-
-
-Context(s)
 [chop](../contexts/chop.html)
 
 `int chsetlength(int clip\_length)`
 
-Sets the length of the channel data.
+Context(s) 设置通道数据的长度。
 
-
-chop
+劈劈啪啪
 
 [chadd](chadd.html)
 

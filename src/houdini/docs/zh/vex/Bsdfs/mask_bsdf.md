@@ -11,17 +11,17 @@ category:
 
 `b`
 
-BSDF to mask.
+BSDF 来掩盖。
 
 `mask`
 
-A bitmask indicating which types of shading component bounces to evaluate.
+一个比特掩码，表示要评估哪些类型的阴影组件弹跳。
 
-See [bouncemask](bouncemask.html) for information on component label bitmasks.
+参见[bouncemask](bouncemask.html)以了解关于组件标签位掩码的信息。
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // outF will have every component from inF except refraction
@@ -29,16 +29,13 @@ bsdf outF = mask\_bsdf(inF, PBR\_ALL\_MASK & ~PBR\_REFRACT\_MASK);
 
 ```
 
-
-
 ## See also
 
 - [albedo](albedo.html)
 - [eval_bsdf](eval_bsdf.html)
 - [sample_bsdf](sample_bsdf.html)
 
-|
-bsdf
+### bsdf
 
 [albedo](albedo.html)
 

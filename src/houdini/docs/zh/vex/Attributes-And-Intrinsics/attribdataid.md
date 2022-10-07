@@ -5,66 +5,51 @@ category:
   - vex
 ---
 
-
-
-Since 17.0
+自 17.0 以来
 
 `int [] attribdataid(<geometry>geometry, string attribclass, string attribute\_name)`
 
-Returns the data id corresponding to an attribute. Data ids can
-be used for advanced forms of caching. If the data id of an attribute
-is the same as you've seen before, you can assume the attribute
-contains the same data it did before. This allows acceleration
-structures to only be built when necessary.
+返回一个属性所对应的数据 ID。数据 ID 可以用于高级形式的缓存。如果一个属性的数据 ID 和你以前看到的一样，你可以认为这个属性包含了和以前一样的数据。这允许加速结构只在必要时被建立。
 
-The length and contents of the array are not defined, and no assumptions
-should be made about the layout. The result will vary from run
-to run of Houdini, so only exact equality should be used.
+数组的长度和内容没有被定义，也不应该对布局进行假设。在不同的 Houdini 运行中，结果会有所不同，所以只应使用精确的相等。
 
-In addition to the normal attribute classes, an additional
-attribute class of “meta” is supported. This has the additional
-data ids of
+除了正常的属性类之外，还支持一个额外的 "元 "属性类。这有额外的数据 ID，即
 
-topology
+拓扑学
 
-The overall wiring of vertices, points and primitives.
-This will change if any points are rewired or vertices
-added.
+顶点、点和基元的总体布线。如果对任何点进行重新布线或添加顶点，这将会发生变化。
 
-primitivelist
+原始人
 
-This data id changes if the contents of the primitive
-change at all.
+如果基元的内容发生任何变化，此数据 ID 就会发生变化。
 
-detail
+细节
 
-This data id tracks the entire geometry as a whole. If
-it is unchanged, no changes occurred in the geometry.
+这个数据 ID 跟踪整个几何体的整体。如果它是不变的，说明几何体没有发生变化。
 
 ## Arguments
 
 `<geometry>`
 
-When running in the context of a node (such as a wrangle SOP), this argument can be an integer representing the input number (starting at 0) to read the geometry from.
+当在一个节点的上下文中运行时（比如一个 wrangle SOP），这个参数可以是一个整数，代表要读取几何图形的输入数字（从 0 开始）。
 
-Alternatively, the argument can be a string specifying a geometry file (for example, a `.bgeo`) to read from. When running inside Houdini, this can be an `op:/path/to/sop` reference.
+或者，该参数可以是一个字符串，指定一个几何文件（例如，一个`.bgeo'）来读取。当在Houdini内部运行时，这可以是一个`op:/path/to/sop`的引用。
 
 `attribclass`
 
-One of `"detail"` (or `"global"`), `"point"`, `"prim"`, or `"vertex"`.
+是 "细节"（或 "全局"）、"点"、"基元 "或 "顶点 "之一。
 
-You can also use `"primgroup"`, `"pointgroup"` or `"vertexgroup"` to [read from groups](../groups.html "You can read the contents of primitive/point/vertex groups in VEX as if they were attributes.").
+你也可以使用`"primgroup"`、`"pointgroup"`或`"vertexgroup"`来[从组中读取](.../groups.html)（"你可以在 VEX 中读取 primitive/point/vertex 组的内容，就像它们是属性一样。"）。
 
 `attribute_name`
 
-The name of the attribute (or intrinsic) to read.
+要读取的属性（或内在属性）的名称。
 
 ## Returns
 
-An integer array indicating the data id of the attribute.
+一个整数数组，表示该属性的数据 ID。
 
-
-attrib
+附注
 
 [addattrib](addattrib.html)
 

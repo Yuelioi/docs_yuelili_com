@@ -21,14 +21,9 @@ category:
 
 `void xnoised(vector4 xyzw, vector &v, vector &dvdx, vector &dvdy, vector &dvdz, vector &dvdw)`
 
-This computes both the simplex noise value, and the derivatives of the
-noise along each axis. This can be performed quite efficiently as
-there are analytic derivatives available.
+这将计算单纯的噪声值，以及沿每个轴的噪声导数。这可以相当有效地进行，因为有分析性导数可用。
 
-See [noise and randomness](../random.html) in the VEX language
-guide for more information.
-
-
+参见 VEX 语言指南中的[噪声和随机性](.../random.html)以获得更多信息。
 
 ## See also
 

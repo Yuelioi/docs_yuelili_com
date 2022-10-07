@@ -33,13 +33,13 @@ The `grad` and `hess` arguments return the gradient or the hessian of this sampl
 
 Returns 0 if `primnum` or `inputnum` is out of range, the geometry is invalid, or the given primitive is not a volume or vdb primitive.
 
-![](../../images/vex/volumesmoothsample.png)
+![](/images/volumesmoothsample.png)
 
 Example of interpolation of one and two dimensional data using `volumesmoothsample`. The visualized normal is computed using the `grad` parameter.
 
 ## Examples
 
-[¶](#examples)
+
 
 Approximating a volume value at the point `P + u` using volume values at the point `P`.
 
@@ -60,7 +60,6 @@ float val2 = volumesmoothsample(0, "density", P + u);
 // is appriximately equal to `val2`
 
 ```
-
 
 volume
 

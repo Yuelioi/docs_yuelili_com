@@ -70,7 +70,7 @@ Print a percent sign (%).
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 printf("P = %g, dot(N, P) = %g, %d = %x\n", P, dot(N, P), ptnum, ptnum);
@@ -83,7 +83,6 @@ Cf = texture(sprintf("/maps/map%d.rat", i));
 Cf = texture(sprintf("/maps/map%04d.rat", i));
 
 ```
-
 
 print
 

@@ -17,24 +17,11 @@ category:
 
 `vector flownoise(float x, float y, float flow)`
 
-This operator generates 1D and 3D Perlin Flow noise from 3D and 4D data.
-There are two forms of Perlin flow noise: a non-periodic noise which changes
-randomly throughout the N-dimensional space, and a periodic form which
-repeats itself over a given range of the space. The periodic form can be
-used to generate patterns which tile over N-dimensional space, such as a
-noise-based texture map which repeats seamlessly.
+这个算子从三维和四维数据中产生一维和三维佩林流噪声。佩林流噪声有两种形式：一种是在整个 N 维空间随机变化的非周期性噪声，另一种是在空间的特定范围内重复的周期性形式。周期性形式可用于生成在 N 维空间上平铺的图案，如无缝重复的基于噪声的纹理图。
 
-The noise has a range of (0, 1) with a median value of 0.5. The
-distribution of the noise depends on the dimension, with higher
-dimensions approaching a Gaussian distribution of noise values.
+噪声的范围是（0，1），中值是 0.5。噪声的分布取决于维度，维度越高，噪声值的分布就越接近高斯分布。
 
-Flow noise is very similar to Perlin noise, as in
-[![](../../icons/VOP/periodicnoise.svg)Periodic Noise](../../nodes/vop/periodicnoise.html "Generates 1D and 3D Perlin noise from 1D, 3D and 4D data."), but with an extra flow parameter. The flow
-parameter can be thought of as an extra dimension, but a dimension
-whose period is always 1. Moving through the flow dimension rotates
-the noise vectors rather than adjusting slices through a noise space, which generates a more flowing appearance to the animation.
-
-
+流动噪声与佩林噪声非常相似，如(周期噪声](././nodes/vop/periodicnoise.html) （"从一维、三维和四维数据生成一维和三维佩林噪声。"），但是有一个额外的流动参数。流量参数可以被认为是一个额外的维度，但这个维度的周期总是 1。通过流动维度移动，旋转噪声向量，而不是通过噪声空间调整切片，这将产生一个更加流动的动画外观。
 
 ## See also
 

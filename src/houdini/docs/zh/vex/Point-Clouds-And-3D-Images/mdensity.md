@@ -5,18 +5,13 @@ category:
   - vex
 ---
 
-
-
-Context(s)
 [image3d](../contexts/image3d.html)
 
 `float mdensity(vector P)`
 
-Returns the density of the metaball field if metaball geometry is
-specified to i3dgen.
+Context(s) 如果 metaball geometry 被指定给 i3dgen，则返回 metaball field 的密度。
 
-
-measure
+衡量
 
 [curvearclen](curvearclen.html)
 
@@ -74,8 +69,7 @@ measure
 
 [xyzdist](xyzdist.html)
 
-|
-ptcloud
+| ptcloud
 
 [mattrib](mattrib.html)
 

@@ -21,13 +21,9 @@ category:
 
 `vector anoise(vector pos, int periodX, int periodY, int periodZ, int turbulence, float rough, float atten)`
 
-These functions generate “alligator” noise, a type of cellular noise similar to
-Worley noise ([wnoise](wnoise.html "Generates Worley (cellular) noise.")). It is currently not possible to simulate alligator noise
-using the Worley functions, but it’s possible to get a very similar “look”.
+这些函数产生 "鳄鱼 "噪声，一种类似于沃利噪声的蜂窝状噪声（[wnoise](wnoise.html)（"生成沃利（蜂窝）噪声。"））。目前不可能用 Worley 函数来模拟鳄鱼噪声，但有可能得到非常相似的 "外观"。
 
-The bounds on the noise are roughly (0, 1). This function only supports 3D noise.
-
-
+噪声的界限大致是（0，1）。这个函数只支持三维噪声。
 
 ## See also
 

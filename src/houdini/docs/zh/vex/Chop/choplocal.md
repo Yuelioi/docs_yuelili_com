@@ -5,36 +5,31 @@ category:
   - vex
 ---
 
-
-
-Since 17.5
+自 17.5 以来
 
 `matrix choplocal(string filename, int|stringchannel, float|intsample)`
 
-Read a sample from the local transform channel at the given index.
+在给定的索引处从本地转换通道读取一个样本。
 
 ## Arguments
 
 `filename`
 
-The CHOP node path to query using the op: syntax.
-Doesn’t support reading directly from CHOP files yet.
+使用 op: 语法查询的 CHOP 节点路径。还不支持直接从 CHOP 文件中读取。
 
 `channel`
 
-The channel index or channel name to query.
+要查询的频道索引或频道名称。
 
 `sample`
 
-If this is fractional, the value is linearly interpolated from the
-two nearest points.
+如果是小数，则从两个最近的点线性插值。
 
 ## Returns
 
-The value of a channel at the specified sample in a CHOP node.
+在 CHOP 节点中，指定样本的通道值。
 
-
-chop
+劈劈啪啪
 
 [chadd](chadd.html)
 

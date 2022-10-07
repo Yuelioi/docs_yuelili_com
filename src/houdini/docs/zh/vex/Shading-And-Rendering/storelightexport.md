@@ -5,9 +5,6 @@ category:
   - vex
 ---
 
-
-
-Context(s)
 [displace](../contexts/displace.html)
 [fog](../contexts/fog.html)
 [surface](../contexts/surface.html)
@@ -16,16 +13,13 @@ Context(s)
 
 `void storelightexport(string lightname, string exportname, <type>value[])`
 
-Stores a per-light export to a shader export variable. This method should
-normally be called for each light to ensure that all light exports for the
-given variable are created, for example by placing the call in an
-illuminance() loop or a loop over the light array.
+Context(s) 将每个灯光的输出存储到着色器输出变量中。通常情况下，应该为每个灯光调用此方法，以确保为给定的变量创建所有的灯光输出，例如，将此调用放在 illuminance()循环或灯光阵列的循环中。
 
-This method replaced the `storelightexports()` method used in Houdini 12.5 and earlier.
+这个方法取代了 Houdini 12.5 及以前版本中使用的`storelightexports()`方法。
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 surface test(export vector perlight = {0,0,0})
@@ -39,7 +33,6 @@ surface test(export vector perlight = {0,0,0})
 }
 
 ```
-
 
 light
 

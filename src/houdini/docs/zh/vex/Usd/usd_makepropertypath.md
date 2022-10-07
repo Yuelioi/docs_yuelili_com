@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Since 18.0
 
 `string usd\_makepropertypath(<stage>stage, string primpath, string name)`
@@ -33,15 +31,13 @@ The full path of a given property.
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Obtain the full path to the property "prop\_name" on the cube primitive.
 string prop\_path = usd\_makepropertypath(0, "/geo/cube", "prop\_name");
 
 ```
-
-
 
 ## See also
 

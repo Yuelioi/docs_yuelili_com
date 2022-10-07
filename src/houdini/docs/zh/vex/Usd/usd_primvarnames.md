@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Since 18.0
 
 `string [] usd\_primvarnames(<stage>stage, string primpath)`
@@ -29,15 +27,13 @@ String array containing the names of the primitive’s primvars.
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Get the primvar names from the primitive.
 string primvar\_names[] = usd\_primvarnames(0, "/geo/src\_sphere");
 
 ```
-
-
 
 ## See also
 

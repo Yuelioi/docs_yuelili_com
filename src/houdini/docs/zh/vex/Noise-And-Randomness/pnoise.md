@@ -17,22 +17,13 @@ category:
 
 `float|vector pnoise(vector4 xyzt, int px, int py, int pz, int pt)`
 
-There are two forms of Perlin-style noise: a non-periodic noise which
-changes randomly throughout N-dimensional space, and a periodic form
-which repeats over a given range of space.
+有两种形式的佩林式噪声：一种是在整个 N 维空间随机变化的非周期性噪声，另一种是在特定空间范围内重复的周期性形式。
 
-This function generates periodic noise. Use the [noise](noise.html "There are two forms of Perlin-style noise: a non-periodic noise which
-changes randomly throughout N-dimensional space, and a periodic form
-which repeats over a given range of space.")
-function to generate non-periodic Perlin noise.
+这个函数产生周期性噪声。使用[noise](noise.html) ("有两种形式的佩林式噪声：一种是在整个N维空间随机变化的非周期性噪声，另一种是在特定空间范围内重复的周期性形式。")函数来生成非周期性佩林噪声。
 
-The various functions return the noise value at a 4D (vector4 argument),
-3D (vector argument), 2D (two float arguments) or 1D (float argument)
-position. You can get a random float value or a vector of three random
-values.
+各种函数返回 4D（vector4 参数）、3D（vector 参数）、2D（两个浮点参数）或 1D（浮点参数）位置的噪声值。你可以得到一个随机的浮点值或三个随机值的矢量。
 
-The “p” int or vector arguments specify the range of periodicity. For
-example, if you're making a 2D image and you want it to tile:
+p "int 或 vector 参数指定了周期性的范围。例如，如果你正在制作一个二维图像，你想让它平铺。
 
 ```c
 clr = pnoise(X \* 4, Y \* 5, \_4, 5\_)
@@ -47,8 +38,6 @@ this to make the noise periodic in one dimension but not another.
 
 The distribution of the noise depends on the dimension, with higher
 dimensions approaching a Gaussian distribution of noise values.
-
-
 
 ## See also
 

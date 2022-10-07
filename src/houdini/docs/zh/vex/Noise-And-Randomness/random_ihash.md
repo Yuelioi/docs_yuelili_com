@@ -7,10 +7,9 @@ category:
 
 `int random\_ihash(int seed)`
 
-Hashes the given number into an integer value.
+将给定的数字洗练成一个整数值。
 
-
-random
+随机
 
 [curlgxnoise](curlgxnoise.html)
 

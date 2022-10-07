@@ -5,55 +5,53 @@ category:
   - vex
 ---
 
-
-
-Since 18.0
+自 18.0 以来
 
 `int usd\_addrotate(int stagehandle, string primpath, string suffix, int axis, float angle)`
 
 `int usd\_addrotate(int stagehandle, string primpath, string suffix, int xyz, vector angles)`
 
-This function applies a rotation to the primitive. It creates and sets a value of a transform operation attribute that defines the rotation, and appends it to the primitive’s transform order.
+此函数向基元施加了一个旋转。它创建并设置了定义旋转的转换操作属性的值，并将其附加到基元的转换顺序。
 
 ## Arguments
 
 `stagehandle`
 
-A handle to the stage to write to. Currently the only valid value is `0`, which means the current stage in a node. (This argument may be used in the future to allow writing to other stages.)
+要写入的阶段的句柄。目前唯一有效的值是 "0"，这意味着在一个节点中的当前阶段。(这个参数将来可能会被用于允许写到其他阶段。)
 
 `primpath`
 
-The path to the primitive.
+通往原始的道路。
 
 `suffix`
 
-The transform operation suffix.
+转换操作的后缀。
 
-USD primitives are transformed in space by a series of transform operations whose full names are sequentially listed in the `xformOpOrder` attribute. Full names are namespaced, encode the operation transform type (e.g., translation or rotation), and can also contain a suffix. If primitive has a few operations of the same type, it’s necessary to specify the suffix to differentiate between them. This parameter specifies such a suffix.
+美元基元通过一系列变换操作在空间中进行变换，这些变换操作的全名按顺序列在`xformOpOrder`属性中。全名是命名的，对操作转换类型（例如平移或旋转）进行编码，还可以包含一个后缀。如果基元有几个相同类型的操作，有必要指定后缀以区分它们。此参数指定了这样一个后缀。
 
 `axis`
 
-The numeric code for the rotation axis. See the usd.h VEX header for definitions of the axis.
+旋转轴的数字代码。参见 usd.h VEX 头文件中关于轴的定义。
 
 `angle`
 
-Angle of rotation in degrees, when rotating around a single principle axis.
+围绕单一原则轴旋转时的旋转角度，单位为度。
 
 `axis`
 
-The numeric code for the axis rotation order. See the usd.h VEX header for definitions of the order.
+轴旋转顺序的数字代码。顺序的定义见 usd.h VEX 头文件。
 
 `angles`
 
-Three angles of rotation in degrees, when rotating sequentially around each of the principle axes.
+围绕每个原理轴依次旋转时的三个旋转角度，单位为度。
 
 ## Returns
 
-The value of `stagehandle` on success or `-1` on failure.
+成功时是`stagehandle`的值，失败时是`-1`。
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Include "usd.h" that defines axis and order constants.
@@ -69,8 +67,6 @@ usd\_addrotate(0, "/geo/mesh", "geo\_rotation", USD\_AXIS\_Y, -45);
 usd\_addrotate(0, "/geo/cone", "cone\_rotation", USD\_ROTATE\_XYZ, {0, 30, 45});
 
 ```
-
-
 
 ## See also
 

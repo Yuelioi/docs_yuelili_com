@@ -5,31 +5,29 @@ category:
   - vex
 ---
 
-
-
-Since 18.0
+自 18.0 以来
 
 `string [] usd\_collectionincludes(<stage>stage, string collectionpath)`
 
-This function returns the collection’s include list.
+该函数返回集合的包含列表。
 
 ## Arguments
 
 `<stage>`
 
-When running in the context of a node (such as a wrangle LOP), this argument can be an integer representing the input number (starting at 0) to read the stage from. The integer is equivalent to the string form referencing a particular input, e.g., “opinput:0”.
+当在一个节点的上下文中运行时（比如 wrangle LOP），这个参数可以是一个整数，代表要读取阶段的输入号码（从 0 开始）。这个整数等同于引用特定输入的字符串形式，例如，"opinput:0"。
 
 `collectionpath`
 
-The path to the collection.
+集合的路径。
 
 ## Returns
 
-The collection’s include list.
+该系列的包括列表。
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Get collection's include list.
@@ -37,8 +35,6 @@ string collection\_path = usd\_makecollectionpath(0, "/geo/cube", "some\_collect
 string include\_list[] = usd\_collectionincludes(0, collection\_path);
 
 ```
-
-
 
 ## See also
 

@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Since 18.0
 
 `int usd\_isinstance(<stage>stage, string primpath)`
@@ -29,14 +27,13 @@ The path to the primitive.
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Check if the sphere primitive is an instance.
 int is\_instance = usd\_isinstance(0, "/geometry/sphere");
 
 ```
-
 
 usd
 

@@ -7,7 +7,7 @@ category:
 
 `float acos(float v)`
 
-Returns the inverse cosine of `n`, where `n` is in radians. The return value is in the range 0 to π.
+返回`n'的反余弦，`n'的单位是弧度。返回值的范围是 0 到 π。
 
 `vector2 acos(vector2 v)`
 
@@ -15,9 +15,7 @@ Returns the inverse cosine of `n`, where `n` is in radians. The return value is 
 
 `vector acos(vector v)`
 
-Returns a new vector with `acos` applied to each component.
-
-
+返回一个新的向量，并对每个分量应用`acos`。
 
 ## See also
 

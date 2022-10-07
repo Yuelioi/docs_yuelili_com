@@ -9,10 +9,9 @@ category:
 
 `<vector> exp(<vector>n)`
 
-Returns the [Exponential function](http://en.wikipedia.org/wiki/Exponential_function) of `n`. For vectors, this is done per-component.
+返回`n`的[指数函数](http://en.wikipedia.org/wiki/Exponential_function)。对于向量，这是按分量进行的。
 
-
-math
+数学
 
 [Du](Du.html)
 
@@ -118,8 +117,7 @@ math
 
 [variance](variance.html)
 
-|
-number
+| 数
 
 [abs](abs.html)
 

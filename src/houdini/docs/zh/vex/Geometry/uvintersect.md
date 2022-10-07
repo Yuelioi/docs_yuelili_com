@@ -13,35 +13,29 @@ category:
 
 `<geometry>`
 
-When running in the context of a node (such as a wrangle SOP), this argument can be an integer representing the input number (starting at 0) to read the geometry from.
+当在一个节点的上下文中运行时（比如一个 wrangle SOP），这个参数可以是一个整数，代表要读取几何图形的输入数字（从 0 开始）。
 
-Alternatively, the argument can be a string specifying a geometry file (for example, a `.bgeo`) to read from. When running inside Houdini, this can be an `op:/path/to/sop` reference.
+或者，该参数可以是一个字符串，指定一个几何文件（例如，`.bgeo'），以便从中读取。当在Houdini内部运行时，这可以是一个`op:/path/to/sop`的引用。
 
 `primgroup`
 
-The name of a primitive group or a pattern to generate a primitive
-group. Uses the same semantics as a SOP group, so empty strings
-will match all primitives. Attribute groups like `@Cd.x>0` can
-also be used, but note that the `@` may need to be escaped with
-a backslash in a [![](../../icons/COMMON/wrangle.svg)Snippet VOP](../../nodes/vop/snippet.html "Runs a VEX snippet to modify the incoming values.").
+基元组的名称或用于生成基元组的模式。使用与 SOP 组相同的语义，因此空字符串将匹配所有基元。也可以使用像`@Cd.x>0`这样的属性组，但注意`@`可能需要在(Snippet VOP](././nodes/vop/snippet.html)（"运行一个 VEX 片段来修改传入值。"）。
 
-This function computes the intersection of the specified ray with the geometry in uv space. The primitive number is returned, or -1 if there is an error or no intersection found.
+此函数计算指定射线与 uv 空间中的几何体的交点。返回原始数字，如果有错误或没有发现交集，则返回-1。
 
-The position in uvspace of the intersection location is stored in p. The corresponding parametric location of the intersection is stored in primuv. In the case of multiple intersections, the intersection closest to the ray origin is used.
+交点位置在 uv 空间中的位置存储在 p 中，交点的相应参数位置存储在 primuv 中。在有多个交点的情况下，使用最接近射线原点的交点。
 
-This function does not expect a normalized direction vector. Instead, it uses the length of the vector as the maximum distance. The integer result is the primitive hit.
+这个函数并不期望有一个归一化的方向向量。相反，它使用矢量的长度作为最大距离。整数的结果是原始命中。
 
 ::: info Note
 
-It can be hard to visualize a 3D intersection of a ray in a 3D UV space. One trick that can be used is to unwrap the geometry in SOP to get better visualization of the space. This can be done by using a [Split Vertex SOP](../../nodes/sop/splitvertex.html) followed by a [![](../../icons/SOP/attribcopy.svg)Attribute Copy SOP](../../nodes/sop/attribcopy.html "Copies attributes between groups of vertices,
-points, or primitives."). This will disconnect the faces at uv boundaries and stamp the uvw values on top of the `P` attribute.
+在三维 UV 空间中，要直观地看到射线的三维交点可能是很困难的。可以使用的一个技巧是在 SOP 中解包几何体以获得更好的空间可视化。这可以通过使用[Split Vertex SOP]Attribute Copy SOP](.../.../nodes/sop/attribcopy.html) ("在顶点组、点或原素之间复制属性。")实现。这将断开 uv 边界的面，并将 uvw 值印在`P`属性之上。
 
 ::: info Note
 
-When intersections are performed against metaball geometry, it is impossible to determine the primitive number of the metaball which was hit. In this case, the function returns the number of primitives in the intersection geometry.
+对元宝几何体进行交集时，不可能确定被击中的元宝的基元数目。在这种情况下，该函数会返回相交几何体中的基元数目。
 
-
-intersect
+相交
 
 [clip](clip.html)
 
@@ -59,8 +53,7 @@ intersect
 
 [uvintersect](uvintersect.html)
 
-|
-ray
+|射线
 
 [intersect](intersect.html)
 

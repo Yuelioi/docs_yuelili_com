@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Since 17.5
 
 `int usd\_isattrib(<stage>stage, string primpath, string name)`
@@ -33,15 +31,13 @@ Attribute name.
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Check if the sphere has an attribute "some\_attribute".
 int is\_valid\_attrib = usd\_isattrib(0, "/geometry/sphere", "some\_attribute");
 
 ```
-
-
 
 ## See also
 

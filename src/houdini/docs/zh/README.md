@@ -30,4 +30,3 @@ projects:
 
 footer: 页脚
 ---
-这是一个页脚。

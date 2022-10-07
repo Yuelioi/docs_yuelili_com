@@ -11,7 +11,7 @@ category:
 
 `vector4 spline(string basis, float sample\_pos, vector4 value1, ...)`
 
-This version takes a single basis to use for all keys, and takes the (linearly spaced) key values as variadic arguments.
+这个版本需要一个单一的基础用于所有的键，并将（线性间隔的）键值作为变量参数。
 
 `float spline(string basis, float sample\_pos, float values[], ...)`
 
@@ -19,7 +19,7 @@ This version takes a single basis to use for all keys, and takes the (linearly s
 
 `vector4 spline(string basis, float sample\_pos, vector4 values[], ...)`
 
-This version takes a single basis to use for all keys, and takes the (linearly spaced) key values as an array.
+这个版本需要一个用于所有键的单一基础，并将（线性间隔的）键值作为一个数组。
 
 `float spline(string bases[], float sample\_pos, float values[], ...)`
 
@@ -27,7 +27,7 @@ This version takes a single basis to use for all keys, and takes the (linearly s
 
 `vector4 spline(string bases[], float sample\_pos, vector4 values[], ...)`
 
-This version takes an array specifying the bases to use between each pair of keys, and the (linearly spaced) key values as an array.
+这个版本接受一个数组，指定每对键之间使用的基数，以及作为数组的（线性间隔的）键值。
 
 `float spline(string bases[], float sample\_pos, float values[], float positions[], ...)`
 
@@ -35,37 +35,32 @@ This version takes an array specifying the bases to use between each pair of key
 
 `vector4 spline(string bases[], float sample\_pos, vector4 values[], float positions[], ...)`
 
-This version takes an array specifying the bases to use between each pair of keys, an array of key values, and an array of key positions.
+这个版本需要一个数组，指定每对键之间使用的基数，一个键值数组，以及一个键位数组。
 
-These forms take an array of strings specifying the interpolation
-bases between the keys, an array of key values, and an array of key positions.
-They ensure that the interpolation curve is smooth (tangent-continuous) across
-the control points (keys) if the adjoining segments have the same basis, even if
-the key positions are not evenly spaced (i.e., are non-uniform and the distances
-between them are not equal).
+这些形式接受一个字符串数组，指定键之间的插值基数，一个键值数组和一个键位置数组。它们确保插值曲线在控制点（键）上是平滑的（切线连续的），如果相邻的段有相同的基数，即使键的位置不均匀（即不均匀且它们之间的距离不相等）。
 
 ## Arguments
 
 `basis`, `bases`
 
-These are the same interpolations supported by ramp parameters.
+这些都是斜率参数所支持的插值。
 
 `"constant"`
 
-Maintains each key value until the next key, creating a “stair step” curve.
+保持每个键值直到下一个键，形成一个 "阶梯式 "曲线。
 
 `"linear"`
 
-Connects the key points with a polyline.
+用折线连接关键点。
 
-For example, if you specified four values:
+例如，如果你指定了四个值。
 
 ```c
 spline("linear", t, v0, v1, v2, v3)
 
 ```
 
-![](../../images/vex/spline_linear.svg)
+![]
 
 …the function returns the height of the orange dot at position sample_pos.
 
@@ -85,7 +80,7 @@ spline("catrom", t, v0, v1, v2, v3, v4, v5)
 
 ```
 
-![](../../images/vex/spline_catrom.svg)
+![]
 
 …the function returns the height of the orange dot at position t.
 
@@ -95,7 +90,7 @@ curve for the shown points.)
 `"linearsolve"` (or `"solvelinear"`)
 
 Maps between a set of non-uniform positions and a set of values.
-The [kspline](kspline.html "Returns an interpolated value along a curve defined by a basis and key/position pairs.") function does this mapping implicitly.
+The [kspline](kspline.html) () ("Returns an interpolated value along a curve defined by a basis and key/position pairs.") function does this mapping implicitly.
 
 ```c
 tk = spline("linearsolve", t, k0, k1, k2, k3, ...);
@@ -130,8 +125,6 @@ knots are not explicitly repeated. This ensures the curve passes through the
 end control points, making it easier to create continuous ramp curves with
 mixed interpolation bases (e.g., b-spline basis segments surrounded by
 linear interpolation segments).
-
-
 
 ## See also
 

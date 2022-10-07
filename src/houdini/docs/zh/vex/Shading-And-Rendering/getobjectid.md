@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Context(s)
 [displace](../contexts/displace.html)
 [fog](../contexts/fog.html)
@@ -17,6 +15,5 @@ Context(s)
 `int getobjectid()`
 
 Returns the object id.
-
 
 shading raytracing

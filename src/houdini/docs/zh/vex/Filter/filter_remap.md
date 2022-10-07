@@ -5,81 +5,74 @@ category:
   - vex
 ---
 
-
-
-Since 18.5
+自 18.5 以来
 
 `vector filter\_remap(vector2 uv, string filter, float width, ...)`
 
-This function maps a uv coordinate to a pixel offset based on the importance
-sampling of the filter.
+这个函数根据滤波器的重要性采样，将一个 uv 坐标映射到一个像素偏移。
 
 ## Arguments
 
 `uv`
 
-Components should be in the range `0` to `1`. The function remaps these coordinates into a point in the filter’s kernel, mapping more points to areas with higher weights. The returned points will be in a box of given width centered around `0`.
+组件应该在`0`到`1`的范围内。该函数将这些坐标重新映射为滤波器内核中的一个点，将更多的点映射为具有更高权重的区域。返回的点将在一个以`0`为中心的给定宽度的盒子里。
 
 `filter`
 
-The type of filter to use.
+要使用的过滤器的类型。
 
 `"gauss"`
 
-Gaussian filter
+高斯滤波器
 
 `"box"`
 
-Box filter
+箱式过滤器
 
 `"sinc"`
 
-Sinc filter
+Sinc 过滤器
 
 `"mitchell"`
 
-Mitchell filter
+米切尔过滤器
 
 `"bartlett"`
 
-Bartlett filter (Cone filter)
+巴特利特过滤器（锥形过滤器）
 
 `"blackman"`
 
-Blackman filter
+布莱克曼过滤器
 
 `"catrom"`
 
-Catmull-Rom filter
+Catmull-Rom 过滤器
 
 `"hanning"`
 
-Hanning filter
+汉宁滤波器
 
 `"point"`
 
-Point filter
+点式过滤器
 
 `width`
 
-The filter width.
+滤波器的宽度。
 
-A unit box filter will map the input values to the range `-0.5` to `0.5`. Changing the `width` to `2.0` will result in returned values in the range `-1.0 to 1.0`.
-For a Gaussian filter, for example, a `width` of `2.0` is more appropriate.
+一个单位盒子过滤器将把输入值映射到`-0.5`到`0.5`的范围。将 "宽度 "改为 "2.0 "会导致返回的值在 "1.0 到 1.0 "的范围内。例如，对于高斯滤波器来说，"宽度 "为`2.0'是比较合适的。
 
-"`res`",
 `int`
 `=32`
 
-When building lookup tables for importance sampling, the filter is sampled radially at this resolution.
+"`res'", 当建立重要性采样的查找表时，过滤器是以这个分辨率进行径向采样的。
 
 ## Returns
 
-The returned vector’s `x` and `y` components are the given uv coordinate remapped to pixel coordinates (centered around zero). The `z` component is the approximate weight of the kernel at the returned sample.
+返回的向量的`x'和`y'分量是给定的 uv 坐标重新转换为像素坐标（以 0 为中心）。`z`分量是返回样本的内核的近似权重。
 
-::: info Note that some filters (`"sinc"`, `"mitchell"`, `"catrom"`), have negative weights in some areas. When importance sampling, you cannot use negative values, so you should use the absolute value of the weight (using [abs](abs.html "Returns the absolute value of the argument.")). However, some applications need to know whether the returned sample had a negative weight.
-
-
+::: info Note that some filters (`"sinc"`, `"mitchell"`, `"catrom"`), have negative weights in some areas. When importance sampling, you cannot use negative values, so you should use the absolute value of the weight (using [abs](abs.html) () ("Returns the absolute value of the argument.")). However, some applications need to know whether the returned sample had a negative weight.
 
 ## See also
 

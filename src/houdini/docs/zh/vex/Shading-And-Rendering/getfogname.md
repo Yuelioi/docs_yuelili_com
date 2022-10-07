@@ -5,17 +5,13 @@ category:
   - vex
 ---
 
-
-
-Context(s)
 [shading](../contexts/shading.html)
 
 `string getfogname()`
 
-Returns the name of the current fog object whose shader is being run, or the empty string if there is no current fog object.
+Context(s) 返回当前雾化对象的名称，其着色器正在被运行，如果没有当前雾化对象，则返回空字符串。
 
-
-fog
+雾
 
 [getfogname](getfogname.html)
 
@@ -27,8 +23,7 @@ fog
 
 [simport](simport.html)
 
-|
-shading
+| 阴影
 
 [Du](Du.html)
 

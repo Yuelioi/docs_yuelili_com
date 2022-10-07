@@ -13,28 +13,27 @@ category:
 
 `<geometry>`
 
-When running in the context of a node (such as a wrangle SOP), this argument can be an integer representing the input number (starting at 0) to read the geometry from.
+当在一个节点的上下文中运行时（比如一个 wrangle SOP），这个参数可以是一个整数，代表要读取几何图形的输入数字（从 0 开始）。
 
-Alternatively, the argument can be a string specifying a geometry file (for example, a `.bgeo`) to read from. When running inside Houdini, this can be an `op:/path/to/sop` reference.
+或者，该参数可以是一个字符串，指定一个几何文件（例如，一个`.bgeo'）来读取。当在Houdini内部运行时，这可以是一个`op:/path/to/sop`的引用。
 
 `attribute_name`
 
-The name of the attribute (or intrinsic) to read.
+要读取的属性（或内在属性）的名称。
 
 `ignored`
 
-Pass `0` for this argument.
+该参数传递 "0"。
 
 `success`
 
-The function sets this variable to `1` if the attribute was successfully read, or `0` otherwise.
+如果属性被成功读取，该函数将此变量设置为`1'，否则为`0'。
 
 ## Returns
 
-`0` if importing the attribute failed, the value of the attribute on success.
+如果导入属性失败，则为 0，成功时为该属性的值。
 
-
-attrib
+附注
 
 [addattrib](addattrib.html)
 
@@ -174,8 +173,7 @@ attrib
 
 [vertexattribtypeinfo](vertexattribtypeinfo.html)
 
-|
-detail
+| 详细内容
 
 [adddetailattrib](adddetailattrib.html)
 

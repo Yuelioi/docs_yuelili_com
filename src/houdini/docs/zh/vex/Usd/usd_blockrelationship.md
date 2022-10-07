@@ -5,43 +5,39 @@ category:
   - vex
 ---
 
-
-
-Since 18.0
+自 18.0 以来
 
 `int usd\_blockrelationship(int stagehandle, string primpath, string name)`
 
-This function blocks the primitive’s relationship, i.e., clears the targets from the relationship.
+此函数阻止了基元的关系，即从关系中清除了目标。
 
 ## Arguments
 
 `stagehandle`
 
-A handle to the stage to write to. Currently the only valid value is `0`, which means the current stage in a node. (This argument may be used in the future to allow writing to other stages.)
+要写入的阶段的句柄。目前唯一有效的值是 "0"，这意味着在一个节点中的当前阶段。(这个参数将来可能会被用于允许写到其他阶段。)
 
 `primpath`
 
-The path to the primitive.
+通往原始的道路。
 
 `name`
 
-The relationship name.
+关系名称。
 
 ## Returns
 
-The value of `stagehandle` on success or `-1` on failure.
+成功时是`stagehandle`的值，失败时是`-1`。
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Clear the the cube's relationship.
 usd\_blockrelationship(0, "/geo/cube", "relationship\_name");
 
 ```
-
-
 
 ## See also
 

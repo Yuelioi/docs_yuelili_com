@@ -5,13 +5,9 @@ category:
   - vex
 ---
 
-
-
 Since 17.5
 
 `void pretranslate(matrix &m, vector amount)`
-
-
 
 ## See also
 

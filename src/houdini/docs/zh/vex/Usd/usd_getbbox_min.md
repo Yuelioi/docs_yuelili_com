@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Since 18.0
 
 `vector usd\_getbbox\_min(<stage>stage, string primpath, string purpose)`
@@ -33,15 +31,13 @@ The minimum point of the primitive’s bounding box.
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Get the sphere's bounding box.
 vector min = usd\_getbbox\_min(0, "/src/sphere", "render");
 
 ```
-
-
 
 ## See also
 

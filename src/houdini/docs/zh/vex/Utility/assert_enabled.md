@@ -22,8 +22,7 @@ The `assert()` macro uses this function to only execute assertions when `HOUDINI
 
 You could use this function to write your own assert macro (for example, you might write a macro that used your studio’s logging infrastructure).
 
-See [using assertions in VEX](../assertions.html "You can use the assert() macro to print information while you are debugging VEX code.") for more information.
-
+See [using assertions in VEX](../assertions.html) () ("You can use the assert() macro to print information while you are debugging VEX code.") for more information.
 
 utility
 

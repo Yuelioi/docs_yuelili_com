@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Since 19.0
 
 `float [] usd\_iprimvartimesamples(<stage>stage, string primpath, string name)`
@@ -33,7 +31,7 @@ The array of time codes at which the primvar values are authored, or an empty ar
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Get the time codes of a foo primvar.
@@ -58,8 +56,6 @@ float[] usd\_iprimvartimesamplevalues(const int input; const string primpath, pr
 }
 
 ```
-
-
 
 ## See also
 

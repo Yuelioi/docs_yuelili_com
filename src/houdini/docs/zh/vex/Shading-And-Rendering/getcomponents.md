@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Context(s)
 [displace](../contexts/displace.html)
 [fog](../contexts/fog.html)
@@ -19,14 +17,11 @@ Context(s)
 Returns an array of strings containing the components specified by the
 [/vex/functions/vm_exportcomponents](vm_exportcomponents.html) rendering property.
 
-
-
 ## See also
 
 - [vm_exportcomponents](vm_exportcomponents.html)
 
-|
-bsdf
+### bsdf
 
 [albedo](albedo.html)
 

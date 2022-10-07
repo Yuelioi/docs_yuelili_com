@@ -9,11 +9,9 @@ category:
 
 `vector hsvtorgb(float hue, float sat, float val)`
 
-Convert HSV color space into RGB color space. A vector representing the
-RGB triple is returned. The hue should be in the range 0 to 1.
+将 HSV 颜色空间转换成 RGB 颜色空间。返回一个代表 RGB 三要素的向量。色调应该在 0 到 1 的范围内。
 
-
-color
+颜色
 
 [blackbody](blackbody.html)
 
@@ -49,8 +47,7 @@ color
 
 [xyztorgb](xyztorgb.html)
 
-|
-convert
+|转换
 
 [ctransform](ctransform.html)
 

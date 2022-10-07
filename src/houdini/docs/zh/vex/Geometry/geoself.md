@@ -7,9 +7,8 @@ category:
 
 `int geoself()`
 
-Returns a handle to the current geometry, suitable for the geometry creation operations.
+返回当前几何体的句柄，适用于几何体创建操作。
 
-
-util
+利用
 
 [geoself](geoself.html)

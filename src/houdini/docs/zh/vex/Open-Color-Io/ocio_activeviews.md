@@ -7,10 +7,9 @@ category:
 
 `string [] ocio\_activeviews()`
 
-Returns a list of names of the active views supported by Open Color IO in Houdini.
+返回 Houdini 中 Open Color IO 支持的活动视图的名称列表。
 
-
-color
+颜色
 
 [blackbody](blackbody.html)
 
@@ -46,8 +45,7 @@ color
 
 [xyztorgb](xyztorgb.html)
 
-|
-ocio
+| ǞǞǞ
 
 [ocio_activedisplays](ocio_activedisplays.html)
 

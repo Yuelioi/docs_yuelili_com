@@ -5,39 +5,35 @@ category:
   - vex
 ---
 
-
-
-Since 17.5
+自 17.5 以来
 
 `string [] usd\_attribnames(<stage>stage, string primpath)`
 
-This function returns the attribute names that are available on the given primitive.
+此函数返回给定基元上可用的属性名称。
 
 ## Arguments
 
 `<stage>`
 
-When running in the context of a node (such as a wrangle LOP), this argument can be an integer representing the input number (starting at 0) to read the stage from. The integer is equivalent to the string form referencing a particular input, e.g., “opinput:0”.
+当在一个节点的上下文中运行时（比如 wrangle LOP），这个参数可以是一个整数，代表要读取阶段的输入号码（从 0 开始）。这个整数等同于引用特定输入的字符串形式，例如，"opinput:0"。
 
 `primpath`
 
-The path to the primitive.
+通往原始的道路。
 
 ## Returns
 
-String array containing the names of the primitive’s attributes.
+包含基元的属性名称的字符串数组。
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Get the attribute names from the primitive.
 string attrib\_names[] = usd\_attribnames(0, "/geo/sphere");
 
 ```
-
-
 
 ## See also
 

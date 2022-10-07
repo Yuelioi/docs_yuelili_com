@@ -7,10 +7,9 @@ category:
 
 `string detailattribtypeinfo(<geometry>geometry, string attribute\_name)`
 
-See [attribtypeinfo](attribtypeinfo.html "Returns the transformation metadata of a geometry attribute.") for more information.
+更多信息请参见[attribtypeinfo](attribtypeinfo.html)（"返回几何属性的转换元数据"）。
 
-
-attrib
+附注
 
 [addattrib](addattrib.html)
 
@@ -150,8 +149,7 @@ attrib
 
 [vertexattribtypeinfo](vertexattribtypeinfo.html)
 
-|
-detail
+| 详细内容
 
 [adddetailattrib](adddetailattrib.html)
 

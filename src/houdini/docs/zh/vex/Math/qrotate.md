@@ -7,10 +7,9 @@ category:
 
 `vector qrotate(vector4 quaternion, vector v)`
 
-Returns the vector `v` rotated by the given [quaternion](http://en.wikipedia.org/wiki/Quaternion).
+返回由给定的[四元数](http://en.wikipedia.org/wiki/Quaternion)旋转的向量`v`。
 
-
-quaternion
+四元数
 
 [dihedral](dihedral.html)
 
@@ -32,8 +31,7 @@ quaternion
 
 [slerp](slerp.html)
 
-|
-transform
+| 转化
 
 [agentcliptransformgroups](agentcliptransformgroups.html)
 

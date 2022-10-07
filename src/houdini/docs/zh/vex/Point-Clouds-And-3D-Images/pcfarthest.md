@@ -7,12 +7,9 @@ category:
 
 `float pcfarthest(int handle)`
 
-Returns the distance to the farthest point found in the search performed
-by pcopen. If no points were found, the function will return a very
-large value (1.0×10^37)
+返回在 pcopen 进行的搜索中发现的最远的点的距离。如果没有找到任何点，该函数将返回一个非常大的值（1.0×10^37）。
 
-
-measure
+衡量
 
 [curvearclen](curvearclen.html)
 
@@ -70,8 +67,7 @@ measure
 
 [xyzdist](xyzdist.html)
 
-|
-proximity
+| 靠近
 
 [hex_adjacent](hex_adjacent.html)
 
@@ -117,8 +113,7 @@ proximity
 
 [xyzdist](xyzdist.html)
 
-|
-ptcloud
+| ptcloud
 
 [mattrib](mattrib.html)
 

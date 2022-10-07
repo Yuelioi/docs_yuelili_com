@@ -5,32 +5,25 @@ category:
   - vex
 ---
 
-
-
-Context(s)
 [chop](../contexts/chop.html)
 
 `int chstart()`
 
-Uses `-1` as the `opinput`.
+上下文 使用`-1`作为`opinput`。
 
 `int chstart(int opinput)`
 
-Returns the index of the first sample in the channel data in the given CHOP input.
+返回给定的 CHOP 输入中的通道数据的第一个样本的索引。
 
 ## Arguments
 
 `opinput`
 
-The input number to read from, starting from 0. For example, the first input is 0, the second input is 1, and so on.
+要读取的输入号码，从 0 开始。例如，第一个输入是 0，第二个输入是 1，以此类推。
 
-If you specify `-1`, the function uses the current CHOP node or input `0` if it is connected.
+如果你指定`-1`，函数使用当前的 CHOP 节点或输入`0`，如果它是连接的。
 
-To get the start frame, use [chstartf](chstartf.html "Returns the frame corresponding to the first sample of the input
-specified."). To get the start time in seconds, use [chstartt](chstartt.html "Returns the time corresponding to the first sample of the input
-specified.").
-
-
+要获得起始帧，使用[chstartf](chstartf.html) ("返回与指定输入的第一个样本对应的帧。")。要获得以秒为单位的开始时间，使用[chstartt](chstartt.html) ("返回与指定输入的第一个样本相对应的时间。")。
 
 ## See also
 

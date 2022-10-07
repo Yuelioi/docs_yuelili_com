@@ -17,15 +17,13 @@ category:
 
 `viewer`
 
-Vector toward viewer.
+朝向观看者的矢量。
 
 `mask`
 
-A bitmask composed from values representing different shading components.
+一个由代表不同阴影成分的数值组成的位掩码。
 
-See [bouncemask](bouncemask.html) for information on component label bitmasks.
-
-
+参见[bouncemask](bouncemask.html)以了解关于组件标签位掩码的信息。
 
 ## See also
 
@@ -33,8 +31,7 @@ See [bouncemask](bouncemask.html) for information on component label bitmasks.
 - [eval_bsdf](eval_bsdf.html)
 - [sample_bsdf](sample_bsdf.html)
 
-|
-bsdf
+### bsdf
 
 [albedo](albedo.html)
 

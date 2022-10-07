@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Since 17.5
 
 `int usd\_isarray(<stage>stage, string primpath, string name)`
@@ -33,15 +31,13 @@ Attribute name.
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Check if attribute "some\_attribute" is an array.
 int is\_array = usd\_isarray(0, "/geometry/sphere", "some\_attribute");
 
 ```
-
-
 
 ## See also
 

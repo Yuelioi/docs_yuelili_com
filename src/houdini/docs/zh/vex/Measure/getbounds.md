@@ -9,18 +9,11 @@ category:
 
 `int getbounds(string filename, string group, vector &min, vector &max)`
 
-Returns the bounding box of the geometry specified by the filename. The
-point corresponding to the minimum corner of the bounding box will be
-returned in min, while the maximum will be in max.
-Always returns 1.
+返回由文件名指定的几何体的包围盒。包围盒的最小角所对应的点将以 min 的形式返回，而最大角将以 max 的形式返回。总是返回 1。
 
-If a group is specified, only primitives in that group will be used.
-The group field’s behavior matches that in SOPs. An empty string
-will include all primitives. Ad-hoc patterns like `0-10` and
-`@Cd.x>0` are also valid.
+如果指定了一个组，则仅会使用该组中的基元。组字段的行为与 SOP 中的行为相匹配。一个空字符串将包括所有基元。诸如 "0-10 "和"@Cd.x>0 "的临时模式也是有效的。
 
-The `getbbox()` function should likely be used instead.
-
+应该使用`getbbox()`函数来代替。
 
 bbox
 
@@ -52,8 +45,7 @@ bbox
 
 [texture3dBox](texture3dBox.html)
 
-|
-measure
+|措施
 
 [curvearclen](curvearclen.html)
 

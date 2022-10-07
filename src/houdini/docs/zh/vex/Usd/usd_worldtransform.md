@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Since 17.5
 
 `matrix usd\_worldtransform(<stage>stage, string primpath)`
@@ -35,15 +33,13 @@ The primitive’s world transform.
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Get the cube's world transform.
 matrix cube\_world\_xform = usd\_worldtransform(0, "/src/cube");
 
 ```
-
-
 
 ## See also
 

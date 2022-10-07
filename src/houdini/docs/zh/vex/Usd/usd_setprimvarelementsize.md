@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Since 18.0
 
 `int usd\_setprimvarelementsize(int stagehandle, string primpath, string name, int size)`
@@ -39,15 +37,13 @@ The value of `stagehandle` on success, or `-1` on failure.
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Set the primvar's element size to 2.
 usd\_setprimvarelementsize(0, "/geo/mesh", "primvar\_name", 2);
 
 ```
-
-
 
 ## See also
 

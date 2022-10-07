@@ -7,10 +7,9 @@ category:
 
 `int detailattribtype(<geometry>geometry, string attribute\_name)`
 
-See [attribtype](attribtype.html "Returns the type of a geometry attribute.") for more information.
+更多信息请参见[attribtype](attribtype.html)（"返回几何属性的类型"）。
 
-
-attrib
+附注
 
 [addattrib](addattrib.html)
 
@@ -150,8 +149,7 @@ attrib
 
 [vertexattribtypeinfo](vertexattribtypeinfo.html)
 
-|
-detail
+| 详细内容
 
 [adddetailattrib](adddetailattrib.html)
 

@@ -5,58 +5,36 @@ category:
   - vex
 ---
 
+在这一页
 
-
-On this page
-
-- [Derivatives options](#derivatives-options)
-- [Examples](#examples)
+- [衍生品选项](#衍生品-选项)
+- [例子](#例子)
 
 `float area(vector p, ...)`
 
-This is a more accurate and convenient method to get the micropolygon area
-than multiplying the length of `Du(P)` by the length of `Dv(P)`.
-This function is typically used to get the shading area in pixels.
+这是比用`Du(P)`的长度乘以`Dv(P)`的长度更准确、更方便的方法来获得微多边形的面积。这个函数通常用于获得以像素为单位的阴影面积。
 
 ::: info Note
 
-This function works because VEX “knows” that the variable `P`
-has derivatives (`dPdu` and `dPdv`). Passing a literal vector
-instead of a special variables such as `P` will return `0` since
-VEX will not be able to access the derivatives.
+这个函数起作用是因为 VEX "知道 "变量`P`有导数（`dPdu`和`dPdv`）。传递一个文字向量而不是一个特殊的变量如`P`，将返回`0`，因为 VEX 将无法访问导数。
 
-##
-
-Derivatives options
+## 衍生品期权
 
 [¶](#derivatives-options)
 
-Functions which compute derivatives take additional arguments to
-allow tuning of the derivative computation.
+计算导数的函数需要额外的参数，以便对导数计算进行调整。
 
 ## Arguments
 
-"`extrapolate`",
 `int`
 `=0`
 
-Whether derivatives are
-“smooth” across patch boundaries. In most cases this is true and if
-extrapolation is turned on, derivative computation should be exact
-for C2 surfaces. However, when the VEX variables are changing with a
-high frequency (for example, a high frequency displacement map
-causing high frequency changes to the P variable), extrapolation of
-derivative computation may cause exaggeration of discontinuities
-between patch boundaries.
+"`extrapolate`", 导数是否 "平滑 "地跨越补丁边界。在大多数情况下，这是真的，如果外推法被打开，导数计算对 C2 表面来说应该是精确的。然而，当 VEX 变量以高频率变化时（例如，高频率的位移图导致 P 变量的高频率变化），导数计算的外推可能导致补丁边界之间不连续的夸张。
 
-"`smooth`",
 `int`
 `=1`
 
-Adjust the magnitude of the
-differentials non-uniformly over patches. This will usually reduce
-patch discontinuities in displacement/textured shaders. However, in
-some odd cases you may want to turn this feature off.
+"`smooth'"，在斑块上非均匀地调整差值的大小。这通常会减少位移/纹理明暗器中的补丁不连续。然而，在一些奇怪的情况下，你可能想把这个功能关掉。
 
 ```c
 N = computenormal(P, "extrapolate", 1, "smooth", 0);
@@ -65,7 +43,7 @@ N = computenormal(P, "extrapolate", 1, "smooth", 0);
 
 ## Examples
 
-[¶](#examples)
+
 
 Return the area of the current micro-polygon in camera space:
 
@@ -87,8 +65,6 @@ Returns `0`, since the argument is not a variable VEX knows the derivatives for:
 area({0.1, 2.3, 4.5})
 
 ```
-
-
 
 ## See also
 

@@ -7,13 +7,11 @@ category:
 
 `int planesphereintersect(vector plane\_pos, vector plane\_normal, vector sphere\_pos, float sphere\_radius, vector &intersect\_pos, float &intersect\_radius, float &intersect\_distance)`
 
-Given a 3D sphere centered at `sphere_pos` with a `sphere_radius` radius, and a 3D plane with `plane_normal` normal vector passing through a 3D point `plane_pos`, return 1 if there is an intersection or 0 if there isn’t.
+给出一个以`sphere_pos`为中心、`sphere_radius`为半径的三维球体，和一个通过三维点`plane_pos`的`plane_normal`法线矢量的三维平面，如果有交集，返回 1，如果没有，返回 0。
 
-The intersection is most often a 2D circle on the intersecting plane centered at `intersect_pos` with a `intersect_radius` radius. It can also be a single point, in which case `intersect radius` is set to 0.
-The distance between the `sphere_pos` and the `intersect_pos` is returned even when there is no intersection.
+交点通常是相交平面上以`intersect_pos`为中心的二维圆，半径为`intersect_radius`。它也可以是一个单点，在这种情况下，`intersect radius'被设置为0。即使没有交点，`sphere_pos'和`intersect_pos'之间的距离也会返回。
 
-
-intersect
+相交
 
 [clip](clip.html)
 

@@ -13,52 +13,41 @@ category:
 
 `float uvdist(<geometry>geometry, string primgroup, string uvname, vector uv, int &prim, vector &primuv, float maxdist)`
 
-Returns the distance to the closest uv coordinate on the geometry in uv space. This will find
-positions on the surfaces of the geometry, not just point positions.
+返回几何体上最近的 uv 坐标在 uv 空间的距离。这将找到几何体表面上的位置，而不仅仅是点的位置。
 
 ## Arguments
 
 `<geometry>`
 
-When running in the context of a node (such as a wrangle SOP), this argument can be an integer representing the input number (starting at 0) to read the geometry from.
+当在一个节点的上下文中运行时（比如一个 wrangle SOP），这个参数可以是一个整数，代表要读取几何图形的输入数字（从 0 开始）。
 
-Alternatively, the argument can be a string specifying a geometry file (for example, a `.bgeo`) to read from. When running inside Houdini, this can be an `op:/path/to/sop` reference.
+或者，该参数可以是一个字符串，指定一个几何文件（例如，一个`.bgeo'）来读取。当在Houdini内部运行时，这可以是一个`op:/path/to/sop`的引用。
 
 `primgroup`
 
-The name of a primitive group or a pattern to generate a primitive
-group. Uses the same semantics as a SOP group, so empty strings
-will match all primitives. Attribute groups like `@Cd.x>0` can
-also be used, but note that the `@` may need to be escaped with
-a backslash in a [![](../../icons/COMMON/wrangle.svg)Snippet VOP](../../nodes/vop/snippet.html "Runs a VEX snippet to modify the incoming values.").
+基元组的名称或用于生成基元组的模式。使用与 SOP 组相同的语义，因此空字符串将匹配所有基元。也可以使用像`@Cd.x>0`这样的属性组，但注意`@`可能需要在(Snippet VOP](././nodes/vop/snippet.html)（"运行一个 VEX 片段来修改传入值。"）。
 
 `uvname`
 
-The name of a point or vertex attribute on the geometry to
-use as the uv space. The geometry will be unwrapped inplace based
-on this attribute.
-The attribute can be a 2D UV, 3D UVW, but also any vector attribute.
+几何体上的点或顶点属性的名称，作为 uv 空间使用。几何体将根据这个属性被就地解包。该属性可以是 2D UV、3D UVW，也可以是任何矢量属性。
 
 `uv`
 
-The position in uv space to find the closest position on the geometry to.
+在 uv 空间中寻找几何体上最接近的位置。
 
 `prim`
 
-The number of the closest primitive. -1 if no primitive found.
+最接近的基元的编号。如果没有找到基元，则为-1。
 
 `primuv`
 
-The primitive uv coordinates the closest primitive. The `primuv` function
-can be used to evaluate attributes at that location.
+基元 uv 的坐标是最接近的基元。可以使用`primuv`函数来评估该位置的属性。
 
 `maxdist`
 
-The maximum distance to search in uv space. The operation can be sped up if it
-is allowed to quit early.
+在 uv 空间中搜索的最大距离。如果允许提前退出，可以加快操作的速度。
 
-
-measure
+衡量
 
 [curvearclen](curvearclen.html)
 
@@ -116,8 +105,7 @@ measure
 
 [xyzdist](xyzdist.html)
 
-|
-texture
+| 纹理
 
 [colormap](colormap.html)
 

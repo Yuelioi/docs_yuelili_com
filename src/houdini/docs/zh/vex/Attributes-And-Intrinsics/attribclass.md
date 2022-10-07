@@ -11,21 +11,19 @@ category:
 
 `<geometry>`
 
-When running in the context of a node (such as a wrangle SOP), this argument can be an integer representing the input number (starting at 0) to read the geometry from.
+当在一个节点的上下文中运行时（比如一个 wrangle SOP），这个参数可以是一个整数，代表要读取几何图形的输入数字（从 0 开始）。
 
-Alternatively, the argument can be a string specifying a geometry file (for example, a `.bgeo`) to read from. When running inside Houdini, this can be an `op:/path/to/sop` reference.
+或者，该参数可以是一个字符串，指定一个几何文件（例如，一个`.bgeo'）来读取。当在Houdini内部运行时，这可以是一个`op:/path/to/sop`的引用。
 
 `attribute_name`
 
-The name of the attribute to read.
+要读取的属性的名称。
 
-If attributes with the same name exist at multiple “levels”, returns the _lowest level_ at which the attribute exists. For example, if there is a primitive attribute `foo` and a vertex attribute `foo`, `attribclass(0, "foo")` will return `"vertex"`.
+如果同名的属性存在于多个 "级别"，则返回该属性存在的*最低级别*。例如，如果有一个原始属性`foo`和一个顶点属性`foo`，`attribclass(0, "foo")`将返回`"顶点"`。
 
 ## Returns
 
-A string describing the class (`"detail"`, `"prim"`, `"point"`, or `"vertex"`) of the given attribute. If the attribute does not exist, returns an empty string (`""`).
-
-
+描述给定属性的类别（"细节"、"基点"、"点 "或 "顶点"）的字符串。如果该属性不存在，则返回一个空字符串（`""）。
 
 ## See also
 
@@ -34,8 +32,7 @@ A string describing the class (`"detail"`, `"prim"`, `"point"`, or `"vertex"`) o
 - [getattrib](getattrib.html)
 - [attribtype](attribtype.html)
 
-|
-attrib
+### attrib
 
 [addattrib](addattrib.html)
 

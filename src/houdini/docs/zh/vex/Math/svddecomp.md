@@ -5,23 +5,17 @@ category:
   - vex
 ---
 
-
-
-Since 18.0
+自 18.0 以来
 
 `void svddecomp(matrix3 input\_M, matrix3 &output\_U, vector &output\_S, matrix3 &output\_V)`
 
 `vector svddecomp(matrix3 input\_M)`
 
-Computes the [singular value decomposition](http://en.wikipedia.org/wiki/Singular_value_decomposition) of a
-3×3 matrix. More precisely, computes `U`, `S`, `V` such that
-`M = U*T*transpose(V)`, where `T` is the diagonal matrix constructed from `S`,
-the vector of singular values.
+计算一个 3×3 矩阵的[奇异值分解](http://en.wikipedia.org/wiki/Singular_value_decomposition)。更确切地说，计算`U`，`S`，`V`，使`M = U*T*transpose(V)`，其中`T`是由`S`构建的对角线矩阵，即奇异值矢量。
 
-The second form of this function simply returns the vector of singular values.
+这个函数的第二种形式只是返回奇异值的向量。
 
-
-matrix
+基体
 
 [\_\_uniform\_mul](### uniform_mul.html)
 

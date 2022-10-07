@@ -11,10 +11,9 @@ category:
 
 `matrix outerproduct(vector4 v, vector4 v)`
 
-Returns the [outer product](http://en.wikipedia.org/wiki/Outer_product) of the given vectors.
+返回给定矢量的[外积](http://en.wikipedia.org/wiki/Outer_product)。
 
-
-matrix
+基体
 
 [\_\_uniform\_mul](### uniform_mul.html)
 
@@ -66,8 +65,7 @@ matrix
 
 [transpose](transpose.html)
 
-|
-vector
+| 向量
 
 [Du](Du.html)
 

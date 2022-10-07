@@ -7,14 +7,8 @@ category:
 
 `vector filamentsample(<geometry>geometry, vector position)`
 
-Samples the velocity field defined by a set of vortex filaments at the
-specified `position`. The `inputnum` or `filename` parameter specifies the
-geometry to fetch the filament curves from. The `strength` and `thickness`
-primitive attributes can be used on the geometry to customize the strength and
-thickness of each filament. Returns the zero vector if `inputnum` is out of
-range or the `filename` is invalid.
+在指定的 "位置 "对一组涡流丝定义的速度场进行采样。参数 "inputnum "或 "filename "指定从几何体中获取丝状曲线。强度 "和 "厚度 "的原始属性可用于几何体上，以定制每个长丝的强度和厚度。如果`inputnum`超出范围或`filename`无效，则返回零向量。
 
-
-particles
+颗粒
 
 [filamentsample](filamentsample.html)

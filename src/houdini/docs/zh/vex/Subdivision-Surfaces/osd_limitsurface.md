@@ -5,10 +5,9 @@ category:
   - vex
 ---
 
-`osd_limitsurface` evaluates the point attribute in the geometry specified as a
-subdivision surface.
+`osd_limitsurface`评估指定为细分曲面的几何体中的点属性。
 
-For vertex attributes, use [osd_limitsurfacevertex](osd_limitsurfacevertex.html "Evaluates a vertex attribute at the subdivision limit surface using Open Subdiv.").
+对于顶点属性，使用[osd_limitsurfacevertex](osd_limitsurfacevertex.html)（"使用 Open Subdiv 在细分极限表面评估顶点属性。"）。
 
 `int osd\_limitsurface(<geometry>geometry, string attrib\_name, int patch\_id, float u, float v, <type>&result)`
 
@@ -18,30 +17,29 @@ For vertex attributes, use [osd_limitsurfacevertex](osd_limitsurfacevertex.html 
 
 `<geometry>`
 
-When running in the context of a node (such as a wrangle SOP), this argument can be an integer representing the input number (starting at 0) to read the geometry from.
+当在一个节点的上下文中运行时（比如一个 wrangle SOP），这个参数可以是一个整数，代表要读取几何图形的输入数字（从 0 开始）。
 
-Alternatively, the argument can be a string specifying a geometry file (for example, a `.bgeo`) to read from. When running inside Houdini, this can be an `op:/path/to/sop` reference.
+或者，该参数可以是一个字符串，指定一个几何文件（例如，`.bgeo'），以便从中读取。当在Houdini内部运行时，这可以是一个`op:/path/to/sop`的引用。
 
 `&result`
 
-The computed attribute value is stored in the variable you pass to this argument.
-The type of the variable should match the type of the attribute you are reading.
+计算出的属性值被存储在你传递给这个参数的变量中。变量的类型应该与你正在读取的属性的类型相匹配。
 
 ## Returns
 
-`1` if computing the attribute was successful, `0` if it failed.
+`1`如果计算属性成功，`0`如果失败。
 
-Possible reasons for failure are:
+失败的可能原因是。
 
-- The geometry contains no polygons or the topology can’t be converted using Open Subdiv
-- The attribute doesn’t exist on the input geometry.
-- The attribute size/type doesn’t match the VEX type of the `result` argument.
+- 几何图形不包含多边形，或者拓扑结构不能用 Open Subdiv 转换。
+- 输入的几何体上不存在该属性。
+- 属性大小/类型与`result`参数的 VEX 类型不匹配。
 
 ## Examples
 
-[¶](#examples)
 
-Generate a point cloud on the limit surface of a subdivision mesh.
+
+在细分网格的极限面上生成点云。
 
 ```c
 int npatches = osd\_patchcount(file);
@@ -58,8 +56,6 @@ for (int patch = 0; patch < npatches; patch++)
 }
 
 ```
-
-
 
 ## See also
 

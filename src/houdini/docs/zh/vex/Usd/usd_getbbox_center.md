@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Since 18.0
 
 `vector usd\_getbbox\_center(<stage>stage, string primpath, string purpose)`
@@ -33,15 +31,13 @@ The center of the primitive’s bounding box.
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Get the center of the sphere's bounding box.
 vector center = usd\_getbbox\_center(0, "/src/sphere", "render");
 
 ```
-
-
 
 ## See also
 

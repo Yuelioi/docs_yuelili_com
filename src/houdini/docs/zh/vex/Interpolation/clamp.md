@@ -9,7 +9,7 @@ category:
 
 `float clamp(float value, float min, float max)`
 
-Returns value clamped between min and max.
+返回夹在最小和最大之间的值。
 
 `vector2 clamp(vector2 value, vector2 min, vector2 max)`
 
@@ -17,9 +17,7 @@ Returns value clamped between min and max.
 
 `vector4 clamp(vector4 value, vector4 min, vector4 max)`
 
-Returns a new vector containing the clamped value of each component.
-
-
+返回一个包含每个分量的钳制值的新向量。
 
 ## See also
 

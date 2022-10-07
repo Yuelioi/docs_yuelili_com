@@ -11,26 +11,25 @@ category:
 
 `<geometry>`
 
-When running in the context of a node (such as a wrangle SOP), this argument can be an integer representing the input number (starting at 0) to read the geometry from.
+当在一个节点的上下文中运行时（比如一个 wrangle SOP），这个参数可以是一个整数，代表要读取几何图形的输入数字（从 0 开始）。
 
-Alternatively, the argument can be a string specifying a geometry file (for example, a `.bgeo`) to read from. When running inside Houdini, this can be an `op:/path/to/sop` reference.
+或者，该参数可以是一个字符串，指定一个几何文件（例如，一个`.bgeo'）来读取。当在Houdini内部运行时，这可以是一个`op:/path/to/sop`的引用。
 
 `point`
 
-The point number in the geometry. `0` is the first point.
+几何图形中的点编号。`0'是第一个点。
 
 ## Returns
 
-The next half-edge that has the same source as `hedge`.
+与`hedge`具有相同来源的下一个半边。
 
-Successive calls to this function iterate over all outgoing half-edges out of the same point.
-The iteration order does not necessarily agree with the order of the edges around a point in a manifold setting.
+对这个函数的连续调用会遍历所有从同一点出来的半边形。迭代顺序不一定与流形设置中点周围的边的顺序一致。
 
-Returns `-1` if `hedge` is not valid, or the there are no more shared vertices with the source vertex of this hedge (same as `op:vertexnext`).
+如果 "对冲 "无效，或者没有更多的共享顶点与该对冲的源顶点共享，则返回`-1'（与`op:vertexnext'相同）。
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 int edge\_count = 0;
@@ -48,7 +47,6 @@ while ( hout != -1 )
 }
 
 ```
-
 
 hedge
 

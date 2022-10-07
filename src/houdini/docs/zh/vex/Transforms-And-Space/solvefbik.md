@@ -5,9 +5,7 @@ category:
   - vex
 ---
 
-
-
-Since 17.0
+自 17.0 以来
 
 `matrix [] solvefbik(matrix xforms[], int parents[], dict jointoptions[], matrix targetxforms[], int targets[], dict targetoptions[], int iters, float tolerance, int pinroot)`
 
@@ -23,150 +21,115 @@ Since 17.0
 
 `matrix [] solvefbik(matrix xforms[], int parents[], int targets[], matrix targetxforms[], int iters, float tolerance, int pinroot, float targetweights[], int targetpriorities[], int targetdepths[], int targettypes[], matrix targetoffsets[], matrix goalxforms[], vector4 constrainedxforms[], vector jointlimits[])`
 
-Returns an empty array if:
+返回一个空数组，如果。
 
-- `xforms` is not the same size as `parents`
-- `targets` is not the same size as `targetxforms`
-- The `goalxforms`, `constrainedxforms`, and `jointlimits` arrays aren’t empty, but are not the same size as `xforms`
+- `xforms`与`parents`大小不一
+- targets "与 "targetxforms "大小不一
+- `goalxforms`、`constrainedxforms`和`jointlimits`数组不是空的，但与`xforms`的大小不同。
 
-The `goalxforms`, `constrainedxforms`, and `jointlimits` parameters should be in the form produced by the [![](../../icons/SOP/agentconfigurejoints.svg)Agent Configure Joints SOP](../../nodes/sop/agentconfigurejoints.html "Creates point attributes that specify the rotation limits of an agent’s joints.").
+`goalxforms`、`constrainedxforms`和`jointlimits`参数应采用(Agent Configure Joints SOP](.../.../nodes/sop/agentconfigurejoints.html)（"创建点属性，指定代理的关节的旋转限制。" ）产生的形式。
 
 ## Arguments
 
 `xforms`
 
-The world transforms of all the transforms in the rig being solved.
+被解决的钻机中所有变换的世界变换。
 
 `parents`
 
-The parent transform index for each transform. A value of -1 indicates a root.
+每个变换的父变换索引。值为-1 表示根。
 
 `jointoptions`
 
-Specifies optional parameters for the joints. The valid keys are:
+指定接头的可选参数。有效的键为：。
 
 `limit_goalxform`
 
-A `matrix` specifying the position and orientation of the cone in the space of the parent transform.
-This can be set from the attributes produced by [![](../../icons/SOP/agentconfigurejoints.svg)Agent Configure Joints](../../nodes/sop/agentconfigurejoints.html "Creates point attributes that specify the rotation limits of an agent’s joints.").
+一个 "矩阵"，指定锥体在父变换空间中的位置和方向。这可以从(Agent Configure Joints](././nodes/sop/agentconfigurejoints.html)（"创建点属性，指定代理的关节的旋转限制。"）产生的属性中设置。
 
 `limit_constrainedxform`
 
-A `vector4` (quaternion) specifying the orientation of the twist axis, up axis, and out axis in the space of the child transform.
-This can be set from the attributes produced by [![](../../icons/SOP/agentconfigurejoints.svg)Agent Configure Joints](../../nodes/sop/agentconfigurejoints.html "Creates point attributes that specify the rotation limits of an agent’s joints.").
+一个`向量4`（四元数），指定子变换空间中的扭转轴、上轴和外轴的方向。这可以从(Agent Configure Joints](././nodes/sop/agentconfigurejoints.html)（"创建点属性，指定代理的关节的旋转限制。"）所产生的属性中设置。
 
 `limit_angles`
 
-A `vector` specifying the maximum rotation around each axis, in degrees.
-This can be set from the attributes produced by [![](../../icons/SOP/agentconfigurejoints.svg)Agent Configure Joints](../../nodes/sop/agentconfigurejoints.html "Creates point attributes that specify the rotation limits of an agent’s joints.").
+一个 "向量"，指定围绕每个轴的最大旋转，单位是度。这可以从(Agent Configure Joints](.../.../nodes/sop/agentconfigurejoints.html)（"创建点属性，指定代理的关节的旋转限制。"）产生的属性进行设置。
 
 `targets`
 
-A list of the transform indices of the end effectors in the skeleton.
+骨架中末端效应器的转换指数的列表。
 
 `targetxforms`
 
-A list of the target world transforms for the end effectors, in the same order as `targets`.
+最终效应器的目标世界变换的列表，顺序与`targets`相同。
 
 `targetoptions`
 
-Specifies optional parameters for the targets. The valid keys are:
+指定目标的可选参数。有效的键是。
 
 `weight`
 
-A `float` specifying the importance of the target.
-When multiple targets have the same priority level, targets with a higher relative weight are more likely to be reached.
-The default value is `1.0`.
+一个指定目标重要性的`float'。当多个目标具有相同的优先级时，具有较高相对权重的目标更有可能被达成。默认值是`1.0'。
 
 `priority`
 
-An `int` specifying the target’s priority level.
-Targets from a lower priority level cannot interfere with targets from a higher priority level.
-For example, priority levels can be used to ensure that the feet remain planted when manipulating the upper body of a skeleton.
-The default value is `0`.
+指明目标的优先级的 "int"。低优先级的目标不能干扰高优先级的目标。例如，优先级可以用来确保在操纵骨架的上半身时，双脚保持在固定位置。默认值是`0`。
 
 `depth`
 
-An `int` specifying the number of parent joints that can be adjusted to achieve the goal transform.
-A negative depth indicates that the entire chain can be affected.
-The default value is `-1`.
+一个 "int"，指定可以被调整以实现目标变换的父关节的数量。负的深度表示整个链条都可以被影响。默认值是`-1'。
 
 `target_type`
 
-An `int` specifying how the end effector matches the position or orientation of its target transform.
-A value of `0` (default) indicates a position-only target, `1` indicates an orientation-only target, and `2` matches both position and orientation.
-A value of `3` indicates a target that controls the center of mass of the skeleton (the transform index from `targets` is not used).
-Only one center of mass target can be provided.
+一个 "int"，指定末端效应器如何匹配其目标变换的位置或方向。值为`0'（默认）表示仅有位置的目标，`1'表示仅有方向的目标，`2'同时匹配位置和方向。值为`3'表示一个控制骨架质量中心的目标（不使用`targets'的变换索引）。只能提供一个质心目标。
 
 `joint_offset`
 
-A `matrix` specifying a local space transform that is combined with the joint transform to produce the transform that the solver attempts to align with the goal transform.
-This can be used to place the target at an offset from the joint (for example, at the end of a bone).
+一个指定局部空间变换的 "矩阵"，与关节变换相结合，以产生解算器试图与目标变换对齐的变换。这可以用来将目标放置在关节的偏移处（例如，在骨头的末端）。
 
 `iters`
 
-The maximum number of iterations to perform.
-The solver may terminate early if the `tolerance` parameter is used.
+要执行的最大迭代次数。如果使用`tolerance`参数，求解器可能会提前终止。
 
 `tolerance`
 
-The tolerance to use when checking for convergence, defaults to 1e-5.
-If positions converge to within this tolerance, the algorithm will stop.
-If 0, the solver will always perform exactly `iters` iterations.
+检查收敛时使用的公差，默认为 1e-5。如果位置收敛在这个公差范围内，算法将停止。如果是 0，求解器将总是精确地执行`iters`迭代。
 
 `pinroot`
 
-Whether to pin the root to its start position, instead of allowing it to translate.
-This can be useful when, for example, solving a subset of an agent’s skeleton.
-Defaults to 0 (off).
+是否将根钉在它的起始位置，而不是让它平移。例如，在解决一个代理的骨架的子集时，这可能是有用的。默认为 0（关闭）。
 
 `targetweights`
 
-A list containing the weight of each end effector, in the same order as `targets`.
-For joints with multiple children, the normalized weights will be used to determine their position - this means that a target with a higher weight than other targets will be more likely to be reached.
-The default weight is 1.0.
+一个包含每个末端效应器的重量的列表，顺序与`targets`相同。对于有多个子体的关节，将使用归一化的权重来确定其位置--这意味着权重高于其他目标的目标将更有可能被到达。默认的权重是 1.0。
 
 `targetpriorities`
 
-A list containing the priority level of each end effector, in the same order as `targets`.
-Targets from a lower priority level will not influence targets with higher priority.
-For example, priority levels can be used to ensure that the targets for the feet are always satisfied, while still controlling the relative weights of the upper body targets.
-The default priority is 0 (i.e. all targets are equal priority).
+一个包含每个终端效应器的优先级的列表，顺序与`targets`相同。低优先级的目标不会影响高优先级的目标。例如，优先级可以用来确保脚的目标总是得到满足，同时仍然控制上半身目标的相对重量。默认的优先级是 0（即所有目标的优先级都相同）。
 
 `targetdepths`
 
-For each end effector, specifies how many joints above it in the chain can be adjusted to achieve the target transform.
-A negative depth can be used to specify that all joints above the target are affected.
-The default depth is -1.
+对于每个末端效应器，指定它上面有多少个关节可以被调整以实现目标变换。负的深度可以用来指定目标上面的所有关节都受到影响。默认的深度是-1。
 
 `targettypes`
 
-A list containing the target type for each end effector, in the same order as `targets`.
-The target type can be used to specify how the end effector matches the position or orientation of its target transform (from `targetxforms`).
-A value of `0` indicates a position-only target, `1` indicates an orientation-only target, and `2` matches both position and orientation (default).
+一个包含每个末端效应器的目标类型的列表，顺序与`targets`相同。目标类型可以用来指定末端效应器如何匹配其目标变换的位置或方向（来自`targetxforms`）。值为`0'表示仅有位置的目标，`1'表示仅有方向的目标，而`2'同时匹配位置和方向（默认）。
 
 `targetoffsets`
 
-A list containing an additional local space transform for each end effector, in the same order as `targets`.
-This transform is combined with the end effector’s joint transform to produce the transform that the solver attempts to align with the target transform.
-This can be used to place the target at an offset from the joint (for example, at the end of a bone).
+一个包含每个终端效应器的额外局部空间变换的列表，顺序与`targets`相同。这个变换与末端效应器的关节变换相结合，产生解算器试图与目标变换对齐的变换。这可以用来将目标放在离关节偏移的地方（例如，在骨头的末端）。
 
 `goalxforms`
 
-Part of the joint constraints as produced by [![](../../icons/SOP/agentconfigurejoints.svg)Agent Configure Joints](../../nodes/sop/agentconfigurejoints.html "Creates point attributes that specify the rotation limits of an agent’s joints.").
-An empty array indicates no joint constraints.
+由(Agent Configure Joints](.../.../nodes/sop/agentconfigurejoints.html)（"创建点属性，指定代理的关节的旋转限制。"）产生的部分关节约束。一个空数组表示没有关节限制。
 
 `constrainedxforms`
 
-Part of the joint constraints as produced by [![](../../icons/SOP/agentconfigurejoints.svg)Agent Configure Joints](../../nodes/sop/agentconfigurejoints.html "Creates point attributes that specify the rotation limits of an agent’s joints.").
-An empty array indicates no joint constraints.
+由(Agent Configure Joints](.../.../nodes/sop/agentconfigurejoints.html)（"创建点属性，指定代理的关节的旋转限制。"）产生的部分关节约束。一个空数组表示没有关节限制。
 
 `jointlimits`
 
-Part of the joint constraints as produced by [![](../../icons/SOP/agentconfigurejoints.svg)Agent Configure Joints](../../nodes/sop/agentconfigurejoints.html "Creates point attributes that specify the rotation limits of an agent’s joints.").
-An empty array indicates no joint constraints.
-
-
+由(Agent Configure Joints](.../.../nodes/sop/agentconfigurejoints.html)（"创建点属性，指定代理的关节的旋转限制。"）产生的部分关节约束。一个空数组表示没有关节限制。
 
 ## See also
 

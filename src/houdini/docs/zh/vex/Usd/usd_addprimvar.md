@@ -5,45 +5,43 @@ category:
   - vex
 ---
 
-
-
-Since 18.0
+自 18.0 以来
 
 `int usd\_addprimvar(int stagehandle, string primpath, string name, string typename)`
 
 `int usd\_addprimvar(int stagehandle, string primpath, string name, string typename, string interpolation)`
 
-This function adds a primvar of a given type to the primitive, if such primvar is not part of a schema. It is useful for controlling the exact type of a custom primvar. For primvars defined by primitive’s schema, this call has no effect, because the schema already determines their type.
+此函数向基元添加了一个给定类型的 primvar，如果该 primvar 不属于模式的一部分。它对于控制自定义 primvar 的确切类型很有用。对于由基元的模式定义的基元变量，此调用没有任何作用，因为模式已经确定了它们的类型。
 
 ## Arguments
 
 `stagehandle`
 
-A handle to the stage to write to. Currently the only valid value is `0`, which means the current stage in a node. (This argument may be used in the future to allow writing to other stages.)
+要写入的阶段的句柄。目前唯一有效的值是 "0"，这意味着在一个节点中的当前阶段。(这个参数将来可能会被用于允许写到其他阶段。)
 
 `primpath`
 
-The path to the primitive.
+通往原始的道路。
 
 `name`
 
-Primvar name (without namespace).
+Primvar 名称（不含命名空间）。
 
 `typename`
 
-The name or an alias of the type.
+类型的名称或别名。
 
 `interpolation`
 
-The name of the interpolation to be used for this primvar (e.g., “constant”, “vertex”, “faceVarying”, etc).
+用于此基元变量的插值名称（例如，"常数"、"顶点"、"面孔变化 "等）。
 
 ## Returns
 
-The value of `stagehandle` on success, or `-1` on failure.
+成功时为`stagehandle'的值，失败时为`-1'。
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Adds a half-precision float primvar and sets its falue.
@@ -55,8 +53,6 @@ usd\_addprimvar(0, pp, "color\_primvar", "color3d[]", "vertex");
 usd\_setprimvar(0, pp, "color\_primvar", vector[](array({1,0,0}, {0,1,0}, {0,0,1})));
 
 ```
-
-
 
 ## See also
 

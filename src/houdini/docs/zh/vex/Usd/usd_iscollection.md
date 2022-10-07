@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Since 18.0
 
 `int usd\_iscollection(<stage>stage, string collectionpath)`
@@ -29,7 +27,7 @@ The path to the collection.
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Check if cube has a collection "some\_collection".
@@ -37,8 +35,6 @@ string collection\_path = usd\_makecollectionpath(0, "/geo/cube", "some\_collect
 int is\_collection\_existing = usd\_iscollection(0, collection\_path);
 
 ```
-
-
 
 ## See also
 

@@ -5,19 +5,13 @@ category:
   - vex
 ---
 
-
-
-Context(s)
 [cop](../contexts/cop.html)
 
 `string alphaname()`
 
-Returns the default name of the alpha plane (as it appears in the
-compositor preferences). Using this instead of hardcoding the default
-makes your code more portable. Default is “A”.
+Context(s) 返回 alpha 平面的默认名称（正如它在合成器首选项中显示的那样）。使用它而不是硬编码默认值可以使你的代码更容易移植。默认是 "A"。
 
-
-output_plane
+输出平面
 
 [alphaname](alphaname.html)
 

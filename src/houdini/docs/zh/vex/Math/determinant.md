@@ -11,10 +11,9 @@ category:
 
 `float determinant(matrix m)`
 
-See [matrix determinant](http://en.wikipedia.org/wiki/Determinant).
+见[矩阵行列式](http://en.wikipedia.org/wiki/Determinant)。
 
-
-matrix
+基体
 
 [\_\_uniform\_mul](### uniform_mul.html)
 

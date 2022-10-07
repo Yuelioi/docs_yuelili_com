@@ -5,9 +5,6 @@ category:
   - vex
 ---
 
-
-
-Context(s)
 [displace](../contexts/displace.html)
 [fog](../contexts/fog.html)
 [light](../contexts/light.html)
@@ -20,28 +17,23 @@ Context(s)
 
 `int [] getlights(material mat, vector P, ...)`
 
-With this signature, the light mask is determined solely by the material (the
-`lightmask` and `categories` keyword parameters are ignored).
+上下文(s) 有了这个签名，光罩完全由材料决定（`lightmask`和`categories`关键字参数被忽略）。
 
-This version
-also accepts PBR keyword arguments to limit lights based on their Light
-Contribution parameter.
+这个版本也接受 PBR 关键字参数，根据灯光贡献参数来限制灯光。
 
 ## Arguments
 
-"label",
 `string`
 
-A specific label. This keyword argument may be specified multiple times.
+"标签"，一个特定的标签。这个关键字参数可以被多次指定。
 
-"direct",
 `int`
 
-0 = limit lights to indirect contributions, 1 = limit lights to direct contributions.
+"直接"，0=限制灯光为间接贡献，1=限制灯光为直接贡献。
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 getlights("lightmask", "light\*,^light2");
@@ -49,8 +41,6 @@ getlights("categories", "shadow|occlusion");
 getlights(material(), P, "direct", 0);
 
 ```
-
-
 
 ## See also
 

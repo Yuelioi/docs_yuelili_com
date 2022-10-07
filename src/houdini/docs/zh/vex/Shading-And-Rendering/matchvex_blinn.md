@@ -9,13 +9,9 @@ category:
 
 `bsdf matchvex\_blinn(vector nml, float exponent, ...)`
 
-![](../../images/rendering/matchvex_blinn.png)
+![](/images/matchvex_blinn.png)
 
-The BSDF produced by [blinn](blinn.html "Returns a Blinn BSDF or computes Blinn shading.") is not the same as the traditional VEX
-`blinn()` output. Use this function to produce a closer approximate match to
-the traditional VEX `blinn()`.
-
-
+由[blinn](blinn.html) ()（"返回 Blinn BSDF 或计算 Blinn 阴影。"）产生的 BSDF 与传统的 VEX `blinn()`输出不一样。使用这个函数可以产生一个与传统 VEX`blinn()`更接近的近似匹配。
 
 ## See also
 

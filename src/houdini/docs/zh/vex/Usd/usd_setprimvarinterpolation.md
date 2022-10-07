@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Since 18.0
 
 `int usd\_setprimvarinterpolation(int stagehandle, string primpath, string name, string interpolation)`
@@ -45,15 +43,13 @@ The value of `stagehandle` on success, or `-1` on failure.
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Set the primvar's interpolation style.
 usd\_setprimvarinterpolation(0, "/geo/mesh", "primvar\_name", "faceVarying");
 
 ```
-
-
 
 ## See also
 

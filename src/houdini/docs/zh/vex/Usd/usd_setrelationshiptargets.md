@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Since 18.0
 
 `int usd\_setrelationshiptargets(int stagehandle, string primpath, string name, string targets[])`
@@ -37,15 +35,13 @@ The value of `stagehandle` on success or `-1` on failure.
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Set the cube's relationship.
 usd\_setrelationshiptargets(0, "/geo/cube", "new\_relation", array("/geo/sphere6", "/geo/sphere7"));
 
 ```
-
-
 
 ## See also
 

@@ -4,7 +4,7 @@ order: 11
 category:
   - houdini
 ---
-    
+
 ## 描述
 
 Removes an item from an array. 从数组中移除一个元素

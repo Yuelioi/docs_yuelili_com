@@ -5,26 +5,13 @@ category:
   - vex
 ---
 
-
-
-Since 17.5
+自 17.5 以来
 
 `string encode(string str)`
 
-Houdini VEX variable names are only allowed to contain letters, numbers, and
-underscores, and must not begin with a number. This function takes any string,
-and encodes it into a string that obeys these restrictions. The original
-string can be recovered using the `decode` function. A string that already
-obeys the rules is returned unmodified.
+Houdini VEX 变量名只允许包含字母、数字和下划线，而且不能以数字开头。这个函数接收任何字符串，并将其编码为一个遵守这些限制的字符串。原有的字符串可以通过`decode`函数恢复。一个已经遵守规则的字符串将不被修改地返回。
 
-One exception to this rule is that a string starting with `xn### ` will be
-encoded even if it is already a valid variable name. This is because `xn### `
-is the prefix used to identify an encoded string. In this case, an additional
-`xn### ` prefix will be added. This means a string can be encoded any number of
-times, then decoded the same number of times to always return to the original
-string, regardless of its contents.
-
-
+这个规则的一个例外是，以`xn###`开头的字符串将被编码，即使它已经是一个有效的变量名。这是因为`xn### `是用来识别编码字符串的前缀。在这种情况下，一个额外的`xn### `前缀将被添加。这意味着一个字符串可以被编码任意次数，然后被解码相同的次数，总是返回到原来的字符串，无论其内容如何。
 
 ## See also
 

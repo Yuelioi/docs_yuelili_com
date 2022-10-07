@@ -29,20 +29,14 @@ category:
 
 `vector random\_sobol(vector seed, int offset)`
 
-When generating a sequence of random numbers you will notice that it tends to
-clump. Sometimes you want a bunch of samples that are better distributed,
-however. A sobol sequence is a series of random numbers which are relatively
-evenly distributed.
+当生成一个随机数的序列时，你会注意到它倾向于结块。然而，有时你想要一串分布较好的样本。苏波尔序列是一系列分布相对均匀的随机数。
 
-The seed allows you to select different sobol sequences. If it is a floating
-point seed, note very small differences will select very different sequences.
+种子允许你选择不同的 sobol 序列。如果它是一个浮动点的种子，注意非常小的差异将选择非常不同的序列。
 
-The offset is which entry in the sequence to extract. This should be an
-integer sequence, like `ptnum`, in order for the distribution property to work.
+偏移量是要提取序列中的哪个条目。这应该是一个整数序列，如`ptnum'，以使分布属性发挥作用。
 
-Each number is in the `[0..1)` range.
+每个数字都在`[0...1]`范围内。
 
-
-random_sobol
+随机\_sobol
 
 [random_sobol](random_sobol.html)

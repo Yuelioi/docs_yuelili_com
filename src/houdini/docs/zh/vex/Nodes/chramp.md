@@ -13,15 +13,13 @@ category:
 
 `vector chramp(string channel, float ramppos, float time)`
 
-Evaluates a ramp parameter and return its value.
+评估一个斜坡参数并返回其值。
 
-The ramppos is where on the ramp to evaluate. The ramppos is clamped to the range `[0,1]`.
+ramppos 是斜坡上要评估的位置。ramppos 被钳制在`[0,1]`范围内。
 
-The time parameter can be used if the ramp is animated to evaluate
-at other than the current time.
+如果斜坡被动画化为在当前时间以外的时间评估，则可以使用时间参数。
 
-
-utility
+公用事业
 
 [assert_enabled](assert_enabled.html)
 

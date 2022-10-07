@@ -7,16 +7,13 @@ category:
 
 `vector normal\_bsdf(bsdf b)`
 
-
-
 ## See also
 
 - [albedo](albedo.html)
 - [eval_bsdf](eval_bsdf.html)
 - [sample_bsdf](sample_bsdf.html)
 
-|
-bsdf
+### bsdf
 
 [albedo](albedo.html)
 

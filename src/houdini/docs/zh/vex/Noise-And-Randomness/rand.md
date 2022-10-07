@@ -45,16 +45,12 @@ category:
 
 `vector4 rand(vector4 seed)`
 
-Creates a random number based on the provided seed. The number will
-be in the range of 0 to 1. In particular, it will be in the half-open interval `[0, 1)`. The same number is produced for the same
-seed, so to vary the random number the seed should be varied.
+根据提供的种子创建一个随机数。这个数字将在 0 到 1 的范围内，特别是，它将在半开区间`[0, 1)`。相同的种子会产生相同的数字，所以要改变随机数，应该改变种子。
 
 ::: info Note that even the smallest changes in the seed value will produce
-completely different numbers, so it may produce different results
-on different operating systems or compilers.
+完全不同的数字，所以它在不同的操作系统或编译器上可能产生不同的结果。
 
-If the result is a vector2, vector, or vector4, each component will be a
-different random number. Thus, if you have the code:
+如果结果是一个 vector2、vector 或 vector4，每个分量将是一个不同的随机数。因此，如果你有这样的代码。
 
 ```c
 vector pos = 1;
@@ -73,8 +69,6 @@ float seed = 0;
 pos \*= float(rand(seed));
 
 ```
-
-
 
 ## See also
 

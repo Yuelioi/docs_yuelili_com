@@ -7,7 +7,7 @@ category:
 
 `float cosh(float n)`
 
-Returns the hyperbolic cosine of the argument.
+返回参数的双曲余弦。
 
 `vector2 cosh(vector2 v)`
 
@@ -15,9 +15,7 @@ Returns the hyperbolic cosine of the argument.
 
 `vector4 cosh(vector4 v)`
 
-Returns a new vector with `cosh()` applied to each component.
-
-
+返回一个新的向量，`cosh()'应用于每个分量。
 
 ## See also
 

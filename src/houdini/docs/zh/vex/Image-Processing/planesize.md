@@ -5,18 +5,13 @@ category:
   - vex
 ---
 
-
-
-Context(s)
 [cop](../contexts/cop.html)
 
 `int planesize(int planeindex)`
 
-Returns the number of components in the plane (1 for scalar planes and
-up to 4 for vector planes). Returns 0 if the index is out of range.
+Context(s) 返回平面中的组件数量（标量平面为 1，矢量平面最多为 4）。如果索引超出范围则返回 0。
 
-
-output_plane
+输出平面
 
 [alphaname](alphaname.html)
 

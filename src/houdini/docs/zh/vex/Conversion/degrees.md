@@ -7,7 +7,7 @@ category:
 
 `float degrees(float num\_in\_rads)`
 
-Returns the given radians in degrees.
+返回给定弧度的度数。
 
 `vector2 degrees(vector2 nums\_in\_rads)`
 
@@ -15,11 +15,9 @@ Returns the given radians in degrees.
 
 `vector4 degrees(vector4 nums\_in\_rads)`
 
-Returns a new vector with the components converted to degrees.
+返回一个新的分量转换为度数的向量。
 
-Most VEX trig functions work with radians, but most users are more comfortable with degrees. You may want to convert from degrees in the UI to radians for internal use.
-
-
+大多数 VEX 的三角函数都是用弧度工作的，但大多数用户更习惯于使用度。你可能想把用户界面中的度数转换为弧度供内部使用。
 
 ## See also
 

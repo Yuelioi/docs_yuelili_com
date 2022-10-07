@@ -7,14 +7,14 @@ category:
 
 `void error(string format, ...)`
 
-Reports a custom runtime VEX error. This uses the same format string syntax as [printf](printf.html "Prints values to the console which started the VEX program.").
+Reports a custom runtime VEX error. This uses the same format string syntax as [printf](printf.html) () ("Prints values to the console which started the VEX program.").
 
 If something can still be done as an acceptable fallback, instead of outright failing,
-it may be worth reporting a [warning](warning.html "Reports a custom runtime VEX warning."), instead of an error.
+it may be worth reporting a [warning](warning.html) () ("Reports a custom runtime VEX warning."), instead of an error.
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 if (!pointattribtype(0,chs("nameattrib")) != 2) {
@@ -32,8 +32,6 @@ if (minimumValue >= maximumValue) {
 }
 
 ```
-
-
 
 ## See also
 

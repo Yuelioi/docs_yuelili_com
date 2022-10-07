@@ -7,50 +7,31 @@ category:
 
 `vector fromNDC(vector v)`
 
-Transforms the vector from NDC space to the current space.
+将矢量从 NDC 空间转换到当前空间。
 
 `vector fromNDC(string space, vector v)`
 
-Transforms the vector from NDC space to the named space.
+将矢量从 NDC 空间转换到指定空间。
 
 ## Arguments
 
 `space`
 
-The possible values for the space arguments are:
+空间参数的可能值为：。
 
-
-An object path Use the object space of an object specified by a path string.
+一个对象路径 使用由路径字符串指定的对象空间。
 
 :::tip
 
-In some cases, such as point instancing, mantra may
-automatically mangle object paths. You can generate an `.ifd`
-file and look inside to try to find what mantra is calling
-the object you want.
+在某些情况下，例如点实例化，mantra 可能会自动改变对象的路径。你可以生成一个`.ifd'文件，并在里面查找 mantra 调用你想要的对象的内容。
 
-|
-`"space:object"` Object space of the _current_ object.
-|
-`"space:light"` Object space of the _current_ light when executing a shadow or light shader.
-|
-`"space:world"` Houdini world space.
-|
-`"space:camera"` mantra camera space.
-|
-`"space:ndc"` Normal Device Coordinate space.
-|
-`"space:lightndc"` Normal Device Coordinate space for the _current_ light when executing a shadow or light shader.
-|
-`"space:current"` The current space the vector is in.
+| `"space:object"` 当前对象的空间。| `"space:light"` 当执行阴影或灯光着色器时，当前灯光的对象空间。| `"space:world"` 胡迪尼世界空间。| `"space:camera"` mantra 相机空间。| `"space:ndc"` 法线设备坐标空间。| `"space:lightndc"` 当执行阴影或灯光着色器时，当前灯光的正常设备坐标空间。| `"space:current"` 矢量所处的当前空间。
 
-Warning
+警告
 
-NDC space is only well-defined for the
-[Displacement, Surface, and Light contexts](../contexts/shading_contexts.html).
+NDC 空间只对[位移、表面和光照背景]（.../contexts/shading_contexts.html）有良好的定义。
 
-
-transform
+转变
 
 [agentcliptransformgroups](agentcliptransformgroups.html)
 

@@ -5,9 +5,6 @@ category:
   - vex
 ---
 
-
-
-Context(s)
 [displace](../contexts/displace.html)
 [fog](../contexts/fog.html)
 [light](../contexts/light.html)
@@ -16,34 +13,30 @@ Context(s)
 
 `int haslight(material mat, vector P, int light, ...)`
 
-Returns 1 if the given light is used to illuminate the material at the point
-specified.
+Context(s) 如果给定的光被用来照亮指定点的材料，则返回 1。
 
-This function accepts PBR keyword arguments to specify sampling types. These
-options may exclude lights which don’t match the desired sampling paths.
+这个函数接受 PBR 关键字参数来指定采样类型。这些选项可以排除那些不符合所需采样路径的灯光。
 
-The PBR sampling keywords include:
+PBR 采样关键词包括。
 
 ## Arguments
 
 `label`
 
-A string specifying a specific label. This keyword argument may be specified multiple times.
+一个字符串，指定一个特定的标签。这个关键字参数可以被多次指定。
 
 `direct`
 
-Expects an 0 or 1 integer value which will limit lights based on indirect or direct contribution categories.
+期待一个 0 或 1 的整数值，它将根据间接或直接的贡献类别来限制灯光。
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 haslight(material(), P, light\_num, "direct", 0);
 
 ```
-
-
 
 ## See also
 

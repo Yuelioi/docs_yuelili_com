@@ -5,9 +5,6 @@ category:
   - vex
 ---
 
-
-
-Context(s)
 [fog](../contexts/fog.html)
 [light](../contexts/light.html)
 [shadow](../contexts/shadow.html)
@@ -17,66 +14,59 @@ Context(s)
 
 `int rayimport(string name, <type>&value[])`
 
-Extracts information any passed when the surface is hit by a ray fired by the [gather](gather.html "Sends rays into the scene and returns information from the shaders of
-surfaces hit by the rays.").
+Context(s) 提取当表面被[gather](gather.html) ("向场景中发送射线并返回被射线击中的表面的着色器的信息")发射的射线击中时传递的任何信息。
 
 ## Arguments
 
 `name`
 
-The variable name, as passed using a `"send:name", value` argument pair in [gather](gather.html "Sends rays into the scene and returns information from the shaders of
-surfaces hit by the rays.") (without the `send:` prefix).
+变量名称，在[gather](gather.html) ("向场景中发送射线并返回被射线击中的表面的着色器信息")中使用`"send:name", value`参数对传递。(没有`send:`前缀)。
 
 `value`
 
-If the function can import the named variable, it overwrites this variable with the value.
+如果函数可以导入命名的变量，它将用该值覆盖这个变量。
 
 ## Returns
 
-`1` if a value by the given name was successfully imported, or `0` otherwise.
+如果成功导入一个给定名称的值，则为 "1"，否则为 "0"。
 
-##
+## 内置的可查询名称
 
-Built-in queryable names
-
-v3
 [¶](#built-in-queryable-names)
 
-You can pass the following values to `name` to query built-in ray information (not sent from `gather()`).
+v3 你可以向`name`传递以下值，以查询内置射线信息（不是由`gather()`发送的）。
 
 `ray:P` (`vector`)
 
-The origin of the ray.
+射线的起源。
 
 `ray:D` (`vector`)
 
-The direction vector of the ray.
+射线的方向向量。
 
 `ray:time` (`float`)
 
-The shutter time associated with the ray.
+与射线相关的快门时间。
 
 `ray:hitstack` (`int[]`)
 
-The hit-stack provided by the intersector.
+部门间提供的命中率堆栈。
 
 `ray:element` (`int`)
 
-The element provided by the intersector.
+由部门间提供的元素。
 
 `ray:hituv` (`vector`)
 
-The parametric coordinates provided by the intersector.
+由区间提供的参数坐标。
 
 `ray:Ng` (`vector`)
 
-The geometric normal from the intersector.
+从区间的几何法线。
 
 ::: info Note
 
-Data provided by the Mantra 3 intersector is raw data and may not be meaningful, or may be different across platforms or versions.
-
-
+Mantra 3 部门间提供的数据是原始数据，可能没有意义，或者在不同的平台或版本中可能有所不同。
 
 ## See also
 

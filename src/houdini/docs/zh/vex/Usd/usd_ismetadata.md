@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Since 18.0
 
 `int usd\_ismetadata(<stage>stage, string path, string name)`
@@ -35,7 +33,7 @@ The name can be namespaced to acces values inside (possibly nested) VtDictionari
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Check if the primitives have various metadata:
@@ -47,8 +45,6 @@ string attrib\_path = usd\_makeattribpath(0, "/geo/sphere", "attrib\_name");
 int has\_attrib\_foo = usd\_ismetadata(0, attrib\_path, "customData:foo");
 
 ```
-
-
 
 ## See also
 

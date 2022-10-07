@@ -11,24 +11,19 @@ category:
 
 `<geometry>`
 
-When running in the context of a node (such as a wrangle SOP), this argument can be an integer representing the input number (starting at 0) to read the geometry from.
+当在一个节点的上下文中运行时（比如一个 wrangle SOP），这个参数可以是一个整数，代表要读取几何图形的输入数字（从 0 开始）。
 
-Alternatively, the argument can be a string specifying a geometry file (for example, a `.bgeo`) to read from. When running inside Houdini, this can be an `op:/path/to/sop` reference.
+或者，该参数可以是一个字符串，指定一个几何文件（例如，一个`.bgeo'）来读取。当在Houdini内部运行时，这可以是一个`op:/path/to/sop`的引用。
 
 `point_num`
 
-The number of the point whose neighbours you want to count.
+你想计算其邻居的点的编号。
 
 ## Returns
 
-The number of points that are connected to the specified point.
-A point is connected if it is adjacent in some polygon, is one of the
-four surrounding points in a grid or NURBs surface, or in some other
-manner directly shares an edge with `point_num`. Returns 0 if there
-is no input, or if the point number is out of range.
+与指定点相连的点的数量。如果一个点在某个多边形中是相邻的，在网格或 NURBs 表面中是周围的四个点之一，或者以其他方式与`point_num`直接共享一条边，那么这个点就是连接的。如果没有输入，或者点的数量超出范围，则返回 0。
 
-
-point
+点
 
 [addpoint](addpoint.html)
 
@@ -102,8 +97,7 @@ point
 
 [vertexpoint](vertexpoint.html)
 
-|
-proximity
+| 靠近
 
 [hex_adjacent](hex_adjacent.html)
 

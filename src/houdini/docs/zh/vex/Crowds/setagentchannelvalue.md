@@ -5,9 +5,7 @@ category:
   - vex
 ---
 
-
-
-Since 18.0
+自 18.0 以来
 
 `int setagentchannelvalue(int geohandle, int prim, float value, int channel)`
 
@@ -15,21 +13,19 @@ Since 18.0
 
 `geohandle`
 
-Handle to the geometry to write to. `geoself()` can be used to get a handle to the current geometry.
+要写入的几何体的句柄。`geoself()`可以用来获取当前几何体的句柄。
 
 `prim`
 
-The primitive number.
+原始的数字。
 
 `value`
 
-The new value for the channel.
+该通道的新值。
 
 `index`
 
-Index of a channel in the agent’s rig.
-
-
+代理人装备中的一个通道的索引。
 
 ## See also
 

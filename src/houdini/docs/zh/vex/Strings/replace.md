@@ -9,17 +9,17 @@ category:
 
 `string replace(string str, string old, string new, int count)`
 
-Returns a copy of the string with all occurrences of the string `old` replaced with the string `new`.
+返回一个字符串的副本，所有出现的字符串`old`都被替换成了字符串`new`。
 
 ## Arguments
 
 `count`
 
-If specified, only the first `count` occurrences are replaced.
+如果指定，只有第一个`count'的出现会被替换。
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 string str = "abcdef abcdef abcdef";
@@ -32,8 +32,6 @@ string new\_str = replace(str, "def", "ghi");
 new\_str = replace(str, "def", "ghi", 2);
 
 ```
-
-
 
 ## See also
 

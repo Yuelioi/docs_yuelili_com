@@ -9,11 +9,9 @@ category:
 
 `bsdf matchvex\_specular(vector nml, float exponent, ...)`
 
-![](../../images/rendering/matchvex_specular.png)
+![](/images/matchvex_specular.png)
 
-The BSDF produced by [specular](specular.html "Returns a specular BSDF or computes specular shading.") is not the same as the traditional VEX `specular()` output. Use this function to produce a closer approximate match to the traditional VEX `specular()`.
-
-
+由[specular](specular.html) ()（"返回 specular BSDF 或计算 specular shading。"）产生的 BSDF 与传统的 VEX `specular()`输出不一样。使用这个函数可以产生与传统 VEX 的`specular()`更接近的近似匹配。
 
 ## See also
 

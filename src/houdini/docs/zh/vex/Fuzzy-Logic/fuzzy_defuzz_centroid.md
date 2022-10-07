@@ -7,10 +7,9 @@ category:
 
 `float fuzzy\_defuzz\_centroid(float aggregated\_membership[], float min\_value, float max\_value)`
 
-Returns a crisp value given a range for the crisp value, and an aggregated membership function for the output variable.
+返回一个脆性值，给定一个脆性值的范围，以及一个输出变量的聚合成员函数。
 
-
-fuzzy
+模糊的
 
 [fuzzify](fuzzify.html)
 

@@ -5,43 +5,37 @@ category:
   - vex
 ---
 
+在这一页
 
+- [概览](#overview)
+- [使用方法](#使用方法)
+- [例子](#例子)
 
-On this page
-
-- [Overview](#overview)
-- [Usage](#usage)
-- [Examples](#examples)
-
-##
-
-Overview
+## 概述
 
 [¶](#overview)
 
-CDFs are useful when sampling from distributions. For example, you could create a CDF of light source power. This would allow sampling of lights with a probability based on power. This is an example of a discrete CDF, where sampling selects among a fixed set of probabilities. (See the example below.)
+当从分布中取样时，CDF 很有用。例如，你可以创建一个光源功率的 CDF。这将允许以基于功率的概率对灯光进行采样。这是一个离散 CDF 的例子，在这里取样是在一组固定的概率中选择。(见下面的例子）。
 
-Use the [sample_cdf](sample_cdf.html "Samples a cumulative distribution function (CDF).") function to sample values from the returned CDF array.
+使用 [sample_cdf](sample_cdf.html) () ("对累积分布函数（CDF）进行采样。") 函数从返回的 CDF 数组中采样。
 
-##
-
-Usage
+## 使用方法
 
 [¶](#usage)
 
 `float [] create\_cdf(float pdf[])`
 
-Returns a CDF for the input PDF as an array of floats.
+返回输入 PDF 的 CDF，作为一个浮点数数组。
 
 ## Arguments
 
 `pdf`
 
-Array of PDF values to create the CDF for.
+用于创建 CDF 的 PDF 值数组。
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Iterate over all lights, sampling their power
@@ -76,15 +70,12 @@ sample\_cdf(cdf, s.x, index);
 
 ```
 
-
-
 ## See also
 
 - [create_pdf](create_pdf.html)
 - [sample_cdf](sample_cdf.html)
 
-|
-bsdf
+### bsdf
 
 [albedo](albedo.html)
 

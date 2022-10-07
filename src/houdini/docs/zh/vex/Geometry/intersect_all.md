@@ -5,7 +5,7 @@ category:
   - vex
 ---
 
-To get only the _first_ intersection, use [intersect](intersect.html "This function computes the first intersection of a ray with geometry.").
+要想只得到*第一个*交点，请使用[intersect](intersect.html)（"这个函数计算射线与几何体的第一个交点"）。
 
 `int intersect\_all(<geometry>geometry, string group, vector orig, vector dir, vector &pos[], int &prim[], vector &uvw[], float tol=0.01, float ttol=0.01 )`
 
@@ -13,57 +13,47 @@ To get only the _first_ intersection, use [intersect](intersect.html "This funct
 
 `<geometry>`
 
-When running in the context of a node (such as a wrangle SOP), this argument can be an integer representing the input number (starting at 0) to read the geometry from.
+当在一个节点的上下文中运行时（比如一个 wrangle SOP），这个参数可以是一个整数，代表要读取几何图形的输入数字（从 0 开始）。
 
-Alternatively, the argument can be a string specifying a geometry file (for example, a `.bgeo`) to read from. When running inside Houdini, this can be an `op:/path/to/sop` reference.
+或者，该参数可以是一个字符串，指定一个几何文件（例如，一个`.bgeo'）来读取。当在Houdini内部运行时，这可以是一个`op:/path/to/sop`的引用。
 
 `group`
 
-If given, only intersect primitives in this group.
+如果给定，则只与此组中的基元相交。
 
 `orig`
 
-The ray origin point.
+射线原点。
 
 `dir`
 
-The ray direction _and maximum distance_.
-This function does not expect a normalized direction vector.
-Instead, it uses the length of the vector as the maximum distance to search.
+射线方向*和最大距离*。这个函数不期望有一个归一化的方向向量。相反，它使用矢量的长度作为搜索的最大距离。
 
 `&pos`
 
-The function overwrites this array with the world space positions of each hit.
+该函数用每一次撞击的世界空间位置来覆盖这个数组。
 
 `&prim`
 
-The function overwrites this array with the primitive numbers of the primitives hit by the ray.
+该函数用被射线击中的基元的基元数来覆盖这个数组。
 
 `&uvw`
 
-The function overwrites this array with the parametric UVW coordinates of where each intersection occurred on the primitive.
+该函数用基元上每个交叉点发生的参数化 UVW 坐标来覆盖此数组。
 
 `tol`, `ttol`
 
-`tol` is the 3D tolerance. `ttol` is the ray tolerance.
-Collision points within the parametric ray tolerance, `ttol` will be merged
-together, often useful to avoid getting extra intersects when hitting the edges
-of geometry.
+`tol`是三维公差。`ttol`是射线公差。在参数化射线容限内的碰撞点，`ttol`将被合并在一起，这对于避免在撞击几何体的边缘时得到额外的交叉点通常很有用。
 
-To get _all_ intersections without merging, set `ttol` to `-1`.
+要获得所有的交叉点而不进行合并，请将`ttol`设为`-1`。
 
 ## Returns
 
-The number of intersections, or `0` if the ray didn’t hit anything.
+交叉点的数量，如果射线没有击中任何东西，则为 "0"。
 
 ::: info Note
 
-When intersections are performed against metaball geometry, it is
-impossible to determine the primitive number of the metaball which
-was hit. In this case, the function returns the number of primitives
-in the intersection geometry.
-
-
+对元宝几何体进行交集时，不可能确定被击中的元宝的基元数目。在这种情况下，该函数会返回相交几何体中的基元数目。
 
 ## See also
 

@@ -21,48 +21,33 @@ category:
 
 `u`
 
-A number, or multiple numbers, in the range `[0,1)`.
+一个数字，或多个数字，范围为`[0,1)`。
 
 `mean`
 
-The mean of the distribution, or 0 if not specified.
+分布的平均值，如果没有指定，则为 0。
 
 `origmean`
 
-The mean the distribution would have, were it not for `minvalue`
-and `maxvalue`, limiting the range.
+如果没有 "minvalue "和 "maxvalue "的限制，分布的平均数会是什么？
 
 `stddev`
 
-The standard deviation (scale) of the distribution, or 1 if not specified.
+分布的标准偏差（规模），如果没有指定，则为 1。
 
 `origstddev`
 
-The standard deviation (scale) the distribution would have, were it
-not for `minvalue` and `maxvalue`, limiting the range.
+如果没有 "minvalue "和 "maxvalue "的限制，分布的标准偏差（规模）。
 
 `minvalue`,`maxvalue`
 
-When given, instead of sampling the full normal distribution,
-the distribution with its range limited to `[minvalue,maxvalue]` will be
-sampled.
+当给定时，不是对完整的正态分布进行采样，而是对其范围限定为`[minvalue,maxvalue]`的分布进行采样。
 
-Samples the normal distribution with the specified `mean` and `stddev`, optionally
-with a `minvalue` and `maxvalue`.
-Given uniform random `u` values in `[0,1)`, this will return normally
-distributed random numbers. The return value will be monotone increasing
-with respect to `u`.
+用指定的 "平均值 "和 "stddev "对正态分布进行采样，可以选择 "最小值 "和 "最大值"。给定在`[0,1]中的均匀随机`u'值，这将返回正态分布的随机数。返回值将是相对于`u'的单调增长。
 
-The `vector2`, `vector`, and `vector4` versions
-return multiple samples with mean 0 and standard deviation 1. The
-distribution of these vectors is naturally isotropic, i.e. rotating
-the distribution won’t change it, which can be useful in simulations.
-To add a maximum distance from the origin, while keeping the distribution
-isotropic, use:
+矢量 2"、"矢量 "和 "矢量 4 "版本返回多个平均数为 0、标准差为 1 的样本。这些向量的分布自然是各向同性的，也就是说，旋转分布不会改变它，这在模拟中很有用。要增加一个离原点的最大距离，同时保持分布的各向同性，可以使用。
 
 `sample_normal(0,1,0,maxdist,u.x) * sample_direction_uniform(set(u.y,u.z))`
-
-
 
 ## See also
 

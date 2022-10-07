@@ -5,16 +5,13 @@ category:
   - vex
 ---
 
-
-
-Since 18.5
+自 18.5 以来
 
 `dict chdict(string channel)`
 
-Evaluates a key value dictionary parameter and return its value.
+评估一个键值字典参数并返回其值。
 
-
-utility
+公用事业
 
 [assert_enabled](assert_enabled.html)
 

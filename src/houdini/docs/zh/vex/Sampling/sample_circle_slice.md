@@ -11,23 +11,17 @@ category:
 
 `center`
 
-Direction in the center of the slice. This does not need to be normalized.
+切片中心的方向。这不需要被规范化。
 
 `maxangle`
 
-Maximum angle, in radians, away from `center` that any sample of the slice
-will be, so long as all `u` values are between 0 and 1.
+只要所有的 "u "值都在 0 到 1 之间，切片的任何样本都会偏离 "中心 "的最大角度，单位是弧度。
 
 `u`
 
-Pair of numbers between 0 and 1.
+0 和 1 之间的一对数字。
 
-Returns a vector2 of length < 1, based on `u`.
-Given uniform random `u` pairs of values in `[0,1)`, the returned vectors will be
-uniform random and continuous with respect to `u` inside the unit circle,
-in the slice within `maxangle` of the direction indicated by `center`.
-
-
+返回一个长度<1 的向量 2，基于`u`。给出`[0,1)`中的均匀随机的`u`对值，返回的向量将是均匀随机的，并且相对于单位圆内的`u`是连续的，在`中心'指示的方向的`最大角度'内的切片。
 
 ## See also
 

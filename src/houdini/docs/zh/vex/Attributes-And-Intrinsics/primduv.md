@@ -11,27 +11,25 @@ category:
 
 `geometry`
 
-A string specifying a geometry file (for example, a `.bgeo`) to read from. When running inside Houdini, this can be an `op:/path/to/sop` reference.
+一个字符串，指定要读取的几何文件（例如，".bgeo"）。当在 Houdini 内部运行时，这可以是一个`op:/path/to/sop`的引用。
 
 `prim_number`
 
-The number of the primitive on which to measure the derivative.
+要测量导数的基元的编号。
 
 `uv`
 
-The parametric coordinates on the primitive at which to measure the derivative.
+基元上的参数坐标，用于测量导数。
 
 `du`, `dv`
 
-Represent the derivative order to query.
+表示要查询的派生顺序。
 
-On a curve, the curve direction is given by `du==1` and the curvature is given by `du==2`.
+在一条曲线上，曲线的方向由`du==1`给出，曲率由`du==2`给出。
 
-This only works on NURBS and Bezier curve primitives.
+这只适用于 NURBS 和贝塞尔曲线基元。
 
-du is currently ignored as it is meant to work with parametric surfaces.
-
-
+du 目前被忽略了，因为它是为了与参数化的表面一起工作。
 
 ## See also
 

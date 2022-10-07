@@ -13,25 +13,23 @@ category:
 
 `<geometry>`
 
-When running in the context of a node (such as a wrangle SOP), this argument can be an integer representing the input number (starting at 0) to read the geometry from.
+当在一个节点的上下文中运行时（比如一个 wrangle SOP），这个参数可以是一个整数，代表要读取几何图形的输入数字（从 0 开始）。
 
-Alternatively, the argument can be a string specifying a geometry file (for example, a `.bgeo`) to read from. When running inside Houdini, this can be an `op:/path/to/sop` reference.
+或者，该参数可以是一个字符串，指定一个几何文件（例如，一个`.bgeo'）来读取。当在Houdini内部运行时，这可以是一个`op:/path/to/sop`的引用。
 
 `vertexnum`
 
-The linear vertex number of the vertex to test.
+要测试的顶点的线性顶点编号。
 
-To convert a primitive number and vertex number within that primitive to a linear vertex number for the `vertexnum` parameter, use the [vertexindex](vertexindex.html "Converts a primitive/vertex pair into a linear vertex.") function.
+要将一个基元数和该基元内的顶点数转换为`顶点数'参数的线性顶点数，请使用[vertexindex](vertexindex.html) () ("将基元/顶点对转换为线性顶点。") 函数。
 
 ## Returns
 
-`1` if the group exists and the vertex is in the group, or `0` otherwise.
+如果组存在并且顶点在组内，则为`1`，否则为`0`。
 
-This can use ad-hoc groups, like `42p0-2`. It matches the SOP group naming
-convention, in particular that an empty string means all vertices.
+这可以使用特设的组，如`42p0-2`。它符合 SOP 组的命名惯例，特别是空字符串意味着所有顶点。
 
-
-groups
+团体
 
 [expandpointgroup](expandpointgroup.html)
 
@@ -57,8 +55,7 @@ groups
 
 [setvertexgroup](setvertexgroup.html)
 
-|
-vertex
+| 顶点
 
 [addvertex](addvertex.html)
 

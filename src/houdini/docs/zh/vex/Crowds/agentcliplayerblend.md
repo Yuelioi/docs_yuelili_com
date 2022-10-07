@@ -9,36 +9,33 @@ category:
 
 `matrix agentcliplayerblend(matrix values[], float value\_weights[], int value\_layer\_ids[], int layer\_blend\_modes[], float layer\_weights[], int layer\_parent\_ids[])`
 
-This function blends the input values according to the blend tree described by the other parameters (the same format used for [layering agent clips](../../crowds/agents.html#currentclips)).
-This can be useful for blending custom values that correspond to each of an agent’s assigned clips.
+这个函数根据其他参数描述的混合树来混合输入值（与[分层代理剪辑](.../.../crowds/agents.html)（#currentclips）使用的格式相同）。这对于混合对应于代理的每个分配片段的自定义值是很有用的。
 
 ## Arguments
 
 `values`
 
-A list of the input values to blend.
+一个要混合的输入值的列表。
 
 `value_weights`
 
-A list of blend weights for the input values.
+输入值的混合权重的列表。
 
 `value_layer_ids`
 
-A list containing the layer that each value is an input for.
+一个包含每个值是输入的层的列表。
 
 `layer_blend_modes`
 
-A list of blend modes for each layer. The available blend modes are defined in `$HH/vex/include/crowd_cliplayers.h`.
+每个层的混合模式的列表。可用的混合模式在`$HH/vex/include/crowd_cliplayers.h`中定义。
 
 `layer_weights`
 
-A list of blend weights for each layer. The blend weight is not used for the topmost layer.
+每层的混合权重的列表。混合权重不用于最上面的一层。
 
 `layer_parent_ids`
 
-A list containing the parent layer for each layer (or -1 for the topmost layer). This specifies a tree of animation layers.
-
-
+一个包含每个层的父层的列表（或者-1 代表最上面的层）。这指定了一棵动画层的树。
 
 ## See also
 

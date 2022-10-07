@@ -7,10 +7,9 @@ category:
 
 `float qdistance(vector4 q1, vector4 q2)`
 
-Returns the approximate angle, in radians, between two quaternions.
+返回两个四元数之间的近似角度，单位是弧度。
 
-
-measure
+衡量
 
 [curvearclen](curvearclen.html)
 
@@ -68,8 +67,7 @@ measure
 
 [xyzdist](xyzdist.html)
 
-|
-quaternion
+| 四元数
 
 [dihedral](dihedral.html)
 

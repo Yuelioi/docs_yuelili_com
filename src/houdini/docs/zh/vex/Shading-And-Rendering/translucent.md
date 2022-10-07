@@ -12,15 +12,12 @@ be used as a cheap alternative to subsurface scattering for thin surfaces,
 to allow illumination to pass from one side of the object to the other
 while also broadly diffusing the illumination like diffuse.
 
-
-
 ## See also
 
 - [diffuse](diffuse.html)
 - [Writing a PBR shader](../pbr.html)
 
-|
-bsdf
+### bsdf
 
 [albedo](albedo.html)
 

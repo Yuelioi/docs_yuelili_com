@@ -11,54 +11,43 @@ category:
 
 `vector shadowmap(string filename, vector Pndc1, vector Pndc2, vector Pndc3, vector Pndc4, float spread, float bias, float quality, ...)`
 
-Allows you to specify your own sampling rectangle. If you don’t want any filtering of the shadow map or you are unable to compute your own derivatives, you can just pass in the same vector repeated 4 times to perform no filtering.
+允许你指定你自己的采样矩形。如果你不希望对阴影贴图进行任何过滤，或者你无法计算自己的导数，你可以直接传入相同的矢量，重复 4 次，不进行过滤。
 
-The `shadowmap` function will treat the shadow map as if the image were
-rendered from a light source. You use this to access both depth maps and
-deep shadow maps. In both cases it returns a vector where each color
-component has the visibility of the light source to the point for that
-color.
+阴影贴图 "函数将处理阴影贴图，就像图像从光源渲染一样。你可以用它来访问深度图和深度阴影图。在这两种情况下，它都会返回一个向量，其中每个颜色分量都有光源对该颜色点的可见度。
 
 ## Arguments
 
 `filename`
 
-A path to the shadow or depth map.
+通往阴影或深度图的路径。
 
 `Pndc`
 
-The position of the point being shaded in the NDC space of the light’s projection.
+被遮挡的点在光线投影的 NDC 空间中的位置。
 
 `spread`
 
-A softness control on the shadow.
+对阴影的软度控制。
 
 `bias`
 
-Controls how accurate the depth samples need to be.
+控制深度样本需要多精确。
 
 `quality`
 
-A general control to increase/decrease sampling, where `1` is default quality.
+增加/减少采样的一般控制，其中`1`是默认质量。
 
 ## Returns
 
-The fractional amount of illumination which
-reaches the sample point. For example, if the point is fully in
-shadow, the return value will be 0, if it is fully illuminated, the
-return value will be 1.
+到达取样点的光照量的分数。例如，如果该点完全处于阴影中，返回值将是 0，如果它完全被照亮，返回值将是 1。
 
-The shadowmap() VEX function takes the same variadic arguments as texture(). For additional information, see [texture](texture.html "Computes a filtered sample of the texture map specified.").
+shadowmap()VEX 函数接受与 texture()相同的变量参数。有关其他信息，请参见 [texture](texture.html) （"计算指定的纹理贴图的过滤样本。"）。
 
-##
-
-Deep camera map channels
+## 深度摄像地图通道
 
 [¶](#deep-camera-map-channels)
 
-If the shadow map is a [Deep camera map](../../render/dcm.html),
-`shadowmap` takes an optional extra argument `"channel"`, followed by the
-string name of the channel in the map evaluate.
+如果阴影贴图是一个[Deep camera map](.../.../render/dcm.html)，`shadowmap`需要一个可选的额外参数`"channel"`，后面是地图评估中的通道的字符串名称。
 
 ```c
 shadowmap(mapname, pz, spread, bias, quality, "channel", channel);
@@ -73,8 +62,6 @@ usually want to evaluate:
 {1,1,1} - shadowmap(...);
 
 ```
-
-
 
 ## See also
 

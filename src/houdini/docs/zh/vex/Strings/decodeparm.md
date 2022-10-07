@@ -5,20 +5,11 @@ category:
   - vex
 ---
 
-
-
-Since 18.0
+自 18.0 以来
 
 `string decodeparm(string str)`
 
-Houdini parameter names are only allowed to contain letters, numbers, hash
-characters (for multiparms), and underscores, and must not begin with a
-number. Arbitrary strings can be passed through the `encodeparm` function to
-generate a string that obeys these restriction. This function takes one of
-these encoded strings, and returns the original string. A string that has not
-been encoded will be returned unmodified.
-
-
+胡迪尼参数名称只允许包含字母、数字、哈希字符（用于多参数）和下划线，并且不得以数字开头。任意字符串可以通过`encodeparm`函数来生成一个遵守这些限制的字符串。这个函数接收这些编码的字符串之一，并返回原始字符串。一个没有被编码的字符串将被返回，不做任何修改。
 
 ## See also
 

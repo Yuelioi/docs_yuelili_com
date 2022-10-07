@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Since 18.0
 
 `string [] usd\_metadatanames(<stage>stage, string path)`
@@ -29,7 +27,7 @@ String array containing the names of the object’s metadata.
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Get the metadata names from the primitive.
@@ -40,8 +38,6 @@ string attrib\_path = usd\_makeattribpath(0, "/geo/sphere", "attrib\_name");
 string attrib\_metadata\_names[] = usd\_metadatanames(0, attrib\_path);
 
 ```
-
-
 
 ## See also
 

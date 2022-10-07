@@ -5,9 +5,6 @@ category:
   - vex
 ---
 
-
-
-Context(s)
 [displace](../contexts/displace.html)
 [fog](../contexts/fog.html)
 [light](../contexts/light.html)
@@ -16,41 +13,41 @@ Context(s)
 
 `int scatter(vector ipoint, vector inormal, vector idirection, vector idistribution, float time, float maxdist, vector &opoint, vector &onormal, vector &odirection)`
 
-Evaluates a single scattering event through geometry. A return value of 1 means the scattering was successful.
+Context(s) 评估一个通过几何体的单一散射事件。返回值为 1 意味着散射是成功的。
 
 ## Arguments
 
 `ipoint`
 
-Entry point of scattering.
+散射的进入点。
 
 `inormal`
 
-Surface normal at the entry point (surfaces only). Required to orient the scattering plane.
+入口处的表面法线（仅表面）。需要用来确定散射面的方向。
 
 `idirection`
 
-Primary scattering direction at the entry point. Required to orient the scattering plane.
+进入点的主要散射方向。要求确定散射面的方向。
 
 `idistribution`
 
-Initial scatter distribution at the entry point. If a zero-valued vector is passed a random scatter distribution will be used.
+进入点的初始散点分布。如果传递了一个零值向量，将使用随机散点分布。
 
 `maxdist`
 
-Maximum distance to scatter.
+最大距离的散射。
 
 `opoint`
 
-Exit point of scattering.
+散射的出口点。
 
 `onormal`
 
-Normal at the scattering exit point (surfaces only).
+散射出口点的法线（仅表面）。
 
 `odirection`
 
-Outgoing direction at the scattering exit point (surfaces only).
+散射出口点的出射方向（仅表面）。
 
 ```c
 // Trace for intersection with scene
@@ -73,8 +70,6 @@ hit = scatter(hitP, hitN, I, idistribution, Time, maxdist, opoint, onormal, odir
 hit = trace(opoint, odirection, Time, "P", hitP, "N", hitN);
 
 ```
-
-
 
 ## See also
 

@@ -7,14 +7,9 @@ category:
 
 `void pcclose(int &handle)`
 
-This function closes the handle associated with a pcopen function. VEX
-will close handles automatically, however, it’s good practice to call
-pcclose. When there are pcopen calls made from within a loop, VEX may
-consume additional memory if pcclose isn’t called when the handle is no
-longer required.
+这个函数关闭与 pcopen 函数相关的句柄。VEX 会自动关闭句柄，然而，调用 pcclose 是一个好的做法。当在一个循环内有 pcopen 的调用时，如果在不再需要句柄时不调用 pcclose，VEX 可能会消耗额外的内存。
 
-
-file
+文件
 
 [colormap](colormap.html)
 
@@ -56,8 +51,7 @@ file
 
 [writepixel](writepixel.html)
 
-|
-ptcloud
+| ptcloud
 
 [mattrib](mattrib.html)
 

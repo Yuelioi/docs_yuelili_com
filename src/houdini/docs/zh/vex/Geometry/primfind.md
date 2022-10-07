@@ -7,50 +7,41 @@ category:
 
 `int [] primfind(<geometry>geometry, vector min, vector max)`
 
-Find all the primitives whose bounding boxes overlap the given box.
+查找边界框与给定框重叠的所有基元。
 
 `int [] primfind(<geometry>geometry, string group, vector min, vector max)`
 
-Find all primitives in a group whose bounding boxes overlap the given box.
+查找一个组中边界框与给定框重叠的所有基元。
 
 ## Arguments
 
 `<geometry>`
 
-When running in the context of a node (such as a wrangle SOP), this argument can be an integer representing the input number (starting at 0) to read the geometry from.
+当在一个节点的上下文中运行时（比如一个 wrangle SOP），这个参数可以是一个整数，代表要读取几何图形的输入数字（从 0 开始）。
 
-Alternatively, the argument can be a string specifying a geometry file (for example, a `.bgeo`) to read from. When running inside Houdini, this can be an `op:/path/to/sop` reference.
+或者，该参数可以是一个字符串，指定一个几何文件（例如，`.bgeo'），以便从中读取。当在Houdini内部运行时，这可以是一个`op:/path/to/sop`的引用。
 
 `min`, `max`
 
-These vectors define the minimum and maximum corners of the bounding box to search.
+这些向量定义了要搜索的边界盒的最小和最大角。
 
 `group`
 
-If given, only match primitives in this group.
-An empty group string will include all primitives.
-The string supports Ad-hoc patterns like `0-10` and `@Cd.x>0`.
+如果给定，则只匹配此组中的基元。空组字符串将包括所有基元。该字符串支持 "0-10 "和"@Cd.x>0 "等临时模式。
 
 ## Returns
 
-An array of primitive numbers.
+一个原始数的数组。
 
 ::: info Note
 
-These functions are intended to be used as an optimization to finding primitives
-in a particular area for processing. For instance, to find all the curves
-from one input intersecting polygons on another input, we may naively iterate
-over all polygons for each curve to determine their intersection. To speed this
-process, we may find which primitives may intersect a particular curve using
-these functions, and iterate solely over the potentially intersecting
-primitives. This significantly improves performance since `primfind` uses an
-underlying tree structure to speed up search.
+这些函数的目的是作为一种优化来寻找特定区域内的基元进行处理。例如，为了从一个输入中找到与另一个输入的多边形相交的所有曲线，我们可能会天真地遍历每条曲线的所有多边形，以确定它们的交集。为了加快这个过程，我们可以使用这些函数找到哪些基元可能与某条特定的曲线相交，然后只对可能相交的基元进行迭代。这大大改善了性能，因为`primfind`使用底层的树状结构来加快搜索速度。
 
 ## Examples
 
-[¶](#examples)
 
-Remove primitives that may be intersecting the unit box centered at the origin:
+
+删除可能与以原点为中心的单位盒子相交的基元。
 
 ```c
 int[] prims = primfind(geometry, {-0.5, -0.5, -0.5}, {0.5, 0.5, 0.5});
@@ -107,8 +98,6 @@ for ( int prim = 0; prim < n; ++prim )
 }
 
 ```
-
-
 
 ## See also
 

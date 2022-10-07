@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Since 18.0
 
 `<type> usd\_metadata(<stage>stage, string path, string name)`
@@ -33,11 +31,11 @@ The name can be namespaced to acces values inside (possibly nested) VtDictionari
 
 ## Returns
 
-The value of an existing metadata, or zero/empty value if the metadata does not exist. Use [usd_ismetadata](usd_ismetadata.html "Checks if the primitive has metadata by the given name.") if you want to check whether the metadata exists.
+The value of an existing metadata, or zero/empty value if the metadata does not exist. Use [usd_ismetadata](usd_ismetadata.html) () ("Checks if the primitive has metadata by the given name.") if you want to check whether the metadata exists.
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Get the documentation string of the cube primitive.
@@ -48,8 +46,6 @@ string attrib\_path = usd\_makeattribpath(0, "/geo/cube", "some\_attribute");
 float custom\_val = usd\_metadata(0, attrib\_path, "customData:foo:bar");
 
 ```
-
-
 
 ## See also
 

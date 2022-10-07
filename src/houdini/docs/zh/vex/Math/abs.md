@@ -11,13 +11,13 @@ category:
 
 `<vector> abs(<vector>v)`
 
-Returns the absolute (positive) equivalent of the number. For vectors, this is done per-component.
+返回数字的绝对（正）等值。对于向量，这是按分量进行的。
 
 ## Examples
 
-[¶](#examples)
 
-Scalar example
+
+标量的例子
 
 ```c
 if (abs(n) > 1) {
@@ -35,8 +35,6 @@ if (abs(v) > 1.0) {
 }
 
 ```
-
-
 
 ## See also
 

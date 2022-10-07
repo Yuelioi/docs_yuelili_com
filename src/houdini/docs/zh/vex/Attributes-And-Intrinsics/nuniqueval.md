@@ -7,43 +7,39 @@ category:
 
 `int nuniqueval(<geometry>geometry, string attribclass, string attribute\_name)`
 
-Returns the number of _unique_ values across all values of an attribute.
-You can use [uniqueval](uniqueval.html "Returns one of the set of unique values across all values for an int or string attribute.") to iterate though the set of unique values.
+返回一个属性的所有值中的\_唯一值的数量。你可以使用[uniqueval](uniqueval.html) () ("返回一个 int 或 string 属性的所有值中的一个唯一值。") 来遍历唯一值的集合。
 
 ## Arguments
 
 `<geometry>`
 
-When running in the context of a node (such as a wrangle SOP), this argument can be an integer representing the input number (starting at 0) to read the geometry from.
+当在一个节点的上下文中运行时（比如一个 wrangle SOP），这个参数可以是一个整数，代表要读取几何图形的输入数字（从 0 开始）。
 
-Alternatively, the argument can be a string specifying a geometry file (for example, a `.bgeo`) to read from. When running inside Houdini, this can be an `op:/path/to/sop` reference.
+或者，该参数可以是一个字符串，指定一个几何文件（例如，`.bgeo'），以便从中读取。当在Houdini内部运行时，这可以是一个`op:/path/to/sop`的引用。
 
 `attribclass`
 
-One of `"detail"` (or `"global"`), `"point"`, `"prim"`, or `"vertex"`.
+是 "细节"（或 "全局"）、"点"、"基元 "或 "顶点 "之一。
 
-You can also use `"primgroup"`, `"pointgroup"` or `"vertexgroup"` to [read from groups](../groups.html "You can read the contents of primitive/point/vertex groups in VEX as if they were attributes.").
+你也可以使用`"primgroup"`、`"pointgroup"`或`"vertexgroup"`来[从组中读取](.../groups.html)（"你可以在 VEX 中读取 primitive/point/vertex 组的内容，就像它们是属性一样。"）。
 
 ## Examples
 
-[¶](#examples)
 
-Test if all values of the point attribute `foo` are unique
+
+测试点属性`foo`的所有值是否唯一
 
 ```c
 int test = nuniqueval(0, "point", "foo") == npoints(0)
 
 ```
 
-
-
 ## See also
 
 - [uniqueval](uniqueval.html)
 - [uniquevals](uniquevals.html)
 
-|
-attrib
+### attrib
 
 [addattrib](addattrib.html)
 

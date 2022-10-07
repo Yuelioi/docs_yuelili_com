@@ -5,18 +5,13 @@ category:
   - vex
 ---
 
-
-
-Since 17.5
+自 17.5 以来
 
 `void prescale(matrix &m, vector scale\_vector)`
 
 `void prescale(matrix3 &m, vector scale\_vector)`
 
-Prescales the matrix in three directions simultaneously by the factors in the vector.
-This modifies the matrix in-place, rather than returning a new matrix.
-
-
+通过向量中的因子同时在三个方向上对矩阵进行预标度。这是对矩阵的就地修改，而不是返回一个新的矩阵。
 
 ## See also
 

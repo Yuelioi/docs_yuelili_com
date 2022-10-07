@@ -7,18 +7,15 @@ category:
 
 `float predicate\_orient2d(vector2 a, vector2 b, vector2 c)`
 
-Given 2 points `a` and `b` in the plane, return a positive value if `c` is on the left
-of the segment `(a,b)`, a negative value if it is on the right of the segment, and
-zero if `a`, `b` and `c` are colinear.
+给出平面内的 2 个点`a`和`b`，如果`c`在线段`(a,b)`的左边，则返回正值；如果在线段的右边，则返回负值；如果`a`、`b`和`c`是同轴心，则返回 0。
 
-More precisely, this function computes the determinant of the matrix:
+更准确地说，这个函数是计算矩阵的行列式。
 
 ```c
 [a_x a_y 1; b_x b_y 1; c_x c_y 1]
 ```
 
 …with a guaranteed correct sign.
-
 
 measure
 

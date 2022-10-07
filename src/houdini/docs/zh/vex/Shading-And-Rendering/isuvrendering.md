@@ -5,9 +5,6 @@ category:
   - vex
 ---
 
-
-
-Context(s)
 [displace](../contexts/displace.html)
 [fog](../contexts/fog.html)
 [light](../contexts/light.html)
@@ -16,12 +13,11 @@ Context(s)
 
 `int isuvrendering()`
 
-Returns 1 if the shader is being called while evaluating uv rendering (texture unwrapping), and 0 for normal rendering.
+Context(s) 如果着色器在评估 uv 渲染（纹理解包）时被调用，则返回 1，正常渲染时返回 0。
 
-Use this function to evaluate shaders differently when baking illumination.
+在烘焙照明时，使用此函数以不同方式评估着色器。
 
-
-surface
+表面
 
 [ambient](ambient.html)
 

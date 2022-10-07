@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Since 18.0
 
 `int usd\_metadatalen(<stage>stage, string path, string name)`
@@ -33,19 +31,17 @@ The name can be namespaced to acces values inside (possibly nested) VtDictionari
 
 ## Returns
 
-The length of the array metadata, or 1 if the metadata is not an array. Use [usd_isarraymetadata](usd_isarraymetadata.html "Checks if the given metadata is an array.") if you want to check whether the metadata is an array.
+The length of the array metadata, or 1 if the metadata is not an array. Use [usd_isarraymetadata](usd_isarraymetadata.html) () ("Checks if the given metadata is an array.") if you want to check whether the metadata is an array.
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Get the array length of metadata on the cube primitive.
 int length = usd\_metadatalen(0, "/geo/cube", "customData:name");
 
 ```
-
-
 
 ## See also
 

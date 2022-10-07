@@ -5,7 +5,7 @@ category:
   - vex
 ---
 
-This function lets you walk the points connected to a point (separated by a single edge). To get a list of all connected points at once, use [neighbours](neighbours.html "Returns an array of the point numbers of the neighbours of a point.").
+这个函数让你行走与一个点相连的点（由一条边分开）。要想一次获得所有连接点的列表，请使用[neighbours](neighbours.html)（"返回一个点的邻居的点号的数组。"）。
 
 `int neighbour(<geometry>geometry, int point\_num, int neighbour\_num)`
 
@@ -13,23 +13,21 @@ This function lets you walk the points connected to a point (separated by a sing
 
 `<geometry>`
 
-When running in the context of a node (such as a wrangle SOP), this argument can be an integer representing the input number (starting at 0) to read the geometry from.
+当在一个节点的上下文中运行时（比如一个 wrangle SOP），这个参数可以是一个整数，代表要读取几何图形的输入数字（从 0 开始）。
 
-Alternatively, the argument can be a string specifying a geometry file (for example, a `.bgeo`) to read from. When running inside Houdini, this can be an `op:/path/to/sop` reference.
+或者，该参数可以是一个字符串，指定一个几何文件（例如，一个`.bgeo'）来读取。当在Houdini内部运行时，这可以是一个`op:/path/to/sop`的引用。
 
 `point_num`
 
-The number of the point whose neighbours you want to find.
+你想找到其邻居的点的编号。
 
 `neighbour_num`
 
-Which neighbour to find. The neighbours are in no particular order. Use [neighbourcount](neighbourcount.html "Returns the number of points that are connected to the specified point.") to get the total number of connected points.
+找哪个邻居。邻居没有特定的顺序。使用[neighbourbourcount](neighbourbourcount.html) () ("返回与指定点相连的点的数量。")来获取相连点的总数。
 
 ## Returns
 
-The point index of the neighbour of the point. The order is undefined, but will be consistent for consistent geometry. Returns `-1` if the `neighbournum` is out of range for that point, or the point is out of range for that input, or the input doesn’t exist.
-
-
+该点的邻居的点索引。顺序是未定义的，但是对于一致的几何图形来说，顺序是一致的。如果 "邻居 "超出了该点的范围，或者该点超出了该输入的范围，或者该输入不存在，则返回 "1"。
 
 ## See also
 

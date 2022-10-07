@@ -5,17 +5,13 @@ category:
   - vex
 ---
 
-
-
-Context(s)
 [shading](../contexts/shading.html)
 
 `int getprimid()`
 
-Returns the primitive number for the current geometric primitive being shaded.
+Context(s) 返回当前被遮蔽的几何基元的基元编号。
 
-
-shading
+遮阳
 
 [Du](Du.html)
 

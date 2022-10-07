@@ -11,33 +11,27 @@ category:
 
 `<geometry>`
 
-When running in the context of a node (such as a wrangle SOP), this argument can be an integer representing the input number (starting at 0) to read the geometry from.
+当在一个节点的上下文中运行时（比如一个 wrangle SOP），这个参数可以是一个整数，代表要读取几何图形的输入数字（从 0 开始）。
 
-Alternatively, the argument can be a string specifying a geometry file (for example, a `.bgeo`) to read from. When running inside Houdini, this can be an `op:/path/to/sop` reference.
+或者，该参数可以是一个字符串，指定一个几何文件（例如，一个`.bgeo'）来读取。当在Houdini内部运行时，这可以是一个`op:/path/to/sop`的引用。
 
 `linearindex`
 
-The linear index of a vertex
+一个顶点的线性指数
 
 ## Returns
 
-The parametric coordinate along the perimeter of the primitive. The
-primitive is assumed to be a polygon. This is in unit space (See
-[primuv](primuv.html "Interpolates the value of an attribute at a certain parametric (uvw) position.") for a distription of parameter spaces).
+沿着基元的周长的参数化坐标。基元被假定为是一个多边形。这是在单位空间内（参见 [primuv](primuv.html) () （"在某个参数化 (uvw) 位置插值一个属性的值。"），了解参数空间的描述）。
 
-For open polygons (polygon curves in other words), the returned value can
-be used directly with [primuv](primuv.html "Interpolates the value of an attribute at a certain parametric (uvw) position."). It is in the range of `[0,1]`.
+对于开放的多边形（换句话说就是多边形曲线），返回的值可以直接使用[primuv](primuv.html)（"在某个参数（uvw）的位置插值一个属性的值。"）。它的范围是`[0,1]`。
 
-For closed polygons the value is in the range of `[0, (numvtx-1)/numvtx]`, so
-there’s no vertex with value 1. The value cannot be used directly with
-[primuv](primuv.html "Interpolates the value of an attribute at a certain parametric (uvw) position."), but may be useful wherever you need a normalized value around
-the perimeter of a polygon.
+对于封闭的多边形，其值在`[0, (numvtx-1)/numvtx]`的范围内，所以没有值为 1 的顶点。该值不能直接用于[primuv](primuv.html)（"插值某个参数（uvw）位置的属性值。"），但在你需要一个围绕多边形周长的归一化值时可能很有用。
 
 ## Examples
 
-[¶](#examples)
 
-This is roughly equivalent to the following code:
+
+这大致相当于以下代码。
 
 ```c
 int closed = primintrinsic(0, "closed", @primnum);
@@ -79,8 +73,6 @@ u = primuvconvert(otherinput, u, otherprim, PRIMUV\_UNITLEN\_TO\_UNIT);
 @P = primuv(otherinput, "P", otherprim, u);
 
 ```
-
-
 
 ## See also
 

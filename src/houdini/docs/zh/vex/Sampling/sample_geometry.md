@@ -5,28 +5,19 @@ category:
   - vex
 ---
 
+在这一页
 
+- [区域分布](#区域分布)
+- [参数分布](#参数分布)
+- [实体角度分布](#实体角度分布)
+- [详情](#详情)
 
-On this page
+  - [光线包含/排除选项](#light-inclusion-exclusion-options) - [光线选项](#ray-options) - [光线发送选项](#ray-sending-options) - [向表面着色器发送信息](#sending-信息到表面着色器] - [从射线导入信息](#importing-information-from-the-ray) - [样本过滤选项](#sample-filtering-options) - [管道选项](#pipeline-options)
 
-- [Area Distribution](#area-distribution)
-- [Parametric Distribution](#parametric-distribution)
-- [Solid Angle Distribution](#solid-angle-distribution)
-- [Details](#details)
-
-  - [Light inclusion/exclusion options](#light-inclusion-exclusion-options)
-  - [Ray options](#ray-options)
-  - [Ray sending options](#ray-sending-options)
-  - [Sending information to the surface’s shader](#sending-information-to-the-surface-s-shader)
-  - [Importing information from the ray](#importing-information-from-the-ray)
-  - [Sample filtering options](#sample-filtering-options)
-  - [Pipeline options](#pipeline-options)
-
-- [Examples](#examples)
+- [例子](#例子)
 
 |
 
-Context(s)
 [displace](../contexts/displace.html)
 [fog](../contexts/fog.html)
 [light](../contexts/light.html)
@@ -35,85 +26,49 @@ Context(s)
 
 `int sample\_geometry(vector origin, vector sample, float time, ...)`
 
-The sample_geometry operation in VEX is used to distribute a single sample
-point on geometry objects in the scene, and to execute the surface shader
-at that point. The operation is similar to the [trace](trace.html "Sends a ray from P along the normalized vector D.") and
-[gather](gather.html "Sends rays into the scene and returns information from the shaders of
-surfaces hit by the rays.") functions in that it accepts a variadic argument list of
-shader outputs to be exported by the operation. However, `sample_geometry`
-is different from raytracing functions in that it does not actually send a
-ray into the scene to determine where shaders should be run. The origin
-and sample parameters have different meanings depending on the
-type of distribution. time can be used with motion blur to distribute
-sample points in time as well as in space.
+背景 VEX 中的 sample_geometry 操作是用来在场景中的几何对象上分布一个单一的采样点，并在该点上执行表面着色器。该操作类似于[trace](trace.html) () ("从 P 沿着归一化矢量 D 发送一条射线。")和[gather](gather.html) ("向场景中发送射线并返回被射线击中的表面的着色器信息。")函数，它接受一个着色器输出的变量参数列表，以便通过该操作导出。然而，"sample_geometry "与光线追踪函数不同，它实际上并不向场景中发送光线以确定应该在哪里运行着色器。原点和样本参数有不同的含义，取决于分布的类型。时间可以与运动模糊一起使用，在时间和空间上分布样本点。
 
-##
-
-Area Distribution
+## 地区分布
 
 [¶](#area-distribution)
 
-In this mode, points will be distributed over multiple primitives according to
-their area. More samples will be placed on primitives with large surface
-areas than on primitives with small surface areas. The sample parameter
-should contain uniform random variables in the range of 0 to 1. The
-origin parameter has no effect.
+在这种模式下，点将根据其面积分布在多个基元上。在表面积大的基元上放置的样本将比表面积小的基元上的样本多。样本参数应该包含 0 到 1 范围内的均匀随机变量。 原点参数没有影响。
 
-##
-
-Parametric Distribution
+## 参数分布
 
 [¶](#parametric-distribution)
 
-In this mode, primitive and subdivision IDs along with parametric surface
-coordinates are mapped to surface positions. This mode is useful when trying
-to maintain a coherent set of surface positions (for example, in a point cloud) across multiple frames because the same primitive ID, subdivision ID, s, and t coordinates map to similar surface positions even when a mesh is deforming.
-The sample parameter contains the s and t coordinates (in the first and
-second components), while the origin parameter contains the primitive and
-subdivision IDs (again, in the first and second components).
+在这种模式下，基元和细分的 ID 以及参数化的曲面坐标被映射到曲面位置。当试图在多个框架中保持一组连贯的曲面位置（例如在点云中）时，这种模式很有用，因为即使网格在变形，相同的基元 ID、细分 ID、s 和 t 坐标也会映射到类似的曲面位置。样本参数包含 s 和 t 坐标（在第一和第二分量中），而原点参数包含基元和细分的 ID（同样在第一和第二分量中）。
 
-##
-
-Solid Angle Distribution
+## 实心角分布
 
 [¶](#solid-angle-distribution)
 
-This mode is similar to the “area” mode, except that points on a particular
-primitive are distributed according to solid angle rather than area. More
-specifically, samples will be distributed according to hemispherical coverage
-relative to origin. The sample parameter should contain uniform
-random variables in the range of 0 to 1.
+此模式与 "面积 "模式类似，只是特定基元上的点是按照实体角度而不是面积分布的。更确切地说，样本将按照相对于原点的半球形覆盖率进行分布。样本参数应包含 0 到 1 范围内的均匀随机变量。
 
-##
-
-Details
+## 详细内容
 
 [¶](#details)
 
-###
-
-Light inclusion/exclusion options
+### 灯光包含/排除选项
 
 [¶](#light-inclusion-exclusion-options)
 
 ## Arguments
 
-"`categories`",
 `string`
 `="*"`
 
-Specifies lights to include/exclude by their “category” tags.
-This is the preferred include/exclude lights rather than pattern matching
-light names with the `"lightmask"` keyword argument.
+"`categories'", 指定通过其 "类别 "标签包含/排除的灯光。这是首选的包括/排除灯光，而不是用`"lightmask"`关键字参数的模式匹配灯光名称。
 
-For example:
+比如说。
 
 ```c
 diff = diffuse(nml, "lightmask", "hero fill");
 
 ```
 
-See [light categories](../../render/lights.html#categories) for more information.
+See [light categories](../../render/lights.html) () (#categories) for more information.
 
 "`lightmask`",
 `string`
@@ -142,16 +97,14 @@ All Houdini scoping patterns, excepting group expansion, are supported:
 - `^` - exclusion operator
 - `[list]` - character list match
 
-###
-
-Ray options
+### Ray options
 
 [¶](#ray-options)
 
 :::tip
 
 When you specify a texture, such as with the `"environment"` keyword,
-you can also use the image filtering keyword arguments. See [environment](environment.html "Returns the color of the environment texture.")
+you can also use the image filtering keyword arguments. See [environment](environment.html) () ("Returns the color of the environment texture.")
 for a listing of the image filter keyword arguments.
 
 ## Arguments
@@ -161,7 +114,7 @@ for a listing of the image filter keyword arguments.
 
 A list of objects which can be hit by the rays. When specified, `scope` overrides the default scope that would have been selected for the given `raystyle`. The `"scope:default"` value will cause the `scope` argument to use the default scope for the current context - as if the argument were not specified.
 
-Allows an override of the [scope](../contexts/shading_contexts.html#scope) for ray-intersections.
+Allows an override of the [scope](../contexts/shading_contexts.html) () (#scope) for ray-intersections.
 A special scope argument, `scope:self`, will match the currently
 shading object.
 
@@ -187,7 +140,7 @@ computing reflections, global illumination, refraction etc.
 "`variancevar`",
 `string`
 
-The name of a VEX export variable to use for variance anti-aliasing. The renderer compares the value with adjacent micropolygons in micropolygon rendering to decide what shading points need additional samples (using `vm_variance` [property](../../props/index.html "Properties let you set up flexible and powerful hierarchies of rendering, shading, lighting, and camera parameters.") as a threshold). If more samples are required, the algorithm takes samples up to the specified maximum ray samples.
+The name of a VEX export variable to use for variance anti-aliasing. The renderer compares the value with adjacent micropolygons in micropolygon rendering to decide what shading points need additional samples (using `vm_variance` [property](../../props/index.html) () ("Properties let you set up flexible and powerful hierarchies of rendering, shading, lighting, and camera parameters.") as a threshold). If more samples are required, the algorithm takes samples up to the specified maximum ray samples.
 
 This variable must be imported from the hit surface, so it must be in the list of imported names (see “importing information back from the ray” below). If the named variable is not imported, this option will be ignored.
 
@@ -271,16 +224,14 @@ background color specified.
 "`distribution`",
 `string`
 
-**Functions**: [irradiance](irradiance.html "Computes irradiance (global illumination) at the point P with the normal N."), [occlusion](occlusion.html "Computes ambient occlusion.")
+**Functions**: [irradiance](irradiance.html) () ("Computes irradiance (global illumination) at the point P with the normal N."), [occlusion](occlusion.html) () ("Computes ambient occlusion.")
 
 Distribution for computing irradiance. The default is to use
 a cosine distribution (diffuse illumination). The possible
 values for the style are `"nonweighted"` for uniform sampling
 or `"cosine"` for cosine weighted sampling.
 
-###
-
-Ray sending options
+### Ray sending options
 
 [¶](#ray-sending-options)
 
@@ -304,7 +255,7 @@ surfaces hit by the rays."):
 - `cosine` – Rays are distributed by the cosine (diffuse) function over the hemisphere.
 - `uniform` – Rays are distributed uniformly over the hemisphere
 
-For [sample_geometry](sample_geometry.html "Samples geometry in the scene and returns information from the shaders of surfaces that were sampled."):
+For [sample_geometry](sample_geometry.html) () ("Samples geometry in the scene and returns information from the shaders of surfaces that were sampled."):
 
 - `area` – Samples are distributed by primitive area
 - `parametric` – Samples are distributed by primitive ID, subdivision ID, and parametric surface coordinates (s, t).
@@ -366,9 +317,7 @@ The number of transparent samples to take for stochastic transparency with array
 
 `transparentsamples` must be 1 when importing `F` or `ray:material` using `screendoor` `samplefilter`.
 
-###
-
-Sending information to the surface’s shader
+### Sending information to the surface’s shader
 
 [¶](#sending-information-to-the-surface-s-shader)
 
@@ -379,15 +328,13 @@ gather(P, dir, "send:N", normalize(N)) { ... }
 
 ```
 
-You can extract this passed data on the receiving end (that is, in the surface being hit by the ray) with the [rayimport](rayimport.html "Imports a value sent by a shader in a gather loop.") function. The first argument is the name (without the `send:` prefix) and the second argument is a variable in which to store the imported value.
+You can extract this passed data on the receiving end (that is, in the surface being hit by the ray) with the [rayimport](rayimport.html) () ("Imports a value sent by a shader in a gather loop.") function. The first argument is the name (without the `send:` prefix) and the second argument is a variable in which to store the imported value.
 
 `int rayimport(string name, <type> &value)`
 
 `rayimport` returns `1` if the value was imported successfully.
 
-###
-
-Importing information from the ray
+### Importing information from the ray
 
 [¶](#importing-information-from-the-ray)
 
@@ -430,7 +377,7 @@ The estimated solid angle subtended by all geometry in the raytracing scope. For
 
 You can retrieve information about more than one hit along
 the ray by requesting data in an array variable. When an imported
-value is of an array type, the [trace](trace.html "Sends a ray from P along the normalized vector D.") function will automatically append
+value is of an array type, the [trace](trace.html) () ("Sends a ray from P along the normalized vector D.") function will automatically append
 an entry in the array for each individual hit point that was composited
 during ray tracing. For the `opacity` sample filter (see below), an entry will be
 created in the array for each semi-transparent sample encountered until
@@ -450,9 +397,7 @@ trace(P, dir, Time,
 
 ```
 
-###
-
-Sample filtering options
+### Sample filtering options
 
 [¶](#sample-filtering-options)
 
@@ -501,7 +446,7 @@ Return the sum of the reciprocals of each sample.
 
 ::: info Note
 
-When using [sample_geometry](sample_geometry.html "Samples geometry in the scene and returns information from the shaders of surfaces that were sampled."), the default `samplefilter` is set to `closest` by default, since opacity blending only works when compositing data along a ray.
+When using [sample_geometry](sample_geometry.html) () ("Samples geometry in the scene and returns information from the shaders of surfaces that were sampled."), the default `samplefilter` is set to `closest` by default, since opacity blending only works when compositing data along a ray.
 
 ```c
 gather(P, dir,
@@ -523,9 +468,7 @@ gather(P, dir,
 
 ```
 
-###
-
-Pipeline options
+### Pipeline options
 
 [¶](#pipeline-options)
 
@@ -544,7 +487,7 @@ gather(p, d, "pipeline", "surface", "Cf", surfCf,
 
 ## Examples
 
-[¶](#examples)
+
 
 The following example demonstrates how `sample_geometry` can be used to
 illuminate one surface from another. Rather than using a light source,
@@ -555,8 +498,8 @@ surface shader assigned.
 A few observations about the shader:
 
 - The `ray:solidangle` output is used to scale back geometry sample contributions by the solid angle subtended by the hit surface. This ensures that the result of using sample_geometry will match physically based irradiance.
-- The [trace](trace.html "Sends a ray from P along the normalized vector D.") instruction is used for shadowing
-- High-quality sampling patterns from [newsampler](newsampler.html "Initializes a sampling sequence for the nextsample function.") and [nextsample](nextsample.html) are used for antialiasing
+- The [trace](trace.html) () ("Sends a ray from P along the normalized vector D.") instruction is used for shadowing
+- High-quality sampling patterns from [newsampler](newsampler.html) () ("Initializes a sampling sequence for the nextsample function.") and [nextsample](nextsample.html) are used for antialiasing
 
 ```c
 surface
@@ -596,8 +539,6 @@ geolight(int nsamples = 64)
 }
 
 ```
-
-
 
 ## See also
 

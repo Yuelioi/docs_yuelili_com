@@ -7,9 +7,9 @@ category:
 
 `void warning(string format, ...)`
 
-Reports a custom runtime VEX warning. This uses the same format string syntax as [printf](printf.html "Prints values to the console which started the VEX program.").
+Reports a custom runtime VEX warning. This uses the same format string syntax as [printf](printf.html) () ("Prints values to the console which started the VEX program.").
 
-If something is so problematic that there is no acceptable fallback behavior, it may be worth reporting an [error](error.html "Reports a custom runtime VEX error."), instead of a warning.
+If something is so problematic that there is no acceptable fallback behavior, it may be worth reporting an [error](error.html) () ("Reports a custom runtime VEX error."), instead of a warning.
 
 ::: info Note
 
@@ -17,7 +17,7 @@ It’s quite easy to accidentally report thousands of different warnings.
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 if (primintrinsic(0,"typeid",@primnum) != 1) {
@@ -36,8 +36,6 @@ if (minimumValue > maximumValue) {
 }
 
 ```
-
-
 
 ## See also
 

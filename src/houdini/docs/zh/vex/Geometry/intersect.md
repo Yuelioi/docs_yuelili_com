@@ -5,69 +5,61 @@ category:
   - vex
 ---
 
-To get a list of _all_ intersections along a ray, use [intersect_all](intersect_all.html "Computes all intersections of the specified ray with geometry.").
+要获得沿射线的*所有*交点的列表，请使用[intersect_all](intersect_all.html)（"计算指定射线与几何体的所有交点。"）。
 
 `int intersect(<geometry>geometry, vector orig, vector dir, vector &p, float &u, float &v)`
 
 `int intersect(<geometry>geometry, vector orig, vector dir, vector &p, float &u, float &v, ...)`
 
-Computes the first intersection of the specified ray with the geometry.
-To get _all_ intersections along a vector, use [intersect_all](intersect_all.html "Computes all intersections of the specified ray with geometry.") instead.
-The variadic argument `"farthest"` can be used to indicate whether to return the last intersection instead of the first.
+计算指定射线与几何体的第一个交点。要获得沿矢量的所有交点，请使用[intersect_all](intersect_all.html) () ("计算指定射线与几何体的所有交点。")代替。变量参数""farthest""可以用来指示是否返回最后的交点而不是第一个交点。
 
 `int intersect(<geometry>geometry, vector orig, vector dir, vector &p, vector &uvw)`
 
-Computes the first intersection of the specified ray with the geometry.
-To get _all_ intersections along a vector, use [intersect_all](intersect_all.html "Computes all intersections of the specified ray with geometry.") instead.
+计算指定射线与几何体的第一个交点。要获得沿矢量的所有交点，请使用[intersect_all](intersect_all.html) () ("计算指定射线与几何体的所有交点。")来代替。
 
 `int intersect(<geometry>geometry, string group, vector orig, vector dir, vector &p, vector &uvw)`
 
-Computes the intersection of the specified ray with primitives in the given group.
+计算指定射线与给定组中的基元的交点。
 
 ## Arguments
 
 `<geometry>`
 
-When running in the context of a node (such as a wrangle SOP), this argument can be an integer representing the input number (starting at 0) to read the geometry from.
+当在一个节点的上下文中运行时（比如一个 wrangle SOP），这个参数可以是一个整数，代表要读取几何图形的输入数字（从 0 开始）。
 
-Alternatively, the argument can be a string specifying a geometry file (for example, a `.bgeo`) to read from. When running inside Houdini, this can be an `op:/path/to/sop` reference.
+或者，该参数可以是一个字符串，指定一个几何文件（例如，一个`.bgeo'）来读取。当在Houdini内部运行时，这可以是一个`op:/path/to/sop`的引用。
 
 `group`
 
-If given, only intersect primitives in this group.
+如果给定，则只与此组中的基元相交。
 
 `orig`
 
-The ray origin point.
+射线原点。
 
 `dir`
 
-The ray direction _and maximum distance_.
-This function does not expect a normalized direction vector.
-Instead, it uses the length of the vector as the maximum distance to search.
+射线方向*和最大距离*。这个函数不期望有一个归一化的方向向量。相反，它使用矢量的长度作为搜索的最大距离。
 
 `&p`
 
-If the ray intersects a primitive, this variable is overwritten with the intersection position in world space.
+如果射线与一个基元相交，此变量会被覆盖为世界空间中的相交位置。
 
 `&u`, `&v`, `&uvw`
 
-If the ray intersects a primitive, this/these variable(s) is/are overwritten with the parametric intersection position on the primitive.
+如果射线与一个基元相交，这个/这些变量就会被基元上的参数化相交位置所覆盖。
 
 ## Returns
 
-The intersected primitive number, or `-1` if there was an error or the ray didn’t intersect anything.
+相交的基元数，如果有错误或射线没有与任何东西相交，则为`-1'。
 
 ::: info Note
 
-When intersections are performed against metaball geometry, it is
-impossible to determine the primitive number of the metaball which
-was hit. In this case, the function returns the number of primitives
-in the intersection geometry.
+对元宝几何体进行交集时，不可能确定被击中的元宝的基元数目。在这种情况下，该函数会返回相交几何体中的基元数目。
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Intersect against the second input's geometry, using a ray at the current
@@ -84,8 +76,6 @@ int isect\_prim = intersect(@OpInput2, origin, dir, isect\_pos, isect\_u, isect\
 isect\_prim = intersect(@OpInput2, origin, dir, isect\_pos, isect\_u, isect\_v, "farthest", 1);
 
 ```
-
-
 
 ## See also
 

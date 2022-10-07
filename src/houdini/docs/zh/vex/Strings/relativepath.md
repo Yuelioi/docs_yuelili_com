@@ -7,16 +7,15 @@ category:
 
 `string relativepath(string src, string dest)`
 
-Computes the relative path required to get from the `src` path to the `dest` path.
+计算从`src`路径到`dest`路径所需的相对路径。
 
 ## Examples
 
-[¶](#examples)
-
-- `relativepath("/obj/geo1/box", "/obj/ropnet1/mantra1")` - returns `../../ropnet1/mantra1`
 
 
-string
+- `relativepath("/obj/geo1/box", "/obj/ropnet1/mantra1")` - 返回`././ropnet1/mantra1`。
+
+绳子
 
 [atof](atof.html)
 

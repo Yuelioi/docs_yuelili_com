@@ -7,27 +7,13 @@ category:
 
 `void pcsampleleaf(int handle, float sample)`
 
-This function can only be used with the pcopenlod() function, and then only
-within a pciterate() loop. It replaces the current iteration point with an
-importance sampled leaf descendent of that point. The weighting used to
-select the leaf point is the “area” channel provided to the pcopenlod()
-function’s “measure” parameter, or a uniform weight if no area channel
-was specified when opening the point cloud. The sample parameter is
-expected to be a uniform random value between 0 and 1.
+这个函数只能与 pcopenlod()函数一起使用，而且只能在 pciterate()循环中使用。它将当前迭代点替换为该点的一个重要性取样叶子的后裔。用于选择叶子点的权重是提供给 pcopenlod()函数的 "measure "参数的 "面积 "通道，如果在打开点云时没有指定面积通道，则为统一权重。样本参数预计是一个在 0 到 1 之间的统一随机值。
 
-If the current iteration point is already a leaf point or the point cloud
-was not opened with pcopenlod(), pcsampleleaf() has no effect.
+如果当前的迭代点已经是一个叶点，或者点云没有用 pcopenlod()打开，pcampleleaf()就没有作用。
 
-This function is useful when aggregate point information cannot be used in
-a meaningful way, and provides a mechanism to access the information
-contained in child nodes in the point tree. For example, it wouldn’t make
-sense to trace shadow rays from an averaged point position, but it is
-useful to choose one of the child points and then send the shadow ray to
-that point.
+当聚合点信息不能以有意义的方式使用时，这个函数是有用的，它提供了一种机制来访问点树中的子节点所包含的信息。例如，从一个平均的点的位置追踪阴影射线是没有意义的，但是选择其中一个子点，然后将阴影射线发送到该点是很有用的。
 
-##
-
-Example: Shadow Rays
+## 例子。影子射线
 
 [¶](#example-shadow-rays)
 
@@ -62,8 +48,6 @@ while (pciterate(handle))
 }
 
 ```
-
-
 
 ## See also
 

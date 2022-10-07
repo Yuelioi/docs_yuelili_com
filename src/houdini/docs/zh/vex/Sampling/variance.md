@@ -7,12 +7,11 @@ category:
 
 `float variance(float variable, float &mean, int &sample\_size)`
 
-This function will compute the mean and variance from nearby samples. Similar to the way that VEX is able to compute derivatives, this function is able to inspect the `variable` for a nearby area and compute the mean and variance of the `variable`.
+这个函数将从附近的样本中计算出平均值和方差。类似于 VEX 能够计算导数的方式，这个函数能够检查附近区域的 "变量 "并计算 "变量 "的平均值和方差。
 
-The function returns the `variance` (σ2). The `mean` value will also be returned along with the `sample_size` indicating how many nearby samples were considered.
+该函数返回 "方差"（σ2）。平均值 "也将与 "样本大小 "一起返回，表明考虑了多少个附近的样本。
 
-
-math
+数学
 
 [Du](Du.html)
 

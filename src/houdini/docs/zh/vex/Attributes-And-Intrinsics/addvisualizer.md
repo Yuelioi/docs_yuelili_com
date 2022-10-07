@@ -5,7 +5,7 @@ category:
   - vex
 ---
 
-This function creates the `visualizer` detail string array attribute if it doesn’t exist, then appends the given visualizer string to it. If the visualizer string already exists in the array, the function does not add it again.
+这个函数创建`visualizer`细节字符串数组属性（如果它不存在），然后将给定的 visualizer 字符串追加到它里面。如果 visualizer 字符串已经存在于数组中，该函数不会再添加它。
 
 `int addvisualizer(int geohandle, string op\_url)`
 
@@ -13,22 +13,19 @@ This function creates the `visualizer` detail string array attribute if it doesn
 
 `geohandle`
 
-A handle to the geometry to write to. Currently the only valid value is `0` or [geoself](geoself.html "Returns a handle to the current geometry."), which means the current geometry in a node. (This argument may be used in the future to allow writing to other geometries.)
+要写入的几何体的句柄。目前唯一有效的值是`0`或[geoself](geoself.html) () ("返回当前几何体的句柄。")，这意味着当前节点中的几何体。(这个参数将来可能会被用来允许写到其他的几何体)。
 
 `op_url`
 
-A string in the form`"op:/path/to/node"`. The geometry will use that node’s visualizers.
+一个字符串，格式为`"op:/path/to/node"`。几何图形将使用该节点的可视化器。
 
-- Houdini looks up the visualizers by the `op:` reference, so changes to the visualizers on the referenced nodes will be reflected in the visualization of the geometry.
-
-
+- Houdini 通过`op:`引用来查找可视化器，因此被引用节点上的可视化器的变化将反映在几何体的可视化上。
 
 ## See also
 
 - [adddetailattrib](adddetailattrib.html)
 
-|
-attrib
+### attrib
 
 [addattrib](addattrib.html)
 

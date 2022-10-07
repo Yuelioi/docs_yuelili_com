@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Since 19.0
 
 `string usd\_makevalidprimpath(string path, int allow\_relative)`
@@ -35,8 +33,6 @@ requirements for USD primitive paths. Invalid characters such as spaces
 and most punctuation will be converted to underscores. Note that this means
 the translation is not reversible. If the original string is already a
 legal primitive path, the string is returned unchanged.
-
-
 
 ## See also
 

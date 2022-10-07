@@ -5,58 +5,46 @@ category:
   - vex
 ---
 
+在这一页
 
-
-On this page
-
-- [Overview](#overview)
-- [Usage](#usage)
+- [概览](#overview)
+- [使用方法](#使用方法)
 
 |
 
-Since 18.5
+自 18.5 以来
 
-##
-
-Overview
+## 概述
 
 [¶](#overview)
 
-Whereas the [create_cdf](create_cdf.html "Creates a cumulative distribution function (CDF) from an array of probability density function (PDF) values.") function creates a CDF from sample values, this functions creates a CDF by randomly sampling a curve defined by a list of `values` and corresponding `positions` (similar to a Ramp parameter).
+[create_cdf](create_cdf.html) () ("从概率密度函数(PDF)值阵列中创建累积分布函数(CDF)。")函数从样本值中创建 CDF，而这个函数通过随机抽样创建 CDF，曲线由 "值 "和相应 "位置 "列表定义（类似于 Ramp 参数）。
 
-See the [create_cdf](create_cdf.html "Creates a cumulative distribution function (CDF) from an array of probability density function (PDF) values.") function docs for example code using a CDF.
+参见 [create_cdf](create_cdf.html) () ("从概率密度函数（PDF）值的数组中创建累积分布函数（CDF）。") 函数文档中使用 CDF 的示例代码。
 
-##
-
-Usage
+## 使用方法
 
 [¶](#usage)
 
 `float [] spline\_cdf(string bases[], float values[], float positions[], ...)`
 
-Takes an array of bases, an array of key values, a corresponding array of key
-positions, and an optionally an int, res (resolution), corresponding to the number of samples
-to build the CDF with. Function samples the spline according to the resolution,
-then creates and returns a CDF from said samples. Note that there is only support
-for single dimension splines.
+接收一个基数数组，一个键值数组，一个相应的键位数组，以及一个 int，res（分辨率），对应于要建立 CDF 的样本数。该函数根据分辨率对花键进行采样，然后从所述采样创建并返回一个 CDF。注意，只支持单维花键。
 
 ## Arguments
 
 `bases`
 
-An array of strings describing how to interpret the corresponding `values`: each string can be `"constant"`, `"linear"`, `"cubic"` (or `"catmullrom"`, `"cspline"`), `"linearsolve"` (or `"solvelinear"`), or `"monotonecubic"`. See the [spline](spline.html "Samples a value along a polyline or spline curve.") function docs for information on how these options control the interpretation of the values.
+一个字符串数组，描述如何解释相应的 "值"：每个字符串可以是 "常数"、"线性"、"立方"（或 "catmullrom"、"cspline"）、"linearsolve"（或 "solvelinear"）、或 "monotonecubic"。参见[spline](spline.html) () ("沿多线或花键曲线采样。")函数文档以了解这些选项如何控制数值的解释。
 
-"res",
+"res"。
 
 `=128`
 
-When building a CDF, some splines may require more samples to accurately represent the spline. The `res` (resolution) controls how many samples the function takes when constructing the CDF (and consequently the size of the CDF). The default is 128.
+在构建 CDF 时，一些样条可能需要更多的样本来准确表示样条。`res`（分辨率）控制函数在构建 CDF 时采取多少个样本（因此也控制了 CDF 的大小）。默认是 128。
 
 ## Returns
 
-A float array representing a CDF (like the array returned by [create_cdf](create_cdf.html "Creates a cumulative distribution function (CDF) from an array of probability density function (PDF) values.")).
-
-
+一个代表 CDF 的浮动数组（就像[create_cdf](create_cdf.html)（"从概率密度函数（PDF）值的数组中创建累积分布函数（CDF）"）所返回的数组）。
 
 ## See also
 

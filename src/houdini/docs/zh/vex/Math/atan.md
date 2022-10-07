@@ -7,17 +7,15 @@ category:
 
 `float atan(float n)`
 
-Returns the inverse tangent of `n`, where `n` is in radians. The return value is in the range -π/2 to π/2.
+返回`n`的反正切值，其中`n`的单位是弧度。返回值的范围是-π/2 到 π/2。
 
 `float atan(float y, float x)`
 
-Alias for [atan2](atan2.html "Returns the inverse tangent of y/x.").
+[atan2](atan2.html)的别名（"返回 y/x 的反正切值"）。
 
 `<vector> atan(<vector>v)`
 
-Returns a new vector with `atan()` applied to each component.
-
-
+返回一个新的向量，`atan()`应用于每个分量。
 
 ## See also
 

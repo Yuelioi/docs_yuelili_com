@@ -9,37 +9,33 @@ category:
 
 ::: info Note
 
-To convert the linear index into a primitive number and primitive vertex number,
-use [vertexprim](vertexprim.html "Returns the number of the primitive containing a given vertex.") and [vertexprimindex](vertexprimindex.html "Converts a linear vertex index into a primitive vertex number.").
+要将线性索引转换为基元数和基元顶点数，请使用 [vertexprim](vertexprim.html) () （"返回包含给定顶点的基元数。"）和 [vertexprimindex](vertexprimindex.html) （"将线性顶点索引转换为基元顶点数。"）。
 
 ## Arguments
 
 `<geometry>`
 
-When running in the context of a node (such as a wrangle SOP), this argument can be an integer representing the input number (starting at 0) to read the geometry from.
+当在一个节点的上下文中运行时（比如一个 wrangle SOP），这个参数可以是一个整数，代表要读取几何图形的输入数字（从 0 开始）。
 
-Alternatively, the argument can be a string specifying a geometry file (for example, a `.bgeo`) to read from. When running inside Houdini, this can be an `op:/path/to/sop` reference.
+或者，该参数可以是一个字符串，指定一个几何文件（例如，一个`.bgeo'）来读取。当在Houdini内部运行时，这可以是一个`op:/path/to/sop`的引用。
 
 `linearindex`
 
-The linear index of a vertex
+一个顶点的线性指数
 
 ## Returns
 
-The vertex’s number within the primitive that contains it, or
-`-1` if the vertex has no primitive.
+顶点在包含它的基元中的编号，如果顶点没有基元，则为`-1`。
 
-To get the primitive number of the containing primitive, use [vertexprim](vertexprim.html "Returns the number of the primitive containing a given vertex.").
+要获取包含基元的基元编号，请使用 [vertexprim](vertexprim.html) () ("返回包含给定顶点的基元的编号")。
 
 ::: info Note
 
-Due to the nature of the geometry structure, the first time this is run on
-a geometry it has to run over all primitives to find the look up table.
-This will be amortized out if most vertices are invoking this function.
+由于几何结构的性质，第一次在一个几何体上运行这个函数时，它必须在所有基元上运行以找到查找表。如果大多数顶点都在调用这个函数，这将被摊销掉。
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 int prim, vtx;
@@ -49,8 +45,6 @@ prim = vertexprim("defgeo.bgeo", 6);
 vtx = vertexprimindex("defgeo.bgeo", 6);
 
 ```
-
-
 
 ## See also
 

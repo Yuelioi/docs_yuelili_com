@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Since 18.0
 
 `int usd\_getbbox(<stage>stage, string primpath, string purpose, vector &min, vector &max)`
@@ -33,7 +31,7 @@ Always 1.
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Get the sphere's bounding box.
@@ -41,8 +39,6 @@ vector min, max;
 usd\_getbbox(0, "/src/sphere", "render", min, max);
 
 ```
-
-
 
 ## See also
 

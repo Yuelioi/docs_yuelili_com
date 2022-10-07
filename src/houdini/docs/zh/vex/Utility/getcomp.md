@@ -51,8 +51,6 @@ Characters in VEX are strings as well. UTF-8 encoding is used,
 so if the index is part way through a UTF-8 encoding, the result
 is an empty string. Otherwise it is the entire valid UTF-8 character.
 
-
-
 ## See also
 
 - [Arrays](../arrays.html)

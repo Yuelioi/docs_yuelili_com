@@ -9,20 +9,18 @@ category:
 
 `<vector> fit(<vector>value, <vector>omin, <vector>omax, <vector>nmin, <vector>nmax)`
 
-Takes the value in the range (omin, omax) and shifts it to the corresponding value in the new range (nmin, nmax).
+获取范围内的值（opmin, omax），并将其移到新范围内的相应值（nmin, nmax）。
 
-The function clamps the given value the range (omin, omax) before fitting, so the resulting value will be guaranteed to be in the range (nmin, nmax). To avoid clamping use [efit](efit.html "Takes the value in one range and shifts it to the corresponding value in a new range.") instead.
+该函数在拟合前将给定的值夹在(opmin, omax)范围内，所以结果值将被保证在(nmin, nmax)范围内。要避免夹紧，请使用 [efit](efit.html) () ("获取一个范围内的值并将其转移到一个新范围内的相应值。") 来代替。
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 fit(.3, 0, 1, 10, 20) == 13
 
 ```
-
-
 
 ## See also
 

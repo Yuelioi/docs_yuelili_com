@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Since 17.5
 
 `int usd\_setkind(int stagehandle, string primpath, string kind)`
@@ -33,15 +31,13 @@ The value of `stagehandle` on success or `-1` on failure.
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Set the sphere primitive to be an assembly.
 usd\_setkind(0, "/geo/sphere", "assembly");
 
 ```
-
-
 
 ## See also
 

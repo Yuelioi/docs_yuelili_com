@@ -7,10 +7,9 @@ category:
 
 `float atten(float attenuation, float distance)`
 
-Computes attenuated falloff. This is equivalent to `attenuation / (attenuation + distance)`.
+计算衰减后的衰减。这相当于`衰减/（衰减+距离）`。
 
-
-light
+光
 
 [ambient](ambient.html)
 
@@ -62,8 +61,7 @@ light
 
 [storelightexport](storelightexport.html)
 
-|
-math
+| 数学
 
 [Du](Du.html)
 
@@ -169,8 +167,7 @@ math
 
 [variance](variance.html)
 
-|
-shading
+| 阴影
 
 [Du](Du.html)
 

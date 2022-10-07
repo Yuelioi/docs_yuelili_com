@@ -11,27 +11,21 @@ category:
 
 `center`
 
-Orientation in the center of the cone. This does not need to be normalized.
+在圆锥体中心的方向。这不需要被归一化。
 
 `maxangle`
 
-Maximum angle, in radians, away from `center` that any sample of the cone
-will be, so long as all `u` values are between 0 and 1.
+只要所有的 "u "值在 0 到 1 之间，圆锥体的任何样本离开 "中心 "的最大角度，单位是弧度。
 
 ::: info Note
 
-This angle is the maximum quaternion rotation angle between the orientation quaternion that the output represents and `center`, which is twice the Euclidean cone angle of the unit 4D hypersphere being sampled. A `maxangle` of π would sample all orientations, but only half of all 4D unit vectors; a `maxangle` of 2π would sample all 4D unit vectors.
+这个角度是输出所代表的方向四元数与 "中心 "之间的最大四元数旋转角度，它是被采样的单位 4D 超球的欧几里得锥角的两倍。π 的 "最大角度 "将对所有方向进行采样，但只对所有 4D 单位向量的一半进行采样；2π 的 "最大角度 "将对所有 4D 单位向量进行采样。
 
 `u`
 
-Three numbers between 0 and 1.
+0 和 1 之间的三个数字。
 
-Returns a unit vector4, i.e. a vector4 of length 1, based on `u`.
-Given uniform random `u` vectors of three values in `[0,1)`, the returned quaternion
-orientations will be uniform random and continuous with respect to `u`,
-in the region of orientations within `maxangle` of `center`.
-
-
+返回一个单位向量 4，即一个长度为 1 的向量 4，基于`u`。给出在`[0,1)`中三个值的均匀随机的`u`向量，返回的四元数方向将是均匀随机的，并且相对于`u`是连续的，在`中心`的`最大角度`内的方向区域。
 
 ## See also
 

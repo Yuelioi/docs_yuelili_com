@@ -5,41 +5,33 @@ category:
   - vex
 ---
 
-
-
-Context(s)
 [displace](../contexts/displace.html)
 [fog](../contexts/fog.html)
 [surface](../contexts/surface.html)
 
 `vector ambient(...)`
 
-Returns the color of ambient light in the scene.
+Context(s) 返回场景中环境光的颜色。
 
-##
-
-Light inclusion/exclusion options
+## 灯光包含/排除选项
 
 [¶](#light-inclusion-exclusion-options)
 
 ## Arguments
 
-"`categories`",
 `string`
 `="*"`
 
-Specifies lights to include/exclude by their “category” tags.
-This is the preferred include/exclude lights rather than pattern matching
-light names with the `"lightmask"` keyword argument.
+"`categories'", 指定通过其 "类别 "标签包含/排除的灯光。这是首选的包括/排除灯光，而不是用`"lightmask"`关键字参数的模式匹配灯光名称。
 
-For example:
+比如说。
 
 ```c
 diff = diffuse(nml, "lightmask", "hero fill");
 
 ```
 
-See [light categories](../../render/lights.html#categories) for more information.
+See [light categories](../../render/lights.html) () (#categories) for more information.
 
 "`lightmask`",
 `string`
@@ -67,7 +59,6 @@ All Houdini scoping patterns, excepting group expansion, are supported:
 - `?` - single character match
 - `^` - exclusion operator
 - `[list]` - character list match
-
 
 light
 

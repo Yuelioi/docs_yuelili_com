@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Since 17.5
 
 `int usd\_setdrawmode(int stagehandle, string primpath, string mode)`
@@ -33,7 +31,7 @@ The value of `stagehandle` on success or `-1` on failure.
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Set the sphere to draw as bounds and the cube to draw as default.
@@ -41,8 +39,6 @@ usd\_setdrawmode(0, "/geo/sphere", "bounds");
 usd\_setdrawmode(0, "/geo/cube", "default");
 
 ```
-
-
 
 ## See also
 

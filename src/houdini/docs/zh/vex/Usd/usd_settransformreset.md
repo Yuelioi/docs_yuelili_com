@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Since 18.0
 
 `int usd\_settransformreset(int stagehandle, string primpath, int flag)`
@@ -33,15 +31,13 @@ The value of `stagehandle` on success or `-1` on failure.
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Ignore parent's transform.
 usd\_settransformreset(0, "/geo/cone", 1);
 
 ```
-
-
 
 ## See also
 

@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Since 17.5
 
 `int usd\_isactive(<stage>stage, string primpath)`
@@ -29,15 +27,13 @@ The path to the primitive.
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Check if the sphere primitive is active.
 int is\_active = usd\_isactive(0, "/geometry/sphere");
 
 ```
-
-
 
 ## See also
 

@@ -5,9 +5,6 @@ category:
   - vex
 ---
 
-
-
-Context(s)
 [cop](../contexts/cop.html)
 
 `string iplanename(int opinput, int planeindex)`
@@ -16,14 +13,13 @@ Context(s)
 
 `opinput`
 
-The input number to read from, starting from 0. For example, the first input is 0, the second input is 1, and so on.
+Context(s) 要读取的输入号码，从 0 开始。例如，第一个输入是 0，第二个输入是 1，以此类推。
 
 ## Returns
 
-The name of the plane specified by the planeindex of the given input (e.g. “C”, “A”).
+由给定输入的 planeindex 指定的平面名称（例如，"C"，"A"）。
 
-
-input_plane
+输入平面
 
 [iaspect](iaspect.html)
 

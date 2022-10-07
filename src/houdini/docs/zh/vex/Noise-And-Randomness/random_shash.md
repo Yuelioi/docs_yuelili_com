@@ -7,18 +7,17 @@ category:
 
 `int random\_shash(string seed)`
 
-Hashes the given string into an integer value.
+将给定的字符串洗练成一个整数。
 
 ::: info Note
 
-Two different strings may hash to the same value.
+两个不同的字符串可以哈希到相同的值。
 
 ::: info Note
 
-The returned value may be very large and can cause an overflow when further multiplied or is cast to float.
+返回的值可能非常大，在进一步乘以或投向 float 时可能导致溢出。
 
-
-random
+随机
 
 [curlgxnoise](curlgxnoise.html)
 

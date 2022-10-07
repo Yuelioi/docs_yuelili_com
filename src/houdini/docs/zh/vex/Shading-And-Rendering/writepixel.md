@@ -5,24 +5,19 @@ category:
   - vex
 ---
 
-
-
-Context(s)
 [shading](../contexts/shading.html)
 
 `void writepixel(string channel, float ndc\_x, float ndc\_y, vector clr)`
 
-This is an experimental function which can be used by the generator rendering engine to write pixel values into the image.
+Context(s) 这是一个实验性的函数，可以被生成器的渲染引擎用来将像素值写入图像中。
 
-
-experimental
+实验性
 
 [cvex_bsdf](cvex_bsdf.html)
 
 [writepixel](writepixel.html)
 
-|
-file
+|文件
 
 [colormap](colormap.html)
 

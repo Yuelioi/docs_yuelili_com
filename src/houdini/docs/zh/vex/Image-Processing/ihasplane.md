@@ -5,24 +5,19 @@ category:
   - vex
 ---
 
-
-
-Context(s)
 [cop](../contexts/cop.html)
 
 `int ihasplane(int opinput, string planename)`
 
-Returns 1 if the specified input has a plane named `planename`. Input
-numbers start at 0.
+Context(s) 如果指定的输入有一个名为`planename'的平面，返回 1。输入数字从 0 开始。
 
 ## Arguments
 
 `opinput`
 
-The input number to read from, starting from 0. For example, the first input is 0, the second input is 1, and so on.
+要读取的输入号码，从 0 开始。例如，第一个输入是 0，第二个输入是 1，以此类推。
 
-
-input_plane
+输入平面
 
 [iaspect](iaspect.html)
 

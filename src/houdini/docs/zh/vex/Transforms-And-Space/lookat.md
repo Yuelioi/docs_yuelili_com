@@ -15,14 +15,11 @@ category:
 
 `vector lookat(vector from, vector to, vector up, int xyz)`
 
-Computes a rotation matrix or angles to orient the negative z-axis along the
-vector (to-from) under the transformation. If an up vector is specified, this
-will determine the roll.
+计算一个旋转矩阵或角度，使负的 Z 轴沿着变换下的向量（从）定向。如果指定了一个向上的矢量，这将决定滚动的方向。
 
-`xyz` is a rotation order defined in `$HFS/houdini/support/vex/include/math.h`.
+`xyz`是在`$HFS/houdini/support/vex/include/math.h`中定义的一个旋转顺序。
 
-
-matrix
+基体
 
 [\_\_uniform\_mul](### uniform_mul.html)
 

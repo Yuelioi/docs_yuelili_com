@@ -5,52 +5,44 @@ category:
   - vex
 ---
 
+在这一页
 
-
-On this page
-
-- [Variadic arguments](#variadic-arguments)
-- [Examples](#examples)
+- [变量参数](#variadic-arguments)
+- [例子](#例子)
 
 |
 
-Context(s)
 [shading](../contexts/shading.html)
 
-Returns a modified surface position based on a smoothing function.
+Context(s) 返回基于平滑函数的修正表面位置。
 
 `int getsmoothP(vector &smoothP, vector ray\_origin, ...)`
 
-Overwrites the `smoothP` variable with the modified surface position.
-This function is only meaningful for some primitive types (such as polygons).
+用修改后的曲面位置覆盖`smoothP`变量。这个函数只对某些原始类型（如多边形）有意义。
 
 `vector getsmoothP(...)`
 
-Uses the global variables `Eye` and `I` to fill in the ray origin and direction.
+使用全局变量`Eye`和`I`来填入射线的原点和方向。
 
-##
-
-Variadic arguments
+## 变量论证
 
 [¶](#variadic-arguments)
 
 ## Arguments
 
-"style",
 `string`
 
 `none`
 
-No smoothing.
+"style", No smoothing.
 
 `shadow`
 
-Apply a smoothing function appropriate to elimination of the shadow
-terminator issue for polygons.
+应用适合于消除多边形的阴影终结者问题的平滑函数。
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 shadow
@@ -64,7 +56,6 @@ fastshadow()
 }
 
 ```
-
 
 shading
 

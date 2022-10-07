@@ -7,11 +7,9 @@ category:
 
 `vector pcimportbyidxv(int handle, string channel\_name, int idx)`
 
-After a [pcopen](pcopen.html "Returns a handle to a point cloud file.") and a [pcnumfound](pcnumfound.html "This node returns the number of points found by pcopen."), this can be used to extract specific search results from the found points.
+在一个[pcopen](pcopen.html) ()（"返回一个点云文件的句柄。"）和一个[pcnumfound](pcnumfound.html)（"该节点返回 pcopen 发现的点的数量。"）之后，可以用来从发现的点中提取特定的搜索结果。
 
-This will return 0 if the channel doesn’t exist.
-
-
+如果通道不存在，这将返回 0。
 
 ## See also
 

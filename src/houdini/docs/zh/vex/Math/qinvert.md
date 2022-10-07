@@ -7,11 +7,9 @@ category:
 
 `vector4 qinvert(vector4 quaternion)`
 
-Creates the inverse quaternion to the supplied one. This will rotate points
-in the opposite direction.
+创建与所提供的四元数相反的四元数。这将使点向相反的方向旋转。
 
-
-quaternion
+四元数
 
 [dihedral](dihedral.html)
 
@@ -33,8 +31,7 @@ quaternion
 
 [slerp](slerp.html)
 
-|
-transform
+| 转化
 
 [agentcliptransformgroups](agentcliptransformgroups.html)
 

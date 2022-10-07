@@ -5,50 +5,38 @@ category:
   - vex
 ---
 
+在这一页
 
-
-On this page
-
-- [Area sampling options](#area-sampling-options)
+- [区域采样选项](#area-sampling-options)
 - [Ray options](#ray-options)
-- [Image filtering options](#image-filtering-options)
-- [Examples](#examples)
+- [图片过滤选项](#image-filtering-options)
+- [例子](#例子)
 
 |
 
-Context(s)
 [shading](../contexts/shading.html)
 
 `vector reflectlight(float bias, float max\_contrib, ...)`
 
-bias is typically a small number (for example 0.005) used to help
-eliminate self-reflection. If bias is less than 0, the default
-ray tracing bias specified with the `vm_raybias` setting will be used
-instead.
+上下文的偏差通常是一个小数字（例如 0.005），用于帮助消除自反射。如果 bias 小于 0，将使用`vm_raybias'设置中指定的默认光线跟踪偏置来代替。
 
-max_contrib tells the renderer how much the reflected light will
-contribute to the final color of the pixel. This is typically the
-maximum of the reflection component of a lighting model. This has no
-effect on the resultant color. This value should typically be less than
+max_contrib 告诉渲染器，反射光对像素的最终颜色有多大贡献。这通常是照明模型的反射分量的最大值。这对最终的颜色没有影响。这个值通常应该小于
 
 1.
 
 `vector reflectlight(vector P, vector D, float bias, float max\_contrib, ...)`
 
-A general form which takes a position P and a direction D.
+一个一般的形式，它需要一个位置 P 和一个方向 D。
 
 `vector reflectlight(vector P, vector N, vector I, float bias, float max\_contrib, ...)`
 
-A general form which takes a position P, direction D, and
-incident angle I and returns the reflection vector.
+一个一般的形式，它需要一个位置 P，方向 D，和入射角 I，并返回反射矢量。
 
-##
-
-Area sampling options
+## 地区采样选项
 
 [¶](#area-sampling-options)
 
-For area sampling, you must specify both the angle and sample variadic parameters. For example:
+对于区域采样，你必须同时指定角度和采样变量参数。比如说
 
 ```c
 surface
@@ -59,16 +47,14 @@ blurry\_mirror(float angle = 3; int samples = 16; float bias=0.05)
 
 ```
 
-##
-
-Ray options
+## Ray options
 
 [¶](#ray-options)
 
 :::tip
 
 When you specify a texture, such as with the `"environment"` keyword,
-you can also use the image filtering keyword arguments. See [environment](environment.html "Returns the color of the environment texture.")
+you can also use the image filtering keyword arguments. See [environment](environment.html) () ("Returns the color of the environment texture.")
 for a listing of the image filter keyword arguments.
 
 ## Arguments
@@ -78,7 +64,7 @@ for a listing of the image filter keyword arguments.
 
 A list of objects which can be hit by the rays. When specified, `scope` overrides the default scope that would have been selected for the given `raystyle`. The `"scope:default"` value will cause the `scope` argument to use the default scope for the current context - as if the argument were not specified.
 
-Allows an override of the [scope](../contexts/shading_contexts.html#scope) for ray-intersections.
+Allows an override of the [scope](../contexts/shading_contexts.html) () (#scope) for ray-intersections.
 A special scope argument, `scope:self`, will match the currently
 shading object.
 
@@ -104,7 +90,7 @@ computing reflections, global illumination, refraction etc.
 "`variancevar`",
 `string`
 
-The name of a VEX export variable to use for variance anti-aliasing. The renderer compares the value with adjacent micropolygons in micropolygon rendering to decide what shading points need additional samples (using `vm_variance` [property](../../props/index.html "Properties let you set up flexible and powerful hierarchies of rendering, shading, lighting, and camera parameters.") as a threshold). If more samples are required, the algorithm takes samples up to the specified maximum ray samples.
+The name of a VEX export variable to use for variance anti-aliasing. The renderer compares the value with adjacent micropolygons in micropolygon rendering to decide what shading points need additional samples (using `vm_variance` [property](../../props/index.html) () ("Properties let you set up flexible and powerful hierarchies of rendering, shading, lighting, and camera parameters.") as a threshold). If more samples are required, the algorithm takes samples up to the specified maximum ray samples.
 
 This variable must be imported from the hit surface, so it must be in the list of imported names (see “importing information back from the ray” below). If the named variable is not imported, this option will be ignored.
 
@@ -188,16 +174,14 @@ background color specified.
 "`distribution`",
 `string`
 
-**Functions**: [irradiance](irradiance.html "Computes irradiance (global illumination) at the point P with the normal N."), [occlusion](occlusion.html "Computes ambient occlusion.")
+**Functions**: [irradiance](irradiance.html) () ("Computes irradiance (global illumination) at the point P with the normal N."), [occlusion](occlusion.html) () ("Computes ambient occlusion.")
 
 Distribution for computing irradiance. The default is to use
 a cosine distribution (diffuse illumination). The possible
 values for the style are `"nonweighted"` for uniform sampling
 or `"cosine"` for cosine weighted sampling.
 
-##
-
-Image filtering options
+## Image filtering options
 
 [¶](#image-filtering-options)
 
@@ -581,7 +565,7 @@ energy output.
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 surface mirror(vector refl\_color=1; float bias=.005)
@@ -590,8 +574,6 @@ surface mirror(vector refl\_color=1; float bias=.005)
 }
 
 ```
-
-
 
 ## See also
 

@@ -5,32 +5,27 @@ category:
   - vex
 ---
 
-
-
-Since 17.0
+自 17.0 以来
 
 `matrix3 diagonalizesymmetric(matrix3 symmat, vector &diag)`
 
-[Diagonalize](http://en.wikipedia.org/wiki/Diagonalizable_matrix) a [symmetric matrix](http://en.wikipedia.org/wiki/Symmetric_matrix).
+[对角线化](http://en.wikipedia.org/wiki/Diagonalizable_matrix)改为[对称矩阵](http://en.wikipedia.org/wiki/Symmetric_matrix)。
 
-Returns the orthogonal matrix which, combined with the diagonal matrix
-implicit in the second argument, will form the original symmetric matrix.
+返回正交矩阵，该矩阵与第二个参数中隐含的对角线矩阵相结合，将形成原始对称矩阵。
 
-This can be useful for analyzing the result of summing a series of
-outerproduct updates.
+这对分析一系列外积更新的总和结果很有用。
 
 ## Arguments
 
 `symmat`
 
-The symmetric matrix to diagonalize.
+要对角化的对称矩阵。
 
 `diag`
 
-The diagonal elements of the diagonal matrix.
+对角线矩阵的对角线元素。
 
-
-matrix
+基体
 
 [\_\_uniform\_mul](### uniform_mul.html)
 

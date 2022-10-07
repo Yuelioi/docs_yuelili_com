@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Since 18.0
 
 `int usd\_setprimvarindices(int stagehandle, string primpath, string name, int indices[])`
@@ -37,7 +35,7 @@ The value of `stagehandle` on success, or `-1` on failure.
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Set the primvar's value and indices.
@@ -47,8 +45,6 @@ usd\_setprimvar(0, "/geo/mesh", "primvar\_name", values);
 usd\_setprimvarindices(0, "/geo/mesh", "primvar\_name", indices);
 
 ```
-
-
 
 ## See also
 

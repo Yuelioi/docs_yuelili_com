@@ -7,16 +7,15 @@ category:
 
 `matrix wo\_space()`
 
-In [shading contexts](../contexts/shading_contexts.html), this transforms the current position.
+在[shading contexts](.../contexts/shading_contexts.html)中，这将改变当前的位置。
 
 `vector wo\_space(vector pos)`
 
 `vector4 wo\_space(vector4 pos)`
 
-Transforms a position value from _World_ to _Object_ space.
+将一个位置值从*World*转换到*Object*空间。
 
-
-transform
+转变
 
 [agentcliptransformgroups](agentcliptransformgroups.html)
 

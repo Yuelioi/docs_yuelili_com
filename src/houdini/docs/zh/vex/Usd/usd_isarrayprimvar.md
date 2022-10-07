@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Since 18.0
 
 `int usd\_isarrayprimvar(<stage>stage, string primpath, string name)`
@@ -33,15 +31,13 @@ Primvar name (without namespace).
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Check if primvar "some\_primvar" is an array.
 int is\_array = usd\_isarrayprimvar(0, "/geometry/sphere", "some\_primvar");
 
 ```
-
-
 
 ## See also
 

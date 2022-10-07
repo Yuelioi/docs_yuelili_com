@@ -7,15 +7,13 @@ category:
 
 `float hscript\_noise(vector pos)`
 
-Matches the output of [noise](../../expressions/noise.html "Generates 3D noise."). This function can be useful if you convert a workflow to VEX, or have VEX work in tandem with Hscript expressions, and need the noise to look the same as in an expression.
+匹配[noise](.../.../expressions/noise.html)的输出（"生成 3D 噪音。"）。如果你将一个工作流程转换为 VEX，或者让 VEX 与 Hscript 表达式协同工作，并且需要噪声看起来与表达式中的一样，那么这个函数就很有用。
 
 ## Arguments
 
 `pos`
 
-Position at which to sample the noise.
-
-
+对噪声进行采样的位置。
 
 ## See also
 

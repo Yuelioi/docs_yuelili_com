@@ -5,50 +5,39 @@ category:
   - vex
 ---
 
-
-
-Context(s)
 [shading](../contexts/shading.html)
 
-![](../../images/rendering/phong.png)
+Context(s) ![](/images/phong.png)
 
 `bsdf phong(float exponent, ...)`
 
 `bsdf phong(vector nml, float exponent, ...)`
 
-See [writing a PBR shader](../pbr.html) for information on BSDFs.
+关于 BSDF 的信息，请参见[编写 PBR 着色器](../pbr.html)。
 
 `vector phong(vector nml, vector V, float shinyness, ...)`
 
-V represents the normalized vector from the surface to the eye
-(-normalize(I)). shinyness is the Phong exponent (typically around
-20 or higher). roughness represents the surface roughness (typically
-0 to 1).
+V 代表从表面到眼睛的归一化矢量（-normalize(I)）。 shinyness 是 Phong 指数（通常在 20 左右或更高）。粗糙度代表表面粗糙度（通常是 0 到 1）。
 
-##
-
-Light inclusion/exclusion options
+## 灯光包含/排除选项
 
 [¶](#light-inclusion-exclusion-options)
 
 ## Arguments
 
-"`categories`",
 `string`
 `="*"`
 
-Specifies lights to include/exclude by their “category” tags.
-This is the preferred include/exclude lights rather than pattern matching
-light names with the `"lightmask"` keyword argument.
+"`categories'", 指定通过其 "类别 "标签包含/排除的灯光。这是首选的包括/排除灯光，而不是用`"lightmask"`关键字参数的模式匹配灯光名称。
 
-For example:
+比如说。
 
 ```c
 diff = diffuse(nml, "lightmask", "hero fill");
 
 ```
 
-See [light categories](../../render/lights.html#categories) for more information.
+See [light categories](../../render/lights.html) () (#categories) for more information.
 
 "`lightmask`",
 `string`
@@ -77,16 +66,13 @@ All Houdini scoping patterns, excepting group expansion, are supported:
 - `^` - exclusion operator
 - `[list]` - character list match
 
-
-
 ## See also
 
 - [ashikhmin](ashikhmin.html)
 - [phonglobe](phonglobe.html)
 - [Writing a PBR shader](../pbr.html)
 
-|
-bsdf
+### bsdf
 
 [albedo](albedo.html)
 

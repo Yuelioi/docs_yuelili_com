@@ -7,10 +7,9 @@ category:
 
 `vector ow\_vspace(vector v)`
 
-Transforms a direction vector from _Object_ to _World_ space.
+将一个方向向量从*Object*空间转换到*World*空间。
 
-
-transform
+转变
 
 [agentcliptransformgroups](agentcliptransformgroups.html)
 

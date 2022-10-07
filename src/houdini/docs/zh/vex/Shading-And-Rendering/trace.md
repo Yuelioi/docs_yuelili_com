@@ -5,66 +5,54 @@ category:
   - vex
 ---
 
+在这一页
 
-
-On this page
-
-- [Light inclusion/exclusion options](#light-inclusion-exclusion-options)
-- [Area sampling options](#area-sampling-options)
+- [灯光包含/排除选项](#灯光包含-排除-选项)
+- [区域采样选项](#area-sampling-options)
 - [Ray options](#ray-options)
-- [Ray sending options](#ray-sending-options)
-- [Sending information to the surface’s shader](#sending-information-to-the-surface-s-shader)
-- [Importing information from the ray](#importing-information-from-the-ray)
-- [Sample filtering options](#sample-filtering-options)
-- [Pipeline options](#pipeline-options)
+- [射线发送选项](#ray-sending-options)
+- [发送信息给曲面的着色器](#sending-information-to-the-surface-shader)
+- [从射线中导入信息](#importing-information-from-the-ray)
+- [过滤选项样本](#sample-filtering-options)
+- [管道选项](#管道-选项)
 
 |
 
-Context(s)
 [shading](../contexts/shading.html)
 
 `void trace(vector &cv, vector &of, float &af, vector P, vector D, float shadow\_bias, float max\_contrib, ...)`
 
-Sends a ray from P along the normalized vector D. The resulting
-color, opacity and alpha will be put in the export variables.
+Context(s) 从 P 处沿归一化矢量 D 发送一条射线，产生的颜色、不透明度和阿尔法将被放入导出变量。
 
-shadow_bias is typically a small number which is used to prevent
-self-shading.
+shadow_bias 通常是一个很小的数字，用于防止自我遮挡。
 
-max_contrib controls how much the result of the trace() call will
-contribute to the resulting pixel color. max_contrib has no effect
-on the results of the trace() call.
+max_contrib 控制 trace()调用的结果对结果像素颜色的贡献程度。 max_contrib 对 trace()调用的结果没有影响。
 
 `int trace(vector pos, vector dir, float time, ...)`
 
-Sends a single ray into the scene at `time` and retrieves information from the hit surface. A return value of 1 means the ray hit a surface.
+在`时间'向场景中发送一条射线，并从击中的表面获取信息。返回值为 1 意味着射线击中了一个表面。
 
-Only the second signature accepts any of the following variadic arguments. The first trace signature is more specific, and is legacy from older versions of mantra.
+只有第二个签名接受以下任何变量参数。第一个跟踪签名更具体，是旧版本的 mantra 的遗留问题。
 
-##
-
-Light inclusion/exclusion options
+## 灯光包含/排除选项
 
 [¶](#light-inclusion-exclusion-options)
 
 ## Arguments
 
-"`categories`",
 `string`
 `="*"`
 
-Specifies lights to include/exclude by their “category” tags.
-This is the preferred include/exclude lights rather than pattern matching
-light names with the `"lightmask"` keyword argument.
+"`categories'", 指定通过其 "类别 "标签包含/排除的灯光。这是首选的包括/排除灯光，而不是用`"lightmask"`关键字参数的模式匹配灯光名称。
 
-For example:
+比如说。
 
 ```c
 diff = diffuse(nml, "lightmask", "hero fill");
 
 ```
 
-See [light categories](../../render/lights.html#categories) for more information.
+See [light categories](../../render/lights.html) () (#categories) for more information.
 
 "`lightmask`",
 `string`
@@ -93,9 +81,7 @@ All Houdini scoping patterns, excepting group expansion, are supported:
 - `^` - exclusion operator
 - `[list]` - character list match
 
-##
-
-Area sampling options
+## Area sampling options
 
 [¶](#area-sampling-options)
 
@@ -110,16 +96,14 @@ blurry\_mirror(float angle = 3; int samples = 16; float bias=0.05)
 
 ```
 
-##
-
-Ray options
+## Ray options
 
 [¶](#ray-options)
 
 :::tip
 
 When you specify a texture, such as with the `"environment"` keyword,
-you can also use the image filtering keyword arguments. See [environment](environment.html "Returns the color of the environment texture.")
+you can also use the image filtering keyword arguments. See [environment](environment.html) () ("Returns the color of the environment texture.")
 for a listing of the image filter keyword arguments.
 
 ## Arguments
@@ -129,7 +113,7 @@ for a listing of the image filter keyword arguments.
 
 A list of objects which can be hit by the rays. When specified, `scope` overrides the default scope that would have been selected for the given `raystyle`. The `"scope:default"` value will cause the `scope` argument to use the default scope for the current context - as if the argument were not specified.
 
-Allows an override of the [scope](../contexts/shading_contexts.html#scope) for ray-intersections.
+Allows an override of the [scope](../contexts/shading_contexts.html) () (#scope) for ray-intersections.
 A special scope argument, `scope:self`, will match the currently
 shading object.
 
@@ -155,7 +139,7 @@ computing reflections, global illumination, refraction etc.
 "`variancevar`",
 `string`
 
-The name of a VEX export variable to use for variance anti-aliasing. The renderer compares the value with adjacent micropolygons in micropolygon rendering to decide what shading points need additional samples (using `vm_variance` [property](../../props/index.html "Properties let you set up flexible and powerful hierarchies of rendering, shading, lighting, and camera parameters.") as a threshold). If more samples are required, the algorithm takes samples up to the specified maximum ray samples.
+The name of a VEX export variable to use for variance anti-aliasing. The renderer compares the value with adjacent micropolygons in micropolygon rendering to decide what shading points need additional samples (using `vm_variance` [property](../../props/index.html) () ("Properties let you set up flexible and powerful hierarchies of rendering, shading, lighting, and camera parameters.") as a threshold). If more samples are required, the algorithm takes samples up to the specified maximum ray samples.
 
 This variable must be imported from the hit surface, so it must be in the list of imported names (see “importing information back from the ray” below). If the named variable is not imported, this option will be ignored.
 
@@ -239,16 +223,14 @@ background color specified.
 "`distribution`",
 `string`
 
-**Functions**: [irradiance](irradiance.html "Computes irradiance (global illumination) at the point P with the normal N."), [occlusion](occlusion.html "Computes ambient occlusion.")
+**Functions**: [irradiance](irradiance.html) () ("Computes irradiance (global illumination) at the point P with the normal N."), [occlusion](occlusion.html) () ("Computes ambient occlusion.")
 
 Distribution for computing irradiance. The default is to use
 a cosine distribution (diffuse illumination). The possible
 values for the style are `"nonweighted"` for uniform sampling
 or `"cosine"` for cosine weighted sampling.
 
-##
-
-Ray sending options
+## Ray sending options
 
 [¶](#ray-sending-options)
 
@@ -272,7 +254,7 @@ surfaces hit by the rays."):
 - `cosine` – Rays are distributed by the cosine (diffuse) function over the hemisphere.
 - `uniform` – Rays are distributed uniformly over the hemisphere
 
-For [sample_geometry](sample_geometry.html "Samples geometry in the scene and returns information from the shaders of surfaces that were sampled."):
+For [sample_geometry](sample_geometry.html) () ("Samples geometry in the scene and returns information from the shaders of surfaces that were sampled."):
 
 - `area` – Samples are distributed by primitive area
 - `parametric` – Samples are distributed by primitive ID, subdivision ID, and parametric surface coordinates (s, t).
@@ -334,9 +316,7 @@ The number of transparent samples to take for stochastic transparency with array
 
 `transparentsamples` must be 1 when importing `F` or `ray:material` using `screendoor` `samplefilter`.
 
-##
-
-Sending information to the surface’s shader
+## Sending information to the surface’s shader
 
 [¶](#sending-information-to-the-surface-s-shader)
 
@@ -347,15 +327,13 @@ gather(P, dir, "send:N", normalize(N)) { ... }
 
 ```
 
-You can extract this passed data on the receiving end (that is, in the surface being hit by the ray) with the [rayimport](rayimport.html "Imports a value sent by a shader in a gather loop.") function. The first argument is the name (without the `send:` prefix) and the second argument is a variable in which to store the imported value.
+You can extract this passed data on the receiving end (that is, in the surface being hit by the ray) with the [rayimport](rayimport.html) () ("Imports a value sent by a shader in a gather loop.") function. The first argument is the name (without the `send:` prefix) and the second argument is a variable in which to store the imported value.
 
 `int rayimport(string name, <type> &value)`
 
 `rayimport` returns `1` if the value was imported successfully.
 
-##
-
-Importing information from the ray
+## Importing information from the ray
 
 [¶](#importing-information-from-the-ray)
 
@@ -398,7 +376,7 @@ The estimated solid angle subtended by all geometry in the raytracing scope. For
 
 You can retrieve information about more than one hit along
 the ray by requesting data in an array variable. When an imported
-value is of an array type, the [trace](trace.html "Sends a ray from P along the normalized vector D.") function will automatically append
+value is of an array type, the [trace](trace.html) () ("Sends a ray from P along the normalized vector D.") function will automatically append
 an entry in the array for each individual hit point that was composited
 during ray tracing. For the `opacity` sample filter (see below), an entry will be
 created in the array for each semi-transparent sample encountered until
@@ -418,9 +396,7 @@ trace(P, dir, Time,
 
 ```
 
-##
-
-Sample filtering options
+## Sample filtering options
 
 [¶](#sample-filtering-options)
 
@@ -469,7 +445,7 @@ Return the sum of the reciprocals of each sample.
 
 ::: info Note
 
-When using [sample_geometry](sample_geometry.html "Samples geometry in the scene and returns information from the shaders of surfaces that were sampled."), the default `samplefilter` is set to `closest` by default, since opacity blending only works when compositing data along a ray.
+When using [sample_geometry](sample_geometry.html) () ("Samples geometry in the scene and returns information from the shaders of surfaces that were sampled."), the default `samplefilter` is set to `closest` by default, since opacity blending only works when compositing data along a ray.
 
 ```c
 gather(P, dir,
@@ -491,9 +467,7 @@ gather(P, dir,
 
 ```
 
-##
-
-Pipeline options
+## Pipeline options
 
 [¶](#pipeline-options)
 
@@ -509,8 +483,6 @@ gather(p, d, "pipeline", "surface", "Cf", surfCf,
  "pipeline", "atmosphere" "Cf", fogCf, "P", hitP)
 
 ```
-
-
 
 ## See also
 

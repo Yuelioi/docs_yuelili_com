@@ -7,9 +7,7 @@ category:
 
 `int unpack\_intfromsafefloat(float f)`
 
-See [pack_inttosafefloat](pack_inttosafefloat.html "Reversibly packs an integer into a finite, non-denormal float.")
-
-
+See [pack_inttosafefloat](pack_inttosafefloat.html) () ("Reversibly packs an integer into a finite, non-denormal float.")
 
 ## See also
 

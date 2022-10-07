@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Since 17.5
 
 `int usd\_istransformreset(<stage>stage, string primpath)`
@@ -29,15 +27,13 @@ The path to the primitive.
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Check if the cube's transform is reset.
 int is\_xform\_reset = usd\_istransformreset(1, "/geo/cube");
 
 ```
-
-
 
 ## See also
 

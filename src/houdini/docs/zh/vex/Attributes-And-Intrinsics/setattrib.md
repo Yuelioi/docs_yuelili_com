@@ -5,77 +5,61 @@ category:
   - vex
 ---
 
-If you know the attribute class ahead of time, using [setdetailattrib](setdetailattrib.html "Sets a detail attribute in a geometry."), [setprimattrib](setprimattrib.html "Sets a primitive attribute in a geometry."), [setpointattrib](setpointattrib.html "Sets a point attribute in a geometry."), or [setvertexattrib](setvertexattrib.html "Sets a vertex attribute in a geometry.") may be faster.
+如果你提前知道属性类别，使用 [setdetailattrib](setdetailattrib.html) () （"在一个几何体中设置一个细节属性。"）， [setprimattrib](setprimattrib.html) （"在一个几何体中设置一个原始属性。"），[setpointattrib](setpointattrib.html) () （"在一个几何体中设置一个点属性。"），或者[setvertexattrib](setvertexattrib.html) （"在一个几何体中设置一个顶点属性。"）可能更快。
 
 `int setattrib(int geohandle, string attribclass, string attribute\_name, int element\_num, int vertex\_num, <type>value, string mode="set")`
 
 `int setattrib(int geohandle, string attribclass, string attribute\_name, int element\_num, int vertex\_num, <type>value[], string mode="set")`
 
-Returns the value of `geohandle` on success or `-1` on failure.
+成功时返回`geohandle'的值，失败时返回`-1'。
 
 ::: info Note
 
-If the attribute does not exist, this function **creates the attribute** with a default value of zero, empty string, or an empty array.
-If you want to control the default value of a numeric attribute, use [addattrib](addattrib.html "Adds an attribute to a geometry.") before setting the attribute.
+如果该属性不存在，该函数**创建的属性**的默认值为零、空字符串或空数组。如果你想控制一个数字属性的默认值，请在设置属性之前使用[addattrib](addattrib.html)（"为几何体添加一个属性。"）。
 
 ## Arguments
 
 `geohandle`
 
-A handle to the geometry to write to. Currently the only valid value is `0` or [geoself](geoself.html "Returns a handle to the current geometry."), which means the current geometry in a node. (This argument may be used in the future to allow writing to other geometries.)
+要写入的几何体的句柄。目前唯一有效的值是`0`或[geoself](geoself.html) () ("返回当前几何体的句柄。")，这意味着当前节点中的几何体。(这个参数将来可能会被用来允许写到其他的几何体)。
 
 `attribclass`
 
-One of `"detail"` (or `"global"`), `"point"`, `"prim"`, or `"vertex"`.
+是 "细节"（或 "全局"）、"点"、"基元 "或 "顶点 "之一。
 
-You can also use `"primgroup"`, `"pointgroup"` or `"vertexgroup"` to [read from groups](../groups.html "You can read the contents of primitive/point/vertex groups in VEX as if they were attributes.").
+你也可以使用`"primgroup"`、`"pointgroup"`或`"vertexgroup"`来[从组中读取](.../groups.html)（"你可以在 VEX 中读取 primitive/point/vertex 组的内容，就像它们是属性一样。"）。
 
 `attribute_name`
 
-The name of the attribute to change.
+要改变的属性的名称。
 
 `element_num`
 
-The point or primitive number on which to change the attribute.
+要改变属性的点或原点编号。
 
-For detail attributes, set this to `0` (the argument is ignored for detail attributes).
+对于细节属性，将其设置为`0`（对于细节属性，该参数被忽略）。
 
-For vertex attributes, set this to the primitive number of the primitive containing the vertex.
+对于顶点属性，将此设置为包含顶点的基元编号。
 
 `vertex_num`
 
-For vertex attributes, this is the number of the vertex on the primitive specified in `element_num`.
+对于顶点属性，这是在`element_num`中指定的基元上的顶点的编号。
 
-To use a linear vertex index, set `element_num` to `-1` and use the linear vertex index here.
+要使用线性顶点索引，将`element_num`设置为`-1`，并在此使用线性顶点索引。
 
-For other detail, primitive, or point attributes, set this to `0` (the argument is ignored in these cases).
+对于其他细节、基元或点属性，将其设置为`0`（在这些情况下参数被忽略）。
 
 `value`
 
-The value to set. If the type of this argument is not compatible with the attribute type, the set will fail and the function will return `-1`.
+要设置的值。如果这个参数的类型与属性类型不兼容，设置将失败，函数将返回`-1'。
 
 ::: info Note that within a VEX program only one type may be written to a single attribute. Ie, you cannot mix writes of float an integer. This can be surprising as a literal like `1` will be an integer write so be ignored if floats were previously written.
 
 `mode`
 
-(Optional) if given, this controls how the function modifies any existing value in the attribute.
+(可选）如果给定，这将控制函数如何修改属性中的任何现有值。
 
-
-`"set"` Overwrite the attribute with the given value.
-|
-`"add"` Add to the attribute the value.
-|
-`"min"`, `"minimum"` Set the attribute to the minimum of itself and the value.
-|
-`"max"`, `"maximum"` Set the attribute to the maximum of itself and the value.
-|
-`"mult"`, `"multiply"` Multiply the attribute by the value. For matrices, this will do matrix multiplication. For vectors, component-wise.
-|
-`"toggle"` Toggles the attribute, independent of the source value. Useful for toggling group membership.
-|
-`"append"` Valid for string and array attributes. Appends the source value to the end of the original value.
-
-
+`"set"`用给定的值覆盖该属性。| `"add"` 给属性添加值。| `"min", `"minimum"`将属性设置为其本身和值的最小值。|`"max", `"maximum"` 将属性设为其本身和数值的最大值。| `"mult"`, `"multiply"` 将属性值乘以数值。对于矩阵，这将做矩阵乘法。对于向量来说，是分量式的。| `"toggle"`切换属性，与源值无关。对于切换组的成员资格很有用。| `"append"` 对字符串和数组属性有效。将源值附加到原始值的末尾。
 
 ## See also
 
@@ -84,8 +68,7 @@ The value to set. If the type of this argument is not compatible with the attrib
 - [setvertexattrib](setvertexattrib.html)
 - [setprimattrib](setprimattrib.html)
 
-|
-attrib
+### attrib
 
 [addattrib](addattrib.html)
 

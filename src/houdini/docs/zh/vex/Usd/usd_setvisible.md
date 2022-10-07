@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Since 17.5
 
 `int usd\_setvisible(int stagehandle, string primpath, int flag)`
@@ -35,15 +33,13 @@ The value of `stagehandle` on success or `-1` on failure.
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Set the sphere primitive as visible.
 usd\_setvisible(0, "/geo/sphere", true);
 
 ```
-
-
 
 ## See also
 

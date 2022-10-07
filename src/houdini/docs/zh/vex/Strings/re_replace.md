@@ -7,11 +7,9 @@ category:
 
 `string re\_replace(string regex, string replacement, string input, int maxreplace=0)`
 
-Returns a string where each non-overlapping match of `regex` is replaced with `replacement`. The `replacement` string can reference captured groups from the regex using `$1` syntax.
+返回一个字符串，其中每个非重叠匹配的`regex`被替换成`replacement`。替换 "字符串可以使用"$1 "语法引用从 regex 中捕获的组。
 
-If `maxreplace` is given and not 0, it specifies the maximum number of replacements to do.
-
-
+如果 "maxreplace "被给定而不是 0，它指定了要做的最大替换次数。
 
 ## See also
 

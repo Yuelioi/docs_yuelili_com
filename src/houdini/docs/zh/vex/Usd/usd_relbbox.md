@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Since 18.0
 
 `vector usd\_relbbox(<stage>stage, string primpath, string purpose, vector position)`
@@ -33,7 +31,7 @@ The relative position of the given point with respect to the bounding box of the
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Get the points relative position.
@@ -41,8 +39,6 @@ vector pt = {1, 0, 0};
 vector rel\_pt = usd\_relbbox(0, "/src/sphere", "render", pt);
 
 ```
-
-
 
 ## See also
 

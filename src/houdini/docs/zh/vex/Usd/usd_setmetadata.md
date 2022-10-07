@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Since 18.0
 
 `int usd\_setmetadata(int stagehandle, string path, string name, <type>value)`
@@ -37,7 +35,7 @@ The value of `stagehandle` on success, or `-1` on failure.
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Set a documentation string on the sphere.
@@ -56,8 +54,6 @@ string attrib\_path = usd\_makeattribpath(0, "/geo/sphere", "attrib\_name");
 sd\_setmetadata(0, attrib\_path, "customData:foo", 1.25);
 
 ```
-
-
 
 ## See also
 

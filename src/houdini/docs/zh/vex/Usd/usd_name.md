@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Since 17.5
 
 `string usd\_name(<stage>stage, string primpath)`
@@ -31,15 +29,13 @@ The name of the primitive.
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Get the primitive name, ie "cube".
 string name = usd\_name(0, "/geo/cube");
 
 ```
-
-
 
 ## See also
 

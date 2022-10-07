@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Since 18.0
 
 `int usd\_haspayload(<stage>stage, string primpath)`
@@ -29,14 +27,12 @@ The path to the primitive.
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 int has\_payload = usd\_haspayload(0, "/geo/sphere" );
 
 ```
-
-
 
 ## See also
 

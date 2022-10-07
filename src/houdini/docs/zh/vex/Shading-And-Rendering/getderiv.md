@@ -5,16 +5,13 @@ category:
   - vex
 ---
 
+在这一页
 
-
-On this page
-
-- [Derivatives options](#derivatives-options)
-- [Examples](#examples)
+- [衍生品选项](#衍生品-选项)
+- [例子](#例子)
 
 |
 
-Context(s)
 [displace](../contexts/displace.html)
 [fog](../contexts/fog.html)
 [light](../contexts/light.html)
@@ -27,70 +24,55 @@ Context(s)
 
 ::: info Note
 
-If derivatives are queried for a polygonal mesh it is interally sampled as a Subdivision Surface.
+内涵(s) 如果导数被查询到的是多边形网格，那么它就会被作为细分曲面进行相互采样。
 
 ## Arguments
 
 `attr`
 
-Attribute value.
+属性值。
 
 `attrName`
 
-Name of attribute to evaluate.
+要评估的属性的名称。
 
 `isVertexAttr`
 
-Set to `1` to indicate the attribute is a vertex type.
+设置为`1`表示该属性是一个顶点类型。
 
 `s`
 
-Parametric S shading value. This should be passed from the `s` global variable.
+参数 S 的阴影值。这应该从`s`全局变量中传递。
 
 `t`
 
-Parametric <type> shading value. This should be passed from the `t` global variable.
+参数<类型>阴影值。这应该由`t`全局变量传递。
 
 `du`
 
-Derivative of attribute in U direction.
+属性在 U 方向的衍生物。
 
 `dv`
 
-Derivative of attribute in V direction.
+属性在 V 方向上的衍生物。
 
-##
-
-Derivatives options
+## 衍生品期权
 
 [¶](#derivatives-options)
 
-Functions which compute derivatives take additional arguments to
-allow tuning of the derivative computation.
+计算导数的函数需要额外的参数，以便对导数计算进行调整。
 
 ## Arguments
 
-"`extrapolate`",
 `int`
 `=0`
 
-Whether derivatives are
-“smooth” across patch boundaries. In most cases this is true and if
-extrapolation is turned on, derivative computation should be exact
-for C2 surfaces. However, when the VEX variables are changing with a
-high frequency (for example, a high frequency displacement map
-causing high frequency changes to the P variable), extrapolation of
-derivative computation may cause exaggeration of discontinuities
-between patch boundaries.
+"`extrapolate`", 导数是否 "平滑 "地跨越补丁边界。在大多数情况下，这是真的，如果外推法被打开，导数计算对 C2 表面来说应该是精确的。然而，当 VEX 变量以高频率变化时（例如，高频率的位移图导致 P 变量的高频率变化），导数计算的外推可能导致补丁边界之间不连续的夸张。
 
-"`smooth`",
 `int`
 `=1`
 
-Adjust the magnitude of the
-differentials non-uniformly over patches. This will usually reduce
-patch discontinuities in displacement/textured shaders. However, in
-some odd cases you may want to turn this feature off.
+"`smooth'"，在斑块上非均匀地调整差值的大小。这通常会减少位移/纹理明暗器中的补丁不连续。然而，在一些奇怪的情况下，你可能想把这个功能关掉。
 
 ```c
 N = computenormal(P, "extrapolate", 1, "smooth", 0);
@@ -99,16 +81,12 @@ N = computenormal(P, "extrapolate", 1, "smooth", 0);
 
 ## Examples
 
-[¶](#examples)
-
 ```c
 // Get derivatives of point attribute 'N'
 vector dNdu, dNdv;
 getderiv(N, "N", 0, s, t, dNdu, dNdv);
 
 ```
-
-
 
 ## See also
 

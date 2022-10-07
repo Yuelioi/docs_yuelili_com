@@ -5,22 +5,15 @@ category:
   - vex
 ---
 
-
-
-Context(s)
 [surface](../contexts/surface.html)
 
 `int islpeactive()`
 
-Returns 1 if there are any image planes with vex variable that starts with
-`"lpe:"`, which indicates that Light Path Expression (LPE) is enabled. Returns 0
-if no such image plane exists.
+Context(s) 如果有任何图像平面的 vex 变量以`"lpe: "开头，表明光路表达（LPE）被启用，则返回 1。如果不存在这样的图像平面，则返回 0。
 
-This function is used to optimize out any LPE related function calls if the
-current render doesn’t have any AOVs that uses LPE.
+如果当前的渲染没有任何使用 LPE 的 AOV，这个函数用于优化任何 LPE 相关的函数调用。
 
-
-shadow
+阴影
 
 [dsmpixel](dsmpixel.html)
 
@@ -36,8 +29,7 @@ shadow
 
 [shadowmap](shadowmap.html)
 
-|
-surface
+| 表面
 
 [ambient](ambient.html)
 

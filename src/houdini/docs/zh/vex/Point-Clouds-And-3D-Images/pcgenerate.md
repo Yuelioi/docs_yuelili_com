@@ -7,34 +7,21 @@ category:
 
 `int pcgenerate(string filename, int npoints)`
 
-This function returns a handle to the point cloud with the specified name or
-creates a new point cloud with the specified name and number of points.
-Initially, the point cloud has no channels, but channels can be added using
-[pcexport](pcexport.html "Writes data to a point cloud inside a pciterate or a pcunshaded loop.") in a [pcunshaded](pcunshaded.html "Iterate over all of the points of a read-write channel which haven’t
-had any data written to the channel yet.") loop. Note that if pcgenerate() is called
-with the name of a point cloud that already exists, that point cloud will not
-be re-sized to contain the specified number of points.
+这个函数返回一个具有指定名称的点云的句柄，或者创建一个具有指定名称和点数的新点云。最初，点云没有通道，但是通道可以在[pcunshaded](pcunshaded.html) ("在pciterate或pcunshaded循环中向点云写入数据。")循环中使用[pccexport](pcunshaded.html) ("遍历一个读写通道中尚未有任何数据写入该通道的所有点。")添加。请注意，如果 pcgenerate()被调用时，点云的名称已经存在，那么该点云将不会被重新放大以包含指定的点的数量。
 
-Once a position channel has been established, call [pcopen](pcopen.html "Returns a handle to a point cloud file.") to query the
-generated point cloud. Note that calling [pcopen](pcopen.html "Returns a handle to a point cloud file.") will lock the specified
-position channel. Once a point cloud has been opened, it is considered to be
-generated. Calling pcgenerate() with the name of a generated point cloud is
-similar to calling pcopen() and requesting 0 points: no points will be available
-in a [pcunshaded](pcunshaded.html "Iterate over all of the points of a read-write channel which haven’t
-had any data written to the channel yet.") or [pciterate](pciterate.html "This function can be used to iterate over all the points which were
-found in the pcopen query.") loop.
+一旦建立了一个位置通道，调用[pcopen](pcopen.html) ()（"返回一个点云文件的句柄。"）来查询生成的点云。请注意，调用[pcopen](pcopen.html)（"返回一个点云文件的句柄。"）将锁定指定的位置通道。一旦一个点云被打开，它就被认为是已经生成了。用已生成的点云的名称调用 pcgenerate()类似于调用 pcopen()并请求 0 点：在[pcunshaded](pcunshaded.html) ("遍历一个读写通道中尚未有任何数据写入该通道的所有点。")或[pciterate](pciterate.html) ("该函数可用于遍历在pcopen查询中发现的所有点。")循环中没有点。
 
-This function only stores a point cloud in RAM. To write points to disk, use [pcwrite()](pcwrite.html "Writes data to a point cloud file.").
+这个函数只在 RAM 中存储点云。要将点写入磁盘，请使用[pcwrite()](pcwrite.html) () ("将数据写入点云文件")。
 
 ::: info Note
 
-We refer to the parameter as a filename to be consistent with `pcopen()`. The two functions share the same namespace. That is, if you call `pcgenerate("myfile.pc", ...)`, you can then query `"myfile.pc"` by calling `pcopen("myfile.pc", ...)` or `pcopenlod("myfile.pc", ...)`.
+我们把参数称为文件名，以便与`pcopen()`保持一致。这两个函数共享同一个命名空间。也就是说，如果你调用`pcgenerate("myfile.pc", ...)`，你就可以通过调用`pcopen("myfile.pc", ...)`或`pcopenlod("myfile.pc", ...)`查询`"myfile.pc"`。
 
-This works the other way as well. If you call `pcopen("myfile.pc", ...)` and then call `pcgenerate("myfile.pc", ...)`, the `pcgenerate()` call will use the point cloud that is already loaded into memory through the `pcopen()` call rather than creating a new point cloud.
+这在另一个方面也是可行的。如果你调用`pcopen("myfile.pc", ...)`，然后调用`pcgenerate("myfile.pc", ...)`，`pcgenerate()`调用将使用已经通过`pcopen()`调用载入内存的点云，而不是创建一个新的点云。
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 vector position;
@@ -58,8 +45,6 @@ pcclose(ohandle);
 pcclose(ghandle);
 
 ```
-
-
 
 ## See also
 

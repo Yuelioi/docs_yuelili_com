@@ -5,17 +5,13 @@ category:
   - vex
 ---
 
-
-
-Context(s)
 [cop](../contexts/cop.html)
 
 `string ichname(int inputnum, int plane\_index, int component\_index)`
 
-Returns the component name (for example, “r” or “x”) of a component of a plane.
+Context(s) 返回一个平面的某个组件的组件名称（例如，"r "或 "x"）。
 
-
-input_plane
+输入平面
 
 [iaspect](iaspect.html)
 

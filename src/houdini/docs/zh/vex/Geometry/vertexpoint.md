@@ -11,23 +11,21 @@ category:
 
 `<geometry>`
 
-When running in the context of a node (such as a wrangle SOP), this argument can be an integer representing the input number (starting at 0) to read the geometry from.
+当在一个节点的上下文中运行时（比如一个 wrangle SOP），这个参数可以是一个整数，代表要读取几何图形的输入数字（从 0 开始）。
 
-Alternatively, the argument can be a string specifying a geometry file (for example, a `.bgeo`) to read from. When running inside Houdini, this can be an `op:/path/to/sop` reference.
+或者，该参数可以是一个字符串，指定一个几何文件（例如，一个`.bgeo'）来读取。当在Houdini内部运行时，这可以是一个`op:/path/to/sop`的引用。
 
 `linearvertex`
 
-The linear vertex number. The `vertexindex` function can be used
-to compute a linear vertex from a primitive number and vertex
-number pair.
+线性顶点编号。`vertexindex`函数可用于从原始数和顶点数对中计算出一个线性顶点。
 
 ## Returns
 
-The point number associated with the vertex, or `-1` if the vertex has no point.
+与顶点相关的点号，如果顶点没有点，则为`-1`。
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 int pt;
@@ -36,8 +34,6 @@ int pt;
 pt = vertexpoint("defgeo.bgeo", 3);
 
 ```
-
-
 
 ## See also
 

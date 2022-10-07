@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Since 18.0
 
 `int usd\_primvarlen(<stage>stage, string primpath, string name)`
@@ -37,19 +35,17 @@ The USD time code at which to evaluate the attribute. A USD time code roughly co
 
 ## Returns
 
-The length of the array primvar, or `1` if the primvar is not an array, or `0` if the primvar does not exist. Use [usd_isarrayprimvar](usd_isarrayprimvar.html "Checks if there is an array primvar directly on the USD primitive.") to check if the primvar is an array.
+The length of the array primvar, or `1` if the primvar is not an array, or `0` if the primvar does not exist. Use [usd_isarrayprimvar](usd_isarrayprimvar.html) () ("Checks if there is an array primvar directly on the USD primitive.") to check if the primvar is an array.
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Get the array length of the primvar on cube.
 int array\_length = usd\_primvarlen(0, "/geo/cube", "array\_primvar\_name");
 
 ```
-
-
 
 ## See also
 

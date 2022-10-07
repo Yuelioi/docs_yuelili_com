@@ -13,8 +13,6 @@ category:
 
 Returns an array of all strings that match the entire `regex` expression (no capture groups).
 
-
-
 ## See also
 
 - [re_find](re_find.html)

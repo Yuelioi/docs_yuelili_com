@@ -7,15 +7,9 @@ category:
 
 `float blinnBRDF(vector L, vector N, vector V, float rough)`
 
-[specularBRDF](specularBRDF.html "Returns the computed BRDFs for the different lighting models used in VEX shading."), [phongBRDF](phongBRDF.html), `blinnBRDF`,
-and [diffuseBRDF](diffuseBRDF.html) return the computed BRDF for the
-different lighting models used in VEX shading. You can use them in
-custom [illuminance](illuminance.html "Loops through all light sources in the scene, calling the light shader for each light source to set the Cl and L global variables.") loops to replicate the lighting models of the
-corresponding VEX lighting functions.
+[specularBRDF](specularBRDF.html) () ("返回 VEX 着色中使用的不同照明模型的计算的 BRDF。"), [phongBRDF](phongBRDF.html) (), `blinnBRDF`, 和 [diffuseBRDF](diffuseBRDF.html) 返回 VEX 着色中使用的不同照明模型计算的 BRDF。你可以在自定义的[illuminance](illuminance.html)（"循环浏览场景中的所有光源，为每个光源调用光照器以设置 Cl 和 L 全局变量。"）循环中使用它们来复制相应 VEX 照明函数的照明模型。
 
-See [specularBRDF](specularBRDF.html "Returns the computed BRDFs for the different lighting models used in VEX shading.") for some example code.
-
-
+参见[specularBRDF](specularBRDF.html) () ("返回 VEX 着色中使用的不同照明模型的计算 BRDF。") 以了解一些示例代码。
 
 ## See also
 

@@ -13,56 +13,52 @@ category:
 
 `float agentclipsample(<geometry>geometry, int prim, int clipindex, float time, string channel)`
 
-Evaluates the clip at the given time and returns the value of the specified channel.
-Returns zero if `clipname` is not one of the agent’s [animation clips](agentclipcatalog.html "Returns all of the animation clips that have been loaded for an agent primitive."), `prim` is out of range, `prim` is not an agent primitive, `channel_index` is out of range, or `channel` does not exist.
+在给定时间评估片段，并返回指定通道的值。如果`clipname`不是代理的[animation clips](agentclipcatalog.html) () ("返回所有为代理基元加载的动画片段。")，`prim`超出范围，`prim`不是代理基元，`channel_index`超出范围，或者`channel`不存在，则返回零。
 
-For sampling the clip’s transform channels, use [agentclipsamplelocal](agentclipsamplelocal.html "Samples an agent’s animation clip at a specific time.") or [agentclipsampleworld](agentclipsampleworld.html "Samples an agent’s animation clip at a specific time.") instead.
+对于剪辑的转换通道的采样，使用[agentclipsamplelocal](agentclipsamplelocal.html) ()("在特定时间对代理的动画剪辑进行采样。")或[agentclipsampleworld](agentclipsampleworld.html) ()("在特定时间对代理的动画剪辑进行采样。")代替。
 
 ## Arguments
 
 `<geometry>`
 
-When running in the context of a node (such as a wrangle SOP), this argument can be an integer representing the input number (starting at 0) to read the geometry from.
+当在一个节点的上下文中运行时（比如一个 wrangle SOP），这个参数可以是一个整数，代表要读取几何图形的输入数字（从 0 开始）。
 
-Alternatively, the argument can be a string specifying a geometry file (for example, a `.bgeo`) to read from. When running inside Houdini, this can be an `op:/path/to/sop` reference.
+或者，该参数可以是一个字符串，指定一个几何文件（例如，一个`.bgeo'）来读取。当在Houdini内部运行时，这可以是一个`op:/path/to/sop`的引用。
 
 `prim`
 
-The primitive number.
+原始的数字。
 
 `clipname`
 
-The name of the animation clip.
+动画片段的名称。
 
 `clipindex`
 
-Index of a clip in the agent’s definition.
-A clip’s index can be obtained via [agentfindclip](agentfindclip.html "Finds the index of a clip in an agent’s definition.").
+代理商定义中一个片段的索引。一个片段的索引可以通过[agentfindclip](agentfindclip.html) ()("查找代理定义中一个片段的索引。")获得。
 
 `time`
 
-The time (in seconds) to evaluate the clip at. If this time is greater than the [clip’s length](agentcliplength.html "Returns the length (in seconds) of an agent’s animation clip."), it will be wrapped around.
+评估该片段的时间（以秒为单位）。如果这个时间大于[clip's length](agentcliplength.html)（"返回代理的动画片段的长度（秒）。"），它将被包裹起来。
 
 `channel_index`
 
-Index of a channel in the animation clip, as returned by [agentclipchannel](agentclipchannel.html "Finds the index of a channel in an agent’s animation clip.").
+动画剪辑中的通道索引，由[agentclipchannel](agentclipchannel.html)返回（"查找代理的动画剪辑中的通道索引"）。
 
 `channel`
 
-Name of a channel in the animation clip.
+动画片段中的一个通道的名称。
 
 ## Examples
 
-[¶](#examples)
 
-Sample a channel of the walk clip after 1.2 seconds.
+
+在 1.2 秒后对行走片段的一个通道进行采样。
 
 ```c
 float value = agentclipsample(0, @primnum, "walk", 1.2, "latch\_leftfoot");
 
 ```
-
-
 
 ## See also
 

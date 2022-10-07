@@ -9,12 +9,11 @@ category:
 
 `string chs(string channel, float time)`
 
-Evaluates a channel (or parameter) and return its value.
+评估一个通道（或参数）并返回其值。
 
-The time is specified in seconds, not in frames.
+时间的单位是秒，而不是帧。
 
-
-utility
+公用事业
 
 [assert_enabled](assert_enabled.html)
 

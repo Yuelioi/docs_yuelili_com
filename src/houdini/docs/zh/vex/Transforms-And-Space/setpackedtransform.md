@@ -5,30 +5,27 @@ category:
   - vex
 ---
 
-
-
-Since 17.0
+自 17.0 以来
 
 `void setpackedtransform(int input, int primnum, matrix transform)`
 
-Sets the transform of a packed primitive. This modifies the `P` attribute of
-the primitive’s point as well as its intrinsic `transform`.
+设置打包的基元的变换。这修改了基元的点的`P`属性以及其内在的`变换`。
 
-Warning
+警告
 
-This function replaces _only_ the `P` (position) attribute and the `transform` intrinsic attribute. It ignores various details that the `packedfulltransform` intrinsic attribute includes:
+这个函数只替换了`P`（位置）属性和`transform`内在属性。它忽略了`packedfulltransform`内在属性包括的各种细节。
 
-- The packed primitive’s `pivot` intrinsic attribute.
-- Instancing attributes such as `orient` (when the `pointinstancetransform` intrinsic attribute is on, as with crowd agents).
-- The `packedlocaltransform` intrinsic attribute (Alembic primitives).
+- 打包基元的`pivot'内在属性。
+- 实例化属性，如 "方向"（当 "pointinstancetransform "内在属性开启时，如人群代理）。
+- `packedlocaltransform`内在属性（Alembic 基元）。
 
-So this function will not apply the expected transform in several different cases.
+所以这个函数在几种不同的情况下都不会应用预期的变换。
 
-The [getpackedtransform](getpackedtransform.html "Gets the transform of a packed primitive.") function has the same issues since it returns a transform _only_ based on `P` and `transform`.
+[getpackedtransform](getpackedtransform.html) () ("获取一个包装好的基元的变换。") 函数也有同样的问题，因为它只基于`P`和`transform`返回一个变换。
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // matrix to transform by
@@ -40,8 +37,6 @@ matrix transform = getpackedtransform(0, @primnum);
 setpackedtransform(0, @primnum, transform \* tf);
 
 ```
-
-
 
 ## See also
 

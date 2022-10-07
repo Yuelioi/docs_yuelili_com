@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Since 17.5
 
 `int usd\_setactive(int stagehandle, string primpath, int flag)`
@@ -33,15 +31,13 @@ The value of `stagehandle` on success or `-1` on failure.
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Set the sphere primitive as active.
 usd\_setactive(0, "/geo/sphere", true);
 
 ```
-
-
 
 ## See also
 

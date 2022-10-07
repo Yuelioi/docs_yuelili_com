@@ -5,9 +5,7 @@ category:
   - vex
 ---
 
-
-
-Since 18.0
+自 18.0 以来
 
 `float chrampderiv(string channel, float ramppos)`
 
@@ -17,15 +15,11 @@ Since 18.0
 
 `vector chrampderiv(string channel, float ramppos, float time)`
 
-Evaluates the derivative of a parm parameter with respect to position.
+评估一个参数相对于位置的导数。
 
-The ramppos is where on the ramp to evaluate. The ramppos is clamped to the range `[0,1]`
+ramppos 是斜坡上要评估的位置。ramppos 被钳制在`[0,1]`范围内。
 
-The time parameter can be used if the ramp is animated to evaluate
-at other than the current time.
 ::: info Note that this does not take a derivative with respect to time.
-
-
 
 ## See also
 

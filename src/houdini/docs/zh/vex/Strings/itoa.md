@@ -7,10 +7,9 @@ category:
 
 `string itoa(int number)`
 
-Converts an integer to a string.
+将一个整数转换为字符串。
 
-
-string
+绳子
 
 [atof](atof.html)
 

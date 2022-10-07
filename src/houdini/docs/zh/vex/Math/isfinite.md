@@ -7,20 +7,17 @@ category:
 
 `int isfinite(float x)`
 
-Returns 1 if the given value is a normal, finite, number.
+如果给定值是一个正常的、有限的数字，则返回 1。
 
-Returns 0 if it is a NAN or infinite. Note that VEX generally
-will not produce these: 3/0 is defined as 0, for example.
+如果是 NAN 或无穷大，则返回 0。注意，VEX 一般不会产生这些。例如，3/0 被定义为 0。
 
-
-float
+浮动
 
 [isfinite](isfinite.html)
 
 [isnan](isnan.html)
 
-|
-math
+| 数学
 
 [Du](Du.html)
 

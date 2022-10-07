@@ -5,21 +5,13 @@ category:
   - vex
 ---
 
-
-
-Context(s)
 [shading](../contexts/shading.html)
 
 `float getrayweight()`
 
-Returns an approximation to the contribution of the ray to the final
-pixel color. Often, this is a better metric for judging contribution to
-the final pixel color than [getraylevel](getraylevel.html "Returns the depth of the ray tree for the current shading."). However, this
-relies on prior shaders giving good estimates on the contribution to
-their shading (see [reflectlight](reflectlight.html "Computes the amount of reflected light which hits the surface.")).
+Context(s) 返回射线对最终像素颜色的贡献的近似值。通常情况下，这是比[getraylevel](getraylevel.html) ()（"返回当前着色的光线树的深度"）更好的判断对最终像素颜色贡献的指标。然而，这依赖于先前的着色器对其着色贡献的良好估计（参见[reflectlight](reflectlight.html)（"计算击中表面的反射光量。"））。
 
-
-shading
+遮阳
 
 [Du](Du.html)
 

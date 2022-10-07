@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Since 18.0
 
 `string usd\_makeattribpath(<stage>stage, string primpath, string name)`
@@ -33,15 +31,13 @@ The full path of a given attribute.
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Obtain the full path to the attribute "attrib\_name" on the cube primitive.
 string attrib\_path = usd\_makeattribpath(0, "/geo/cube", "attrib\_name");
 
 ```
-
-
 
 ## See also
 

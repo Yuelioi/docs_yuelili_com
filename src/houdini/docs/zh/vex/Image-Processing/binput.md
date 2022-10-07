@@ -5,9 +5,6 @@ category:
   - vex
 ---
 
-
-
-Context(s)
 [cop](../contexts/cop.html)
 
 `vector binput(int u, int v, ...)`
@@ -18,13 +15,13 @@ Context(s)
 
 `vector4 binput(float u, float v, ...)`
 
-Sample from the currently cooking plane on input 0 at the current frame.
+背景(s) 在当前帧的输入 0 上从当前烹饪平面取样。
 
 `float binput(int comp, int u, int v, ...)`
 
 `float binput(int comp, float u, float v, ...)`
 
-Sample one component from the given component index of the currently cooking plane on input 0 at the current frame.
+在当前帧的输入 0 上从当前烹饪平面的给定分量索引中抽取一个分量。
 
 `vector binput(int opinput, int plane, int u, int v, ...)`
 
@@ -34,19 +31,19 @@ Sample one component from the given component index of the currently cooking pla
 
 `vector4 binput(int opinput, int plane, float u, float v, ...)`
 
-Sample from the given input/plane at the current frame.
+在当前帧从给定的输入/平面取样。
 
 `float binput(int opinput, int plane, int comp, int u, int v, ...)`
 
 `float binput(int opinput, int plane, int comp, float u, float v, ...)`
 
-Sample one component from the given input/plane/component at the current frame.
+在当前帧从给定的输入/平面/组件中抽取一个组件。
 
 `float binput(int opinput, int plane, int array\_index, int comp, int u, int v, int frame, ...)`
 
 `float binput(int opinput, int plane, int array\_index, int comp, float u, float v, int frame, ...)`
 
-Sample one component from the given input/plane/component at the given frame.
+在给定的帧上从给定的输入/平面/组件中抽取一个组件。
 
 `vector binput(int opinput, int plane, int array\_index, int u, int v, int frame, ...)`
 
@@ -56,46 +53,39 @@ Sample one component from the given input/plane/component at the given frame.
 
 `vector4 binput(int opinput, int plane, int array\_index, float u, float v, int frame, ...)`
 
-Sample from the given input/plane/component at the given frame.
+在给定的帧上从给定的输入/平面/组件中取样。
 
 ## Arguments
 
 `opinput`
 
-The input number to read the pixels from. Versions that don’t specify this always use the first input (0).
+读取像素的输入号码。不指定这个的版本总是使用第一个输入（0）。
 
 `plane`
 
-The index of a plane in the input.
-Versions that don’t specify this always use the currently cooking plane.
+输入中的平面的索引。不指定这个的版本总是使用当前烹饪的平面。
 
 `array_index`
 
-For use if the plane has array values. Generally, just pass `0` here.
+当飞机有数组值时使用。一般来说，在这里传递`0'即可。
 
 `comp`
 
-The index of a component within the plane. For example, 0 for red, 1 for green, 2 for blue in an RGB plane.
-The versions that return vectors do not take this argument and return all components at once.
+平面内一个分量的索引。例如，在 RGB 平面中，0 代表红色，1 代表绿色，2 代表蓝色。返回向量的版本不接受这个参数，而是一次性返回所有分量。
 
 `u`, `v`
 
-If you give floating point UVs, the values are interpreted as unit (0-1) values. For example, `0.5, 0.5` would be the center of the image.
-If you give integer UVs, the values are in pixels, ranging from `0,0` to `XRES-1, YRES-1`.
+如果你给了浮点 UV，数值会被解释为单位（0-1）值。例如，`0.5, 0.5`就是图像的中心。如果你给的是整数 UV，值是像素，范围是`0,0`到`XRES-1, YRES-1`。
 
 `frame`
 
-Frame number to sample at.
-Versions that don’t specify this always use the current frame.
+采样的帧号。不指定这个的版本总是使用当前的帧。
 
 ## Returns
 
-A float, vector or vector4 value. If the channel does not exist, returns 0.
-Whenever possible, use the vector versions rather than reading individual components separately.
+一个浮点数、向量或向量 4 的值。如果通道不存在，则返回 0。只要有可能，就使用矢量版本，而不是单独读取单个组件。
 
-See [COP pixel sampling functions](../cop_sample_suite.html) for more information.
-
-
+更多信息请参见[COP 像素采样函数](.../cop_sample_suite.html)。
 
 ## See also
 

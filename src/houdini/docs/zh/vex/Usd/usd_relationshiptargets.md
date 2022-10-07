@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Since 18.0
 
 `string [] usd\_relationshiptargets(<stage>stage, string primpath, string name)`
@@ -33,15 +31,13 @@ List of targets in a relationship.
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Get the list of targets in cube's "some\_relationship" relationship.
 string targets[] = usd\_relationshiptargets(0, "/geo/cube", "some\_relationship");
 
 ```
-
-
 
 ## See also
 

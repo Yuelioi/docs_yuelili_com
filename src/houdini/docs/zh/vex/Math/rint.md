@@ -9,10 +9,9 @@ category:
 
 `<vector> rint(<vector>v)`
 
-Returns the closest whole number to `n`. For vectors, this is done per-component.
+返回与`n`最接近的整数。对于向量，这是按分量进行的。
 
-
-math
+数学
 
 [Du](Du.html)
 
@@ -118,8 +117,7 @@ math
 
 [variance](variance.html)
 
-|
-number
+| 编号
 
 [abs](abs.html)
 

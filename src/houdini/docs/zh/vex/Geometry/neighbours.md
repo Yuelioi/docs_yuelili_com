@@ -11,19 +11,17 @@ category:
 
 `<geometry>`
 
-When running in the context of a node (such as a wrangle SOP), this argument can be an integer representing the input number (starting at 0) to read the geometry from.
+当在一个节点的上下文中运行时（比如一个 wrangle SOP），这个参数可以是一个整数，代表要读取几何图形的输入数字（从 0 开始）。
 
-Alternatively, the argument can be a string specifying a geometry file (for example, a `.bgeo`) to read from. When running inside Houdini, this can be an `op:/path/to/sop` reference.
+或者，该参数可以是一个字符串，指定一个几何文件（例如，一个`.bgeo'）来读取。当在Houdini内部运行时，这可以是一个`op:/path/to/sop`的引用。
 
-This is a simpler, array-based replacement for the combination of
-[neighbourcount](neighbourcount.html "Returns the number of points that are connected to the specified point.") and [neighbour](neighbour.html "Returns the point number of the next point connected to a given point."). The array contains the numbers
-of all points that share an edge with `ptnum`. The point numbers are in no particular order.
+这是对[neighbourbourcount](neighbourcount.html) ()（"返回与指定点相连的点的数量。"）和[neighbour](neighbour.html)（"返回与指定点相连的下一个点的点号。"）组合的更简单、基于数组的替换。数组包含所有与`ptnum'共享一条边的点的编号。这些点的编号没有特定的顺序。
 
 ## Examples
 
-[¶](#examples)
 
-This is roughly equivalent to the following code:
+
+这大致相当于以下代码。
 
 ```c
 int []
@@ -38,8 +36,6 @@ neighbours(int opinput, int ptnum)
 }
 
 ```
-
-
 
 ## See also
 

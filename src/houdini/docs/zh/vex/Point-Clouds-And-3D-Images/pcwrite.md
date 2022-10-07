@@ -7,17 +7,17 @@ category:
 
 `int pcwrite(string filename, ...)`
 
-Writes data for the current shading point out to a point cloud file.
+将当前阴影点的数据写到点云文件中。
 
 ## Arguments
 
 `filename`
 
-The name of the file to write to. You can read the resulting file into a geometry network with the [![](../../icons/COMMON/file.svg)File surface node](../../nodes/sop/file.html "Reads, writes, or caches geometry on disk."). This file should have a `.pc` extension (Houdini will use the extension to determine how to import the file).
+要写入的文件的名称。您可以用(文件表面节点](.../.../nodes/sop/file.html)（"在磁盘上读取、写入或缓存几何图形"）将生成的文件读入几何网络。这个文件应该有一个`.pc`扩展名（Houdini 会使用扩展名来决定如何导入该文件）。
 
 `…`
 
-Subsequent arguments specify one or more pairs of a channel name (a string naming the attribute you're saving, such as `"P"`, `"N"`, `"v"`, `"area"`, `"u"`, etc.) and value (the value you wish to store).
+后续的参数指定一个或多个通道名称（命名你要保存的属性的字符串，如 "P"、"N"、"v"、"区域"、"u "等）和值（你希望存储的值）对。
 
 ```c
 pcwrite("out.pc", "P", P, "N", N)
@@ -63,7 +63,7 @@ When you pass an argument of `1`, the function will automatically create missing
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 surface
@@ -88,8 +88,6 @@ dumpsomepoints(string fname = "points.$F4.pc"; int do\_cull = 0; float keepamt =
 }
 
 ```
-
-
 
 ## See also
 

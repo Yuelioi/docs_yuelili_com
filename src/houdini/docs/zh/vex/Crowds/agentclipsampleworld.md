@@ -13,51 +13,46 @@ category:
 
 `matrix agentclipsampleworld(<geometry>geometry, int prim, int clipindex, float time, int transform)`
 
-Evaluates the clip at the given time and returns the world transforms of the agent’s rig.
-Returns an empty array if `clipname` is not one of the agent’s [animation clips](agentclipcatalog.html "Returns all of the animation clips that have been loaded for an agent primitive."), `prim` is out of range, `prim` is not an agent primitive, or `transform` is [out of range](agenttransformcount.html "Returns the number of transforms in an agent primitive’s rig.").
-The `matrix` signature is more efficient than the `matrix[]` signature for sampling a single transform.
+在给定时间评估片段，并返回代理装备的世界变换。如果`clipname`不是代理的[animation clips](agentclipcatalog.html) () ("返回已经为代理基元加载的所有动画片段。")，`prim`超出范围，`prim`不是代理基元，或者`transform`是[超出范围](agenttransformcount.html) () ("返回代理基元的装备中变换的数量。")，返回一个空数组。`matrix'签名比`matrix[]'签名对单个变换的采样更有效。
 
 ## Arguments
 
 `<geometry>`
 
-When running in the context of a node (such as a wrangle SOP), this argument can be an integer representing the input number (starting at 0) to read the geometry from.
+当在一个节点的上下文中运行时（比如一个 wrangle SOP），这个参数可以是一个整数，代表要读取几何图形的输入数字（从 0 开始）。
 
-Alternatively, the argument can be a string specifying a geometry file (for example, a `.bgeo`) to read from. When running inside Houdini, this can be an `op:/path/to/sop` reference.
+或者，该参数可以是一个字符串，指定一个几何文件（例如，一个`.bgeo'）来读取。当在Houdini内部运行时，这可以是一个`op:/path/to/sop`的引用。
 
 `prim`
 
-The primitive number.
+原始的数字。
 
 `clipname`
 
-The name of the animation clip.
+动画片段的名称。
 
 `clipindex`
 
-Index of a clip in the agent’s definition.
-A clip’s index can be obtained via [agentfindclip](agentfindclip.html "Finds the index of a clip in an agent’s definition.").
+代理商定义中一个片段的索引。一个片段的索引可以通过[agentfindclip](agentfindclip.html) ()("查找代理定义中一个片段的索引。")获得。
 
 `time`
 
-The time (in seconds) to evaluate the clip at. If this time is greater than the [clip’s length](agentcliplength.html "Returns the length (in seconds) of an agent’s animation clip."), it will be wrapped around.
+评估该片段的时间（以秒为单位）。如果这个时间大于[clip's length](agentcliplength.html)（"返回代理的动画片段的长度（秒）。"），它将被包裹起来。
 
 `transform`
 
-Index of a transform in the agent’s rig.
+代理人的装备中的一个变换的索引。
 
 ## Examples
 
-[¶](#examples)
 
-Sample the world transforms of the walk clip after 1.2 seconds.
+
+在 1.2 秒后对行走片段的世界变换进行采样。
 
 ```c
 matrix xforms[] = agentclipsampleworld(0, @primnum, "agent1\_clip.walk", 1.2);
 
 ```
-
-
 
 ## See also
 

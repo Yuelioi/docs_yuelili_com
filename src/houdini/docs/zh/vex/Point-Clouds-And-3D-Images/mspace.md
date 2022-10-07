@@ -5,19 +5,13 @@ category:
   - vex
 ---
 
-
-
-Context(s)
 [image3d](../contexts/image3d.html)
 
 `vector mspace(vector P)`
 
-Transforms the position specified into the “local” space of the
-metaball. This function is only valid inside the [forpoints](forpoints.html) loop
-construct.
+Context(s) 将指定的位置转换为元宝的 "本地 "空间。这个函数只在[forpoints](forpoints.html)循环结构中有效。
 
-An example use of this function would be to compute noise based on a
-“rest” position… For example:
+这个函数的一个使用例子是基于 "休息 "位置计算噪音......例如。
 
 ```c
 forpoints(P) {
@@ -26,7 +20,6 @@ nval += noise(npos);
 }
 
 ```
-
 
 ptcloud
 

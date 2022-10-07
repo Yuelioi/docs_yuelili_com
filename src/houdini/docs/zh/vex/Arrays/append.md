@@ -44,7 +44,7 @@ void  append(<type>&array[], <type>values[])
 
 You can set an individual item in an array using `array[n] = x`.
 
-可以用array[n] = x来设置数组中的单个元素。
+可以用 array[n] = x 来设置数组中的单个元素。
 :::
 
 ## 示例

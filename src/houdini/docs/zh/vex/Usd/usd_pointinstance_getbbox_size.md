@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Since 18.0
 
 `vector usd\_pointinstance\_getbbox\_size(<stage>stage, string primpath, int instance\_index, string purpose)`
@@ -37,15 +35,13 @@ The size of the instance’s bounding box.
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Get the size of the first instance's boundsng box.
 vector size = usd\_pointinstance\_getbbox\_size(0, "/src/instanced\_spheres", 0, "render");
 
 ```
-
-
 
 ## See also
 

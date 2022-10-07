@@ -5,32 +5,27 @@ category:
   - vex
 ---
 
-
-
-Since 18.0
+自 18.0 以来
 
 `int agentrigfindchannel(<geometry>geometry, int prim, string channelname)`
 
-Returns `-1` if `channelname` was not found in the rig, `prim` is out of range, or `prim` is not an agent primitive.
-This index can be used to access an agent’s current channel value using [agentchannelvalue](agentchannelvalue.html "Returns the current value of an agent primitive’s channel.") and [setagentchannelvalue](setagentchannelvalue.html "Overrides the value of an agent primitive’s channel."), or to sample the channel value from any clip using [agentclipsample](agentclipsample.html "Samples a channel of an agent’s clip at a specific time.").
+如果在钻机中没有找到`channelname`，`prim`超出范围，或者`prim`不是一个代理基元，则返回`-1`。这个索引可用于使用[agentchannelvalue](agentchannelvalue.html) ()（"返回一个代理基元的通道的当前值。"）和[setagentchannelvalue](setagentchannelvalue.html)（"覆盖一个代理基元的通道的值。"）访问一个代理的当前通道值，或者使用[agentclipsample](agentclipsample.html)（"在一个特定时间采样一个代理的通道。"）从任何剪辑中采样通道值。
 
 ## Arguments
 
 `<geometry>`
 
-When running in the context of a node (such as a wrangle SOP), this argument can be an integer representing the input number (starting at 0) to read the geometry from.
+当在一个节点的上下文中运行时（比如一个 wrangle SOP），这个参数可以是一个整数，代表要读取几何图形的输入数字（从 0 开始）。
 
-Alternatively, the argument can be a string specifying a geometry file (for example, a `.bgeo`) to read from. When running inside Houdini, this can be an `op:/path/to/sop` reference.
+或者，该参数可以是一个字符串，指定一个几何文件（例如，一个`.bgeo'）来读取。当在Houdini内部运行时，这可以是一个`op:/path/to/sop`的引用。
 
 `prim`
 
-The primitive number.
+原始的数字。
 
 `channelname`
 
-The name of a channel in the agent’s rig.
-
-
+代理人装备中的一个通道的名称。
 
 ## See also
 

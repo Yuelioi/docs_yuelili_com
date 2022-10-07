@@ -9,19 +9,17 @@ category:
 
 `int chi(string channel, float time)`
 
-Evaluates a channel (or parameter) and return its value. The time is specified in _seconds_, not in frames. If you don’t specify the time, the function returns the value at the current time.
+评估一个通道（或参数）并返回其值。时间的单位是\_秒，而不是帧。如果你不指定时间，函数会返回当前时间的值。
 
-Houdini includes several functions to evaluate channels/parameters of different types.
+Houdini 包括几个函数来评估不同类型的通道/参数。
 
-- To get a float or string without needing to know the parameter type, use [ch](ch.html "Evaluates a channel (or parameter) and return its value.").
-- To get a float, use [chf](chf.html "Evaluates a channel (or parameter) and return its value.").
-- To get a string, use [chs](chs.html "Evaluates a channel (or parameter) and return its value.").
-- For integer parameters, use [chi](chi.html "Evaluates a channel (or parameter) and return its value.")
-- For matrix type parameters, use [ch3](ch3.html "Evaluates a channel (or parameter) and return its value.") or [ch4](ch4.html "Evaluates a channel (or parameter) and return its value.").
-- For a ramp parameter, use [chramp](chramp.html "Evaluates a ramp parameter and return its value.") or [chrampderiv](chrampderiv.html "Evaluates the derivative of a parm parameter with respect to position.").
-- Use [chid](chid.html "Resolves a channel string (or parameter) and return op_id, parm_index and vector_index.") to get an `op_id`, `parm_index` and `vector_index` to evaluate the channel without having to do string resolution.
-
-
+- 要获得一个浮点数或字符串而不需要知道参数类型，使用[ch](ch.html)（"评估一个通道（或参数）并返回其值"）。
+- 要得到一个浮点数，使用[chf](chf.html)（"评估一个通道（或参数）并返回其值"）。
+- 要获得一个字符串，使用[chs](chs.html)（"评估一个通道（或参数）并返回其值"）。
+- 对于整数参数，使用[chi](chi.html) () ("评估一个通道（或参数）并返回其值。")
+- 对于矩阵型参数，使用 [ch3](ch3.html) () （"评估一个通道（或参数）并返回其值。"）或 [ch4](ch4.html) （"评估一个通道（或参数）并返回其值。"）。
+- 对于斜坡参数，使用[chramp](chramp.html) ()（"评估一个斜坡参数并返回其值。"）或[chrampderiv](chrampderiv.html)（"评估一个参数相对于位置的导数。"）。
+- 使用[chid](chid.html) () ("解析一个通道的字符串（或参数）并返回 op_id, parm_index 和 vector_index.")来获得一个`op_id`, `parm_index`和`vector_index`来评估通道，而不必做字符串解析。
 
 ## See also
 

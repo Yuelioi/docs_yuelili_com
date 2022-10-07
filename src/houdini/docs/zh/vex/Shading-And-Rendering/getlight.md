@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Context(s)
 [displace](../contexts/displace.html)
 [fog](../contexts/fog.html)
@@ -17,7 +15,7 @@ Context(s)
 `light getlight(int lid)`
 
 Given a integer light identifier (lid), you can get a reference to a light
-object representing the light (see details on the [mantra specific type](../lang.html#mantratypes))
+object representing the light (see details on the [mantra specific type](../lang.html) () (#mantratypes))
 
 ```c
 int[] lights = getlights();
@@ -29,8 +27,6 @@ lp->illuminate(...);
 }
 
 ```
-
-
 
 ## See also
 

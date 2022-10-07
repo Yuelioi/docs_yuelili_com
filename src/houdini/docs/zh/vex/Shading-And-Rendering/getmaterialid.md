@@ -5,19 +5,13 @@ category:
   - vex
 ---
 
-
-
-Context(s)
 [shading](../contexts/shading.html)
 
 `int getmaterialid()`
 
-Returns the material id of the primitive being shaded. The id corresponds to
-the material being evaluated and accounts for overrides from style sheets and
-detail assignments.
+Context(s) 返回被遮蔽的基元的材料 ID。该 ID 与正在评估的材料相对应，并考虑到来自样式表和细节分配的覆盖。
 
-
-shading
+遮阳
 
 [Du](Du.html)
 

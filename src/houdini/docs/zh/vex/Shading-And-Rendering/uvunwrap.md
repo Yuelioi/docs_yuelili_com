@@ -9,41 +9,39 @@ category:
 
 `int uvunwrap(string object\_path, float u, float v, float time, vector &P, vector &I, vector &mikkelsenUtan, vector &mikkelsenVtan)`
 
-This function **only makes sense in a Mantra context**, for use in **texture baking** or in a **lens shader**. The function unfortunately must be “context-less” so it’s available to the CVEX lens shader, but in any other context it will fail and return `0`.
+这个函数**只在 Mantra 上下文中才有意义，用于**纹理烘烤**或**镜头着色器。不幸的是，这个函数必须是 "无上下文 "的，所以它对 CVEX 镜头着色器可用，但在任何其他上下文中，它都会失败并返回`0'。
 
-For any other kind of texture sampling, use the superior [uvsample](uvsample.html "Interpolates the value of an attribute at certain UV coordinates using a UV attribute.") or [uvintersect](uvintersect.html "This function computes the intersection of the specified ray with the geometry in uv space.") functions instead of this.
+对于任何其他种类的纹理取样，请使用高级的 [uvsample](uvsample.html) () ("使用 UV 属性在某些 UV 坐标上插值。") 或 [uvintersect](uvintersect.html) () ("此函数计算指定射线与 uv 空间中的几何体的交点。") 函数来代替这个。
 
 ## Arguments
 
 `object_path`
 
-The object being unwrapped.
+被解开的对象。
 
 `u`, `v`
 
-The UV coordinates specifying where on the surface to get the position and normal.
+UV 坐标，指定在表面的哪个位置获得位置和法线。
 
 `time`
 
-The time along the timeline at which to measure the geometry, in seconds.
+沿着时间线测量几何图形的时间，单位是秒。
 
 `&P`
 
-If it succeeds, the function overwrites this variable with the world space position of the given point.
+如果成功，该函数将用给定点的世界空间位置覆盖该变量。
 
 `&I`
 
-If it succeeds, the function overwrites this variable with the normal at the given point.
+如果成功，该函数将用给定点的正常值覆盖该变量。
 
 `&mikkelsenUtan`, `&mikkelsenVtan`
 
-The function overwrites these variables with the Mikkelsen tangent vectors.
+该函数用米克尔森切向量覆盖了这些变量。
 
 ## Returns
 
-`1` if the UV coordinates specified a valid point on the surface, or `0` otherwise.
-
-
+如果 UV 坐标指定了曲面上的一个有效点，则为 "1"，否则为 "0"。
 
 ## See also
 

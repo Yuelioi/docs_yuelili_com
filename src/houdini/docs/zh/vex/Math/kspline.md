@@ -7,40 +7,38 @@ category:
 
 `float kspline(string basis, float sample\_pos, float value1, float key\_pos1, ...)`
 
-Samples a curve defined by a series of value/position pairs.
-This is useful for specifying a 1D data ramp.
+对由一系列数值/位置对定义的曲线进行采样。这对于指定一个一维数据斜面很有用。
 
 `vector kspline(string basis, float sample\_pos, vector value1, float key\_pos1, ...)`
 
 `vector4 kspline(string basis, float sample\_pos, vector4 value1, float key\_pos1, ...)`
 
-Samples a curve defined by a series of vector value/position pairs.
-This is useful for specifying a color ramp.
+对由一系列矢量值/位置对定义的曲线进行采样。这对指定一个颜色斜率很有用。
 
-If you just want linearly spaced keys, or if you need to vary the basis, use [spline](spline.html "Samples a value along a polyline or spline curve.") instead.
+如果你只是想要线性间隔的键，或者你需要改变基础，请使用[spline](spline.html) ()("沿着多线或 spline 曲线采样一个值。")来代替。
 
 ## Arguments
 
 `basis`, `bases`
 
-These are the same interpolations supported by ramp parameters.
+这些都是斜率参数所支持的插值。
 
 `"constant"`
 
-Maintains each key value until the next key, creating a “stair step” curve.
+保持每个键值直到下一个键，形成一个 "阶梯式 "曲线。
 
 `"linear"`
 
-Connects the key points with a polyline.
+用折线连接关键点。
 
-For example, if you specified four values:
+例如，如果你指定了四个值。
 
 ```c
 spline("linear", t, v0, v1, v2, v3)
 
 ```
 
-![](../../images/vex/spline_linear.svg)
+![]
 
 …the function returns the height of the orange dot at position sample_pos.
 
@@ -60,7 +58,7 @@ spline("catrom", t, v0, v1, v2, v3, v4, v5)
 
 ```
 
-![](../../images/vex/spline_catrom.svg)
+![]
 
 …the function returns the height of the orange dot at position t.
 
@@ -70,7 +68,7 @@ curve for the shown points.)
 `"linearsolve"` (or `"solvelinear"`)
 
 Maps between a set of non-uniform positions and a set of values.
-The [kspline](kspline.html "Returns an interpolated value along a curve defined by a basis and key/position pairs.") function does this mapping implicitly.
+The [kspline](kspline.html) () ("Returns an interpolated value along a curve defined by a basis and key/position pairs.") function does this mapping implicitly.
 
 ```c
 tk = spline("linearsolve", t, k0, k1, k2, k3, ...);
@@ -101,7 +99,7 @@ You must specify key positions in ascending order or the results will be unpredi
 
 :::tip
 
-The [spline](spline.html "Samples a value along a polyline or spline curve.") function is a more flexible superset of this function.
+The [spline](spline.html) () ("Samples a value along a polyline or spline curve.") function is a more flexible superset of this function.
 
 This function is the equivalent of:
 
@@ -113,8 +111,6 @@ type kspline(basis, t, v0, k0, v1, k1, v2, k2...)
 }
 
 ```
-
-
 
 ## See also
 

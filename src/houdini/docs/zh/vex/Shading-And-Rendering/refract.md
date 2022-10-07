@@ -7,25 +7,18 @@ category:
 
 `vector refract(vector direction, vector normal, float index)`
 
-Returns the refraction ray given an incoming direction, the
-normalized normal and an index of refraction.
+返回给定入射方向、归一化法线和折射率的折射光线。
 
-The index is a relative index of refraction, the ratio between
-the interior and exterior index of refraction, where the exterior
-is defined by the direction of the normals (normals point away from
-the interior).
+该指数是一个相对折射率，即内部和外部折射率之间的比率，其中外部是由法线的方向定义的（法线指向远离内部）。
 
-In the case of total internal reflection, this function returns the
-reflection vector.
+在全内反射的情况下，该函数返回反射向量。
 
-For example:
+比如说。
 
 ```c
 refract(normalize(I), normalize(N), outside\_to\_inside\_ior)
 
 ```
-
-
 
 ## See also
 

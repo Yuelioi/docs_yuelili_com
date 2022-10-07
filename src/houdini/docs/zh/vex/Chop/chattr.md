@@ -5,103 +5,93 @@ category:
   - vex
 ---
 
-
-
-Context(s)
 [chop](../contexts/chop.html)
 
 `<type> chattr(string attrname, int &success)`
 
 `<type> chattr(int opinput, string attrname, int &success)`
 
-Get the value of a clip-level attribute.
-The version without `opinput` assumes the first input (0).
+上下文(s) 获取一个片段级属性的值。没有`opinput'的版本假定是第一个输入（0）。
 
 `<type> chattr(string attrname, int channel, int &success)`
 
 `<type> chattr(int opinput, string attrname, int channel, int &success)`
 
-Get the value of a channel-level attribute.
-The version without `opinput` assumes the first input (0).
+获取一个通道级属性的值。没有`opinput'的版本假设是第一个输入（0）。
 
 `<type> chattr(string attrname, int channel, int sample, int &success)`
 
 `<type> chattr(int opinput, string attrname, int channel, int sample, int &success)`
 
-Get the value of an attribute.
-The function guesses the attribute class from the other arguments.
-The version without `opinput` assumes the first input (0).
+获取一个属性的值。该函数从其他参数中猜测属性的类别。没有`opinput`的版本假设第一个输入（0）。
 
 `<type> chattr(string attrclass, string attrname, int channel, int sample, int &success)`
 
 `<type> chattr(int opinput, string attribclass, string attrname, int channel, int sample, int &success)`
 
-Get the value of an attribute of a specific class.
-The version without `opinput` assumes the first input (0).
+获取一个特定类别的属性值。没有`opinput'的版本假设是第一个输入（0）。
 
-CHOP attributes store metadata on clips, channels, samples, or channel/sample pairs.
+CHOP 属性存储了片段、通道、采样或通道/采样对的元数据。
 
-This function reads the value of a CHOP attribute. Use [chsetattr](chsetattr.html "Sets the value of a CHOP attribute.") to set CHOP attributes.
+这个函数读取一个 CHOP 属性的值。使用 [chsetattr](chsetattr.html) () ("Set the value of a CHOP attribute.") 来设置 CHOP 属性。
 
 ## Arguments
 
 `opinput`
 
-The input number to read from, starting from 0. For example, the first input is 0, the second input is 1, and so on.
+要读取的输入号码，从 0 开始。例如，第一个输入是 0，第二个输入是 1，以此类推。
 
 `attribclass`
 
-The “level” of the attribute:
+属性的 "级别"。
 
 `"clip"`
 
-An attribute on a whole clip.
+整个片段上的一个属性。
 
 `"channel"`
 
-An attribute on a whole channel.
+整个通道上的一个属性。
 
 `"sample"`
 
-An attribute on a sample (across all channels).
+一个样本上的属性（跨越所有通道）。
 
 `"channelsample"`
 
-An attribute on a specific channel/sample pair.
+一个特定通道/采样对上的属性。
 
 `""`
 
-Pass an empty string to have the function figure out the class based on the other arguments.
+传递一个空字符串，让函数根据其他参数计算出类。
 
-Signatures that don’t have this parameter act the same as if you passed the empty string.
+没有这个参数的签名与你传递空字符串的行为是一样的。
 
 `attrname`
 
-The name of the attribute to read.
+要读取的属性的名称。
 
 `channel`
 
-When reading a `channel` or `channelsample` attribute, this is the index of the channel.
-If you are reading a `clip` or `sample` attribute, use `-1` here.
+当读取一个`通道'或`通道样本'属性时，这是该通道的索引。如果你正在读取一个`clip'或`sample'属性，在这里使用`-1'。
 
 `sample`
 
-When reading a `sample` or `channelsample` attribute, this is the sample number.
-If you are reading a `clip` or `channel` attribute, use `-1` here.
+当读取一个`sample'或`channelsample'属性时，这就是样本号。如果你正在读取一个`clip'或`channel'属性，在这里使用`-1'。
 
 `success`
 
-If the given attribute exists and can be read, the function sets this variable to `1`. Otherwise, it sets this variable to `0`.
+如果给定的属性存在并且可以被读取，该函数将这个变量设置为`1'。否则，它将这个变量设置为`0'。
 
 ## Returns
 
-The value of the attribute.
+属性的值。
 
 ## Examples
 
-[¶](#examples)
 
-Read the “export” attribute on a channel
+
+读取一个通道的 "出口 "属性
 
 ```c
 int success = 0
@@ -120,8 +110,6 @@ if (success) {
 }
 
 ```
-
-
 
 ## See also
 

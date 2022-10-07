@@ -5,22 +5,16 @@ category:
   - vex
 ---
 
-
-
-Context(s)
 [light](../contexts/light.html)
 [shadow](../contexts/shadow.html)
 
 `int isfogray()`
 
-Returns 1 if the shader is being called to evaluate illumination for fog
-objects, or 0 if the light or shadow shader is being called to evaluate
-surface illumination.
+Context(s) 如果该着色器被调用来评估雾状物体的照明，则返回 1；如果光照或阴影着色器被调用来评估表面照明，则返回 0。
 
-Use this function to simplify light shaders when evaluating for fog.
+在评估雾的时候，使用这个函数来简化光照器。
 
-
-fog
+雾
 
 [getfogname](getfogname.html)
 
@@ -32,8 +26,7 @@ fog
 
 [simport](simport.html)
 
-|
-surface
+| 表面
 
 [ambient](ambient.html)
 

@@ -5,18 +5,13 @@ category:
   - vex
 ---
 
-
-
-Context(s)
 [chop](../contexts/chop.html)
 
 `int chresizebuf(int size)`
 
-Resizes the CHOP context temporary buffer.
-Return 1 if the resize succeeded, 0 otherwise.
+Context(s) 调整 CHOP 上下文临时缓冲区的大小。如果调整成功，返回 1，否则返回 0。
 
-
-chop
+劈劈啪啪
 
 [chadd](chadd.html)
 

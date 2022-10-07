@@ -7,10 +7,9 @@ category:
 
 `float planepointdistance(vector plane\_pos, vector plane\_normal, vector point\_pos, vector &intersect\_pos)`
 
-Given a 3D point `point_pos`, and a 3D plane with `plane_normal` normal vector passing through a 3D point `plane_pos`, return the closest distance and closest position between the plane and the point.
+给出一个三维点`point_pos`，和一个经过三维点`plane_normal`法线矢量的三维平面，返回平面和点之间最近的距离和最近的位置。
 
-
-measure
+衡量
 
 [curvearclen](curvearclen.html)
 
@@ -68,8 +67,7 @@ measure
 
 [xyzdist](xyzdist.html)
 
-|
-point
+|点
 
 [addpoint](addpoint.html)
 

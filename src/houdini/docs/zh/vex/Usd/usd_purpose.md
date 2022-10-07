@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Since 17.5
 
 `string usd\_purpose(<stage>stage, string primpath)`
@@ -29,15 +27,13 @@ The purpose of the given primitive.
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Get the sphere primitive's purpose.
 string purpose = usd\_purpose(0, "/geo/sphere");
 
 ```
-
-
 
 ## See also
 

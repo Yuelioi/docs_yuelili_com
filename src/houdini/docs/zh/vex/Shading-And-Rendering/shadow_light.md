@@ -5,45 +5,33 @@ category:
   - vex
 ---
 
-
-
-Context(s)
 [displace](../contexts/displace.html)
 [fog](../contexts/fog.html)
 [surface](../contexts/surface.html)
 
 `vector shadow\_light(int lightid, vector pos, vector dir, float time, ...)`
 
-This operation is similar to the shadow() function but it allows execution
-of the shadow shader outside an illuminance loop. The position and
-direction toward the light source are provided directly, and the shadow
-shader is executed - returning the shadow multiplier. To produce the final
-shadowed color, multiply the shaded color by the value returned by
-shadow_light.
+该操作类似于 shadow()函数，但它允许在照度循环之外执行阴影着色器。直接提供光源的位置和方向，并执行阴影着色器--返回阴影乘数。为了产生最终的阴影颜色，将阴影颜色乘以 shadow_light 返回的值。
 
-Keyword variadic arguments can be passed to the shadow shader, for import
-in the shadow shader with with simport().
+关键字变量参数可以被传递给阴影着色器，以便在阴影着色器中用 simport()导入。
 
 ## Arguments
 
 `lightid`
 
-A light identifier, as returned by [getlights](getlights.html "Returns an array of light identifiers for the currently shaded surface.").
+灯光标识符，如[getlights](getlights.html) ()("返回当前阴影表面的灯光标识符数组")所返回。
 
 `pos`
 
-The origin of the ray (such as the global variable `P`).
+射线的原点（如全局变量`P`）。
 
 `dir`
 
-Direction vector from the origin. The length of this vector should be
-the distance from _pos_ to the light source.
+从原点出发的方向向量。这个向量的长度应该是*pos*到光源的距离。
 
 `time`
 
-Time to send the ray at.
-
-
+是时候把射线送到。
 
 ## See also
 

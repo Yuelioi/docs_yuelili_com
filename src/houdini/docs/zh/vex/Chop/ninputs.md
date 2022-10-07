@@ -5,17 +5,13 @@ category:
   - vex
 ---
 
-
-
-Context(s)
 [chop](../contexts/chop.html)
 
 `int ninputs()`
 
-Returns the number of inputs on the current node.
+Context(s) 返回当前节点上的输入数。
 
-
-utility
+公用事业
 
 [assert_enabled](assert_enabled.html)
 

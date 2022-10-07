@@ -5,24 +5,19 @@ category:
   - vex
 ---
 
-
-
-Context(s)
 [image3d](../contexts/image3d.html)
 
 `<type> mattrib(string name, vector P)`
 
 ::: info Note
 
-The `image3d` context is deprecated. Use volumes instead.
+上下文(s) `image3d`上下文已被废弃。使用卷来代替。
 
-
-metaballs
+元气球
 
 [mattrib](mattrib.html)
 
-|
-ptcloud
+| ptcloud
 
 [mattrib](mattrib.html)
 

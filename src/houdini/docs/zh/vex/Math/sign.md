@@ -9,8 +9,7 @@ category:
 
 `float sign(float n)`
 
-For a scalar value, returns `-1` for a negative number, `0` for the number zero,
-and `+1` for a positive number.
+对于一个标量值，如果是负数，返回`-1`，如果是 0，返回`0`，如果是正数，返回`+1`。
 
 `vector2 sign(vector2 v)`
 
@@ -18,9 +17,7 @@ and `+1` for a positive number.
 
 `vector4 sign(vector4 v)`
 
-For vector values the sign of the individual components is returned as a vector.
-
-
+对于矢量值来说，各个分量的符号会作为一个矢量返回。
 
 ## See also
 

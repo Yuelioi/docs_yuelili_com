@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Since 18.0
 
 `string usd\_transformsuffix(string name)`
@@ -25,7 +23,7 @@ The suffix contained in the transform operation name.
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Get the suffix of the first transform operation on the cube
@@ -33,8 +31,6 @@ string cube\_xform\_ops[] = usd\_transformorder(0, "/geo/cube");
 string suffix = usd\_transformsuffix(cube\_xform\_ops[0]);
 
 ```
-
-
 
 ## See also
 

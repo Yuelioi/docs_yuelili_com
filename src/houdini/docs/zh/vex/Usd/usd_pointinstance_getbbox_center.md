@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Since 18.0
 
 `vector usd\_pointinstance\_getbbox\_center(<stage>stage, string primpath, int instance\_index, string purpose)`
@@ -37,15 +35,13 @@ The center of the instance’s bounding box.
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Get the center of the first instance's boundsng box.
 vector center = usd\_pointinstance\_getbbox\_center(0, "/src/instanced\_spheres", 0, "render");
 
 ```
-
-
 
 ## See also
 

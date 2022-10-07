@@ -7,13 +7,9 @@ category:
 
 `string chr(int value)`
 
-Returns a string encoding the giving unicode codepoint as a UTF8 value. For
-values less than 128, this is a one-byte string of that value. Higher values
-will produce multiple byte strings.
+返回一个字符串，将给出的 unicode 编码点编码为 UTF8 值。对于小于 128 的值，这是该值的一个字节的字符串。更高的值将产生多个字节的字符串。
 
-If the given code point isn’t a valid codepoint, an empty string is returned.
-
-
+如果给定的代码点不是一个有效的代码点，将返回一个空字符串。
 
 ## See also
 

@@ -4,7 +4,7 @@ order: 8
 category:
   - houdini
 ---
-    
+
 ## 描述
 
 Removes the last element of an array and returns it. 移除最后一个元素并返回

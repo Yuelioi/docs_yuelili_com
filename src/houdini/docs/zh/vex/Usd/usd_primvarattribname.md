@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Since 18.0
 
 `string usd\_primvarattribname(<stage>stage, string name)`
@@ -29,7 +27,7 @@ The namespaced name of an attribute corresponding to the given primvar name.
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Get the attribute name for the given primvar.
@@ -37,8 +35,6 @@ string attrib\_name = usd\_primvarattribname(0, "some\_primvar");
 int is\_attrib = usd\_isattrib(0, "/geo/sphere", attrib\_name);
 
 ```
-
-
 
 ## See also
 

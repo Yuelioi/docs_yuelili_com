@@ -9,25 +9,23 @@ category:
 
 `float max(float value1, float value2, ...)`
 
-Returns the maximum value of the arguments.
+返回参数的最大值。
 
 `<vector> max(<vector>value1, <vector>value2, ...)`
 
-Returns a vector where each component is the maximum of the corresponding components in the arguments.
+返回一个向量，其中每个分量是参数中相应分量的最大值。
 
 `<type> max(<type>values[])`
 
-Returns the maximum value in the array.
+返回数组中的最大值。
 
 `float max(<vector>values)`
 
-Returns the maximum of the vector’s components.
+返回向量分量的最大值。
 
 `<type> max(<type>value)`
 
-Returns the argument.
-
-
+返回参数。
 
 ## See also
 

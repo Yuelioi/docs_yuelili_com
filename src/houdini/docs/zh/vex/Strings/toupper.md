@@ -9,8 +9,6 @@ category:
 
 Returns the string with a-z replaced with A-Z.
 
-
-
 ## See also
 
 - [tolower](tolower.html)

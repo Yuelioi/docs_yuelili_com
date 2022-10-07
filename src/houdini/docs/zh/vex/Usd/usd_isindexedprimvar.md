@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Since 18.0
 
 `int usd\_isindexedprimvar(<stage>stage, string primpath, string name)`
@@ -35,15 +33,13 @@ Primvar name (without namespace).
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Check if primvar "some\_primvar" on sphere is indexed.
 int is\_indexed = usd\_isindexedprimvar(0, "/geometry/sphere", "some\_primvar");
 
 ```
-
-
 
 ## See also
 

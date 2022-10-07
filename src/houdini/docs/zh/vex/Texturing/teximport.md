@@ -5,72 +5,60 @@ category:
   - vex
 ---
 
+在这一页
 
-
-On this page
-
-- [Queryable attributes](#queryable-attributes)
-- [Examples](#examples)
+- [可查询属性](#queryable-attributes)
+- [例子](#例子)
 
 `int teximport(string map, string attribute, <type>&value)`
 
-Reads a single value. Returns `1` on success or `0` on failure.
+读取一个单一的值。成功时返回`1`，失败时返回`0`。
 
 `int teximport(string map, string token, int|string&values[])`
 
-Returns the number of strings in the array.
+返回数组中字符串的数量。
 
 ::: info Note that if the values cannot be imported, `values` will not be written to and may remain uninitialized.
 
-This function queries metadata stored in an image file, and works with most texture formats.
+这个函数查询存储在图像文件中的元数据，并适用于大多数纹理格式。
 
-You can choose what properties are stored using the `vm_saveoptions`
-Houdini property on a camera or light
-(`image:saveoptions` in [IFD](../../render/ifd.html)).
-However, the defaults probably contain all the information you'd want.
-See [rendering properties](../../props/index.html "Properties let you set up flexible and powerful hierarchies of rendering, shading, lighting, and camera parameters.").
+你可以使用摄像机或灯光上的`vm_saveoptions`胡迪尼属性来选择存储哪些属性（`image:saveoptions` in [IFD](.../../render/ifd.html) () ()）。然而，默认值可能包含你想要的所有信息。请看 [rendering properties](.../.../props/index.html) () ("Properties let you set up flexible and powerful hierarchies of rendering, shading, lighting, and camera parameters.")。
 
-##
-
-Queryable attributes
+## 可查询的属性
 
 [¶](#queryable-attributes)
 
-There are several generic attributes you can always query:
+有几个通用属性，你可以随时查询。
 
 ## Arguments
 
 `int texture:xres`
 
-X resolution of the texture map.
+纹理图的 X 分辨率。
 
 `int texture:yres`
 
-Y resolution of the texture map.
+纹理图的 Y 分辨率。
 
 `int texture:channels`
 
-Number of channels in the texture map.
+纹理贴图中的通道数。
 
 `vector texture:resolution`
 
-Resolution of the texture as the vector `(xres, yres, channels)`.
+纹理的分辨率为向量`（xres, yres, channels）`。
 
 `matrix texture:worldtoview`
 
-The transform matrix that will take world space points into the camera
-space used to generate the image.
+变换矩阵，将世界空间的点带入用于生成图像的摄像机空间。
 
 `matrix texture:projection`
 
-The transform matrix representing the projection matrix of the camera
-used to generate the image.
+代表用于生成图像的相机投影矩阵的变换矩阵。
 
 `matrix texture:worldtondc`
 
-The transform matrix that will transform world spaced points into the NDC
-space of the camera used to make the image. The points are generated in
-homogeneous coordinates. That is, to get the values in the range 0 to 1:
+变换矩阵，将世界范围内的点转换为用于制作图像的摄像机的 NDC 空间。这些点是以同质坐标生成的。也就是说，要在 0 到 1 的范围内获得数值。
 
 ```c
 matrix ndc;
@@ -127,7 +115,7 @@ The device that’s used to evaluate the texture. Possible values are:
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 cvex
@@ -158,8 +146,6 @@ cvex
 }
 
 ```
-
-
 
 ## See also
 

@@ -7,9 +7,9 @@ category:
 
 `int [] osd\_patches(<geometry>geometry, int face\_id)`
 
-Each face in a subdivision hull may create one or more patches. This function lists the patch ids for a corresponding face.
+在一个细分船体中的每个面都可以创建一个或多个补丁。这个函数列出了一个相应面的补丁 ID。
 
-This is implemented using the following algorithm:
+这是用以下算法实现的。
 
 ```c
 int []
@@ -27,8 +27,6 @@ osd\_patches(const string file; const face\_id)
 }
 
 ```
-
-
 
 ## See also
 

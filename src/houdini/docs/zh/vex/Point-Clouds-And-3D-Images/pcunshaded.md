@@ -7,34 +7,17 @@ category:
 
 `int pcunshaded(int handle, string channel\_name)`
 
-Like [pciterate](pciterate.html "This function can be used to iterate over all the points which were
-found in the pcopen query."), this function can be used to iterate over
-points which were found in a [pcopen](pcopen.html "Returns a handle to a point cloud file.") query. The first argument is
-the handle returned by `pcopen`.
+像 [pciterate](pciterate.html) ("这个函数可以用来遍历在pcopen查询中发现的所有点。") 一样，这个函数可以用来遍历在 [pcopen](pcopen.html) () ("返回一个点云文件的句柄。") 查询中发现的点。第一个参数是由`pcopen`返回的句柄。
 
-However, where `pciterate` iterates over all the points, this function
-only iterates over points where the channel in channel_name has
-not yet been written to.
+然而，当`pciterate`遍历所有的点时，这个函数只遍历 channel_name 中的通道还没有被写入的点。
 
-The function returns 1 while there are points left in the iteration loop,
-or 0 when there are no further points. This lets you use the function as
-the condition in a [while loop](../statement.html).
+当迭代循环中有剩余的点时，该函数返回 1，当没有更多的点时返回 0。这使你可以在[while 循环](.../statement.html)中使用该函数作为条件。
 
-Warnings:
+警告。
 
-- This function will not work correctly when used in multi-threaded OPs.
-  It is not possible to nest `pcunshaded` or [pciterate](pciterate.html "This function can be used to iterate over all the points which were
-found in the pcopen query.")
-  loops for the same handle. That is, for a single [pcopen](pcopen.html "Returns a handle to a point cloud file.")
-  call, only one `pcunshaded` or [pciterate](pciterate.html "This function can be used to iterate over all the points which were
-found in the pcopen query.") loop may be
-  entered.
-- Computations involving derivatives inside `pcunshaded` loops may have
-  slightly different results. If derivatives are required for variables
-  which aren’t set by [pcimport](pcimport.html "Imports channel data from a point cloud inside a pciterate or a pcunshaded loop.") it may be better to
-  pre-compute the derivatives before the `pcunshaded` loop is entered.
-
-
+- 当在多线程的 OP 中使用时，这个函数将不能正确工作。
+- 在 "pcunshaded "循环中涉及导数的计算可能有
+  不可能为同一个句柄嵌套`pcunshaded`或[pciterate](pciterate.html) ("这个函数可以用来遍历所有在pcopen查询中发现的点。")循环。也就是说，对于一个[pcopen](pcopen.html) () ("返回一个点云文件的句柄。")的调用，只能输入一个`pcunshaded'或[pciterate](pciterate.html) ("这个函数可以用来迭代在pcopen查询中发现的所有点。")循环。 结果略有不同。如果变量需要导数，而这些变量不是由[pcimport](pcimport.html)设置的（"在pciterate或pcunshaded循环中从点云中导入通道数据。"），在进入`pcunshaded`循环之前预先计算导数可能更好。
 
 ## See also
 

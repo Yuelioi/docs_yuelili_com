@@ -7,15 +7,13 @@ category:
 
 `vector smoothrotation(int order, vector r, vector r\_reference)`
 
-Returns the Euler rotations that have the closest values to r_reference while still describing the same orientation as r.
-Typically, r_reference will be the rotations from the previous sample or frame.
+返回与 r_reference 的值最接近的欧拉旋转，同时仍然描述与 r 相同的方向。通常，r_reference 将是前一个样本或框架的旋转。
 
-The angles are in radians. Use the `radians()` function to convert degrees into radians.
+角度的单位是弧度。使用`radians()`函数，将度数转换成弧度。
 
-The rotation order is specified by the order parameter. Use the constants defined in `$HH/vex/include/math.h` (for example, `XFORM_XYZ`).
+旋转顺序由顺序参数指定。使用`$HH/vex/include/math.h`中定义的常数（例如，`XFORM_XYZ`）。
 
-
-matrix
+基体
 
 [\_\_uniform\_mul](### uniform_mul.html)
 
@@ -67,8 +65,7 @@ matrix
 
 [transpose](transpose.html)
 
-|
-vector
+| 向量
 
 [Du](Du.html)
 

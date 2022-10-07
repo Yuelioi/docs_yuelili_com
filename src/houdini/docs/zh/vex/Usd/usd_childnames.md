@@ -5,39 +5,35 @@ category:
   - vex
 ---
 
-
-
-Since 19.5
+自 19.5 以来
 
 `string [] usd\_childnames(<stage>stage, string primpath)`
 
-This function returns the names of the children authored directly in the namespace of the given parent primitive.
+此函数返回在给定的父基元的名称空间中直接创建的子元素的名称。
 
 ## Arguments
 
 `<stage>`
 
-When running in the context of a node (such as a wrangle LOP), this argument can be an integer representing the input number (starting at 0) to read the stage from. The integer is equivalent to the string form referencing a particular input, e.g., “opinput:0”.
+当在一个节点的上下文中运行时（比如 wrangle LOP），这个参数可以是一个整数，代表要读取阶段的输入号码（从 0 开始）。这个整数等同于引用特定输入的字符串形式，例如，"opinput:0"。
 
 `primpath`
 
-The path to the primitive.
+通往原始的道路。
 
 ## Returns
 
-The names of the children of the given primitive.
+给定基元的孩子的名字。
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Get the children of the "mother" primitive.
 string children[] = usd\_child(0, "/geo/mother");
 
 ```
-
-
 
 ## See also
 

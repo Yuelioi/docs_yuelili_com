@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Since 17.5
 
 `string usd\_kind(<stage>stage, string primpath)`
@@ -29,15 +27,13 @@ The kind of the given primitive.
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Get the sphere primitive's kind.
 string kind = usd\_kind(0, "/geo/sphere");
 
 ```
-
-
 
 ## See also
 

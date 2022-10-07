@@ -5,18 +5,13 @@ category:
   - vex
 ---
 
-
-
-Context(s)
 [chop](../contexts/chop.html)
 
 `float chendt(int opinput=0)`
 
-Returns the time (in seconds) corresponding to the last sample in the given CHOP input.
+Context(s) 返回给定的 CHOP 输入中最后一个样本对应的时间（秒）。
 
-To get the end sample number, use [chend](chend.html "Returns the sample number of the last sample in a given CHOP input."). To get the end frame, use [chendf](chendf.html "Returns the frame corresponding to the last sample of the input specified.").
-
-
+要获得终点样本号，请使用[chend](chend.html) ()（"返回给定 CHOP 输入中最后一个样本的样本号。"）。要获得结束帧，使用[chendf](chendf.html)（"返回指定输入的最后一个样本对应的帧。"）。
 
 ## See also
 

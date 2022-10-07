@@ -9,26 +9,21 @@ category:
 
 `vector ctransform(string tospace, vector clr)`
 
-If you don’t give a fromspace, assumes `"cspace:rgb"`.
+如果你不给一个 fromspace，就假设`"cspace:rgb"`。
 
-Transforms color tuple clr from one color space to another.
+将颜色元组 clr 从一个颜色空间转换到另一个颜色空间。
 
-The possible arguments for fromspace and tospace are
-`"cspace:rgb"`, `"cspace:hsl"`, `"cspace:hsv"`, `"cspace:XYZ"`,
-`"cspace:Lab"`, and `"cspace:tmi"`.
+fromspace 和 tospace 可能的参数是`"cspace:rgb", `"cspace:hsl", `"cspace:hsv", `"cspace:XYZ", `"cspace:Lab", 和`"cspace:tmi"。
 
-##
-
-Notes
+## 笔记
 
 [¶](#notes)
 
-- The hue-based systems are normalized with the hue going from `0` to `1`. LAB and TMI are not normalized.
-- For `"cspace:rgb"`, the primaries are assumed to be in linear NTSC space (gamma 1.0), using C reference white.
-- C reference white is used for conversion when converting from XYZ to LAB space (and vice versa).
+- 基于色调的系统被归一化，色调从`0`到`1`。LAB 和 TMI 没有被规范化。
+- 对于`"cspace:rgb"`，假定原件是在线性 NTSC 空间（gamma 1.0），使用 C 参考白。
+- 在从 XYZ 空间转换到 LAB 空间（反之亦然）时，使用 C 参考白来进行转换。
 
-
-color
+颜色
 
 [blackbody](blackbody.html)
 
@@ -64,8 +59,7 @@ color
 
 [xyztorgb](xyztorgb.html)
 
-|
-convert
+|转换
 
 [ctransform](ctransform.html)
 
@@ -83,8 +77,7 @@ convert
 
 [xyztorgb](xyztorgb.html)
 
-|
-transform
+| 转化
 
 [agentcliptransformgroups](agentcliptransformgroups.html)
 

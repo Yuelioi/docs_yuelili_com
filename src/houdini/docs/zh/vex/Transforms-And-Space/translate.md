@@ -9,8 +9,6 @@ category:
 
 `void translate(matrix &m, vector4 amount)`
 
-
-
 ## See also
 
 - [pretranslate](pretranslate.html)

@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Since 18.0
 
 `int usd\_transformtype(string name)`
@@ -25,7 +23,7 @@ The the numerical code for the inferred transform operation type implied by the 
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Get the type of the first transform operation on the cube
@@ -33,8 +31,6 @@ string cube\_xform\_ops[] = usd\_transformorder(0, "/geo/cube");
 int type = usd\_transformtype(cube\_xform\_ops[0]);
 
 ```
-
-
 
 ## See also
 

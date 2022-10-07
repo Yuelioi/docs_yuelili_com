@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Since 18.0
 
 `int usd\_settransformorder(int stagehandle, string primpath, string transformorder[])`
@@ -33,15 +31,13 @@ The value of `stagehandle` on success or `-1` on failure.
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 string ops[] = {"xformOp:translate:xform\_cube\_t", "xformOp:rotateZ:xform\_cube\_r", "xformOp:rotateXYZ:xform\_cube\_r", "xformOp:scale:xform\_cube\_s"};
 usd\_settransformorder(0, "/geo/cube", ops);
 
 ```
-
-
 
 ## See also
 

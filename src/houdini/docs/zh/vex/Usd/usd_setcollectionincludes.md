@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Since 18.0
 
 `int usd\_setcollectionincludes(int stagehandle, string collectionpath, string includes[])`
@@ -33,7 +31,7 @@ The value of `stagehandle` on success or `-1` on failure.
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Set the exludes list on the cube's collection.
@@ -41,8 +39,6 @@ string collection\_path = usd\_makecollectionpath(0, "/geo/cube", "some\_collect
 usd\_setcollectionincludes(0, collection\_path, array("/geo/sphere1", "/geo/sphere2"));
 
 ```
-
-
 
 ## See also
 

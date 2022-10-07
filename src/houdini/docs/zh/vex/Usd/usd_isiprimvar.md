@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Since 19.0
 
 `int usd\_isiprimvar(<stage>stage, string primpath, string name)`
@@ -34,15 +32,13 @@ Primvar name (without namespace).
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Check if the sphere primitive or its ancestor has a primvar "some\_primvar".
 int is\_primvar = usd\_isiprimvar(0, "/geometry/sphere", "some\_primvar");
 
 ```
-
-
 
 ## See also
 

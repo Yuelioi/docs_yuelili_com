@@ -11,35 +11,31 @@ category:
 
 `geohandle`
 
-A handle to the geometry to write to. Currently the only valid value is `0` or [geoself](geoself.html "Returns a handle to the current geometry."), which means the current geometry in a node. (This argument may be used in the future to allow writing to other geometries.)
+要写入的几何体的句柄。目前唯一有效的值是`0`或[geoself](geoself.html) () ("返回当前几何体的句柄。")，这意味着当前节点中的几何体。(这个参数将来可能会被用来允许写到其他的几何体)。
 
-**To use a linear vertex index**, set the `prim_num` to the **linear vertex number** and set `vertex_num` to `-1`. Note that **this is different** from how most other vertex functions work.
+**要使用线性顶点索引**，将`prim_num`设置为**线性顶点编号，并将`vertex_num`设置为`-1`。注意，**这与其他大多数顶点函数的工作方式不同。
 
 ## Arguments
 
 `name`
 
-The name of the group to modify.
+要修改的组的名称。
 
 `prim_num`
 
-The number of the primitive containing the vertex you want to add/remove.
+包含希望添加/删除的顶点的基元的编号。
 
 `vertex_num`
 
-The vertex offset on the primitive of the vertex you want to add/remove.
+您希望添加/删除的顶点在基元上的顶点偏移。
 
 `value`
 
-`1` to put the vertex in the group, `0` to remove the vertex from the group.
-This is ignored if `mode` is `"toggle"`.
+`1`将顶点放入组中，`0`将顶点从组中移除。如果`mode`是`"toggle"`，这将被忽略。
 
 `mode`
 
-Use `"set"` to set the vertex’s membership according to the `value`.
-Use `"toggle"` to toggle the vertex’s membership, regardless of the `value`.
-
-
+使用`"set"`根据`value`来设置顶点的成员资格。使用`"toggle"`来切换顶点的成员资格，与`value'无关。
 
 ## See also
 

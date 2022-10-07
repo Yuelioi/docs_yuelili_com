@@ -5,20 +5,13 @@ category:
   - vex
 ---
 
-
-
-Context(s)
 [shading](../contexts/shading.html)
 
 `int getptextureid()`
 
-Returns the ptexture id for the current face being shaded. This will typically
-be the same as `getprimid()` except in the case of subdivision surfaces. For
-subdivision surfaces, mantra splits non-quadrilateral faces into multiple
-patches. Each of these split faces is assigned a unique ptexture id.
+Context(s) 返回当前被着色的面的 ptexture id。这通常与`getprimid()`相同，除非是细分的表面。对于细分曲面，mantra 将非四边形的面分割成多个斑块。每个分割的面都被分配一个唯一的 ptexture id。
 
-
-shading
+遮阳
 
 [Du](Du.html)
 

@@ -9,37 +9,33 @@ category:
 
 `int agentclipchannel(<geometry>geometry, int prim, int clipindex, string channel)`
 
-Returns the index of a channel in the specified animation clip.
-Returns -1 if `clipname` is not one of the agent’s [animation clips](agentclipcatalog.html "Returns all of the animation clips that have been loaded for an agent primitive."), `prim` is out of range, `prim` is not an agent primitive, or `channel` does not exist.
+返回指定的动画片段中的通道索引。如果`clipname`不是代理的[animation clips](agentclipcatalog.html) () ("返回所有为代理基元加载的动画片段。")，`prim`超出范围，`prim`不是一个代理基元，或者`channel`不存在，则返回-1。
 
-For sampling the clip’s transform channels, use [agentrigfind](agentrigfind.html "Finds the index of a transform in an agent primitive’s rig.") and either [agentclipsamplelocal](agentclipsamplelocal.html "Samples an agent’s animation clip at a specific time.") or [agentclipsampleworld](agentclipsampleworld.html "Samples an agent’s animation clip at a specific time.").
+对于剪辑的变换通道的采样，使用 [agentrigfind](agentrigfind.html) () ("查找代理基元的装备中的变换索引。") 和 [agentclipsamplelocal](agentclipsamplelocal.html) () ("在特定时间对代理的动画剪辑进行采样。") 或 [agentclipsampleworld](agentclipsampleworld.html) () ("在特定时间对代理的动画剪辑进行采样。") 。
 
 ## Arguments
 
 `<geometry>`
 
-When running in the context of a node (such as a wrangle SOP), this argument can be an integer representing the input number (starting at 0) to read the geometry from.
+当在一个节点的上下文中运行时（比如一个 wrangle SOP），这个参数可以是一个整数，代表要读取几何图形的输入数字（从 0 开始）。
 
-Alternatively, the argument can be a string specifying a geometry file (for example, a `.bgeo`) to read from. When running inside Houdini, this can be an `op:/path/to/sop` reference.
+或者，该参数可以是一个字符串，指定一个几何文件（例如，一个`.bgeo'）来读取。当在Houdini内部运行时，这可以是一个`op:/path/to/sop`的引用。
 
 `prim`
 
-The primitive number.
+原始的数字。
 
 `clipname`
 
-The name of the animation clip.
+动画片段的名称。
 
 `clipindex`
 
-Index of a clip in the agent’s definition.
-A clip’s index can be obtained via [agentfindclip](agentfindclip.html "Finds the index of a clip in an agent’s definition.").
+代理商定义中一个片段的索引。一个片段的索引可以通过[agentfindclip](agentfindclip.html) ()("查找代理定义中一个片段的索引。")获得。
 
 `channel`
 
-Name of a channel in the animation clip.
-
-
+动画片段中的一个通道的名称。
 
 ## See also
 

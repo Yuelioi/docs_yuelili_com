@@ -11,10 +11,9 @@ category:
 
 `vector4 wt\_space(vector4 v)`
 
-Transforms a position value from _World_ to _Texture_ space.
+将一个位置值从*World*转换到*Texture*空间。
 
-
-map
+地图
 
 [colormap](colormap.html)
 
@@ -52,8 +51,7 @@ map
 
 [wt_vspace](wt_vspace.html)
 
-|
-transform
+| 转化
 
 [agentcliptransformgroups](agentcliptransformgroups.html)
 

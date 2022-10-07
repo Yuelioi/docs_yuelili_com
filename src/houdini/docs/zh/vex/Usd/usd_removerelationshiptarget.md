@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Since 18.0
 
 `int usd\_removerelationshiptarget(int stagehandle, string primpath, string name, string target)`
@@ -37,15 +35,13 @@ The value of `stagehandle` on success or `-1` on failure.
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Remove the sphere from cube's relationship.
 usd\_removerelationshiptarget(0, "/geo/cube", "relationship\_name", "/geo/sphere");
 
 ```
-
-
 
 ## See also
 

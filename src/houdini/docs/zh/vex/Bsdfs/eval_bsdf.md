@@ -5,12 +5,10 @@ category:
   - vex
 ---
 
+在这一页
 
-
-On this page
-
-- [Variadic arguments](#variadic-arguments)
-- [Examples](#examples)
+- [变量参数](#variadic-arguments)
+- [例子](#例子)
 
 `vector eval\_bsdf(bsdf b, vector viewer, vector light, ...)`
 
@@ -28,46 +26,37 @@ On this page
 
 `b`
 
-BSDF to evaluate.
+BSDF 将进行评估。
 
 `viewer`
 
-Vector toward viewer.
+朝向观看者的矢量。
 
 `light`
 
-Vector toward light.
+向光的矢量。
 
 `normal`
 
-Surface normal.
+表面正常。
 
 `mask`
 
-A bitmask indicating which types of shading component bounces to evaluate.
+一个比特掩码，表示要评估哪些类型的阴影组件弹跳。
 
-See [bouncemask](bouncemask.html) for information on component label bitmasks.
+参见[bouncemask](bouncemask.html)以了解关于组件标签位掩码的信息。
 
 `&pdf`
 
-The function overwrites this variable with the computed PDF for the given directions, scaled by the albedo.
+该函数用给定方向的计算出的 PDF 覆盖这个变量，并以反照率为尺度。
 
-##
-
-Variadic arguments
+## 变量论证
 
 [¶](#variadic-arguments)
 
-The `eval_bsdf` function passes any extra `"name", value` argument pairs to the BSDF being
-evaluated. For custom BSDFs these keyword arguments are bound to shader
-arguments (e.g. indicating whether the BSDF is being evaluated for direct or
-indirect illumination). It’s also possible for a BSDF to pass information back
-to `eval_bsdf`. To indicate that a keyword argument value should be imported
-from the BSDF prefix the keyword with “import:”
+`eval_bsdf`函数将任何额外的`"name", value`参数对传递给正在评估的 BSDF。对于自定义的 BSDF，这些关键字参数被绑定到着色器参数上（例如，指示 BSDF 是被评估为直接照明还是间接照明）。BSDF 也可以将信息传回给`eval_bsdf`。为了表示关键字的参数值应该从 BSDF 中导入，在关键字前加上 "import:"
 
 ## Examples
-
-[¶](#examples)
 
 ```c
 v = eval\_bsdf(F, inI, dir,
@@ -78,16 +67,13 @@ v = eval\_bsdf(F, inI, dir,
 
 ```
 
-
-
 ## See also
 
 - [albedo](albedo.html)
 - [sample_bsdf](sample_bsdf.html)
 - [emission_bsdf()](emission_bsdf.html)
 
-|
-bsdf
+### bsdf
 
 [albedo](albedo.html)
 

@@ -7,29 +7,25 @@ category:
 
 `vector4 slerp(vector4 q1, vector4 q2, float bias)`
 
-Blends between quaternions q1 and q2 based on the bias.
+根据偏差在四元数 q1 和 q2 之间进行混合。
 
 `vector4 slerp(vector4 qs[], float weights[])`
 
-Blends between any number of quaternions with the specified corresponding weights.
-The weights are **not** normalized before blending.
-`slerp(q1,q2,bias)` should be approximately equivalent to `slerp(array(q1,q2), array(1.0-bias,bias))`.
+在任意数量的四元数之间进行混合，并指定相应的权重。权重在混合前没有\*\*\*归一化。`slerp(q1,q2,bias)`应该近似于`slerp(array(q1,q2), array(1.0-bias,bias))`。
 
 `matrix3 slerp(matrix3 m1, matrix3 m2, float bias)`
 
 `matrix slerp(matrix m1, matrix m2, float bias)`
 
-Blends between matrix m1 and m2 based on the bias.
+根据偏差在矩阵 m1 和 m2 之间进行混合。
 
 `matrix3 slerp(matrix3 ms[], float weights[])`
 
 `matrix slerp(matrix ms[], float weights[])`
 
-Blends between any number of matrices with the specified corresponding weights via blending of their components via polar decomposition.
-The weights are normalized before blending.
+通过极地分解混合它们的组件，在任意数量的矩阵之间进行混合，并指定相应的权重。在混合之前，权重被归一化。
 
-
-interp
+插页
 
 [ckspline](ckspline.html)
 
@@ -59,8 +55,7 @@ interp
 
 [smooth](smooth.html)
 
-|
-quaternion
+| 四元数
 
 [dihedral](dihedral.html)
 

@@ -7,14 +7,11 @@ category:
 
 `string sprintf(string format, ...)`
 
-Formats a string like [printf](printf.html "Prints values to the console which started the VEX program.") but returns the result as a
-string instead of printing it.
+像[printf](printf.html)那样形成一个字符串（"向启动 VEX 程序的控制台打印数值"），但将结果作为一个字符串返回，而不是打印。
 
 :::tip
 
-You can use this function pad a number (such as the frame number in a filename) with zeros (similarly to the [padzero](../../expressions/padzero.html "Returns a string padding a number to a given length with zeros.") expression function) using a format such as `sprintf("texture%04d.exr", @Frame)`.
-
-
+你可以使用这个函数用零来填充一个数字（比如文件名中的帧号）（类似于 [padzero](../../expressions/padzero.html) () ("返回一个用零填充一个数字的字符串。") 表达式函数），使用`sprintf("texture%04d.exr", @Frame)`这样的格式。
 
 ## See also
 

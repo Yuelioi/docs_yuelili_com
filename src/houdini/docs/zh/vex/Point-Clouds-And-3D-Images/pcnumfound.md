@@ -5,17 +5,13 @@ category:
   - vex
 ---
 
-This node returns the number of points found by a [pcopen](pcopen.html "Returns a handle to a point cloud file.") query.
+该节点返回由[pcopen](pcopen.html)（"返回一个点云文件的句柄。"）查询到的点的数量。
 
-For example, if 10 points are being filtered, and 6 are within the
-search radius, `pcnumfound` will return 6.
+例如，如果有 10 个点被过滤，其中 6 个在搜索半径内，`pcnumfound`将返回 6。
 
 `int pcnumfound(int handle)`
 
-Returns the number of found points from the search performed by
-[pcopen](pcopen.html "Returns a handle to a point cloud file.").
-
-
+返回由[pcopen](pcopen.html)（"返回一个点云文件的句柄"）进行的搜索所发现的点的数量。
 
 ## See also
 

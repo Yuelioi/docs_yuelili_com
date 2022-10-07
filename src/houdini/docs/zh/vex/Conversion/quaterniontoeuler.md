@@ -5,21 +5,17 @@ category:
   - vex
 ---
 
-
-
-Since 17.0
+自 17.0 以来
 
 `vector quaterniontoeuler(vector4 orient, int order)`
 
-Creates a vector representing euler angles from a vector4 representing a quaternion.
+从一个代表四元数的向量 4 创建一个代表欧拉角的向量。
 
-The angles are in radians. Use the `degrees()` function to convert radians into degrees.
+角度的单位是弧度。使用`degrees()`函数将弧度转换为度。
 
-Specify the rotation order with the order integer. Use the constants defined in `$HH/vex/include/math.h` (for example, `XFORM_XYZ`).
+用顺序整数指定旋转顺序。使用`$HH/vex/include/math.h`中定义的常数（例如，`XFORM_XYZ`）。
 
-For more information, see [Data types](../lang.html#data-types) and [Dot operator](../lang.html#dot-operator).
-
-
+更多信息，请参阅[数据类型](.../lang.html) () (#data-types)和[点运算器](.../lang.html) () (#dot-operator)。
 
 ## See also
 

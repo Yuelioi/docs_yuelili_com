@@ -4,7 +4,7 @@ order: 15
 category:
   - houdini
 ---
-    
+
 ## 描述
 
 Slices a sub-string or sub-array of a string or array. 切分数组。不过建议用[ : :] 。见最后示例

@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Since 18.0
 
 `int usd\_pointinstance\_getbbox(<stage>stage, string primpath, int instance\_index, string purpose, vector &min, vector &max)`
@@ -37,7 +35,7 @@ Always 1.
 
 ## Examples
 
-[¶](#examples)
+
 
 ```c
 // Get the bounding box of the first instanced sphere.
@@ -45,8 +43,6 @@ vector min, max;
 usd\_pointinstance\_getbbox(0, "/src/instanced\_spheres", 0, "render", min, max);
 
 ```
-
-
 
 ## See also
 

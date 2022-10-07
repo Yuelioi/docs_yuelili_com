@@ -4,7 +4,7 @@ order: 9
 category:
   - houdini
 ---
-    
+
 ## 描述
 
 Adds an item to an array. 在数组中添加元素
@@ -25,7 +25,7 @@ void  push(<type>&array[], <type>values[])
 
 Concatenates the values from the `values` array to the end of `array`.
 Increases the size of `array` by `len(values)`. This is the same as
-[append(array, values)](append.html "Adds an item to an array or string.").
+[append(array, values)](append.html) () ("Adds an item to an array or string.").
 
 将 values 中的值串联到 array 的末尾。array 大小增加 len(values)个。与 append(array, values)相同。
 

@@ -4,7 +4,7 @@ order: 16
 category:
   - houdini
 ---
-    
+
 ## 描述
 
 Returns the array sorted in increasing order.

@@ -11,9 +11,7 @@ category:
 
 `float distance2(vector4 a, vector4 b)`
 
-This returns the squared distance. To get the plain distance, use [distance](distance.html "Returns the distance between two points.").
-
-
+This returns the squared distance. To get the plain distance, use [distance](distance.html) () ("Returns the distance between two points.").
 
 ## See also
 

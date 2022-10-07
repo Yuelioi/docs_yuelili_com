@@ -5,8 +5,6 @@ category:
   - vex
 ---
 
-
-
 Context(s)
 [shading](../contexts/shading.html)
 
@@ -25,8 +23,6 @@ if (started >= 0)
 opend(started);
 
 ```
-
-
 
 ## See also
 

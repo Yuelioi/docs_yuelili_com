@@ -19,7 +19,6 @@ category:
 
 This function overwrites the float variables with the components from the final vector or matrix argument.
 
-
 data
 
 [assign](assign.html)

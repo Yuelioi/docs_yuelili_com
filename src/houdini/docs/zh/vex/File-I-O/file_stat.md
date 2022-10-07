@@ -5,39 +5,33 @@ category:
   - vex
 ---
 
+在这一页
 
-
-On this page
-
-- [Better file_stat functions](#better)
-- [Examples](#examples)
+- [更好的 file_stat 功能](#better)
+- [例子](#例子)
 
 `int file\_stat(string filename, int &stat\_data[], ...)`
 
-Overwrites an integer array with data representing the file system
-information for the given file.
+用代表给定文件的文件系统信息的数据覆盖一个整数阵列。
 
-**Do not use this function**. The `file.h` include file has [more convenient versions of this function](file_stat.html#better) which return a struct.
+**不要使用这个函数**。`file.h`包含文件有[这个函数的更方便的版本](file_stat.html) ()(#更好)，它返回一个结构。
 
 ## Arguments
 
-"`usecache`",
 `int`
 `=0`
 
-If this option is on, the function will use a persistent cache to store results of the function. The cache is persistent over the entire run of the application.
+"`usecache'", 如果这个选项是打开的，函数将使用一个持久的缓存来存储函数的结果。该缓存在应用程序的整个运行过程中是持久的。
 
 ## Returns
 
-`1` if the path is valid or `0` otherwise.
+如果路径有效则为 "1"，否则为 "0"。
 
-##
-
-Better file_stat functions
+## 更好的 file_stat 功能
 
 [¶](#better)
 
-Instead of using the built-in `file_stat`, add this line at the top of the file:
+不使用内置的`file_stat`，而是在文件的顶部添加这一行。
 
 ```c
 #include <file.h>
@@ -45,7 +39,6 @@ Instead of using the built-in `file_stat`, add this line at the top of the file:
 ```
 
 Then use the `file_stat` or `cached_file_stat` functions from that file. They take a file path string and return a struct (defined in `file.h`) with the following members:
-
 
 `.st_size` The size of the file in bytes.
 |
@@ -67,7 +60,7 @@ Then use the `file_stat` or `cached_file_stat` functions from that file. They ta
 
 ## Examples
 
-[¶](#examples)
+
 
 This simple [snippet](../snippets.html) checks if a texture file exists, and if so, colors points green instead of red:
 

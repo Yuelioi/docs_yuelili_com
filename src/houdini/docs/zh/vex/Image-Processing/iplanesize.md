@@ -5,9 +5,6 @@ category:
   - vex
 ---
 
-
-
-Context(s)
 [cop](../contexts/cop.html)
 
 `int iplanesize(int opinput, int planeindex)`
@@ -16,14 +13,13 @@ Context(s)
 
 `opinput`
 
-The input number to read from, starting from 0. For example, the first input is 0, the second input is 1, and so on.
+Context(s) 要读取的输入号码，从 0 开始。例如，第一个输入是 0，第二个输入是 1，以此类推。
 
 ## Returns
 
-The number of components in the plane named `planename` in the specified input.
+在指定的输入中，名为`planename`的平面上的组件数量。
 
-
-input_plane
+输入平面
 
 [iaspect](iaspect.html)
 

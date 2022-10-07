@@ -5,76 +5,67 @@ category:
   - vex
 ---
 
+在这一页
 
+- [概览](#overview)
+- [使用方法](#使用方法)
 
-On this page
-
-- [Overview](#overview)
-- [Usage](#usage)
-
-##
-
-Overview
+## 概述
 
 [¶](#overview)
 
-Use this function to sample values from a CDF array created with the [create_cdf](create_cdf.html "Creates a cumulative distribution function (CDF) from an array of probability density function (PDF) values.") function. See [create_cdf](create_cdf.html "Creates a cumulative distribution function (CDF) from an array of probability density function (PDF) values.") for more information.
+使用此函数从用 [create_cdf](create_cdf.html) () ("从概率密度函数（PDF）值阵列中创建累积分布函数（CDF）。") 函数创建的 CDF 阵列中取值。参见 [create_cdf](create_cdf.html) () ("从概率密度函数（PDF）值阵列中创建累积分布函数（CDF）。") 了解更多信息。
 
-See the [create_cdf](create_cdf.html "Creates a cumulative distribution function (CDF) from an array of probability density function (PDF) values.") function docs for example code.
+参见 [create_cdf](create_cdf.html) () ("从概率密度函数（PDF）值阵列中创建累积分布函数（CDF）。") 函数文档中的示例代码。
 
-##
-
-Usage
+## 使用方法
 
 [¶](#usage)
 
 `int sample\_cdf(float cdf[], float uniform\_rand)`
 
-Returns the index of the sampled CDF.
+返回采样的 CDF 的索引。
 
 `void sample\_cdf(float cdf[], float uniform\_rand, int &index, float &x)`
 
-Writes the index of the sampled CDF and value to output arguments.
+将采样的 CDF 的索引和值写到输出参数中。
 
 `void sample\_cdf(float cdf[], float uniform\_rand, int &index, float &x, float &pdf)`
 
-Writes the index of the sampled CDF, the sampled value, and the corresponding PDF to output arguments.
+将取样的 CDF 的索引、取样值和相应的 PDF 写到输出参数。
 
 ## Arguments
 
 `cdf`
 
-The CDF to sample from (create this using [create_cdf](create_cdf.html "Creates a cumulative distribution function (CDF) from an array of probability density function (PDF) values.")).
+要取样的 CDF（使用[create_cdf](create_cdf.html)（"从概率密度函数（PDF）值阵列中创建累积分布函数（CDF）"）创建。）
 
 `uniform_rand`
 
-A uniform random variable (must be in range 0 to 1).
+一个均匀的随机变量（必须在 0 到 1 的范围内）。
 
 `&index`
 
-Outputs the index of the sampled CDF element.
+输出采样的 CDF 元素的索引。
 
 `&x`
 
-Outputs the value of the sampled CDF element.
+输出采样的 CDF 元素的值。
 
 `&pdf`
 
-Outputs the PDF of the sampled CDF element.
+输出采样的 CDF 元素的 PDF。
 
 ## Returns
 
-The first form returns the index of the sampled value. The other forms write the index to an output argument instead.
-
-
+第一种形式返回采样值的索引。其他形式则是将索引写到一个输出参数中。
 
 ## See also
 
 - [create_cdf](create_cdf.html)
 - [create_pdf](create_pdf.html)
 
-|
-bsdf
+### bsdf
 
 [albedo](albedo.html)
 

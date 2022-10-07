@@ -7,13 +7,9 @@ category:
 
 `float metaweight(<geometry>geometry, vector p)`
 
-Returns the metaweight of the geometry at position p.
-This is the result of evaluating all the metaballs in the
-geometry at that position. Usually this is the sum of their
-values, but meta expressions can change that.
+返回 p 位置的几何体的元权重。这是评估该位置的几何体中所有元球的结果。通常这是其数值的总和，但是元表达式可以改变这一点。
 
-
-metaball
+元宝
 
 [metaimport](metaimport.html)
 
