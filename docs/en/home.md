@@ -16,15 +16,15 @@ actions:
 features:
   - title: After Effects
     details: Expressiong, Scripting, Plugins Docs
-    link: ./ae/
+    link: https://docs.yuelili.com/ae/en/home.html
 
   - title: Premiere
     details: Scripting
-    link: ./pr/
+    link: https://docs.yuelili.com/pr/en/home.html
 
   - title: Houdini
     details: VEX
-    link: ./houdini/
+    link: https://docs.yuelili.com/houdini/en/home.html
 
  
 copyright: false

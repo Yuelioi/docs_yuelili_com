@@ -14,7 +14,7 @@ export default hopeTheme({
   iconAssets: "//at.alicdn.com/t/c/font_3673964_1b9daq7fye6h.css",
   logo: "/logo.svg",
   repo: "Yuelioi/docs_yuelili_com",
-  docsDir: "src//docs/",
+  docsDir: "src/ae/docs/",
   pageInfo: ["Author", "Original", "Date", "Category", "Tag", "ReadingTime"],
   locales: {
     "/en/": {

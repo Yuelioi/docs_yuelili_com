@@ -47,7 +47,7 @@ export const enNavbar = navbar([
     text: "Blender",
     icon: "edit",
     prefix: "https://docs.yuelili.com/blender/en/",
-    children: [{ text: "*Scripting", icon: "edit", link: "https://docs.yuelili.com/blender/en/development/" }],
+    children: [{ text: "Scripting", icon: "edit", link: "https://docs.yuelili.com/blender/en/development/" }],
   },
   {
     text: "Speed Tree",
@@ -59,7 +59,7 @@ export const enNavbar = navbar([
     text: "Houdini",
     icon: "edit",
     prefix: "https://docs.yuelili.com/houdini/en/",
-    children: [{ text: "*VEX", icon: "edit", link: "https://docs.yuelili.com/houdini/en/vex/" }],
+    children: [{ text: "VEX", icon: "edit", link: "https://docs.yuelili.com/houdini/en/vex/" }],
   },
   { text: "Yuelili.com", icon: "note", link: "https://www.yuelili.com" },
 ]);

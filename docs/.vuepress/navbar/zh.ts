@@ -42,7 +42,7 @@ export const zhNavbar = navbar([
     text: "Blender文档",
     icon: "edit",
     prefix: "https://docs.yuelili.com/blender/zh/",
-    children: [{ text: "*脚本开发", icon: "edit", link: "https://docs.yuelili.com/blender/zh/development/" }],
+    children: [{ text: "插件开发", icon: "edit", link: "https://docs.yuelili.com/blender/zh/development/" }],
   },
   {
     text: "Speed Tree",
@@ -54,7 +54,7 @@ export const zhNavbar = navbar([
     text: "Houdini文档",
     icon: "edit",
     prefix: "https://docs.yuelili.com/houdini/zh/",
-    children: [{ text: "*VEX", icon: "edit", link: "https://docs.yuelili.com/houdini/zh/vex/" }],
+    children: [{ text: "VEX", icon: "edit", link: "https://docs.yuelili.com/houdini/zh/vex/" }],
   },
   { text: "月离的万事屋", icon: "note", link: "https://www.yuelili.com" },
 ]);
