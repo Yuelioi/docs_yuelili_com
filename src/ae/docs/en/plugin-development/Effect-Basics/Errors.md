@@ -4,7 +4,6 @@ order: 10
 category:
   - AE 插件开发
 ---
-
 # Errors
 
 Always, always, _always_ (always!) return a `PF\_Err` from `main()`. Plug-ins must pass all errors back to After Effects.
@@ -19,23 +18,19 @@ Really. We’re serious.
 
 ## Error Codes
 
-| **Error**                                                                                                                      | **Meaning**                                                                                  |
-| ------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------- |
-| `PF\_Err\_NONE`                                                                                                                | Success.                                                                                     |
-| `PF\_Err\_OUT\_OF\_MEMORY`                                                                                                     | Memory allocation failed.                                                                    |
-| :::tip that RAM preview will cause this condition, so After Effects will be expecting to receive this error from your plug-in. |
-| `PF\_Err\_INTERNAL\_STRUCT\_DAMAGED`                                                                                           | Problems using a data structure.                                                             |
-| `PF\_Err\_INVALID\_INDEX`                                                                                                      | Problems finding/using array member.                                                         |
-| `PF\_Err\_UNRECOGNIZED\_PARAM\_TYPE`                                                                                           | Problem with parameter data.                                                                 |
-| `PF\_Err\_INVALID\_CALLBACK`                                                                                                   | Problems accessing function through pointer.                                                 |
-| `PF\_Err\_BAD\_CALLBACK\_PARAM`                                                                                                | Problems using a parameter passed to a callback.                                             |
-| `PF\_Interrupt\_CANCEL`                                                                                                        | Both effect and AEGP callbacks can return this to effects, if a user action aborts a render. |
 
-If the effect gets this error from a callback, it should stop processing the frame and return the error to the host.
-Failure to pass the error back may result in misrendered frames being cached. |
-| `PF\_Err\_CANNOT\_PARSE\_KEYFRAME\_TEXT` | Return this from `PF\_Arbitrary\_SCAN\_FUNC` when problems occur parsing the clipboard into keyframe data. |
 
----
+| **Error**                                                | **Meaning**                                                                                                                                                                                                                                                                                         |
+| -------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `<span class="pre">PF_Err_NONE</span>`                       | Success.                                                                                                                                                                                                                                                                                                  |
+| `<span class="pre">PF_Err_OUT_OF_MEMORY</span>`              | Memory allocation failed.<br />Note that RAM preview will cause this condition, so After Effects will be expecting to receive this error from your plug-in.                                                                                                                                               |
+| `<span class="pre">PF_Err_INTERNAL_STRUCT_DAMAGED</span>`    | Problems using a data structure.                                                                                                                                                                                                                                                                          |
+| `<span class="pre">PF_Err_INVALID_INDEX</span>`              | Problems finding/using array member.                                                                                                                                                                                                                                                                      |
+| `<span class="pre">PF_Err_UNRECOGNIZED_PARAM_TYPE</span>`    | Problem with parameter data.                                                                                                                                                                                                                                                                              |
+| `<span class="pre">PF_Err_INVALID_CALLBACK</span>`           | Problems accessing function through pointer.                                                                                                                                                                                                                                                              |
+| `<span class="pre">PF_Err_BAD_CALLBACK_PARAM</span>`         | Problems using a parameter passed to a callback.                                                                                                                                                                                                                                                          |
+| `<span class="pre">PF_Interrupt_CANCEL</span>`               | Both effect and AEGP callbacks can return this to effects, <br />if a user action aborts a render.If the effect gets this error from a callback, it should stop processing the frame and return the error to the host.<br />Failure to pass the error back may result in misrendered frames being cached. |
+| `<span class="pre">PF_Err_CANNOT_PARSE_KEYFRAME_TEXT</span>` | Return this from `<span class="pre">PF_Arbitrary_SCAN_FUNC</span>` when problems occur parsing the clipboard into keyframe data.                                                                                                                                                                        |
 
 ## Error Reporting Policy
 
@@ -49,7 +44,7 @@ If you get an error code back from one of our callback functions, pass it back t
 
 Out-of-memory errors are never reported by After Effects. Error reporting is always suppressed during RAM preview, and when After Effects is running in - noui mode.
 
-To report an error from within a plug-in, set `PF\_OutFlag\_DISPLAY\_ERROR\_MESSAGE`, and describe the error in [PF_OutData>return_msg](PF_OutData.html) (#effect-basics-pf-outdata).
+To report an error from within a plug-in, set `PF\_OutFlag\_DISPLAY\_ERROR\_MESSAGE`, and describe the error in [PF_OutData&gt;return_msg](PF_OutData.html) (#effect-basics-pf-outdata).
 
 Doing so will enter your error into the render log, and prevent system hangs in renders driven by a render engine or scripting.
 

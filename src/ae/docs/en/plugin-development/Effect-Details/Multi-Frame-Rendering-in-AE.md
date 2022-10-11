@@ -4,7 +4,6 @@ order: 2
 category:
   - AE 插件开发
 ---
-
 # Multi-Frame Rendering in AE
 
 In order to take advantage of modern hardware with more CPU cores and threads, After Effects 2022 and above now supports Multi-Frame Rendering. Multi-Frame rendering (MFR) allows multiple frames to be rendered concurrently thereby speeding up rendering and export of AE compositions.
@@ -45,16 +44,14 @@ The March 2021 SDK introduces new `sequence\_data` behavior that is enabled star
 
 The table below outlines the changes an effect will need to make to support the new behavior:
 
-| **MFR & Sequence Data Usage**                                                                                      | **Changes Needed with March 2021 SDK**                                                                                                                                                                                                                                                                                                   |
-| ------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Plugin does not set PF_OutFlag2_SUPPORTS_THREADED_RENDERING                                                        | No changes needed. Effect and sequence_data will continue to work as it did in the past.                                                                                                                                                                                                                                                 |
-| Plugin sets PF_OutFlag2_SUPPORTS_THREADED_RENDERING but neither reads nor writes to sequence_data during Render    | Recompile the plugin with the March 2021 SDK, no other code changes are required.                                                                                                                                                                                                                                                        |
-| If the plugin is not compiled with the March 2021 SDK, the plugin will stop utilizing MFR starting with AE 22.0x6. |
-| Plugin sets PF_OutFlag2_SUPPORTS_THREADED_RENDERING but only reads sequence_data during Render                     | Recompile the plugin with the March 2021 SDK, update reading sequence_data via `PF\_EffectSequenceDataSuite1` for thread-safe access. See [Accessing sequence_data at Render Time with Multi-Frame Rendering](global-sequence-frame-data.html) (#effect-details-sequence-data-mfr-suite) for more information.                              |
-| Plugin sets PF_OutFlag2_SUPPORTS_THREADED_RENDERING and reads and writes to sequence_data during Render            | Recompile the plugin with the March 2021 SDK and modify the plugin to:1. Utilize the [Compute Cache API](compute-cache-api.html) (#effect-details-compute-cache-api) for thread-safe cache access instead of reading/writing to sequence_data directly. See [Compute Cache For Multi-Frame Rendering](#compute-cache) for more information. |
+| **MFR & Sequence Data Usage**                                                                                | **Changes Needed with March 2021 SDK**                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Plugin does not set PF_OutFlag2_SUPPORTS_THREADED_RENDERING                                                        | No changes needed. Effect and sequence_data will continue to work as it did in the past.                                                                                                                                                                                                                                                                                                                                                                                                               |
+| Plugin sets PF_OutFlag2_SUPPORTS_THREADED_RENDERING but neither reads nor writes to sequence_data during Render    | Recompile the plugin with the March 2021 SDK, no other code changes are required.                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| If the plugin is not compiled with the March 2021 SDK, the plugin will stop utilizing MFR starting with AE 22.0x6. |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| Plugin sets PF_OutFlag2_SUPPORTS_THREADED_RENDERING but only reads sequence_data during Render                     | Recompile the plugin with the March 2021 SDK, update reading sequence_data via `PF\_EffectSequenceDataSuite1` for thread-safe access. See [Accessing sequence_data at Render Time with Multi-Frame Rendering](global-sequence-frame-data.html) (#effect-details-sequence-data-mfr-suite) for more information.                                                                                                                                                                                          |
+| Plugin sets PF_OutFlag2_SUPPORTS_THREADED_RENDERING and reads and writes to sequence_data during Render            | Recompile the plugin with the March 2021 SDK and modify the plugin to:<br />1. Utilize the[Compute Cache API](compute-cache-api.html) (#effect-details-compute-cache-api) for thread-safe cache access instead of reading/writing to sequence_data directly. See [Compute Cache For Multi-Frame Rendering](#compute-cache) for more information.<br />AND / OR<br />2. Add the `PF\_OutFlag2\_MUTABLE\_RENDER\_SEQUENCE\_DATA\_SLOWER` to the effect to restore direct read/write access to sequence_data. |
 
-AND / OR2. Add the `PF\_OutFlag2\_MUTABLE\_RENDER\_SEQUENCE\_DATA\_SLOWER` to the effect to restore direct read/write access to sequence_data.
-|
 
 :::tip
 
@@ -128,7 +125,7 @@ If an effect uses any blocking synchronization mechanisms, such as mutexes or ga
 ## How to locate the static and global variables in your effects
 
 To help you locate the static and global variables in your effect, we’ve developed a **Static Analyzer tool** for you to use.
-You can find the tool in this Git Repo: <https://github.com/adobe/ae-plugin-thread-safety>
+You can find the tool in this Git Repo: [https://github.com/adobe/ae-plugin-thread-safety](https://github.com/adobe/ae-plugin-thread-safety)
 
 If you develop on Mac:1. Clone/Download the Git Repo at the URL provided above 2. Find the bash script `check\_symbols\_for\_thread\_safety.sh` in the **Mac** folder 3. Navigate inside the package content of a plugin or effect and locate the binary files. (For example, the **Curves.plugin** has its binary file here: `/Applications/Adobe After Effects [your AE version]/Plug-ins/Effects/Curves.plugin/Contents/MacOS/Curves`) 4. To analyze the binary, run:
 
@@ -145,7 +142,7 @@ For example, check\_symbols\_for\_thread\_safety.sh /Applications/Adobe After Ef
 
 ```
 
-6. `[symbol type]` is an one case-sensitive letter that indicates the type of the variable. You can find all the type information here: <https://linux.die.net/man/1/nm>
+6. `[symbol type]` is an one case-sensitive letter that indicates the type of the variable. You can find all the type information here: [https://linux.die.net/man/1/nm](https://linux.die.net/man/1/nm)
 7. Here is an example of the output:
 
 ```cpp
@@ -227,7 +224,7 @@ menuBuf, Type: char[0x1000], File Static, (static, [0008FCD0][0003:00001CD0])
 >
 > `Type: char[0x1000]` shows what type of the variable it is. The data here is a `char`.
 >
-> `File Static` shows what kind of that data it is. The data here is a **File-scoped static variable.** You can find all the data kinds and what they mean on this page <https://docs.microsoft.com/en-us/visualstudio/debugger/debug-interface-access/datakind?view=vs-2019>
+> `File Static` shows what kind of that data it is. The data here is a **File-scoped static variable.** You can find all the data kinds and what they mean on this page [https://docs.microsoft.com/en-us/visualstudio/debugger/debug-interface-access/datakind?view=vs-2019](https://docs.microsoft.com/en-us/visualstudio/debugger/debug-interface-access/datakind?view=vs-2019)
 >
 > `static` shows that the data is in the static section of the memory.
 >
@@ -471,4 +468,4 @@ Once you have completed the above preparation steps, test your effect thoroughly
 
 ## Thread-Safe First Party Effects
 
-Visit <https://helpx.adobe.com/after-effects/user-guide.html/after-effects/using/effect-list.ug.html> for a full list of MFR supported effects. More are being added every week.
+Visit [https://helpx.adobe.com/after-effects/user-guide.html/after-effects/using/effect-list.ug.html](https://helpx.adobe.com/after-effects/user-guide.html/after-effects/using/effect-list.ug.html) for a full list of MFR supported effects. More are being added every week.

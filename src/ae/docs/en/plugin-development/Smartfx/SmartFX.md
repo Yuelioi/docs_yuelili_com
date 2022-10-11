@@ -4,7 +4,6 @@ order: 2
 category:
   - AE 插件开发
 ---
-
 # SmartFX
 
 The SmartFX API provides bidirectional communication between effects and After Effects, enabling many performance optimizations and providing previously unavailable dependency information. This extension of the effect API is the way to implement 32-bit per channel support in After Effects.
@@ -55,103 +54,141 @@ After Effects requests output from the effect. The effect tells After Effects wh
 
 ## PF_PreRenderExtra
 
-| Member               | Purpose                                                                                                                                     |
-| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| `PF\_PreRenderInput` | Describes what After Effects needs rendered (in the `PF\_RenderRequest`), and the bit depth requested (in the aptly-named bitdepth member). |
+### PF_PreRenderInput
 
-```cpp
-typedef struct {
- PF\_LRect rect;
- PF\_Field field;
- PF\_ChannelMask channel\_mask;
- PF\_Boolean preserve\_rgb\_of\_zero\_alpha;
- char unused[3];
- long reserved[4];
-} PF\_RenderRequest;
+
+Describes what After Effects needs rendered (in the `<span class="pre">PF_RenderRequest</span>`), and the bit depth requested (in the aptly-named bitdepth member).
 
 ```
+typedefstruct{
+PF_LRectrect;
+PF_Fieldfield;
+PF_ChannelMaskchannel_mask;
+PF_Booleanpreserve_rgb_of_zero_alpha;
+charunused[3];
+longreserved[4];
+}PF_RenderRequest;
+```
 
-`rect` is in layer coordinates. field is also relative to the layer origin;
-whether the active field falls on even or odd scanlines of the output buffer depends on the origin of the output buffer.
-`channel\_mask` specifies for which channels the effect should provide output.
+`<span class="pre">rect</span>` is in layer coordinates. field is also relative to the layer origin; whether the active field falls on even or odd scanlines of the output buffer depends on the origin of the output buffer.
+
+`<span class="pre">channel_mask</span>` specifies for which channels the effect should provide output.
+
 Data written to other channels will not be honored.
+
 It will be one or more of the following, or’d together:
 
-- `PF\_ChannelMask\_ALPHA`
-- `PF\_ChannelMask\_RED`
-- `PF\_ChannelMask\_GREEN`
-- `PF\_ChannelMask\_BLUE`
-- `PF\_ChannelMask\_ARGB`
+> * `<span class="pre">PF_ChannelMask_ALPHA</span>`
+> * `<span class="pre">PF_ChannelMask_RED</span>`
+> * `<span class="pre">PF_ChannelMask_GREEN</span>`
+> * `<span class="pre">PF_ChannelMask_BLUE</span>`
+> * `<span class="pre">PF_ChannelMask_ARGB</span>`
 
-If `preserve\_rgb\_of\_zero\_alpha` pixels is `TRUE`, the effect must propagate the color content of transparent pixels through to the output.
-This is related to, but distinct from, [PF_OutFlag2_REVEALS_ZERO_ALPHA](../effect-basics/PF_OutData.html) (#effect-basics-pf-outdata-pf-outflags),
-which tells After Effects that the effect may set alpha to non-zero values for such pixels, restoring them to visibility. |
-| `PF\_PreRenderOutput` | Filled in by the effect to tell After Effects what output it plans to generate, based on the input.
+If `<span class="pre">preserve_rgb_of_zero_alpha</span>` pixels is `<span class="pre">TRUE</span>`, the effect must propagate the color content of transparent pixels through to the output.
 
-```cpp
-typedef struct {
- PF\_LRect result\_rect;
- PF\_LRect max\_result\_rect;
- PF\_Boolean solid;
- PF\_Boolean reserved;
- PF\_RenderOutputFlags flags;
- void\* pre\_render\_data;
- PF\_DeletePreRenderDataFunc func;
-} PF\_PreRenderOutput;
+This is related to, but distinct from, [PF_OutFlag2_REVEALS_ZERO_ALPHA](https://ae-plugins.docsforadobe.dev/effect-basics/PF_OutData.html#effect-basics-pf-outdata-pf-outflags), which tells After Effects that the effect may set alpha to non-zero values for such pixels, restoring them to visibility.
+
+### PF_PreRenderOutput
+
+
+Filled in by the effect to tell After Effects what output it plans to generate, based on the input.
 
 ```
-
-`pre\_render\_data` will be passed back to the effect during [PF_Cmd_SMART_RENDER](../effect-basics/command-selectors.html) (#effect-basics-command-selectors-frame-selectors).
-Currently, the only `PF\_RenderOutputFlags` is `PF\_RenderOutputFlag\_RETURNS\_EXTRA\_PIXELS`. |
-| `PF\_PreRenderCallbacks` | Currently, there is only one callback - `checkout\_layer`. checkout_idL is chosen by the effect.
-It must be positive and unique. After Effects populates the `PF\_CheckoutResult`.
-
-```cpp
-PF\_Err checkout\_layer(
- PF\_ProgPtr effect\_ref,
- PF\_ParamIndex index,
- A\_long checkout\_idL,
- const PF\_RenderRequest \*req,
- A\_long what\_time,
- A\_long time\_step,
- A\_u\_long time\_scale,
-PF\_CheckoutResult \*result);
-
-typedef struct {
- PF\_LRect result\_rect;
- PF\_LRect max\_result\_rect;
- PF\_RationalScale par;
- long solid;
- PF\_Boolean reservedB[3];
- A\_long ref\_width;
- A\_long ref\_height;
-} PF\_CheckoutResult;
-
+typedefstruct{
+PF_LRectresult_rect;
+PF_LRectmax_result_rect;
+PF_Booleansolid;
+PF_Booleanreserved;
+PF_RenderOutputFlagsflags;
+void*pre_render_data;
+PF_DeletePreRenderDataFuncfunc;
+}PF_PreRenderOutput;
 ```
 
-`result\_rect` can be empty. `max\_result\_rect` is the largest the output could possibly be, if the host asked for all of it.
-If solid is TRUE, the entire result_rect has opaque alpha.
-`ref\_width` and `ref\_height` are the original dimensions of the layer, before any effects are applied, disregarding any downsample factors.
-This will be the size of the composition for collapsed layers.
-There is a bug in 11.0 with the Global Performance Cache, when a SmartFX effect uses
-both [PF_OutFlag2_AUTOMATIC_WIDE_TIME_INPUT](../effect-basics/PF_OutData.html) (#effect-basics-pf-outdata-pf-outflags) & [PF_OutFlag_NON_PARAM_VARY](../effect-basics/PF_OutData.html) (#effect-basics-pf-outdata-pf-outflags).
-Calling checkout_layer during `PF\_Cmd\_SMART\_PRE\_RENDER` returns empty rects in `PF\_CheckoutResult`.
-The workaround is to simply make the call again. This workaround is no longer needed in 11.0.1. |
-| `result\_rect` | The output (in layer coordinates) resulting from the render request (can be empty).
-This cannot be bigger than the input request rectangle (unless `PF\_RenderOutputFlag\_RETURNS\_EXTRA\_PIXELS` is set), but can be smaller. |
-| `max\_result\_rect` | The maximum size the output could possibly be, if After Effects requested all of it.
-This must not vary depending on requested output size. |
-| `solid` | Set this TRUE if every pixel in the output will be fully opaque. Set if possible; it enables certain optimizations. |
-| `reserved` | Ignore. |
-| `flags` | Currently, the only flag is `PF\_RenderOutputFlag\_RETURNS\_EXTRA\_PIXELS`,
-which tells After Effects that the smart effect will return more pixels than After Effects requested. |
-| `pre\_render\_data` | Point this at any data that the effect would like to access during rendering.
-Effects can also allocate handles and store them in `out\_data>frame\_data`, as with regular (non-smart) effects.
-Since [PF_Cmd_SMART_PRE_RENDER](../effect-basics/command-selectors.html) (#effect-basics-command-selectors-frame-selectors) can be called with no corresponding
-[PF_Cmd_SMART_RENDER](../effect-basics/command-selectors.html) (#effect-basics-command-selectors-frame-selectors), effects must never delete this data themselves;
-once the effect returns from [PF_Cmd_SMART_PRE_RENDER](../effect-basics/command-selectors.html) (#effect-basics-command-selectors-frame-selectors),
-After Effects owns this data and will dispose of it (using either the following function or a standard free call). |
-| `delete\_pre\_render\_data\_func` | Point this to a function that will eventually be called to delete the pre_render_data. |
+`<span class="pre">pre_render_data</span>` will be passed back to the effect during [PF_Cmd_SMART_RENDER](https://ae-plugins.docsforadobe.dev/effect-basics/command-selectors.html#effect-basics-command-selectors-frame-selectors).
+
+Currently, the only `<span class="pre">PF_RenderOutputFlags</span>` is `<span class="pre">PF_RenderOutputFlag_RETURNS_EXTRA_PIXELS</span>`.
+
+### PF_PreRenderCallbacks
+
+
+Currently, there is only one callback - `<span class="pre">checkout_layer</span>`. checkout_idL is chosen by the effect.
+
+It must be positive and unique. After Effects populates the `<span class="pre">PF_CheckoutResult</span>`.
+
+```
+PF_Errcheckout_layer(
+PF_ProgPtreffect_ref,
+PF_ParamIndexindex,
+A_longcheckout_idL,
+constPF_RenderRequest*req,
+A_longwhat_time,
+A_longtime_step,
+A_u_longtime_scale,
+PF_CheckoutResult*result);
+
+typedefstruct{
+PF_LRectresult_rect;
+PF_LRectmax_result_rect;
+PF_RationalScalepar;
+longsolid;
+PF_BooleanreservedB[3];
+A_longref_width;
+A_longref_height;
+}PF_CheckoutResult;
+```
+
+`<span class="pre">result_rect</span>` can be empty. `<span class="pre">max_result_rect</span>` is the largest the output could possibly be, if the host asked for all of it. If solid is TRUE, the entire result_rect has opaque alpha.
+
+`<span class="pre">ref_width</span>` and `<span class="pre">ref_height</span>` are the original dimensions of the layer, before any effects are applied, disregarding any downsample factors. This will be the size of the composition for collapsed layers.
+
+There is a bug in 11.0 with the Global Performance Cache, when a SmartFX effect uses both [PF_OutFlag2_AUTOMATIC_WIDE_TIME_INPUT](https://ae-plugins.docsforadobe.dev/effect-basics/PF_OutData.html#effect-basics-pf-outdata-pf-outflags) & [PF_OutFlag_NON_PARAM_VARY](https://ae-plugins.docsforadobe.dev/effect-basics/PF_OutData.html#effect-basics-pf-outdata-pf-outflags).
+
+Calling checkout_layer during `<span class="pre">PF_Cmd_SMART_PRE_RENDER</span>` returns empty rects in `<span class="pre">PF_CheckoutResult</span>`.
+
+The workaround is to simply make the call again. This workaround is no longer needed in 11.0.1.
+
+### result_rect
+
+
+The output (in layer coordinates) resulting from the render request (can be empty).
+
+This cannot be bigger than the input request rectangle (unless `<span class="pre">PF_RenderOutputFlag_RETURNS_EXTRA_PIXELS</span>` is set), but can be smaller.
+
+### max_result_rect
+
+
+The maximum size the output could possibly be, if After Effects requested all of it.
+
+This must not vary depending on requested output size.
+
+### solid
+
+Set this TRUE if every pixel in the output will be fully opaque. Set if possible; it enables certain optimizations.
+
+### reserved
+
+Ignore.
+
+### flags
+
+Currently, the only flag is `<span class="pre">PF_RenderOutputFlag_RETURNS_EXTRA_PIXELS</span>`, which tells After Effects that the smart effect will return more pixels than After Effects requested.
+
+### pre_render_data
+
+
+Point this at any data that the effect would like to access during rendering.
+
+Effects can also allocate handles and store them in `<span class="pre">out_data>frame_data</span>`, as with regular (non-smart) effects.
+
+Since [PF_Cmd_SMART_PRE_RENDER](https://ae-plugins.docsforadobe.dev/effect-basics/command-selectors.html#effect-basics-command-selectors-frame-selectors) can be called with no corresponding [PF_Cmd_SMART_RENDER](https://ae-plugins.docsforadobe.dev/effect-basics/command-selectors.html#effect-basics-command-selectors-frame-selectors), effects must never delete this data themselves;
+
+once the effect returns from [PF_Cmd_SMART_PRE_RENDER](https://ae-plugins.docsforadobe.dev/effect-basics/command-selectors.html#effect-basics-command-selectors-frame-selectors), After Effects owns this data and will dispose of it (using either the following function or a standard free call).
+
+### delete_pre_render_data_func
+
+Point this to a function that will eventually be called to delete the pre_render_data.
+
 
 ---
 
@@ -229,50 +266,49 @@ During _PF_Cmd_SMART_RENDER_, the extra parameter points to a PF_SmartRenderExtr
 
 ## PF_SmartRenderExtra
 
-| Member                 | Purpose                                                                             |
-| ---------------------- | ----------------------------------------------------------------------------------- |
-| `PF\_SmartRenderInput` | Consists of a [PF_RenderRequest](#smartfx-smartfx-pf-prerenderextra), the bitdepth, |
+### PF_SmartRenderInput
 
-and a pointer to `pre\_render\_data` (allocated during [PF_Cmd_SMART_PRE_RENDER](../effect-basics/command-selectors.html) (#effect-basics-command-selectors-frame-selectors)).
-This `PF\_SmartRenderInput` is identical to that passed in the corresponding _PF_Cmd_SMART_PRE_RENDER_. |
-| `PF\_SmartRenderCallbacks` |
 
-```cpp
-PF\_Err checkout\_layer\_pixels(
- PF\_ProgPtr effect\_ref,
- A\_long checkout\_idL,
- PF\_EffectWorld \*\*pixels);
+Consists of a [PF_RenderRequest](https://ae-plugins.docsforadobe.dev/smartfx/smartfx.html#smartfx-smartfx-pf-prerenderextra), the bitdepth, and a pointer to `<span class="pre">pre_render_data</span>` (allocated during [PF_Cmd_SMART_PRE_RENDER](https://ae-plugins.docsforadobe.dev/effect-basics/command-selectors.html#effect-basics-command-selectors-frame-selectors)).
+
+This `<span class="pre">PF_SmartRenderInput</span>` is identical to that passed in the corresponding  *PF_Cmd_SMART_PRE_RENDER* .
+
+### PF_SmartRenderCallbacks
+
 
 ```
-
-This is used to actually access the pixels in layers checked out during _PF_Cmd_SMART_PRE_RENDER_.
-The returned `PF\_EffectWorld` is valid for duration of current command or until checked in.
-You are only allowed to call `checkout\_layer\_pixels` only once with the checkout_idL used earlier in _PF_Cmd_SMART_PRERENDER_.
-There must be a one-to-one mapping between the number of checkouts made in _PF_Cmd_SMART_PRERENDER_ and _PF_Cmd_SMART_RENDER_.
-To call `checkout\_layer\_pixels` more than once on a layer,
-you should call [checkout_layer](#smartfx-smartfx-pf-prerenderextra) on the same layer again with a different unique `checkout\_idL`
-in _PF_Cmd_SMART_PRERENDER_ and then use that `checkout\_idL` to do another `checkout\_layer\_pixels` in _PF_Cmd_SMART_RENDER_.
-
-```cpp
-PF\_Err checkin\_layer\_pixels(
- PF\_ProgPtr effect\_ref,
- A\_long checkout\_idL);
-
+PF_Errcheckout_layer_pixels(
+PF_ProgPtreffect_ref,
+A_longcheckout_idL,
+PF_EffectWorld**pixels);
 ```
 
-It isn’t necessary to call (After Effects cleans up all such checkouts when the effect returns from _PF_Cmd_SMART_RENDER_), but useful to free up memory.
+This is used to actually access the pixels in layers checked out during  *PF_Cmd_SMART_PRE_RENDER* .
 
-```cpp
-PF\_Err checkout\_output(
- PF\_ProgPtr effect\_ref,
- PF\_EffectWorld \*\*output);
+The returned `<span class="pre">PF_EffectWorld</span>` is valid for duration of current command or until checked in.
+
+You are only allowed to call `<span class="pre">checkout_layer_pixels</span>` only once with the checkout_idL used earlier in  *PF_Cmd_SMART_PRERENDER* . There must be a one-to-one mapping between the number of checkouts made in *PF_Cmd_SMART_PRERENDER* and  *PF_Cmd_SMART_RENDER* .
+
+To call `<span class="pre">checkout_layer_pixels</span>` more than once on a layer, you should call [checkout_layer](https://ae-plugins.docsforadobe.dev/smartfx/smartfx.html#smartfx-smartfx-pf-prerenderextra) on the same layer again with a different unique `<span class="pre">checkout_idL</span>` in *PF_Cmd_SMART_PRERENDER* and then use that `<span class="pre">checkout_idL</span>` to do another `<span class="pre">checkout_layer_pixels</span>` in  *PF_Cmd_SMART_RENDER* .
 
 ```
+PF_Errcheckin_layer_pixels(
+PF_ProgPtreffect_ref,
+A_longcheckout_idL);
+```
 
-Retrieves the output buffer. :::tip that effects are not allowed to check out output until at least one input has been checked out (unless the effect has no inputs at all).
-NOTE: For optimal memory usage, request the output as late as possible, and request inputs as few at a time as possible. |
+It isn’t necessary to call (After Effects cleans up all such checkouts when the effect returns from  *PF_Cmd_SMART_RENDER* ), but useful to free up memory.
 
----
+```
+PF_Errcheckout_output(
+PF_ProgPtreffect_ref,
+PF_EffectWorld**output);
+```
+
+Retrieves the output buffer. Note that effects are not allowed to check out output until at least one input has been checked out (unless the effect has no inputs at all).
+
+NOTE: For optimal memory usage, request the output as late as possible, and request inputs as few at a time as possible.
+
 
 ## When To Access Layer Parameters
 

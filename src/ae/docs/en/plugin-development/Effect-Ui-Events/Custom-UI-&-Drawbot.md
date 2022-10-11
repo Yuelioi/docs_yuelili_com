@@ -4,7 +4,6 @@ order: 5
 category:
   - AE 插件开发
 ---
-
 # Custom UI & Drawbot
 
 Custom UI uses a composited drawing model using Drawbot. The Drawbot suites can be used for:
@@ -54,18 +53,7 @@ Enables an effect to get the drawing reference. This is the first call needed to
 
 ### PF_EffectCustomUISuite1
 
-| **Function**              | **Purpose**                |
-| ------------------------- | -------------------------- |
-| `PF\_GetDrawingReference` | Get the drawing reference. |
 
-```cpp
-PF\_GetDrawingReference(
- const PF\_ContextH effect\_contextH,
- DRAWBOT\_DrawRef \*referenceP0);
-
-```
-
-|
 
 ---
 
@@ -75,9 +63,9 @@ Using the Drawbot reference, get the supplier and surface references.
 
 ### Drawbot_DrawbotSuite1
 
-| **Function**  | **Purpose**                 |
-| ------------- | --------------------------- |
-| `GetSupplier` | Get the supplier reference. |
+| **Function** | **Purpose**           |
+| ------------------ | --------------------------- |
+| `GetSupplier`    | Get the supplier reference. |
 
 Needed to use [Drawbot_SupplierSuite](#effect-ui-events-custom-ui-and-drawbot-drawbot-suppliersuite).
 
@@ -109,9 +97,9 @@ Calls to create and release drawing tools, get default settings, and query drawi
 
 ### Drawbot_SupplierSuite1
 
-| **Function** | **Purpose**                                                                                                                                       |
-| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `NewPen`     | Create a new pen. Release this using `ReleaseObject` from [Drawbot_SupplierSuite](#effect-ui-events-custom-ui-and-drawbot-drawbot-suppliersuite). |
+| **Function** | **Purpose**                                                                                                                                |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `NewPen`         | Create a new pen. Release this using `ReleaseObject` from [Drawbot_SupplierSuite](#effect-ui-events-custom-ui-and-drawbot-drawbot-suppliersuite). |
 
 ```cpp
 NewPen(
@@ -275,8 +263,8 @@ Calls to draw on the surface, and to query and set drawing settings.
 
 ### Drawbot_SurfaceSuite1
 
-| **Function**     | **Purpose**                                                                               |
-| ---------------- | ----------------------------------------------------------------------------------------- |
+| **Function** | **Purpose**                                                                         |
+| ------------------ | ----------------------------------------------------------------------------------------- |
 | `PushStateStack` | Push the current surface state onto the stack. It should be popped to retrieve old state. |
 
 It is required to restore state if you are going to clip or transform a surface or change the interpolation or anti-aliasing policy.
@@ -489,9 +477,9 @@ Calls to draw paths.
 
 ### Drawbot_PathSuite1
 
-| **Function** | **Purpose**      |
-| ------------ | ---------------- |
-| `MoveTo`     | Move to a point. |
+| **Function** | **Purpose** |
+| ------------------ | ----------------- |
+| `MoveTo`         | Move to a point.  |
 
 ```cpp
 MoveTo(
@@ -567,8 +555,8 @@ This suite should be used for stroking and filling paths and vertices on the Com
 
 ### PF_EffectCustomUIOverlayThemeSuite1
 
-| **Function**                      | **Purpose**                         |
-| --------------------------------- | ----------------------------------- |
+| **Function**                  | **Purpose**                   |
+| ----------------------------------- | ----------------------------------- |
 | `PF\_GetPreferredForegroundColor` | Get the preferred foreground color. |
 
 ```cpp

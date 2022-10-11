@@ -4,7 +4,6 @@ order: 13
 category:
   - AE 插件开发
 ---
-
 # Global, Sequence, & Frame Data
 
 After Effects allows plug-ins to store data at three scopes: global, sequence, and frame. Consider carefully where you store information; choosing poorly can impact performance, or make your plug-in confusing to the user.
@@ -102,20 +101,19 @@ When enabling Multi-Frame Rendering on an effect, the `sequence\_data` object wi
 
 ### PF_EffectSequenceDataSuite1
 
-| **Function**               | **Purpose**                                                                                                                    |
-| -------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
-| `PF\_GetConstSequenceData` | Retrieves the read-only const sequence_data object for a rendering thread when Multi-Frame Rendering is enabled for an effect. |
+#### PF_GetConstSequenceData
 
-```cpp
-PF\_Err(\*PF\_GetConstSequenceData)(
- PF\_ProgPtr effect\_ref,
- PF\_ConstHandle \*sequence\_data);
+
+Retrieves the read-only const sequence_data object for a rendering thread when Multi-Frame Rendering is enabled for an effect.
 
 ```
+PF_Err(*PF_GetConstSequenceData)(
+PF_ProgPtreffect_ref,
+PF_ConstHandle*sequence_data);
+```
 
-|
 
-```cpp
+```
 static PF_Err Render(
    PF_InData   *in_dataP,
    PF_OutData  *out_dataP,
@@ -133,10 +131,9 @@ static PF_Err Render(
 
     PF_ConstHandle const_seq;
     seqdata_suite->PF_GetConstSequenceData(in_data->effect_ref, &const_seq);
- ​
+ 
     // cast const_seq to the type used when storing to sequence_data
 
     // rest of render function code...
 }
-
 ```

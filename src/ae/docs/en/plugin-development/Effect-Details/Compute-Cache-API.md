@@ -4,7 +4,6 @@ order: 22
 category:
   - AE 插件开发
 ---
-
 # Compute Cache API
 
 The Compute Cache API provides a thread-safe cache as a replacement or supplement to Sequence Data where effects can compute, store and read data before or during Render. It should be used to cache data that is time consuming to compute. For Multi-Frame Rendering effects it can have a large benefit by eliminating redundant computation across threads. The cache is unified with other caches in After Effects thus memory usage is balanced across other caches. The model also supports the user doing A/B testing with parameters and the cache state persisting for both A and B states thus speeding up workflow. These last two design characteristics benefit both single- and multi-frame rendering effects.
@@ -15,82 +14,101 @@ The Compute Cache is implemented in the AEGP_ComputeCache suite and is accessibl
 
 ## AEGP_ComputeCacheSuite1
 
-| **Function**          | **Purpose**                                                                                                                         |
-| --------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| `AEGP\_ClassRegister` | Registers the cache type using a globally unique identifier for the compute class, such as “adobe.ae.effect.test_effect.cache_v_1”. |
+### AEGP_ClassRegister
 
-An object of type `AEGP\_ComputeCacheCallbacks` should be setup with function pointers to the callback methods required by `AEGP\_ComputeCacheSuite1`.
-This function will typically be called during `PF\_Cmd\_GLOBAL\_SETUP`, but can be called any time.
 
-```cpp
-A\_Err (\*AEGP\_ClassRegister)(
- AEGP\_CCComputeClassIdP compute\_classP,
- const AEGP\_ComputeCacheCallbacks \*callbacksP);
+Registers the cache type using a globally unique identifier for the compute class, such as “adobe.ae.effect.test_effect.cache_v_1”.
+
+An object of type `<span class="pre">AEGP_ComputeCacheCallbacks</span>` should be setup with function pointers to the callback methods required by `<span class="pre">AEGP_ComputeCacheSuite1</span>`.
+
+This function will typically be called during `<span class="pre">PF_Cmd_GLOBAL_SETUP</span>`, but can be called any time.
 
 ```
+A_Err(*AEGP_ClassRegister)(
+AEGP_CCComputeClassIdPcompute_classP,
+constAEGP_ComputeCacheCallbacks*callbacksP);
+```
 
-|
-| `AEGP\_ClassUnRegister` | Unregister a previously registered cache type using the globally unique identifier for the compute class.
+### AEGP_ClassUnRegister
+
+
+Unregister a previously registered cache type using the globally unique identifier for the compute class.
+
 All cached values will be purged at this time through calls to delete_compute_value.
-This function will typically be called during `PF\_Cmd\_GLOBAL\_SETDOWN`, but can be called any time.
 
-```cpp
-A\_Err (\*AEGP\_ClassUnregister)(
- AEGP\_CCComputeClassIdP compute\_classP);
+This function will typically be called during `<span class="pre">PF_Cmd_GLOBAL_SETDOWN</span>`, but can be called any time.
 
 ```
-
-|
-| `AEGP\_ComputeIfNeededAndCheckout` | This is the main checkout call that is used to compute and/or return an `AEGP\_CCCheckoutReceiptP` receipt pointer to the cache entry.
-Pass in the `AEGP\_CCComputeClassIdP` that was used in the `AEGP\_RegisterClass` method.
-The `AEGP\_CCComputeOptionsRefconP` object will be passed through to the `AEGP\_ComputeCacheCallbacks`, `generate\_key` and `compute` method as needed. This objects type is opaque to `AEGP\_ComputeCacheSuite1` and will need to be casted appropriately by the effects implementation of `generate\_key` and `compute`.
-The `wait\_for\_other\_threadB bool` is used when the cache value needs to be computed. When set to `true`, the method will always execute the compute step or return a completed receipt to the cache. When set to `false`, this method will complete the compute step unless another thread is already computing the cache entry, in which case `A\_Err\_NOT\_IN\_CACHE\_OR\_COMPUTE\_PENDING` will be returned. See [Impact of wait_for_other_threadB on AEGP_ComputeIfNeededAndCheckout](#effect-details-wait-for-other-threadb) for more information on this parameter.
-The `CCCheckoutReceiptP` is an opaque pointer that can then be passed into `AEGP\_GetReceiptComputeValue` to get a pointer to the computed value from the cache.
-
-```cpp
-A\_Err (\*AEGP\_ComputeIfNeededAndCheckout)(
- AEGP\_CCComputeClassIdP compute\_classP,
- AEGP\_CCComputeOptionsRefconP opaque\_optionsP,
- bool wait\_for\_other\_threadB,
- AEGP\_CCCheckoutReceiptP \*compute\_receiptPP);
-
+A_Err(*AEGP_ClassUnregister)(
+AEGP_CCComputeClassIdPcompute_classP);
 ```
 
-|
-| `AEGP\_CheckoutCached` | Use this method to check if the cache value has already been computed, returning the `AEGP\_CCCheckoutReceiptP` receipt if available.
-If the cache has not been computed, `A\_Err\_NOT\_IN\_CACHE\_OR\_COMPUTE\_PENDING` will be returned.
+### AEGP_ComputeIfNeededAndCheckout
 
-```cpp
-A\_Err (\*AEGP\_CheckoutCached)(
- AEGP\_CCComputeClassIdP compute\_classP,
- AEGP\_CCComputeOptionsRefconP opaque\_optionsP,
- AEGP\_CCCheckoutReceiptP \*compute\_receiptPP);
 
-```
+This is the main checkout call that is used to compute and/or return an `<span class="pre">AEGP_CCCheckoutReceiptP</span>` receipt pointer to the cache entry.
 
-|
-| `AEGP\_GetReceiptComputeValue` | Use this method to retrieve the cache value from the compute method.
-Pass in the receipt received from `AEGP\_ComputeIfNeededAndCheckout` or `AEGP\_CheckoutCached`.
-The returned `CCComputeValueRefconP` should be casted to the correct object type that was used in the `compute` method.
+Pass in the `<span class="pre">AEGP_CCComputeClassIdP</span>` that was used in the `<span class="pre">AEGP_RegisterClass</span>` method.
 
-```cpp
-A\_Err (\*AEGP\_GetReceiptComputeValue)(
- const AEGP\_CCCheckoutReceiptP compute\_receiptP,
- AEGP\_CCComputeValueRefconP \*compute\_valuePP);
+The `<span class="pre">AEGP_CCComputeOptionsRefconP</span>` object will be passed through to the `<span class="pre">AEGP_ComputeCacheCallbacks</span>`, `<span class="pre">generate_key</span>` and `<span class="pre">compute</span>` method as needed. This objects type is opaque to `<span class="pre">AEGP_ComputeCacheSuite1</span>` and will need to be casted appropriately by the effects implementation of `<span class="pre">generate_key</span>` and `<span class="pre">compute</span>`.
+
+The `<span class="pre">wait_for_other_threadB</span><span> </span><span class="pre">bool</span>` is used when the cache value needs to be computed. When set to `<span class="pre">true</span>`, the method will always execute the compute step or return a completed receipt to the cache. When set to `<span class="pre">false</span>`, this method will complete the compute step unless another thread is already computing the cache entry, in which case `<span class="pre">A_Err_NOT_IN_CACHE_OR_COMPUTE_PENDING</span>` will be returned. See [Impact of wait_for_other_threadB on AEGP_ComputeIfNeededAndCheckout](https://ae-plugins.docsforadobe.dev/effect-details/compute-cache-api.html#effect-details-wait-for-other-threadb) for more information on this parameter.
+
+The `<span class="pre">CCCheckoutReceiptP</span>` is an opaque pointer that can then be passed into `<span class="pre">AEGP_GetReceiptComputeValue</span>` to get a pointer to the computed value from the cache.
 
 ```
-
-|
-| `AEGP\_CheckinComputeReceipt` | Call this method after the effect code is done using a checked-out, computed cache value, before returning to the host, passing in the receipt returned from `AEGP\_ComputeIfNeededAndCheckout` or `AEGP\_CheckoutCached`.
-If the receipt being passed in is invalid, error `A\_Err\_STRUCT` will be returned. A pop-up error dialog will also be shown with this message, **“Trying to check in invalid receipt. Please make sure you are not double checking in or checking in invalid receipts.”**
-
-```cpp
-A\_Err (\*AEGP\_CheckinComputeReceipt)(
- AEGP\_CCCheckoutReceiptP compute\_receiptP );
-
+A_Err(*AEGP_ComputeIfNeededAndCheckout)(
+AEGP_CCComputeClassIdPcompute_classP,
+AEGP_CCComputeOptionsRefconPopaque_optionsP,
+boolwait_for_other_threadB,
+AEGP_CCCheckoutReceiptP*compute_receiptPP);
 ```
 
-|
+### AEGP_CheckoutCached
+
+
+Use this method to check if the cache value has already been computed, returning the `<span class="pre">AEGP_CCCheckoutReceiptP</span>` receipt if available.
+
+If the cache has not been computed, `<span class="pre">A_Err_NOT_IN_CACHE_OR_COMPUTE_PENDING</span>` will be returned.
+
+```
+A_Err(*AEGP_CheckoutCached)(
+AEGP_CCComputeClassIdPcompute_classP,
+AEGP_CCComputeOptionsRefconPopaque_optionsP,
+AEGP_CCCheckoutReceiptP*compute_receiptPP);
+```
+
+### AEGP_GetReceiptComputeValue
+
+
+Use this method to retrieve the cache value from the compute method.
+
+Pass in the receipt received from `<span class="pre">AEGP_ComputeIfNeededAndCheckout</span>` or `<span class="pre">AEGP_CheckoutCached</span>`.
+
+The returned `<span class="pre">CCComputeValueRefconP</span>` should be casted to the correct object type that was used in the `<span class="pre">compute</span>` method.
+
+```
+A_Err(*AEGP_GetReceiptComputeValue)(
+constAEGP_CCCheckoutReceiptPcompute_receiptP,
+AEGP_CCComputeValueRefconP*compute_valuePP);
+```
+
+### AEGP_CheckinComputeReceipt
+
+
+Call this method after the effect code is done using a checked-out, computed cache value, before returning to the host, passing in the receipt returned from `<span class="pre">AEGP_ComputeIfNeededAndCheckout</span>` or `<span class="pre">AEGP_CheckoutCached</span>`.
+
+If the receipt being passed in is invalid, error `<span class="pre">A_Err_STRUCT</span>` will be returned. A pop-up error dialog will also be shown with this message, **“Trying to check in invalid receipt. Please make sure you are not double checking in or checking in invalid receipts.”**
+
+```
+A_Err(*AEGP_CheckinComputeReceipt)(
+AEGP_CCCheckoutReceiptPcompute_receiptP);
+```
+
+
+
+
+
 
 ---
 
@@ -98,64 +116,72 @@ A\_Err (\*AEGP\_CheckinComputeReceipt)(
 
 The effect must provide implementations for these callbacks.
 
-| **Function**    | **Purpose**                                                                                                                                                                                                                                                                                                                |
-| --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `generate\_key` | Called when creating a cache entry and when doing a cache lookup. Should be fast to compute. All of the inputs needed to uniquely address the cache entry must be hashed into the key. If a layer checkout is needed to calculate the cache value, such as with a histogram, then the hash of that input must be included. |
+### generate_key
 
-See `PF\_ParamUtilsSuite::PF\_GetCurrentState` to get the hash for a layer param. :::tip this is the hash of the inputs needed to generate the frame, not a hash the pixels in the frame, thus a render is not triggered when making this call.
-The `AEGP\_CCComputeOptionsRefconP` will contain the data passed into the `AEGP\_ComputeIfNeededAndCheckout` or `AEGP\_CheckoutCached` methods.
-The `AEGP\_CComputeKeyP` `out\_keyP` returns the hashed key value, see the `AEGP\_CCComputeKey` definition in the `AE\_ComputeCacheSuite.h` for type definition.
 
-:::tip
-The `AEGP\_CCComputeOptionsRefconP` parameter passed into `generate\_key` and `compute` must contain all inputs to calculate the hash key for a cache value / to compute the cache value itself.
-This will frequently include many or all of the effect parameters and any layer parameters needed to calculate the cache value. See the [Real-world Integration Example](#effect-details-compute-cache-real-example) for more details.
+Called when creating a cache entry and when doing a cache lookup. Should be fast to compute. All of the inputs needed to uniquely address the cache entry must be hashed into the key. If a layer checkout is needed to calculate the cache value, such as with a histogram, then the hash of that input must be included. See `<span class="pre">PF_ParamUtilsSuite::PF_GetCurrentState</span>` to get the hash for a layer param. Note this is the hash of the inputs needed to generate the frame, not a hash the pixels in the frame, thus a render is not triggered when making this call.
 
-```cpp
-A\_Err (\*generate\_key)(
- AEGP\_CCComputeOptionsRefconP optionsP,
- AEGP\_CCComputeKeyP out\_keyP);
+The `<span class="pre">AEGP_CCComputeOptionsRefconP</span>` will contain the data passed into the `<span class="pre">AEGP_ComputeIfNeededAndCheckout</span>` or `<span class="pre">AEGP_CheckoutCached</span>` methods.
+
+The `<span class="pre">AEGP_CComputeKeyP</span>` `<span class="pre">out_keyP</span>` returns the hashed key value, see the `<span class="pre">AEGP_CCComputeKey</span>` definition in the `<span class="pre">AE_ComputeCacheSuite.h</span>` for type definition.
+
+Note
+
+The `<span class="pre">AEGP_CCComputeOptionsRefconP</span>` parameter passed into `<span class="pre">generate_key</span>` and `<span class="pre">compute</span>` must contain all inputs to calculate the hash key for a cache value / to compute the cache value itself. This will frequently include many or all of the effect parameters and any layer parameters needed to calculate the cache value. See the [Real-world Integration Example](https://ae-plugins.docsforadobe.dev/effect-details/compute-cache-api.html#effect-details-compute-cache-real-example) for more details.
 
 ```
+A_Err(*generate_key)(
+AEGP_CCComputeOptionsRefconPoptionsP,
+AEGP_CCComputeKeyPout_keyP);
+```
 
-|
-| `compute` | Called by `AEGP\_ComputeIfNeededAndCheckout` when a cache value needs to be computed.
-The `AEGP\_CCComputeOptionsRefconP` will contain the data passed into the `AEGP\_ComputeIfNeededAndCheckout` method.
-Set `out\_valuePP` to point to the result of the computed cache value, casted to the `AEGP\_CCComputeValueRefconP` type.
+### compute
+
+
+Called by `<span class="pre">AEGP_ComputeIfNeededAndCheckout</span>` when a cache value needs to be computed.
+
+The `<span class="pre">AEGP_CCComputeOptionsRefconP</span>` will contain the data passed into the `<span class="pre">AEGP_ComputeIfNeededAndCheckout</span>` method.
+
+Set `<span class="pre">out_valuePP</span>` to point to the result of the computed cache value, casted to the `<span class="pre">AEGP_CCComputeValueRefconP</span>` type.
+
 For example:
 
-```cpp
-\*out\_valuePP = reinterpret\_cast<AEGP\_CCComputeValueRefconP>(myComputedResultP);
-
+```
+*out_valuePP=reinterpret_cast<AEGP_CCComputeValueRefconP>(myComputedResultP);
 ```
 
-```cpp
-A\_Err (\*compute)(
- AEGP\_CCComputeOptionsRefconP optionsP,
- AEGP\_CCComputeValueRefconP \*out\_valuePP);
-
+```
+A_Err(*compute)(
+AEGP_CCComputeOptionsRefconPoptionsP,
+AEGP_CCComputeValueRefconP*out_valuePP);
 ```
 
-|
-| `approx\_size\_value` | Called by the cache system to determine the total footprint of memory being used by the computed cache value. The computed value is not required to be a flat structure.
+### approx_size_value
+
+
+Called by the cache system to determine the total footprint of memory being used by the computed cache value. The computed value is not required to be a flat structure.
+
 The size is an input to the cache purging heuristic.
-The `AEGP\_CCComputeValueRefconP` is the computed cache value that can be used to generate the size value to return.
 
-```cpp
-size\_t (\*approx\_size\_value)(
- AEGP\_CCComputeValueRefconP valueP);
+The `<span class="pre">AEGP_CCComputeValueRefconP</span>` is the computed cache value that can be used to generate the size value to return.
 
 ```
-
-|
-| `delete\_compute\_value` | This is called to free the value when the cache entry needs to be purged. All resources owned by the cache value must be freed here.
-
-```cpp
-void (\*delete\_compute\_value)(
- AEGP\_CCComputeValueRefconP valueP);
-
+size_t(*approx_size_value)(
+AEGP_CCComputeValueRefconPvalueP);
 ```
 
-|
+
+### delete_compute_value
+
+
+This is called to free the value when the cache entry needs to be purged. All resources owned by the cache value must be freed here.
+
+```
+void(*delete_compute_value)(
+AEGP_CCComputeValueRefconPvalueP);
+```
+
+
 
 ---
 
@@ -180,74 +206,76 @@ The `AEGP\_HashSuite1` can be used to generate a unique key for use within the `
 
 After the suite is acquired, call the `AEGP\_CreateHashFromPtr()` method with a buffer; we suggest a character array with a recognizable string so you can easily recall what’s being stored in the cache entry. Then call `AEGP\_HashMixInPtr()` with any effect parameters, layer checkout hash results, etc., that should result in a different cache key and entry.
 
-| **Function**              | **Purpose**                                                                                                                 |
-| ------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| `AEGP\_CreateHashFromPtr` | Call this to begin creating the hash which will be returned in `hashP` that can be used for returning from `generate\_key`. |
+### AEGP_CreateHashFromPtr
 
-```cpp
-A\_Err (\*AEGP\_CreateHashFromPtr)(
- const A\_u\_longlong buf\_sizeLu,
- const void \*bufPV,
- AEGP\_GUID \*hashP);
+
+Call this to begin creating the hash which will be returned in `<span class="pre">hashP</span>` that can be used for returning from `<span class="pre">generate_key</span>`.
 
 ```
-
-|
-| `AEGP\_HashMixInPtr` | Call this for each effect parameter, layer checkout hash or other data that would be used in calculating a cache entry.
-
-```cpp
-A\_Err(\*AEGP\_HashMixInPtr)(
- const A\_u\_longlong buf\_sizeLu,
- const void \*bufPV,
- AEGP\_GUID \*hashP);
-
+A_Err(*AEGP_CreateHashFromPtr)(
+constA_u_longlongbuf_sizeLu,
+constvoid*bufPV,
+AEGP_GUID*hashP);
 ```
 
-|
+### AEGP_HashMixInPtr
 
-Here’s an example of using the `AEGP\_HashSuite1` where Levels2Histo_generate_key_cb() is a callback called for `generate\_key()`:
 
-```cpp
-A\_Err Levels2Histo\_generate\_key\_cb(AEGP\_CCComputeOptionsRefconP opaque\_optionsP, AEGP\_CCComputeKeyP out\_keyP)
-{
- try
- {
- const Levels2Histo\_options& histo\_op( \*reinterpret\_cast<Levels2Histo\_options\*>(opaque\_optionsP));
- A\_Err err = Err\_NONE;
+Call this for each effect parameter, layer checkout hash or other data that would be used in calculating a cache entry.
 
- AEFX\_SuiteScoper<AEGP\_HashSuite1> hash\_suite = AEFX\_SuiteScoper<AEGP\_HashSuite1>(
- in\_dataP,
- kAEGPHashSuite,
- kAEGPHashSuiteVersion1,
- out\_dataP);
-
- // define a simple buffer that is easy to recognize as a starting hash
- const char\* hash\_buffer = "Level2Histo";
- err = hash\_suite->AEGP\_CreateHashFromPtr(sizeof(hash\_buffer), hash\_buffer, out\_keyP);
-
- // Mix in effect parameters that would create a different compute result and should generate a different cache entry and key.
- if (!err) {
- err = hash\_suite->AEGP\_HashMixInPtr(sizeof(histo\_op.depthL), &histo\_op.depthL, out\_keyP);
- }
-
- if (!err) {
- err = hash\_suite->AEGP\_HashMixInPtr(sizeof(histo\_op.bB), &histo\_op.bB, out\_keyP);
- }
-
- // mix in any other effect parameters that should affect the cache key
- // ...
-
- // out\_keyP is returned as the generated key for use as the cache key.
- }
- catch (...)
- {
- /\* return most appropriate PF\_Err \*/
- }
-}
-
+```
+A_Err(*AEGP_HashMixInPtr)(
+constA_u_longlongbuf_sizeLu,
+constvoid*bufPV,
+AEGP_GUID*hashP);
 ```
 
 ---
+
+Here’s an example of using the `<span class="pre">AEGP_HashSuite1</span>` where Levels2Histo_generate_key_cb() is a callback called for `<span class="pre">generate_key()</span>`:
+
+```
+A_ErrLevels2Histo_generate_key_cb(AEGP_CCComputeOptionsRefconPopaque_optionsP,AEGP_CCComputeKeyPout_keyP)
+{
+try
+{
+constLevels2Histo_options&histo_op(*reinterpret_cast<Levels2Histo_options*>(opaque_optionsP));
+A_Errerr=Err_NONE;
+
+AEFX_SuiteScoper<AEGP_HashSuite1>hash_suite=AEFX_SuiteScoper<AEGP_HashSuite1>(
+in_dataP,
+kAEGPHashSuite,
+kAEGPHashSuiteVersion1,
+out_dataP);
+
+// define a simple buffer that is easy to recognize as a starting hash
+constchar*hash_buffer="Level2Histo";
+err=hash_suite->AEGP_CreateHashFromPtr(sizeof(hash_buffer),hash_buffer,out_keyP);
+
+// Mix in effect parameters that would create a different compute result and should generate a different cache entry and key.
+if(!err){
+err=hash_suite->AEGP_HashMixInPtr(sizeof(histo_op.depthL),&histo_op.depthL,out_keyP);
+}
+
+if(!err){
+err=hash_suite->AEGP_HashMixInPtr(sizeof(histo_op.bB),&histo_op.bB,out_keyP);
+}
+
+// mix in any other effect parameters that should affect the cache key
+// ...
+
+// out_keyP is returned as the generated key for use as the cache key.
+}
+catch(...)
+{
+/* return most appropriate PF_Err */
+}
+}
+```
+
+
+
+
 
 ## Compute or Checkout the Cache Value
 
@@ -300,12 +328,12 @@ Render()
 
 Calls to `AEGP\_ComputeIfNeededAndCheckout` will return a checkout receipt for the cache value in nearly every permutation of the parameters, except when `wait\_for\_other\_threadB` is set to `false` and another thread is already rendering the requested cache value.
 
-| **Cache State**                                                                                            | **wait_for_other_threadB set to False**                             | **wait_for_other_threadB set to True** |
-| ---------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- | -------------------------------------- |
-| _No cache for key_                                                                                         | Compute and checkout receipt returned                               | Compute and checkout receipt returned  |
-| _Being computed by another thread_                                                                         | Returns A_Err_NOT_IN_CACHE_OR_COMPUTE_PENDING                       |
-| :::tip that After Effects will not report this error to the user, it is only for the effect to respond to. | Wait for another thread and return checkout receipt upon completion |
-| _Cached_                                                                                                   | Checkout receipt returned                                           | Checkout receipt returned              |
+| **Cache State**                                                                                      | **wait_for_other_threadB set to False**                       | **wait_for_other_threadB set to True** |
+| ---------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- | -------------------------------------------- |
+| _No cache for key_                                                                                       | Compute and checkout receipt returned                               | Compute and checkout receipt returned        |
+| _Being computed by another thread_                                                                       | Returns A_Err_NOT_IN_CACHE_OR_COMPUTE_PENDING                       |                                              |
+| :::tip that After Effects will not report this error to the user, it is only for the effect to respond to. | Wait for another thread and return checkout receipt upon completion |                                              |
+| _Cached_                                                                                                 | Checkout receipt returned                                           | Checkout receipt returned                    |
 
 ---
 
