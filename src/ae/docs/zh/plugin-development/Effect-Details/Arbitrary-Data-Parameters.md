@@ -6,11 +6,11 @@ category:
 ---
 # Arbitrary Data Parameters
 
-Some values are not adequately represented by After Effects existing parameter types. You can create and register any data for interpolation by After Effects, by creating parameters of arbitrary data type, or “arb data”. You can rely on our interpolation engine and parameter management, without having to force your data into a pre-defined parameter type.
+有些数值不能被After Effects现有的参数类型所充分体现。你可以通过创建任意数据类型的参数，或 "arb数据"，来创建和注册After Effects的任何数据进行插值。你可以依靠我们的插值引擎和参数管理，而不必将你的数据强行放入一个预先定义的参数类型。
 
-We’ve created a new messaging structure for custom data types, which are easily conceptualized as member (and friend) functions of a C++ class. You must respond to all selectors detailed here if you use arb data.
+我们已经为自定义数据类型创建了一个新的信息传递结构，它很容易被概念化为C++类的成员（和朋友）函数。如果你使用arb数据，你必须对这里详述的所有选择器做出回应。
 
-These functions deal with custom data structure management. Your arb data will be unloaded and reloaded at the user’s whim; provide disk-safe flatten and unflatten functions.
+这些函数处理自定义数据结构的管理。你的arb数据将在用户的要求下被卸载和重新加载；提供磁盘安全的flatten和unflatten函数。
 
 ## Arbitrary Data Selectors
 
@@ -25,32 +25,32 @@ These functions deal with custom data structure management. Your arb data will b
 
 ## Implementing Arbitrary Data
 
-In addition to the normal command and event selector, arb data requires another set of host interaction. This is transparent for other parameter types, as After Effects manages their representing data. Writing an arb data plug-in will give you insight into the vast amount of parameter management After Effects performs, and the sequence in which those managing actions occur. It may even cause you to rethink your implementation, and use the parameter types After Effects manages _for_ you.
+除了正常的命令和事件选择器外，arb数据还需要另一套主机交互。这对其他参数类型来说是透明的，因为After Effects管理着它们的代表数据。编写一个arb数据插件可以让你深入了解After Effects执行的大量参数管理，以及这些管理动作的发生顺序。它甚至会让你重新考虑你的实现，并使用After Effects为你管理的参数类型。
 
-Instantiate your arb data (using After Effects’ memory allocation functions, of course) and point ParamDef.u.arb_d.dephault at it. Populate it with appropriate default values. No value variable is required to set up the parameter; zero it out for safety’s sake.
+实例化你的arb数据（当然，使用After Effects的内存分配功能），并将ParamDef.u.arb_d.dephault指向它。用适当的默认值来填充它。设置参数时不需要数值变量，为安全起见，将其清零。
 
-In your plug-in’s entry function, include a case for handling [PF_Cmd_ARBITRARY_CALLBACK](../effect-basics/command-selectors.html) (#effect-basics-command-selectors-messaging).
+在你的插件的入口函数中，包括一个处理[PF_Cmd_ARBITRARY_CALLBACK](.../effect-basics/command-selectors.html) (#effect-basics-command-selectors-messaging) 的案例。
 
-Invoke a secondary event handler, `HandleArbitrary`. It receives a `PF_ArbParamsExtra` in extra, which in turn contains a `PF_FunctionSelector` identifying the command sent.
+调用一个二级事件处理程序，`HandleArbitrary`。它收到一个`PF_ArbParamsExtra`的extra，它又包含一个`PF_FunctionSelector`，用来识别发送的命令。
 
-Perhaps After Effects has sent `PF_Cmd_ARBITRARY_CALLBACK` and the `PF_FunctionSelector` is `PF_Arbitrary_COPY_FUNC`. Pointers to a source and destination Arb are provided in `PF_ArbParamsExtra.copy_func_params`. Allocate a new Arb, and point `dest_arbPH` at it. If `src_arbH` is NULL, create a default Arb for `dest_arbPH`.
+也许After Effects发送了`PF_Cmd_ARBITRARY_CALLBACK`，`PF_FunctionSelector`是`PF_Arbitrary_COPY_FUNC`。在`PF_ArbParamsExtra.copy_func_params`中提供了指向源Arb和目标Arb的指针。分配一个新的Arb，并将`dest_arbPH`指向它。如果`src_arbH`是NULL，为`dest_arbPH`创建一个默认的Arb。
 
-The user may select the arb’s keyframe data in the Timeline panel, copy it, then switch to another application. You will be sent a `PF_Arbitrary_PRINT_SIZE_FUNC`; set the size of your output buffer by setting `print_sizePLu` in the `PF_ArbParamsExtra`. You’ll then receive `PF_Arbitrary_PRINT_FUNC`; populate the `print_bufferPC` output buffer with a textual representation of the Arb(s) in question.
+用户可以在时间线面板中选择arb的关键帧数据，复制它，然后切换到另一个应用程序。你将收到一个`PF_Arbitrary_PRINT_SIZE_FUNC`；通过在`PF_ArbParamsExtra`中设置`print_sizePLu`来设置输出缓冲器的大小。然后你会收到`PF_Arbitrary_PRINT_FUNC'；用有关Arb的文本表示来填充`print_bufferPC'输出缓冲区。
 
-Users may paste keyframe data into your Arb’s timeline. You will receive `PF_Arbitrary_SCAN_FUNC`. Create an Arb based on the contents of the character buffer handed to you (its size is indicated in `print_sizeLu`).
+用户可以将关键帧数据粘贴到你的Arb的时间线上。你将收到`PF_Arbitrary_SCAN_FUNC`。根据交给你的字符缓冲区的内容创建一个Arb（其大小在`print_sizeLu`中显示）。
 
 ## Arbitrary Data? Re-Entrancy!
 
-Your plug-in code _must_ be recursively re-entrant to support custom data types, since it could be called by After Effects for numerous reasons. Your plug-in could check out a layer that, in turn, depends on another instance of your effect. Your plug-in’s arbitrary data handling code will be triggered by your attempt to check out a (seemingly) unrelated layer. Watch out for calls to C run-time libraries that rely on static values accessed through global variables. If you’re not prepared for this eventuality, you’ll hang After Effects, and users will curse and punch their monitors.
+你的插件代码必须是递归重入的，以支持自定义的数据类型，因为它可能被After Effects调用，原因很多。你的插件可以检查出一个层，而这个层又依赖于你的效果的另一个实例。你的插件的任意数据处理代码会被你试图检出一个（看似）不相关的层所触发。注意对C语言运行时库的调用，它依赖于通过全局变量访问的静态值。如果你没有准备好应对这种情况，你会让After Effects挂掉，用户会骂人并打他们的显示器。
 
 ## When Not To Access Arbitrary Parameters
 
-If `in_data>effect_ref` is `NULL`, do not check out arbitrary parameters.
+如果`in_data>effect_ref`是`NULL`，就不要检出任意的参数。
 
 ## Changes During Dialogs
 
-After Effects ignores any changes made to arbitrary data parameters during `PF_Cmd_DO_DIALOG`.
+After Effects忽略了在`PF_Cmd_DO_DIALOG'期间对任意数据参数的任何改变。
 
-This is by design; changes made during the display of the options dialog affect the entire effect stream, not just the arbitrary parameter at a given time.
+这是设计好的；在显示选项对话框期间的改变会影响整个效果流，而不仅仅是某一时刻的任意参数。
 
-If you must alter your arb’s behavior based on these changes, save that information in sequence data and apply it later, often during `PF_Cmd_USER_CHANGED_PARAM`.
+如果你必须根据这些变化改变你的Arb的行为，请将该信息保存在序列数据中并在以后应用，通常是在`PF_Cmd_USER_CHANGED_PARAM`期间。

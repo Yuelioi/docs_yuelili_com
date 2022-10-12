@@ -7,47 +7,47 @@ category:
 
 # About this Document
 
-This document has changed much over the years. Part encyclopedia, part how-to guide, with multiple sedimentary layers of accreted information from more than two decades of API development and refinement.
+多年来，这份文件发生了很大变化。部分是百科全书，部分是操作指南，包含了20多年来API开发和完善过程中积累的多个沉积层的信息。
 
-Yes, there does need to be one source of information about every last niggling detail of the After Effects APIs. However, since no human in their right mind would ever want to _read_ such a document, we’ve tried to keep it involving and interesting.
+是的，确实需要有一个关于After Effects APIs的每一个棘手细节的信息来源。然而，由于没有人愿意阅读这样一份文件，所以我们试图让它变得更加有趣。
 
-As opportunity allows, we’ll try to include more diagrams, illustrations, and purdy pickshurs explaining API intricacies.
+在机会允许的情况下，我们会尝试加入更多的图表、插图和解释API复杂性的漂亮的短文。
 
-As always, your input is valued and appreciated.
+一如既往，我们重视并感谢您的意见。
 
 ## Organization
 
-The [Introduction](https://ae-plugins.docsforadobe.dev/intro/intro.html#intro-intro) provides an overview of the integration possibilities with After Effects. It explains what plug-ins are, and how they work with After Effects. It describes the sample projects, and how to modify them. It explains where to install plug-ins, and what resources they use.
+[简介](https://ae-plugins.docsforadobe.dev/intro/intro.html#intro-intro)概述了与After Effects整合的可能性。它解释了什么是插件，以及它们如何与After Effects一起工作。它描述了示例项目，以及如何修改它们。它解释了在哪里安装插件，以及它们使用什么资源。
 
-The basics of effect plug-ins are discussed in [Effect Basics](https://ae-plugins.docsforadobe.dev/effect-basics/effect-basics.html#effect-basics-effect-basics). This overview provides information on the function parameters passed to and from an effect plug-in’s entry point. It describes capability flags, effect parameters, and image buffers.
+效果插件的基础知识在[Effect Basics]（https://ae-plugins.docsforadobe.dev/effect-basics/effect-basics.html#effect-basics-effect-basics）中讨论。这个概述提供了关于传递给效果插件入口点的功能参数的信息。它描述了能力标志、效果参数和图像缓冲器。
 
-[Effect Details](https://ae-plugins.docsforadobe.dev/effect-details/effect-details.html#effect-details-effect-details) dives into the details of developing a complete effect plug-in using the many provided callback functions. It also provides many testing ideas to ensure the plug-in is stabile.
+[Effect Details](https://ae-plugins.docsforadobe.dev/effect-details/effect-details.html#effect-details-effect-details)深入介绍了使用许多提供的回调函数开发一个完整的效果插件的细节。它还提供了许多测试思路，以确保插件的稳定性。
 
-[SmartFX](https://ae-plugins.docsforadobe.dev/smartfx/smartfx.html#smartfx-smartfx) is the extension to the effect plug-in API to support 32-bit floating point images.
+[SmartFX](https://ae-plugins.docsforadobe.dev/smartfx/smartfx.html#smartfx-smartfx)是对效果插件API的扩展，支持32位浮点图像。
 
-[Effect UI &amp; Events](https://ae-plugins.docsforadobe.dev/effect-ui-events/effect-ui-events.html#effect-ui-events-effect-ui-events) covers events sent to effect plug-ins, how to incorporate custom user interface elements, parameter supervision, and the reliance of custom data parameter types on Custom UI messaging.
+[Effect UI &amp; Events](https://ae-plugins.docsforadobe.dev/effect-ui-events/effect-ui-events.html#effect-ui-events-effect-ui-events)涵盖了发送给效果插件的事件，如何纳入自定义用户界面元素，参数监督，以及自定义数据参数类型对自定义用户界面信息传递的依赖性。
 
-[Audio](https://ae-plugins.docsforadobe.dev/audio/audio.html#audio-audio) effects are covered in… [Audio](https://ae-plugins.docsforadobe.dev/audio/audio.html#audio-audio).
+[Audio](https://ae-plugins.docsforadobe.dev/audio/audio.html#audio-audio)效果涵盖了...[Audio](https://ae-plugins.docsforadobe.dev/audio/audio.html#audio-audio)。
 
-[AEGPs](https://ae-plugins.docsforadobe.dev/aegps/aegps.html#aegps-aegps) details the After Effects General Plug-in (AEGP) API. Provided callback functions, hooking into internal messaging, manipulating the current contents of open projects and handling menu commands are all covered at length.
+[AEGPs](https://ae-plugins.docsforadobe.dev/aegps/aegps.html#aegps-aegps)详细介绍了After Effects通用插件（AEGP）的API。提供的回调函数、与内部消息的挂钩、操作打开的项目的当前内容和处理菜单命令都有详细的介绍。
 
-[Artisans](https://ae-plugins.docsforadobe.dev/artisans/artisans.html#artisans-artisans) covers specialized plug-in 3D renderer AEGPs.
+[Artisans](https://ae-plugins.docsforadobe.dev/artisans/artisans.html#artisans-artisans)包括专门的插件式3D渲染器AEGPs。
 
-[AEIOs](https://ae-plugins.docsforadobe.dev/aeios/aeios.html#aeios-aeios), specialized AEGPs which handle file input and output.
+[AEIOs](https://ae-plugins.docsforadobe.dev/aeios/aeios.html#aeios-aeios)，处理文件输入和输出的专业AEGPs。
 
-[Premiere Pro &amp; Other Hosts](https://ae-plugins.docsforadobe.dev/ppro/ppro.html#ppro-ppro) discusses issues related to compatibility with Premiere Pro and other applications that support a subset of After Effects plug-ins.
+[Premiere Pro &amp; Other Hosts](https://ae-plugins.docsforadobe.dev/ppro/ppro.html#ppro-ppro)讨论了与Premiere Pro和其他支持After Effects插件子集的应用程序的兼容性问题。
 
 ## Documentation Conventions
 
-Functions, structure names and general C/C++ code are in Courier; MyStruct and MyFunction();
+函数、结构名称和一般的C/C++代码是用Courier语；MyStruct和MyFunction（）。
 
-Text in blue is hyperlinked.
+蓝色的文字是超链接的。
 
-Command selectors are italicized; _PF_Cmd_RENDER_ .
+命令选择器是斜体的；_PF_Cmd_RENDER_ 。
 
 ## A Note About Coding Style
 
-Because we use the public APIs for our own plug-ins, our coding guidelines are apparent throughout the SDK. Here’s a description of the pseudo-neo-post-Hungarian notation we use. Of course, you’re welcome to code however you like. If you feel strongly that we should change our internal coding standards, please post your requests at comp.sys.programmer.better.things.to.do.with.your.time, and we’ll carefully consider them before not making any changes.
+因为我们在自己的插件中使用了公共API，所以我们的编码准则在整个SDK中都很明显。这里有一个关于我们使用的伪新匈牙利符号的描述。当然，我们欢迎你用你喜欢的方式来编码。如果你强烈认为我们应该改变我们的内部编码标准，请在comp.sys.programmer.better.things.to do.with.your.time发布你的请求，我们会在不做任何改变之前仔细考虑。
 
 ### Coding Conventions
 

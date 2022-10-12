@@ -7,12 +7,12 @@ category:
 
 # Audio Considerations
 
-The After Effects audio API supports sampling rates up to 96Khz, in as many formats as possible.
+After Effects的音频API支持高达96Khz的采样率，支持尽可能多的格式。
 
-In the same way that plug-ins’ pixel manipulation functions should remain “resolution independent”, audio plug-ins should be sample rate- and bit depth-independent.
+就像插件的像素处理功能应该保持 "独立于分辨率 "一样，音频插件应该是采样率和比特深度独立的。
 
-Your plug-in can’t know anything about the final output format of the audio in question; it might get stretched, normalized, truncated, or phase-inverted between the application of your plug-in and the final output.
+你的插件不可能知道有关音频的最终输出格式；它可能在你的插件应用和最终输出之间被拉伸、规范化、截断或相位颠倒。
 
-Audio filters encounter different issues than do image filters.
+音频过滤器遇到的问题与图像过滤器不同。
 
-Investigate the SDK sample for one possible implementation of audio rendering.
+调查SDK样本，了解音频渲染的一个可能实现。

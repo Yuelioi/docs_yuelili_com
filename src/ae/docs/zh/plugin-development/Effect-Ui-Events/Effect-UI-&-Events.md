@@ -6,25 +6,25 @@ category:
 ---
 # Effect UI & Events
 
-Effects can provide custom UI in two areas: (1) the Effect Controls Window (custom ECW UI), and (2) the Composition or Layer Windows (Custom Comp UI).
+效果可以在两个方面提供自定义的用户界面：（1）效果控制窗口（自定义ECW用户界面），和（2）合成或层窗口（自定义Comp用户界面）。
 
-Effects that use custom UI should set `PF_OutFlag_CUSTOM_UI` (from [PF_OutFlags](../effect-basics/PF_OutData.html) (#effect-basics-pf-outdata-pf-outflags) during `PF_Cmd_GLOBAL_SETUP` (from [Global Selectors](../effect-basics/command-selectors.html) (#effect-basics-command-selectors-global-selectors)), and handle the PF_Cmd_EVENT selector.
+使用自定义用户界面的效果应该在 "PF_OutFlag_CUSTOM_UI"（来自[PF_OutFlags](../effect-basics/PF_OutData.html)(#effect-basics-pf-outdata-pf-outflags)期间设置`PF_Cmd_GLOBAL_SETUP`(来自[Global Selectors](. ./effect-basics/command-selectors.html）（#effect-basics-command-selectors-global-selectors）），并处理PF_Cmd_EVENT选择器。
 
-Custom ECW UI allows an effect to provide a parameter with a customized control, which can be used either with standard parameter types or [Arbitrary Data Parameters](../effect-details/arbitrary-data-parameters.html) (#effect-details-arbitrary-data-parameters).
+自定义ECW用户界面允许一个效果提供一个带有自定义控件的参数，它可以用于标准参数类型或[任意数据参数](.../effect-details/arbitrary-data-parameters.html) (#effect-details-arbitrary-data-parameters)。
 
-Parameters that have a custom UI should set `PF_PUI_CONTROL` (from [Parameter UI Flags](../effect-basics/PF_ParamDef.html) (#effect-basics-pf-paramdef-parameter-ui-flags)) when [adding the parameter](../effect-details/interaction-callback-functions.html) (#effect-details-interaction-callback-functions-interaction-callbacks).
+拥有自定义用户界面的参数应该在[添加参数](.../effect-details/interaction-callback-functions.html)(#effect-details-interaction-callback-functions-interaction-callbacks)时设置`PF_PUI_CONTROL'（来自[参数用户界面标志](.../effect-basics/PF_ParamDef.html) (#effect-basics-pf-paramdef-parameter-ui-flags) 。）
 
-Custom Comp UI allows an effect to provide direct manipulation of the video in the Composition or Layer Windows.
+自定义Comp UI允许一个效果在合成或层窗口中提供对视频的直接操作。
 
-When the effect is selected, the Window can overlay custom controls directly on the video, and can handle user interaction with those controls, to adjust parameters more quickly and naturally.
+当效果被选中时，窗口可以直接在视频上叠加自定义控件，并可以处理用户与这些控件的交互，以便更快速、自然地调整参数。
 
-Effects should register themselves to receive events by calling PF_REGISTER_UI.
+效果应该通过调用PF_REGISTER_UI来注册自己接收事件。
 
-After Effects can send events to effects for user interface handling and parameter management, integrating effects into its central message queue.
+After Effects可以向特效发送事件，用于用户界面处理和参数管理，将特效集成到其中央消息队列中。
 
-While many events are sent in response to user input, After Effects also sends events to effects which manage arbitrary data parameters.
+虽然许多事件是为了响应用户的输入而发送的，但After Effects也向管理任意数据参数的效果发送事件。
 
-The type of event is specified in [PF_EventExtra-&gt;e_type](PF_EventExtra.html) (#effect-ui-events-pf-eventextra) and the various events are described below.
+事件的类型在[PF_EventExtra-&gt;e_type](PF_EventExtra.html)(#effect-ui-events-pf-eventextra)中指定，各种事件的描述见下文。
 
 ## Events
 

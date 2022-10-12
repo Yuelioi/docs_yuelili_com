@@ -6,15 +6,15 @@ category:
 ---
 # PF_ParamDef
 
-After Effects passes effects an array of PF_ParamDefs with each selector, describing the plug-in’s parameters at the current time. The values in the params array are only valid during some selectors (this is noted in the [selector descriptions](command-selectors.html) (#effect-basics-calling-sequence)).
+After Effects在每个选择器中传递给特效一个PF_ParamDefs数组，描述了插件在当前时间的参数。params数组中的值只在某些选择器中有效（这在[选择器描述](command-selectors.html)(#effect-basics-calling-sequence)中已经注明）。
 
 ## Param Zero
 
-The first parameter, params[0], is the input image (a [PF_EffectWorld / PF_LayerDef](PF_EffectWorld.html) (#effect-basics-pf-effectworld)) to which the effect should be applied.
+第一个参数，params[0]，是输入的图像（一个[PF_EffectWorld / PF_LayerDef](PF_EffectWorld.html) (#effect-basics-pf-effectworld)），这个效果应该被应用。
 
 ## The Rest Of The Parameters
 
-All parameter types are represented by a PF_ParamDef. Unions are used, so that only the pertinent parts of the PF_ParamDef need be (or should be) populated.
+所有的参数类型都由PF_ParamDef表示。使用联合体，所以只有PF_ParamDef的相关部分需要（或应该）被填充。
 
 ## PF_ParamDef Members
 
@@ -32,9 +32,9 @@ All parameter types are represented by a PF_ParamDef. Unions are used, so that o
 
 ## Parameter UI Flags
 
-Control a parameter’s user interface with these flags.
+用这些标志来控制一个参数的用户界面。
 
-Don’t confuse UI flags with behavior flags; they reside in different fields within your parameter’s definition, and will cause unpredictable behavior if misapplied.
+不要把用户界面标志和行为标志混为一谈；它们位于你的参数定义中的不同区域，如果应用不当，会导致不可预知的行为。
 
 | **Flag** | **Description** |
 | ---| --- |
@@ -49,11 +49,11 @@ Don’t confuse UI flags with behavior flags; they reside in different fields wi
 | `PF_PUI_RADIO_BUTTON` | Not used in After Effects, but used in Premiere. Display parameter as a radio-button group. Only valid for `PF_Param_POPUP`. |
 | `PF_PUI_INVISIBLE` | First supported in Premiere, and now supported in After Effects CS6 and later. This hides the parameter UI in both the Effect Controls and Timeline.Premiere only: The flag is dynamic and parameter visibility can be toggled during the[PF_UpdateParamUI](https://ae-plugins.docsforadobe.dev/effect-details/parameter-supervision.html#effect-detals-parameter-supervision-pf-paramutilsuite) callback. |
 
-In addition to these flags, an effect parameter may be hidden or shown by using [AEGP_GetDynamicStreamFlags](https://ae-plugins.docsforadobe.dev/aegps/aegp-suites.html#aegps-aegp-suites-dynamic-stream-suite).
+除了这些标志之外，还可以通过使用[AEGP_GetDynamicStreamFlags](https://ae-plugins.docsforadobe.dev/aegps/aegp-suites.html#aegps-aegp-suites-dynamic-stream-suite)来隐藏或显示一个效果参数。
 
 ## Parameter Flags
 
-Behavior flags and UI flags describe different qualities of a parameter. Set them _before_ adding the parameter during [PF_Cmd_PARAM_SETUP](https://ae-plugins.docsforadobe.dev/effect-basics/command-selectors.html#effect-basics-command-selectors-global-selectors). Flags which may be set during events are noted.
+行为标志和用户界面标志描述了一个参数的不同品质。在[PF_Cmd_PARAM_SETUP](https://ae-plugins.docsforadobe.dev/effect-basics/command-selectors.html#effect-basics-command-selectors-global-selectors)中添加参数之前设置它们。在事件中可能被设置的标志被指出。
 
 | **Flag**                                    | **Meaning**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | ------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -71,6 +71,6 @@ Behavior flags and UI flags describe different qualities of a parameter. Set the
 
 ## PF_ValueDisplayFlags
 
-Within PF_ParamDefUnion, PF_FloatSliderDef and PF_FixedSliderDef both have a member variable, PF_ValueDisplayFlags, which allows them to respond to the user’s pixel value display preference (which they set in the info palette). If this is set, the parameter’s value will be displayed as 0-1, 0-255, 0-32768, or 0.0 to 1.0, depending on the preference. You can also set the first bit (PF_ValueDisplayFlag_PERCENT) to append a percent sign to the parameter’s displayed value.
+在PF_ParamDefUnion中，PF_FloatSliderDef和PF_FixedSliderDef都有一个成员变量PF_ValueDisplayFlags，它允许它们响应用户的像素值显示偏好（他们在信息调色板中设置）。如果设置了这个，参数的值将显示为0-1、0-255、0-32768，或者0.0到1.0，取决于偏好。你也可以设置第一个位（PF_ValueDisplayFlag_PERCENT），在参数的显示值上附加一个百分号。
 
-We know you’d never do anything like this, but if you create a parameter which displays as a percentage, don’t confuse the user by allowing any range other than 0 to 100. Please. Percent means ‘out of one hundred’.
+我们知道你永远不会做这样的事情，但是如果你创建了一个显示为百分比的参数，不要通过允许0到100以外的任何范围来混淆用户。请注意。百分比的意思是 "100分之1"。

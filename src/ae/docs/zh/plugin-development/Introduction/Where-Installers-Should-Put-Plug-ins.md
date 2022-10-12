@@ -7,24 +7,24 @@ category:
 
 # Where Installers Should Put Plug-ins
 
-Installing your plug-ins in the common location will allow them to be loaded by Premiere Pro, if installed.
+将你的插件安装在公共位置，可以让它们被Premiere Pro加载，如果安装了的话。
 
-On Windows, the common plug-ins folder can be found (as an explicit path) in the following registry entry: `HKLM\SOFTWARE\Adobe\After Effects\[version]\CommonPluginInstallPath`
+在Windows中，可以在以下注册表项中找到公共插件文件夹（作为一个明确的路径）。`HKLM\SOFTWARE\After Effects\[version]\CommonPluginInstallPath`。
 
-On Mac, the common plug-ins folder is at: `/Library/Application Support/Adobe/Common/Plug-ins/[version]/MediaCore`
+在Mac上，常用插件文件夹在 `/Library/Application Support/Adobe/Common/Plug-ins/[版本]/MediaCore`。
 
-Version is locked at 7.0 for all CC versions, or CSx for earlier versions. For example: `/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/`
+所有CC版本的版本被锁定在7.0，或早期版本的CSx。例如：`/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/`。
 
-Do not use macOS aliases or Windows shortcuts, as these are not traversed by Premiere Pro.
+不要使用macOS的别名或Windows的快捷方式，因为Premiere Pro不会穿越这些地方。
 
 ## Do I Have To Install The Plug-ins To The Common Folder?
 
-You may have good reason to install your plug-in for only After Effects, for example, if your plug-in depends on suites and functionality not available in Premiere Pro. We strongly recommend that you use the common folder whenever possible, but for certain cases, the AE-specific plug-in folder is still available.
+你可能有充分的理由只为After Effects安装你的插件，例如，如果你的插件依赖于Premiere Pro中没有的套件和功能。我们强烈建议你尽可能地使用通用文件夹，但对于某些情况，AE专用的插件文件夹仍然可用。
 
-On Windows, the app-specific plug-ins folder can be found (as an explicit path) in the following registry entry: `\\HKEY_LOCAL_MACHINE\SOFTWARE\Adobe\After Effects\(version)\PluginInstallPath`
+在Windows上，可以在以下注册表项中找到应用程序特定的插件文件夹（作为明确的路径）。`\HKEY_LOCAL_MACHINE\SOFTWARE\AdobeAfter Effects\(version)\PluginInstallPath`。
 
-On macOS, the app-specific plug-ins folder is at: `/Applications/Adobe After Effects [version]/Plug-ins/`
+在macOS上，应用程序特定的插件文件夹在。`/Applications/Adobe After Effects [版本]/Plug-ins/`。
 
-When launched, After Effects recursively descends 10 levels deep into subdirectories of its path. macOS aliases are traversed, but Windows shortcuts are not. Directories terminated by parentheses or preceded by the symbols ¬ (macOS) or ~ (Windows) are not scanned.
+当启动时，After Effects会递归到其路径的子目录的10层深处。以括号结束的目录或前面有符号¬（macOS）或~（Windows）的目录不会被扫描。
 
-Try as you might to build a fence between AE and Premiere Pro, users will still find ways to get across using our lovely integration goodness - Your effects will still be available to Premiere Pro users who create a dynamically linked AE composition with your effect, and put it in a Premiere Pro sequence.
+尽管你想在AE和Premiere Pro之间建立一道篱笆，但用户仍然会找到使用我们可爱的整合功能的方法--你的效果仍然可以被Premiere Pro用户使用，他们用你的效果创建一个动态链接的AE组合，并将其放入Premiere Pro序列。

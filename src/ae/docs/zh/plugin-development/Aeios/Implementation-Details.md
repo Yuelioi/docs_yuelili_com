@@ -9,18 +9,18 @@ category:
 
 ## Export Bit-Depth
 
-In the Output Module Settings, the user can choose a Depth based on the options the AEIO declares support for in `AEIO_GetDepths()` from [AEIO_FunctionBlock4](new-kids-on-the-function-block.html) (#aeios-new-kids-on-the-function-block-aeio-functionblock).
+在输出模块设置中，用户可以根据AEIO在[AEIO_FunctionBlock4](new-kids-on-the-function-block.html) (#aeios-new-kids-the-function-block-aeio-functionblock)的`AEIO_GetDepths()`中声明支持的选项选择一个深度。
 
-If a plug-in supports higher bit-depth exports, it should be able to handle these higher bit-depth PF_EffectWorlds passed in `AEIO_AddFrame()` or `AEIO_OutputFrame()`, even when the export setting is not set to the same depth.
+如果一个插件支持更高的比特深度导出，它应该能够处理这些在`AEIO_AddFrame()`或`AEIO_OutputFrame()`中传递的更高比特深度的PF_EffectWorlds，即使导出设置没有设置为相同的深度。
 
-The frame delivered to the AEIO, and the final output will not necessarily be the same depth.
+交付给AEIO的帧，和最终的输出不一定是相同的深度。
 
-You may get frames passed in the project bit-depth instead of the final output if After Effects thinks that will be higher quality.
+如果After Effects认为最终输出的质量更高，你可能会得到以项目比特深度传递的帧而不是最终输出的帧。
 
 ## User Data vs. Options
 
-It’s possible to use either user data allocations or options handles to store metadata about a file.
+可以使用用户数据分配或选项句柄来存储文件的元数据。
 
-We use user data for information that’s to be embedded in the file (presuming the file format supports such information); marker data, field labels, etc.
+我们用用户数据来存储要嵌入文件中的信息（假定文件格式支持这种信息）；标记数据、字段标签等。
 
-We use option handles for information about the file; output settings, dimensions, details of compression settings used.
+我们使用选项句柄来存储关于文件的信息；输出设置、尺寸、所用压缩设置的细节。

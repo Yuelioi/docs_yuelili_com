@@ -6,11 +6,11 @@ category:
 ---
 # Memory Allocation
 
-Use After Effects for any memory allocations of significant size. For small allocations, you can use new and delete, but this is the exception, not the rule. In low-memory conditions (such as during RAM preview), it’s very important that plug-ins deal gracefully with out-of-memory conditions, and not compete with After Effects for OS memory. By using our memory allocation functions, After Effects can know when to free cached images, to avoid memory swapping. Failing to use our functions for sizable allocations can cause lock-ups, crashes, and tech support calls. Don’t do that.
+使用After Effects来处理任何相当大的内存分配。对于小规模的分配，你可以使用new和delete，但这是个例外，而不是常规。在低内存条件下（如在RAM预览期间），插件要优雅地处理内存不足的情况，而不是与After Effects争夺操作系统内存，这是非常重要的。通过使用我们的内存分配函数，After Effects可以知道何时释放缓存的图像，以避免内存交换。如果不使用我们的函数来分配大量的内存，会导致锁定、崩溃和技术支持电话。不要这样做。
 
-If you’re wrapping existing C++ classes, create a base class that implements new and delete for that class and derive from it. To overload the STL, we don’t recommend you overload global new and delete. Instead provide an allocator as part of the template definition.
+如果你要包装现有的C++类，请创建一个基类，为该类实现new和delete，并从它派生。为了重载STL，我们不建议你重载全局new和delete。相反，要提供一个分配器作为模板定义的一部分。
 
-Handles passed to you by After Effects are locked for you before you’re called, and unlocked once you return.
+After Effects传递给你的处理程序在你被调用之前会被锁定，一旦你返回就会被解锁。
 
 ## PF_HandleSuite1
 

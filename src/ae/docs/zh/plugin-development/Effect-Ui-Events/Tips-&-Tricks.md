@@ -9,38 +9,38 @@ category:
 
 ## UI Performance
 
-Experiment with `PF_EO_ALWAYS_UPDATE` and `PF_EO_NEVER_UPDATE` from [PF_EventExtra](PF_EventExtra.html) (#effect-ui-events-pf-eventextra), to find a happy medium between responsiveness and accuracy.
+实验一下来自[PF_EventExtra](PF_EventExtra.html) (#effect-ui-events-pf-eventextra)的`PF_EO_ALWAYS_UPDATE`和`PF_EO_NEVER_UPDATE`，以便在响应性和准确性之间找到一个满意的媒介。
 
-On macOS, the foreground and background colors are not set to white and black when custom UI draw events are sent.
+在macOS上，当自定义UI绘制事件被发送时，前景和背景颜色不会被设置为白色和黑色。
 
-This is by design; you don’t have to change the background color when you’re drawing directly into our context.
+这是设计上的问题；当你直接在我们的上下文中绘图时，你不必改变背景颜色。
 
 ## How Deep Are My Pixels?
 
-There is no way to determine the bit depth of the layer(s) being processed during events.
+没有办法确定事件发生时正在处理的图层的位深度。
 
-However, you can cache the last-known pixel depth in your sequence data.
+然而，你可以在你的序列数据中缓存最后已知的像素深度。
 
-Better still, you can have your fixed and float slider parameters rely on the `PF_ValueDisplayFlags` in their parameter definitions; if you use this, it will have your parameters’ UI respond to the user’s preferences for pixel display values.
+更好的是，你可以让你的固定和浮动滑块参数依赖于它们参数定义中的`PF_ValueDisplayFlags'；如果你使用这个，它将使你的参数的UI响应用户对像素显示值的偏好。
 
-You can also check the depth of your input world during `PF_Cmd_RENDER`.
+你也可以在`PF_Cmd_RENDER`期间检查你的输入世界的深度。
 
 ## Arbitrary Data
 
-An arbitrary data parameter is an excellent way to manage your custom UI.
+一个任意的数据参数是管理你的自定义UI的绝佳方式。
 
-Store state, preference, and last-item-used information in an arb, and you’ll always be able to recover it.
+将状态、偏好和最后使用的项目信息存储在一个arb中，你就可以随时恢复它。
 
-After Effects manages parameters with a much richer message stream than custom UIs.
+After Effects用比自定义UI更丰富的消息流来管理参数。
 
 ## Custom UI Implementation for Color Sampling, Using Keyframes
 
-A plug-in may want to get a color from a layer within a composition. The user would use the eyedropper associated with a color parameter, or the plug-in’s custom composition panel UI, to select the point.
+一个插件可能想从一个构图中的某个图层获取颜色。用户会使用与颜色参数相关的滴管，或插件的自定义组合面板用户界面来选择该点。
 
-During the click event, the plug-in converts the coordinates of the click into layer space, and stores that information in sequence data. It then forces a re-render, during which it has access to the color of the layer point corresponding to the stored coordinates.
+在点击事件中，插件将点击的坐标转换为层空间，并将该信息存储在序列数据中。然后它强制重新渲染，在此期间它可以访问与存储的坐标相对应的图层点的颜色。
 
-The plug-in stores the color value in sequence data, and cancels the render, requesting a redraw of the affected parameter(s).
+插件将颜色值存储在序列数据中，并取消渲染，要求重新绘制受影响的参数。
 
-Finally, during the draw, the plug-in adds appropriate keyframes to its color parameter stream using the [AEGP_KeyframeSuite](../aegps/aegp-suites.html) (#aegps-aegp-suites-keyframe-suite).
+最后，在绘制过程中，插件使用[AEGP_KeyframeSuite](.../aegps/aegp-suites.html) (#aegps-aegp-suites-keyframe-suite)向其颜色参数流添加适当的关键帧。
 
-Yes, this means the effect needs to [Cheating Effect Usage of AEGP Suites](../aegps/cheating-effect-usage-of-aegp-suites.html) (#aegps-cheating-effect-usage-of-aegp-suites) and use the AEGP API.
+是的，这意味着效果需要[Cheating Effect Usage of AEGP Suites](.../aegps/cheating effect-usage-of-aegp-suites.html) (#aegps-cheating effect-usage-of-aegp-suites) 并使用AEGP API。

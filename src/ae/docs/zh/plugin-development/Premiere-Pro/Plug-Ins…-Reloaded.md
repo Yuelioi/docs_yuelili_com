@@ -7,33 +7,33 @@ category:
 
 # Plug-Ins… Reloaded
 
-On it’s first launch, Premiere Pro loads all the plug-ins, reads the PiPL, and sends PF_Cmd_GLOBAL_SETUP to determine the plug-ins’ capabilities. To save time on future application launches, it saves some of these capabilities in what we call the plug-in cache (the registry on Windows, a Property List file on macOS). The next time the application is launched, the cached information is used wherever possible, rather than loading the plug-ins.
+在第一次启动时，Premiere Pro会加载所有的插件，读取PiPL，并发送PF_Cmd_GLOBAL_SETUP来确定插件的能力。为了节省以后启动应用程序的时间，它将这些功能中的一部分保存在我们所说的插件缓存中（Windows的注册表，macOS的属性列表文件）。下次启动应用程序时，尽可能使用缓存的信息，而不是加载插件。
 
-When debugging, you can always force a reload of all the plug-ins by holding down the Shift key when launching Premiere Pro.
+调试时，你可以在启动Premiere Pro时按住Shift键，强制重新加载所有的插件。
 
-If your effect needs to be reloaded each time, there is a way to disable this caching. The plug-in can use the PF Cache On Load Suite in AE_CacheOnLoadSuite.h (from the [Premiere Pro SDK](http://ppro-plugin-sdk.aenhancers.com/) headers) to call PF_SetNoCacheOnLoad() during PF_Cmd_GLOBAL_SETUP. For the second parameter of that function, pass a non-zero value if you want your effect to show up in the UI. Pass zero if loading failed, but you still want Premiere Pro to attempt to load it again on the next relaunch.
+如果你的效果每次都需要重新加载，有一种方法可以禁用这种缓存。插件可以使用AE_CacheOnLoadSuite.h（来自[Premiere Pro SDK](http://ppro-plugin-sdk.aenhancers.com/)头文件）中的PF Cache On Load套件，在PF_Cmd_GLOBAL_SETUP期间调用PF_SetNoCacheOnLoad()。对于该函数的第二个参数，如果你想让你的效果显示在用户界面上，请传一个非零值。如果加载失败，但你仍然希望Premiere Pro在下一次重新启动时尝试再次加载，则传给0。
 
 # Effects Presets
 
-Premiere Pro uses a different preset scheme than After Effects.
+Premiere Pro使用的预设方案与After Effects不同。
 
-From the Premiere Pro SDK Guide:
+来自Premiere Pro SDK指南。
 
-Effect presets appear in the Presets bin in the Effects panel, and can be applied just like Effects with specific parameter settings and keyframes. Effect presets can be created as follows:
+效果预设出现在Effects面板的Presets bin中，可以像Effects一样通过特定的参数设置和关键帧来应用。效果预设可以按以下方式创建。
 
-1. Apply a filter to a clip
-2. Set the parameters of the filter, adding keyframes if desired
-3. Right-click on the filter name in the Effect Controls panel, and select “Save Preset…”
-4. Create preset bins if desired by right-clicking in the Effects panel and choosing “New Presets Bin”
-5. Organize the presets in the preset folders
-6. Select the bins and/or presets you wish to export, right-click, and choose “Export Preset”
+1. 将一个滤镜应用于一个片段
+2. 2. 设置滤波器的参数，如果需要的话，添加关键帧
+3. 在 "效果控制 "面板上右击滤波器名称，并选择 "保存预设..."。
+4. 如果需要的话，在效果面板上点击右键，选择 "新建预置库 "来创建预置库。
+5. 5.在预置文件夹中组织预置。
+6. 6. 选择你想输出的仓和/或预置，右击，并选择 "Export Preset"。
 
-Presets should be installed in the Plug-ins directory. Once they are installed in that directory, they will be read-only, and the user will not be able to move them to a different folder or change their names. User-created presets will be modifiable.
+预设应该安装在Plug-ins目录中。一旦它们被安装在该目录中，它们将是只读的，用户将不能把它们移到不同的文件夹或改变它们的名称。用户创建的预置将是可修改的。
 
-On Windows Vista, these are in the user’s hidden AppData folder (e.g. C:Users[user name]AppDataRoamingAdobePremiere Pro[version]Effect Presets and Custom Items.prfpset).
+在Windows Vista中，这些预设在用户隐藏的AppData文件夹中（例如：C:Users[用户名]AppDataRoamingAdobePremiere Pro[版本]Effect Presets and Custom Items.prfpset）。
 
-On macOS, they are in the user folder, at ~/Library/ Application Support/Adobe/Premiere Pro/[version]/Effect Presets and Custom Items.prfpset.
+在macOS上，它们在用户文件夹中，在~/Library/应用支持/Adobe/Premiere Pro/[版本]/Effect Presets and Custom Items.prfpset。
 
 # Custom ECW UI Over A Standard Data Type
 
-While this is logged as bug #1235407, there is a simple workaround: Create two separate parameters, and have the custom UI control the slider param using parameter supervision.
+虽然这被记录为第1235407号错误，但有一个简单的解决方法。创建两个独立的参数，并让自定义UI使用参数监督来控制滑块参数。

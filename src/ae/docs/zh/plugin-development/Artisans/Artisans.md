@@ -9,13 +9,13 @@ category:
 
 :::tip
 
-If you’re considering developing an Artisan, please talk it over with us first.
+如果你正在考虑开发一个Artisan，请先和我们讨论一下。
 :::
 
-The Artisan API exposes function hooks necessary for a plug-in to provide rendered output of 3D layers, taking over completely from After Effects (which still handles all rendering of 2D layers). There can be only one Artisan per composition, chosen from within the _Composition Settings_ > _Advanced_ dialog. Artisans render the 3D environment, asking After Effects for information about each element in the composition. As you might guess, this is a vast and tedious process. This API is not recommended for anyone without a strong need to override After Effects’ 3D rendering.
+Artisan API暴露了插件提供3D层渲染输出所需的函数钩，完全取代了After Effects（它仍然处理所有2D层的渲染）。每个构图只能有一个工匠，从_构图设置_>_高级_对话框中选择。匠人渲染三维环境，向After Effects询问关于构图中每个元素的信息。正如你所猜测的，这是一个庞大而乏味的过程。如果没有强烈的需求来覆盖After Effects的3D渲染，不建议使用这个API。
 
-Artisans may share information with effects written to communicate with them, but effects may not initiate this communication. Many of the suites used by Artisans require a rendering context which is generated only after all effects have been applied to the layer.
+匠人可以与写好的效果分享信息，但效果不能发起这种交流。许多工匠使用的套件需要一个渲染上下文，这个上下文只有在所有效果都应用到该层之后才会生成。
 
 ## Interactive Artisans
 
-These differ from standard artisans in that they handle all layers in a composition (not just those which the user has made 3D), and they will only ever be called for onscreen display, never for rendered final output (the rendering calls “fall through” to the default artisan).
+这些与标准工匠不同的是，它们处理组合中的所有图层（而不仅仅是那些用户制作的3D图层），而且它们只在屏幕上显示时被调用，而不会在最终输出时被渲染（渲染调用会 "落入 "默认工匠）。

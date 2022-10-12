@@ -8,15 +8,15 @@ category:
 
 ## Accessing Path Data
 
-Paths differ from other parameter types, in that their values are not directly accessible. In addition to checking them out and in (like layer parameters), you must use our path data function suites to obtain the details of the path at a given time. See [PF_PathQuerySuite1](#effect-details-working-with-paths-pf-pathquerysuite) and [PF_PathDataSuite](#effect-details-working-with-paths-pf-pathdatasuite). Never use the values present in a path parameter when it’s passed to you, without first checking it out; while deleted paths will not be available, further updating is done “lazily” (later); your effect won’t see these changes unless it checks out the path.
+路径与其他参数类型不同，因为它们的值不能直接访问。除了将它们检出和检入（像层参数一样），你必须使用我们的路径数据函数套件来获取特定时间内的路径细节。参见[PF_PathQuerySuite1](#effect-details-working-with-paths-pf-pathquerysuite)和[PF_PathDataSuite](#effect-details-working-with-paths-pf-pathdatasuite)。当一个路径参数被传递给你时，如果没有先检查出来，千万不要使用它存在的值；虽然被删除的路径将无法使用，但进一步的更新是 "懒惰地 "进行的（以后）；你的效果不会看到这些变化，除非它检查出路径。
 
 ## Manipulating Path Data
 
-You can also use the [AEGP_MaskOutlineSuite3](../aegps/aegp-suites.html) (#aegps-aegp-suites-aegp-maskoutlinesuite) to manipulate paths. See [Cheating Effect Usage of AEGP Suites](../aegps/cheating-effect-usage-of-aegp-suites.html) (#aegps-cheating-effect-usage-of-aegp-suites). Path parameters are treated as opaque blobs of data; get and set functions must be used to access and manipulate them. Like layer parameters, they must be checked out (and in!) by effects which access them.
+你也可以使用[AEGP_MaskOutlineSuite3](.../aegps/aegp-suites.html)（#aegps-aegp-suites-aegp-maskoutlinesuite）来操纵路径。参见[AEGP套件的作弊效果使用](.../aegps/cheating effect-usage-of-aegp-suites.html) (#aegps-cheating effect-usage-of-aegp-suites) 。路径参数被视为不透明的数据块；必须使用get和set函数来访问和操作它们。像图层参数一样，它们必须被访问它们的效果检查出来（和进入！）。
 
 ## Vertices
 
-Path vertices are more complex than simple points. All member variables are PF_FpLongs (doubles), and are in the layer’s coordinate space.
+路径顶点比简单的点更复杂。所有的成员变量都是PF_FpLongs（双倍），并且是在层的坐标空间中。
 
 ## PF_PathVertex
 
@@ -31,7 +31,7 @@ Path vertices are more complex than simple points. All member variables are PF_F
 
 ## PF_PathDataSuite
 
-This suite provides information about paths (sequences of vertices).
+这个套件提供关于路径（顶点序列）的信息。
 
 ### PF_PathIsOpen
 
@@ -57,7 +57,7 @@ A_long*num_segmentsPL);
 
 ### PF_PathVertexInfo
 
-Retrieves the PF_PathVertex ` for the specified path. The range of points is [0.num_segments];` for closed paths, vertex[0]`<span>` ==`<span>` vertex[num_segments]`.
+Retrieves the PF_PathVertex ` for the specified path. The range of points is [0.num_segments];` for closed paths, vertex[0]`<span>` ==`<span>` vertex[num_segments]`.
 
 ```cpp
 PF_PathVertexInfo(
@@ -150,7 +150,7 @@ PF_Boolean*invertedB);
 
 ### PF_PathGetMaskMode
 
-Retrieves the mode for the given path.
+检索给定路径的模式。
 
 ```cpp
 PF_PathGetMaskMode(
@@ -159,20 +159,20 @@ PF_PathIDunique_id,
 PF_MaskMode*modeP);
 ```
 
-Mask mode is one of the following:
+掩码模式是以下之一。
 
-> - PF_MaskMode_NONE`
-> - PF_MaskMode_ADD`
-> - PF_MaskMode_SUBTRACT`
-> - PF_MaskMode_INTERSECT`
-> - PF_MaskMode_LIGHTEN`
-> - PF_MaskMode_DARKEN`
-> - PF_MaskMode_DIFFERENCE`
-> - PF_MaskMode_ACCUM`
+> - PF_MaskMode_NONE`。
+> - PF_MaskMode_ADD`。
+> - PF_MaskMode_SUBTRACT`。
+> - PF_MaskMode_INTERSECT`。
+> - PF_MaskMode_LIGHTEN`(淡化)
+> - PF_MaskMode_DARKEN`(变暗)
+> - PF_MaskMode_DIFFERENCE`（差值）。
+> - PF_MaskMode_ACCUM`。
 
 ### PF_PathGetName
 
-Retrieves the name of the path (up to PF_MAX_PATH_NAME_LEN` long).
+检索路径的名称（最长为PF_MAX_PATH_NAME_LEN`长）。
 
 ```cpp
 PF_PathGetName(
@@ -183,11 +183,11 @@ A_char*nameZ);
 
 ## PF_PathQuerySuite1
 
-This suite is used to identify and access the paths associated with the effect’s source layer.
+这个套件用于识别和访问与效果的源层相关的路径。
 
 ### PF_NumPaths
 
-Retrieves the number of paths associated with the effect’s source layer.
+检索与效果源层相关的路径数量。
 
 ```cpp
 PF_NumPaths(
@@ -197,7 +197,7 @@ A_long*num_pathsPL);
 
 ### PF_PathInfo
 
-Retrieves the PF_PathID for the specified path.
+检索指定路径的PF_PathID。
 
 ```cpp
 PF_PathInfo(
@@ -208,7 +208,7 @@ PF_PathID*unique_idP);
 
 ### PF_CheckoutPath
 
-Acquires the PF_PathOutlinePtr for the path at the specified time.
+在指定的时间获取路径的PF_PathOutlinePtr。
 
 ```cpp
 PF_CheckoutPath(
@@ -222,7 +222,7 @@ PF_PathOutlinePtr*pathPP);
 
 ### PF_CheckinPath
 
-Releases the path back to After Effects. Always do this, regardless of any error conditions encountered. Every checkout must be balanced by a checkin, or pain will ensue.
+将路径释放回After Effects。总是这样做，不管遇到什么错误情况。每一次签出都必须由签入来平衡，否则会有痛苦。
 
 ```cpp
 PF_CheckinPath(

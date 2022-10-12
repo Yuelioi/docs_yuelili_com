@@ -6,7 +6,7 @@ category:
 ---
 # Data Types
 
-Whenever possible, After Effects presents plug-ins with opaque data types, and provides accessor functions for manipulating them. For example, video frames are represented using the opaque AEGP_WorldH. While in some cases it might be more efficient to simply modify the underlying structure, by maintaining the opaqueness of the data types we allow for changes to our implementation without making you recompile (and redistribute) your plug-ins.
+只要有可能，After Effects就会为插件提供不透明的数据类型，并提供操作这些数据的访问函数。例如，视频帧用不透明的AEGP_WorldH表示。虽然在某些情况下，简单地修改底层结构可能更有效，但通过保持数据类型的不透明性，我们允许改变我们的实现，而不会让你重新编译（和重新发布）你的插件。
 
 ## AEGP API Data Types
 
@@ -39,15 +39,15 @@ Whenever possible, After Effects presents plug-ins with opaque data types, and p
 
 ## Nasty, Brutish, and Short
 
-Information about layers, streams, and many other items doesn’t survive long; it’s often invalidated by user activity.
+关于层、流和许多其他项目的信息不会存活很久；它经常被用户活动所废止。
 
-Anything that modifies the quantity (not quality) of items will invalidate references to those items; adding a keyframe to a stream invalidates references to that stream, but forcing a layer to be rendered doesn’t invalidate references to it. Do not cache layer pixels.
+任何修改项目数量（而不是质量）的行为都会使对这些项目的引用失效；向流添加关键帧会使对该流的引用失效，但强制渲染一个图层并不会使对它的引用失效。不要缓存图层像素。
 
-Caching references between calls to a specific hook function within your plug-in is not recommended; acquire information when you need it, and forget (release) it as soon as possible.
+不建议在调用插件中的特定钩子函数之间缓存引用；当你需要时获取信息，并尽快忘记（释放）它。
 
 ## Were You Just Going To Leave That Data Lying Around?
 
-When you ask After Effects to populate and return handles to data structures, it’s important that you clean up after yourself. For the following data types, you must call the appropriate disposal routines.
+当你要求After Effects填充和返回数据结构的句柄时，重要的是你要自己清理。对于以下数据类型，你必须调用相应的处理程序。
 
 ## Data Types Requiring Disposal
 

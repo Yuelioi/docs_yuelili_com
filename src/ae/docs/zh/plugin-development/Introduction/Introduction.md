@@ -7,12 +7,12 @@ category:
 
 # Introduction
 
-Welcome to the Adobe® After Effects® Software Development Kit!
+欢迎来到Adobe® After Effects® 软件开发工具包
 
-This is a living document and is constantly being updated and edited. The latest public version of the SDK is available at: <https://www.adobe.io/after-effects/>
+这是一个活生生的文件，正在不断地更新和编辑。最新的公开版本的SDK可以在以下网址找到。<https://www.adobe.io/after-effects/>。
 
-While we’ve tried to organize this document in a logical order and provide plenty of cross references, your specific needs may vary. Searching through this document based on keywords will often lead you to your answer.
+虽然我们已经尽力按逻辑顺序组织本文档，并提供了大量的交叉参考资料，但您的具体需求可能有所不同。根据关键词在本文档中进行搜索，往往可以找到你的答案。
 
-If you need more information, your question may already be answered on the After Effects SDK forum: [After Effects SDK Forum](https://community.adobe.com/t5/after-effects/bd-p/after-effects?page=1&sort=latest_replies&filter=all&topics=label-sdk)
+如果你需要更多的信息，你的问题可能已经在After Effects SDK论坛上得到了解答。[After Effects SDK Forum](https://community.adobe.com/t5/after-effects/bd-p/after-effects?page=1&sort=latest_replies&filter=all&topics=label-sdk)
 
-Use the search box there, and post a new question if your question hasn’t already been answered.
+使用那里的搜索框，如果你的问题还没有被回答，请发表一个新的问题。

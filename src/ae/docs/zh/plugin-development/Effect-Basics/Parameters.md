@@ -6,19 +6,19 @@ category:
 ---
 # Parameters
 
-Parameters are streams of values that vary with time; the source image, sliders, angles, points, colors, paths, and any arbitrary data types the user can manipulate.
+参数是随时间变化的数值流；源图像、滑块、角度、点、颜色、路径，以及用户可以操作的任何任意数据类型。
 
-They are passed to the plug-in as an array of PF_ParamDefs, though the values in the array are only valid during certain selectors.
+它们以PF_ParamDefs数组的形式传递给插件，尽管数组中的值只在某些选择器中有效。
 
-One of the best aspects of the After Effects effect API is the parameter interpolation and management.
+After Effects特效API最好的方面之一是参数插值和管理。
 
-How much does the shutter angle change during one-fourth of a 29.97 fps frame? Not your problem; leave it to After Effects.
+在29.97帧的四分之一时间里，快门角度有多大变化？不是你的问题，交给After Effects吧。
 
-Describe your plug-in’s parameters during [PF_Cmd_PARAM_SETUP](command-selectors.html) (#effect-basics-command-selectors-global-selectors), using [PF_ADD_PARAM](../effect-details/interaction-callback-functions.html) (#effect-details-interaction-callback-functions-interaction-callbacks).
+在[PF_Cmd_PARAM_SETUP](command-selectors.html)(#effect-basics-command-selectors-global-selectors)期间，使用[PF_ADD_PARAM](.../effect-details/interaction-callback-functions.html)(#effect-details-interaction-callback-functions-interaction-callbacks)描述你插件中的参数。
 
-You may have up to (approximately) 38 kajillion parameters, or as many as your users are willing to sift through before demanding a refund. Choose wisely.
+你最多可以有（大约）38 kajillion个参数，或者说你的用户在要求退款之前愿意筛选多少就有多少。明智的选择。
 
-Avoid countless problems by clearing PF_ParamDefs with AEFX_CLR_STRUCT (defined in AE_Macros.h) before registering them.
+在注册PF_ParamDefs之前，用AEFX_CLR_STRUCT（定义在AE_Macros.h）清除它们，可以避免无数的问题。
 
 ## Parameter Types
 
@@ -41,8 +41,8 @@ Avoid countless problems by clearing PF_ParamDefs with AEFX_CLR_STRUCT (defined 
 
 ## Slider Range Issues?
 
-If your slider seems disabled but not grayed out, check the valid_min, slider_min, valid_max and slider_max fields. Is the param a `PF_Param_FIX_SLIDER`? If so, did you convert your mins and maxs to reasonable fixed values? If you’re using the macros provided in AE_Macros.h, they’re expecting to receive ints; passing fixed point values won’t work.
+如果你的滑块似乎被禁用了，但没有灰掉，请检查valid_min、slider_min、valid_max和slider_max字段。这个参数是`PF_Param_FIX_SLIDER`吗？如果是，你是否将你的Mins和max转换为合理的固定值？如果你使用AE_Macros.h中提供的宏，它们期望接收的是整数；传递定点值是不行的。
 
 ## Point Parameter Origin
 
-After Effects modifies any point parameter to account for origin offset, introduced by “upstream” effects that modify the output dimensions. Even if the ECP UI indicates the value of the point parameter is (0,0), the offset has already been factored in.
+After Effects会修改任何点参数以考虑原点偏移，这些偏移是由修改输出尺寸的 "上游 "效果引入的。即使ECP用户界面显示点参数的值是(0,0)，偏移量已经被考虑进去了。

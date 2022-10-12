@@ -7,16 +7,16 @@ category:
 
 # AEGPs
 
-The After Effects General Plug-in (AEGP) API is powerful and broad, offering functionality beyond what is available to effect plug-ins.
+After Effects General Plug-in (AEGP)的API强大而广泛，提供的功能超出了效果插件的范围。
 
-To users, AEGPs appear to be part of After Effects.
+对用户来说，AEGPs似乎是After Effects的一部分。
 
-They can add, intercept, and trigger menu commands, access the keyframe database, and register functions as part of After Effects’ internal messaging.
+它们可以添加、拦截和触发菜单命令，访问关键帧数据库，并将功能注册为After Effects内部信息传递的一部分。
 
-AEGPs can add and remove items to projects and compositions, add and remove filters and keyframes.
+AEGPs可以在项目和作品中添加和删除项目，添加和删除过滤器和关键帧。
 
-Once its command is triggered, AEGPs use the numerous PICA function suites (described in this section) to work with every After Effects item.
+一旦其命令被触发，AEGPs就会使用众多的PICA功能套件（在本节中描述）来处理每一个After Effects项目。
 
-AEGPs can publish function suites for plug-ins, manipulate all project elements, change interpretations, replace files and determine which external files are used to render a project.
+AEGPs可以为插件发布功能套件，操纵所有项目元素，改变解释，替换文件，并确定哪些外部文件用于渲染项目。
 
-There are several specialized types of AEGP; Keyframers, Artisans, and I/O modules (AEIOs). They are all still AEGPs, but have access to specialized messaging streams, for which they register with After Effects.
+有几种专门的AEGP类型；Keyframers、Artisans和I/O模块（AEIOs）。它们都是AEGP，但可以访问专门的信息流，为此它们在After Effects中注册。

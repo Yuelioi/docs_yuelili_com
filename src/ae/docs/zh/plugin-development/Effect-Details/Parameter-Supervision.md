@@ -6,29 +6,29 @@ category:
 ---
 # Parameter Supervision
 
-Supervision means dynamically changing the values of some parameters based on the values of others. To supervise a parameter, set [PF_ParamFlag_SUPERVISE](../effect-basics/PF_ParamDef.html) (#effect-basics-pf-paramdef-parameter-flags) before adding it during _PF_Cmd_PARAM_SETUP_. Whenever it is changed, you will receive [PF_Cmd_USER_CHANGED_PARAM](../effect-basics/command-selectors.html) (#effect-basics-command-selectors-messaging). The index (into the plug-in’s parameter array) of the changed parameter is sent in the PF*UserChangedParamExtra (extra) param. During \_PF_Cmd_USER_CHANGED_PARAM*, you may change the values _and_ appearance of any of your parameters.
+监督是指根据其他参数的值动态地改变一些参数的值。要监督一个参数，在_PF_Cmd_PARAM_SETUP_期间，在添加它之前设置[PF_ParamFlag_SUPERVISE](.../effect-basics/PF_ParamDef.html) (#effect-basics-pf-paramdef-parameter-flags) 。每当它被改变，你会收到[PF_Cmd_USER_CHANGED_PARAM](.../effect-basics/command-selectors.html) (#effect-basics-command-selectors-messaging)。改变的参数的索引（在插件的参数数组中）在PF*UserChangedParamExtra（额外）参数中发送。在 `PF_Cmd_USER_CHANGED_PARAM*期间，你可以改变任何参数的值和外观。
 
 ## Updating Parameter UI
 
-If you set `PF_ParamFlag_SUPERVISE` on any parameter, After Effects will send you _PF_Cmd_UPDATE_PARAMS_UI_, just as if you had set PF_OutFlag_SEND_UPDATE_PARAMS_UI.
+如果你在任何参数上设置了`PF_ParamFlag_SUPERVISE`，After Effects将向你发送_PF_Cmd_UPDATE_PARAMS_UI_，就像你设置了PF_OutFlag_SEND_UPDATE_PARAMS_UI。
 
-During _PF_Cmd_UPDATE_PARAMS_UI_, you may only change the appearance and enable state of parameters. Use `PF_UpdateParamUI()` from [PF_ParamUtilSuite3](#effect-detals-parameter-supervision-pf-paramutilsuite) to update the UI, passing it a _copy_ of the parameter you wish to modify. Do _not_ attempt to modify the original. It is not necessary to set `PF_OutFlag_REFRESH_UI`; `PF_UpdateParamUI()` handles that for you.
+在_PF_Cmd_UPDATE_PARAMS_UI_期间，你只能改变参数的外观和启用状态。使用[PF_ParamUtilSuite3](#effect-detals-parameter-supervision-pf-paramutilsuite)中的`PF_UpdateParamUI()`来更新用户界面，把你想修改的参数的_copy_传给它。不要试图修改原始参数。没有必要设置`PF_OutFlag_REFRESH_UI`；`PF_UpdateParamUI()`为你处理。
 
 :::tip
 
-This is the only way to update the UI of `PF_PUI_STD_CONTROL_ONLY` parameters.
+这是更新`PF_PUI_STD_CONTROL_ONLY`参数的用户界面的唯一方法。
 
 :::
 
 ## Updating Parameter Values
 
-A parameter’s value (not just UI) can be modified during [PF_Cmd_USER_CHANGED_PARAM](../effect-basics/command-selectors.html) (#effect-basics-command-selectors-messaging) and during [PF_Cmd_EVENT](../effect-basics/command-selectors.html) (#effect-basics-command-selectors-messaging) (_PF_Event_DO_CLICK_, _PF_Event_DRAG_, & _PF_Event_KEYDOWN_). After Effects will not honor changes made at other times.
+在[PF_Cmd_USER_CHANGED_PARAM](../effect-basics/command-selectors.html) (#effect-basics-command-selectors-messaging)和[PF_Cmd_EVENT](. ./effect-basics/command-selectors.html）（#effect-basics-command-selectors-messaging）（_PF_Event_DO_CLICK_, _PF_Event_DRAG_, & _PF_Event_KEYDOWN_）。After Effects不会尊重在其他时间做出的改变。
 
-When changing parameter _values_ (and not just the UI), modify the original parameter, and set `PF_Paramdef.uu.change_flags` to `PF_ChangeFlag_CHANGED_VALUE`.
+当改变参数_值时（而不仅仅是用户界面），修改原始参数，并将`PF_Paramdef.uu.change_flags`设置为`PF_ChangeFlag_CHANGED_VALUE`。
 
-This change will be also update the UI, and will be undoable by the user. Note that `PF_ChangeFlag_CHANGED_VALUE` isn’t supported for layer parameters.
+这个变化也将更新用户界面，并且用户可以撤销。请注意，`PF_ChangeFlag_CHANGED_VALUE`不支持层参数。
 
-This suite is provided to give effect plug-ins some access to their parameter streams, without requiring AEGP suite usage. At least some of these functions are provided by several third-party hosts. These functions are especially handy for effects with supervised parameters.
+提供这个套件是为了让效果插件对其参数流有一些访问，而不需要使用AEGP套件。这些函数中至少有一些是由几个第三方主机提供的。这些功能对于有监督参数的效果来说特别方便。
 
 ## PF_ParamUtilSuite3
 
@@ -41,13 +41,13 @@ PF_ParamIndexparam_index,
 constPF_ParamDef*defP);
 ```
 
-Force After Effects to refresh the parameter’s UI, in the effect controls palette.
+强制After Effects刷新参数的用户界面，在效果控制调色板中。
 
-Starting in CC 2014, After Effects will now honor a change to a custom UI height. Simply change the ui_height of your custom UI PF_ParamDef and then call PF_UpdateParamUI. The effect’s custom UI height will be updated in the Effect Control Window.
+从CC 2014开始，After Effects现在会尊重对自定义UI高度的改变。只要改变你的自定义UI PF_ParamDef的ui_height，然后调用PF_UpdateParamUI。效果的自定义用户界面高度将在效果控制窗口中被更新。
 
-Starting in CS6, when a plug-in disables a parameter, we now save that state in the UI flags so that the plug-in can check that flag in the future to see if it is disabled.
+从CS6开始，当一个插件禁用一个参数时，我们现在将该状态保存在UI标志中，这样插件就可以在将来检查该标志，看它是否被禁用。
 
-NOTE: Never pass param[0] to this function.
+注意：千万不要把param[0]传给这个函数。
 
 ### PF_GetCurrentState
 
@@ -60,17 +60,17 @@ constA_Time*durationPT0,
 PF_State*stateP);
 ```
 
-This API, combined with PF_AreStatesIdentical below, lets you determine if a set of inputs (either layers, other properties, or both) are different between when you first called PF_GetCurrentState and a current call, so it can be used for caching. You can specify a range of time to consider or all of time.
+这个API，结合下面的PF_AreStatesIdentical，可以让你确定在你第一次调用PF_GetCurrentState和当前调用时，一组输入（无论是图层、其他属性，还是两者）是否不同，所以它可以用于缓存。你可以指定一个要考虑的时间范围或所有的时间。
 
-Updated in CS6 to add param_index, startPT0, and durationPT0. Pre-defined constants for param_index are as follows:
+在CS6中更新，增加了param_index、startPT0和durationPT0。param_index的预定义常数如下。
 
-> - PF_ParamIndex_CHECK_ALL` - check every parameter, including every layer referred to by a layer parameter.
-> - PF_ParamIndex_CHECK_ALL_EXCEPT_LAYER_PARAMS` - omit all layers. Pass a specific layer parameter index to include that as the only layer parameter tested.
-> - PF_ParamIndex_CHECK_ALL_HONOR_EXCLUDE` - Similar to CHECK_ALL, but honor PF_ParamFlag_EXCLUDE_FROM_HAVE_INPUTS_CHANGED.
+> - PF_ParamIndex_CHECK_ALL` - 检查每个参数，包括图层参数所指的每个图层。
+> - PF_ParamIndex_CHECK_ALL_EXCEPT_LAYER_PARAMS` - 省略所有层。传递一个特定的层参数索引，将其作为唯一的层参数进行测试。
+> - PF_ParamIndex_CHECK_ALL_HONOR_EXCLUDE` - 与CHECK_ALL类似，但尊重PF_ParamFlag_EXCLUDE_FROM_HAVE_INPUTS_CHANGED。
 
-Passing in NULL for both start and duration indicates all time. For effects that do simulation across time and therefore set PF_OutFlag2_AUTOMATIC_WIDE_TIME_INPUT, when you ask about a time range, it will be expanded to include any times needed to produce that range.
+在开始和持续时间中传递NULL表示所有时间。对于做跨时间模拟并因此设置了PF_OutFlag2_AUTOMATIC_WIDE_TIME_INPUT的效果，当你询问一个时间范围时，它将被扩展到包括产生该范围所需的任何时间。
 
-Populates a PF_State, an opaque data type used as a receipt for the current state of the effect’s parameters (the PF_State is used in our internal frame caching database).
+填充一个PF_State，这是一个不透明的数据类型，用作效果参数当前状态的收据（PF_State用于我们内部的帧缓存数据库）。
 
 ### PF_AreStatesIdentical
 
@@ -82,11 +82,11 @@ constPF_State*state2P,
 A_Boolean*samePB);
 ```
 
-New in CS6. Compare two different states, retrieved using PF_GetCurrentState`, above.
+CS6中的新功能。比较两个不同的状态，使用上述PF_GetCurrentState`检索。
 
 ### PF_HasParamChanged
 
-No longer supported in PFParamUtilsSuite3`.
+PFParamUtilsSuite3`中不再支持。
 
 ```cpp
 PF_HasParamChanged(
@@ -96,16 +96,16 @@ PF_ParamIndexparam_index,
 PF_Boolean*changedPB);
 ```
 
-Given a PF_State, passes back true if any of the tested parameters differ from the saved state. Contrary to the name, the call does not provide a way to test a single parameter. At a minimum, all non-layer parameters will be tested. For finer granularity to test a specific set of parameters, use PF_HaveInputsChangedOverTimeSpan below instead.
+给定一个PF_State，如果任何测试的参数与保存的状态不同，则传回true。与名字相反的是，该调用不提供测试单个参数的方法。至少，所有的非层级参数将被测试。如果要测试一组特定的参数，请使用下面的PF_HaveInputsChangedOverTimeSpan来代替更精细的粒度。
 
-Pre-defined constants for param_index are as follows:
+param_index的预定义常量如下。
 
-> - PF_ParamIndex_CHECK_ALL` - check every parameter, including every layer referred to by a layer parameter.
-> - PF_ParamIndex_CHECK_ALL_EXCEPT_LAYER_PARAMS` - omit all layers. Pass a specific layer parameter index to include that as the only layer parameter tested.
+> - PF_ParamIndex_CHECK_ALL` - 检查每个参数，包括由层参数提到的每个层。
+> - PF_ParamIndex_CHECK_ALL_EXCEPT_LAYER_PARAMS` - 省略所有层。传递一个特定的层参数索引，将其作为唯一被测试的层参数。
 
 ### PF_HaveInputsChangedOverTimeSpan
 
-No longer supported in PFParamUtilsSuite3 `. Use PF_AreStatesIdentical()` instead.
+PFParamUtilsSuite3`中不再支持。使用PF_AreStatesIdentical()`代替。
 
 ### PF_IsIdenticalCheckout
 
@@ -122,7 +122,7 @@ A_u_longtime_scale2,
 PF_Boolean*identicalPB);
 ```
 
-Returns TRUE` if a parameter’s value is the same at the two passed times. Note: the times need not be contiguous; there could be different intervening values.
+如果一个参数的值在两个传递的时间内是相同的，返回TRUE`。注意：时间不需要是连续的；中间可能有不同的值。
 
 ### PF_FindKeyframeTime
 
@@ -139,7 +139,7 @@ A_long*key_timeP0,
 A_u_long*key_timescaleP0);
 ```
 
-Searches (in the specified direction) for the next keyframe in the parameter’s stream. The last three parameters are optional.
+在参数流中搜索（按指定方向）下一个关键帧。后面三个参数是可选的。
 
 ### PF_GetKeyframeCount
 
@@ -150,7 +150,7 @@ PF_ParamIndexparam_index,
 PF_KeyIndex*key_countP);
 ```
 
-Returns the number of keyframes in the parameter’s stream.
+返回参数流中的关键帧的数量。
 
 ### PF_CheckoutKeyframe
 
@@ -164,7 +164,7 @@ A_u_long*key_timescaleP0,
 PF_ParamDef*paramP0);
 ```
 
-Checks a keyframe for the specified parameter out of our keyframe database. param_index is zero-based. You can request time, timescale, or neither; useful if you’re performing your own motion blur.
+从我们的关键帧数据库中检查指定参数的关键帧，param_index为零。你可以要求时间、时间尺度，或者两者都不要求；如果你要执行你自己的运动模糊，那就很有用。
 
 ### PF_CheckinKeyframe
 
@@ -174,7 +174,7 @@ PF_ProgPtreffect_ref,
 PF_ParamDef*paramP);
 ```
 
-All calls to PF_CheckoutKeyframe must be balanced with this check-in, or pain will ensue.
+所有对PF_CheckoutKeyframe的调用都必须与这个Check-in相平衡，否则会带来痛苦。
 
 ### PF_KeyIndexToTime
 
@@ -187,4 +187,4 @@ A_long*key_timeP,
 A_u_long*key_timescaleP);
 ```
 
-Returns the time (and timescale) of the specified keyframe.
+返回指定关键帧的时间（和时间尺度）。

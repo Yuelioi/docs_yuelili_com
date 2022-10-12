@@ -7,11 +7,11 @@ category:
 
 # PF_InData
 
-After Effects communicates system, project, layer and audio information using `PF_InData`. This structure is updated before each command selector is sent to a plug-in.
+After Effects使用`PF_InData`来交流系统、项目、层和音频信息。这个结构在每个命令选择器被发送到插件之前被更新。
 
-Fields valid only during specific [PF_Cmds](command-selectors.html) (#effect-basics-command-selectors) are noted.
+只在特定的[PF_Cmds](command-selectors.html)(#effect-basics-command-selectors)中有效的字段被指出。
 
-Also, don’t worry; although `PF_InData` is dauntingly large, you need not memorize each member’s purpose; you’ll use some of the fields some of the time.
+另外，不用担心；虽然`PF_InData`大得令人生畏，但你不需要记住每个成员的用途；你会在某些时候使用一些字段。
 
 ## PF_InData Members
 
@@ -60,58 +60,58 @@ Also, don’t worry; although `PF_InData` is dauntingly large, you need not memo
 
 :::tip
 
-hint rectangles are much more effective…and complicated…for [SmartFX](../smartfx/smartfx.html) (#smartfx-smartfx).
+对于[SmartFX](.../smartfx/smartfx.html)(#smartfx-smartfx)来说，提示矩形更有效...也更复杂...。
 :::
-Use `extent_hint` to process only those pixels for which output is required; this is one of the simplest optimizations you can make.
+使用`extent_hint`来处理那些需要输出的像素；这是你能做的最简单的优化之一。
 
-Tell After Effects you use `in_data>extent_hint` by setting [PF_OutFlag_USE_OUTPUT_EXTENT](PF_OutData.html) (#effect-basics-pf-outdata-pf-outflags) in [PF_OutData](PF_OutData.html) (#effect-basics-pf-outdata) during [PF_Cmd_GLOBAL_SETUP](command-selectors.html) (#effect-basics-command-selectors-global-selectors) (and in your PiPL).
+通过设置[PF_OutFlag_USE_OUTPUT_EXTENT](PF_OutData.html) (#effect-basics-pf-outdata-pf-outflags)，告诉After Effects使用`in_data>extent_hint'。 html）（#effect-basics-pf-outdata）中，在[PF_Cmd_GLOBAL_SETUP]（command-selectors.html）（#effect-basics-command-selectors-global-selectors）（以及你的PiPL中）。
 
-Disable caching from the preferences menu before testing `extent_hint` code, so After Effects renders your effect whenever anything in your composition changes.
+在测试 "extent_hint "代码之前，从偏好菜单中禁用缓存，这样After Effects就会在你的作品发生变化时渲染你的效果。
 
-Otherwise, the caching mechanism would obscure your plug-in’s (possibly incorrect) output.
+否则，缓存机制会掩盖你的插件的输出（可能不正确）。
 
-Move the layer within the composition so it’s cropped. The `output>extent_hint` is the portion of the layer which is visible in the composition.
+在构图中移动图层，使它被裁剪。`output>extent_hint`是图层在组合中可见的部分。
 
-Add a mask to your layer and move it around.
+给你的图层添加一个蒙版并移动它。
 
-This changes the `extent_hint`, which encloses all of the non-zero alpha areas of the image.
+这将改变`extent_hint`，它包围了图像的所有非零alpha区域。
 
-The `in_data>extent_hint` is the intersection of these two rectangles (the composition and the mask), and changes whenever they do.
+in_data>extent_hint "是这两个矩形（构图和遮罩）的交点，每当它们发生变化时就会改变。
 
-Extent rectangles are computed in the coordinate space of the original input layer, before resizing and origin shifting, to simplify rectangle intersection between the input and output extents for effects which set [PF_OutFlag_PIX_INDEPENDENT](PF_OutData.html) (#effect-basics-pf-outdata-pf-outflags).
+在调整大小和原点移动之前，在原始输入层的坐标空间中计算范围矩形，以简化设置了[PF_OutFlag_PIX_INDEPENDENT](PF_OutData.html) (#effect-basics-pf-outdata-pf-outflags)的效果中输入和输出范围的矩形交集。
 
-To get the output extent in the coordinate system of the output buffer, offset the `extent_hint` by the `PF_InData->output_origin_x` and `y` fields.
+为了得到输出缓冲区坐标系中的输出范围，用`PF_InData->output_origin_x`和`y`字段抵消`extent_hint`。
 
-Account for downsampling when computing output size; users must be able to render at full resolution.
+在计算输出尺寸时要考虑到降采样；用户必须能够以全分辨率渲染。
 
-If the output buffer exceeds 30,000 by 30,000, clamp it to that size, and consider displaying an alert dialog.
+如果输出缓冲区超过30,000乘以30,000，请将其夹紧，并考虑显示一个警告对话框。
 
-Once your code behaves correctly, enable the cache and see how frequently the effect needs to re-render.
+一旦你的代码表现正确，启用缓存，看看效果需要重新渲染的频率。
 
-Consider a drop shadow; users frequently apply a static drop shadow to a still image.
+考虑一下水滴阴影；用户经常将静态水滴阴影应用于静止的图像。
 
-The `output>extent_hint` is ignored, so the cache is used more often.
+`output>extent_hint`被忽略了，所以缓存被更频繁地使用。
 
-For buffer-expanding effects, intersect the `output>extent_hint` with your plug-in’s transformed bounds and sets the size accordingly during [PF_Cmd_FRAME_SETUP](command-selectors.html) (#effect-basics-command-selectors-frame-selectors).
+对于缓冲区扩大的效果，在[PF_Cmd_FRAME_SETUP](command-selectors.html)(#effect-basics-command-selectors-frame-selectors)期间，将`output>extent_hint`与你的插件的变换边界相交，并相应地设置尺寸。
 
 ## Now with 20% More Pixels!
 
-As of 6.0, the extent_hints passed are 20% larger than the layer itself, to help with our predictive rendering decisions.
+从6.0开始，传递的extent_hints比图层本身大20%，以帮助我们做出预测性的渲染决定。
 
-Numerous effects expand the buffer “just a touch”, and After Effects often uses the hint rectangles later.
+许多效果都是 "轻轻地 "扩大缓冲区，After Effects经常在以后使用这些提示矩形。
 
 ## Point Controls And Buffer Expansion
 
-Effects which expand the output buffer position the original layer’s upper left corner by setting set `output_origin_x/y` in `PF_InData` during [PF_Cmd_FRAME_SETUP](command-selectors.html) (#effect-basics-command-selectors-frame-selectors).
+在[PF_Cmd_FRAME_SETUP](command-selectors.html)(#effect-basics-command-selectors-frame-selectors)期间，通过设置`output_origin_x/y`在`PF_InData`中的设置，扩展输出缓冲区的效果将原层的左上角定位。
 
-This shift is reported to subsequent effects in the `pre_effect_source_origin_x/y`. Point parameters are adjusted for this shift automatically.
+这个偏移会在`pre_effect_source_origin_x/y`中报告给后续效果。点的参数会根据这个偏移自动调整。
 
-Apply a buffer expander such as Gaussian Blur or the Resizer SDK sample, _before_ your effect, and use a large resize value.
+应用一个缓冲区扩展器，如高斯模糊或Resizer SDK样本，在你的效果之前，并使用一个大的调整值。
 
-If your effect is not handling `pre_effect_source_origin_x/y` correctly, turning the blur on and off will shift the position of the output.
+如果你的效果没有正确处理`pre_effect_source_origin_x/y`，打开和关闭模糊会使输出的位置移动。
 
-All point parameter values (at any time) have shift values described by `pre_effect_source_origin_x/y`. For most effects this works transparently.
+所有的点参数值（在任何时候）都有由`pre_effect_source_origin_x/y`描述的移位值。对于大多数效果来说，这都是透明的。
 
-However, if a buffer expansion changes over time (as with an animated blur amount), the origin shift will move non-animated points.
+然而，如果缓冲区的扩展随着时间的推移而变化（如动画的模糊量），原点的移动将移动非动画的点。
 
-Consider this when designing effects which cache point parameter values between frames.
+在设计帧间缓存点参数值的效果时要考虑到这一点。

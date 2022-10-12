@@ -6,7 +6,7 @@ category:
 ---
 # Audio Data Structures
 
-The following data types are used by After Effects to describe audio data.
+以下数据类型被After Effects用来描述音频数据。
 
 | **Structure** | **Description** |
 |--- | ---- |
@@ -17,6 +17,6 @@ The following data types are used by After Effects to describe audio data.
 | `PF_SoundWorld` | Use `PF_SoundWorlds` to represent audio. |
 | In addition to a `PF_SoundFormatInfo`, they contain the length of the audio, and a pointer to the actual audio data. |
 
-`PF_SoundFormat`, `PF_SoundSampleSize`, and `PF_SoundChannels` are all contained within a `PF_SoundFormatInfo`.
+`PF_SoundFormat`, `PF_SoundSampleSize`, 和`PF_SoundChannels`都包含在`PF_SoundFormatInfo`中。
 
-`PF_SoundWorlds` contain a `PF_SoundFormatInfo`, and further instance-specific information.
+`PF_SoundWorlds`包含一个`PF_SoundFormatInfo`，以及进一步的特定实例信息。

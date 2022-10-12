@@ -7,20 +7,20 @@ category:
 
 # Accessing Audio Data
 
-Use `PF_CHECKOUT_LAYER_AUDIO` from [Interaction Callbacks](../effect-details/interaction-callback-functions.html) (#effect-details-interaction-callback-functions-interaction-callbacks) to retrieve an audio layer.
+使用`PF_CHECKOUT_LAYER_AUDIO`从[Interaction Callbacks](.../effect-details/interaction-callback-functions.html) (#effect-details-interaction-callback-functions-interaction-callbacks)检索一个音频层。
 
-This layer is opaque; use `PF_GET_AUDIO_DATA` to access specific details about that audio.
+这个层是不透明的；使用`PF_GET_AUDIO_DATA`来获取该音频的具体细节。
 
-As with pixel data, it’s important that you check in the audio as soon as possible.
+和像素数据一样，你必须尽快检查音频。
 
-If your effect requires as input a time span different from the output time span, update the `startsampL` and `endsampL` field in `PF_OutData` during `PF_Cmd_AUDIO_SETUP` from [Frame Selectors](../effect-basics/command-selectors.html) (#effect-basics-command-selectors-frame-selectors).
+如果你的效果要求输入的时间跨度与输出的时间跨度不同，在 "PF_Cmd_AUDIO_SETUP "中更新`startsampL`和`endsampL`字段，从[Frame Selectors](.../effect-basics/command-selectors.html) (#effect-basics-command-selectors-frame-selectors)。
 
 ## Extending Audio Clips
 
-You cannot extend the length of an audio clip through the API.
+你不能通过API延长一个音频片段的长度。
 
-However, it is a relatively simple matter for the user to extend the length of the clip before applying your effect. Apply time remapping to the layer and simply extend the out point.
+然而，在应用你的效果之前，用户延长片段的长度是一个相对简单的事情。对该层应用时间重映射，并简单地延长输出点。
 
-If you’re adding a delay effect to a sounds clip, you’d want to allow it time to fade away instead of truncating the sound at the original end point.
+如果你要给一个声音片段添加延迟效果，你要让它有时间渐渐消失，而不是在原来的结束点截断声音。
 
-Document the steps users should take when applying your effect.
+记录用户在应用你的效果时应该采取的步骤。

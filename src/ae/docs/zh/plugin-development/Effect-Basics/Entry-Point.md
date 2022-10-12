@@ -6,9 +6,9 @@ category:
 ---
 # Entry Point
 
-All communication between After Effects and an effect plug-in is initiated by After Effects, and it all happens by the host (After Effects) calling a single entry point function.
+After Effects和效果插件之间的所有通信都是由After Effects发起的，而且都是由主机（After Effects）调用一个入口点函数来完成的。
 
-For all effect plug-ins, the entry point function must have the following signature:
+对于所有的效果插件来说，入口点函数必须有以下签名。
 
 ```cpp
 PF_Err main (
@@ -21,11 +21,11 @@ PF_Err main (
 
 ```
 
-The name of the entry point function above is “main”, but it can be whatever is specified in [PiPL Resources](../intro/pipl-resources.html) (#intro-pipl-resources).
+上述入口点函数的名称是 "main"，但它可以是[PiPL Resources](.../intro/pipl-resources.html)(#intro-pipl-resources)中指定的任何内容。
 
-Before each call to the entry point function, After Effects updates [PF_InData](PF_InData.html) (#effect-basics-pf-indata) and the plug- in’s parameter array PF_ParamDef[] (except as noted).
+在每次调用入口函数之前，After Effects都会更新[PF_InData](PF_InData.html) (#effect-basics-pf-indata)和插件的参数数组PF_ParamDef[]（除非有说明）。
 
-After the plug-in returns from its call, After Effects checks [PF_OutData](PF_OutData.html) (#effect-basics-pf-outdata) for changes and, when appropriate, uses the PF_LayerDef the effect has rendered.
+在插件从调用中返回后，After Effects会检查[PF_OutData](PF_OutData.html) (#effect-basics-pf-outdata)是否有变化，并在适当的时候使用效果所渲染的PF_LayerDef。
 
 ## Entry Point Function Parameters
 

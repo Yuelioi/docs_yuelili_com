@@ -6,9 +6,9 @@ category:
 ---
 # AEIO_ModuleInfo
 
-This is the structure where your AEIO will define its basic properties.
+这是一个结构，你的AEIO将定义它的基本属性。
 
-Notice that, in addition to describing the filetypes and extensions supported by your AEIO, you also describe your signature and behavior using the AEIO_ModuleFlags. We love flags.
+注意，除了描述你的AEIO所支持的文件类型和扩展，你还使用AEIO_ModuleFlags描述你的签名和行为。我们喜欢标志。
 
 ## AEIO_ModuleInfo Members
 
@@ -30,7 +30,7 @@ Notice that, in addition to describing the filetypes and extensions supported by
 
 ## Behavior Flags
 
-AEIOs set these flags (like effect plug-ins use global outflags) in AEIO_ModuleInfo.flags to indicate their behavior to After Effects. Some flags are only relevant to input, and some are only relevant to output.
+AEIO在AEIO_ModuleInfo.flags中设置这些标志（就像效果插件使用全局输出标志一样），向After Effects表明他们的行为。有些标志只与输入有关，有些则只与输出有关。
 
 ### AEIO_ModuleFlags
 
@@ -53,7 +53,7 @@ AEIOs set these flags (like effect plug-ins use global outflags) in AEIO_ModuleI
 
 ### AEIO_ModuleFlags2
 
-Gotta have dem flags…
+必须要有Dem flags...
 
 | **Flag**                                    | **Purpose**                                                                                                                                                                                                                                                                   | **I or O?** |
 | ------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------- |
@@ -67,4 +67,4 @@ Gotta have dem flags…
 | `AEIO_MFlag2_SEND_ADDMARKER_BEFORE_STARTADDING` | The AEIO wants to process markers before video during export.                                                                                                                                                                                                                       | Output            |
 | `AEIO_MFlag2_USES_QUICKTIME`                    | On MacOS, prior to the host calling AEIO_AddFrame ` or AEIO_OutputFrame` from [AEIO_FunctionBlock4](https://ae-plugins.docsforadobe.dev/aeios/new-kids-on-the-function-block.html#aeios-new-kids-on-the-function-block-aeio-functionblock), it will lock the global QuickTime mutex. | Output            |
 
-[Next ](https://ae-plugins.docsforadobe.dev/aeios/new-kids-on-the-function-block.html "New Kids On The Function Block")[ Previous](https://ae-plugins.docsforadobe.dev/aeios/calling-sequence.html "Calling Sequence")
+[下一页](https://ae-plugins.docsforadobe.dev/aeios/new-kids-on-the-function-block.html "New Kids On The Function Block") [ 上一页](https://ae-plugins.docsforadobe.dev/aeios/calling-sequence.html "Calling Sequence")

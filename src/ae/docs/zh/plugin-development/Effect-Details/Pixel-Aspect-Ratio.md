@@ -7,27 +7,27 @@ category:
 
 # Pixel Aspect Ratio
 
-Effects must respond correctly to footage with non-square pixels, and non-uniform downsampling factors. Even different layer parameters can have different pixel aspect ratios! Doing so isn’t difficult once you understand the concepts involved.
+效果必须对非正方形像素的镜头和非均匀的下采样系数作出正确的反应。甚至不同的图层参数可以有不同的像素长宽比。一旦你理解了其中的概念，做到这一点并不难。
 
-Simple effects needn’t do any work to match up [point parameters](../effect-basics/parameters.html) (#effect-basics-parameters) to the actual pixels in the output. Point parameters are given to the effect scaled for downsample factor and pixel aspect ratio; they are in the coordinate system of the input buffer. This provides an implicit “pixel coordinate system.” This coordinate system is handy and easy to understand. But effects that use absolute pixel measurements or geometry must take a deeper look at the relationship between the input buffer and the final rendered image.
+简单的效果不需要做任何工作来匹配[点参数](.../effect-basics/parameters.html) (#effect-basics-parameters)到输出的实际像素。点参数是根据下采样系数和像素长宽比而给定的效果；它们是在输入缓冲区的坐标系中。这就提供了一个隐含的 "像素坐标系"。这个坐标系很方便，也很容易理解。但使用绝对像素测量或几何的效果必须更深入地研究输入缓冲区和最终渲染图像之间的关系。
 
 ## Don’t Assume Pixels Are Square, Or 1-To-1
 
-First, it is not necessarily a square coordinate system, due to both pixel aspect ratio and non-uniform downsample factor. The final rendered image can be stretched or squashed horizontally, relative to the pixels your effect processes. Circles will appear as ellipses, squares as rectangles. The distance between two points varies based on their angle in this coordinate system; anything rotated in this system is skewed, in the final output.
+首先，由于像素长宽比和非均匀下采样因子的原因，它不一定是一个正方形坐标系。相对于你的效果所处理的像素，最终渲染的图像可以在水平方向上被拉伸或压缩。圆圈会显示为椭圆，正方形显示为矩形。两点之间的距离根据它们在这个坐标系中的角度而变化；任何在这个系统中旋转的东西在最终的输出中都是歪斜的。
 
-Second, even if it _is_ a square coordinate system, it’s not necessarily the same size as the final output. This means that any slider which defines a size in pixels will be a problem when the image is rendered downsampled; the width of anti-aliasing filters changes based on downsample factor.
+第二，即使它是一个正方形坐标系，它也不一定与最终输出的尺寸相同。这意味着任何以像素为单位定义尺寸的滑块在图像被降频渲染时都会出现问题；抗锯齿滤波器的宽度会根据降频系数而改变。
 
-Sometimes these issues aren’t a problem. Any effect that colors pixels based solely on a linear function of the x and y coordinates need not bother with pixel aspect ratio and downsample factor at all. Staying in the input coordinate space is an option, though you must account for pixel aspect ratio and downsample factor elsewhere.
+有时这些问题并不是问题。任何只根据x和y坐标的线性函数为像素着色的效果，根本不需要理会像素长宽比和降采样系数。保持在输入坐标空间是一种选择，尽管你必须在其他地方考虑到像素长宽比和降采样系数。
 
-Suppose you’re writing a particle system effect that sprays textured sprites from a source position defined by an effect control point. Using pixel coordinates to represent the particle positions seems fine (as long as the particles don’t have to rotate around a point), but when you go to actually _render_ the particle textures, you’ll have to scale them by pixel aspect ratio and downsample factor.
+假设你在写一个粒子系统效果，从一个由效果控制点定义的源头位置喷出纹理精灵。使用像素坐标来表示粒子的位置似乎很好（只要粒子不必围绕一个点旋转），但是当你实际_渲染_粒子纹理时，你将不得不通过像素长宽比和降采样系数来缩放它们。
 
-If an effect already has coordinate transformation machinery in its pipeline, there’s an alternative that’s often simpler. Many algorithms require some sort of coordinate transformation; using matrices to set up a transformation, for example. But there are other easily adaptable algorithms, for example a texture generation effect that computes the value of each pixel based solely on its position. In this case, the code must take the raw pixel position and account for pixel aspect ratio and downsample factor.
+如果一个效果在它的管道中已经有了坐标变换机制，那么有一个替代方案往往更简单。许多算法需要某种坐标变换；例如，使用矩阵来设置变换。但也有其他容易适应的算法，例如，一种仅根据每个像素的位置来计算其价值的纹理生成效果。在这种情况下，代码必须采取原始的像素位置，并考虑到像素长宽比和降采样系数。
 
 ## Suggested Approach
 
-The simplest way to get all of this right is to work entirely in full resolution square coordinates, then scale by downsample factor and pixel aspect ratio as a final output transformation. Since point parameters are always reported in input buffer coordinates, convert them to full-resolution square coordinates before use. With this approach you don’t need to worry about sliders which define a size in pixels; just interpret them as defining size in full-resolution vertical pixels.
+最简单的方法是完全用全分辨率的方形坐标工作，然后通过下采样系数和像素长宽比进行缩放，作为最终的输出转换。由于点参数总是以输入缓冲区坐标报告，所以在使用前要将它们转换为全分辨率的方形坐标。使用这种方法，你不需要担心以像素为单位定义尺寸的滑块；只需将它们解释为以全分辨率的垂直像素来定义尺寸。
 
-1. When getting your point parameters, go immediately to floating point and a full resolution square pixel system, like this.
+1. 当得到你的点参数时，立即转为浮点和全分辨率的方形像素系统，像这样。
 
 ```cpp
 x *= in_data>pixel_aspect_ratio.num / (float)in_data>pixel_aspect_ratio.den;
@@ -36,17 +36,17 @@ y *= in_data>downsample_y.den / (float)in_data>downsample_y.num;
 
 ```
 
-2. Perform all setup (define transformation matrices, generate coordinates for later scan conversion, compute values based on the distance between points, rotating things, et cetera) in this coordinate space. Note that you’re not actually dealing with pixels in this stage; you’re just manipulating coordinates or coordinate transformations.
-3. To go back to a coordinate system that corresponds directly to the pixels of the output buffer, undo the transformations from step one. Do this as late as possible, so as little code as possible needs to deal with this non-square space. If you’re using matrices, this would be a final output transformation. For an effect which renders something based on the coordinate of each pixel, iterate over the output pixels and convert pixel coordinates to square coordinates before doing any processing for that pixel.
+2. 2. 在这个坐标空间中进行所有的设置（定义变换矩阵，为以后的扫描转换生成坐标，根据点之间的距离计算数值，旋转东西，等等）。请注意，在这个阶段你实际上并不是在处理像素；你只是在操作坐标或坐标变换。
+3. 要回到一个与输出缓冲区的像素直接对应的坐标系，就要撤销第一步的变换。尽可能晚地做这个，以便尽可能少的代码需要处理这个非方形空间。如果你使用矩阵，这将是一个最终的输出转换。对于一个根据每个像素的坐标来渲染的效果来说，在对该像素进行任何处理之前，迭代输出的像素并将像素坐标转换成方形坐标。
 
-This may seem like extra work, but most reasonably complex effects like this have a coordinate transformation step anyway; and if they don’t, they still need one to handle pixel aspect ratio and downsample factor correctly.
+这看起来像是额外的工作，但大多数像这样的合理复杂的效果都有一个坐标转换步骤；如果没有，它们仍然需要一个步骤来正确处理像素长宽比和降采样系数。
 
 ## Applying User Input In Pixels
 
-After Effects does all of its stretching horizontally so as to not to introduce unnecessary field interpolations; when pixels are used as a unit, we think of them as vertical pixels.
+After Effects所有的拉伸都是水平进行的，这样就不会引入不必要的场内插值；当像素被用作一个单位时，我们认为它们是垂直像素。
 
 ## Test Test Test!
 
-Test at 1/2, 1/4, and custom resolutions and compare the output. Use an anamorphic (2:1) pixel aspect ratio composition to track down bugs in pixel aspect ratio handling (it really makes them obvious), and be sure to test with different horizontal and vertical downsample factors.
+在1/2、1/4和自定义分辨率下进行测试并比较输出结果。使用变形（2:1）的像素长宽比构图来追踪像素长宽比处理中的错误（它真的让它们变得很明显），并且一定要用不同的水平和垂直降采样系数进行测试。
 
-Some developers have reported problems with the downsample factors provided by some “After Effects compatible” plug-in hosts being zero. Check for zero before dividing.
+一些开发者报告了一些 "兼容After Effects "的插件主机提供的降采样系数为零的问题。分割前要检查是否为零。

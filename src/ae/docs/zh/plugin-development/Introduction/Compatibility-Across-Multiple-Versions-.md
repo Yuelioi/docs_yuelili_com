@@ -6,11 +6,11 @@ category:
 ---
 # Compatibility Across Multiple Versions?
 
-Generally, you should compile your plug-ins with the latest After Effects SDK headers. This makes the latest suites and API functionality available to your plug-ins. When a new version of After Effects is released, you generally will not need to provide a new version unless you wish to take advantage of new functionality exposed through the new SDK. However, you should always test your plug-in in new versions of After Effects before claiming compatibility with new versions.
+一般来说，你应该用最新的After Effects SDK头文件来编译你的插件。这使得你的插件可以使用最新的套件和API功能。当After Effects的新版本发布时，你一般不需要提供新的版本，除非你想利用通过新的SDK暴露的新功能。然而，在声称与新版本兼容之前，你应该在新版本的After Effects中测试你的插件。
 
-You should test your plug-in thoroughly in each version of After Effects supported by your plug-in. If you need to add a conditional block of code to be run only in specific versions of After Effects, you can always check the API version in [PF_InData](../effect-basics/PF_InData.html) (#effect-basics-pf-indata).version for effects, or in the major and minor_versionL passed into your AEGP in the [Entry Point](../aegps/implementation.html) (#aegps-implementation-entry-point).
+你应该在你的插件所支持的每个版本的After Effects中彻底测试你的插件。如果你需要添加一个有条件的代码块，只在特定版本的After Effects中运行，你可以随时在[PF_InData](.../effect-basics/PF_InData.html)(#effect-basics-pf-indata).版本中检查特效的API版本，或者在[Entry Point](.../aegps/implementation.html)(#aegps-implementation-entry-point)的AEGP中传入主要和次要版本L。
 
-For even more precise version checking, a plug-in can run a script using `AEGP_ExecuteScript` ([AEGP_UtilitySuite6](../aegps/aegp-suites.html) (#aegps-aegp-suites-aegp-utilitysuite)), querying one of the following attributes:
+对于更精确的版本检查，插件可以使用`AEGP_ExecuteScript`（[AEGP_UtilitySuite6](./aegps/aegp-suites.html) (#aegps-aegp-suites-aegp-utilitysuite)）运行一个脚本，查询下列属性之一。
 
 ```cpp
 app.version - e.g. 11.0.1x12

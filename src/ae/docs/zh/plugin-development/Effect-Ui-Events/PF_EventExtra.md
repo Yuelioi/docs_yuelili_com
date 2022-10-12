@@ -6,9 +6,9 @@ category:
 ---
 # PF_EventExtra
 
-This structure provide context information for the current event. After Effects passes a pointer to this structure in the extra parameter of the [Entry Point](../effect-basics/entry-point.html) (#effect-basics-entry-point) function.
+这个结构提供了当前事件的上下文信息。After Effects在[Entry Point](../effect-basics/entry-point.html)(#effect-basics-entry-point)函数的额外参数中传递一个指向这个结构的指针。
 
-The `PF_EventUnion` (sent in the `PF_EventExtra`) varies with the event type, and contains information specific to that event.
+`PF_EventUnion`（在`PF_EventExtra`中发送）随事件类型而变化，包含该事件的特定信息。
 
 | **Member**   | **Purpose**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 | ------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -20,7 +20,7 @@ The `PF_EventUnion` (sent in the `PF_EventExtra`) varies with the event type, an
 
 ## PF_Context
 
-PF_Context details the event’s UI context.
+PF_Context详细说明了事件的UI环境。
 
 | **Member** | **Purpose** |
 | ---------------- | ----------------- |
@@ -28,7 +28,7 @@ PF_Context details the event’s UI context.
 
 ## PF_EffectWindowInfo
 
-If an event occurs in the ECP, an PF_EffectWindowInfo is sent in PF_EventExtra.
+如果一个事件发生在ECP中，PF_EffectWindowInfo将在PF_EventExtra中发送。
 
 | **Member**                                                                         | **Purpose**                                                                                                                          |
 | ---------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |

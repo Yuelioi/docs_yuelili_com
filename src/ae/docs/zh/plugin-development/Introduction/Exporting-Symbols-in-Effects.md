@@ -7,13 +7,13 @@ category:
 
 # Exporting Symbols in Effects
 
-The After Effects team recently became aware of an issue with conflicting symbols that violate the C++ language One Definition Rule (ODR).
+After Effects团队最近意识到了一个符号冲突的问题，它违反了C++语言的一个定义规则（ODR）。
 
-In early 2021, the version of the Boost library used by After Effects was upgraded to 1.74. Over the last few months we’ve identified a number of plugins that are also using Boost but are exporting symbols in such a way that After Effects or the plugin may end up calling the incorrect version of Boost leading to hangs and crashes for users. We also identified a number of the AE SDK samples were setup to export all symbols by default which may have been contributing to the problem, assuming they were used as the starting point for other plugins. These have been fixed as part of the March 2021 SDK.
+2021年初，After Effects使用的Boost库的版本升级到1.74。在过去的几个月里，我们发现有一些插件也在使用Boost，但它们输出符号的方式让After Effects或插件最终可能调用不正确的Boost版本，导致用户挂起和崩溃。我们还发现一些AE SDK样本被设置为默认导出所有符号，这可能是造成问题的原因，假设它们被用作其他插件的起点。这些问题已经在2021年3月的SDK中得到修复。
 
-**The only symbol that After Effects requires to be exported is the entry point of the plugin.**
+**After Effects要求导出的唯一符号是插件的入口点。
 
-An example can be found in the SDK samples in entry.h:
+一个例子可以在SDK样本中的 entry.h中找到。
 
 ```cpp
 #ifdef AE_OS_WIN
@@ -24,7 +24,7 @@ An example can be found in the SDK samples in entry.h:
 
 ```
 
-and then this is applied to the entry point function, for example:
+然后将其应用到入口点函数中，例如。
 
 ```cpp
 extern "C" DllExport
@@ -52,15 +52,15 @@ PF_Err PluginDataEntryFunction(
 
 ## Disabling Xcode Symbol Export
 
-To disable symbol export in Xcode:
+要在Xcode中禁用符号导出。
 
-1. Find the **Apple Clang - Code Generation** section in the **Build** settings for your project.
-2. Set the **Symbols Hidden By Default** to **YES**
+1. 在你项目的**Build**设置中找到**Apple Clang - Code Generation**部分。
+2. 2.将**符号默认隐藏**设置为**YES**。
 
-[![../_images/appleclang-symbols.png](../_images/appleclang-symbols.png)](../_images/appleclang-symbols.png)
-For any specific symbols that must be made public, use the `__attribute__((visibility("default")))` in code.
+[！[.../_images/appleclang-symbols.png](.../_images/appleclang-symbols.png)](.../_images/appleclang-symbols.png)
+对于任何必须公开的特定符号，在代码中使用`__attribute__((visibility("default")))`。
 
-More information can be found in Apple’s Xcode documentation <https://help.apple.com/xcode/mac/11.4/#/itcaec37c2a6> (excerpt below):
+更多的信息可以在苹果的Xcode文档<https://help.apple.com/xcode/mac/11.4/#/itcaec37c2a6>中找到（摘录如下）。
 
 ```cpp
 Symbols Hidden by Default (GCC_SYMBOLS_PRIVATE_EXTERN)
@@ -71,9 +71,9 @@ When enabled, all symbols are declared private extern unless explicitly marked t
 
 ## Disabling Visual Studio Export
 
-By default, builds from Visual Studio automatically disable symbol exports. To export symbols, you must either supply a module definition file or set the \_\_declspec(dllexport) keyword in the functions definition.
+默认情况下，来自Visual Studio的构建会自动禁用符号导出。要导出符号，你必须提供一个模块定义文件或在函数定义中设置 \_\_declspec(dllexport) 关键字。
 
-More information can be found in Microsoft’s Visual Studio documentation <https://docs.microsoft.com/en-us/cpp/build/exporting-from-a-dll?view=msvc-160> (excerpt below):
+更多信息可以在微软的Visual Studio文档<https://docs.microsoft.com/en-us/cpp/build/exporting-from-a-dll?view=msvc-160>中找到（摘录如下）。
 
 ```cpp
 You can export functions from a DLL using two methods:

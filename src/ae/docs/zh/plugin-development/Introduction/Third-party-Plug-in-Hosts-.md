@@ -7,8 +7,8 @@ category:
 
 # Third-party Plug-in Hosts?
 
-Some developers are wary of using each After Effects release’s new API features, to maintain compatibility with hosts with partial implementations. You can distinguish between host applications by checking [PF_InData](../effect-basics/PF_InData.html) (#effect-basics-pf-indata)>appl_id. After Effects uses the appl_id ‘FXTC’.
+一些开发者对使用每个After Effects版本的新API功能持谨慎态度，以保持与部分实现的主机的兼容性。你可以通过检查[PF_InData](.../effect-basics/PF_InData.html)(#effect-basics-pf-indata)>appl_id来区分主机的应用。After Effects使用appl_id 'FXTC'。
 
-Premiere Pro uses ‘PrMr’. As of this writing, no third party hosts support SmartFX, or our AEGP functions.
+Premiere Pro使用 "PrMr"。截至目前，没有第三方主机支持SmartFX，或我们的AEGP功能。
 
-Also, see the [Premiere Pro & Other Hosts](../ppro/ppro.html) (#ppro-ppro) section.
+另外，请看[Premiere Pro & Other Hosts](.../ppro/ppro.html)（#ppro-ppro）部分。

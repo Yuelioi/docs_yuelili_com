@@ -6,13 +6,13 @@ category:
 ---
 # Errors
 
-Always, always, _always_ (always!) return a `PF_Err` from `main()`. Plug-ins must pass all errors back to After Effects.
+总是，总是，_总是_（总是！）从`main()`返回一个`PF_Err`。插件必须把所有的错误传回给After Effects。
 
-It is vitally important that you pass any errors (returned to you by callbacks and PICA suites) to After Effects, unless you’ve handled them.
+你必须把任何错误（由回调和PICA套件返回给你）传递给After Effects，除非你已经处理了它们，这是非常重要的。
 
-Be vigilant about returning the right error code, and disposing of any memory you’ve allocated.
+要注意返回正确的错误代码，并处理掉你分配的任何内存。
 
-Really. We’re serious.
+真的。我们是认真的。
 
 ## Error Codes
 
@@ -26,28 +26,28 @@ Really. We’re serious.
 
 ## Error Reporting Policy
 
-After Effects has a consistent policy for error handling; follow it.
+After Effects有一个统一的错误处理政策，请遵循它。
 
-If you encounter an error in your plug-in’s code, report it to the user immediately, before returning from your plug-in to After Effects.
+如果你在插件的代码中遇到了错误，请立即向用户报告，然后再从插件返回到After Effects。
 
-After Effects considers errors from the operating system, encountered during your plug-in’s execution, to be yours.
+After Effects认为在你的插件执行过程中遇到的来自操作系统的错误是你的。
 
-If you get an error code back from one of our callback functions, pass it back to After Effects; we’ve already reported it.
+如果你从我们的回调函数中得到一个错误代码，请把它传回给After Effects；我们已经报告了它。
 
-Out-of-memory errors are never reported by After Effects. Error reporting is always suppressed during RAM preview, and when After Effects is running in - noui mode.
+After Effects不会报告内存不足的错误。在RAM预览期间，以及After Effects在noui模式下运行时，错误报告总是被抑制。
 
-To report an error from within a plug-in, set `PF_OutFlag_DISPLAY_ERROR_MESSAGE`, and describe the error in [PF_OutData&gt;return_msg](PF_OutData.html) (#effect-basics-pf-outdata).
+要在插件中报告错误，请设置`PF_OutFlag_DISPLAY_ERROR_MESSAGE`，并在[PF_OutData&gt;return_msg](PF_OutData.html) (#effect-basics-pf-outdata) 中描述错误。
 
-Doing so will enter your error into the render log, and prevent system hangs in renders driven by a render engine or scripting.
+这样做会把你的错误输入到渲染日志中，并防止由渲染引擎或脚本驱动的渲染中出现系统挂起。
 
 ## Dig In!
 
-Now you have a basic understanding of effect plug-ins, and are ready to start experimenting with some real code. Go ahead and get started!
+现在你已经对特效插件有了基本的了解，并准备开始尝试一些真正的代码。来吧，开始吧!
 
-After getting the basics of your plug-in setup, you may have some questions about reuseable code, advanced functionality, and how to optimize your code to make it faster.
+在掌握了插件的基本设置后，你可能会有一些关于可重用代码、高级功能以及如何优化代码以使其更快的问题。
 
-To this end, After Effects exposes a tremendous amount of its internal functionality via function suites.
+为此，After Effects通过函数套件暴露了大量的内部功能。
 
-By relying on After Effects code for utility functions, you should be able to get your image processing algorithms implemented quickly.
+通过依赖After Effects代码的实用功能，你应该能够快速实现你的图像处理算法。
 
-This will discussed in [Effect Details](../effect-details/effect-details.html) (#effect-details-effect-details).
+这将在[Effect Details](.../effect-details/effect-details.html)（#effect-details-effect-details）中讨论。

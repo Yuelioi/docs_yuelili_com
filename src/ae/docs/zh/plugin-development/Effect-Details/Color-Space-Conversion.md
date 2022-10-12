@@ -6,11 +6,11 @@ category:
 ---
 # Color Space Conversion
 
-Different pixel formats are useful for different operations. After Effects exposes its internal functions through PF_ColorCallbacksSuite. Here are the supported formats.
+不同的像素格式对不同的操作是有用的。After Effects通过PF_ColorCallbacksSuite公开了其内部函数。以下是支持的格式。
 
 ## Pixel Types For Different Color Spaces
 
-**Pixel Type & **Data Structure****
+**像素类型和**数据结构****
 
 8 bpc ARGB
 
@@ -32,15 +32,15 @@ PF_FpShortalpha,red,green,blue;
 }PF_PixelFloat,PF_Pixel32;
 ```
 
-HLS (Hue, Lightness, Saturation)
+HLS (色相、亮度、饱和度)
 
-typedefPF_FixedPF_HLS_PIXEL[3]
+typedefPF_FixedPF_HLS_PIXEL[3]。
 
-YIQ (luminance, in-phase chrominance, quadrature chrominance)
+YIQ (亮度、同相色度、正交色度)
 
-typedefPF_FixedPF_YIQ_PIXEL[3]
+typedefPF_FixedPF_YIQ_PIXEL[3]。
 
-Plug-ins can draw on image processing algorithms written for nearly any color space by using the following callback functions.
+通过使用以下回调函数，插件可以借鉴为几乎所有颜色空间编写的图像处理算法。
 
 ## Color Space Conversion Callbacks
 

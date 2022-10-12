@@ -6,11 +6,11 @@ category:
 ---
 # Sample Projects
 
-There is at least one sample of every type of plug-in supported by the current API, as well as projects to illustrate particular concepts.
+目前的API所支持的每一种类型的插件都有至少一个样本，还有一些项目用来说明特定的概念。
 
-In the sample projects, we’ve kept the code as simple as possible. A showy implementation might get us good grades in a programming class, but won’t help you understand how to use API features.
+在示例项目中，我们尽可能地保持代码的简单。一个炫耀性的实现可能会让我们在编程课上获得好成绩，但却不能帮助你理解如何使用API的功能。
 
-After the break, we explain how to build the sample projects, so keep reading below!
+休息过后，我们将解释如何构建这些示例项目，请继续阅读下文
 
 ## Sample Project Descriptions
 
@@ -58,34 +58,34 @@ After the break, we explain how to build the sample projects, so keep reading be
 
 ## Building The Sample Projects
 
-We’ve combined the sample projects into a single master project, stored in the Examples folder of the SDK. For macOS, it is Buildall.xcodeproj; for Windows, it is BuildAll.sln.
+我们将样本项目合并为一个主项目，存放在SDK的Examples文件夹中。对于macOS，它是Buildall.xcodeproj；对于Windows，它是BuildAll.sln。
 
-In your IDE, you’ll need to change the output folder of your project to build into After Effects’ plug-in folder.
+在你的IDE中，你需要改变项目的输出文件夹，以构建到After Effects的插件文件夹。
 
-For development, we recommend using the following path for macOS: `/Library/Application Support/Adobe/Common/Plug-ins/[version]/MediaCore/`
+对于开发来说，我们建议macOS使用以下路径：`/Library/Application Support/Adobe/Common/Plug-ins/[版本]/MediaCore/`。
 
-Version is locked at 7.0 for all CC versions, or CSx for earlier versions.
+所有CC版本的版本都锁定在7.0，早期版本锁定在CSx。
 
-for example: `/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/`
+例如：`/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/`。
 
-or: `/Library/Application Support/Adobe/Common/Plug-ins/CS6/MediaCore/`
+或。`/Library/Application Support/Adobe/Common/Plug-ins/CS6/MediaCore/`。
 
-and the following path for Windows: `[Program Files]\Adobe\Common\Plug-ins\[version]\MediaCore\`
+和Windows的以下路径：`[Program Files]\Adobe\Common\Plug-ins\[version]\MediaCore\`。
 
-for example: `C:\Program Files\Adobe\Common\Plug-ins\7.0\MediaCore\`
+例如：`C:`Program Files\Adobe\Common\Plug-ins\7.0\MediaCore\`。
 
-or: `C:\Program Files\Adobe\Common\Plug-ins\CS6\MediaCore\`
+或者。`C:\Program Files\CommonAdobe\Plug-ins\CS6\MediaCore\`。
 
-Note that this Windows path is only recommended for development purposes. Windows installers should follow the guidelines here: [Where Installers Should Put Plug-ins](where-installers-should-put-plug-ins.html) (#intro-where-installers-should-put-plug-ins).
+请注意，这个Windows路径只推荐用于开发目的。Windows的安装人员应该遵循这里的指南。[Where Installers Should Put Plug-ins](Where-installers-should-put-plug-ins.html) (#intro-where-installers-should-put-plug-ins)。
 
-In Xcode, you can set this path once for all projects in the Xcode Preferences > Locations > Derived Data > Advanced. Under _Build Location_ choose _Custom_, and fill in the path.
+在Xcode中，你可以在Xcode首选项>位置>派生数据>高级中为所有项目设置一次这个路径。在_Build Location_下选择_Custom_，并填写路径。
 
-In Visual Studio, for convenience, we have specified the output path for all sample projects using the environment variable AE*PLUGIN_BUILD_DIR. You’ll need to set this as a user environment variable for your system. On Windows 7, right-click \_My Computer* > _Properties_
+在Visual Studio中，为了方便起见，我们使用环境变量AE*PLUGIN_BUILD_DIR来指定所有样本项目的输出路径。你需要把它设置为你系统的用户环境变量。在Windows 7上，右键单击_My Computer* > _Properties_。
 
-> and in the left sidebar choose _Advanced System Settings_. In the new dialog, hit the _Environment Variables_ button. In the User variables area, create a New variable named AE_PLUGIN_BUILD_DIR, and with the path described above. Log out of Windows and log back in so that the variable will be set.
+>，在左边的侧边栏选择_高级系统设置_。在新的对话框中，点击_环境变量_按钮。在用户变量区，创建一个名为AE_PLUGIN_BUILD_DIR的新变量，其路径如上所述。退出Windows并重新登录，这样该变量就会被设置。
 
-Alternatively, you can set output path for each project individually in Visual Studio by right-clicking a project in the Solution Explorer, choosing Properties, and then in Configuration Properties > Linker > General, set the Output File.
+另外，你可以在Visual Studio中为每个项目单独设置输出路径，方法是在解决方案资源管理器中右击一个项目，选择属性，然后在配置属性>链接器>常规中，设置输出文件。
 
-When compiling the plug-ins, if you see a link error such as:
+在编译插件时，如果你看到一个链接错误，如。
 
-“Cannot open file “[MediaCore plug-ins path]plugin.prm”, make sure to launch Visual Studio in administrator mode. In your Visual Studio installation, right-click devenv.exe, Properties > Compatibility > Privilege Level, click “Run this program as an administrator”.
+"无法打开文件"[MediaCore插件路径]plugin.prm"，确保以管理员模式启动Visual Studio。在Visual Studio安装中，右键单击devenv.exe，属性>兼容性>权限级别，点击 "以管理员身份运行此程序"。

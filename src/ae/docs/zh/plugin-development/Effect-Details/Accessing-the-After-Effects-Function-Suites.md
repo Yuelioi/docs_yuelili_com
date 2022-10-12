@@ -6,9 +6,9 @@ category:
 ---
 # Accessing the After Effects Function Suites
 
-If you are writing C++ code, accessing the suites should be done using the AEFX_SuiteScoper which automatically acquires the suite when needed and disposes of it when done.
+如果你在写C++代码，访问套件应该使用AEFX_SuiteScoper来完成，它在需要时自动获取套件，完成后自动处理。
 
-Here is an example using AEFX_SuiteScope to access the PF_GPUDeviceSuite1 suite:
+下面是一个使用AEFX_SuiteScope来访问PF_GPUDeviceSuite1套件的例子。
 
 ```cpp
 AEFX_SuiteScoper<PF_GPUDeviceSuite1> gpu_suite = AEFX_SuiteScoper<PF_GPUDeviceSuite1>(
@@ -21,27 +21,27 @@ AEFX_SuiteScoper<PF_GPUDeviceSuite1> gpu_suite = AEFX_SuiteScoper<PF_GPUDeviceSu
 
 :::tip
 
-AEFX_SuiteScoper will throw an Exception, `A_Err_MISSING_SUITE`, if the requested suite cannot be acquired and the optional second template argument, `ALLOW_NO_SUITE`, is set to false. If you set `ALLOW_NO_SUITE` to false, please ensure you wrap the `AEFX_SuiteScoper<>` call with a try/catch wrapper. If `ALLOW_NO_SUITE` is set to true, then you should check the returned pointer is not NULL before using it.
+AEFX_SuiteScoper将抛出一个异常，`A_Err_MISSING_SUITE`，如果请求的套件不能被获取，并且可选的第二个模板参数，`ALLOW_NO_SUITE`，被设置为false。如果你将`ALLOW_NO_SUITE'设置为false，请确保你用一个try/catch包装器来包装`AEFX_SuiteScoper<>`调用。如果`ALLOW_NO_SUITE'被设置为true，那么你应该在使用前检查返回的指针是否为NULL。
 
 :::
 
-Once you have the suite you may make calls to any function in the suite list so:
+一旦你有了这个套件，你就可以对套件列表中的任何函数进行调用，所以。
 
 ```cpp
 gpu_suite->GetDeviceInfo(in_dataP->effect_ref, extraP->input->device_index, &device_info);
 
 ```
 
-If you must use C code, then acquire and release the suites manually using the `PF_Suite_Helper` utility files, as demonstrated in the Checkout sample project.
+如果你必须使用C代码，那么使用`PF_Suite_Helper`工具文件手动获取和释放套件，如Checkout示例项目中所展示的。
 
-Behind the scenes, both of these methods acquire PICA function suites using `AcquireSuite`, a member function of the `SPBasicSuite` pointed to in `PF_InData`.
+在幕后，这两种方法都使用`AcquireSuite`获取PICA函数套件，这是`PF_InData`中指向的`SPBasicSuite`的一个成员函数。
 
 ## Suite Versions
 
-WhizBangSuite1 may provide a Foobar() function which takes two arguments, and WhizBangSuite2>Foobar() may take three. Though each new version of a suite supercedes the old one, feel free to acquire multiple versions of the same suite; we never remove or alter previously shipped suites.
+WhizBangSuite1可以提供一个Foobar()函数，它需要两个参数，而WhizBangSuite2>Foobar()可能需要三个。虽然一个套件的每个新版本都会取代旧版本，但请随意获取同一套件的多个版本；我们从不删除或改变以前交付的套件。
 
-When unsure of the capabilities of the plug-in host (no third party host besides Premiere supports PICA), attempt to acquire the latest version, and “fall back” to previous versions. If functionality you require isn’t available, warn the user, and return an error (or fall back on other behavior when running in more “primitive” plug-in hosts). Note that support for these suites in other hosts of After Effects plug-ins is a maze of twisty caves and passages, all alike.
+当不确定插件主机的能力时（除了Premiere之外，没有第三方主机支持PICA），尝试获取最新的版本，并 "回退 "到以前的版本。如果你需要的功能不可用，就向用户发出警告，并返回一个错误（或者在更 "原始 "的插件主机中运行时返回到其他行为）。请注意，在其他After Effects插件主机中对这些套件的支持是一个由曲折的洞穴和通道组成的迷宫，都是一样的。
 
 ## Threading
 
-Unless documented otherwise, assume that any function provided by our suites is not thread-safe. For example, only your plug-in’s main thread should do anything that modifies the user interface.
+除非另有记录，否则请假设我们的套件提供的任何功能都不是线程安全的。例如，只有你的插件的主线程应该做任何修改用户界面的事情。

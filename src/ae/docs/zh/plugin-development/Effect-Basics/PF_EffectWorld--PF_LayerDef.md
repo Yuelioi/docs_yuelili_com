@@ -6,7 +6,7 @@ category:
 ---
 # PF_EffectWorld / PF_LayerDef
 
-After Effects represents images using PF_EffectWorlds, also called PF_LayerDefs.
+After Effects使用PF_EffectWorlds表示图像，也叫PF_LayerDefs。
 
 ## PF_EffectWorld Structure
 
@@ -20,42 +20,42 @@ After Effects represents images using PF_EffectWorlds, also called PF_LayerDefs.
 
 ## New In 16.0
 
-During PF_Cmd_SMART_RENDER_GPU, PF_LayerDef will be filled out the same as it is for regular CPU renders, but PF_LayerDef.data will be null; all other fields will be valid.
+在PF_Cmd_SMART_RENDER_GPU期间，PF_LayerDef的填写与普通的CPU渲染相同，但PF_LayerDef.data将为空；所有其他字段都是有效的。
 
 ## Rowbytes In PF_EffectWorlds
 
-Don’t assume that you can get to the next scanline of a `PF_EffectWorld` using `(width * sizeof(current_pixel_type)) + 4`, or whatever; use the PF_EffectWorld’s `rowbytes` instead.
+不要以为你可以用`(width * sizeof(current_pixel_type))+4`的方式到达`PF_EffectWorld`的下一个扫描线。+ 4"，或者其他什么；用PF_EffectWorld的 "rowbytes "代替。
 
-Never write outside the indicated region of a PF_EffectWorld; this can corrupt cached image buffers that don’t belong to you.
+不要在PF_EffectWorld的指定区域外写，这可能会破坏不属于你的缓存图像缓冲区。
 
-To test whether your effects are honoring the `PF_EffectWorld>rowbytes`, apply the Grow Bounds effect _after_ your effect.
+为了测试你的效果是否遵守了`PF_EffectWorld>rowbytes`，在你的效果之后应用Grow Bounds效果。
 
-The output buffer will have larger rowbytes than the input (though it will still have the same logical size).
+输出的缓冲区将比输入的行字节更大（尽管它仍然有相同的逻辑大小）。
 
 ## Byte Alignment
 
-The pixels in a `PF_EffectWorld` are not guaranteed to be 16-byte-aligned. An effect may get a subregion of a larger PF_EffectWorld. Users of Apple’s sample code for pixel processing optimization, you have been warned.
+`PF_EffectWorld`中的像素不保证是16字节对齐的。一个效果可以得到一个更大的PF_EffectWorld的子区域。苹果公司的像素处理优化示例代码的用户，你已经被警告了。
 
-Beyond 8-bit per channel color, After Effects supports 16 bit and 32-bit float per-channel color.
+除了每通道8位的颜色外，After Effects还支持每通道16位和32位的浮点颜色。
 
-Effects will never receive input and output worlds with differing bit depths, nor will they receive worlds with higher bit depth than they have claimed to be able to handle.
+Effects永远不会收到比特深度不同的输入和输出世界，也不会收到比特深度高于其声称能够处理的世界。
 
 ## Accessor Macros For Opaque (Data Type) Pixels
 
-Use the following macros to access the data within (opaque) PF_PixelPtrs.
+使用下面的宏来访问（不透明的）PF_PixelPtrs中的数据。
 
-It is, emphatically, _not_ safe to simply cast pointers of one type into another! To make it work at all requires a cast, and there’s nothing that prevents you from casting it incorrectly. We may change its implementation at a later date (at which time you’ll thank us for forcing this level of abstraction).
+强调的是，将一种类型的指针简单地投到另一种类型的指针中是不安全的！要想让它正常工作，就必须对其进行修改。要使它正常工作，就必须进行转换，而且没有任何东西可以阻止你错误地转换它。我们可能会在以后改变它的实现（到那时你会感谢我们强制执行这个抽象级别）。
 
 ## PF_PixelPtr Accessor Macros
 
 ### PF_GET_PIXEL_DATA16
 
 
-Obtain a pointer to a 16-bpc pixel within the specified world.
+在指定的世界中获得一个指向16-bpc像素的指针。
 
-The returned pixel pointer will be NULL if the world is not 16-bpc.
+如果世界不是16-bpc，返回的像素指针将是NULL。
 
-The second parameter is optional; if it is not NULL, the returned pixel will be an interpretation of the values in the passed-in pixel, as if it were in the specified PF_EffectWorld.
+第二个参数是可选的；如果它不是NULL，返回的像素将是对传入的像素值的解释，就像它在指定的PF_EffectWorld中一样。
 
 ```cpp
 PF_GET_PIXEL_DATA16(
@@ -67,11 +67,11 @@ PF_Pixel16*outPP);
 ### PF_GET_PIXEL_DATA8
 
 
-Obtain a pointer to a 8-bpc pixel within the specified world.
+获得一个指向指定世界中的8-bpc像素的指针。
 
-The returned pixel pointer will be NULL if the world is not 8- bpc.
+如果世界不是8-bpc，返回的像素指针将是NULL。
 
-The second parameter is optional; if it is not NULL, the returned pixel will be an interpretation of the values in the passed-in pixel, as if it were in the specified PF_EffectWorld.
+第二个参数是可选的；如果它不是NULL，返回的像素将是对传入的像素值的解释，就像它在指定的PF_EffectWorld中一样。
 
 ```cpp
 PF_GET_PIXEL_DATA8(
@@ -85,9 +85,9 @@ PF_Pixel8*outPP);
 
 
 
-Think of `PF_GET_PIXEL_DATA16` and `PF_GET_PIXEL_DATA8` as safe (ahem) casting routines.
+把`PF_GET_PIXEL_DATA16`和`PF_GET_PIXEL_DATA8`看作是安全的（嗯）铸造程序。
 
-The code required is actually very simple to get a `PF_Pixel16*` out of the PF_EffectWorld output:
+需要的代码实际上非常简单，从PF_EffectWorld的输出中得到一个`PF_Pixel16*`。
 
 ```cpp
 {
@@ -98,6 +98,6 @@ The code required is actually very simple to get a `PF_Pixel16*` out of the PF_E
 
 ```
 
-This returns deep_pixelP as NULL if the world does not have deep pixels.
+如果世界上没有深层像素，这将返回deep_pixelP为NULL。
 
-The second parameter is not used very often and should be passed as NULL; pass a PF*PixelPtr that is \_not* contained in a PF_EffectWorld to coerce it to the depth of that PF_EffectWorld).
+第二个参数并不常用，应该作为NULL传递；传递一个PF*PixelPtr，它是包含在一个PF_EffectWorld中的，以胁迫它到该PF_EffectWorld的深度）。

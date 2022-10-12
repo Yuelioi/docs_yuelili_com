@@ -6,35 +6,35 @@ category:
 ---
 # Command Selectors
 
-Commands are, simply, what After Effects wants your effect to do.Responses to some selectors are required; most are optional, though recall that we did add them for a _reason_ …
+命令是，简单地说，After Effects希望你的效果做什么。对一些选择器的响应是必须的；大多数是可选的，尽管记得我们添加它们是有原因的。
 
-With each command selector sent, effects receive information from After Effects in [PF_InData](https://ae-plugins.docsforadobe.dev/effect-basics/PF_InData.html#effect-basics-pf-indata), input and parameter values in PF_ParamDef[] (an array of parameter descriptions including the input layer), and access to callbacks and function suites.
+随着每个命令选择器的发送，特效会从After Effects的[PF_InData](https://ae-plugins.docsforadobe.dev/effect-basics/PF_InData.html#effect-basics-pf-indata)中接收信息，在PF_ParamDef[]中接收输入和参数值（包括输入层的参数描述数组），以及对回调和函数套件的访问。
 
-They send information back to After Effects in [PF_OutData](https://ae-plugins.docsforadobe.dev/effect-basics/PF_OutData.html#effect-basics-pf-outdata), and (when appropriate) render output to a PF_LayerDef, also called a [PF_EffectWorld](https://ae-plugins.docsforadobe.dev/effect-basics/PF_EffectWorld.html#effect-basics-pf-effectworld).
+它们在[PF_OutData](https://ae-plugins.docsforadobe.dev/effect-basics/PF_OutData.html#effect-basics-pf-outdata)中向After Effects发送信息，并（在适当的时候）渲染输出到PF_LayerDef，也称为[PF_EffectWorld](https://ae-plugins.docsforadobe.dev/effect-basics/PF_EffectWorld.html#effect-basics-pf-effectworld)。
 
-During events, they receive event-specific information in [PF_EventExtra](https://ae-plugins.docsforadobe.dev/effect-ui-events/PF_EventExtra.html#effect-ui-events-pf-eventextra).
+在事件发生期间，它们会在[PF_EventExtra](https://ae-plugins.docsforadobe.dev/effect-ui-events/PF_EventExtra.html#effect-ui-events-pf-eventextra)中接收事件的具体信息。
 
 ## Calling Sequence
 
-Only the first few command selectors are predictable; the rest of the calling sequence is dictated by user action.When first applied, a plug-in receives `PF_Cmd_GLOBAL_SETUP`, then `PF_Cmd_PARAM_SETUP`. Each time the user adds the effect to a layer, `PF_Cmd_SEQUENCE_SETUP` is sent.
+只有最初的几个命令选择器是可预测的；其余的调用顺序是由用户操作决定的。当第一次应用时，一个插件会收到`PF_Cmd_GLOBAL_SETUP`，然后是`PF_Cmd_PARAM_SETUP`。每次用户将效果添加到一个图层时，`PF_Cmd_SEQUENCE_SETUP`被发送。
 
-For each frame rendered by a basic non-SmartFX effect, After Effects sends `PF_Cmd_FRAME_SETUP`, then `PF_Cmd_RENDER`, then `PF_Cmd_FRAME_SETDOWN`.
+对于基本的非SmartFX效果渲染的每一帧，After Effects会发送`PF_Cmd_FRAME_SETUP`，然后是`PF_Cmd_RENDER`，然后是`PF_Cmd_FRAME_SETDOWN`。
 
-All effect plug-ins must respond to `PF_Cmd_RENDER`
+所有的效果插件必须响应`PF_Cmd_RENDER`。
 
-For SmartFX, `PF_Cmd_SMART_PRE_RENDER` may be sent any number of times, before a single `PF_Cmd_SMART_RENDER` is sent.
+对于SmartFX，`PF_Cmd_SMART_PRE_RENDER'可以被发送任意次数，然后再发送单个`PF_Cmd_SMART_RENDER'。
 
-`PF_Cmd_SEQUENCE_SETDOWN` is sent on exit, when the user removes an effect or closes the project. `PF_Cmd_SEQUENCE_RESETUP` is sent when a project is loaded or when the layer to which it’s applied changes. `PF_Cmd_SEQUENCE_FLATTEN` is sent when the After Effects project is written out to disk.
+`PF_Cmd_SEQUENCE_SETDOWN`是在退出时发送的，当用户删除效果或关闭项目时。`PF_Cmd_SEQUENCE_RESETUP`在项目加载时或应用的层发生变化时发送。`PF_Cmd_SEQUENCE_FLATTEN`在After Effects项目被写出到磁盘时发送。
 
-`PF_Cmd_ABOUT` is sent when the user chooses _About…_ from the Effect Controls Window (ECW).
+`PF_Cmd_ABOUT`在用户从效果控制窗口（ECW）选择_About..._时发送。
 
-`PF_Cmd_GLOBAL_SETDOWN` is sent when After Effects closes, or when the last instance of the effect is removed. Do not rely on this message to determine when your plug-in is being removed from memory; use OS-specific entry points.
+`PF_Cmd_GLOBAL_SETDOWN`当After Effects关闭时，或者当效果的最后一个实例被删除时，将发送该信息。不要依靠这个消息来确定你的插件何时被从内存中删除，要使用操作系统特定的入口点。
 
 ## Command Selectors Table
 
 ### Global Selectors
 
-All plug-ins must respond to these selectors.
+所有的插件都必须对这些选择器做出反应。
 
 | **Selector**    | **Response**                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -45,7 +45,7 @@ All plug-ins must respond to these selectors.
 
 ## Sequence Selectors
 
-These control sequence data handling.
+这些控制序列数据处理。
 
 | **Selector**      | **Response**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -56,7 +56,7 @@ These control sequence data handling.
 
 ### Frame Selectors
 
-Passed for each frame (or set of audio samples) to be rendered by your plug-in.
+传递给每一帧（或一组音频样本），由你的插件来渲染。
 
 | **Selector**      | **Response**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -71,7 +71,7 @@ Passed for each frame (or set of audio samples) to be rendered by your plug-in.
 
 ### Messaging
 
-The communication channel between After Effects and your plug-in.
+这是After Effects和你的插件之间的通信通道。
 
 | Selector                         | Response                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -89,20 +89,20 @@ The communication channel between After Effects and your plug-in.
 
 ## What’s The Difference?
 
-There is a subtle difference between `PF_Cmd_USER_CHANGED_PARAM` and `PF_Cmd_UPDATE_PARAMS_UI`.
+`PF_Cmd_USER_CHANGED_PARAM`和`PF_Cmd_UPDATE_PARAMS_UI`之间有一个微妙的区别。
 
-Effects need to distinguish between the user actually changing a parameter value (`PF_Cmd_USER_CHANGED_PARAM`), and just scrubbing around the timeline (`PF_Cmd_UPDATE_PARAMS_UI`), which is also sent when the plug-in is first loaded).
+效果需要区分用户实际改变参数值（`PF_Cmd_USER_CHANGED_PARAM`），和只是在时间轴上刷屏（`PF_Cmd_UPDATE_PARAMS_UI`），这也是在插件第一次加载时发送的）。
 
-Only the first few command selectors are predictable; the rest of the calling sequence is dictated by user action.
+只有前几个命令选择器是可预测的；其余的调用顺序由用户操作决定。
 
-When first applied, a plug-in receives `PF_Cmd_GLOBAL_SETUP`, then `PF_Cmd_PARAM_SETUP`. Each time the user adds the effect to a layer, `PF_Cmd_SEQUENCE_SETUP` is sent.
+当第一次应用时，一个插件收到`PF_Cmd_GLOBAL_SETUP`，然后是`PF_Cmd_PARAM_SETUP`。每次用户将效果添加到一个图层时，`PF_Cmd_SEQUENCE_SETUP`被发送。
 
-For each frame rendered by a basic non-SmartFX effect, After Effects sends `PF_Cmd_FRAME_SETUP`, then `PF_Cmd_RENDER`, then `PF_Cmd_FRAME_SETDOWN`. All effect plug-ins must respond to `PF_Cmd_RENDER`_._
+对于基本的非SmartFX效果渲染的每一帧，After Effects会发送`PF_Cmd_FRAME_SETUP`，然后是`PF_Cmd_RENDER`，然后是`PF_Cmd_FRAME_SETDOWN`。所有的效果插件必须响应`PF_Cmd_RENDER`_。
 
-For SmartFX, `PF_Cmd_SMART_PRE_RENDER` may be sent any number of times, before a single `PF_Cmd_SMART_RENDER` is sent.
+对于SmartFX，`PF_Cmd_SMART_PRE_RENDER'可以被发送任意次数，然后再发送单个`PF_Cmd_SMART_RENDER'。
 
-`PF_Cmd_SEQUENCE_SETDOWN` is sent on exit, when the user removes an effect or closes the project. `PF_Cmd_SEQUENCE_RESETUP` is sent when a project is loaded or when the layer to which it’s applied changes. `PF_Cmd_SEQUENCE_FLATTEN` is sent when the After Effects project is written out to disk.
+`PF_Cmd_SEQUENCE_SETDOWN`是在退出时发送的，当用户删除效果或关闭项目时。`PF_Cmd_SEQUENCE_RESETUP`在项目加载时或应用的层发生变化时发送。`PF_Cmd_SEQUENCE_FLATTEN`是在After Effects项目被写入磁盘时发送的。
 
-`PF_Cmd_ABOUT` is sent when the user chooses _About…_ from the Effect Controls Window (ECW).
+`PF_Cmd_ABOUT`在用户从效果控制窗口（ECW）选择_About..._时发送。
 
-`PF_Cmd_GLOBAL_SETDOWN` is sent when After Effects closes, or when the last instance of the effect is removed. Do not rely on this message to determine when your plug-in is being removed from memory; use OS-specific entry points.
+`PF_Cmd_GLOBAL_SETDOWN`当After Effects关闭时，或者当效果的最后一个实例被删除时，将发送该信息。不要依靠这个消息来确定你的插件何时从内存中被删除；使用操作系统特定的入口点。
