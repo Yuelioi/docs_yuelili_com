@@ -100,7 +100,7 @@ blurry\_mirror(float angle = 3; int samples = 16; float bias=0.05)
 
 [¶](#ray-options)
 
-:::tip
+::: tip
 
 When you specify a texture, such as with the `"environment"` keyword,
 you can also use the image filtering keyword arguments. See [environment](environment.html) () ("Returns the color of the environment texture.")

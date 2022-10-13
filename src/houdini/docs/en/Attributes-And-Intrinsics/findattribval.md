@@ -41,7 +41,7 @@ The array signature can also be used to return a list of all of the matching ele
 The number of the first point/primitive/vertex where the named attribute matches the given `value`. Returns `-1` if no element has the given attribute value.
 The array signature returns the numbers of all of the points/primitives/vertices where the named attribute matches the given `value`.
 
-:::tip
+::: tip
 
 The most common use cases (finding an point/primitive by its `name` or `id` attribute) have easier-to-use dedicated wrapper functions: [nametopoint](nametopoint.html) ("Finds a point by its name attribute."), [nametoprim](nametoprim.html) ("Finds a primitive by its name attribute."), [idtopoint](idtopoint.html) ("Finds a point by its id attribute."), and [idtoprim](idtoprim.html) ("Finds a primitive by its id attribute.").
 

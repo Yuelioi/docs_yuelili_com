@@ -35,7 +35,7 @@ You must specify key positions in ascending order or the results will be unpredi
 
 The value of the curve at the sampled position.
 
-:::tip
+::: tip
 
 The [spline](spline.html) ("Samples a value along a polyline or spline curve.") function is a more flexible superset of this function.
 

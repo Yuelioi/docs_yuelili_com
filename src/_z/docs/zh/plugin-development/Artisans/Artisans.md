@@ -7,7 +7,7 @@ category:
 
 # Artisans
 
-:::tip
+::: tip
 
 如果你正在考虑开发一个Artisan，请先和我们讨论一下。
 :::

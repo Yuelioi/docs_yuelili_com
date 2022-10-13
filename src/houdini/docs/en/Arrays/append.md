@@ -23,7 +23,7 @@ Concatenates the values from the `values` array to the end of `array`.
 Increases the size of `array` by `len(values)`. This is the same as
 [push(array, values)](push.html) ("Adds an item to an array.").
 
-:::tip
+::: tip
 You can set an individual item in an array using `array[n] = x`.
 :::
 

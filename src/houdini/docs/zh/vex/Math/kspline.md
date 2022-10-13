@@ -97,7 +97,7 @@ To define the shape of the curve, you pass a number of value/position pairs spec
 
 You must specify key positions in ascending order or the results will be unpredictable.
 
-:::tip
+::: tip
 
 The [spline](spline.html) () ("Samples a value along a polyline or spline curve.") function is a more flexible superset of this function.
 

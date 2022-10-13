@@ -640,7 +640,7 @@ AEGP_SetProjectBitDepth(
 
 ### AEGP_TimeDisplay2
 
-:::tip
+::: tip
 
 Values in unused fields persist when After Effects is using a different display type.
 :::
@@ -1047,7 +1047,7 @@ AEGP_GetItemMRUView(
 
 ```
 
-:::tip
+::: tip
 
 `AEGP_RenderNewItemSoundData()` used to be here, but is now part of [AEGP_RenderSuite4](#aegps-aegp-suites-aegp-rendersuite).
 
@@ -5354,7 +5354,7 @@ AEGP_GetValueKeyByIndex(
 
 ```
 
-:::tip
+::: tip
 
 For the functions below, if a given key is not found, the default value is both written to the blob and returned as the value;
 if no default is provided, a blank value will be written and returned.
@@ -5986,7 +5986,7 @@ AEGP_GetRenderQuality)(
 
 ### AEGP_LayerRenderOptionsSuite1
 
-:::tip
+::: tip
 
 New in 13.0
 :::
@@ -7505,7 +7505,7 @@ AEGP_GetExtraOutputModuleInfo(
 
 These functions provide a way for effects (and AEGPs) to obtain information about the context of an applied effect.
 
-:::tip
+::: tip
 
 Any time you modify or rely on data from outside the normal render pipeline, you run the risk of dependency problems.
 :::

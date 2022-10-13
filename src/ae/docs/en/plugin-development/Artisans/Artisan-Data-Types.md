@@ -945,7 +945,7 @@ AEGP_GetRenderLayerToWorldXform2D3D(
 
 ```
 
-:::tip
+::: tip
 
 Functions below are for interactive artisans only.
 :::

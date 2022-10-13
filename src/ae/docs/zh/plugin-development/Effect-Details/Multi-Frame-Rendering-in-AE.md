@@ -17,7 +17,7 @@ PF_OutFlag2_SUPPORTS_THREADED_RENDERING
 
 这个标志表示该效果支持在多个线程上并发渲染。一个图层上的这个效果的单个或多个应用可以在多个线程上同时被调用渲染。在这个标志被设置之前，效果必须是线程安全的。更多信息请参见下面的[What does it mean for an effect to be thread-safe?] 部分。
 
-:::tip
+::: tip
 
 当After Effects使用多帧渲染时，一个不具有线程安全的效果，如果没有设置这个标志，将迫使每个渲染线程一次进入和退出效果代码。这将大大降低MFR提供的性能改进，因此在效果控制窗口中会显示一个警告图标，提醒用户注意性能影响。
 
@@ -32,7 +32,7 @@ PF_OutFlag2_MUTABLE_RENDER_SEQUENCE_DATA_SLOWER
 
 每个渲染线程都有自己的sequence_data实例，不与其他渲染线程共享或同步。如果存储在sequence_data中的数据计算起来很费时，应该利用新的[Compute Cache For Multi-Frame Rendering](#compute-cache)。
 
-:::tip
+::: tip
 
 使用`PF_OutFlag2_MUTABLE_RENDER_SEQUENCE_DATA_SLOWER`标志需要根据2021年3月的SDK或更高版本进行编译。
 
@@ -52,7 +52,7 @@ PF_OutFlag2_MUTABLE_RENDER_SEQUENCE_DATA_SLOWER
 | Plugin sets PF_OutFlag2_SUPPORTS_THREADED_RENDERING but only reads sequence_data during Render | Recompile the plugin with the March 2021 SDK, update reading sequence_data via `PF_EffectSequenceDataSuite1` for thread-safe access. See [Accessing sequence_data at Render Time with Multi-Frame Rendering](global-sequence-frame-data.html)  for more information. |
 | Plugin sets PF_OutFlag2_SUPPORTS_THREADED_RENDERING and reads and writes to sequence_data during Render | Recompile the plugin with the March 2021 SDK and modify the plugin to:`<br />`1. Utilize the[Compute Cache API](compute-cache-api.html)  for thread-safe cache access instead of reading/writing to sequence_data directly. See [Compute Cache For Multi-Frame Rendering] for more information.`<br />`AND / OR `<br />`2. Add the `PF_OutFlag2_MUTABLE_RENDER_SEQUENCE_DATA_SLOWER` to the effect to restore direct read/write access to sequence_data. |
 
-:::tip
+::: tip
 
 使用2021年3月的SDK编译的效果，并使用PF_OutFlag2_SUPPORTS_THREADED_RENDERING标志，以及PF_OutFlag2_MUTABLE_RENDER_SEQUENCE_DATA_SLOWER标志，将与从18.0开始的After Effects beta版本一起工作，当时引入了`PF_EffectSequeceDataSuite1`。如果你需要支持两种sequence_data行为，请检查这个套件是否存在。
 
@@ -72,7 +72,7 @@ UI选择器仍然在主线程上发送，然而`PF_Cmd_SEQUENCE_SETUP`、`PF_Cmd
 
 - 多帧渲染需要After Effects将 "序列数据 "传递给渲染线程。为了使具有`sequence_data'的效果能够有效地使用`PF_OutFlag_SEQUENCE_DATA_NEEDS_FLATTENING'标志进行扁平化，这些效果现在也必须设置`PF_OutFlag2_SUPPORTS_GET_FLATTENED_SEQUENCE_DATA'标志。
 
-:::tip
+::: tip
 
 在未来的After Effects版本中，将强制要求设置`PF_OutFlag2_SUPPORTS_GET_FLATTENED_SEQUENCE_DATA`标志，并在插件中处理相关的选择器。在加载任何不符合这一要求的效果时，将添加一个警告对话框。
 
@@ -111,7 +111,7 @@ UI选择器仍然在主线程上发送，然而`PF_Cmd_SEQUENCE_SETUP`、`PF_Cmd
 2. 2.在渲染时不向`in_data->global_data`写入。可以进行读取。只在`PF_Cmd_GLOBAL_SETUP`和`PF_Cmd_GLOBAL_SETDOWN`中写入。
 3. 在渲染时或`PF_Cmd_UPDATE_PARAMS_UI`事件中不向`in_data->sequence_data`写入。读取可以通过PF_EffectSequenceDataSuite接口完成。
 
-:::tip
+::: tip
 
 如果一个效果使用了任何阻塞性的同步机制，例如互斥或门，那么在回调到主机时，这些机制必须不被保留。常见的调用是在使用一个套件或进行结帐调用时。如果不这样做，很可能会导致死锁。
 
@@ -424,7 +424,7 @@ menuBuf, Type: char[0x1000], File Static, (static, [0008FCD0][0003:00001CD0])
 >
 > ```
 
-:::tip
+::: tip
 
 **以上的例子是我们在效果中看到的常见情况。你可以随时想出其他方法来处理你的静态和全局，以最适合你的需要。
 

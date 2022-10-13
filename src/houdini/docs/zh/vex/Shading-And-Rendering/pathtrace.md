@@ -19,7 +19,7 @@ category:
 
 [¶](#ray-options)
 
-:::tip
+::: tip
 
 当你指定一个纹理时，比如用`"环境"`关键字，你也可以使用图像过滤关键字参数。参见[environment](environment.html) () ("返回环境纹理的颜色。") 以了解图像过滤关键字参数的清单。
 

@@ -58,7 +58,7 @@ Also, don’t worry; although `PF_InData` is dauntingly large, you need not memo
 
 ## extent_hint Usage
 
-:::tip
+::: tip
 
 hint rectangles are much more effective…and complicated…for [SmartFX](../smartfx/smartfx.html) (#smartfx-smartfx).
 :::

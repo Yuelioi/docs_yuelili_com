@@ -7,7 +7,7 @@ category:
 
 The `set()` function has a **wide variety** of forms allowing you to perform many different types of conversions.
 
-:::tip
+::: tip
 
 When filling a matrix in Houdini, the numbers go across the first row, then across the second row, and so on (“row-major”).
 

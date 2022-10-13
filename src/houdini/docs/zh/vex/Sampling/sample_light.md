@@ -49,7 +49,7 @@ category:
 
 一个[组件位掩码](bouncemask.html)表明光线影响哪些类型的组件的反弹。
 
-:::tip
+::: tip
 
 如果你使用[sample_light](sample_light.html) () ("对光源的 3D 位置进行采样，并在该点运行光照器。")来生成光的颜色，例如复制由[illuminance](illuminance.html) () ("循环浏览场景中的所有光源，为每个光源调用光照器以设置 Cl 和 L 全局变量。")产生的`Cl`值，你将需要把`clr`归一到`scale`。
 

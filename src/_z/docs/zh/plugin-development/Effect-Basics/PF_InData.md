@@ -58,7 +58,7 @@ After Effects使用`PF_InData`来交流系统、项目、层和音频信息。�
 
 ## extent_hint Usage
 
-:::tip
+::: tip
 
 对于[SmartFX](.../smartfx/smartfx.html)来说，提示矩形更有效...也更复杂...。
 :::

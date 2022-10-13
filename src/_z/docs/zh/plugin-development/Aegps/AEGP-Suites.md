@@ -640,7 +640,7 @@ AEGP_SetProjectBitDepth(
 
 ### AEGP_TimeDisplay2
 
-:::tip
+::: tip
 
 当 After Effects 使用不同的显示类型时，未使用的字段中的值会持续存在。
 :::
@@ -1047,7 +1047,7 @@ AEGP_GetItemMRUView(
 
 ```
 
-:::tip
+::: tip
 
 `AEGP_RenderNewItemSoundData()` used to be here, but is now part of [AEGP_RenderSuite4].
 
@@ -5346,7 +5346,7 @@ AEGP_GetValueKeyByIndex(
 
 ```
 
-:::tip
+::: tip
 
 对于下面的函数，如果没有找到给定的键，默认值会同时写入 blob 中并作为值返回。
 如果没有提供默认值，将写入并返回一个空白值。
@@ -5977,7 +5977,7 @@ AEGP_GetRenderQuality)(
 
 ### AEGP_LayerRenderOptionsSuite1
 
-:::tip
+::: tip
 
 13.0 中的新内容
 :::
@@ -7490,7 +7490,7 @@ AEGP_GetExtraOutputModuleInfo(
 
 这些函数为效果(和 AEGPs)提供了一种方法，以获得关于应用效果的上下文的信息。
 
-:::tip
+::: tip
 
 任何时候，当你修改或依赖来自正常渲染管道之外的数据时，你都有可能出现依赖性问题。
 :::

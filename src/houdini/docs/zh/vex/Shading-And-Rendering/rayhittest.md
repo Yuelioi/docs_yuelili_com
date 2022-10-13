@@ -30,7 +30,7 @@ D 向量的长度代表检查遮挡时考虑的最远距离。
 
 在许多情况下，使用`rayhittest()`函数，区域取样特征将不会产生可用的结果。
 
-:::tip
+::: tip
 
 在测试多边形的命中率时，你可以得到很多射线的丢失。在这种情况下，对几何体进行三角测量可以提高命中率。
 
@@ -53,7 +53,7 @@ blurry\_mirror(float angle = 3; int samples = 16; float bias=0.05)
 
 [¶](#ray-options)
 
-:::tip
+::: tip
 
 When you specify a texture, such as with the `"environment"` keyword,
 you can also use the image filtering keyword arguments. See [environment](environment.html) () ("Returns the color of the environment texture.")

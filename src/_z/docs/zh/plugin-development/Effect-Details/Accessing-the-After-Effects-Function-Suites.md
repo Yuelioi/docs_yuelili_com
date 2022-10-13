@@ -19,7 +19,7 @@ AEFX_SuiteScoper<PF_GPUDeviceSuite1> gpu_suite = AEFX_SuiteScoper<PF_GPUDeviceSu
 
 ```
 
-:::tip
+::: tip
 
 AEFX_SuiteScoper将抛出一个异常，`A_Err_MISSING_SUITE`，如果请求的套件不能被获取，并且可选的第二个模板参数，`ALLOW_NO_SUITE`，被设置为false。如果你将`ALLOW_NO_SUITE'设置为false，请确保你用一个try/catch包装器来包装`AEFX_SuiteScoper<>`调用。如果`ALLOW_NO_SUITE'被设置为true，那么你应该在使用前检查返回的指针是否为NULL。
 

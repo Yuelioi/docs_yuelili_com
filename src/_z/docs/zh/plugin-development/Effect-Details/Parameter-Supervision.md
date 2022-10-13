@@ -14,7 +14,7 @@ category:
 
 在_PF_Cmd_UPDATE_PARAMS_UI_期间，你只能改变参数的外观和启用状态。使用[PF_ParamUtilSuite3]中的`PF_UpdateParamUI()`来更新用户界面，把你想修改的参数的_copy_传给它。不要试图修改原始参数。没有必要设置`PF_OutFlag_REFRESH_UI`；`PF_UpdateParamUI()`为你处理。
 
-:::tip
+::: tip
 
 这是更新`PF_PUI_STD_CONTROL_ONLY`参数的用户界面的唯一方法。
 

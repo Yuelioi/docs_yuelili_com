@@ -13,7 +13,7 @@ Converts the number of degrees in the argument to radians.
 
 Returns a new vector with `atan()` applied to each component.
 
-:::tip
+::: tip
 
 The VEX trig functions work with radians, but most users are more comfortable with degrees. You may want to convert from radians for internal use to degrees in the UI.
 

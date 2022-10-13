@@ -945,7 +945,7 @@ AEGP_GetRenderLayerToWorldXform2D3D(
 
 ```
 
-:::tip
+::: tip
 
 以下函数仅适用于交互式工匠。
 :::

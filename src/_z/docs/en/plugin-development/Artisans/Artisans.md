@@ -7,7 +7,7 @@ category:
 
 # Artisans
 
-:::tip
+::: tip
 
 If you’re considering developing an Artisan, please talk it over with us first.
 :::

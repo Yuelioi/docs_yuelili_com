@@ -241,7 +241,7 @@ Takes a pointer to a PF_PixelFloat color.
 
 ## Sampling Images[¶](#sampling-images "Permalink to this headline")
 
-:::tip: areas outside the bounds of the image being sampled are treated as zero alpha. For convenience, the functions from PF_Sampling8Suite1, PF_Sampling16Suite1, and PF_SamplingFloatSuite1 are all listed in this table.
+::: tip: areas outside the bounds of the image being sampled are treated as zero alpha. For convenience, the functions from PF_Sampling8Suite1, PF_Sampling16Suite1, and PF_SamplingFloatSuite1 are all listed in this table.
 
 ### PF_SamplingSuite Functions (Multiple Suites)[¶](#pf-samplingsuite-functions-multiple-suites "Permalink to this headline")
 

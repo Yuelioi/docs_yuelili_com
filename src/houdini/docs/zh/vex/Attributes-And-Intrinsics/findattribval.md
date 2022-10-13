@@ -39,7 +39,7 @@ category:
 
 第一个点/原始点/顶点的编号，其中指定的属性与给定的`值'相符。如果没有元素具有给定的属性值，则返回`-1'。数组签名返回指定属性与给定`值'相匹配的所有点/基元/顶点的数字。
 
-:::tip
+::: tip
 
 最常见的用例（通过其 "名称 "或 "id "属性查找一个点/基元）有更容易使用的专用封装函数。[nametopoint](nametopoint.html) () （"通过其名称属性查找一个点。"）、[nametoprim](nametoprim.html) （"通过其名称属性查找一个基元。"）、[idtopoint](idtopoint.html) () （"通过其 id 属性查找一个点。"）和 [idtoprim](idtoprim.html) （"通过其 id 属性查找一个基元。" ）。
 

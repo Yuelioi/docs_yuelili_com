@@ -45,7 +45,7 @@ Define the uv1 and uv2 coordinates units. See [primuvconvert](primuvconvert.html
 
 A tolerance used when computing the curve length to do uv coordinates conversions.
 
-:::tip
+::: tip
 
 You can also read the `arclength` primitive intrinsic attribute to get a curve’s total arc length.
 

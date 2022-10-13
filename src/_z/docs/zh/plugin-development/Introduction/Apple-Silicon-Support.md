@@ -11,7 +11,7 @@ Adobe现在支持一些在苹果硅上原生运行的产品中的苹果硅效果
 
 并非所有的Adobe产品都有原生的Apple Silicon版本，但在那些产品中，只有具有Apple Silicon实现的效果插件才可用。我们建议尽快添加Apple Silicon目标，以期待这些新的M1机器的快速采用。
 
-:::tip
+::: tip
 
 为了建立一个Mac通用二进制文件，你将需要Xcode 12.2或更高版本。Adobe目前正在使用Xcode 12.4。
 :::

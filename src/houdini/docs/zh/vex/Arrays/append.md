@@ -40,7 +40,7 @@ Increases the size of `array` by `len(values)`. This is the same as
 void  append(<type>&array[], <type>values[])
 ```
 
-:::tip
+::: tip
 
 You can set an individual item in an array using `array[n] = x`.
 

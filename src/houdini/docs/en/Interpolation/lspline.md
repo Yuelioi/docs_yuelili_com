@@ -29,7 +29,7 @@ The position along the curve at which to sample the value.
 
 To define the shape of the curve, you pass a number of values specifying the key points through which the curve passes. The function automatically spaces the keys evenly.
 
-:::tip
+::: tip
 
 The [spline](spline.html) ("Samples a value along a polyline or spline curve.") function is a more flexible superset of this function.
 
