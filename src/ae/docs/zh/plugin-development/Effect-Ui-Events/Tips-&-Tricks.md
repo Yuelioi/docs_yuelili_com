@@ -9,7 +9,7 @@ category:
 
 ## UI Performance
 
-实验一下来自[PF_EventExtra](PF_EventExtra.html) (#effect-ui-events-pf-eventextra)的`PF_EO_ALWAYS_UPDATE`和`PF_EO_NEVER_UPDATE`，以便在响应性和准确性之间找到一个满意的媒介。
+实验一下来自[PF_EventExtra](PF_EventExtra.html) 的`PF_EO_ALWAYS_UPDATE`和`PF_EO_NEVER_UPDATE`，以便在响应性和准确性之间找到一个满意的媒介。
 
 在macOS上，当自定义UI绘制事件被发送时，前景和背景颜色不会被设置为白色和黑色。
 
@@ -35,12 +35,12 @@ After Effects用比自定义UI更丰富的消息流来管理参数。
 
 ## Custom UI Implementation for Color Sampling, Using Keyframes
 
-一个插件可能想从一个构图中的某个图层获取颜色。用户会使用与颜色参数相关的滴管，或插件的自定义组合面板用户界面来选择该点。
+一个插件可能想从一个合成中的某个图层获取颜色。用户会使用与颜色参数相关的滴管，或插件的自定义合成面板用户界面来选择该点。
 
 在点击事件中，插件将点击的坐标转换为层空间，并将该信息存储在序列数据中。然后它强制重新渲染，在此期间它可以访问与存储的坐标相对应的图层点的颜色。
 
 插件将颜色值存储在序列数据中，并取消渲染，要求重新绘制受影响的参数。
 
-最后，在绘制过程中，插件使用[AEGP_KeyframeSuite](.../aegps/aegp-suites.html) (#aegps-aegp-suites-keyframe-suite)向其颜色参数流添加适当的关键帧。
+最后，在绘制过程中，插件使用[AEGP_KeyframeSuite](.../aegps/aegp-suites.html) 向其颜色参数流添加适当的关键帧。
 
-是的，这意味着效果需要[Cheating Effect Usage of AEGP Suites](.../aegps/cheating effect-usage-of-aegp-suites.html) (#aegps-cheating effect-usage-of-aegp-suites) 并使用AEGP API。
+是的，这意味着效果需要[Cheating Effect Usage of AEGP Suites](.../aegps/cheating effect-usage-of-aegp-suites.html)  并使用AEGP API。

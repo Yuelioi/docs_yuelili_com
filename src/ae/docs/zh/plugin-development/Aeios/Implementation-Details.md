@@ -9,7 +9,7 @@ category:
 
 ## Export Bit-Depth
 
-在输出模块设置中，用户可以根据AEIO在[AEIO_FunctionBlock4](new-kids-on-the-function-block.html) (#aeios-new-kids-the-function-block-aeio-functionblock)的`AEIO_GetDepths()`中声明支持的选项选择一个深度。
+在输出模块设置中，用户可以根据AEIO在[AEIO_FunctionBlock4](new-kids-on-the-function-block.html) 的`AEIO_GetDepths()`中声明支持的选项选择一个深度。
 
 如果一个插件支持更高的比特深度导出，它应该能够处理这些在`AEIO_AddFrame()`或`AEIO_OutputFrame()`中传递的更高比特深度的PF_EffectWorlds，即使导出设置没有设置为相同的深度。
 

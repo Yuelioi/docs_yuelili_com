@@ -14,7 +14,7 @@ After Effects特效API最好的方面之一是参数插值和管理。
 
 在29.97帧的四分之一时间里，快门角度有多大变化？不是你的问题，交给After Effects吧。
 
-在[PF_Cmd_PARAM_SETUP](command-selectors.html)(#effect-basics-command-selectors-global-selectors)期间，使用[PF_ADD_PARAM](.../effect-details/interaction-callback-functions.html)(#effect-details-interaction-callback-functions-interaction-callbacks)描述你插件中的参数。
+在[PF_Cmd_PARAM_SETUP](command-selectors.html)期间，使用[PF_ADD_PARAM](.../effect-details/interaction-callback-functions.html)描述你插件中的参数。
 
 你最多可以有（大约）38 kajillion个参数，或者说你的用户在要求退款之前愿意筛选多少就有多少。明智的选择。
 

@@ -6,13 +6,13 @@ category:
 ---
 # Parameter Supervision
 
-监督是指根据其他参数的值动态地改变一些参数的值。要监督一个参数，在_PF_Cmd_PARAM_SETUP_期间，在添加它之前设置[PF_ParamFlag_SUPERVISE](.../effect-basics/PF_ParamDef.html) (#effect-basics-pf-paramdef-parameter-flags) 。每当它被改变，你会收到[PF_Cmd_USER_CHANGED_PARAM](.../effect-basics/command-selectors.html) (#effect-basics-command-selectors-messaging)。改变的参数的索引（在插件的参数数组中）在PF*UserChangedParamExtra（额外）参数中发送。在 `PF_Cmd_USER_CHANGED_PARAM*期间，你可以改变任何参数的值和外观。
+监督是指根据其他参数的值动态地改变一些参数的值。要监督一个参数，在_PF_Cmd_PARAM_SETUP_期间，在添加它之前设置[PF_ParamFlag_SUPERVISE](.../effect-basics/PF_ParamDef.html)  。每当它被改变，你会收到[PF_Cmd_USER_CHANGED_PARAM](.../effect-basics/command-selectors.html) 。改变的参数的索引（在插件的参数数组中）在PF*UserChangedParamExtra（额外）参数中发送。在 `PF_Cmd_USER_CHANGED_PARAM*期间，你可以改变任何参数的值和外观。
 
 ## Updating Parameter UI
 
 如果你在任何参数上设置了`PF_ParamFlag_SUPERVISE`，After Effects将向你发送_PF_Cmd_UPDATE_PARAMS_UI_，就像你设置了PF_OutFlag_SEND_UPDATE_PARAMS_UI。
 
-在_PF_Cmd_UPDATE_PARAMS_UI_期间，你只能改变参数的外观和启用状态。使用[PF_ParamUtilSuite3](#effect-detals-parameter-supervision-pf-paramutilsuite)中的`PF_UpdateParamUI()`来更新用户界面，把你想修改的参数的_copy_传给它。不要试图修改原始参数。没有必要设置`PF_OutFlag_REFRESH_UI`；`PF_UpdateParamUI()`为你处理。
+在_PF_Cmd_UPDATE_PARAMS_UI_期间，你只能改变参数的外观和启用状态。使用[PF_ParamUtilSuite3]中的`PF_UpdateParamUI()`来更新用户界面，把你想修改的参数的_copy_传给它。不要试图修改原始参数。没有必要设置`PF_OutFlag_REFRESH_UI`；`PF_UpdateParamUI()`为你处理。
 
 :::tip
 
@@ -22,7 +22,7 @@ category:
 
 ## Updating Parameter Values
 
-在[PF_Cmd_USER_CHANGED_PARAM](../effect-basics/command-selectors.html) (#effect-basics-command-selectors-messaging)和[PF_Cmd_EVENT](. ./effect-basics/command-selectors.html）（#effect-basics-command-selectors-messaging）（_PF_Event_DO_CLICK_, _PF_Event_DRAG_, & _PF_Event_KEYDOWN_）。After Effects不会尊重在其他时间做出的改变。
+在[PF_Cmd_USER_CHANGED_PARAM](../effect-basics/command-selectors.html) 和[PF_Cmd_EVENT](. ./effect-basics/command-selectors.html）（#effect-basics-command-selectors-messaging）（_PF_Event_DO_CLICK_, _PF_Event_DRAG_, & _PF_Event_KEYDOWN_）。After Effects不会尊重在其他时间做出的改变。
 
 当改变参数_值时（而不仅仅是用户界面），修改原始参数，并将`PF_Paramdef.uu.change_flags`设置为`PF_ChangeFlag_CHANGED_VALUE`。
 

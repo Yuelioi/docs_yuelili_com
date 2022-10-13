@@ -29,7 +29,7 @@ category:
 
 实例化你的arb数据（当然，使用After Effects的内存分配功能），并将ParamDef.u.arb_d.dephault指向它。用适当的默认值来填充它。设置参数时不需要数值变量，为安全起见，将其清零。
 
-在你的插件的入口函数中，包括一个处理[PF_Cmd_ARBITRARY_CALLBACK](.../effect-basics/command-selectors.html) (#effect-basics-command-selectors-messaging) 的案例。
+在你的插件的入口函数中，包括一个处理[PF_Cmd_ARBITRARY_CALLBACK](.../effect-basics/command-selectors.html)  的案例。
 
 调用一个二级事件处理程序，`HandleArbitrary`。它收到一个`PF_ArbParamsExtra`的extra，它又包含一个`PF_FunctionSelector`，用来识别发送的命令。
 

@@ -21,11 +21,11 @@ PF_Err main (
 
 ```
 
-上述入口点函数的名称是 "main"，但它可以是[PiPL Resources](.../intro/pipl-resources.html)(#intro-pipl-resources)中指定的任何内容。
+上述入口点函数的名称是 "main"，但它可以是[PiPL Resources](.../intro/pipl-resources.html)中指定的任何内容。
 
-在每次调用入口函数之前，After Effects都会更新[PF_InData](PF_InData.html) (#effect-basics-pf-indata)和插件的参数数组PF_ParamDef[]（除非有说明）。
+在每次调用入口函数之前，After Effects都会更新[PF_InData](PF_InData.html) 和插件的参数数组PF_ParamDef[]（除非有说明）。
 
-在插件从调用中返回后，After Effects会检查[PF_OutData](PF_OutData.html) (#effect-basics-pf-outdata)是否有变化，并在适当的时候使用效果所渲染的PF_LayerDef。
+在插件从调用中返回后，After Effects会检查[PF_OutData](PF_OutData.html) 是否有变化，并在适当的时候使用效果所渲染的PF_LayerDef。
 
 ## Entry Point Function Parameters
 

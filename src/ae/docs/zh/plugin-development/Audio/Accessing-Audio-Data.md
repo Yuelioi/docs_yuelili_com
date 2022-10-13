@@ -7,13 +7,13 @@ category:
 
 # Accessing Audio Data
 
-使用`PF_CHECKOUT_LAYER_AUDIO`从[Interaction Callbacks](.../effect-details/interaction-callback-functions.html) (#effect-details-interaction-callback-functions-interaction-callbacks)检索一个音频层。
+使用`PF_CHECKOUT_LAYER_AUDIO`从[Interaction Callbacks](.../effect-details/interaction-callback-functions.html) 检索一个音频层。
 
 这个层是不透明的；使用`PF_GET_AUDIO_DATA`来获取该音频的具体细节。
 
 和像素数据一样，你必须尽快检查音频。
 
-如果你的效果要求输入的时间跨度与输出的时间跨度不同，在 "PF_Cmd_AUDIO_SETUP "中更新`startsampL`和`endsampL`字段，从[Frame Selectors](.../effect-basics/command-selectors.html) (#effect-basics-command-selectors-frame-selectors)。
+如果你的效果要求输入的时间跨度与输出的时间跨度不同，在 "PF_Cmd_AUDIO_SETUP "中更新`startsampL`和`endsampL`字段，从[Frame Selectors](.../effect-basics/command-selectors.html) 。
 
 ## Extending Audio Clips
 

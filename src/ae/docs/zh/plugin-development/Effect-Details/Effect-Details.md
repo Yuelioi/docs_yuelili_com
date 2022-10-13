@@ -7,14 +7,14 @@ category:
 
 # Effect Details
 
-Now that we’ve covered the basics of effect plug-ins, we’ll cover some of the finer points to polish off your effect. Not every section will be relevant to every plug-in, so feel free to use the PDF document bookmarks to skip to the sections pertinent to your current project.
+现在我们已经介绍了效果插件的基本知识，我们将介绍一些更细微的内容来完善你的效果。并非每一节都与每个插件有关，所以请随时使用PDF文件的书签，跳到与你当前项目有关的章节。
 
 ## Free Code == Good
 
-After Effects provides effect plug-ins with as much information and supporting code as possible. Use our function suites and callbacks to obtain the value of parameters (including source footage) at different times. Use our memory allocation suite to avoid competing with the host for resources. Use our image processing suites to copy, fill, blend and convolve images, and convert between color spaces. Obtain information about the masks applied to a layer. ANSI emulation and math utility suites are also provided, as well as information about the application, user, serial number, and current drawing context.
+After Effects为效果插件提供了尽可能多的信息和支持代码。使用我们的函数套件和回调来获取不同时间的参数值（包括源片段）。使用我们的内存分配套件，避免与主机争夺资源。使用我们的图像处理套件来复制、填充、混合和融合图像，并在色彩空间之间转换。获取应用于一个图层的遮罩的信息。还提供了ANSI仿真和数学工具套件，以及关于应用程序、用户、序列号和当前绘图环境的信息。
 
-Previous versions of After Effects have provided functions for many common tasks. As we moved to support deeper color, these were moved to function suites. Use the newer function suites whenever possible; things will just be better.
+以前的After Effects版本已经为许多常见的任务提供了功能。随着我们转向支持更深的色彩，这些都被移到了函数套件中。尽可能使用较新的功能套件；事情会变得更好。
 
-Using our function suites keeps your plug-in compact; you write and test less code. The functions are tested, optimized, and used by our own plug-ins. The functions are distributed to multiple processors and take advantage of available hardware acceleration.
+使用我们的函数套件可以使你的插件更紧凑；你编写和测试的代码更少。这些函数经过测试、优化，并被我们自己的插件使用。这些函数分布在多个处理器上，并利用了可用的硬件加速。
 
-No, really, use the provided functions. Seriously.
+不，真的，使用提供的函数。认真的。

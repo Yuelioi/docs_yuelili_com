@@ -6,7 +6,7 @@ category:
 ---
 # PF_EventExtra
 
-这个结构提供了当前事件的上下文信息。After Effects在[Entry Point](../effect-basics/entry-point.html)(#effect-basics-entry-point)函数的额外参数中传递一个指向这个结构的指针。
+这个结构提供了当前事件的上下文信息。After Effects在[Entry Point](../effect-basics/entry-point.html)函数的额外参数中传递一个指向这个结构的指针。
 
 `PF_EventUnion`（在`PF_EventExtra`中发送）随事件类型而变化，包含该事件的特定信息。
 

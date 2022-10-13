@@ -40,7 +40,7 @@ Premiere的多线程渲染也适用于AE效果。当渲染AE效果时，来自Pr
 
 ## Frame Dimensions
 
-源片段和项目/组合之间的差异会得到不同的处理。
+源片段和项目/合成之间的差异会得到不同的处理。
 
 例如，在CS4中，在PAL序列中导入NTSC制式的素材时，`PF_InData>width,height`是`(598,480)`，`PF_InData->pixel_aspect_ratio`是`（768,702）`。
 
@@ -50,11 +50,11 @@ Premiere的多线程渲染也适用于AE效果。当渲染AE效果时，来自Pr
 
 Premiere Pro处理字段渲染的方式与After Effects不同。在字段渲染时，PF_InData>field给出的是当前正在渲染的字段，而忽略了是否设置了PF_OutFlag_PIX_INDEPENDENT标志。
 
-在Premiere Pro中，特效接收[PF_InData&gt;quality](.../effect-basics/PF_InData.html)(#effect-basics-pf-indata-pf-indata-members)中显示器窗口的质量设置。这与After Effects不同，这里提供了源层的质量设置。
+在Premiere Pro中，特效接收[PF_InData&gt;quality](.../effect-basics/PF_InData.html)中显示器窗口的质量设置。这与After Effects不同，这里提供了源层的质量设置。
 
 ## Parameter UI
 
-Premiere Pro不尊重[PF_ParamFlag_START_COLLAPSED](.../effect-basics/PF_ParamDef.html) (#effect-basics-pf-paramdef-parameter-flags) 标志。参数在初始化时总是被折叠起来的，不能通过参数监督自动打开扭曲。
+Premiere Pro不尊重[PF_ParamFlag_START_COLLAPSED](.../effect-basics/PF_ParamDef.html)  标志。参数在初始化时总是被折叠起来的，不能通过参数监督自动打开扭曲。
 
 Premiere Pro支持宏`PF_ADD_FLOAT_EXPONENTIAL_SLIDER()`，它可以让你定义一个指数。虽然这个宏是为CC 2015 release 2 SDK新添加的，但Premiere Pro在快速色彩校正器的输入灰度参数中使用这个宏已经有一段时间了。指数的使用是为了使范围从0.10到10，1.0大约在滑块的中间。我们使用的指数是2.5。典型的值是0.01到100。
 

@@ -7,7 +7,7 @@ category:
 
 # AEGP Suites
 
-As mentioned earlier, AEGPs do everything through suites. The following suites are used by all types of AEGPs, and may be called from within any hook function (except for the RegisterSuite, which must be used from within the AEGP’s entry point). Following is a description of each function in every suite, and, where appropriate details on using those functions.
+如前所述，AEGPs 通过套件来完成一切。以下套装被所有类型的 AEGP 使用，并且可以从任何钩子函数中调用（除了 RegisterSuite，它必须从 AEGP 的入口点中使用）。下面是每个套件中每个函数的描述，以及在适当的地方使用这些函数的细节。
 
 | **Suite**                                                                                                                           | **Description**                                                                                                                                                                                                                                                                                                                                                                      |
 | ----------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --- | --------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- | --- | ------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ | --- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------ | --- | --------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -42,27 +42,27 @@ As mentioned earlier, AEGPs do everything through suites. The following suites a
 
 ## Fail Gracefully
 
-If a suite isn’t present, make every attempt to fail gracefully. Show the user a message indicating the nature of the problem. Attempt to acquire and use an earlier version of the same suite.
+如果一个套件不存在，要尽力做到优雅地失败。向用户显示一条信息，说明问题的性质。尝试获取并使用同一套件的早期版本。
 
-Since AEGPs are so deeply integrated with After Effects, make sure that users know who or what is encountering a given problem.
+由于 AEGPs 与 After Effects 结合得如此之深，要确保用户知道是谁或什么东西遇到了某个问题。
 
-Identify yourself! Provide support and/or help information to the user whenever possible.
+表明自己的身份! 尽可能的向用户提供支持和/或帮助信息。
 
 ## Handling Handles
 
-Use the AEGP Memory Suite to manage memory used by the AEGP. Whenever memory related errors are encountered, After Effects can report errors for you to find early on.
+使用 AEGP 内存套件来管理 AEGP 使用的内存。每当遇到与内存有关的错误，After Effects 可以报告错误，让你及早发现。
 
-`AEGP_MemHandle` is a structure that contains more than just the referenced memory. So it should not be dereferenced directly. Use `AEGP_LockMemHandle` to get a pointer to the memory referenced by the `AEGP_MemHandle`.
+`AEGP_MemHandle`是一个结构，它包含的不仅仅是被引用的内存。所以它不应该被直接解引用。使用`AEGP_LockMemHandle`来获得`AEGP_MemHandle`所引用的内存的指针。
 
-And of course, unlock it when you’re done.
+当然，当你完成后要解锁它。
 
 ### AEGP_MemorySuite1
 
 #### AEGP_NewMemHandle
 
-Create a new memory handle.This memory is guaranteed to be 16-byte aligned.`plugin_id` is the ID passed in through the main [Entry Point](implementation.html#aegps-implementation-entry-point),or alternatively what you obtained from `AEGP_RegisterWithAEGP()`
-(from [AEGP_UtilitySuite6](#aegps-aegp-suites-aegp-utilitysuite)).
-Use `whatZ` to identify the memory you are asking for.After Effects uses the string to display any related error messages.
+创建一个新的内存句柄。`plugin_id`是通过主[Entry Point](implement.html#aegps-implementation-entry-point)传入的 ID，或者是你从`AEGP_RegisterWithAEGP()`获得的。
+(来自[AEGP_UtilitySuite6])。
+使用`whatZ`来识别你所要求的内存。After Effects 使用这个字符串来显示任何相关的错误信息。
 
 ```cpp
 AEGP_NewMemHandle(
@@ -76,7 +76,7 @@ AEGP_NewMemHandle(
 
 #### AEGP_FreeMemHandle
 
-Release a handle you allocated using AEGP_NewMemHandle().
+释放你用 AEGP_NewMemHandle()分配的一个句柄。
 
 ```cpp
 AEGP_FreeMemHandle(
@@ -86,7 +86,7 @@ AEGP_FreeMemHandle(
 
 #### AEGP_LockMemHandle
 
-Locks the handle into memory (cannot be moved by OS).Use this function prior to using memory allocated by `AEGP_NewMemHandle`. Can be nested.
+在使用`AEGP_NewMemHandle'分配的内存之前，使用这个函数来锁定手柄（不能被操作系统移动）。可以被嵌套。
 
 ```cpp
 AEGP_LockMemHandle(
@@ -97,7 +97,7 @@ AEGP_LockMemHandle(
 
 #### AEGP_UnlockMemHandle
 
-Allows OS to move the referenced memory. Always balance lock calls with unlocks.
+允许操作系统移动引用的内存。始终平衡锁调用和解锁。
 
 ```cpp
 AEGP_UnlockMemHandle(
@@ -107,7 +107,7 @@ AEGP_UnlockMemHandle(
 
 #### AEGP_GetMemHandleSize
 
-Returns the allocated size of the handle.
+返回句柄的分配大小。
 
 ```cpp
 AEGP_GetMemHandleSize AEGP_MemHandle memH,
@@ -117,7 +117,7 @@ AEGP_GetMemHandleSize AEGP_MemHandle memH,
 
 #### AEGP_ResizeMemHandle
 
-Changes the allocated size of the handle.
+改变句柄的分配大小。
 
 ```cpp
 AEGP_ResizeMemHandle(
@@ -129,9 +129,9 @@ AEGP_ResizeMemHandle(
 
 #### AEGP_SetMemReportingOn
 
-If After Effects runs into problems with the memory handling, the error should be reported to the user.Make use of this during development!
-Only memory allocated and then leaked using this suite is reported using this call,so for example memory allocated using [PF_HandleSuite1](../effect-details/memory-allocation.html#effect-details-memory-allocation-pf-handlesuite)
-will not be reported.
+如果 After Effects 在内存处理方面遇到问题，应该向用户报告错误。在开发过程中要利用这一点!
+只有使用该套件分配并泄漏的内存才会被报告，所以例如使用[PF_HandleSuite1](.../effect-details/memory-allocation.html#effect-details-memory-allocation-pf-handlesuite)分配的内存不会被报告。
+将不会被报告。
 
 ```cpp
 AEGP_SetMemReportingOn(
@@ -141,8 +141,8 @@ AEGP_SetMemReportingOn(
 
 #### AEGP_GetMemStats
 
-Obtain information about the number of currently allocated handles and their total size.
-Only memory allocated using this suite is tracked and reported using this call,so for example memory allocated using [PF_HandleSuite1](../effect-details/memory-allocation.html#effect-details-memory-allocation-pf-handlesuite) will not be reported here.
+获取关于当前分配的句柄数量及其总大小的信息。
+只有使用这个套件分配的内存才会被跟踪，并使用这个调用进行报告，所以例如使用[PF_HandleSuite1](.../effect-details/memory-allocation.html#effect-details-memory-allocation-pf-handlesuite)分配的内存不会在这里报告。
 
 ```cpp
 AEGP_GetMemStats(
@@ -154,15 +154,15 @@ AEGP_GetMemStats(
 
 ## Managing Menu Items
 
-Command Suites allow you to create and handle any menu events.
+命令套件允许你创建和处理任何菜单事件。
 
-To add your own menu commands, you must also use [Register Suite](#aegps-aegp-suites-register-suite) to assign handlers to menu events.
+要添加你自己的菜单命令，你还必须使用[注册套件]来为菜单事件分配处理程序。
 
 ### AEGP_CommandSuite1
 
 #### AEGP_GetUniqueCommand
 
-Obtain a unique command identifier. Use the _Register Suite_ to register a handler for the command.
+获得一个唯一的命令标识符。使用*注册套件*为该命令注册一个处理程序。
 
 ```cpp
 AEGP_GetUniqueCommand(
@@ -170,12 +170,12 @@ AEGP_GetUniqueCommand(
 
 ```
 
-Note: On occasion After Effects will send command 0 (zero),
-so don’t use that as part of your command handling logic.
+注意：After Effects 有时会发送命令 0（零）。
+所以不要把它作为你的命令处理逻辑的一部分。
 
 #### AEGP_InsertMenuCommand
 
-Add a new menu command. Using nameZ = “-” will insert a separator. menu_ID can be:
+添加一个新的菜单命令。使用 nameZ = "-" 将插入一个分隔符。 menu_ID 可以是。
 
 - `AEGP_Menu_NONE`
 - `AEGP_Menu_APPLE`
@@ -195,14 +195,14 @@ Add a new menu command. Using nameZ = “-” will insert a separator. menu_ID c
 - `AEGP_Menu_PURGE`
 - `AEGP_Menu_NEW` - Supported in CC and later
 
-Locations can be set to a specific location in the menu or can be one assigned by After Effects:
+位置可以设置为菜单中的一个特定位置，也可以是 After Effects 指定的一个位置。
 
 - `AEGP_MENU_INSERT_SORTED`
 - `AEGP_MENU_INSERT_AT_BOTTOM`
 - `AEGP_MENU_INSERT_AT_TOP`
 
-For `AEGP_Menu_WINDOW`, the BOTTOM and TOP options haven’t been supported since CS4 and will return an error.
-We recommend `SORTED`.
+对于`AEGP_Menu_WINDOW`，从 CS4 开始就不支持 BOTTOM 和 TOP 选项，会返回一个错误。
+我们推荐`SORTED`。
 
 ```cpp
 AEGP_InsertMenuCommand(
@@ -215,7 +215,7 @@ AEGP_InsertMenuCommand(
 
 #### AEGP_RemoveMenuCommand
 
-Remove a menu command. If you were so motivated, you could remove ALL of the After Effects menu items.
+删除一个菜单命令。如果你有这么大的动力，你可以删除所有 After Effects 的菜单项。
 
 ```cpp
 AEGP_RemoveMenuCommand(
@@ -225,7 +225,7 @@ AEGP_RemoveMenuCommand(
 
 #### AEGP_SetCommandName
 
-Set menu name of a command.
+设置一个命令的菜单名称。
 
 ```cpp
 AEGP_SetCommandName(
@@ -236,7 +236,7 @@ AEGP_SetCommandName(
 
 #### AEGP_EnableCommand
 
-Enable a menu command.
+启用一个菜单命令。
 
 ```cpp
 AEGP_EnableCommand(
@@ -246,7 +246,7 @@ AEGP_EnableCommand(
 
 #### AEGP_DisableCommand
 
-Disable a menu command.
+禁用一个菜单命令。
 
 ```cpp
 AEGP_DisableCommand(
@@ -256,7 +256,7 @@ AEGP_DisableCommand(
 
 #### AEGP_CheckMarkMenuCommand
 
-After Effects will draw a check mark next to the menu command.
+After Effects 会在菜单命令的旁边画一个复选标记。
 
 ```cpp
 AEGP_CheckMarkMenuCommand(
@@ -267,8 +267,8 @@ AEGP_CheckMarkMenuCommand(
 
 #### AEGP_DoCommand
 
-Call the handler for a specified menu command. Every After Effects menu item has an associated command.
-Note that we make no guarantees that command IDs will be consistent from version to version.
+调用指定菜单命令的处理程序。每个 After Effects 菜单项都有一个相关的命令。
+注意，我们不保证各版本的命令 ID 是一致的。
 
 ```cpp
 AEGP_DoCommand(
@@ -276,16 +276,16 @@ AEGP_DoCommand(
 
 ```
 
-Having given the disclaimer above, here are a few command numbers that have been supplied to other developers, and may be of interest:
+在给出了上述免责声明后，这里有几个已经提供给其他开发者的命令号，可能会有兴趣。
 
-- 3061 - Open selection, ignoring any modifier keys.
-- 10314 - Play/Stop (valid in 13.5 and later)
-- 2285 - RAM Preview (valid prior to 13.5)
-- 2415 - Play (spacebar) (valid prior to 13.5)
-- 2997 - Crop composition to region of interest.
-- 2372 - Edit > Purge > Image Caches
+- 3061 - 打开选择，忽略任何修改键。
+- 10314 - 播放/停止（在 13.5 及以后版本中有效）
+- 2285 - RAM 预览(在 13.5 之前有效)
+- 2415 - 播放（空格键）（在 13.5 之前有效）。
+- 2997 - 裁剪合成到感兴趣的区域。
+- 2372 - 编辑 > 清除 > 图像缓存
 
-If your AEGP needs to call some other After Effects menu item, there’s a fairly easy way to find out most commands you want, using scripting:
+如果你的 AEGP 需要调用一些其他的 After Effects 菜单项，有一个相当简单的方法来找出你想要的大多数命令，使用脚本。
 
 ```cpp
 cmd = app.findMenuCommandId(text); // e.g. text = "Open Project…"
@@ -293,26 +293,26 @@ alert(cmd);
 
 ```
 
-With AE running, just open up Adobe ExtendScript Toolkit CC, copy the above script in,and in the app drop-down choose the version of After Effects you have running.Then hit the Play button to run the script in AE.
-Otherwise, contact [[mailto:zlam@adobe.com](mailto:zlam%40adobe.com)](<[[%5Bmailto:zlam@adobe.com%5D(mailto:zlam%40adobe.com)](%5Bmailto:zlam@adobe.com%5D(mailto:zlam%40adobe.com))](%5B%5Bmailto:zlam@adobe.com%5D(mailto:zlam%40adobe.com)%5D(%5Bmailto:zlam@adobe.com%5D(mailto:zlam%40adobe.com)))>) _API Engineering_ for the command number.
+在 AE 运行的情况下，只需打开 Adobe ExtendScript Toolkit CC，将上述脚本复制进去，并在应用程序下拉菜单中选择你正在运行的 After Effects 版本，然后点击播放按钮在 AE 中运行脚本。
+否则，请联系[[mailto:zlam@adobe.com](mailto:zlam%40adobe.com)](<[%5Bmailto:zlam@adobe.com%5D(mailto:zlam%40adobe.com)](%5Bmailto:zlam@adobe.com%5D(mailto:zlam%40adobe.com))](%5B%5Bmailto:zlam@adobe.com%5D(mailto:zlam%40adobe.com)%5D(%5Bmailto:zlam@adobe.com%5D(mail to: zlam%40adobe.com))>) *API 工程*为指令号。
 
 ## Registering with After Effects
 
-Register functions for After Effects’ use.
+注册函数供 After Effects 使用。
 
 ### AEGP_RegisterSuites5
 
 #### AEGP_RegisterCommandHook
 
-Register a hook (command handler) function with After Effects.
-If you are replacing a function which After Effects also handles, `AEGP_HookPriority` determines whether your plug-in gets it first.* `AEGP_HP_BeforeAE`
+在 After Effects 中注册一个钩子（命令处理）函数。
+如果你要替换一个 After Effects 也处理的函数，`AEGP_HookPriority`决定你的插件是否先得到它。\* `AEGP_HP_BeforeAE`。
 
 - `AEGP_HP_AfterAE`
 
-For each menu item you add, obtain your own `AEGP_Command` using `AEGP_GetUniqueCommand()`
-(from [AEGP_CommandSuite1](#aegps-aegp-suites-aegp-commandsuite)) prior registering a single `command_hook_func`.
-Determine which command was sent within this hook function, and act accordingly.
-Currently, `AEGP_HookPriority` is ignored.
+对于你添加的每个菜单项，使用`AEGP_GetUniqueCommand()`获得你自己的`AEGP_Command`。
+(来自[AEGP_CommandSuite1])，在注册单个`command_hook_func'之前获得自己的`AEGP_mand'。
+判断哪个命令是在这个钩子函数中发送的，并采取相应的行动。
+目前，`AEGP_HookPriority`被忽略了。
 
 ```cpp
 AEGP_RegisterCommandHook(
@@ -326,8 +326,8 @@ AEGP_RegisterCommandHook(
 
 #### AEGP_RegisterUpdateMenuHook
 
-Register your menu update function (which determines whether or not items are active),called every time any menu is to be drawn.
-This hook function handles updates for all menus.
+注册你的菜单更新函数（决定项目是否处于活动状态），在每次绘制任何菜单时调用。
+这个钩子函数处理所有菜单的更新。
 
 ```cpp
 AEGP_RegisterUpdateMenuHook(
@@ -339,7 +339,7 @@ AEGP_RegisterUpdateMenuHook(
 
 #### AEGP_RegisterDeathHook
 
-Register your termination function. Called when the application quits.
+注册你的终止函数。当应用程序退出时被调用。
 
 ```cpp
 AEGP_RegisterDeathHook(
@@ -351,19 +351,19 @@ AEGP_RegisterDeathHook(
 
 #### AEGP_RegisterVersionHook
 
-Currently not called.
+目前不被调用。
 
 #### AEGP_RegisterAboutStringHook
 
-Currently not called.
+目前未被调用。
 
 #### AEGP_RegisterAboutHook
 
-Currently not called.
+目前未被调用。
 
 #### AEGP_RegisterArtisan
 
-Register your Artisan. See [Artisans](../artisans/artisans.html#artisans-artisans) for more details.
+注册你的 Artisan。参见 [Artisans](../artisans/artisans.html#artisans-artisans) 以了解更多细节。
 
 ```cpp
 AEGP_RegisterArtisan(
@@ -379,7 +379,7 @@ AEGP_RegisterArtisan(
 
 #### AEGP_RegisterIO
 
-Register your AEIO plug-in. See [AEIOs](../aeios/aeios.html#aeios-aeios) for more details.
+注册你的 AEIO 插件。参见[AEIOs](../aeios/aeios.html#aeios-aeios)以了解更多细节。
 
 ```cpp
 AEGP_RegisterIO (
@@ -392,7 +392,7 @@ AEGP_RegisterIO (
 
 #### AEGP_RegisterIdleHook
 
-Register your IdleHook function. After Effects will call the function sporadically, while the user makes difficult artistic decisions (or while they’re getting more coffee).
+注册你的 IdleHook 函数。After Effects 会在用户做出困难的艺术决定时（或在他们得到更多的咖啡时），零星地调用这个函数。
 
 ```cpp
 AEGP_RegisterIdleHook(
@@ -404,7 +404,7 @@ AEGP_RegisterIdleHook(
 
 #### AEGP_RegisterInteractiveArtisan
 
-Registers your AEGP as an interactive artisan, for use in previewing and rendering all layers in a given composition.
+将你的 AEGP 注册为一个交互式工匠，用于预览和渲染特定合成中的所有层。
 
 ```cpp
 AEGP_RegisterInteractiveArtisan (
@@ -420,9 +420,9 @@ AEGP_RegisterInteractiveArtisan (
 
 #### AEGP_RegisterPresetLocalizationString
 
-Call this to register as many strings as you like for name-replacement when presets are loaded.
-Any time a Property name is found, or referred to in an expression,and it starts with an ASCII tab character (’t’), followed by one of the English names, it will be replaced with the localized name.
-(In English the tab character will simply be removed).
+调用它来注册尽可能多的字符串，以便在加载预置时进行名称替换。
+任何时候发现一个属性名称，或者在表达式中提到它，并且它以 ASCII tab 字符（'t'）开头，后面是一个英文名称，它将被替换成本地化的名称。
+(在英语中，制表符将被简单地删除）。
 
 ```cpp
 AEGP_RegisterPresetLocalizationString(
@@ -433,18 +433,18 @@ AEGP_RegisterPresetLocalizationString(
 
 ## Manage Projects
 
-These functions access and modify project data. Support for multiple projects is included to prepare for future expansion;
-After Effects currently adheres to the single project model.
+这些功能访问和修改项目数据。包括对多个项目的支持，以便为将来的扩展做准备。
+目前 After Effects 坚持采用单一项目模式。
 
-To save project-specific data in After Effects’ preferences (and thus, outside the projects themselves), use the [Persistent Data Suite](#aegps-aegp-suites-persistent-data-suite).
+要在 After Effects 的首选项中保存特定项目的数据（因此，在项目本身之外），请使用[持久性数据套件]（#aegps-aegp-suites-persistent-data-suite）。
 
-Use caution: the functions for opening and creating projects do not save changes to the project currently open when they are called!
+请注意：用于打开和创建项目的函数在被调用时不会保存对当前打开的项目的修改!
 
 ### AEGP_ProjSuite6
 
 #### AEGP_NumProjects
 
-Currently will never return more than 1. After Effects can have only one project open at a time.
+目前不会返回超过 1，After Effects 一次只能打开一个项目。
 
 ```cpp
 AEGP_GetNumProjects(
@@ -454,7 +454,7 @@ AEGP_GetNumProjects(
 
 #### AEGP_GetIndProject
 
-Retrieves a specific project by index.
+通过索引检索一个特定的项目。
 
 ```cpp
 AEGP_GetProjectProjectByIndex(
@@ -465,7 +465,7 @@ AEGP_GetProjectProjectByIndex(
 
 #### AEGP_GetProjectName
 
-Get the project name (up to `AEGP_MAX_PROJ_NAME_LEN + 1`) in length.
+获取项目名称（最多到`AEGP_MAX_PROJ_NAME_LEN + 1`）的长度。
 
 ```cpp
 AEGP_GetProjectName(
@@ -476,8 +476,8 @@ AEGP_GetProjectName(
 
 #### AEGP_GetProjectPath
 
-Get the path of the project (empty string the project hasn’t been saved yet).
-The path is a handle to a NULL-terminated A_UTF16Char string, and must be disposed with `AEGP_FreeMemHandle`.
+获取项目的路径（空字符串表示项目还没有被保存）。
+路径是一个以 NULL 结尾的 A_UTF16Char 字符串的句柄，必须用`AEGP_FreeMemHandle`处置。
 
 ```cpp
 AEGP_GetProjectPath(
@@ -488,7 +488,7 @@ AEGP_GetProjectPath(
 
 #### AEGP_GetProjectRootFolder
 
-Get the root of the project, which After Effects also treats as a folder.
+获取项目的根，After Effects 也将其视为一个文件夹。
 
 ```cpp
 AEGP_GetProjectRootFolder(
@@ -499,8 +499,8 @@ AEGP_GetProjectRootFolder(
 
 #### AEGP_SaveProjectToPath
 
-Saves the entire project to the specified full path.
-The file path is a NULL-terminated UTF-16 string with platform separators.
+将整个项目保存到指定的完整路径。
+文件路径是一个以 NULL 结尾的 UTF-16 字符串，带有平台分隔符。
 
 ```cpp
 AEGP_SaveProjectToPath(
@@ -511,7 +511,7 @@ AEGP_SaveProjectToPath(
 
 #### AEGP_GetProjectTimeDisplay
 
-Retrieves the current time display settings.
+检索当前的时间显示设置。
 
 ```cpp
 AEGP_GetProjectTimeDisplay(
@@ -554,7 +554,7 @@ typedef char AEGP_FramesDisplayMode;
 
 #### AEGP_SetProjectTimeDisplay
 
-Specified the settings to be used for displaying time.
+指定用于显示时间的设置。
 
 ```cpp
 AEGP_SetProjectTimeDisplay(
@@ -565,7 +565,7 @@ AEGP_SetProjectTimeDisplay(
 
 #### AEGP_ProjectIsDirty
 
-Returns TRUE if the project has been modified since it was opened.
+如果项目在打开后被修改过，返回 TRUE。
 
 ```cpp
 AEGP_ProjectIsDirty(
@@ -576,9 +576,9 @@ AEGP_ProjectIsDirty(
 
 #### AEGP_SaveProjectAs
 
-Saves the project to the specified path.
-The file path is a NULL-terminated UTF-16 string with platform separators.
-NOTE: This will overwrite an existing file.
+将项目保存到指定路径。
+文件路径是一个以 NULL 结尾的 UTF-16 字符串，带有平台分隔符。
+注意：这将覆盖一个现有的文件。
 
 ```cpp
 AEGP_SaveProjectAs(
@@ -589,7 +589,7 @@ AEGP_SaveProjectAs(
 
 #### AEGP_NewProject
 
-Creates a new project. NOTE: Will close the current project without saving it first!
+创建一个新的项目。注意：将关闭当前的项目，而不先保存它。
 
 ```cpp
 AEGP_NewProject(
@@ -599,9 +599,9 @@ AEGP_NewProject(
 
 #### AEGP_OpenProjectFromPath
 
-Opens a project from the supplied path, and returns its `AEGP_ProjectH`.
-The file path is a NULL-terminated UTF-16 string with platform separators.
-NOTE: Will close the current project without saving it first!
+从提供的路径打开一个项目，并返回其`AEGP_ProjectH`。
+文件路径是一个以 NULL 结尾的 UTF-16 字符串，带有平台分隔符。
+注意：将关闭当前项目而不先保存它
 
 ```cpp
 AEGP_OpenProjectFromPath(
@@ -612,7 +612,7 @@ AEGP_OpenProjectFromPath(
 
 #### AEGP_GetProjectBitDepth
 
-Retrieves the project bit depth.
+检索项目的比特深度。
 
 ```cpp
 AEGP_GetProjectBitDepth(
@@ -621,7 +621,7 @@ AEGP_GetProjectBitDepth(
 
 ```
 
-AEGP_ProjBitDepth will be one of the following:
+AEGP_ProjBitDepth 将是以下之一。
 
 - `AEGP_ProjBitDepth_8`
 - `AEGP_ProjBitDepth_16`
@@ -629,7 +629,7 @@ AEGP_ProjBitDepth will be one of the following:
 
 #### AEGP_SetProjectBitDepth
 
-Sets the project bit depth. Undoable.
+设置项目的比特深度。可撤销。
 
 ```cpp
 AEGP_SetProjectBitDepth(
@@ -642,12 +642,12 @@ AEGP_SetProjectBitDepth(
 
 :::tip
 
-Values in unused fields persist when After Effects is using a different display type.
+当 After Effects 使用不同的显示类型时，未使用的字段中的值会持续存在。
 :::
 
 #### AEGP_TimeDisplayType type
 
-One of the following:
+以下之一。
 
 - `AEGP_TimeDisplayType_TIMECODE`
 - `AEGP_TimeDisplayType_FRAMES`
@@ -655,37 +655,37 @@ One of the following:
 
 #### A_char timebaseC
 
-0 - 100. Only used for `AEGP_TimeDisplayType_TIMECODE`.
+0 - 100. 只用于`AEGP_TimeDisplayType_TIMECODE`。
 
 #### A_Boolean non_drop_30B
 
-When the timebase is 30 and the item’s framerate is 29.97, determines whether to display as non-drop frame.
+当时间基数为 30，项目的帧率为 29.97 时，决定是否显示为非降帧。
 
 #### A_char frames_per_footC
 
-Only used for `AEGP_TimeDisplayType_FEET_AND_FRAMES`.
+只用于`AEGP_TimeDisplayType_FEET_AND_FRAMES`。
 
 #### A_long starting_frameL
 
-Usually 0 or 1. Not used when type is usually 0 or 1, not used for `AEGP_TimeDisplayType_TIMECODE`.
+通常为 0 或 1。当类型通常为 0 或 1 时不使用，不用于`AEGP_TimeDisplayType_TIMECODE`。
 
 #### A_Boolean auto_timecode_baseB
 
-If `TRUE`, the project timecode display setting is set to auto.
+如果`TRUE`，项目的时间码显示设置为自动。
 
 ## Control Items Within Projects
 
-Accesses and modifies items within a project or composition.
+访问和修改项目或合成中的项目。
 
-Anything in the project bin is an `AEGP_Item`. Note that cameras have no source, and thus have no `AEGP_ItemH`.
+项目库中的任何东西都是`AEGP_Item`。注意，摄像机没有源，因此没有`AEGP_ItemH`。
 
-Unless more specificity is required for the function(s) you’re using, remain as abstract as possible; AEGP_Comps are passed into and returned from most functions as AEGP_Items.
+除非你使用的函数需要更多的细节，否则尽可能保持抽象；AEGP_Comps 作为 AEGP_Items 被传入大多数函数并从其返回。
 
 ### AEGP_ItemSuite9
 
 #### AEGP_GetFirstProjItem
 
-Retrieves the first item in a given project.
+检索给定项目中的第一个项目。
 
 ```cpp
 AEGP_GetFirstProjItem(
@@ -696,7 +696,7 @@ AEGP_GetFirstProjItem(
 
 #### AEGP_GetNextProjItem
 
-Retrieves the next project item; `*next_itemPH` will be `NULL` after the last item.
+检索下一个项目；`*next_itemPH`在最后一个项目之后将是`NULL`。
 
 ```cpp
 AEGP_GetNextProjItem(
@@ -708,8 +708,8 @@ AEGP_GetNextProjItem(
 
 #### AEGP_GetActiveItem
 
-If the Project window is active, the active item is the selected item (if only one item is selected).If a Composition, Timeline, or Footage window is active,returns the parent of the layer associated with the front-most tab in the window.
-Returns NULL if no item is active.
+如果项目窗口处于活动状态，活动项目是选定的项目（如果只有一个项目被选中）。如果合成、时间线或镜头窗口处于活动状态，返回与窗口中最前面的标签相关的层的父级。
+如果没有项目处于活动状态，则返回 NULL。
 
 ```cpp
 AEGP_GetActiveItem(
@@ -719,7 +719,7 @@ AEGP_GetActiveItem(
 
 #### AEGP_IsItemSelected
 
-Returns true if the Project window is active and the item is selected.
+如果项目窗口处于活动状态并且项目被选中，则返回 true。
 
 ```cpp
 AEGP_IsItemSelected(
@@ -730,8 +730,8 @@ AEGP_IsItemSelected(
 
 #### AEGP_SelectItem
 
-Toggles the selection state of the item, and (depending on `deselect_othersB`) can deselect other items.This call selects items in the Project panel.
-To make selections in the Composition panel, use `AEGP_SetSelection` from [AEGP_CompSuite11](#aegps-aegp-suites-aegp-compsuite).
+切换项目的选择状态，（取决于`deselect_othersB`）可以取消对其他项目的选择。这个调用可以选择项目面板中的项目。
+要在合成面板中进行选择，请使用[AEGP_CompSuite11]的`AEGP_SetSelection`。
 
 ```cpp
 AEGP_SelectItem(
@@ -743,7 +743,7 @@ AEGP_SelectItem(
 
 #### AEGP_GetItemType
 
-Gets type of an item. Note: solids don’t appear in the project, but can be the source to a layer.
+获取项目的类型。注意：实体不会出现在项目中，但可以成为一个图层的来源。
 
 ```cpp
 AEGP_GetItemType(
@@ -752,7 +752,7 @@ AEGP_GetItemType(
 
 ```
 
-Items are one of the following types:
+项目是以下类型中的一种。
 
 - `AEGP_ItemType_NONE`
 - `AEGP_ItemType_FOLDER`
@@ -762,7 +762,7 @@ Items are one of the following types:
 
 #### AEGP_GetTypeName
 
-Get name of type. (name length up to `AEGP_MAX_TYPE_NAME_LEN + 1`).
+获取类型的名称。(名称长度到`AEGP_MAX_TYPE_NAME_LEN + 1`)。
 
 ```cpp
 AEGP_GetTypeName(
@@ -773,8 +773,8 @@ AEGP_GetTypeName(
 
 #### AEGP_GetItemName
 
-Get item name. (name length has no limit).`unicode_namePH` points to `A_UTF16Char` (contains null terminated UTF16 string).
-It must be disposed with `AEGP_FreeMemHandle` .
+获取项目名称。(名称长度没有限制）。`unicode_namePH`指向`A_UTF16Char`（包含空尾的 UTF16 字符串）。
+它必须用`AEGP_FreeMemHandle`处置。
 
 ```cpp
 AEGP_GetItemName(
@@ -786,7 +786,7 @@ AEGP_GetItemName(
 
 #### AEGP_SetItemName
 
-Specifies the name of the AEGP_ItemH. (name length has no limit). Undoable.
+指定 AEGP_ItemH 的名称。(名称长度没有限制)。可撤销。
 
 ```cpp
 AEGP_SetItemName(
@@ -797,7 +797,7 @@ AEGP_SetItemName(
 
 #### AEGP_GetItemID
 
-Returns the item’s unique ID, which persists across saves and loads of the project.
+返回项目的唯一 ID，该 ID 在项目的保存和加载过程中持续存在。
 
 ```cpp
 AEGP_GetItemID(
@@ -808,7 +808,7 @@ AEGP_GetItemID(
 
 #### AEGP_GetItemFlags
 
-Get properties of an item.
+获取一个项目的属性。
 
 ```cpp
 AEGP_GetItemFlags(
@@ -817,7 +817,7 @@ AEGP_GetItemFlags(
 
 ```
 
-Flag values (may be OR’d together):
+标志值（可以是 OR'd together）。
 
 - `AEGP_ItemFlag_MISSING`
 - `AEGP_ItemFlag_HAS_PROXY`
@@ -828,11 +828,11 @@ Flag values (may be OR’d together):
 - `AEGP_ItemFlag_STILL`
 - `AEGP_ItemFlag_HAS_ACTIVE_AUDIO`
 
-Unlike the `HAS_AUDIO` flag, this bit flag will set only if the comp has at least one layer where audio is actually on.
+与 "HAS_AUDIO "标志不同，这个位标志只有在编译器至少有一个层实际有音频时才会设置。
 
 #### AEGP_SetItemUseProxy
 
-Toggle item’s proxy usage. Undoable.
+切换项目的代理使用。可撤销。
 
 ```cpp
 AEGP_SetItemUseProxy(
@@ -843,7 +843,7 @@ AEGP_SetItemUseProxy(
 
 #### AEGP_GetItemParentFolder
 
-Get folder containing item.
+获取包含项目的文件夹。
 
 ```cpp
 AEGP_GetItemParentFolder(
@@ -854,7 +854,7 @@ AEGP_GetItemParentFolder(
 
 #### AEGP_SetItemParentFolder
 
-Sets an item’s parent folder. Undoable.
+设置一个项目的父文件夹。可撤销。
 
 ```cpp
 AEGP_SetItemParentFolder(
@@ -865,7 +865,7 @@ AEGP_SetItemParentFolder(
 
 #### AEGP_GetItemDuration
 
-Get duration of item, in seconds.
+获取项目的持续时间，以秒为单位。
 
 ```cpp
 AEGP_GetItemDuration(
@@ -876,7 +876,7 @@ AEGP_GetItemDuration(
 
 #### AEGP_GetItemCurrentTime
 
-Get current time within item. Not updated while rendering.
+获取项目中的当前时间。渲染时不更新。
 
 ```cpp
 AEGP_GetItemCurrentTime(
@@ -887,7 +887,7 @@ AEGP_GetItemCurrentTime(
 
 #### AEGP_GetItemDimensions
 
-Get width and height of item.
+获取项目的宽度和高度。
 
 ```cpp
 AEGP_GetItemDimensions(
@@ -899,7 +899,7 @@ AEGP_GetItemDimensions(
 
 #### AEGP_GetItemPixelAspectRatio
 
-Get the width of a pixel, assuming its height is 1.0, as numerator over denominator.
+获取一个像素的宽度，假设其高度为 1.0，作为分子大于分母。
 
 ```cpp
 AEGP_GetItemPixelAspectRatio(
@@ -910,8 +910,8 @@ AEGP_GetItemPixelAspectRatio(
 
 #### AEGP_DeleteItem
 
-Removes item from all compositions. Undo-able.
-Do not use the `AEGP_ItemH` after calling this function.
+从所有合成中移除项目。可以撤销。
+调用此函数后不要使用`AEGP_ItemH`。
 
 ```cpp
 AEGP_DeleteItem(
@@ -921,8 +921,8 @@ AEGP_DeleteItem(
 
 #### AEGP_GetItemSolidColor
 
-Removed in `AEGP_ItemSuite4`. See `AEGP_GetSolidFootageColor` from [AEGP_FootageSuite5](#aegps-aegp-suites-aegp-footagesuite)
-Given a solid item, return its color.
+在`AEGP_ItemSuite4`中被删除。请参见[AEGP_FootageSuite5]中的`AEGP_GetSolidFootageColor`。
+给定一个实体项目，返回其颜色。
 
 ```cpp
 AEGP_GetItemSolidColor(
@@ -933,8 +933,8 @@ AEGP_GetItemSolidColor(
 
 #### AEGP_SetSolidColor
 
-Removed in `AEGP_ItemSuite4`. See `AEGP_SetSolidFootageColor` from [AEGP_FootageSuite5](#aegps-aegp-suites-aegp-footagesuite).
-Sets the color of an existing solid (error if `itemH` is not a solid).
+在`AEGP_ItemSuite4`中被删除。参见[AEGP_FootageSuite5]的`AEGP_SetSolidFootageColor`。
+设置现有实体的颜色（如果`itemH`不是实体，则错误）。
 
 ```cpp
 AEGP_SetSolidColor(
@@ -945,8 +945,8 @@ AEGP_SetSolidColor(
 
 #### AEGP_SetSolidDimensions
 
-Removed in `AEGP_ItemSuite4`. See `AEGP_SetSolidFootageDimensions` from [AEGP_FootageSuite5](#aegps-aegp-suites-aegp-footagesuite).
-Sets the dimensions of an existing solid (error if `itemH` is not a solid).
+在`AEGP_ItemSuite4`中删除。参见[AEGP_FootageSuite5]的`AEGP_SetSolidFootageDimensions`。
+设置现有实体的尺寸（如果 "itemH "不是一个实体，则错误）。
 
 ```cpp
 AEGP_SetSolidDimensions(
@@ -958,7 +958,7 @@ AEGP_SetSolidDimensions(
 
 #### AEGP_CreateNewFolder
 
-Creates a new folder in the project. The newly created folder is allocated and owned by After Effects.
+在项目中创建一个新的文件夹。新创建的文件夹由 After Effects 分配和拥有。
 Passing `NULL` for `parent_folderH0` creates the folder at the project’s root.
 
 ```cpp
@@ -1049,7 +1049,7 @@ AEGP_GetItemMRUView(
 
 :::tip
 
-`AEGP_RenderNewItemSoundData()` used to be here, but is now part of [AEGP_RenderSuite4](#aegps-aegp-suites-aegp-rendersuite).
+`AEGP_RenderNewItemSoundData()` used to be here, but is now part of [AEGP_RenderSuite4].
 
 :::
 
@@ -1391,7 +1391,7 @@ AEGP_GetCompWorkAreaDuration(
 
 #### AEGP_SetCompWorkAreaStartAndDuration
 
-Set the work area start and duration, in seconds. Undo-able. One call to this function is sufficient to set the layer’s in point and duration; it’s not necessary to call it twice, once for each timespace.
+设置工作区的开始和持续时间，以秒为单位。可以不做。对这个函数的一次调用就足以设置图层的起始点和持续时间；没有必要对它调用两次，对每个时间空间调用一次。
 
 ```cpp
 AEGP_SetCompWorkAreaStartAndDuration(
@@ -1403,8 +1403,8 @@ AEGP_SetCompWorkAreaStartAndDuration(
 
 #### AEGP_CreateSolidInComp
 
-Creates a new solid with a specified width, height, color, and duration in the composition. Undo-able. If you pass `NULL` for the duration, After Effects uses its preference for the duration of a new still.
-If you pass NULL, or an invalid time scale, duration is set to the length of the composition.
+在合成中创建一个具有指定宽度、高度、颜色和持续时间的新实体。可以撤销。如果你为持续时间传入`NULL'，After Effects 会使用它对新静止的持续时间的偏好。
+如果传递 NULL 或无效的时间尺度，持续时间将被设置为合成的长度。
 
 ```cpp
 AEGP_CreateSolidInComp(
@@ -1420,9 +1420,9 @@ AEGP_CreateSolidInComp(
 
 #### AEGP_CreateCameraInComp
 
-Creates and adds a camera to the specified composition. Once created, you can manipulate the camera’s parameter streams using the AEGP [Stream Suite](#aegps-aegp-suites-stream-suite).
-To specify a two-node camera, use `AEGP_SetLayerFlag`
-from [AEGP_LayerSuite8](#aegps-aegp-suites-aegp-layersuite) to set `AEGP_LayerFlag_LOOK_AT_POI`.
+创建一个摄像机并将其添加到指定的合成中。创建后，你可以使用 AEGP[流套件]来操作摄像机的参数流。
+要指定一个双节点摄像机，请使用`AEGP_SetLayerFlag`。
+来设置`AEGP_LayerFlag_LOOK_AT_POI`。
 
 ```cpp
 AEGP_CreateCameraInComp(
@@ -1435,7 +1435,7 @@ AEGP_CreateCameraInComp(
 
 #### AEGP_CreateLightInComp
 
-Creates and adds a light to the specified composition. Once created, you can manipulate the light’s parameter streams using the AEGP [Stream Suite](#aegps-aegp-suites-stream-suite).
+创建并添加一个灯光到指定的合成。创建后，你可以使用 AEGP[流套件]操作灯光的参数流。
 
 ```cpp
 AEGP_CreateLightInComp(
@@ -1448,8 +1448,8 @@ AEGP_CreateLightInComp(
 
 #### AEGP_CreateComp
 
-Creates a new composition for the project.
-If you don’t provide a parent folder, the composition will be at the root level of the project. Undo-able.
+为该项目创建一个新的合成。
+如果你没有提供一个父文件夹，该合成将在项目的根层。可撤销。
 
 ```cpp
 AEGP_CreateComp(
@@ -1466,8 +1466,8 @@ AEGP_CreateComp(
 
 #### AEGP_GetNewCollectionFromCompSelection
 
-Creates a new AEGP_Collection2H from the items selected in the given composition.
-The plug-in is responsible for disposing of the `AEGP_Collection2H`.
+从给定的合成中选择的项目创建一个新的 AEGP_Collection2H。
+插件负责处理`AEGP_Collection2H`。
 
 ```cpp
 AEGP_GetNewCollectionFromCompSelection(
@@ -1479,9 +1479,7 @@ AEGP_GetNewCollectionFromCompSelection(
 
 #### AEGP_SetSelection
 
-Sets the selection within the given composition to the given `AEGP_Collection2H`.
-Will return an error if members of the `AEGP_Collection2H` are not available.
-Don’t assume that a composition hasn’t changed between operations; always use a fresh `AEGP_Collection2H`.
+将在给定的合成中的选择设置为给定的`AEGP_Collection2H'。 如果 "AEGP_Collection2H "的成员不可用，将返回一个错误。 不要假设一个合成在操作之间没有变化；总是使用一个新的`AEGP_Collection2H`。
 
 ```cpp
 AEGP_SetSelection(
@@ -1492,7 +1490,7 @@ AEGP_SetSelection(
 
 #### AEGP_GetCompDisplayStartTime
 
-Gets the displayed start time of a composition.
+获取一个合成的显示的开始时间。
 
 ```cpp
 AEGP_GetCompDisplayStartTime(
@@ -1503,7 +1501,7 @@ AEGP_GetCompDisplayStartTime(
 
 #### AEGP_SetCompDisplayStartTime
 
-Not undo-able. Sets the displayed start time of a composition (has no effect on the duration of the composition).
+不能撤销。设置一个合成的开始时间（对合成的持续时间没有影响）。
 
 ```cpp
 AEGP_SetCompDisplayStartTime(
@@ -1514,7 +1512,7 @@ AEGP_SetCompDisplayStartTime(
 
 #### AEGP_SetCompDuration
 
-Undoable. Sets the duration of the given composition.
+可撤消。设置给定合成的持续时间。
 
 ```cpp
 AEGP_SetCompDuration(
@@ -1525,8 +1523,8 @@ AEGP_SetCompDuration(
 
 #### AEGP_CreateNullInComp
 
-Creates a “null object” in the composition (useful for translating projects from 3D applications into After Effects). If you pass `NULL` for the duration, After Effects uses its preference for the duration of a new still.
-If you pass 0, or an invalid time scale, duration is set to the length of the composition.
+在合成中创建一个 "空对象"（对于从 3D 应用程序翻译到 After Effects 的项目很有用）。如果你把 "NULL "作为持续时间，After Effects 会使用它对新静止的持续时间的偏好。
+如果传入 0，或者传入一个无效的时间尺度，持续时间就会被设置为合成的长度。
 
 ```cpp
 AEGP_CreateNullInComp(
@@ -1539,7 +1537,7 @@ AEGP_CreateNullInComp(
 
 #### AEGP_SetCompPixelAspectRatio
 
-Sets the pixel aspect ratio of a composition.
+设置合成物的像素长宽比。
 
 ```cpp
 AEGP_SetCompPixelAspectRatio(
@@ -1550,7 +1548,7 @@ AEGP_SetCompPixelAspectRatio(
 
 #### AEGP_CreateTextLayerInComp
 
-Updated in CS6. Creates a text layer in the composition, and returns its `AEGP_LayerH`.
+在 CS6 中更新。在合成中创建一个文本层，并返回其`AEGP_LayerH`。
 
 ```cpp
 AEGP_CreateTextLayerInComp(
@@ -1562,7 +1560,7 @@ AEGP_CreateTextLayerInComp(
 
 #### AEGP_CreateBoxTextLayerInComp
 
-Updated in CS6. Creates a new box text layer, and returns its `AEGP_LayerH`.
+在 CS6 中更新。创建一个新的文本图层，并返回其`AEGP_LayerH'。
 
 ```cpp
 AEGP_CreateBoxTextLayerInComp(
@@ -1575,7 +1573,7 @@ AEGP_CreateBoxTextLayerInComp(
 
 #### AEGP_SetCompDimensions
 
-Sets the dimensions of the composition. Undoable.
+设置合成的尺寸。可撤销。
 
 ```cpp
 AEGP_SetCompDimensions(
@@ -1587,7 +1585,7 @@ AEGP_SetCompDimensions(
 
 #### AEGP_DuplicateComp
 
-Duplicates the composition. Undoable.
+复制合成。可撤销。
 
 ```cpp
 AEGP_DuplicateComp(
@@ -1598,7 +1596,7 @@ AEGP_DuplicateComp(
 
 #### AEGP_GetCompFrameDuration
 
-Retrieves the duration of a frame in a composition.
+检索合成中某一帧的持续时间。
 
 ```cpp
 AEGP_GetCompFrameDuration(
@@ -1609,7 +1607,7 @@ AEGP_GetCompFrameDuration(
 
 #### AEGP_GetMostRecentlyUsedComp
 
-Returns the most-recently-used composition.
+返回最近一次使用的合成。
 
 ```cpp
 AEGP_GetMostRecentlyUsedComp(
@@ -1619,7 +1617,7 @@ AEGP_GetMostRecentlyUsedComp(
 
 #### AEGP_CreateVectorLayerInComp
 
-Creates and returns a handle to a new vector layer.
+创建并返回一个新矢量图层的句柄。
 
 ```cpp
 AEGP_CreateVectorLayerInComp(
@@ -1630,7 +1628,7 @@ AEGP_CreateVectorLayerInComp(
 
 #### AEGP_GetNewCompMarkerStream
 
-Returns an AEGP_StreamRefH to the composition’s marker stream. Must be disposed by caller.
+返回一个 AEGP_StreamRefH 到合成的标记流。必须由调用者处理。
 
 ```cpp
 AEGP_GetNewCompMarkerStream(
@@ -1642,7 +1640,7 @@ AEGP_GetNewCompMarkerStream(
 
 #### AEGP_GetCompDisplayDropFrame
 
-Passes back a boolean that indicates whether the specified comp uses drop-frame timecode or not.
+传回一个布尔值，表示指定的合成是否使用降帧时间码。
 
 ```cpp
 AEGP_GetCompDisplayDropFrame(
@@ -1653,7 +1651,7 @@ AEGP_GetCompDisplayDropFrame(
 
 #### AEGP_SetCompDisplayDropFrame
 
-Sets the dropness of the timecode in the specified composition.
+在指定的合成中设置时间码的落格性。
 
 ```cpp
 AEGP_SetCompDisplayDropFrame(
@@ -1664,7 +1662,7 @@ AEGP_SetCompDisplayDropFrame(
 
 #### AEGP_ReorderCompSelection
 
-Move the selection to a certain layer index. Use along with `AEGP_SetSelection().`
+将选区移动到某一图层索引。与`AEGP_SetSelection()`一起使用。
 
 ```cpp
 AEGP_SetCompDisplayDropFrame(
@@ -1675,19 +1673,19 @@ AEGP_SetCompDisplayDropFrame(
 
 ## Work with Footage
 
-Provides information about footage, or items in a project or composition. When getting and setting footage’s interpretation, it is possible to specify incompatible options.
+提供有关镜头或项目或合成的信息。当获取和设置片段的解释时，有可能指定不兼容的选项。
 
-If you encounter warnings and errors during development, be sure to make all related changes atomically, and reassess the logic of the operation you’re performing.
+如果你在开发过程中遇到警告和错误，一定要以原子方式进行所有相关的修改，并重新评估你所执行的操作的逻辑。
 
-For example, changing the pull-down interpretation of footage won’t work unless there’s a difference between it’s native and conformed frame rate.
+例如，改变镜头的下拉解释是行不通的，除非它的原始帧率和符合的帧率之间存在差异。
 
-Depending on what you’re trying to accomplish, it may make sense to abort all of your operations at that point, inform the user of the problem encountered.
+根据你要完成的任务，在这一点上中止你的所有操作可能是有意义的，通知用户遇到的问题。
 
 ### AEGP_FootageSuite5
 
 #### AEGP_GetMainFootageFromItem
 
-Returns an error if item isn’t a footage item. Used to convert an item handle to a footage handle.
+如果 item 不是一个 footage item，则返回错误。用于将一个项目句柄转换为一个镜头句柄。
 
 ```cpp
 AEGP_GetMainFootageFromItem(
@@ -1698,7 +1696,7 @@ AEGP_GetMainFootageFromItem(
 
 #### AEGP_GetProxyFootageFromItem
 
-Returns an error if item has no proxy. Returns the proxy footage handle. Note:  a composition can have a proxy.
+如果项目没有代理，则返回错误。返回代理镜头句柄。注意：一个合成可以有一个代理。
 
 ```cpp
 AEGP_GetProxyFootageFromItem(
@@ -1709,7 +1707,7 @@ AEGP_GetProxyFootageFromItem(
 
 #### AEGP_GetFootageNumFiles
 
-Returns the number of data (RGBA or audio) files, and the number of files per frame (may be greater than one if the footage has auxiliary channels).
+返回数据（RGBA 或音频）文件的数量，以及每一帧的文件数量（如果镜头有辅助通道，可能大于 1）。
 
 ```cpp
 AEGP_GetFootageNumFiles(
@@ -1721,10 +1719,10 @@ AEGP_GetFootageNumFiles(
 
 #### AEGP_GetFootagePath
 
-Get fully realized path to footage source file.
-Retrieves the footage path for a piece of footage (or for the specified frame of a footage sequence).
-`frame_numL` ranges from `0 to num_main_files`, as obtained using `AEGP_GetFootageNumFiles` from [AEGP_FootageSuite5](#aegps-aegp-suites-aegp-footagesuite).
-`AEGP_FOOTAGE_MAIN_FILE_INDEX` is the main file. The path is a handle to a NULL-terminated `A_UTF16Char` string, and must be disposed with AEGP_FreeMemHandle.
+获取完全实现的镜头源文件的路径。
+检索一段录像（或一个录像序列中的指定帧）的镜头路径。
+`frame_numL`的范围是`0到num_main_files`，使用[AEGP_FootageSuite5]中的`AEGP_GetFootageNumFiles`获得。
+`AEGP_FOOTAGE_MAIN_FILE_INDEX`是主文件。路径是一个以 NULL 结尾的`A_UTF16Char`字符串的句柄，必须用 AEGP_FreeMemHandle 处置。
 
 ```cpp
 AEGP_GetFootagePath(
@@ -1737,7 +1735,7 @@ AEGP_GetFootagePath(
 
 #### AEGP_GetFootageSignature
 
-Retrieves the footage signature of specified footage.
+检索指定镜头的签名。
 
 ```cpp
 AEGP_GetFootageSignature(
@@ -1746,7 +1744,7 @@ AEGP_GetFootageSignature(
 
 ```
 
-The signature will be one of the following:
+签名将是以下内容之一。
 
 - `AEGP_FootageSignature_NONE`
 - `AEGP_FootageSignature_MISSING`
@@ -1754,8 +1752,8 @@ The signature will be one of the following:
 
 #### AEGP_NewFootage
 
-Creates a new footage item. The file path is a NULL-terminated UTF-16 string with platform separators.
-Note that footage filenames with colons are not allowed, since colons are used as path separators in the HFS+ file system.
+创建一个新的镜头项目。文件路径是一个以 NULL 结尾的 UTF-16 字符串，带有平台分隔符。
+注意带冒号的镜头文件名是不允许的，因为冒号在 HFS+文件系统中被用作路径分隔符。
 
 ```cpp
 AEGP_NewFootage(
@@ -1769,7 +1767,7 @@ AEGP_NewFootage(
 
 ```
 
-Note the optional params. If `allow_interpretation_dialogB` is FALSE, After Effects will guess the alpha interpretation.
+注意可选的参数。如果`allow_interpretation_dialogB`为 FALSE，After Effects 将猜测 alpha 解释。
 
 ```cpp
 typedef struct {
@@ -1781,12 +1779,12 @@ typedef struct {
 
 ```
 
-`AEGP_LayerDrawStyle` can be:
+`AEGP_LayerDrawStyle`可以是。
 
 - `AEGP_LayerDrawStyle_LAYER_BOUNDS`
 - `AEGP_LayerDrawStyle_DOCUMENT_BOUNDS`
 
-`AEGP_InterpretationStyle` can be:
+`AEGP_InterpretationStyle`可以是。
 
 - `AEGP_InterpretationStyle_NO_DIALOG_GUESS` Will guess alpha interpretation even if file contains unknown alpha interpretation and user pref says to ask user.
 - `AEGP_InterpretationStyle_DIALOG_OK` Optionally can show a dialog.
@@ -1794,7 +1792,7 @@ typedef struct {
 
 #### AEGP_AddFootageToProject
 
-Adds a footage item to a project. Footage will be adopted by the project, and may be added only once. This is Undo-able; do not dispose of the returned added item if it’s undone.
+在项目中添加一个镜头项目。镜头将被项目采用，并且只能添加一次。这是可以撤消的；如果撤消了，不要处理返回的添加项目。
 
 ```cpp
 AEGP_AddFootageToProject(
@@ -1806,7 +1804,7 @@ AEGP_AddFootageToProject(
 
 #### AEGP_SetItemProxyFootage
 
-Sets footage as the proxy for an item. Will be adopted by the project. This is Undo-able; do not dispose of the returned added item if it’s undone.
+设置镜头作为项目的代理。将被项目采用。这是可以撤消的；如果撤消了，不要处理返回的新增项目。
 
 ```cpp
 AEGP_SetItemProxyFootage(
@@ -1817,7 +1815,7 @@ AEGP_SetItemProxyFootage(
 
 #### AEGP_ReplaceItemMainFootage
 
-Replaces footage for an item. The item will replace the main footage for this item. This is Undo-able; do not dispose of the returned added item if it’s undone.
+替换一个项目的镜头。该项目将取代该项目的主要尺码。这是可以撤销的；如果撤销了，不要处理返回的新增项目。
 
 ```cpp
 AEGP_ReplaceItemMainFootage(
@@ -1828,7 +1826,7 @@ AEGP_ReplaceItemMainFootage(
 
 #### AEGP_DisposeFootage
 
-Deletes a footage item. Do not dispose of footage you did not create, or that has been added to the project.
+删除一个镜头项目。不要处理你没有创建的镜头，或已经添加到项目中的镜头。
 
 ```cpp
 AEGP_DisposeFootage(
@@ -1838,7 +1836,7 @@ AEGP_DisposeFootage(
 
 #### AEGP_GetFootageInterpretation
 
-Populates an AEGP_FootageInterp describing the settings of the `AEGP_FootageH`. There is no way to create a valid `AEGP_FootageInterp` other than by using this function.
+弹出一个 AEGP_FootageInterp，描述`AEGP_FootageH`的设置。除了使用这个函数外，没有办法创建一个有效的`AEGP_FootageInterp`。
 
 ```cpp
 AEGP_GetFootageInterpretation(
@@ -1848,11 +1846,11 @@ AEGP_GetFootageInterpretation(
 
 ```
 
-If proxyB is `TRUE`, the proxy footage’s settings are retrieved.
+如果 proxyB 是`TRUE'，代理脚步的设置就会被检索出来。
 
 #### AEGP_SetFootageInterpretation
 
-Apply the settings in the `AEGP_FootageInterp` to the `AEGP_FootageH`. Undo-able.
+将`AEGP_FootageInterp`中的设置应用于`AEGP_FootageH`。可撤销。
 
 ```cpp
 AEGP_SetFootageInterpreta tion(
@@ -1862,11 +1860,11 @@ AEGP_SetFootageInterpreta tion(
 
 ```
 
-If `proxyB` is `TRUE`, the proxy footage’s settings are modified.
+如果`proxyB`为`TRUE`，代理镜头的设置将被修改。
 
 #### AEGP_GetFootageLayerKey
 
-Populates an `AEGP_FootageLayerKey` describing the footage.
+填充一个描述镜头的`AEGP_FootageLayerKey`。
 
 ```cpp
 AEGP_GetFootageLayerKey(
@@ -1877,8 +1875,8 @@ AEGP_GetFootageLayerKey(
 
 #### AEGP_NewPlaceholderFootage
 
-Deprecated. Adds a new placeholder footage item to the project. Using this function for missing footage will cause the user to search for each individual missing file, regardless of whether or not they’re all in the same directory.
-Undo-able.
+弃用。在项目中添加一个新的占位符镜头项目。对丢失的镜头使用这个函数将导致用户搜索每一个丢失的文件，不管它们是否都在同一个目录中。
+可撤销。
 
 ```cpp
 AEGP_NewPlaceholderFootage(
@@ -1893,9 +1891,9 @@ AEGP_NewPlaceholderFootage(
 
 #### AEGP_NewPlaceholderFootageWithPath
 
-This is the hip new way to add references to footage that can’t be found right this moment. The file path is a NULL-terminated UTF-16 string with platform separators.
-In CS6 and earlier, file_type was ignored and we previously recommendedsetting it to `AEIO_FileType_NONE`. Starting in CC, `AEIO_FileType_NONE` is now a warning condition. If you pass `AEIO_FileType_ANY`, then path MUST exist.
-If the path may not exist, pass `AEIO_FileType_DIR` for folder, or `AEIO_FileType_GENERIC` for a file.
+这是添加对此刻无法找到的片段的引用的时髦新方法。文件路径是一个以 NULL 结尾的 UTF-16 字符串，带有平台分隔符。
+在 CS6 和更早的版本中，file_type 被忽略了，我们之前建议将其设置为`AEIO_FileType_NONE`。从 CC 开始，`AEIO_FileType_NONE`现在是一个警告条件。如果你通过`AEIO_FileType_ANY`，那么路径必须存在。
+如果路径可能不存在，传递`AEIO_FileType_DIR`代表文件夹，或`AEIO_FileType_GENERIC`代表文件。
 
 ```cpp
 AEGP_NewPlaceholderFootageWithPath(
@@ -1912,8 +1910,8 @@ AEGP_NewPlaceholderFootageWithPath(
 
 #### AEGP_NewSolidFootage
 
-This is the way to add a solid. Until the footage is added to the project, the caller owns the `AEGP_FootageH`
-(and must dispose of it if, and only if, it isn’t added to the project).
+这就是添加实体的方法。在镜头被添加到项目中之前，调用者拥有`AEGP_FootageH`。
+(并且必须在它没有被添加到项目中的情况下处理掉它)。
 
 ```cpp
 AEGP_NewSolidFootage(
@@ -1927,7 +1925,7 @@ AEGP_NewSolidFootage(
 
 #### AEGP_GetSolidFootageColor
 
-Returns the color of a given solid. Returns an error if the `AEGP_ItemH` is not a solid.
+返回给定实体的颜色。如果`AEGP_ItemH`不是一个实体，则返回错误。
 
 ```cpp
 AEGP_GetSolidFootageColor(
@@ -1937,11 +1935,11 @@ AEGP_GetSolidFootageColor(
 
 ```
 
-If `proxyB` is `TRUE`, the proxy solid’s color is retrieved.
+如果`proxyB'是`TRUE'，将检索代理实体的颜色。
 
 #### AEGP_SetSolidFootageColor
 
-Sets the color of a solid. Undo-able.
+设置实体的颜色。可以撤销。
 
 ```cpp
 AEGP_SetSolidFootageColor(
@@ -1951,11 +1949,11 @@ AEGP_SetSolidFootageColor(
 
 ```
 
-If `proxyB` is `TRUE`, the proxy solid’s color is set.
+如果`proxyB`是`TRUE`，代理实体的颜色被设置。
 
 #### AEGP_SetSolidFootageDimensions
 
-Sets the dimensions of a solid. Undo-able.
+设置实体的尺寸。可以撤消。
 
 ```cpp
 AEGP_SetSolidFootageDimensions(
@@ -1966,11 +1964,11 @@ AEGP_SetSolidFootageDimensions(
 
 ```
 
-If `proxyB` is `TRUE`, the proxy solid’s dimensions are modified. Returns an error if the item isn’t a solid.
+如果`proxyB`是`TRUE'，代理实体的尺寸会被修改。如果该项目不是实体，则返回错误。
 
 #### AEGP_GetFootageSoundDataFormat
 
-Retrieves information about the audio data in the footage item (by populating the `AEGP_SoundDataFormat` you passed in).
+检索片段中的音频数据信息（通过填充你传入的`AEGP_SoundDataFormat`）。
 
 ```cpp
 AEGP_GetFootageSoundDataFormat(
@@ -1981,7 +1979,7 @@ AEGP_GetFootageSoundDataFormat(
 
 #### AEGP_GetFootageSequenceImportOptions
 
-Populates and returns a `AEGP_FileSequenceImportOptions` describing the given `AEGP_FootageH`.
+填充并返回一个`AEGP_FileSequenceImportOptions`，描述给定的`AEGP_FootageH`。
 
 ```cpp
 AEGP_GetFootageSequenceImportOptions(
@@ -1994,7 +1992,7 @@ AEGP_GetFootageSequenceImportOptions(
 
 #### AEGP_InterlaceLabel il
 
-The interlace settings for the footage item.
+镜头项目的隔行扫描设置。
 
 ```cpp
 A_u_long signature; // 'FIEL'
@@ -2005,15 +2003,15 @@ A_u_long reserved;
 
 ```
 
-FIEL_Type is one of the following:
+FIEL_Type 是以下之一。
 
 - `FIEL_Type_FRAME_RENDERED`
 - `FIEL_Type_INTERLACED`
 - `FIEL_Type_HALF_HEIGHT`
 - `FIEL_Type_FIELD_DOUBLED`
 
-`FIEL_Type_FIELD_DOUBLED` means 60 full-sized field doubled frames per second.
-`FIEL_Order` is either `FIEL_Order_UPPER_FIRST` or `FIEL_Order_LOWER_FIRST`.
+`FIEL_Type_FIELD_DOUBLED`表示每秒 60 个全尺寸场的双倍帧。
+`FIEL_Order`是`FIEL_Order_UPPER_FIRST`或`FIEL_Order_LOWER_FIRST`。
 
 #### AEGP_AlphaLabel al
 
@@ -2025,17 +2023,17 @@ A_u_char blueCu;
 
 ```
 
-`AEGP_AlphaFlags` is one or more of the following, OR’d together:
+`AEGP_AlphaFlags'是以下的一个或多个，或一起。
 
 - `AEGP_AlphaPremul`
 - `AEGP_AlphaInverted`
 - `AEGP_AlphaIgnore`
 
-If `AEGP_AlphaPremul` is not set, straight alpha is assumed. `AEGP_AlphaInverted` indicates that higher values are transparent, instead of lower.
+如果`AEGP_AlphaPremul'没有被设置，则假定为直线α。`AEGP_AlphaInverted`表示高值透明，而不是低值。
 
 #### AEGP_PulldownPhase pd
 
-Indicates the phase for use in 3:2 pulldown. One of the following:
+表示在 3:2 pulldown 中使用的相位。以下之一。
 
 - `AEGP_PulldownPhase_NO_PULLDOWN`,
 - `AEGP_PulldownPhase_WSSWW`,
@@ -2051,7 +2049,7 @@ Indicates the phase for use in 3:2 pulldown. One of the following:
 
 #### AEGP_LoopBehavior loop
 
-Indicates the number of times the footage should loop.
+表示镜头应该循环的次数。
 
 ```cpp
 A_long loops;
@@ -2061,19 +2059,19 @@ A_long reserved;
 
 #### A_Ratio pix_aspect_ratio
 
-Expresses the pixel aspect ratio of the footage (x over y).
+表示镜头的像素长宽比（x 大于 y）。
 
 #### A_FpLong native_fpsF
 
-The original framerate (in frames per second) of the footage item.
+镜头项目的原始帧率（以每秒帧数计）。
 
 #### A_FpLong conform_fpsF
 
-The framerate being used for the footage item.
+镜头项目所使用的帧速率。
 
 #### A_long depthL
 
-The pixel depth of the footage. One of the following:
+镜头的像素深度。以下内容之一。
 
 - `AEGP_Footage_Depth_1`
 - `AEGP_Footage_Depth_2`
@@ -2092,19 +2090,19 @@ The pixel depth of the footage. One of the following:
 
 #### A_Boolean motion_dB
 
-Indicates whether motion de-interlacing is being applied to the footage item.
+表示是否正在对该片段项目应用运动去隔行扫描。
 
 ## Manage Layers
 
-`AEGP_LayerSuite` provides information about layers within a composition, and the relationship(s) between the source and layer times.
+AEGP_LayerSuite "提供合成中的层的信息，以及源和层时间之间的关系。
 
-As most After Effects usage boils down to layer manipulation, this is among the largest function suites in our API.
+由于大多数 After Effects 的使用都归结为层的操作，这是我们 API 中最大的功能套件之一。
 
 ### AEGP_LayerSuite8
 
 #### AEGP_GetCompNumLayers
 
-Obtains the number of layers in a composition.
+获取一个合成中的层数。
 
 ```cpp
 AEGP_GetCompNumLayers(
@@ -2115,7 +2113,7 @@ AEGP_GetCompNumLayers(
 
 #### AEGP_GetCompLayerByIndex
 
-Get a `AEGP_LayerH` from a composition. Zero is the foremost layer.
+从一个合成物中获得一个`AEGP_LayerH`。零是最前面的层。
 
 ```cpp
 AEGP_GetCompLayerByIndex(
@@ -2127,7 +2125,7 @@ AEGP_GetCompLayerByIndex(
 
 #### AEGP_GetActiveLayer
 
-Get the active layer. If a Layer or effect controls palette is active, the active layer is that associated with the front-most tab in the window. If a composition or timeline window is active, the active layer is the selected layer (if only one is selected; otherwise `NULL` is returned).
+获取活动层。如果图层或效果控制调色板是活动的，活动图层是与窗口中最前面的标签相关的。如果一个合成或时间线窗口处于活动状态，活动层是选定的层（如果只有一个被选定；否则返回`NULL'）。
 
 ```cpp
 AEGP_GetActiveLayer(
@@ -2137,7 +2135,7 @@ AEGP_GetActiveLayer(
 
 #### AEGP_GetLayerIndex
 
-Get the index of the layer (0 is the topmost layer in the composition).
+获取图层的索引（0 是合成中最上面的图层）。
 
 ```cpp
 AEGP_GetLayerIndex(
@@ -2148,7 +2146,7 @@ AEGP_GetLayerIndex(
 
 #### AEGP_GetLayerSourceItem
 
-Get the AEGP_ItemH of the layer’s source item.
+获取该层的源项的 AEGP_ItemH。
 
 ```cpp
 AEGP_GetLayerSourceItem(
@@ -2159,7 +2157,7 @@ AEGP_GetLayerSourceItem(
 
 #### AEGP_GetLayerSourceItemID
 
-Retrieves the ID of the given `AEGP_LayerH`. This is useful when hunting for a specific layer’s ID in an `AEGP_StreamVal`.
+检索给定的`AEGP_LayerH`的 ID。当在`AEGP_StreamVal`中寻找特定层的 ID 时，这很有用。
 
 ```cpp
 AEGP_GetLayerSourceItemID(
@@ -2170,7 +2168,7 @@ AEGP_GetLayerSourceItemID(
 
 #### AEGP_GetLayerParentComp
 
-Get the AEGP_CompH of the composition containing the layer.
+获取包含该层的合成的 AEGP_CompH。
 
 ```cpp
 AEGP_GetLayerParentComp(
@@ -2181,7 +2179,7 @@ AEGP_GetLayerParentComp(
 
 #### AEGP_GetLayerName
 
-Get the name of a layer. Both `utf_layer_namePH0` and `utf_source_namePH0` point to null terminated UTF-16 strings. They must be disposed with `AEGP_FreeMemHandle`.
+获取一个图层的名称。`utf_layer_namePH0`和`utf_source_namePH0`都指向空尾的 UTF-16 字符串。它们必须用`AEGP_FreeMemHandle`来处理。
 
 ```cpp
 AEGP_GetLayerName(
@@ -2194,7 +2192,7 @@ AEGP_GetLayerName(
 
 #### AEGP_GetLayerQuality
 
-Get the quality of a layer.
+获取一个图层的质量。
 
 ```cpp
 AEGP_GetLayerQuality(
@@ -2203,7 +2201,7 @@ AEGP_GetLayerQuality(
 
 ```
 
-Layer quality is one of the following flags:
+图层质量是以下标志之一。
 
 - `AEGP_LayerQual_NONE`
 - `AEGP_LayerQual_WIREFRAME`
@@ -2212,7 +2210,7 @@ Layer quality is one of the following flags:
 
 #### AEGP_SetLayerQuality
 
-Sets the quality of a layer (see flag values above). Undoable.
+设置一个图层的质量（见上面的标志值）。可撤销。
 
 ```cpp
 AEGP_SetLayerQuality(
@@ -2223,7 +2221,7 @@ AEGP_SetLayerQuality(
 
 #### AEGP_GetLayerFlags
 
-Get flags for a layer.
+获取一个图层的标志。
 
 ```cpp
 AEGP_GetLayerFlags(
@@ -2259,7 +2257,7 @@ AEGP_GetLayerFlags(
 
 #### AEGP_SetLayerFlag
 
-Sets one layer flag at a time. Undoable.
+一次设置一个图层标志。可撤消。
 
 ```cpp
 AEGP_SetLayerFlag(
@@ -2271,7 +2269,7 @@ AEGP_SetLayerFlag(
 
 #### AEGP_IsLayerVideoReallyOn
 
-Determines whether the layer’s video is visible. This is necessary to account for ‘solo’ status of other layers in the composition; non-solo’d layers are still on.
+确定该层的视频是否可见。这是必要的，以便考虑到合成中其他层的 "独奏 "状态；非独奏的层仍然是打开的。
 
 ```cpp
 AEGP_IsLayerVideoReallyOn(
@@ -2282,7 +2280,7 @@ AEGP_IsLayerVideoReallyOn(
 
 #### AEGP_IsLayerAudioReallyOn
 
-Accounts for solo status of other layers in the composition.
+解释合成中其他层的独奏状态。
 
 ```cpp
 AEGP_IsLayerAudioReallyOn(
@@ -2293,8 +2291,8 @@ AEGP_IsLayerAudioReallyOn(
 
 #### AEGP_GetLayerCurrentTime
 
-Get current time, in layer or composition timespace. This value is not updated during rendering.
-NOTE: If a layer starts at other than time 0 or is time-stretched other than 100%, layer time and composition time are distinct.
+获取当前时间，在图层或合成的时间空间。这个值在渲染过程中不被更新。
+注意：如果一个图层在时间 0 以外的地方开始，或在时间上被拉伸到 100%以外，图层时间和合成时间是不同的。
 
 ```cpp
 AEGP_GetLayerCurrentTime(
@@ -2306,8 +2304,8 @@ AEGP_GetLayerCurrentTime(
 
 #### AEGP_GetLayerInPoint
 
-Get time of first visible frame in composition or layer time.
-In layer time, the `in_pointPT` is always 0.
+在合成时间或图层时间中获取第一个可见帧的时间。
+在图层时间中，"in_pointPT "始终为 0。
 
 ```cpp
 AEGP_GetLayerInPoint(
@@ -2319,7 +2317,7 @@ AEGP_GetLayerInPoint(
 
 #### AEGP_GetLayerDuration
 
-Get duration of layer, in composition or layer time, in seconds.
+在合成或图层时间中，获取图层的持续时间，单位是秒。
 
 ```cpp
 AEGP_GetLayerDuration(
@@ -2331,7 +2329,7 @@ AEGP_GetLayerDuration(
 
 #### AEGP_SetLayerInPointAndDuration
 
-Set duration and in point of layer in composition or layer time. Undo-able.
+设置合成或图层时间中图层的持续时间和在点。可撤销。
 
 ```cpp
 AEGP_SetLayerInPointAndDuration(
@@ -2344,7 +2342,7 @@ AEGP_SetLayerInPointAndDuration(
 
 #### AEGP_GetLayerOffset
 
-Get the offset from the start of the composition to layer time 0, in composition time.
+获取从合成开始到图层时间 0 的偏移，以合成时间为单位。
 
 ```cpp
 AEGP_GetLayerOffset(
@@ -2355,7 +2353,7 @@ AEGP_GetLayerOffset(
 
 #### AEGP_SetLayerOffset
 
-Set the offset from the start of the composition to the first frame of the layer, in composition time. Undoable.
+设置从合成开始到图层第一帧的偏移，以合成时间为单位。可撤销。
 
 ```cpp
 AEGP_SetLayerOffset(
@@ -2366,7 +2364,7 @@ AEGP_SetLayerOffset(
 
 #### AEGP_GetLayerStretch
 
-Get stretch factor of a layer.
+获取图层的拉伸系数。
 
 ```cpp
 AEGP_GetLayerStretch(
@@ -2377,7 +2375,7 @@ AEGP_GetLayerStretch(
 
 #### AEGP_SetLayerStretch
 
-Set stretch factor of a layer.
+设置图层的拉伸系数。
 
 ```cpp
 AEGP_SetLayerStretch(
@@ -2388,7 +2386,7 @@ AEGP_SetLayerStretch(
 
 #### AEGP_GetLayerTransferMode
 
-Get transfer mode of a layer.
+获取图层的传输模式。
 
 ```cpp
 AEGP_GetLayerTransferMode(
@@ -2399,7 +2397,7 @@ AEGP_GetLayerTransferMode(
 
 #### AEGP_SetLayerTransferMode
 
-Set transfer mode of a layer. Undoable.
+设置图层的传输模式。可撤消。
 
 ```cpp
 AEGPSetLayerTransferMode(
@@ -2408,12 +2406,12 @@ AEGPSetLayerTransferMode(
 
 ```
 
-As of 6.5, when you make a layer a track matte, the layer in front of it will be disabled,
-as when you do this via the interface.
+从 6.5 版本开始，当你把一个图层变成轨道哑光时，它前面的图层将被禁用。
+就像你通过界面做这件事一样。
 
 #### AEGP_IsAddLayerValid
 
-Tests whether it’s currently valid to add a given item to a composition. A composition cannot be added to itself, or to any compositions which it contains; other conditions can preclude successful adding too. Adding a layer without first using this function will produce undefined results.
+测试当前是否可以将一个给定的项目添加到一个合成中。一个合成不能被添加到它自己或它所包含的任何合成中；其他条件也可以排除成功添加。不先使用这个函数而添加一个层，将产生未定义的结果。
 
 ```cpp
 AEGP_IsAddLayerValid(
@@ -2425,7 +2423,7 @@ AEGP_IsAddLayerValid(
 
 #### AEGP_AddLayer
 
-Add an item to the composition, above all other layers. Undo-able. Use `AEGP_IsAddLayerValid()` first, to confirm that it’s possible.
+添加一个项目到合成中，高于所有其他层。可以撤销。首先使用`AEGP_IsAddLayerValid()`，以确认它是可行的。
 
 ```cpp
 AEGP_AddLayer(
@@ -2437,7 +2435,7 @@ AEGP_AddLayer(
 
 #### AEGP_ReorderLayer
 
-Change the order of layers. Undoable.
+改变层的顺序。可撤销。
 
 ```cpp
 AEGP_ReorderLayer(
@@ -2446,11 +2444,11 @@ AEGP_ReorderLayer(
 
 ```
 
-To add a layer to the end of the composition, to use `layer_indexL = AEGP_REORDER_LAYER_TO_END`
+要将一个图层添加到合成的最后，要使用`layer_indexL = AEGP_REORDER_LAYER_TO_END`。
 
 #### AEGP_GetLayerMaskedBounds
 
-Given a layer’s handle and a time, returns the bounds of area visible with masks applied.
+给定一个图层的句柄和时间，返回应用了遮罩的可见区域的边界。
 
 ```cpp
 AEGP_GetLayerMaskedBounds(
@@ -2462,7 +2460,7 @@ AEGP_GetLayerMaskedBounds(
 
 #### AEGP_GetLayerObjectType
 
-Returns a layer’s object type.
+返回一个图层的对象类型。
 
 ```cpp
 AEGP_GetLayerObjectType(
@@ -2478,7 +2476,7 @@ AEGP_GetLayerObjectType(
 
 #### AEGP_IsLayer3D
 
-Is the footage item a 3D layer. All AV layers are either 2D or 3D.
+录像项目是否为 3D 层。所有 AV 层都是 2D 或 3D。
 
 ```cpp
 AEGP_IsLayer3D(
@@ -2489,7 +2487,7 @@ AEGP_IsLayer3D(
 
 #### AEGP_IsLayer2D
 
-Is the footage item a 2D layer. All AV layers are either 2D or 3D.
+录像项目是否为 2D 层。所有的 AV 层都是 2D 或 3D 的。
 
 ```cpp
 AEGP_IsLayer2D(
@@ -2500,7 +2498,7 @@ AEGP_IsLayer2D(
 
 #### AEGP_IsVideoActive
 
-Given composition time and a layer, see if the layer will render. Time mode is either `AEGP_LTimeMode_LayerTime` or `AEGP_LTimeMode_CompTime`.
+给出组成时间和一个图层，看该图层是否会渲染。时间模式是`AEGP_LTimeMode_LayerTime`或`AEGP_LTimeMode_CompTime`。
 
 ```cpp
 AEGP_IsVideoActive(
@@ -2513,7 +2511,7 @@ AEGP_IsVideoActive(
 
 #### AEGP_IsLayerUsedAsTrackMatte
 
-Is the layer used as a track matte?
+该层是否作为轨道消光使用？
 
 ```cpp
 AEGP_IsLayerUsedAsTrackMatte(
@@ -2525,7 +2523,7 @@ AEGP_IsLayerUsedAsTrackMatte(
 
 #### AEGP_DoesLayerHaveTrackMatte
 
-Does this layer have a Track Matte?
+这个图层是否有轨迹哑光？
 
 ```cpp
 AEGP_DoesLayerHaveTrackMatte(
@@ -2536,7 +2534,7 @@ AEGP_DoesLayerHaveTrackMatte(
 
 #### AEGP_ConvertCompToLayerTime
 
-Given a time in composition space, returns the time relative to the layer source footage.
+给出合成空间中的时间，返回相对于图层源片段的时间。
 
 ```cpp
 AEGP_ConvertCompToLayerTime(
@@ -2548,7 +2546,7 @@ AEGP_ConvertCompToLayerTime(
 
 #### AEGP_ConvertLayerToCompTime
 
-Given a time in layer space, find the corresponding time in composition space.
+给出一个图层空间的时间，找到组成空间的相应时间。
 
 ```cpp
 AEGP_ConvertLayerToCompTime(
@@ -2560,7 +2558,7 @@ AEGP_ConvertLayerToCompTime(
 
 #### AEGP_GetLayerDancingRandValue
 
-Used by the dancing dissolve transfer function.
+由舞蹈溶解转移函数使用。
 
 ```cpp
 AEGP_GetLayerDancingRandValue(
@@ -2572,7 +2570,7 @@ AEGP_GetLayerDancingRandValue(
 
 #### AEGP_GetLayerID
 
-Supplies the layer’s unique ID. This ID never changes during the lifetime of the project.
+提供该层的唯一 ID。这个 ID 在项目的生命周期内不会改变。
 
 ```cpp
 AEGP_GetLayerID(
@@ -2583,7 +2581,7 @@ AEGP_GetLayerID(
 
 #### AEGP_GetLayerToWorldXform
 
-Given a layer handle and time, returns the layer-to-world transformation matrix.
+给定一个图层句柄和时间，返回图层到世界的转换矩阵。
 
 ```cpp
 AEGP_GetLayerToWorldXform(
@@ -2595,8 +2593,8 @@ AEGP_GetLayerToWorldXform(
 
 #### AEGP_GetLayerToWorldXformFromView
 
-Given a layer handle, the current (composition) time, and the requested view time,
-returns the translation between the user’s view and the layer, corrected for the composition’s current aspect ratio.
+给出一个图层句柄、当前（组成）时间和请求的视图时间。
+返回用户的视图和图层之间的转换，并根据合成的当前长宽比进行校正。
 
 ```cpp
 AEGP_GetLayerToWorldXformFromView(
@@ -2609,7 +2607,7 @@ AEGP_GetLayerToWorldXformFromView(
 
 #### AEGP_SetLayerName
 
-Sets the name of a layer. Undo-able. new_nameZ points to a null terminated UTF-16 string.
+设置一个图层的名称。new_nameZ 指向一个空尾的 UTF-16 字符串。
 
 ```cpp
 AEGP_SetLayerName(
@@ -2620,7 +2618,7 @@ AEGP_SetLayerName(
 
 #### AEGP_GetLayerParent
 
-Retrieves the handle to a layer’s parent (none if not parented).
+检索图层的父层句柄（如果没有父层，则没有）。
 
 ```cpp
 AEGP_GetLayerParent(
@@ -2631,7 +2629,7 @@ AEGP_GetLayerParent(
 
 #### AEGP_SetLayerParent
 
-Sets a layer’s parent layer.
+设置一个图层的父图层。
 
 ```cpp
 AEGP_SetLayerParent(
@@ -2642,7 +2640,7 @@ AEGP_SetLayerParent(
 
 #### AEGP_DeleteLayer
 
-Deletes a layer. Can you believe it took us three suite versions to add a delete function? Neither can we.
+删除一个图层。你能相信我们花了三个套件的时间来添加一个删除函数吗？我们也不能。
 
 ```cpp
 AEGP_DeleteLayer(
@@ -2652,7 +2650,7 @@ AEGP_DeleteLayer(
 
 #### AEGP_DuplicateLayer
 
-Duplicates the layer. Undoable.
+复制图层。可以撤销。
 
 ```cpp
 AEGP_DuplicateLayer(
@@ -2663,7 +2661,7 @@ AEGP_DuplicateLayer(
 
 #### AEGP_GetLayerFromLayerID
 
-Retrieves the `AEGP_LayerH` associated with a given `AEGP_LayerIDVal` (which is what you get when accessing an effect’s layer parameter stream).
+检索与给定的`AEGP_LayerIDVal`相关的`AEGP_LayerH`（这是你在访问效果的层参数流时得到的）。
 
 ```cpp
 AEGP_GetLayerFromLayerID(
@@ -2675,7 +2673,7 @@ AEGP_GetLayerFromLayerID(
 
 #### AEGP_GetLayerLabel
 
-Gets a layer’s `AEGP_LabelID`.
+获取一个图层的`AEGP_LabelID'。
 
 ```cpp
 AEGP_GetLayerLabel(
@@ -2686,7 +2684,7 @@ AEGP_GetLayerLabel(
 
 #### AEGP_SetLayerLabel
 
-Sets a layer’s `AEGP_LabelID`. Undoable.
+设置一个图层的`AEGP_LabelID'。可撤销。
 
 ```cpp
 AEGP_SetLayerLabel(
@@ -2697,7 +2695,7 @@ AEGP_SetLayerLabel(
 
 #### AEGP_GetLayerSamplingQuality
 
-New in CC. Get the sampling quality of a layer.
+CC 中的新功能。获取一个图层的采样质量。
 
 ```cpp
 AEGP_GetLayerSamplingQuality(
@@ -2706,18 +2704,18 @@ AEGP_GetLayerSamplingQuality(
 
 ```
 
-Layer sampling quality is one of the following flags:
+图层采样质量是以下标志之一。
 
 - `AEGP_LayerSamplingQual_BILINEAR`
 - `AEGP_LayerSamplingQual_BICUBIC`
 
 #### AEGP_SetLayerSamplingQuality
 
-New in CC. Sets the sampling quality of a layer (see flag values above).
-Option is explicitly set on the layer independent of layer quality.
-If you want to force it on you must also set the layer quality to `AEGP_LayerQual_BEST` with `AEGP_SetLayerQuality`.
-Otherwise it will only be using the specified layer sampling quality whenever the layer quality is set to `AEGP_LayerQual_BEST`.
-Undoable.
+在 CC 中新出现。设置一个图层的采样质量（见上面的标志值）。
+该选项在图层上被明确设置，与图层质量无关。
+如果你想强制开启它，你必须用`AEGP_SetLayerQuality`将图层质量设置为`AEGP_LayerQual_BEST`。
+否则，只要图层质量被设置为`AEGP_LayerQual_BEST'，它就只会使用指定的图层采样质量。
+可撤销。
 
 ```cpp
 AEGP_SetLayerSamplingQuality(
@@ -2728,11 +2726,11 @@ AEGP_SetLayerSamplingQuality(
 
 ## Layer Creation Notes
 
-All layers created using AEGP calls will start at composition time 0, and have the duration of the composition.
+所有使用 AEGP 调用创建的图层将从合成时间 0 开始，并具有合成的持续时间。
 
-Use `AEGP_SetLayerOffset()` and `AEGP_SetLayerInPointAndDuration()` from [AEGP_LayerSuite8](#aegps-aegp-suites-aegp-layersuite) to properly set the layer’s time information.
+使用[AEGP_LayerSuite8]的`AEGP_SetLayerOffset()`和`AEGP_SetLayerInPointAndDuration()`来正确设置层的时间信息。
 
-When the layer stretch factor (obtained using `AEGP_GetLayerStretch` in [AEGP_LayerSuite8](#aegps-aegp-suites-aegp-layersuite), naturally) is not 100%, the following computation will be needed to yield the correct layer offset:
+当图层拉伸系数（使用[AEGP_LayerSuite8]中的`AEGP_GetLayerStretch`获得，自然）不是 100%时，将需要进行以下计算以产生正确的图层偏移。
 
 ```cpp
 offset = compIn - stretch * layerIn;
@@ -2741,19 +2739,19 @@ offset = compIn - stretch * layerIn;
 
 ## Communication With A Layer’s Effects
 
-Access the effects applied to a layer. This suite provides access to all parameter data streams.
+访问应用于一个层的效果。这个套件提供对所有参数数据流的访问。
 
-Use the [Stream Suite](#aegps-aegp-suites-stream-suite) to work with those streams.
+使用[流套件]来处理这些流。
 
-An `AEGP_Effect_RefH` is a reference to an applied effect. An `AEGP_InstalledEffectKey` is a reference to an installed effect, which may or may not be currently applied to anything.
+一个`AEGP_Effect_RefH`是对一个应用效果的引用。一个`AEGP_InstalledEffectKey`是对一个已安装的效果的引用，它可能是也可能不是当前应用于任何东西。
 
-If Foobarocity is applied to a layer twice, there will be two distinct `AEGP_Effect_RefHs`, but they’ll both return the same `AEGP_InstalledEffectKey`.
+如果 Foobarocity 在一个图层上应用了两次，会有两个不同的`AEGP_Effect_RefH`，但它们都会返回同一个`AEGP_InstalledEffectKey`。
 
 ### AEGP_EffectSuite4
 
 #### AEGP_GetLayerNumEffects
 
-Get number of effects applied to a layer.
+获取应用于一个图层的效果数量。
 
 ```cpp
 AEGP_GetLayerNumEffects(
@@ -2764,7 +2762,7 @@ AEGP_GetLayerNumEffects(
 
 #### AEGP_GetLayerEffectByIndex
 
-Retrieves (by index) a reference to an effect applied to the layer.
+检索（通过索引）应用到该层的效果的引用。
 
 ```cpp
 AEGP_GetLayerEffectByIndex(
@@ -2777,7 +2775,7 @@ AEGP_GetLayerEffectByIndex(
 
 #### AEGP_GetInstalledKeyFromLayerEffect
 
-Given an `AEGP_EffectRefH`, retrieves its associated `AEGP_InstalledEffectKey`.
+给定一个`AEGP_EffectRefH'，检索其相关的`AEGP_InstalledEffectKey'。
 
 ```cpp
 AEGP_GetInstalledKeyFromLayerEffect(
@@ -2788,10 +2786,10 @@ AEGP_GetInstalledKeyFromLayerEffect(
 
 #### AEGP_GetEffectParamUnionByIndex
 
-Returns description of effect parameter. Do not use the value(s) in the ParamDef returned by this function (Use `AEGP_GetNewStreamValue()` instead);
-it’s provided so AEGPs can access parameter defaults, checkbox names, and pop-up strings.
-Use `AEGP_GetEffectNumParamStreams()` from [AEGP_StreamSuite5](#aegps-aegp-suites-aegp-streamsuite) to get the stream count,
-useful for determining the maximum `param_index`. The last parameter is optional;
+返回效果参数的描述。不要使用这个函数返回的 ParamDef 中的值（使用`AEGP_GetNewStreamValue()`代替）。
+提供这个函数是为了让 AEGP 能够访问参数默认值、复选框名称和弹出式字符串。
+使用[AEGP_StreamSuite5]的`AEGP_GetEffectNumParamStreams()`来获取流的数量。
+这对确定最大的 "param_index "很有用。最后一个参数是可选的。
 
 ```cpp
 AEGP_GetEffectParamUnionByIndex(
@@ -2805,7 +2803,7 @@ AEGP_GetEffectParamUnionByIndex(
 
 #### AEGP_GetEffectFlags
 
-Obtains the flags for the given `AEGP_EffectRefH`.
+获取给定的`AEGP_EffectRefH`的标志。
 
 ```cpp
 AEGP_GetEffectFlags(
@@ -2814,7 +2812,7 @@ AEGP_GetEffectFlags(
 
 ```
 
-Flags will be a combination of the following:
+标志将是以下内容的合成。
 
 - `AEGP_EffectFlags_NONE`
 - `AEGP_EffectFlags_ACTIVE`
@@ -2824,7 +2822,7 @@ Flags will be a combination of the following:
 
 #### AEGP_SetEffectFlags
 
-Sets the flags (enumerated above) for the given `AEGP_EffectRefH`, masked by a different set of effect flags.
+为给定的`AEGP_EffectRefH`设置标志（上面列举的），用一组不同的效果标志来掩盖。
 
 ```cpp
 AEGP_SetEffectFlags(
@@ -2836,7 +2834,7 @@ AEGP_SetEffectFlags(
 
 #### AEGP_ReorderEffect
 
-Change the order of applied effects (pass the requested index).
+改变应用效果的顺序（传递要求的索引）。
 
 ```cpp
 AEGP_ReorderEffect(
@@ -2847,8 +2845,8 @@ AEGP_ReorderEffect(
 
 #### AEGP_EffectCallGeneric
 
-Call an effect plug-in, and pass it a pointer to any data you like; the effect can modify it. This is how AEGPs communicate with effects.
-Pass `PF_Cmd_COMPLETELY_GENERAL` for `effect_cmd`.
+调用一个效果插件，并传递给它一个指向任何你喜欢的数据的指针；效果可以修改它。这就是 AEGP 与效果的通信方式。
+传递`PF_Cmd_COMPLETELY_GENERAL`给`effect_cmd`。
 
 ```cpp
 AEGP_EffectCallGeneric(
@@ -2862,7 +2860,7 @@ AEGP_EffectCallGeneric(
 
 #### AEGP_DisposeEffect
 
-Disposes of an AEGP_EffectRefH. Use this to dispose of any AEGP_EffectRefH returned by After Effects.
+处置一个 AEGP_EffectRefH。使用它来处理由 After Effects 返回的任何 AEGP_EffectRefH。
 
 ```cpp
 AEGP_DisposeEffect(
@@ -2872,7 +2870,7 @@ AEGP_DisposeEffect(
 
 #### AEGP_ApplyEffect
 
-Apply an effect to a given layer. Returns the newly-created `AEGP_EffectRefH`.
+在给定的图层上应用一个效果。返回新创建的`AEGP_EffectRefH`。
 
 ```cpp
 AEGP_ApplyEffect(
@@ -2885,7 +2883,7 @@ AEGP_ApplyEffect(
 
 #### AEGP_DeleteLayerEffect
 
-Remove an applied effect.
+删除一个已应用的效果。
 
 ```cpp
 AEGP_DeleteLayerEffect(
@@ -2895,7 +2893,7 @@ AEGP_DeleteLayerEffect(
 
 #### AEGP_GetNumInstalledEffects
 
-Returns the count of effects installed in After Effects.
+返回 After Effects 中安装的效果的数量。
 
 ```cpp
 AEGP_GetNumInstalledEffects(
@@ -2905,7 +2903,7 @@ AEGP_GetNumInstalledEffects(
 
 #### AEGP_GetNextInstalledEffect
 
-Returns the `AEGP_InstalledEffectKey` of the next installed effect. Pass `AEGP_InstalledEffectKey_NONE` as the first parameter to obtain the first `AEGP_InstalledEffectKey`.
+返回下一个安装的效果的`AEGP_InstalledEffectKey`。将`AEGP_InstalledEffectKey_NONE`作为第一个参数，获得第一个`AEGP_InstalledEffectKey`。
 
 ```cpp
 AEGP_GetNextInstalledEffect(
@@ -2916,7 +2914,7 @@ AEGP_GetNextInstalledEffect(
 
 #### AEGP_GetEffectName
 
-Get name of the effect. `nameZ` can be up to `AEGP_MAX_EFFECT_NAME_SIZE + 1` long.
+获取效果的名称。`nameZ`的长度可以达到`AEGP_MAX_EFFECT_NAME_SIZE + 1`。
 
 ```cpp
 AEGP_GetEffectName(
@@ -2925,11 +2923,11 @@ AEGP_GetEffectName(
 
 ```
 
-Note: use `AEGP_SetStreamName` to change the display name of an effect.
+注意：使用`AEGP_SetStreamName`来改变一个效果的显示名称。
 
 #### AEGP_GetEffectMatchName
 
-Get match name of an effect (defined in PiPL). `match_nameZ` up to `AEGP_MAX_EFFECT_MATCH_NAME_SIZE + 1` long.
+获取效果的匹配名称（在 PiPL 中定义）。`match_nameZ`最长为`AEGP_MAX_EFFECT_MATCH_NAME_SIZE + 1`长。
 
 ```cpp
 AEGP_GetEffectMatchName(
@@ -2938,11 +2936,11 @@ AEGP_GetEffectMatchName(
 
 ```
 
-Match names are in 7-bit ASCII. UI names are in the current application runtime encoding; for example, ISO 8859-1 for most languages on Windows.
+匹配名称为 7 位 ASCII。UI 名称是当前应用程序运行时的编码；例如，对于 Windows 上的大多数语言，ISO 8859-1。
 
 #### AEGP_GetEffectCategory
 
-Menu category of effect. `categoryZ` can be up to `AEGP_MAX_EFFECT_CATEGORY_NAME_SIZE + 1` long.
+效果的菜单类别。`categoryZ`的长度可以达到`AEGP_MAX_EFFECT_CATEGORY_NAME_SIZE + 1`。
 
 ```cpp
 AEGP_GetEffectCategory(
@@ -2953,7 +2951,7 @@ AEGP_GetEffectCategory(
 
 #### AEGP_DuplicateEffect
 
-Duplicates a given `AEGP_EffectRefH`. Caller must dispose of duplicate when finished.
+复制一个给定的`AEGP_EffectRefH`。调用者必须在完成后处理掉重复的内容。
 
 ```cpp
 AEGP_DuplicateEffect(
@@ -2964,7 +2962,7 @@ AEGP_DuplicateEffect(
 
 #### AEGP_NumEffectMask
 
-New in CC 2014. How many masks are on this effect?
+CC2014 中的新内容。这个效果上有多少个遮罩？
 
 ```cpp
 AEGP_NumEffectMask(
@@ -2975,7 +2973,7 @@ AEGP_NumEffectMask(
 
 #### AEGP_GetEffectMaskID
 
-New in CC 2014. For a given mask_indexL, returns the corresponding `AEGP_MaskIDVal` for use in uniquely identifying the mask.
+CC2014 中的新功能。对于一个给定的遮罩\_indexL，返回相应的`AEGP_MaskIDVal`，用于唯一识别遮罩。
 
 ```cpp
 AEGP_GetEffectMaskID(
@@ -2987,9 +2985,9 @@ AEGP_GetEffectMaskID(
 
 #### AEGP_AddEffectMask
 
-New in CC 2014. Add an effect mask, which may be created using the [Mask Management](#aegps-aegp-suites-mask-suite).
-Returns the local stream of the effect ref - useful if you want to add keyframes. Caller must dispose of `AEGP_StreamRefH` when finished.
-Undoable.
+CC2014 中的新功能。添加一个效果掩码，可以使用[掩码管理]创建。
+返回效果反射的本地流--如果你想添加关键帧，则很有用。调用者必须在完成后处理`AEGP_StreamRefH`。
+可撤销。
 
 ```cpp
 AEGP_AddEffectMask(
@@ -3001,8 +2999,8 @@ AEGP_AddEffectMask(
 
 #### AEGP_RemoveEffectMask
 
-New in CC 2014. Remove an effect mask.
-Undoable.
+CC 2014 的新功能。移除一个效果遮罩。
+可撤销。
 
 ```cpp
 AEGP_RemoveEffectMask(
@@ -3013,10 +3011,10 @@ AEGP_RemoveEffectMask(
 
 #### AEGP_SetEffectMask
 
-New in CC 2014. Set an effect mask on an existing index.
-Returns the local stream of the effect ref - useful if you want to add keyframes.
-Caller must dispose of `AEGP_StreamRefH` when finished.
-Undoable.
+在 CC 2014 中新增。在一个现有的索引上设置一个效果遮罩。
+返回效果参考的本地流 - 如果你想添加关键帧，很有用。
+完成后调用者必须处理`AEGP_StreamRefH`。
+可撤销。
 
 ```cpp
 AEGP_SetEffectMask(
@@ -3029,41 +3027,41 @@ AEGP_SetEffectMask(
 
 ## Exploiting Effect UI Behavior To Look Cool
 
-Even if you manipulate a layer’s effects, its effect controls won’t necessarily become visible.
+即使你操作了一个图层的效果，它的效果控制也不一定会变得可见。
 
-However, if you apply then immediately remove an effect, the layer’s effect controls will be made visible.
+然而，如果你应用然后立即删除一个效果，该层的效果控制将变得可见。
 
-Tricky, eh?
+很狡猾，是吗？
 
 ## StreamRefs And EffectRefs
 
-How do you get an AEGP_StreamRef for an effect? Start by getting the effect’s `AEGP_EffectRef`, by calling `AEGP_GetNewEffectForEffect()`.
+你如何获得一个效果的 AEGP_StreamRef？首先，通过调用`AEGP_GetNewEffectForEffect()`获得效果的`AEGP_EffectRef`。
 
-Then call `AEGP_GetNewEffectStreamByIndex()`, say for param index 1, which passes back a parameter stream.
+然后调用`AEGP_GetNewEffectStreamByIndex()`，比如说针对参数索引 1，这时会传回一个参数流。
 
-Then call `AEGP_GetNewParentStreamRef()` - voila, your `AEGP_StreamRef` sir!
+然后调用`AEGP_GetNewParentStreamRef()`--瞧，你的`AEGP_StreamRef`先生!
 
-If you acquire references to an effect’s streams, do not dispose of the `AEGP_EffectRefH` until you’re done with the streams, or you’ll unbalance After Effects’ checkout mechanism. Also remember that AEGP_StreamRefHs are opaque; `AEGP_StreamValue2s` are not (entirely).
+如果你获得了对效果流的引用，在你完成对流的处理之前，不要处置`AEGP_EffectRefH`，否则你会使 After Effects 的检出机制不平衡。还要记住，AEGP_StreamRefHs 是不透明的；而`AEGP_StreamValue2's 则不是（完全）。
 
-To get an effect’s instance name (as renamed by the user), get the AEGP_StreamRef for the effect itself and call `AEGP_GetStreamName`.
+要获得一个效果的实例名称(由用户重新命名)，需要获得该效果本身的 AEGP_StreamRef，然后调用`AEGP_GetStreamName`。
 
 ## Diving Into Streams
 
-Just about everything in After Effects is a stream. Effect parameters, layers, masks, and shapes are all internally represented by streams. The AEGP API can access nearly every aspect of every stream.
+在 After Effects 中，几乎所有的东西都是一个流。效果参数、图层、遮罩和形状都在内部由流表示。AEGP API 几乎可以访问每个流的各个方面。
 
-The After Effects timeline can contain numerous object types; each object supports a set of parameters called streams. All streams, regardless of which type of object to which they’re attached, are conceptually similar (and handled similarly by After Effects. But the way you access each type of stream varies because of their containment.
+After Effects 的时间线可以包含许多对象类型；每个对象都支持一组称为流的参数。所有的流，无论连接到哪种类型的对象，在概念上都是相似的（After Effects 的处理方式也是相似的。但由于其包含的内容不同，你访问每种类型的流的方式也不同。
 
-A stream, once acquired, represents a value which may change over time. Not all streams _can_ vary over time, and a particular stream may not be time-variant at the time of access.
+一个流，一旦获得，代表一个可能随时间变化的值。不是所有的流\_都能随时间变化，一个特定的流在访问时可能不是随时间变化的。
 
-There are two ways to access the value of a stream. If the stream has keyframes, you can use the [Working With Keyframes](#aegps-aegp-suites-keyframe-suite). The values provided won’t reflect the influence of expressions. Note: In any expression, the current keyframed value is always available as the variable value.
+有两种方法来访问一个流的值。如果流有关键帧，你可以使用[Working With Keyframes]（#aegps-aegp-suites-keyframe-suite）。提供的值不会反映表达式的影响。注意：在任何表达式中，当前关键帧的值总是可以作为变量值。
 
-You can also use `AEGP_GetNewStreamValue` from [AEGP_StreamSuite5](#aegps-aegp-suites-aegp-streamsuite), which samples the value of the stream at a particular time. For streams without expressions or keyframes, the time parameter is meaningless, and the function returns what essentially is the constant value of the stream. Use `AEGP_SetStreamValue` (which doesn’t take a time as a parameter) to set these streams.
+你也可以使用来自[AEGP_StreamSuite5]的`AEGP_GetNewStreamValue`，它在特定时间对流的值进行采样。对于没有表达式或关键帧的流，时间参数是没有意义的，该函数返回的基本上是流的常量值。使用`AEGP_SetStreamValue`（它不以时间为参数）来设置这些流。
 
-Many StreamSuite functions populate a StreamH, which your AEGP must dispose. when done. After Effects allocates and passes you a copy of the values, not a direct handle to the original value. `AEGP_GetNewLayerStream()` is restricted to streams for which no memory allocation is required to access their values.
+许多 StreamSuite 函数会填充一个 StreamH，完成后你的 AEGP 必须处理掉它。After Effects 分配并传递给你一个值的副本，而不是一个直接指向原始值的句柄。`AEGP_GetNewLayerStream()`仅限于那些不需要分配内存就可以访问其值的流。
 
 ## Okay, What Did I Just Get?
 
-A stream value is a large union, only one structure of which (depending on the stream type) is populated. Note the similarity to the [PF_ParamDef](../effect-basics/PF_ParamDef.html#effect-basics-pf-paramdef).
+一个流值是一个大的联合体，其中只有一个结构（取决于流的类型）被填充。注意与[PF_ParamDef]（.../effect-basics/PF_ParamDef.html#effect-basics-pf-paramdef）的相似性。
 
 ```cpp
 typedef union {
@@ -3084,31 +3082,31 @@ typedef union {
 
 ## Layers
 
-`AEGP_GetLayerStreamValue` is used to access the parameters like anchor point and position, native to almost all layers in AE.
+`AEGP_GetLayerStreamValue`用于访问参数，如锚点和位置，几乎是 AE 中所有层的原生参数。
 
-Use `IsStreamLegal` to allow you to determine if that stream type is offered on that layer.
+使用`IsStreamLegal`可以让你确定该层是否提供该流类型。
 
 ## Masks
 
-Since a layer can have multiple masks, access the masks using `AEGP_GetLayerMaskByIndex` from [AEGP_MaskSuite6](#aegps-aegp-suites-aegp-masksuite).
+由于一个图层可以有多个遮罩，使用`AEGP_GetLayerMaskByIndex`从[AEGP_MaskSuite6]（#aegps-aegp-suites-aegp-masksuite）访问遮罩。
 
-Masks don’t have streams like layers do; they get their own enumeration. Access their streams using `AEGP_GetNewMaskStream` from [AEGP_StreamSuite5](#aegps-aegp-suites-aegp-streamsuite).
+面具不像层那样有流；它们有自己的枚举。使用[AEGP_StreamSuite5]中的`AEGP_GetNewMaskStream`访问它们的流。
 
 ## Effects
 
-They can have a variable number of streams/parameters, and the order and definition of them is not known when the AEGP is written.
+它们可以有数量不等的流/参数，而且在编写 AEGP 时，它们的顺序和定义并不清楚。
 
-Therefore we cannot offer an enum for selecting them, and instead you must get them by index, hence `GetNewEffectStreamByIndex` from [AEGP_StreamSuite5](#aegps-aegp-suites-aegp-streamsuite).
+因此，我们不能提供一个枚举来选择它们，而是必须通过索引来获得它们，因此，从[AEGP_StreamSuite5]中的`GetNewEffectStreamByIndex`。
 
 ## Stream Suite
 
-Access and manipulate the values of a layer’s streams. For paint and text streams, use [Dynamic Streams](#aegps-aegp-suites-dynamic-stream-suite) instead.
+访问和操作一个图层的流的值。对于绘画和文本流，使用[动态流]代替。
 
 ### AEGP_StreamSuite5
 
 #### AEGP_IsStreamLegal
 
-Determines if the given stream is appropriate for the given layer.
+确定给定的流是否适合给定的层。
 
 ```cpp
 AEGP_IsStreamLegal(
@@ -3120,7 +3118,7 @@ AEGP_IsStreamLegal(
 
 #### AEGP_CanVaryOverTime
 
-Given a stream, returns whether or not a stream is time-variant (and can be keyframed).
+给定一个流，返回一个流是否是时间变化的（并且可以是关键帧）。
 
 ```cpp
 AEGP_CanVaryOverTime(
@@ -3131,7 +3129,7 @@ AEGP_CanVaryOverTime(
 
 #### AEGP_GetValidInterpolations
 
-Retrieves an `AEGP_KeyInterpolationMask` indicating which interpolation types are valid for the `AEGP_StreamRefH`.
+检索一个`AEGP_KeyInterpolationMask`，表明哪些插值类型对`AEGP_StreamRefH`有效。
 
 ```cpp
 AEGP_GetValidInterpolations(
@@ -3140,7 +3138,7 @@ AEGP_GetValidInterpolations(
 
 ```
 
-`AEGP_KeyInterpolationMask` will be a combination of the following:
+`AEGP_KeyInterpolationMask`将是以下的合成。
 
 - `AEGP_KeyInterpMask_NONE`
 - `AEGP_KeyInterpMask_LINEAR`
@@ -3151,8 +3149,8 @@ AEGP_GetValidInterpolations(
 
 #### AEGP_GetNewLayerStream
 
-Get a layer’s data stream. Plug-in must dispose of `streamPH`. Note that this will not provide keyframe access;
-Use the [AEGP_KeyframeSuite](#aegps-aegp-suites-keyframe-suite) instead.
+获取一个图层的数据流。插件必须处理掉`streamPH`。注意，这将不提供关键帧的访问。
+使用[AEGP_KeyframeSuite]代替。
 
 ```cpp
 AEGP_GetNewLayerStream(
@@ -3176,7 +3174,7 @@ AEGP_GetNewLayerStream(
 - `AEGP_LayerStream_ROTATE_Y`,
 - `AEGP_LayerStream_ORIENTATION`
 
-Only valid for `AEGP_ObjectType_CAMERA`:
+只对`AEGP_ObjectType_CAMERA`有效。
 
 - `AEGP_ObjectType_CAMERA`
 - `AEGP_LayerStream_ZOOM`,
@@ -3193,7 +3191,7 @@ Only valid for `AEGP_ObjectType_CAMERA`:
 - `AEGP_LayerStream_IRIS_HIGHLIGHT_THRESHOLD`,
 - `AEGP_LayerStream_IRIS_HIGHLIGHT_SATURATION`,
 
-Only valid for `AEGP_ObjectType_LIGHT`:
+只对 "AEGP_ObjectType_LIGHT "有效。
 
 - `AEGP_LayerStream_INTENSITY`,
 - `AEGP_LayerStream_COLOR`,
@@ -3205,7 +3203,7 @@ Only valid for `AEGP_ObjectType_LIGHT`:
 - `AEGP_LayerStream_LIGHT_FALLOFF_START`,
 - `AEGP_LayerStream_LIGHT_FALLOFF_DISTANCE`,
 
-Only valid for `AEGP_ObjectType_AV`:
+只对 "AEGP_ObjectType_AV "有效。
 
 - `AEGP_LayerStream_ACCEPTS_SHADOWS`,
 - `AEGP_LayerStream_ACCEPTS_LIGHTS`,
@@ -3216,7 +3214,7 @@ Only valid for `AEGP_ObjectType_AV`:
 - `AEGP_LayerStream_METAL`,
 - `AEGP_LayerStream_LIGHT_TRANSMISSION`,
 
-Only valid for `AEGP_ObjectType_AV`, new in CS6:* `AEGP_LayerStream_REFLECTION_INTENSITY`,
+只对`AEGP_ObjectType_AV`有效，CS6 新增：\* `AEGP_LayerStream_REFLECTION_INTENSITY`。
 
 - `AEGP_LayerStream_REFLECTION_SHARPNESS`,
 - `AEGP_LayerStream_REFLECTION_ROLLOFF`,
@@ -3231,7 +3229,7 @@ Only valid for `AEGP_ObjectType_AV`, new in CS6:* `AEGP_LayerStream_REFLECTION_I
 - `AEGP_LayerStream_PLANE_CURVATURE`,
 - `AEGP_LayerStream_PLANE_SUBDIVISION`,
 
-Only valid for `LIGHT` and `AV` only:
+只对`LIGHT'和`AV'有效。
 
 - `AEGP_LayerStream_CASTS_SHADOWS`,
 - `AEGP_LayerStream_SOURCE_TEXT`
@@ -3251,7 +3249,7 @@ typedef A_u_long AEGP_LightFalloffType;
 
 #### AEGP_GetEffectNumParamStreams
 
-Get number of parameter streams associated with an effect.
+获取与一个效果相关的参数流的数量。
 
 ```cpp
 AEGP_GetEffectNumParamStreams(
@@ -3262,7 +3260,7 @@ AEGP_GetEffectNumParamStreams(
 
 #### AEGP_GetNewEffectStreamByIndex
 
-Get an effect’s parameter stream. Plug-in must dispose of `streamPH`.
+获取一个效果的参数流。插件必须处理`streamPH`。
 
 ```cpp
 AEGP_GetNewEffectStreamByIndex(
@@ -3275,14 +3273,14 @@ AEGP_GetNewEffectStreamByIndex(
 
 #### AEGP_GetNewMaskStream
 
-Get a mask’s stream. The stream must be disposed.
-Also see the [AEGP_MaskSuite](#aegps-aegp-suites-mask-suite) and [AEGP_MaskOutlineSuite](#aegps-aegp-suites-mask-outline-suite) for additional Mask functions.* `AEGP_MaskStream_OUTLINE`,
+获取一个面具的流。该流必须被处理掉。
+也可以参考[AEGP_MaskSuite]和[AEGP_MaskOutlineSuite]中的其他 Mask 函数\* `AEGP_MaskStream_OUTLINE`。
 
 - `AEGP_MaskStream_OPACITY`,
 - `AEGP_MaskStream_FEATHER`,
 - `AEGP_MaskStream_EXPANSION`,
 
-Useful for iteration:
+对迭代有用。
 
 - `AEGP_MaskStream_BEGIN` = `AEGP_MaskStream_OUTLINE`,
 - `AEGP_MaskStream_END` = `AEGP_MaskStream_EXPANSION + 1`
@@ -3298,7 +3296,7 @@ AEGP_GetNewMaskStream(
 
 #### AEGP_DisposeStream
 
-Dispose of a stream (do this with all streams passed to the plug-in by these functions).
+处理一个流（对这些函数传递给插件的所有流进行处理）。
 
 ```cpp
 AEGP_DisposeStream(
@@ -3308,7 +3306,7 @@ AEGP_DisposeStream(
 
 #### AEGP_GetNewMaskOpacity
 
-Get the mask’s opacity stream. The stream must be disposed.
+获取面具的不透明度流。该流必须被处理掉。
 
 ```cpp
 AEGP_GetNewMaskOpacity(
@@ -3321,8 +3319,8 @@ AEGP_GetNewMaskOpacity(
 
 #### AEGP_GetStreamName
 
-Get name of the stream (localized or forced English). is handle of `A_UTF16Char` (contains null terminated UTF16 string);
-must be disposed with `AEGP_FreeMemHandle`.
+获取流的名称（本地化或强制英文）。 是`A_UTF16Char`的句柄（包含空尾的 UTF16 字符串）。
+必须用`AEGP_FreeMemHandle`处置。
 
 ```cpp
 AEGP_GetStreamName(
@@ -3333,11 +3331,11 @@ AEGP_GetStreamName(
 
 ```
 
-NOTE: if `force_englishB` is TRUE, the default name will override any stream renaming which has been done (either programatically, or by the user).
+注意：如果`force_englishB'为 true，默认的名字将覆盖任何已经完成的流重命名（无论是程序上的，还是用户的）。
 
 #### AEGP_GetStreamUnitsText
 
-Get stream units, formatted as text (localized or forced English); `unitsZ` up to `AEGP_MAX_STREAM_NAME_LEN + 1` long.
+获取流的单位，格式为文本（本地化或强制英语）；`unitsZ`最长为`AEGP_MAX_STREAM_NAME_LEN + 1`。
 
 ```cpp
 AEGP_GetStreamUnitsText(
@@ -3349,8 +3347,8 @@ AEGP_GetStreamUnitsText(
 
 #### AEGP_GetStreamProperties
 
-Get stream’s flags, as well as minimum and maximum values (as floats), if the stream _has_ mins and maxes.
-StreamFlags values:
+获取流的标志，以及最小和最大值（浮动），如果流*有*分钟和最大值。
+StreamFlags 值。
 
 - `AEGP_StreamFlag_NONE`
 - `AEGP_StreamFlag_HAS_MIN`
@@ -3367,7 +3365,7 @@ AEGP_GetStreamProperties(
 
 #### AEGP_IsStreamTimevarying
 
-Returns whether or not the stream is affected by expressions.
+返回流是否受到表达式的影响。
 
 ```cpp
 AEGP_IsStreamTimevarying(
@@ -3378,7 +3376,7 @@ AEGP_IsStreamTimevarying(
 
 #### AEGP_GetStreamType
 
-Get type (dimension) of a stream.
+获取流的类型（尺寸）。
 
 ```cpp
 AEGP_GetStreamType(
@@ -3401,12 +3399,12 @@ AEGP_GetStreamType(
 - `AEGP_StreamType_MASK`,
 - `AEGP_StreamType_TEXT_DOCUMENT`
 
-NOTE: always returns `ThreeD_Spatial` for position, regardless of whether or not the layer is 3D.
+注意：总是返回`ThreeD_Spatial`的位置，不管该层是否是 3D 的。
 
 #### AEGP_GetNewStreamValue
 
-Get value, at a time you specify, of stream. `valueP` must be disposed by the plug-in.
-The `AEGP_LTimeMode` indicates whether the time is in compositions or layer time.
+在你指定的时间，获取流的值。`valueP`必须由插件处理。
+`AEGP_LTimeMode`表示时间是合成时间还是层时间。
 
 ```cpp
 AEGP_GetNewStreamValue(
@@ -3421,7 +3419,7 @@ AEGP_GetNewStreamValue(
 
 #### AEGP_DisposeStreamValue
 
-Dispose of stream value. Always deallocate values passed to the plug-in.
+处置流值。始终将传递给插件的值去掉。
 
 ```cpp
 AEGP_DisposeStreamValue(
@@ -3431,7 +3429,7 @@ AEGP_DisposeStreamValue(
 
 #### AEGP_SetStreamValue
 
-Only legal when stream is not time-variant.
+只有当流不是时间变化的时候才合法。
 
 ```cpp
 AEGP_SetStreamValue(
@@ -3443,8 +3441,8 @@ AEGP_SetStreamValue(
 
 #### AEGP_GetLayerStreamValue
 
-NOTE: This convenience function is only valid for streams with primitive data types, and not for `AEGP_ArbBlockVal`, `AEGP_MarkerValH` or `AEGP_MaskOutlineValH`.
-For these and other complex types, use `AEGP_GetNewStreamValue`, described above.
+注意：这个便利函数只对具有原始数据类型的流有效，而对`AEGP_ArbBlockVal`、`AEGP_MarkerValH`或`AEGP_MaskOutlineValH`无效。
+对于这些和其他复杂的类型，使用上面描述的`AEGP_GetNewStreamValue`。
 
 ```cpp
 AEGP_GetLayerStreamValue(
@@ -3460,7 +3458,7 @@ AEGP_GetLayerStreamValue(
 
 #### AEGP_GetExpressionState
 
-Determines whether expressions are enabled on the given `AEGP_StreamRefH`.
+确定是否在给定的`AEGP_StreamRefH`上启用表达式。
 
 ```cpp
 AEGP_GetExpressionState(
@@ -3472,7 +3470,7 @@ AEGP_GetExpressionState(
 
 #### AEGP_SetExpressionState
 
-Enables and disables expressions on the given `AEGP_StreamRefH`.
+在给定的`AEGP_StreamRefH'上启用和禁用表达式。
 
 ```cpp
 AEGP_SetExpressionState(
@@ -3484,7 +3482,7 @@ AEGP_SetExpressionState(
 
 #### AEGP_GetExpression
 
-Obtains the expression’s text. Starting in suite version 5 (available in 15.0 and later), this now supports Unicode.
+获取表达式的文本。从 suite 版本 5 开始（在 15.0 及更高版本中可用），它现在支持 Unicode。
 
 ```cpp
 AEGP_GetExpression(
@@ -3496,7 +3494,7 @@ AEGP_GetExpression(
 
 #### AEGP_SetExpression
 
-Sets the expression’s text. Starting in suite version 5 (available in 15.0 and later), this now supports Unicode.
+设置表达式的文本。从第 5 版开始（在 15.0 及以后版本中可用），现在支持 Unicode。
 
 ```cpp
 AEGP_SetExpression(
@@ -3508,7 +3506,7 @@ AEGP_SetExpression(
 
 #### AEGP_DuplicateStreamRef
 
-Duplicates a given `AEGP_StreamRefH`. Dispose of the duplicate.
+复制一个给定的`AEGP_StreamRefH`。处置重复的内容。
 
 ```cpp
 AEGP_DuplicateStreamRef(
@@ -3520,17 +3518,17 @@ AEGP_DuplicateStreamRef(
 
 ## Dynamic Streams
 
-`AEGP_DynamicStreamSuite` accesses and manipulates paint and text streams.
+`AEGP_DynamicStreamSuite`访问和操作绘画和文本流。
 
-Use `AEGP_GetStreamGroupingType` and `AEGP_GetDynamicStreamFlags` to identify the stream before attempting to use functions which only work on certain stream types.
+使用`AEGP_GetStreamGroupingType`和`AEGP_GetDynamicStreamFlags`来识别流，然后再尝试使用只对某些流类型工作的函数。
 
-Also note that, often, you can simply use [Stream Suite](#aegps-aegp-suites-stream-suite) calls to work with dynamic streams. On the other hand, only those functions specific to dynamic streams are in this suite.
+还要注意，通常情况下，你可以简单地使用[Stream Suite]调用来处理动态流。另一方面，只有那些专门针对动态流的函数才在这个套件中。
 
 ### AEGP_DynamicStreamSuite4
 
 #### AEGP_GetNewStreamRefForLayer
 
-Retrieves the AEGP_StreamRefH corresponding to the layer. This function is used to initiate a recursive walk of the layer’s streams.
+检索与该层对应的 AEGP_StreamRefH。这个函数被用来启动该层流的递归行走。
 
 ```cpp
 AEGP_GetNewStreamRefForLayer(
@@ -3542,7 +3540,7 @@ AEGP_GetNewStreamRefForLayer(
 
 #### AEGP_GetNewStreamRefForMask
 
-Retrieves the AEGP_StreamRefH corresponding to the mask.
+检索与掩码对应的 AEGP_StreamRefH。
 
 ```cpp
 AEGP_GetNewStreamRefForMask(
@@ -3554,8 +3552,8 @@ AEGP_GetNewStreamRefForMask(
 
 #### AEGP_GetStreamDepth
 
-Retrieves the number of sub-streams associated with the given `AEGP_StreamRefH`.
-The initial layer has a depth of 0.
+检索与给定的`AEGP_StreamRefH'相关的子流的数量。
+初始层的深度为 0。
 
 ```cpp
 AEGP_GetStreamDepth(
@@ -3566,7 +3564,7 @@ AEGP_GetStreamDepth(
 
 #### AEGP_GetStreamGroupingType
 
-Retrieves the grouping type for the given `AEGP_StreamRefH`.
+检索给定的`AEGP_StreamRefH'的分组类型。
 
 ```cpp
 AEGP_GetStreamGroupingType(
@@ -3575,7 +3573,7 @@ AEGP_GetStreamGroupingType(
 
 ```
 
-AEGP_StreamGroupingType will be one of the following:
+AEGP_StreamGroupingType 将是以下之一。
 
 - `AEGP_StreamGroupingType_NONE`
 - `AEGP_StreamGroupingType_LEAF`
@@ -3584,8 +3582,7 @@ AEGP_StreamGroupingType will be one of the following:
 
 #### AEGP_GetNumStreamsInGroup
 
-Retrieves the number of streams associated with the given `AEGP_StreamRefH`.
-This function will return an error if called with an `AEGP_StreamRefH` with type `AEGP_StreamGroupingType_LEAF`.
+检索与给定的`AEGP_StreamRefH'相关的流的数量。 如果用类型为`AEGP_StreamGroupingType_LEAF`的`AEGP_StreamRefH`调用此函数将返回一个错误。
 
 ```cpp
 AEGP_GetNumStreamsInGroup(
@@ -3596,7 +3593,7 @@ AEGP_GetNumStreamsInGroup(
 
 #### AEGP_GetDynamicStreamFlags
 
-Retrieves the flags for a given AEGP_StreamRefH.
+检索一个给定的 AEGP_StreamRefH 的标志。
 
 ```cpp
 AEGP_GetDynamicStreamFlags(
@@ -3605,21 +3602,21 @@ AEGP_GetDynamicStreamFlags(
 
 ```
 
-`AEGP_DynStreamFlags` will be one of the following:* `AEGP_DynStreamFlag_ACTIVE_EYEBALL` means that the stream is available for reading and writing.
+`AEGP_DynStreamFlags`将是以下之一：\* `AEGP_DynStreamFlag_ACTIVE_EYEBALL`意味着流可用于读写。
 
 - `AEGP_DynStreamFlag_HIDDEN` means that, while the stream is still readable/writable, it may not currently be visible in the UI.
 - `AEGP_DynStreamFlag_DISABLED` A read-only flag. Indicates whether the `AEGP_StreamRefH` is grayed out in the UI.
-  Note that as of CS5, this flag will not be returned if a parameter is disabled.
-  Instead, check `PF_PUI_DISABLED` in [Parameter UI Flags](../effect-basics/PF_ParamDef.html#effect-basics-pf-paramdef-parameter-ui-flags).
+  注意，从 CS5 开始，如果一个参数被禁用，这个标志将不会被返回。
+  相反，请检查[Parameter UI Flags](.../effect-basics/PF_ParamDef.html#effect-basics-pf-paramdef-parameter-ui-flags)中的`PF_PUI_DISABLED`。
 - `AEGP_DynStreamFlag_ELIDED` A read-only flag. Indicates that the `AEGP_StreamRefH` is read-only, the user never sees it.
-  However, the children are still seen and not indented in the Timeline panel.
+  但是，在时间线面板中仍然可以看到子节点，而且不缩进。
 - `AEGP_DynStreamFlag_SHOWN_WHEN_EMPTY` New in CS6. A read-only flag. Indicates that this stream group should be shown when empty.
 - `AEGP_DynStreamFlag_SKIP_REVEAL_WHEN_UNHIDDEN` New in CS6. A read-only flag. Indicates that this stream property will not be automatically revealed when un-hidden.
 
 #### AEGP_SetDynamicStreamFlag
 
-Sets the specified flag for the `AEGP_StreamRefH`.
-Note: flags must be set individually. Undoable if `undoableB` is `TRUE`.
+为`AEGP_StreamRefH`设置指定的标志。
+注意：标志必须被单独设置。如果`undoableB`为`TRUE`，则可撤销。
 
 ```cpp
 AEGP_SetDynamicStreamFlag(
@@ -3630,12 +3627,12 @@ AEGP_SetDynamicStreamFlag(
 
 ```
 
-This call may be used to dynamically show or hide parameters, by setting and clearing `AEGP_DynStreamFlag_HIDDEN`.
-However, `AEGP_DynStreamFlag_DISABLED` may not be set.
+这个调用可以通过设置和清除`AEGP_DynStreamFlag_HIDDEN`来动态显示或隐藏参数。
+然而，`AEGP_DynStreamFlag_DISABLED`不能被设置。
 
 #### AEGP_GetNewStreamRefByIndex
 
-Retrieves a sub-stream by index from a given `AEGP_StreamRefH`. Cannot be used on streams of type `AEGP_StreamGroupingType_LEAF`.
+从给定的`AEGP_StreamRefH`中按索引检索一个子流。不能用于类型为`AEGP_StreamGroupingType_LEAF`的流。
 
 ```cpp
 AEGP_GetNewStreamRefByIndex(
@@ -3648,7 +3645,7 @@ AEGP_GetNewStreamRefByIndex(
 
 #### AEGP_GetNewStreamRefByMatchname
 
-Retrieves a sub-stream by match name from a given `AEGP_StreamRefH`. Only legal for `AEGP_StreamGroupingType_NAMED_GROUP`.
+从给定的`AEGP_StreamRefH'中按匹配名称检索一个子流。只对`AEGP_StreamGroupingType_NAMED_GROUP`合法。
 
 ```cpp
 AEGP_GetNewStreamRefByMatchname(
@@ -3659,7 +3656,7 @@ AEGP_GetNewStreamRefByMatchname(
 
 ```
 
-Here are some handy stream names, for which references may be retrieved:
+这里有一些方便的流的名称，可以检索到它们的引用。
 
 - `AEGP_StreamGroupName_MASK_PARADE`
 - `AEGP_StreamGroupName_MASK_ATOM`
@@ -3680,9 +3677,9 @@ Here are some handy stream names, for which references may be retrieved:
 
 #### AEGP_DeleteStream
 
-Deletes the specified stream from a stream grouping.
-Note that the caller must still dispose of any `AEGP_StreamRefH` it’s already acquired (allocated) via the API. Undoable.
-Only valid for children of type `AEGP_StreamGroupingType_INDEXED_GROUP`.
+从一个流组中删除指定的流。
+注意，调用者仍然必须处理它已经通过 API 获得（分配）的任何`AEGP_StreamRefH`。可撤销。
+只对`AEGP_StreamGroupingType_INDEXED_GROUP`类型的子集有效。
 
 ```cpp
 AEGP_DeleteStream(
@@ -3690,13 +3687,13 @@ AEGP_DeleteStream(
 
 ```
 
-Note: as of 6.5, if a stream is deleted while it or any child stream is selected, the current composition selection will become `NULL`.
+注意：从 6.5 开始，如果一个流被删除，而它或任何子流被选中，当前的合成选择将变成`NULL'。
 
 #### AEGP_ReorderStream
 
-Sets the new index of the specified `AEGP_StreamRefH`. Undoable.
-Only valid for children of `AEGP_StreamGroupingType_INDEXED_GROUP`.
-The `AEGP_StreamRefH` is updated to refer to the newly-ordered stream.
+设置指定的`AEGP_StreamRefH`的新索引。可撤销。
+只对`AEGP_StreamGroupingType_INDEXED_GROUP`的子流有效。
+`AEGP_StreamRefH'被更新以引用新排序的流。
 
 ```cpp
 AEGP_ReorderStream(
@@ -3707,9 +3704,9 @@ AEGP_ReorderStream(
 
 #### AEGP_DuplicateStream
 
-Duplicates the specified stream and appends it to the stream group.
-Undoable.
-Only valid for children of `AEGP_StreamGroupingType_INDEXED_GROUP`.
+复制指定的流并将其附加到流组中。
+可撤销。
+只对`AEGP_StreamGroupingType_INDEXED_GROUP`的子集有效。
 
 ```cpp
 AEGP_DuplicateStream(
@@ -3721,9 +3718,8 @@ AEGP_DuplicateStream(
 
 #### AEGP_SetStreamName
 
-Sets the name of the given `AEGP_StreamRefH`. Undoable. nameZ points to a null terminated UTF-16 string.
-Only valid for children of `AEGP_StreamGroupingType_INDEXED_GROUP`.
-NOTE: If you retrieve the name with force_englishB set to `TRUE`, you will get the canonical, UNchanged name of the stream.
+设置给定的`AEGP_StreamRefH`的名称。nameZ 指向一个空尾的 UTF-16 字符串，可撤销。
+只对`AEGP_StreamGroupingType_INDEXED_GROUP'的子集有效。 注意：如果你在 force_englishB 设置为 `TRUE`的情况下检索名称，你将得到流的典型的、未改变的名称。
 
 ```cpp
 AEGP_SetStreamName(
@@ -3732,11 +3728,11 @@ AEGP_SetStreamName(
 
 ```
 
-Note: Use this on an effect stream’s group to change the display name of an effect.
+注意：在一个效果流的组上使用这个功能来改变效果的显示名称。
 
 #### AEGP_CanAddStream
 
-Returns whether or not it is currently possible to add a stream through the API.
+返回当前是否可以通过 API 添加一个流。
 
 ```cpp
 AEGP_CanAddStream(
@@ -3748,7 +3744,7 @@ AEGP_CanAddStream(
 
 #### AEGP_AddStream
 
-Adds a stream to the specified stream group. Undoable. Only valid for `AEGP_StreamGroupingType_INDEXED_GROUP`.
+将一个流添加到指定的流组中。可撤销。只对`AEGP_StreamGroupingType_INDEXED_GROUP`有效。
 
 ```cpp
 AEGP_AddStream(
@@ -3761,9 +3757,9 @@ AEGP_AddStream(
 
 #### AEGP_GetMatchName
 
-Retrieves the match name for the specified `AEGP_StreamRefH`.
-Note that this may differ from the display name, which can be retrieves using `AEGP_GetStreamName`, in [AEGP_StreamSuite5](#aegps-aegp-suites-aegp-streamsuite).
-`nameZ` can be up to `AEGP_MAX_STREAM_MATCH_NAME_SIZE` in length.
+检索指定的`AEGP_StreamRefH`的匹配名称。
+注意，这可能与显示名称不同，显示名称可以用`AEGP_GetStreamName`检索，在[AEGP_StreamSuite5]。
+`nameZ`的长度可以达到`AEGP_MAX_STREAM_MATCH_NAME_SIZE`。
 
 ```cpp
 AEGP_GetMatchName(
@@ -3774,7 +3770,7 @@ AEGP_GetMatchName(
 
 #### AEGP_GetNewParentStreamRef
 
-Retrieves an `AEGP_StreamRefH` for the parent of the specified `AEGP_StreamRefH`.
+检索指定的`AEGP_StreamRefH'的父类的`AEGP_StreamRefH'。
 
 ```cpp
 AEGP_GetNewParentStreamRef(
@@ -3786,8 +3782,8 @@ AEGP_GetNewParentStreamRef(
 
 #### AEGP_GetStreamIsModified
 
-Returns whether or not the specified `AEGP_StreamRefH` has been modified.
-Note: the same result is available throught the After Effect user interface by typing “UU” with the composition selected.
+返回指定的`AEGP_StreamRefH'是否被修改。
+注意：同样的结果可以通过 After Effect 用户界面，在选择合成时键入 "UU"。
 
 ```cpp
 AEGP_GetStreamIsModified(
@@ -3798,8 +3794,8 @@ AEGP_GetStreamIsModified(
 
 #### AEGP_GetStreamIndexInParent
 
-Retrieves the index of a given stream, relative to its parent stream.
-Only valid for children of `AEGP_StreamGroupingType_INDEXED_GROUP`
+检索一个给定流的索引，相对于它的父流。
+只对`AEGP_StreamGroupingType_INDEXED_GROUP`的子集有效。
 
 ```cpp
 AEGP_GetStreamIndexInParent(
@@ -3808,16 +3804,15 @@ AEGP_GetStreamIndexInParent(
 
 ```
 
-NOTE: As mentioned _elsewhere_, `AEGP_StreamRefHs` don’t persist across function calls.
-If streams are re-ordered, added or removed, all `AEGP_StreamRefHs` previously retrieved may be invalidated.
+注意：正如在其他地方提到的，`AEGP_StreamRefHs'不会在不同的函数调用中持久存在。 如果流被重新排序，添加或删除，所有以前检索到的`AEGP_StreamRefHs'可能会被废止。
 
 #### AEGP_IsSeparationLeader
 
-Valid on leaf streams only. Returns true if this stream is a multidimensional stream that can have its dimensions separated, though they may not be currently separated.
-Terminology: A Leader is the stream that can be separated, a Follower is one of N automatic streams that correspond to the N dimensions of the Leader.
-A Leader isn’t always separated, call `AEGP_AreDimensionsSeparated` to find out if it is.
-As of CS4, the only stream that is ever separarated is the layer’s Position property.
-Please _do not_ write code assuming that, we anticipate allowing separation of more streams in the future.
+只对叶子流有效。如果这个流是一个多维流，可以分离它的维度，返回 true，尽管它们目前可能没有被分离。
+术语。Leader 是可以被分离的流，Follower 是 N 个自动流中的一个，对应于 Leader 的 N 个维度。
+Leader 并不总是分离的，调用`AEGP_AreDimensionsSeparated`来确定它是否被分离。
+从 CS4 开始，唯一被分离的流是图层的位置属性。
+请不要编写假设的代码，我们预计将来会允许分离更多的数据流。
 
 ```cpp
 AEGP_IsSeparationLeader(
@@ -3828,7 +3823,7 @@ AEGP_IsSeparationLeader(
 
 #### AEGP_AreDimensionsSeparated
 
-Methods such as `AEGP_GetNewKeyframeValue` that work on keyframe indices will most definitely _not_ work on the Leader property, you will need to retrieve and operate on the Followers explicitly.
+诸如`AEGP_GetNewKeyframeValue`这样对关键帧指数起作用的方法肯定不会对 Leader 属性起作用，你将需要明确地检索和操作 Followers。
 
 ```cpp
 AEGP_AreDimensionsSeparated(
@@ -3839,7 +3834,7 @@ AEGP_AreDimensionsSeparated(
 
 #### AEGP_SetDimensionsSeparated
 
-Valid only if `AEGP_IsSeparationLeader()` is `true`.
+只有当`AEGP_IsSeparationLeader()`为`true`时才有效。
 
 ```cpp
 AEGP_AreDimensionsSeparated(
@@ -3850,7 +3845,7 @@ AEGP_AreDimensionsSeparated(
 
 #### AEGP_GetSeparationFollower
 
-Retrieve the Follower stream corresponding to a given dimension of the Leader stream. `dimS` can range from `0` to `AEGP_GetStreamValueDimensionality(lea der_streamH) - 1`.
+检索与 Leader 流的特定维度相对应的 Follower 流。`dimS`的范围从`0`到`AEGP_GetStreamValueDimensionality(lea der_streamH) - 1`。
 
 ```cpp
 AEGP_GetSeparationFollower(
@@ -3862,9 +3857,8 @@ AEGP_GetSeparationFollower(
 
 #### AEGP_IsSeparationFollower
 
-Valid on leaf streams only.
-Returns `true` if this stream is a one dimensional property that represents one of the dimensions of a Leader.
-You can retrieve stream from the Leader using `AEGP_GetSeparationFollower()`.
+只对叶子流有效。
+如果这个流是一个一维的属性，代表 Leader 的一个维度，则返回`true'。 你可以使用`AEGP_GetSeparationFollower()`从 Leader 那里检索流。
 
 ```cpp
 AEGP_IsSeparationFollower(
@@ -3875,7 +3869,7 @@ AEGP_IsSeparationFollower(
 
 #### AEGP_GetSeparationLeader
 
-Valid on separation Followers only, returns the Leader it is part of.
+仅对分离追随者有效，返回它所属的 Leader。
 
 ```cpp
 AEGP_GetSeparationLeader(
@@ -3886,7 +3880,7 @@ AEGP_GetSeparationLeader(
 
 #### AEGP_GetSeparationDimension
 
-Valid on separation Followers only, returns which dimension of the Leader it corresponds to.
+只对分离跟随者有效，返回它所对应的 Leader 的维度。
 
 ```cpp
 AEGP_GetSeparationDimension(
@@ -3897,15 +3891,15 @@ AEGP_GetSeparationDimension(
 
 ## Working With Keyframes
 
-Keyframes make After Effects what it is. AEGPs (and…ssshh, don’t tell anyone…effects) can use this suite to add, manipulate and remove keyframes from any keyframe-able stream.
+关键帧使 After Effects 成为它的一部分。AEGPs（以及......嘘，别告诉别人......特效）可以使用这套软件来添加、操作和删除任何可使用关键帧的流的关键帧。
 
 ### AEGP_KeyframeSuite3
 
 #### AEGP_GetStreamNumKFs
 
-Retrieves the number of keyframes on the given stream.
-Returns `AEGP_NumKF_NO_DATA` if the stream is not keyframe-able.
-Also, note that a stream without keyframes isn’t necessarily constant; it can be altered by expressions.
+检索给定流上的关键帧的数量。
+如果流不支持关键帧，返回`AEGP_NumKF_NO_DATA'。
+另外，注意没有关键帧的流不一定是恒定的；它可以被表达式所改变。
 
 ```cpp
 AEGP_GetStreamNumKFs(
@@ -3916,7 +3910,7 @@ AEGP_GetStreamNumKFs(
 
 #### AEGP_GetKeyframeTime
 
-Retrieves the time of the specified keyframe.
+检索指定关键帧的时间。
 
 ```cpp
 AEGP_GetKeyframeTime(
@@ -3929,9 +3923,9 @@ AEGP_GetKeyframeTime(
 
 #### AEGP_InsertKeyframe
 
-Adds a keyframe to the specified stream (at the specified composition or layer time).
-Returns the new keyframe’s index.
-All indexes greater than the new index are now invalid (but you knew that). If there is already a keyframe at that time, the values will be updated.
+给指定的流添加一个关键帧（在指定的合成或层时间）。
+返回新关键帧的索引。
+所有大于新索引的索引现在都是无效的（但你知道）。如果当时已经有一个关键帧，数值将被更新。
 
 ```cpp
 AEGP_InsertKeyframe(
@@ -3944,7 +3938,7 @@ AEGP_InsertKeyframe(
 
 #### AEGP_DeleteKeyframe
 
-Deletes the specified keyframe.
+删除指定的关键帧。
 
 ```cpp
 AEGP_DeleteKeyframe(
@@ -3955,8 +3949,8 @@ AEGP_DeleteKeyframe(
 
 #### AEGP_GetNewKeyframeValue
 
-Creates and populates an `AEGP_StreamValue2` for the stream’s value at the time of the keyframe.
-The returned `AEGP_StreamValue2` must be disposed of using `AEGP_DisposeStreamValue`.
+为关键帧时的流值创建并填充一个`AEGP_StreamValue2`。
+返回的`AEGP_StreamValue2`必须使用`AEGP_DisposeStreamValue`来处理。
 
 ```cpp
 AEGP_GetNewKeyframeValue(
@@ -3969,7 +3963,7 @@ AEGP_GetNewKeyframeValue(
 
 #### AEGP_SetKeyframeValue
 
-Sets the stream’s value at the time of the keyframe.
+设置关键帧时的流的值。
 
 ```cpp
 AEGP_SetKeyframeValue(
@@ -3981,7 +3975,7 @@ AEGP_SetKeyframeValue(
 
 #### AEGP_GetStreamValueDimensionality
 
-Retrieves the dimensionality of the stream’s value.
+检索流值的维度。
 
 ```cpp
 AEGP_GetStreamValueDimensionality(
@@ -3992,7 +3986,7 @@ AEGP_GetStreamValueDimensionality(
 
 #### AEGP_GetStreamTemporalDimensionality
 
-Retrieves the temporal dimensionality of the stream.
+检索流的时间维度。
 
 ```cpp
 AEGP_GetStreamTemporalDimensionality(
@@ -4003,8 +3997,7 @@ AEGP_GetStreamTemporalDimensionality(
 
 #### AEGP_GetNewKeyframeSpatialTangents
 
-Returns the `AEGP_StreamValue2s` representing the stream’s tangential values at the time of the keyframe.
-The returned `AEGP_StreamValue2s` must be disposed of using `AEGP_DisposeStreamValue`.
+返回代表关键帧时流的切向值的`AEGP_StreamValue2s'。 返回的`AEGP_StreamValue2s'必须使用`AEGP_DisposeStreamValue'进行处理。
 
 ```cpp
 AEGP_GetNewKeyframeSpatialTangents(
@@ -4018,8 +4011,8 @@ AEGP_GetNewKeyframeSpatialTangents(
 
 #### AEGP_SetKeyframeSpatialTangents
 
-Specifies the tangential `AEGP_StreamValue2s` to be used for the stream’s value at the time of the keyframe.
-The `AEGP_StreamValue2s` passed for in and out tangents are not adopted by After Effects, and must be disposed of using `AEGP_DisposeStreamValue`.
+指定切向的`AEGP_StreamValue2s`在关键帧时用于流的值。
+用于切入和切出的`AEGP_StreamValue2s'不被After Effects采用，必须用`AEGP_DisposeStreamValue'来处理。
 
 ```cpp
 AEGP_SetKeyframeSpatialTangents(
@@ -4030,13 +4023,13 @@ AEGP_SetKeyframeSpatialTangents(
 
 ```
 
-NOTE: In `AEGP_KeyframeSuite2` and prior versions, the values returned from this function were wrong when called on an effect point control stream or anchor point.
-They were not multiplied by the layer size. Now they are.
+注意：在`AEGP_KeyframeSuite2`和以前的版本中，当调用效果点控制流或锚点时，从这个函数返回的值是错误的。
+它们没有乘以图层大小。现在，它们是。
 
 #### AEGP_GetKeyframeTemporalEase
 
-Retrieves the `AEGP_KeyframeEases` associated with the specified dimension of the stream’s value at the time of the keyframe.
-`dimensionL` ranges from `0` to `(temporal_dimensionality -1)`.
+检索与关键帧时流值的指定维度相关的`AEGP_KeyframeEases`。
+`dimensionL`范围从`0`到`(temporal_dimensionality -1)`。
 
 ```cpp
 AEGP_GetKeyframeTemporalEase(
@@ -4048,12 +4041,12 @@ AEGP_GetKeyframeTemporalEase(
 
 ```
 
-NOTE: the returned ease values must be multiplied by layer height to match the values displayed in the After Effects UI.
+注意：返回的缓和值必须乘以图层高度，以匹配 After Effects UI 中显示的值。
 
 #### AEGP_SetKeyframeTemporalEase
 
-Specifies the `AEGP_KeyframeEases` to be used for the stream’s value at the time of the keyframe. `dimensionL` ranges from `0` to `(temporal_dimensionality -1)`.
-The `AEGP_KeyframeEases` passed are not adopted by After Effects.
+指定在关键帧时用于流的值的`AEGP_KeyframeEases`。`dimensionL`范围从`0`到`(temporal_dimensionality -1)`。
+所传递的`AEGP_KeyframeEases`不被 After Effects 采用。
 
 ```cpp
 AEGP_SetKeyframeTemporalEase(
@@ -4067,7 +4060,7 @@ AEGP_SetKeyframeTemporalEase(
 
 #### AEGP_GetKeyframeFlags
 
-Retrieves the flags currently set for the keyframe.
+检索当前为关键帧设置的标志。
 
 ```cpp
 AEGP_GetKeyframeFlags(
@@ -4077,7 +4070,7 @@ AEGP_GetKeyframeFlags(
 
 ```
 
-`*flagsP` will be a combination of the following:
+`*flagsP`将是以下的合成。
 
 - `AEGP_KeyframeFlag_NONE`
 - `AEGP_KeyframeFlag_TEMPORAL_CONTINUOUS`
@@ -4088,7 +4081,7 @@ AEGP_GetKeyframeFlags(
 
 #### AEGP_SetKeyframeFlag
 
-Sets the specified flag for the keyframe. Flags must be set individually.
+为关键帧设置指定的标志。标志必须单独设置。
 
 ```cpp
 AEGP_SetKeyframeFlag(
@@ -4101,7 +4094,7 @@ AEGP_SetKeyframeFlag(
 
 #### AEGP_GetKeyframeInterpolation
 
-Retrieves the in and out `AEGP_KeyframeInterpolationTypes` for the specified keyframe.
+检索指定关键帧的输入和输出`AEGP_KeyframeInterpolationTypes`。
 
 ```cpp
 AEGP_GetKeyframeInterpolation(
@@ -4112,7 +4105,7 @@ AEGP_GetKeyframeInterpolation(
 
 ```
 
-`AEGP_KeyframeInterpolationType` is one of the following:
+`AEGP_KeyframeInterpolationType`是以下之一。
 
 - `AEGP_KeyInterp_NONE`
 - `AEGP_KeyInterp_LINEAR`
@@ -4121,7 +4114,7 @@ AEGP_GetKeyframeInterpolation(
 
 #### AEGP_SetKeyframeInterpolation
 
-Specifies the in and out `AEGP_KeyframeInterpolationTypes` to be used for the given keyframe.
+指定用于指定关键帧的 AEGP_KeyframeInterpolationTypes 的输入和输出。
 
 ```cpp
 AEGP_SetKeyframeInterpolation(
@@ -4134,8 +4127,8 @@ AEGP_SetKeyframeInterpolation(
 
 #### AEGP_StartAddKeyframes
 
-Informs After Effects that you’re going to be adding several keyframes to the specified stream.
-After Effects will return an allocated opaque `AEGP_AddKeyframesInfoH`, for use with the calls below.
+通知 After Effects，你将在指定的流中加入几个关键帧。
+After Effects 将返回一个分配的不透明的`AEGP_AddKeyframesInfoH`，供下面的调用使用。
 
 ```cpp
 AEGP_StartAddKeyframes(
@@ -4146,8 +4139,8 @@ AEGP_StartAddKeyframes(
 
 #### AEGP_AddKeyframes
 
-Adds a keyframe to the specified stream at the specified (layer or composition) time.
-Note: this doesn’t actually do anything to the stream’s value.
+在指定的（层或合成）时间向指定的流添加一个关键帧。
+注意：这实际上并不对流的值做任何事情。
 
 ```cpp
 AEGP_AddKeyframes(
@@ -4160,7 +4153,7 @@ AEGP_AddKeyframes(
 
 #### AEGP_SetAddKeyframe
 
-Sets the value of the specified keyframe.
+设置指定关键帧的值。
 
 ```cpp
 AEGP_SetAddKeyframe(
@@ -4172,7 +4165,7 @@ AEGP_SetAddKeyframe(
 
 #### AEGP_EndAddKeyframes
 
-Tells After Effects you’re done adding keyframes.
+告诉 After Effects 你已经完成了关键帧的添加。
 
 ```cpp
 AEGP_EndAddKeyframes(
@@ -4183,25 +4176,25 @@ AEGP_EndAddKeyframes(
 
 ## Adding Multiple Keyframes
 
-Each time you call `AEGP_InsertKeyframe()`, the entire stream is added to the undo stack.
+每次你调用`AEGP_InsertKeyframe()`，整个流都会被添加到撤销堆栈中。
 
-If you’re adding one or two keyframes, this isn’t a problem. However, if you’re writing a keyframer, you’ll want to do things the _right_ way.
+如果你正在添加一两个关键帧，这不是一个问题。然而，如果你在写一个关键帧，你会想用正确的方法来做事情。
 
-Before you begin adding keyframes, call the (very-appropriately-named) `AEGP_StartAddKeyframes`, passing it an opaque `AEGP_AddKeyframesInfoH`.
+在你开始添加关键帧之前，调用（非常合适的名称）`AEGP_StartAddKeyframes`，并传递给它一个不透明的`AEGP_AddKeyframesInfoH`。
 
-For each keyframe to add, call `AEGP_AddKeyframes` to set the time to be used (and get the newly-added keyframe’s index), then `AEGP_SetAddKeyframe` to specify the value to be used.
+对于每个要添加的关键帧，调用`AEGP_AddKeyframes`来设置要使用的时间（并获得新添加的关键帧的索引），然后调用`AEGP_SetAddKeyframe`来指定要使用的值。
 
-Once you’re finished, call `AEGP_EndAddKeyframes` to let know After Effects know it’s time to add the changed parameter stream to the undo stack.
+完成后，调用`AEGP_EndAddKeyframes`，让 After Effects 知道是时候将改变的参数流添加到撤销堆栈中。
 
 ## Marker Streams
 
-`AEGP_MarkerSuite` allows for direct manipulation of marker data.
+`AEGP_MarkerSuite`允许直接操作标记数据。
 
 ### AEGP_MarkerSuite2
 
 #### AEGP_NewMarker
 
-Creates a new marker.
+创建一个新的标记。
 
 ```cpp
 AEGP_NewMarker(
@@ -4211,7 +4204,7 @@ AEGP_NewMarker(
 
 #### AEGP_DisposeMarker
 
-Disposes of a marker.
+处置一个标记。
 
 ```cpp
 AEGP_DisposeMarker(
@@ -4221,7 +4214,7 @@ AEGP_DisposeMarker(
 
 #### AEGP_DuplicateMarker
 
-Duplicates a marker (didn’t see _that_ one coming, eh?).
+复制一个标记（没料到会这样，嗯？）
 
 ```cpp
 AEGP_DuplicateMarker(
@@ -4232,7 +4225,7 @@ AEGP_DuplicateMarker(
 
 #### AEGP_SetMarkerFlag
 
-Sets a marker flag’s value.
+设置一个标记标志的值。
 
 ```cpp
 AEGP_SetMarkerFlag(
@@ -4242,14 +4235,14 @@ AEGP_SetMarkerFlag(
 
 ```
 
-Currently, AEGP_MarkerFlagType is one of the following:
+目前，AEGP_MarkerFlagType 是以下的一种。
 
 - `AEGP_MarkerFlag_NONE`
 - `AEGP_MarkerFlag_NAVIGATION`
 
 #### AEGP_GetMarkerFlag
 
-Gets the value (see above) of a given `AEGP_MarkerFlagType`.
+获取给定的`AEGP_MarkerFlagType`的值（见上文）。
 
 ```cpp
 AEGP_GetMarkerFlag(
@@ -4261,8 +4254,8 @@ AEGP_GetMarkerFlag(
 
 #### AEGP_GetMarkerString
 
-Retrieves the UTF-16, NULL-terminated string located in the specified marker field.
-Must be disposed of by caller using `AEGP_FreeMemHandle`.
+检索位于指定标记字段中的 UTF-16、以 NULL 为结尾的字符串。
+必须由调用者使用`AEGP_FreeMemHandle`处理。
 
 ```cpp
 AEGP_GetMarkerString(
@@ -4275,7 +4268,7 @@ AEGP_GetMarkerString(
 
 #### AEGP_SetMarkerString
 
-Sets the specified field of a marker to the provided text.
+将标记的指定字段设置为提供的文本。
 
 ```cpp
 AEGP_SetMarkerString(
@@ -4288,7 +4281,7 @@ AEGP_SetMarkerString(
 
 #### AEGP_CountCuePointParams
 
-Returns the number of cue point parameters.
+返回提示点参数的数量。
 
 ```cpp
 AEGP_CountCuePointParams(
@@ -4299,8 +4292,8 @@ AEGP_CountCuePointParams(
 
 #### AEGP_GetIndCuePointParam
 
-Returns the cue point param at the specified index (which must be between `0` and `(cue point params -1)`.
-Returned handles are UTF-16, NULL-terminated strings, and must be disposed of by caller using `AEGP_FreeMemHandle`.
+返回指定索引的提示点参数（必须在`0'和`（提示点参数-1）'之间。
+返回的句柄是 UTF-16，以 NULL 结尾的字符串，必须由调用者使用`AEGP_FreeMemHandle`来处理。
 
 ```cpp
 AEGP_GetIndCuePointParam(
@@ -4314,9 +4307,9 @@ AEGP_GetIndCuePointParam(
 
 #### AEGP_SetIndCuePointParam
 
-Set the value of an indexed cue point parameter to the specified value.
-`key_lengthL` is “number of unicode characters”, and `value_lenL` is the length of the provided value.
-`unicode_KeyP` and `unicode_ValueP` point to UTF-16 data.
+将一个有索引的提示点参数的值设置为指定值。
+`key_lengthL`是 "unicode 字符数"，`value_lenL`是提供值的长度。
+`unicode_KeyP`和`unicode_ValueP`指向 UTF-16 数据。
 
 ```cpp
 AEGP_SetIndCuePointParam(
@@ -4331,8 +4324,8 @@ AEGP_SetIndCuePointParam(
 
 #### AEGP_InsertCuePointParam
 
-Inserts a cue point parameter.
-This call is following by `AEGP_SetIndCuePointParam` to actually set the data.
+插入一个提示点参数。
+这个调用由`AEGP_SetIndCuePointParam`跟随，以实际设置数据。
 
 ```cpp
 AEGP_InsertCuePointParam(
@@ -4370,13 +4363,13 @@ AEGP_GetMarkerDuration(
 
 ## Mask Management
 
-Access, manipulate, and delete a layer’s masks.
+访问、操作和删除一个图层的遮罩。
 
 ### AEGP_MaskSuite6
 
 #### AEGP_GetLayerNumMasks
 
-Counts the masks applied to a layer,
+计算应用于一个图层的蒙版。
 
 ```cpp
 AEGP_GetLayerNumMasks(
@@ -4387,8 +4380,8 @@ AEGP_GetLayerNumMasks(
 
 #### AEGP_GetLayerMaskByIndex
 
-Given a layer handle and mask index, returns a pointer to the mask handle.
-You must destroy the mask handle by using `AEGP_DisposeMask()`.
+给定一个图层句柄和蒙版索引，返回一个指向蒙版句柄的指针。
+你必须通过使用`AEGP_DisposeMask()`来销毁蒙版句柄。
 
 ```cpp
 AEGP_GetLayerMaskByIndex(
@@ -4400,7 +4393,7 @@ AEGP_GetLayerMaskByIndex(
 
 #### AEGP_DisposeMask
 
-Dispose of a mask handle.
+处置一个掩码句柄。
 
 ```cpp
 AEGP_DisposeMask(
@@ -4410,7 +4403,7 @@ AEGP_DisposeMask(
 
 #### AEGP_GetMaskInvert
 
-Given a mask handle, determines if the mask is inverted or not.
+给定一个掩码句柄，确定该掩码是否被反转。
 
 ```cpp
 AEGP_GetMaskInvert(
@@ -4421,7 +4414,7 @@ AEGP_GetMaskInvert(
 
 #### AEGP_SetMaskInvert
 
-Sets the inversion state of a mask.
+设置一个掩码的反转状态。
 
 ```cpp
 AEGP_SetMaskInvert(
@@ -4432,8 +4425,8 @@ AEGP_SetMaskInvert(
 
 #### AEGP_GetMaskMode
 
-Given a mask handle, returns the current mode of the mask.
-`PF_MaskMode_NONE` does nothing, `PF_MaskMode_ADD` is the default behavior.* `PF_MaskMode_NONE`
+给定一个掩码句柄，返回该掩码的当前模式。
+`PF_MaskMode_NONE`不做任何事情，`PF_MaskMode_ADD`是默认行为。
 
 - `PF_MaskMode_ADD`,
 - `PF_MaskMode_SUBTRACT`,
@@ -4451,7 +4444,7 @@ AEGP_GetMaskMode(
 
 #### AEGP_SetMaskMode
 
-Sets the mode of the given mask.
+设置给定遮罩的模式。
 
 ```cpp
 AEGP_SetMaskMode(
@@ -4462,7 +4455,7 @@ AEGP_SetMaskMode(
 
 #### AEGP_GetMaskMotionBlurState
 
-Retrieves the motion blur setting for the given mask.
+检索给定遮罩的运动模糊设置。
 
 ```cpp
 AEGP_GetMaskMotionBlurState(
@@ -4471,7 +4464,7 @@ AEGP_GetMaskMotionBlurState(
 
 ```
 
-`AEGP_MaskMBlur` will be one of the following:
+`AEGP_MaskMBlur`将是以下的一种。
 
 - `AEGP_MaskMBlur_SAME_AS_LAYER`
 - `AEGP_MaskMBlur_OFF`
@@ -4479,7 +4472,7 @@ AEGP_GetMaskMotionBlurState(
 
 #### AEGP_SetMaskMotionBlurState
 
-New in CS6. Sets the motion blur setting for the given mask.
+CS6 中的新设置。设置给定遮罩的运动模糊设置。
 
 ```cpp
 AEGP_SetMaskMotionBlurState(
@@ -4490,8 +4483,8 @@ AEGP_SetMaskMotionBlurState(
 
 #### AEGP_GetMaskFeatherFalloff
 
-New in CS6. Gets the type of feather falloff for the given mask, either
-`AEGP_MaskFeatherFalloff_SMOOTH` or `AEGP_MaskFeatherFalloff_LINEAR`.
+CS6 中新增。获取给定蒙版的羽化淡出类型，可以是
+`AEGP_MaskFeatherFalloff_SMOOTH`或`AEGP_MaskFeatherFalloff_LINEAR`。
 
 ```cpp
 AEGP_SetMaskMotionBlurState(
@@ -4502,7 +4495,7 @@ AEGP_SetMaskMotionBlurState(
 
 #### AEGP_SetMaskFeatherFalloff
 
-Sets the type of feather falloff for the given mask.
+为给定的蒙版设置羽化淡出的类型。
 
 ```cpp
 AEGP_SetMaskMotionBlurState(
@@ -4513,13 +4506,13 @@ AEGP_SetMaskMotionBlurState(
 
 #### AEGP_GetMaskName
 
-Removed in CS4. Use `AEGP_GetNewStreamRefForMask` and the name functions in the Dynamic Stream Suite instead.
+在 CS4 中被删除。使用`AEGP_GetNewStreamRefForMask`和动态流套件中的名称函数代替。
 
 #### AEGP_SetMaskName
 
 #### AEGP_GetMaskID
 
-Retrieves the `AEGP_MaskIDVal` for the given `AEGP_MaskRefH`, for use in uniquely identifying the mask.
+为给定的`AEGP_MaskRefH`检索`AEGP_MaskIDVal`，用于唯一识别掩码。
 
 ```cpp
 AEGP_GetMaskID(
@@ -4530,7 +4523,7 @@ AEGP_GetMaskID(
 
 #### AEGP_CreateNewMask
 
-Creates a new mask on the referenced `AEGP_LayerH`, with zero nodes. The new mask’s index is returned.
+在引用的`AEGP_LayerH`上创建一个新的掩码，节点数为 0。新掩码的索引被返回。
 
 ```cpp
 AEGP_CreateNewMask(
@@ -4548,11 +4541,11 @@ AEGP_DeleteMaskFromLayer(
 
 ```
 
-NOTE: As of 6.5, if you delete a mask and it or a child stream is selected, the current selection within the composition will become NULL.
+注意：从 6.5 版本开始，如果你删除了一个遮罩，并且它或一个子流被选中，在合成中的当前选择将变成 NULL。
 
 #### AEGP_GetMaskColor
 
-Retrieves the color of the specified mask.
+检索指定掩码的颜色。
 
 ```cpp
 AEGP_GetMaskColor(
@@ -4563,7 +4556,7 @@ AEGP_GetMaskColor(
 
 #### AEGP_SetMaskColor
 
-Sets the color of the specified mask.
+设置指定掩码的颜色。
 
 ```cpp
 AEGP_SetMaskColor(
@@ -4574,7 +4567,7 @@ AEGP_SetMaskColor(
 
 #### AEGP_GetMaskLockState
 
-Retrieves the lock state of the specified mask.
+检索指定掩码的锁定状态。
 
 ```cpp
 AEGP_GetMaskLockState(
@@ -4585,7 +4578,7 @@ AEGP_GetMaskLockState(
 
 #### AEGP_SetMaskLockState
 
-Sets the lock state of the specified mask.
+设置指定掩码的锁定状态。
 
 ```cpp
 AEGP_SetMaskLockState(
@@ -4596,7 +4589,7 @@ AEGP_SetMaskLockState(
 
 #### AEGP_GetMaskIsRotoBezier
 
-Returns whether or not the given mask is used as a rotobezier.
+返回给定的遮罩是否被用作滚轴。
 
 ```cpp
 AEGP_GetMaskIsRotoBezier(
@@ -4607,7 +4600,7 @@ AEGP_GetMaskIsRotoBezier(
 
 #### AEGP_SetMaskIsRotoBezier
 
-Sets whether a given mask is to be used as a rotobezier.
+设置给定的蒙板是否用作滚轴。
 
 ```cpp
 AEGP_SetMaskIsRotoBezier(
@@ -4618,7 +4611,7 @@ AEGP_SetMaskIsRotoBezier(
 
 #### AEGP_DuplicateMask
 
-Duplicates a given `AEGP_MaskRefH`. Caller must dispose of duplicate.
+复制一个给定的`AEGP_MaskRefH`。调用者必须处理掉重复的部分。
 
 ```cpp
 AEGP_DuplicateMask(
@@ -4629,17 +4622,17 @@ AEGP_DuplicateMask(
 
 ## Mask Outlines
 
-The Mask Suite above tells plug-ins about the masks on a layer, but not about the details of those masks.
+上面的 Mask Suite 告诉插件一个图层上的遮罩，但不告诉这些遮罩的细节。
 
-This is because processing is required on After Effects’ part to access the information; the information isn’t just lying around.
+这是因为 After Effects 需要处理这些信息；这些信息并不是随便乱放的。
 
-Plug-ins access that information using this Mask Outline Suite.
+插件使用这个蒙版轮廓套件来访问这些信息。
 
 ### AEGP_MaskOutlineSuite3
 
 #### AEGP_IsMaskOutlineOpen
 
-Given an mask outline pointer (obtainable through the [Stream Suite](#aegps-aegp-suites-stream-suite)), determines if the mask path is open or closed.
+给定一个遮罩轮廓指针（可通过[Stream Suite]获得），确定遮罩路径是打开还是关闭。
 
 ```cpp
 AEGP_IsMaskOutlineOpen(
@@ -4650,7 +4643,7 @@ AEGP_IsMaskOutlineOpen(
 
 #### AEGP_SetMaskOutlineOpen
 
-Sets the open state of the given mask outline.
+设置给定掩码轮廓的打开状态。
 
 ```cpp
 AEGP_SetMaskOutlineOpen(
@@ -4661,8 +4654,8 @@ AEGP_SetMaskOutlineOpen(
 
 #### AEGP_GetMaskOutlineNumSegments
 
-Given a mask outline pointer, returns the number of segments in the path.
-`num_segmentsPL` is the total number of segments `[0...N-1]`.
+给定一个掩码轮廓指针，返回路径中的段数。
+`num_segmentsPL`是段的总数`[0...N-1]`。
 
 ```cpp
 AEGP_GetMaskOutlineNumSegments(
@@ -4673,8 +4666,8 @@ AEGP_GetMaskOutlineNumSegments(
 
 #### AEGP_GetMaskOutlineVertexInfo
 
-Given a mask outline pointer and a point between 0 and the total number of segments.
-For closed mask paths, `vertex[0]` is the same as `vertex[num_segments]`.
+给出一个掩码轮廓指针和 0 与总段数之间的一个点。
+对于封闭的遮罩路径，`vertex[0]`与`vertex[num_segments]`相同。
 
 ```cpp
 AEGP_GetMaskOutlineVertexInfo(
@@ -4686,9 +4679,9 @@ AEGP_GetMaskOutlineVertexInfo(
 
 #### AEGP_SetMaskOutlineVertexInfo
 
-Sets the vertex information for a given index.
-Setting vertex 0 is special; its in tangent will actually set the out tangent of the last vertex in the outline.
-Of course, `which_pointL` must be valid for the mask outline, or the function will return an error.
+设置给定索引的顶点信息。
+设置顶点 0 是特别的；它的切线实际上是设置轮廓中最后一个顶点的切线。
+当然，`which_pointL'必须对遮罩的轮廓有效，否则函数将返回错误。
 
 ```cpp
 AEGP_SetMaskOutlineVertexInfo(
@@ -4700,8 +4693,8 @@ AEGP_SetMaskOutlineVertexInfo(
 
 #### AEGP_CreateVertex
 
-Creates a vertex at index position.
-All vertices which formerly had an `AEGP_VertexIndex` of position or greater will have their indices incremented by one.
+在索引位置创建一个顶点。
+所有以前有`AEGP_VertexIndex`的位置或更高的顶点将被增加一个索引。
 
 ```cpp
 AEGP_CreateVertex(
@@ -4710,11 +4703,11 @@ AEGP_CreateVertex(
 
 ```
 
-NOTE: All masks must have at least one vertex.
+注意：所有蒙版必须至少有一个顶点。
 
 #### AEGP_DeleteVertex
 
-Removes a vertex from a mask.
+从遮罩中删除一个顶点。
 
 ```cpp
 AEGP_DeleteVertex(
@@ -4725,7 +4718,7 @@ AEGP_DeleteVertex(
 
 #### AEGP_GetMaskOutlineNumFeathers
 
-New in CS6.
+CS6 中的新功能。
 
 ```cpp
 AEGP_DeleteVertex(
@@ -4736,7 +4729,7 @@ AEGP_DeleteVertex(
 
 #### AEGP_GetMaskOutlineFeatherInfo
 
-New in CS6.
+CS6 中的新功能。
 
 ```cpp
 AEGP_GetMaskOutlineFeatherInfo(
@@ -4748,8 +4741,8 @@ AEGP_GetMaskOutlineFeatherInfo(
 
 #### AEGP_SetMaskOutlineFeatherInfo
 
-New in CS6.
-Feather must already exist; use `AEGP_CreateMaskOutlineFeather` first, if needed.
+CS6 中的新功能。
+羽毛必须已经存在；如果需要，首先使用`AEGP_CreateMaskOutlineFeather`。
 
 ```cpp
 AEGP_SetMaskOutlineFeatherInfo(
@@ -4761,7 +4754,7 @@ AEGP_SetMaskOutlineFeatherInfo(
 
 #### AEGP_CreateMaskOutlineFeather
 
-New in CS6. Index of new feather is passed back in `insert_positionP`.
+CS6 中的新功能。新羽毛的索引在`insert_positionP`中传回。
 
 ```cpp
 AEGP_CreateMaskOutlineFeather(
@@ -4773,7 +4766,7 @@ AEGP_CreateMaskOutlineFeather(
 
 #### AEGP_DeleteMaskOutlineFeather
 
-New in CS6.
+CS6 中的新功能。
 
 ```cpp
 AEGP_DeleteMaskOutlineFeather(
@@ -4784,9 +4777,9 @@ AEGP_DeleteMaskOutlineFeather(
 
 ## Mask Feathering
 
-New for CS6, masks can be feathered.
+CS6 的新功能，遮罩可以被羽化。
 
-`AEGP_MaskFeather` is defined as follows:
+`AEGP_MaskFeather`定义如下。
 
 ```cpp
 typedef struct {
@@ -4801,25 +4794,25 @@ typedef struct {
 
 ```
 
-`AEGP_MaskFeatherInterp` is either `AEGP_MaskFeatherInterp_NORMAL` or `AEGP_MaskFeatherInterp_HOLD_CW`.
+`AEGP_MaskFeatherInterp`是`AEGP_MaskFeatherInterp_NORMAL`或`AEGP_MaskFeatherInterp_HOLD_CW`。
 
-`AEGP_MaskFeatherType` is either `AEGP_MaskFeatherType_OUTER` or `AEGP_MaskFeatherType_INNER`.
+`AEGP_MaskFeatherType`是`AEGP_MaskFeatherType_OUTER`或`AEGP_MaskFeatherType_INNER`。
 
-This suite enables AEGPs to get and set the text associated with text layers.
+这个套件使 AEGP 能够获取和设置与文本层相关的文本。
 
-Note: to get started, retrieve an `AEGP_TextDocumentH` by calling `AEGP_GetLayerStreamValue`, above, and passing `AEGP_StreamType_TEXT_DOCUMENT` as the `AEGP_StreamType`.
+注意：要开始，通过调用上面的 "AEGP_GetLayerStreamValue"，并将 "AEGP_StreamType_TEXT_DOCUMENT "作为 "AEGP_StreamType "来检索一个 "AEGP_TextDocumentH"。
 
 ## Working With Text Layers
 
-This suite enables AEGPs to get and set the text associated with text layers.
+该套件使 AEGP 能够获得和设置与文本层相关的文本。
 
 ### AEGP_TextDocumentSuite1
 
 #### AEGP_GetNewText
 
-Retrieves the UTF-16, NULL-terminated string used in the `AEGP_TextDocumentH`.
-Note: After Effects will allocate the `AEGP_MemHandle`;
-your plug-in must dispose of it when done using `AEGP_FreeMemHandle`.
+检索在`AEGP_TextDocumentH`中使用的 UTF-16、以 NULL 为结尾的字符串。
+注意：After Effects 将分配`AEGP_MemHandle`。
+你的插件必须在完成后使用`AEGP_FreeMemHandle'来处理它。
 
 ```cpp
 AEGP_GetNewText(
@@ -4831,7 +4824,7 @@ AEGP_GetNewText(
 
 #### AEGP_SetText
 
-Specifies the text to be used by the `AEGP_TextDocumentH`.
+指定 "AEGP_TextDocumentH "使用的文本。
 
 ```cpp
 AEGP_SetText(
@@ -4843,16 +4836,16 @@ AEGP_SetText(
 
 ## Working With Text Outlines
 
-The `AEGP_TextLayerSuite` provides access to the actual outlines of the text used by text layers.
+`AEGP_TextLayerSuite`提供对文本层使用的实际文本轮廓的访问。
 
-Once you have a path, you can manipulate it with [PF_PathQuerySuite1](../effect-details/working-with-paths.html#effect-details-working-with-paths-pf-pathquerysuite) and [PF_PathDataSuite](../effect-details/working-with-paths.html#effect-details-working-with-paths-pf-pathdatasuite).
+一旦有了路径，就可以用[PF_PathQuerySuite1](.../effect-details/working-with-paths.html#effect-details-working-with-paths-pf-pathquerysuite)和[PF_PathDataSuite](.../effect-details/working-with-paths.html#effect-details-working-with-paths-pf-pathdatasuite)来操作它。
 
 ### AEGP_TextLayerSuite1
 
 #### AEGP_GetNewTextOutlines
 
-Allocates and returns a handle to the `AEGP_TextOutlinesHs` associated with the specified layer.
-`outlinesPH` will be NULL if there are no `AEGP_TextOutlinesHs` associated with `layerH` (in other words, if it’s not a text layer).
+分配并返回与指定图层相关的`AEGP_TextOutlinesHs`的句柄。
+如果没有与`layerH'相关的`AEGP_TextOutlinesHs'（换句话说，如果它不是一个文本层），`outlinesPH'将是 NULL。
 
 ```cpp
 AEGP_GetNewTextOutlines(
@@ -4864,7 +4857,7 @@ AEGP_GetNewTextOutlines(
 
 #### AEGP_DisposeTextOutlines
 
-Dispose of those outlines we allocated on your behalf!
+处理掉我们为你分配的那些轮廓线!
 
 ```cpp
 AEGP_DisposeTextOutlines(
@@ -4874,7 +4867,7 @@ AEGP_DisposeTextOutlines(
 
 #### AEGP_GetNumTextOutlines
 
-Retrieves the number of text outlines for the layer.
+检索该层的文本轮廓的数量。
 
 ```cpp
 AEGP_GetNumTextOutlines(
@@ -4885,7 +4878,7 @@ AEGP_GetNumTextOutlines(
 
 #### AEGP_GetIndexedTextOutline
 
-Returns a PF_PathOutlinePtr for the specifed text outline.
+返回一个指定文本轮廓的 PF_PathOutlinePtr。
 
 ```cpp
 AEGP_GetIndexedTextOutline(
@@ -4897,15 +4890,15 @@ AEGP_GetIndexedTextOutline(
 
 ## Utility Functions
 
-The Utility suite supplies error message handling, AEGP version checking and access to the undo stack.
+Utility 套件提供了错误信息处理、AEGP 版本检查和对撤销堆栈的访问。
 
-Everything you need to keep After Effects and your plug-in tidy.
+你需要的一切，以保持 After Effects 和你的插件整洁。
 
 ### AEGP_UtilitySuite6
 
 #### AEGP_ReportInfo
 
-Displays dialog with name of the AEGP followed by the string passed.
+显示对话框，显示 AEGP 的名称和所传递的字符串。
 
 ```cpp
 AEGP_ReportInfo(
@@ -4916,7 +4909,7 @@ AEGP_ReportInfo(
 
 #### AEGP_ReportInfoUnicode
 
-New in CC. Displays dialog with name of the AEGP followed by the unicode string passed.
+CC 中的新内容。显示对话框，显示 AEGP 的名称和传递的 unicode 字符串。
 
 ```cpp
 AEGP_ReportInfoUnicode(
@@ -4927,7 +4920,7 @@ AEGP_ReportInfoUnicode(
 
 #### AEGP_GetDriverSpecVersion
 
-Returns version of `AEGPDriver` plug-in (use to determine supported features).
+返回`AEGPDriver`插件的版本（用于确定支持的功能）。
 
 ```cpp
 AEGP_GetDriverSpecVersion(
@@ -4938,8 +4931,8 @@ AEGP_GetDriverSpecVersion(
 
 #### AEGP_StartQuietErrors
 
-Silences errors. Must be balanced with `AEGP_EndQuietErrors`.
-The `AEGP_ErrReportState` is an opaque structure private to After Effects.
+沉默错误。必须与`AEGP_EndQuietErrors`平衡。
+`AEGP_ErrReportState`是一个不透明的结构，为 After Effects 私有。
 
 ```cpp
 AEGP_StartQuietErrors(
@@ -4949,7 +4942,7 @@ AEGP_StartQuietErrors(
 
 #### AEGP_EndQuietErrors
 
-Re-enables errors.
+重新启用错误。
 
 ```cpp
 AEGP_EndQuietErrors(
@@ -4959,8 +4952,7 @@ AEGP_EndQuietErrors(
 
 #### AEGP_StartUndoGroup
 
-Add action(s) to the undo queue. The user may undo any actions between this and `AEGP_EndUndoGroup()`.
-The `undo_nameZ` will appear in the edit menu.
+将动作添加到撤销队列中。用户可以撤销在此和`AEGP_EndUndoGroup()'之间的任何动作。 `undo_nameZ`将出现在编辑菜单中。
 
 ```cpp
 AEGP_StartUndoGroup(
@@ -4970,7 +4962,7 @@ AEGP_StartUndoGroup(
 
 #### AEGP_EndUndoGroup
 
-Ends the undo list.
+结束撤消列表。
 
 ```cpp
 AEGP_EndUndoGroup();
@@ -4979,9 +4971,9 @@ AEGP_EndUndoGroup();
 
 #### AEGP_RegisterWithAEGP
 
-Returns an AEGP_PluginID, which effect plug-ins can then use in calls to many functions throughout the AEGP API.
-Effects should only call this function once, during `PF_Cmd_GLOBAL_SETUP`, and save the `AEGP_PluginID` for later use.
-The first parameter can be any value, and the second parameter should be the plug-in’s match name.
+返回一个 AEGP_PluginID，然后效果插件可以在调用整个 AEGP API 的许多函数时使用。
+在`PF_Cmd_GLOBAL_SETUP'期间，效果器应该只调用这个函数一次，并保存`AEGP_PluginID'供以后使用。
+第一个参数可以是任何数值，第二个参数应该是插件的匹配名称。
 
 ```cpp
 AEGP_RegisterWithAEGP(
@@ -4993,8 +4985,8 @@ AEGP_RegisterWithAEGP(
 
 #### AEGP_GetMainHWND
 
-Retrieves After Effects’ HWND; useful when displaying your own dialog on Windows.
-If you don’t use After Effects’ HWND, your modal dialog will not prevent interaction with the windows behind, and pain will ensue.
+检索 After Effects 的 HWND；在 Windows 上显示你自己的对话框时很有用。
+如果你不使用 After Effects 的 HWND，你的模态对话框将无法阻止与后面的窗口互动，痛苦将随之而来。
 
 ```cpp
 AEGP_GetMainHWND(
@@ -5004,8 +4996,8 @@ AEGP_GetMainHWND(
 
 #### AEGP_ShowHideAllFloaters
 
-Toggles whether or not floating palettes are displayed.
-Use this with care; users get twitchy when you unexpectedly change the UI on them.
+切换是否显示浮动调色板。
+使用时要小心；当你意外地改变他们的用户界面时，用户会感到不安。
 
 ```cpp
 AEGP_ShowHideAllFloaters(
@@ -5015,7 +5007,7 @@ AEGP_ShowHideAllFloaters(
 
 #### AEGP_PaintPalGetForeColor
 
-Retrieves the foreground color from the paint palette.
+从调色板中检索前景颜色。
 
 ```cpp
 AEGP_PaintPalGetForeColor(
@@ -5025,7 +5017,7 @@ AEGP_PaintPalGetForeColor(
 
 #### AEGP_PaintPalGetBackColor
 
-Retrieves the background color from the paint palette.
+从调色板中获取背景色。
 
 ```cpp
 AEGP_PaintPalGetBackColor(
@@ -5035,7 +5027,7 @@ AEGP_PaintPalGetBackColor(
 
 #### AEGP_PaintPalSetForeColor
 
-Sets the foreground color in the paint palette.
+在调色板中设置前景色。
 
 ```cpp
 AEGP_PaintPalSetForeColor(
@@ -5045,7 +5037,7 @@ AEGP_PaintPalSetForeColor(
 
 #### AEGP_PaintPalSetBackColor
 
-Sets the background color in the paint palette.
+在调色板中设置背景颜色。
 
 ```cpp
 AEGP_PaintPalSetBackColor(
@@ -5055,7 +5047,7 @@ AEGP_PaintPalSetBackColor(
 
 #### AEGP_CharPalGetFillColor
 
-Retrieves the fill color from the character palette.
+从字符调色板中检索填充颜色。
 
 ```cpp
 AEGP_CharPalGetFillColor(
@@ -5066,7 +5058,7 @@ AEGP_CharPalGetFillColor(
 
 #### AEGP_CharPalGetStrokeColor
 
-Retrieves the stroke color from the character palette.
+从字符调色板中检索笔触颜色。
 
 ```cpp
 AEGP_CharPalGetStrokeColor(
@@ -5077,7 +5069,7 @@ AEGP_CharPalGetStrokeColor(
 
 #### AEGP_CharPalSetFillColor
 
-Sets the fill color in the character palette.
+设置字符调色板中的填充色。
 
 ```cpp
 AEGP_CharPalSetFillColor(
@@ -5087,7 +5079,7 @@ AEGP_CharPalSetFillColor(
 
 #### AEGP_CharPalSetStrokeColor
 
-Sets the stroke color in the character palette.
+在字符调色板中设置笔画颜色。
 
 ```cpp
 AEGP_CharPalSetStrokeColor(
@@ -5097,7 +5089,7 @@ AEGP_CharPalSetStrokeColor(
 
 #### AEGP_CharPalIsFillColorUIFrontmost
 
-Returns whether or not the fill color is frontmost. If it isn’t, the stroke color is frontmost.
+返回填充颜色是否是最前面的。如果不是，笔画颜色就是最前面的。
 
 ```cpp
 AEGP_CharPalIsFillColorUIFrontmost(
@@ -5107,7 +5099,7 @@ AEGP_CharPalIsFillColorUIFrontmost(
 
 #### AEGP_ConvertFpLongToHSFRatio
 
-Returns an `A_Ratio` interpretation of the given `A_FpLong`. Useful for horizontal scale factor interpretation.
+返回给定的`A_FpLong`的`A_Ratio`解释。对水平比例因子的解释很有用。
 
 ```cpp
 AEGP_ConvertFpLongToHSFRatio(
@@ -5118,7 +5110,7 @@ AEGP_ConvertFpLongToHSFRatio(
 
 #### AEGP_ConvertHSFRatioToFpLong
 
-Returns an `A_FpLong` interpretation of the given `A_Ratio`. Useful for horizontal scale factor interpretation.
+返回给定 "A_FpLong "的 "A_Ratio "解释。对水平比例因子的解释很有用。
 
 ```cpp
 AEGP_ConvertHSFRatioToFpLong(
@@ -5129,9 +5121,9 @@ AEGP_ConvertHSFRatioToFpLong(
 
 #### AEGP_CauseIdleRoutinesToBeCalled
 
-This routine is safe to call from threads other than the main thread.
-It is asynchronous and will return before the idle handler is called.
-The suite functions to get this function pointer are not thread safe; save it off in the main thread for use by the child thread.
+本例程可以从主线程以外的线程安全调用。
+它是异步的，会在空闲处理程序被调用之前返回。
+获取该函数指针的套件函数不是线程安全的；将其保存在主线程中供子线程使用。
 
 ```cpp
 AEGP_CauseIdleRoutinesToBeCalled(void);
@@ -5140,7 +5132,7 @@ AEGP_CauseIdleRoutinesToBeCalled(void);
 
 #### AEGP_GetSuppressInteractiveUI
 
-Returns whether After Effects is running without a user interface.
+返回 After Effects 是否在没有用户界面的情况下运行。
 
 ```cpp
 AEGP_GetSuppressInteractiveUI(
@@ -5150,7 +5142,7 @@ AEGP_GetSuppressInteractiveUI(
 
 #### AEGP_WriteToOSConsole
 
-Sends a string to the OS console.
+向操作系统控制台发送一个字符串。
 
 ```cpp
 AEGP_WriteToOSConsole(
@@ -5160,7 +5152,7 @@ AEGP_WriteToOSConsole(
 
 #### AEGP_WriteToDebugLog
 
-Writes a message to the debug log, or to the OS command line if After Effects was launched with the “-debug” option.
+写一条信息到调试日志，如果 After Effects 是用"-debug "选项启动的，则写到操作系统命令行。
 
 ```cpp
 AEGP_WriteToDebugLog(
@@ -5172,8 +5164,8 @@ AEGP_WriteToDebugLog(
 
 #### AEGP_GetLastErrorMessage
 
-Retrieves the last error message displayed to the user, and its associated error number.
-Pass in the size of the character buffer to be returned.
+检索显示给用户的最后一条错误信息，以及相关的错误编号。
+传入要返回的字符缓冲区的大小。
 
 ```cpp
 AEGP_GetLastErrorMessage(
@@ -5185,7 +5177,7 @@ AEGP_GetLastErrorMessage(
 
 #### AEGP_IsScriptingAvailable
 
-Returns `TRUE` if scripting is available to the plug-in.
+如果脚本对插件可用，返回`TRUE`。
 
 ```cpp
 AEGP_IsScriptingAvailable(
@@ -5195,9 +5187,9 @@ AEGP_IsScriptingAvailable(
 
 #### AEGP_ExecuteScript
 
-Have After Effects execute a script.
-The script passed in can be in either UTF-8 or the current application encoding (if platform_encodingB is passed in as TRUE).
-The two out arguments are optional. The value of the last line of the script is what is passed back in outResultPH0.
+让 After Effects 执行一个脚本。
+传入的脚本可以是 UTF-8 或当前应用程序的编码（如果 platform_encodingB 被传入为 TRUE）。
+两个输出参数是可选的。脚本的最后一行的值就是传回 outResultPH0 的值。
 
 ```cpp
 AEGP_ExecuteScript(
@@ -5211,7 +5203,7 @@ AEGP_ExecuteScript(
 
 #### AEGP_HostIsActivated
 
-Returns TRUE if the user has successfully activated After Effects.
+如果用户成功激活了 After Effects，返回 TRUE。
 
 ```cpp
 AEGP_HostIsActivated(
@@ -5221,8 +5213,8 @@ AEGP_HostIsActivated(
 
 #### AEGP_GetPluginPlatformRef
 
-On macOS, returns a `CFBundleRef` to your Mach-O plug-in, or NULL for a CFM plug-in.
-Always returns `NULL` on Windows (you can use an OS-specific entry point to capture your DLLInstance).
+在 macOS 上，返回一个`CFBundleRef`给你的 Mach-O 插件，如果是 CFM 插件则返回 NULL。
+在 Windows 上总是返回`NULL`（你可以使用操作系统特定的入口点来捕获你的 DLLInstance）。
 
 ```cpp
 AEGP_GetPluginPlatformRef(
@@ -5233,7 +5225,7 @@ AEGP_GetPluginPlatformRef(
 
 #### AEGP_UpdateFontList
 
-Rescans the system font list.
+重新扫描系统字体列表。
 
 ```cpp
 AEGP_UpdateFontList();
@@ -5242,7 +5234,7 @@ AEGP_UpdateFontList();
 
 #### AEGP_GetPluginPaths
 
-New in CC. Returns a particular path associated with the plug-in:
+在 CC 中是新的。返回一个与插件相关的特定路径。
 
 - `AEGP_GetPathTypes_PLUGIN` - (Not Implemented) The path to the location of the plug-in itself.
 - `AEGP_GetPathTypes_USER_PLUGIN` -The suite specific location of user specific plug-ins.
@@ -5259,22 +5251,22 @@ AEGP_GetPluginPaths(
 
 ## Persistent Data Suite
 
-Plug-ins have read and write access to persistent data in After Effects’ preferences. AEGPs may add and manage their own persistent data using the following suite. The data entries are accessed by (section key, value key) pairs. It is recommended that plug-ins use their matchname as their section key, or as a prefix if using multiple section keys.
+插件可以读写 After Effects 偏好中的持久性数据。AEGPs 可以使用以下套件添加和管理自己的持久性数据。数据条目由（section key, value key）对访问。建议插件使用它们的匹配名称作为它们的部分键，如果使用多个部分键，则作为前缀。
 
-The available data types are `A_long`, `A_FpLong`, strings, and `void*`. `A_FpLongs` are stored with 6 decimal places of precision. There is no provision for specifying a different precision. String data supports the full 8-bit space. Only 0x00 is reserved for string ending. This makes them ideal for storing UTF-8 encoded strings, ISO 8859-1, and plain ASCII. Both section keys and value keys are of this type. For data types not represented by the simple data types provided, use data handles containing your custom data. void* unstructured data allows you to store any kind of data. You must pass in a size in bytes along with the data.
+可用的数据类型有`A_long`，`A_FpLong`，字符串和`void*`。`A_FpLong'以小数点后 6 位的精度存储。没有规定可以指定不同的精度。字符串数据支持完整的 8 位空间。只有 0x00 被保留给字符串结束。这使得它们成为存储 UTF-8 编码的字符串、ISO 8859-1 和普通 ASCII 的理想选择。节段键和值键都是这种类型的。对于没有被提供的简单数据类型所代表的数据类型，使用包含你的自定义数据的数据句柄。 void\*非结构化数据允许你存储任何类型的数据。你必须在传递数据的同时传递一个以字节为单位的大小。
 
-When calling any of the functions to retrieve the value of a key, if a given key is not found, the default value is both written to the blob and returned as the value; if no default is provided, a blank value will be written and returned.
+当调用任何一个函数来检索一个键的值时，如果没有找到给定的键，默认值都会被写入 blob 并作为值返回；如果没有提供默认值，将写入并返回一个空白值。
 
-Note that this data is stored in the application’s preferences, not in the project. As of 6.5, there is no way to store opaque AEGP-generated data in an After Effects project.
+请注意，这些数据是存储在应用程序的首选项中，而不是在项目中。从 6.5 开始，没有办法在 After Effects 项目中存储不透明的 AEGP 生成的数据。
 
-After Effects can handle plug-ins which change the preferences during their application; it checks the in-RAM copy of the prefs before acting upon pref-able settings, rather than relying on the saved prefs. It’s like we _planned_ this, or something!
+After Effects 可以处理在应用过程中改变首选项的插件；它在对可首选项的设置采取行动之前会检查首选项的内存拷贝，而不是依赖保存的首选项。就像我们\_计划好的一样，或者其他什么东西
 
 ### AEGP_PersistentDateSuite4
 
 #### AEGP_GetApplicationBlob
 
-Obtains the handle to all persistent application data. Modifying this will modify the application.
-The `AEGP_PersistentType` parameter is new in CC, and should be set to one of the following:
+获取所有持久化应用程序数据的句柄。修改它将修改应用程序。
+AEGP_PersistentType "参数在 CC 中是新的，应该被设置为以下内容之一。
 
 - `AEGP_PersistentType_MACHINE_SPECIFIC`,
 - `AEGP_PersistentType_MACHINE_INDEPENDENT`,
@@ -5293,7 +5285,7 @@ AEGP_GetApplicationBlob(
 
 #### AEGP_GetNumSections
 
-Obtains the number of sections in the application blob.
+获取应用程序 blob 中的部分数量。
 
 ```cpp
 AEGP_GetNumSections(
@@ -5304,7 +5296,7 @@ AEGP_GetNumSections(
 
 #### AEGP_GetSectionKeyByIndex
 
-Obtains the key at the given index.
+获取给定索引处的键。
 
 ```cpp
 AEGP_GetSectionKeyByIndex(
@@ -5317,7 +5309,7 @@ AEGP_GetSectionKeyByIndex(
 
 #### AEGP_DoesKeyExist
 
-Returns whether or not a given key/value pair exists with the blob.
+返回 blob 中是否存在给定的键/值对。
 
 ```cpp
 AEGP_DoesKeyExist(
@@ -5330,7 +5322,7 @@ AEGP_DoesKeyExist(
 
 #### AEGP_GetNumKeys
 
-Retrieves the number of value keys in the section.
+检索该部分中的值键的数量。
 
 ```cpp
 AEGP_GetNumKeys(
@@ -5342,7 +5334,7 @@ AEGP_GetNumKeys(
 
 #### AEGP_GetValueKeyByIndex
 
-Retrieves the value of the indexed key.
+检索索引的键的值。
 
 ```cpp
 AEGP_GetValueKeyByIndex(
@@ -5356,13 +5348,13 @@ AEGP_GetValueKeyByIndex(
 
 :::tip
 
-For the functions below, if a given key is not found, the default value is both written to the blob and returned as the value;
-if no default is provided, a blank value will be written and returned.
+对于下面的函数，如果没有找到给定的键，默认值会同时写入 blob 中并作为值返回。
+如果没有提供默认值，将写入并返回一个空白值。
 :::
 
 #### AEGP_GetDataHandle
 
-Obtains the value associated with the given section’s key. If using in-memory data structures, watch for endian issues.
+获取与给定章节的键相关的值。如果使用内存中的数据结构，注意 endian 问题。
 
 ```cpp
 AEGP_GetDataHandle(
@@ -5377,7 +5369,7 @@ AEGP_GetDataHandle(
 
 #### AEGP_GetData
 
-Obtains the data located at a given section’s value.
+获取位于给定部分的值的数据。
 
 ```cpp
 AEGP_GetData(
@@ -5392,7 +5384,7 @@ AEGP_GetData(
 
 #### AEGP_GetString
 
-Obtains the string for a given section key’s value (and indicates its length in `actual_szLu0`).
+获取给定部分键值的字符串（并以`actual_szLu0`表示其长度）。
 
 ```cpp
 AEGP_GetString(
@@ -5408,7 +5400,7 @@ AEGP_GetString(
 
 #### AEGP_GetLong
 
-Obtains the `A_long` associated with a given section key’s value.
+获取与给定章节键值相关的`A_long`。
 
 ```cpp
 AEGP_GetLong(
@@ -5422,7 +5414,7 @@ AEGP_GetLong(
 
 #### AEGP_GetFpLong
 
-Obtains the `A_FpLong` associated with a given section key’s value.
+获取与给定章节键值相关的 "A_FpLong"。
 
 ```cpp
 AEGP_GetFpLong(
@@ -5436,7 +5428,7 @@ AEGP_GetFpLong(
 
 #### AEGP_GetTime
 
-New in CC. Obtains the `A_Time` associated with a given section key’s value.
+在 CC 中新增。获取与给定部分键值相关的`A_Time'。
 
 ```cpp
 AEGP_GetTime(
@@ -5450,7 +5442,7 @@ AEGP_GetTime(
 
 #### AEGP_GetARGB
 
-New in CC. Obtains the `PF_PixelFloat` associated with a given section key’s value.
+在 CC 中新增。获取与给定章节键值相关的`PF_PixelFloat`。
 
 ```cpp
 AEGP_GetARGB(
@@ -5464,7 +5456,7 @@ AEGP_GetARGB(
 
 #### AEGP_SetDataHandle
 
-Sets the given section key’s value to the handle passed in.
+将给定的部分键值设置为传入的句柄。
 
 ```cpp
 AEGP_SetDataHandle(
@@ -5477,7 +5469,7 @@ AEGP_SetDataHandle(
 
 #### AEGP_SetData
 
-Sets the given section key’s value to the data contained in `dataPV`.
+将给定的部分键值设置为`dataPV`中的数据。
 
 ```cpp
 AEGP_SetData(
@@ -5491,7 +5483,7 @@ AEGP_SetData(
 
 #### AEGP_SetString
 
-Sets the given section key’s string to `strZ`.
+将给定章节键的字符串设置为`strZ`。
 
 ```cpp
 AEGP_SetString(
@@ -5504,7 +5496,7 @@ AEGP_SetString(
 
 #### AEGP_SetLong
 
-Sets the given section key’s value to `valueL`.
+将给定章节的键值设置为`valueL'。
 
 ```cpp
 AEGP_SetLong(
@@ -5517,7 +5509,7 @@ AEGP_SetLong(
 
 #### AEGP_SetFpLong
 
-Sets the given section key’s value to `valueF`.
+将给定章节的键值设置为`valueF'。
 
 ```cpp
 AEGP_SetFpLong(
@@ -5530,7 +5522,7 @@ AEGP_SetFpLong(
 
 #### AEGP_SetTime
 
-New in CC. Sets the given section key’s value to `valuePT`.
+CC 中的新内容。将给定章节的键值设置为`valuePT'。
 
 ```cpp
 AEGP_SetTime(
@@ -5543,7 +5535,7 @@ AEGP_SetTime(
 
 #### AEGP_SetARGB
 
-New in CC. Sets the given section key’s value to `valueP`.
+在 CC 中新增。将给定章节的键值设置为 "valueP"。
 
 ```cpp
 AEGP_SetARGB(
@@ -5556,7 +5548,7 @@ AEGP_SetARGB(
 
 #### AEGP_DeleteEntry
 
-Removes the given section’s value from the blob.
+从 blob 中删除给定部分的值。
 
 ```cpp
 AEGP_DeleteEntry(
@@ -5568,8 +5560,8 @@ AEGP_DeleteEntry(
 
 #### AEGP_GetPrefsDirectory
 
-Get the path to the folder containing After Effects’ preference file.
-The path is a handle to a NULL-terminated A_UTF16Char string, and must be disposed with `AEGP_FreeMemHandle`.
+获取包含 After Effects 偏好文件的文件夹的路径。
+路径是一个以 NULL 结尾的 A_UTF16Char 字符串的句柄，必须用`AEGP_FreeMemHandle`处理。
 
 ```cpp
 AEGP_GetPrefsDirectory(
@@ -5579,13 +5571,13 @@ AEGP_GetPrefsDirectory(
 
 ## Color Management
 
-We’ve provided a function so AEGPs can obtain information on After Effects’ current color management settings.
+我们提供了一个函数，以便 AEGP 可以获得 After Effects 当前颜色管理设置的信息。
 
 ### AEGP_ColorSettingsSuite2
 
 #### AEGP_GetBlendingTables
 
-Retrieves the current opaque `PF_EffectBlendingTables`, for use with `AEGP_TransferRect`.
+检索当前不透明的`PF_EffectBlendingTables`，供`AEGP_TransferRect`使用。
 
 ```cpp
 AEGP_GetBlendingTables(
@@ -5596,7 +5588,7 @@ AEGP_GetBlendingTables(
 
 #### AEGP_DoesViewHaveColorSpaceXform
 
-Returns whether there is a colorspace transform applied to the current item view.
+返回是否有颜色空间转换应用到当前项目视图。
 
 ```cpp
 AEGP_DoesViewHaveColorSpaceXform(
@@ -5607,8 +5599,8 @@ AEGP_DoesViewHaveColorSpaceXform(
 
 #### AEGP_XformWorkingToViewColorSpace
 
-Changes the view colorspace of the source to be the working colorspace of the destination.
-Source and destination can be the same.
+将源的视图色彩空间改变为目标的工作色彩空间。
+源点和终点可以是相同的。
 
 ```cpp
 AEGP_XformWorkingToViewColorSpace(
@@ -5620,9 +5612,9 @@ AEGP_XformWorkingToViewColorSpace(
 
 #### AEGP_GetNewWorkingSpaceColorProfile
 
-Retrieves the opaque current working space ICC profile. Must be disposed.
-The “New” in the name does not indicate that you’re making up a new profile; rather, it’s part of our function naming standard;
-nything with “New” in the name allocates something which the caller must dispose.
+检索不透明的当前工作空间 ICC 配置文件。必须被处理掉。
+名称中的 "New "并不表示你在编造一个新的配置文件；相反，它是我们函数命名标准的一部分。
+名称中带有 "New "的东西分配了一些东西，调用者必须处理掉。
 
 ```cpp
 AEGP_GetNewWorkingSpaceColorProfile(
@@ -5633,8 +5625,8 @@ AEGP_GetNewWorkingSpaceColorProfile(
 
 #### AEGP_GetNewColorProfileFromICCProfile
 
-Retrieves a new `AEGP_ColorProfileP` from After Effects, representing the specified ICC profile.
-The caller must dispose of the returned `AEGP_ColorProfileP` using `AEGP_DisposeColorProfile()`.
+从 After Effects 中获取一个新的`AEGP_ColorProfileP`，代表指定的 ICC 配置文件。
+调用者必须使用`AEGP_DisposeColorProfile()`来处理返回的`AEGP_ColorProfileP`。
 
 ```cpp
 AEGP_GetNewColorProfile FromICCProfile(
@@ -5647,8 +5639,8 @@ AEGP_GetNewColorProfile FromICCProfile(
 
 #### AEGP_GetNewICCProfileFromColorProfile
 
-Retrieves a new ICC profile (stored in an `AEGP_MemHandle`) representing the specified color profile.
-Returned `AEGP_MemHandle` must be disposed by the caller.
+检索一个新的 ICC 配置文件（存储在`AEGP_MemHandle`中），代表指定的颜色配置文件。
+返回的`AEGP_MemHandle`必须由调用者处理。
 
 ```cpp
 AEGP_GetNewICCProfile FromColorProfile(
@@ -5660,8 +5652,8 @@ AEGP_GetNewICCProfile FromColorProfile(
 
 #### AEGP_GetNewColorProfileDescription
 
-Returns a textual description of the specified color profile.
-Text will be a null-terminated UTF16 string, which must be disposed by the caller.
+返回指定颜色配置文件的文本描述。
+文本将是一个空尾的 UTF16 字符串，必须由调用者处理。
 
 ```cpp
 AEGP_GetNewColorProfileDescription(
@@ -5673,7 +5665,7 @@ AEGP_GetNewColorProfileDescription(
 
 #### AEGP_DisposeColorProfile
 
-Disposes of a color profile, obtained using other functions in this suite.
+处置一个使用本套件中其他函数获得的颜色配置文件。
 
 ```cpp
 AEGP_DisposeColorProfile(
@@ -5683,7 +5675,7 @@ AEGP_DisposeColorProfile(
 
 #### AEGP_GetColorProfileApproximateGamma
 
-Returns a floating point number approximating the gamma setting used by the specified color profile.
+返回一个近似于指定颜色配置文件所使用的伽马设置的浮点数。
 
 ```cpp
 AEGP_GetColorProfileApproximateGamma(
@@ -5694,7 +5686,7 @@ AEGP_GetColorProfileApproximateGamma(
 
 #### AEGP_IsRGBColorProfile
 
-Returns whether the specified color profile is RGB.
+返回指定的颜色配置文件是否为 RGB。
 
 ```cpp
 AEGP_IsRGBColorProfile(
@@ -5705,20 +5697,20 @@ AEGP_IsRGBColorProfile(
 
 ## Render Suites
 
-Since we introduced the AEGP API, we’ve been asked to provide functions for retrieving rendered frames.
+自从我们引入 AEGP API 以来，我们一直被要求提供检索渲染帧的函数。
 
-These function suites allows you to do just that.
+这些函数套件使你能够做到这一点。
 
-First, specify what you want rendered in the [AEGP_RenderOptionsSuite4](#aegps-aegp-suites-render-options-suite) or [AEGP_LayerRenderOptionsSuite1](#aegps-aegp-suites-aegp-layerrenderoptionssuite).
+首先，在[AEGP_RenderOptionsSuite4]或[AEGP_LayerRenderOptionsSuite1]中指定你想渲染的内容。
 
-Then do the rendering with [AEGP_RenderSuite4](#aegps-aegp-suites-aegp-rendersuite).
+然后用[AEGP_RenderSuite4]来进行渲染。
 
 ### AEGP_RenderOptionsSuite4
 
 #### AEGP_NewFromItem
 
-Returns the `AEGP_RenderOptionsH` associated with a given `AEGP_ItemH`.
-If there are no options yet specified, After Effects passes back an `AEGP_RenderOptionsH` with render time set to 0, time step set to the current frame duration, field render set to `PF_Field_FRAME`, and the depth set to the highest resolution specified within the item.
+返回与给定的`AEGP_ItemH`相关的`AEGP_RenderOptionsH`。
+如果没有指定选项，After Effects 会传回一个`AEGP_RenderOptionsH`，渲染时间设置为 0，时间步长设置为当前帧长，场渲染设置为`PF_Field_FRAME`，深度设置为项目中指定的最高分辨率。
 
 ```cpp
 AEGP_NewFromItem(
@@ -5730,7 +5722,7 @@ AEGP_NewFromItem(
 
 #### AEGP_Duplicate
 
-Duplicates an `AEGP_RenderOptionsH` into `copyPH`.
+复制一个`AEGP_RenderOptionsH`到`copyPH`。
 
 ```cpp
 AEGP_Duplicate(
@@ -5742,7 +5734,7 @@ AEGP_Duplicate(
 
 #### AEGP_Dispose
 
-Deletes an `AEGP_RenderOptionsH`.
+删除一个`AEGP_RenderOptionsH'。
 
 ```cpp
 AEGP_Dispose(
@@ -5752,7 +5744,7 @@ AEGP_Dispose(
 
 #### AEGP_SetTime
 
-Sets the render time of an `AEGP_RenderOptionsH`.
+设置一个`AEGP_RenderOptionsH'的渲染时间。
 
 ```cpp
 AEGP_SetTime(
@@ -5763,7 +5755,7 @@ AEGP_SetTime(
 
 #### AEGP_GetTime
 
-Retrieves the render time of the given `AEGP_RenderOptionsH`.
+读取给定的`AEGP_RenderOptionsH'的渲染时间。
 
 ```cpp
 AEGP_GetTime(
@@ -5774,7 +5766,7 @@ AEGP_GetTime(
 
 #### AEGP_SetTimeStep
 
-Specifies the time step (duration of a frame) for the referenced `AEGP_RenderOptionsH`.
+指定引用的`AEGP_RenderOptionsH`的时间步骤（一帧的持续时间）。
 
 ```cpp
 AEGP_SetTimeStep(
@@ -5785,7 +5777,7 @@ AEGP_SetTimeStep(
 
 #### AEGP_GetTimeStep
 
-Retrieves the time step (duration of a frame) for the given `AEGP_RenderOptionsH`.
+检索给定的`AEGP_RenderOptionsH`的时间步数（一帧的持续时间）。
 
 ```cpp
 AEGP_GetTimeStep(
@@ -5796,7 +5788,7 @@ AEGP_GetTimeStep(
 
 #### AEGP_SetFieldRender
 
-Specifies the field settings for the given `AEGP_RenderOptionsH`.
+指定给定的`AEGP_RenderOptionsH'的字段设置。
 
 ```cpp
 AEGP_SetFieldRender(
@@ -5807,7 +5799,7 @@ AEGP_SetFieldRender(
 
 #### AEGP_GetFieldRender
 
-Retrieves the field settings for the given `AEGP_RenderOptionsH`.
+检索给定的 "AEGP_RenderOptionsH "的字段设置。
 
 ```cpp
 AEGP_GetFieldRender(
@@ -5818,7 +5810,7 @@ AEGP_GetFieldRender(
 
 #### AEGP_SetWorldType
 
-Specifies the AEGP_WorldType of the output of a given `AEGP_RenderOptionsH`.
+指定给定的`AEGP_RenderOptionsH'的输出的 AEGP_WorldType。
 
 ```cpp
 AEGP_SetWorldType(
@@ -5827,11 +5819,11 @@ AEGP_SetWorldType(
 
 ```
 
-`AEGP_WorldType` will be either `AEGP_WorldType_8` or `AEGP_WorldType_16`
+`AEGP_WorldType`将是`AEGP_WorldType_8`或`AEGP_WorldType_16`。
 
 #### AEGP_GetWorldType
 
-Retrieves the `AEGP_WorldType` of the given `AEGP_RenderOptionsH`.
+检索给定的`AEGP_RenderOptionsH'的`AEGP_WorldType'。
 
 ```cpp
 AEGP_GetWorldType(
@@ -5842,7 +5834,7 @@ AEGP_GetWorldType(
 
 #### AEGP_SetDownsampleFactor
 
-Specifies the downsample factor (with independent horizontal and vertical settings) for the given `AEGP_RenderOptionsH`.
+指定给定的`AEGP_RenderOptionsH'的降采样系数（有独立的水平和垂直设置）。
 
 ```cpp
 AEGP_SetDownsampleFactor(
@@ -5854,7 +5846,7 @@ AEGP_SetDownsampleFactor(
 
 #### AEGP_GetDownsampleFactor
 
-Retrieves the downsample factor for the given `AEGP_RenderOptionsH`.
+检索给定的 "AEGP_RenderOptionsH "的下采样系数。
 
 ```cpp
 AEGP_GetDownsampleFactor(
@@ -5866,7 +5858,7 @@ AEGP_GetDownsampleFactor(
 
 #### AEGP_SetRegionOfInterest
 
-Specifies the region of interest sub-rectangle for the given `AEGP_RenderOptionsH`.
+为给定的 "AEGP_RenderOptionsH "指定兴趣区域的子矩形。
 
 ```cpp
 AEGP_SetRegionOfInterest(
@@ -5877,7 +5869,7 @@ AEGP_SetRegionOfInterest(
 
 #### AEGP_GetRegionOfInterest
 
-Retrieves the region of interest sub-rectangle for the given `AEGP_RenderOptionsH`.
+检索给定的 "AEGP_RenderOptionsH "的兴趣区域子矩形。
 
 ```cpp
 AEGP_GetRegionOfInterest(
@@ -5888,7 +5880,7 @@ AEGP_GetRegionOfInterest(
 
 #### AEGP_SetMatteMode
 
-Specifies the `AEGP_MatteMode` for the given `AEGP_RenderOptionsH`.
+为给定的`AEGP_RenderOptionsH`指定`AEGP_MatteMode'。
 
 ```cpp
 AEGP_SetMatteMode(
@@ -5897,7 +5889,7 @@ AEGP_SetMatteMode(
 
 ```
 
-`AEGP_MatteMode` will be one of the following:
+`AEGP_MatteMode`将是下列之一。
 
 - `AEGP_MatteMode_STRAIGHT`
 - `AEGP_MatteMode_PREMUL_BLACK`
@@ -5905,7 +5897,7 @@ AEGP_SetMatteMode(
 
 #### AEGP_GetMatteMode
 
-Retrieves the `AEGP_MatteMode` for the given `AEGP_RenderOptionsH`.
+为给定的`AEGP_RenderOptionsH'检索`AEGP_MatteMode'。
 
 ```cpp
 AEGP_GetMatteMode(
@@ -5916,8 +5908,7 @@ AEGP_GetMatteMode(
 
 #### AEGP_GetChannelOrder
 
-Gets the `AEGP_ChannelOrder` for the given `AEGP_RenderOptionsH`.
-`AEGP_ChannelOrder` will be either `AEGP_ChannelOrder_ARGB` or `AEGP_ChannelOrder_BGRA`.
+为给定的`AEGP_RenderOptionsH`获取`AEGP_ChannelOrder'。 `AEGP_ChannelOrder`将是`AEGP_ChannelOrder_ARGB`或`AEGP_ChannelOrder_BGRA`。
 
 ```cpp
 AEGP_GetChannelOrder(
@@ -5926,11 +5917,11 @@ AEGP_GetChannelOrder(
 
 ```
 
-Factoid: this was added to facilitate live linking with Premiere Pro.
+事实是：这是为方便与 Premiere Pro 进行实时连接而添加的。
 
 #### AEGP_SetChannelOrder
 
-Sets the `AEGP_ChannelOrder` of the `AEGP_RenderOptionsH`.
+设置`AEGP_ChannelOrder'的`AEGP_RenderOptionsH`。
 
 ```cpp
 AEGP_SetChannelOrder(
@@ -5941,7 +5932,7 @@ AEGP_SetChannelOrder(
 
 #### AEGP_GetRenderGuideLayers
 
-Passes back a boolean that is true if the render guide layers setting is on.
+传回一个布尔值，如果渲染引导层的设置是开启的，则为真。
 
 ```cpp
 AEGP_GetRenderGuideLayers)(
@@ -5952,7 +5943,7 @@ AEGP_GetRenderGuideLayers)(
 
 #### AEGP_SetRenderGuideLayers
 
-Specify whether or not to render guide layers.
+指定是否要渲染引导层。
 
 ```cpp
 AEGP_SetRenderGuideLayers)(
@@ -5963,8 +5954,8 @@ AEGP_SetRenderGuideLayers)(
 
 #### AEGP_GetRenderQuality
 
-Get the render quality of the render queue item.
-Quality can be either `AEGP_ItemQuality_DRAFT` or `AEGP_ItemQuality_BEST`.
+获取渲染队列项目的渲染质量。
+质量可以是`AEGP_ItemQuality_DRAFT`或`AEGP_ItemQuality_BEST`。
 
 ```cpp
 AEGP_GetRenderQuality)(
@@ -5975,7 +5966,7 @@ AEGP_GetRenderQuality)(
 
 #### AEGP_SetRenderQuality
 
-Set the render quality of the render queue item.
+设置渲染队列项目的渲染质量。
 
 ```cpp
 AEGP_GetRenderQuality)(
@@ -5988,15 +5979,12 @@ AEGP_GetRenderQuality)(
 
 :::tip
 
-New in 13.0
+13.0 中的新内容
 :::
 
 #### AEGP_NewFromLayer
 
-Returns the `AEGP_LayerRenderOptionsH` associated with a given `AEGP_LayerH`.
-Render time is set to the layer’s current time, time step is set to layer’s frame duration,
-ROI to the layer’s nominal bounds, and EffectsToRender to “all”.
-`optionsPH` must be disposed by calling code.
+返回与给定的`AEGP_LayerH'相关的`AEGP_LayerRenderOptionsH`。 渲染时间设置为该层的当前时间，时间步长设置为该层的帧持续时间。 ROI设置为该层的名义边界，EffectsToRender设置为 "所有"。 `optionsPH`必须由调用代码处理。
 
 ```cpp
 AEGP_NewFromLayer(
@@ -6008,10 +5996,10 @@ AEGP_NewFromLayer(
 
 #### AEGP_NewFromUpstreamOfEffect
 
-Returns the `AEGP_LayerRenderOptionsH` from the layer associated with a given `AEGP_EffectRefH`.
-Render time is set to the layer’s current time, time step is set to layer’s frame duration,
-ROI to the layer’s nominal bounds, and EffectsToRender to the index of `effectH`.
-`optionsPH` must be disposed by calling code.
+返回与给定的`AEGP_EffectRefH`相关的层的`AEGP_LayerRenderOptionsH`。
+渲染时间被设置为该层的当前时间，时间步长被设置为该层的帧长。
+ROI 为图层的标称边界，EffectToRender 为`effectH`的索引。
+`optionsPH`必须由调用代码处理。
 
 ```cpp
 AEGP_NewFromUpstreamOfEffect(
@@ -6023,7 +6011,7 @@ AEGP_NewFromUpstreamOfEffect(
 
 #### AEGP_Duplicate
 
-Duplicates an `AEGP_LayerRenderOptionsH` into `copyPH`.
+复制一个`AEGP_LayerRenderOptionsH`到`copyPH`。
 
 ```cpp
 AEGP_Duplicate(
@@ -6035,7 +6023,7 @@ AEGP_Duplicate(
 
 #### AEGP_Dispose
 
-Deletes an `AEGP_LayerRenderOptionsH`.
+删除一个`AEGP_LayerRenderOptionsH`。
 
 ```cpp
 AEGP_Dispose(
@@ -6045,7 +6033,7 @@ AEGP_Dispose(
 
 #### AEGP_SetTime
 
-Sets the render time of an `AEGP_LayerRenderOptionsH`.
+设置`AEGP_LayerRenderOptionsH'的渲染时间。
 
 ```cpp
 AEGP_SetTime(
@@ -6056,7 +6044,7 @@ AEGP_SetTime(
 
 #### AEGP_GetTime
 
-Retrieves the render time of the given `AEGP_LayerRenderOptionsH`.
+读取给定的`AEGP_LayerRenderOptionsH'的渲染时间。
 
 ```cpp
 AEGP_GetTime(
@@ -6067,7 +6055,7 @@ AEGP_GetTime(
 
 #### AEGP_SetTimeStep
 
-Specifies the time step (duration of a frame) for the referenced `AEGP_LayerRenderOptionsH`.
+指定引用的`AEGP_LayerRenderOptionsH`的时间步长（一帧的持续时间）。
 
 ```cpp
 AEGP_SetTimeStep(
@@ -6078,7 +6066,7 @@ AEGP_SetTimeStep(
 
 #### AEGP_GetTimeStep
 
-Retrieves the time step (duration of a frame) for the given `AEGP_LayerRenderOptionsH`.
+检索给定的`AEGP_LayerRenderOptionsH`的时间步骤（一帧的持续时间）。
 
 ```cpp
 AEGP_GetTimeStep(
@@ -6089,7 +6077,7 @@ AEGP_GetTimeStep(
 
 #### AEGP_SetWorldType
 
-Specifies the AEGP_WorldType of the output of a given `AEGP_LayerRenderOptionsH`.
+指定给定的`AEGP_LayerRenderOptionsH'的输出的 AEGP_WorldType。
 
 ```cpp
 AEGP_SetWorldType(
@@ -6098,11 +6086,11 @@ AEGP_SetWorldType(
 
 ```
 
-`AEGP_WorldType` will be either `AEGP_WorldType_8` or `AEGP_WorldType_16`
+`AEGP_WorldType`将是`AEGP_WorldType_8`或`AEGP_WorldType_16`。
 
 #### AEGP_GetWorldType
 
-Retrieves the AEGP_WorldType of the given `AEGP_LayerRenderOptionsH`.
+检索给定的`AEGP_LayerRenderOptionsH'的 AEGP_WorldType。
 
 ```cpp
 AEGP_GetWorldType(
@@ -6113,7 +6101,7 @@ AEGP_GetWorldType(
 
 #### AEGP_SetDownsampleFactor
 
-Specifies the downsample factor (with independent horizontal and vertical settings) for the given `AEGP_LayerRenderOptionsH`.
+指定给定的`AEGP_LayerRenderOptionsH'的降采样系数（有独立的水平和垂直设置）。
 
 ```cpp
 AEGP_SetDownsampleFactor(
@@ -6125,7 +6113,7 @@ AEGP_SetDownsampleFactor(
 
 #### AEGP_GetDownsampleFactor
 
-Retrieves the downsample factor for the given `AEGP_LayerRenderOptionsH`.
+读取给定的 "AEGP_LayerRenderOptionsH "的下采样系数。
 
 ```cpp
 AEGP_GetDownsampleFactor(
@@ -6137,7 +6125,7 @@ AEGP_GetDownsampleFactor(
 
 #### AEGP_SetMatteMode
 
-Specifies the AEGP_MatteMode for the given `AEGP_LayerRenderOptionsH`.
+为给定的`AEGP_LayerRenderOptionsH'指定 AEGP_MatteMode。
 
 ```cpp
 AEGP_SetMatteMode(
@@ -6146,7 +6134,7 @@ AEGP_SetMatteMode(
 
 ```
 
-AEGP_MatteMode will be one of the following:
+AEGP_MatteMode 将是下列之一。
 
 - `AEGP_MatteMode_STRAIGHT`
 - `AEGP_MatteMode_PREMUL_BLACK`
@@ -6154,7 +6142,7 @@ AEGP_MatteMode will be one of the following:
 
 #### AEGP_GetMatteMode
 
-Retrieves the AEGP_MatteMode for the given `AEGP_LayerRenderOptionsH`.
+为给定的`AEGP_LayerRenderOptionsH'检索 AEGP_MatteMode。
 
 ```cpp
 AEGP_GetMatteMode(
@@ -6167,10 +6155,10 @@ AEGP_GetMatteMode(
 
 #### AEGP_RenderAndCheckoutFrame
 
-Retrieves an `AEGP_FrameReceiptH` (not the actual pixels) for the frame requested.
-Check in this receipt using `AEGP_CheckinFrame` to release memory.
-Create the `AEGP_RenderOptionsH` using the [AEGP_RenderOptionsSuite4](#aegps-aegp-suites-render-options-suite).
-Optionally, the AEGP can pass a function to be called by After Effects if the user cancels the current render, as well as a refcon (constant reference to opaque data) for use during that function.
+检索请求的帧的`AEGP_FrameReceiptH`（不是实际的像素）。
+使用`AEGP_CheckinFrame`签入此收据以释放内存。
+使用[AEGP_RenderOptionsSuite4] 创建`AEGP_RenderOptionsH`。
+可选的是，AEGP 可以传递一个函数，在用户取消当前渲染时由 After Effects 调用，以及一个 refcon（对不透明数据的常量引用），供该函数使用。
 
 ```cpp
 AEGP_RenderAndCheckoutFrame(
@@ -6183,15 +6171,15 @@ AEGP_RenderAndCheckoutFrame(
 
 #### AEGP_RenderAndCheckoutLayerFrame
 
-New in CC 2014. This allows frame checkout of a layer with effects applied at non-render time.
-This is useful for an operation that requires the frame, for example, when a button is clicked and it is acceptable to wait for a moment while it is rendering.
-Note: Since it is not asynchronous, it will not solve the general problem where custom UI needs to draw based on the frame.
-Retrieves an `AEGP_FrameReceiptH` (not the actual pixels) for the layer frame requested. Check in this receipt using `AEGP_CheckinFrame` to release memory.
-Create the `AEGP_LayerRenderOptionsH` using `AEGP_NewFromUpstreamOfEffect()`, in [AEGP_LayerRenderOptionsSuite1](#aegps-aegp-suites-aegp-layerrenderoptionssuite).
-You can actually use `AEGP_NewFromLayer()` to get other layer param’s layers with their effects applied.
-However, be careful. If you do it in your effect A, and there’s an effect B on the other layer that does the same thing during rendering, you’d create an infinite loop.
-If you’re not doing it for render purposes then it could be okay.
-Optionally, the AEGP can pass a function to be called by After Effects if the user cancels the current render, as well as a refcon (constant reference to opaque data) for use during that function.
+CC 2014 的新功能。这允许在非渲染时间对应用了效果的图层进行帧检。
+这对于需要帧的操作很有用，例如，当一个按钮被点击时，在渲染时等待一会儿是可以接受的。
+注意：由于它不是异步的，所以它不能解决自定义 UI 需要根据框架来绘制的一般问题。
+为请求的图层框架检索一个`AEGP_FrameReceiptH`（而不是实际的像素）。使用`AEGP_CheckinFrame`签入此收据以释放内存。
+使用`AEGP_NewFromUpstreamOfEffect()`创建`AEGP_LayerRenderOptionsH`，在[AEGP_LayerRenderOptionsSuite1]（#aegps-aegp-suites-aegp-layerrenderoptionssuite）。
+实际上，你可以使用`AEGP_NewFromLayer()`来获得其他图层参数的图层，并应用其效果。
+然而，要小心。如果你在你的效果 A 中这样做，而在另一个图层上有一个效果 B，在渲染时做同样的事情，你就会产生一个无限循环。
+如果你不是为了渲染而这样做，那么它可能是好的。
+如果用户取消了当前的渲染，AEGP 可以传递给 After Effects 一个函数，供其调用，同时也可以传递一个 refcon（对不透明数据的常数引用），供该函数使用。
 
 ```cpp
 AEGP_RenderAndCheckoutLayerFrame(
@@ -6205,8 +6193,8 @@ AEGP_RenderAndCheckoutLayerFrame(
 
 #### AEGP_CheckinFrame
 
-Call this function as soon as your AEGP is done accessing the frame.
-After Effects makes caching decisions based on which frames are checked out, so don’t hog them!
+一旦你的 AEGP 完成了对帧的访问，就立即调用这个函数。
+After Effects 会根据哪些帧被检出而做出缓存决定，所以不要占用它们!
 
 ```cpp
 AEGP_CheckinFrame(
@@ -6216,7 +6204,7 @@ AEGP_CheckinFrame(
 
 #### AEGP_GetReceiptWorld
 
-Retrieves the pixels (`AEGP_WorldH`) associated with the referenced `AEGP_FrameReceiptH`.
+检索与引用的`AEGP_FrameReceiptH`相关的像素（`AEGP_WorldH`）。
 
 ```cpp
 AEGP_GetReceiptWorld(
@@ -6227,8 +6215,8 @@ AEGP_GetReceiptWorld(
 
 #### AEGP_GetRenderedRegion
 
-Retrieves an `A_LRect` containing the region of the `AEGP_FrameReceiptH's` `AEGP_WorldH` that has already been rendered.
-Remember that it’s possible for only those portions of an image that have been changed to be rendered, so it’s important to be able to check whether or not that includes the portion you need.
+检索一个`A_LRect`，包含`AEGP_FrameReceiptH'的`AEGP_WorldH'中已经被渲染的区域。
+记住，只有图像中被改变的部分才有可能被渲染，所以能够检查是否包括你需要的部分是很重要的。
 
 ```cpp
 AEGP_GetRenderedRegion(
@@ -6239,7 +6227,7 @@ AEGP_GetRenderedRegion(
 
 #### AEGP_IsRenderedFrameSufficient
 
-Given two sets of `AEGP_RenderOptionsH`, After Effects will return `TRUE` if the already-rendered pixels are still valid for the proposed `AEGP_RenderOptionsH`.
+给定两组`AEGP_RenderOptionsH`，如果已经渲染的像素对提议的`AEGP_RenderOptionsH`仍然有效，After Effects 将返回`TRUE`。
 
 ```cpp
 AEGP_IsRenderedFrameSufficient(
@@ -6251,8 +6239,7 @@ AEGP_IsRenderedFrameSufficient(
 
 #### AEGP_RenderNewItemSoundData
 
-Obtains an `AEGP_ItemH's` audio at the given time, of the given duration, in the given format.
-The plug-in must dispose of the returned `AEGP_SoundDataH` (which may be NULL if no audio is available).
+获得一个`AEGP_ItemH'的音频，在给定的时间，给定的持续时间，以给定的格式。 插件必须处理返回的`AEGP_SoundDataH'（如果没有音频，它可能是 NULL）。
 
 ```cpp
 AEGP_RenderNewItemSoundData(
@@ -6264,12 +6251,12 @@ AEGP_RenderNewItemSoundData(
 
 ```
 
-NOTE: This function, if called as part of `AEGP_ItemSuite2`, provides a render interruptible using mouse clicks, unlike the version published here in `AEGP_RenderSuite`.
+注意：这个函数，如果作为`AEGP_ItemSuite2'的一部分被调用，提供了一个可通过鼠标点击中断的渲染，与这里发布的`AEGP_RenderSuite'版本不同。
 
 #### AEGP_GetCurrentTimestamp
 
-Retrieves the current `AEGP_TimeStamp` of the project.
-The `AEGP_TimeStamp` is updated whenever an item is touched in a way that affects rendering.
+检索项目的当前`AEGP_TimeStamp`。
+AEGP_TimeStamp "在项目被触及并影响渲染时被更新。
 
 ```cpp
 AEGP_GetCurrentTimestamp(
@@ -6279,8 +6266,8 @@ AEGP_GetCurrentTimestamp(
 
 #### AEGP_HasItemChangedSinceTimestamp
 
-Returns whether the video of an AEGP_ItemH has changed since the given `AEGP_TimeStamp`.
-Note: this does not track changes in audio.
+返回 AEGP_ItemH 的视频在给定的`AEGP_TimeStamp'后是否有变化。
+注意：这并不跟踪音频的变化。
 
 ```cpp
 AEGP_HasItemChangedSinceTimestamp(
@@ -6294,9 +6281,9 @@ AEGP_HasItemChangedSinceTimestamp(
 
 #### AEGP_IsItemWorthwhileToRender
 
-Returns whether this frame would be worth rendering externally and checking in to the cache.
-A speculative renderer should check this twice: before sending the frame out to render and when it is complete, before calling `AEGP_NewPlatformWorld()` and checking in.
-This function is to be used with `AEGP_HasItemChangedSinceTimestamp()`, not alone.
+返回该帧是否值得在外部渲染并检查到缓存中。
+一个投机性的渲染器应该检查两次：在把帧送出去渲染之前，以及在完成之后，在调用`AEGP_NewPlatformWorld()`和签入之前。
+这个函数要和`AEGP_HasItemChangedSinceTimestamp()`一起使用，不能单独使用。
 
 ```cpp
 AEGP_IsItemWorthwhileToRender(
@@ -6308,8 +6295,8 @@ AEGP_IsItemWorthwhileToRender(
 
 #### AEGP_CheckinRenderedFrame
 
-Provide a rendered frame (`AEGP_PlatformWorldH`) to After Effects, which adopts it.
-`ticksL` is the approximate time required to render the frame.
+向 After Effects 提供一个渲染的框架（`AEGP_PlatformWorldH`），After Effects 会采用它。
+`ticksL`是渲染框架所需的大致时间。
 
 ```cpp
 AEGP_CheckinRenderedFrame(
@@ -6322,7 +6309,7 @@ AEGP_CheckinRenderedFrame(
 
 #### AEGP_GetReceiptGuid
 
-New in CS6. Retrieve a GUID for a rendered frame. The memory handle passed back must be disposed.
+CS6 的新功能。检索一个已渲染的帧的 GUID。传回的内存句柄必须被处理掉。
 
 ```cpp
 AEGP_GetReceiptGuid(
@@ -6333,13 +6320,13 @@ AEGP_GetReceiptGuid(
 
 ## The AEGP_World As We Know It
 
-`AEGP_Worlds` are the common format used throughout the AEGP APIs to describe frames of pixels.
+`AEGP_Worlds`是整个 AEGP APIs 用来描述像素帧的通用格式。
 
 ### AEGP_WorldSuite3
 
 #### AEGP_New
 
-Returns an allocated, initialized `AEGP_WorldH`.
+返回一个分配的、初始化的`AEGP_WorldH`。
 
 ```cpp
 AEGP_New(
@@ -6353,7 +6340,7 @@ AEGP_New(
 
 #### AEGP_Dispose
 
-Disposes of an `AEGP_WorldH`. Use this on every world you allocate.
+弃置一个`AEGP_WorldH'。在你分配的每个世界上使用这个。
 
 ```cpp
 AEGP_Dispose(
@@ -6363,7 +6350,7 @@ AEGP_Dispose(
 
 #### AEGP_GetType
 
-Returns the type of a given `AEGP_WorldH`.
+返回一个给定的`AEGP_WorldH`的类型。
 
 ```cpp
 AEGP_GetType(
@@ -6372,7 +6359,7 @@ AEGP_GetType(
 
 ```
 
-AEGP_WorldType will be one of the following:
+AEGP_WorldType 将是以下之一。
 
 - `AEGP_WorldType_8`,
 - `AEGP_WorldType_16`,
@@ -6380,7 +6367,7 @@ AEGP_WorldType will be one of the following:
 
 #### AEGP_GetSize
 
-Returns the width and height of the given `AEGP_WorldH`.
+返回给定的`AEGP_WorldH`的宽度和高度。
 
 ```cpp
 AEGP_GetSize(
@@ -6392,7 +6379,7 @@ AEGP_GetSize(
 
 #### AEGP_GetRowBytes
 
-Returns the rowbytes for the given `AEGP_WorldH`.
+Returns the rowbytes for the given `AEGP_WorldH`. 返回给定`AEGP_WorldH`的行数。
 
 ```cpp
 AEGP_GetRowBytes(
@@ -6403,8 +6390,8 @@ AEGP_GetRowBytes(
 
 #### AEGP_GetBaseAddr8
 
-Returns the base address of the `AEGP_WorldH` for use in pixel iteration functions.
-Will return an error if used on a non-8bpc world.
+返回`AEGP_WorldH`的基本地址，以便在像素迭代函数中使用。
+如果在非 8bpc 世界中使用，将返回错误。
 
 ```cpp
 AEGP_GetBaseAddr8(
@@ -6415,8 +6402,8 @@ AEGP_GetBaseAddr8(
 
 #### AEGP_GetBaseAddr16
 
-Returns the base address of the `AEGP_WorldH` for use in pixel iteration functions.
-Will return an error if used on a non-16bpc world.
+返回`AEGP_WorldH`的基本地址，用于像素迭代函数。
+如果在非 16bpc 的世界中使用，将返回错误。
 
 ```cpp
 AEGP_GetBaseAddr16(
@@ -6427,8 +6414,8 @@ AEGP_GetBaseAddr16(
 
 #### AEGP_GetBaseAddr32
 
-Returns the base address of the `AEGP_WorldH` for use in pixel iteration functions.
-Will return an error if used on a non-32bpc world.
+返回`AEGP_WorldH`的基本地址，用于像素迭代函数。
+如果在非 32bpc 的世界中使用，将返回错误。
 
 ```cpp
 AEGP_GetBaseAddr32(
@@ -6439,9 +6426,9 @@ AEGP_GetBaseAddr32(
 
 #### AEGP_FillOutPFEffectWorld
 
-Populates and returns a PF_EffectWorld representing the given `AEGP_WorldH`, for use with numerous pixel processing callbacks.
-NOTE: This does not give your plug-in ownership of the world referenced; destroy the source `AEGP_WorldH` only if you allocated it.
-It just fills out the provided `PF_EffectWorld` to point to the same pixel buffer.
+填充并返回一个代表给定的`AEGP_WorldH`的 PF_EffectWorld，用于许多像素处理回调。
+注意：这并没有给你的插件提供所引用的世界的所有权；只有在你分配了源`AEGP_WorldH`的情况下才会销毁它。
+它只是填补了所提供的`PF_EffectWorld`，使其指向同一个像素缓冲区。
 
 ```cpp
 AEGP_FillOutPFEffectWorld(
@@ -6452,7 +6439,7 @@ AEGP_FillOutPFEffectWorld(
 
 #### AEGP_FastBlur
 
-Performs a fast blur on a given `AEGP_WorldH`.
+对给定的`AEGP_WorldH`进行快速模糊处理。
 
 ```cpp
 AEGP_FastBlur(
@@ -6465,7 +6452,7 @@ AEGP_FastBlur(
 
 #### AEGP_NewPlatformWorld
 
-Creates a new `AEGP_PlatformWorldH` (a pixel world native to the execution platform).
+创建一个新的`AEGP_PlatformWorldH`（一个执行平台上的像素世界）。
 
 ```cpp
 AEGP_NewPlatformWorld(
@@ -6479,7 +6466,7 @@ AEGP_NewPlatformWorld(
 
 #### AEGP_DisposePlatformWorld
 
-Disposes of an `AEGP_PlatformWorldH`.
+处置一个`AEGP_PlatformWorldH'。
 
 ```cpp
 AEGP_DisposePlatformWorld(
@@ -6489,8 +6476,8 @@ AEGP_DisposePlatformWorld(
 
 #### AEGP_NewReferenceFromPlatformWorld
 
-Retrieves an AEGP_WorldH referring to the given `AEGP_PlatformWorldH`.
-NOTE: This doesn’t allocate a new world, it simply provides a reference to an existing one.
+检索指向给定的`AEGP_PlatformWorldH'的 AEGP_WorldH。
+注意：这并不分配一个新的世界，它只是提供一个对现有世界的引用。
 
 ```cpp
 AEGP_NewReferenceFromPlatformWorld(
@@ -6502,13 +6489,13 @@ AEGP_NewReferenceFromPlatformWorld(
 
 ## Track Mattes and Transform Functions
 
-Use the `AEGP_CompositeSuite` to copy pixel worlds, operate on track mattes, and apply transfer functions.
+使用`AEGP_CompositeSuite`来复制像素世界，操作轨道哑光，并应用转移函数。
 
 ### AEGP_CompositeSuite2
 
 #### AEGP_ClearAlphaExceptRect
 
-For the given `PF_EffectWorld`, sets the alpha to fully transparent except for the specified rectangle.
+对于给定的`PF_EffectWorld`，除了指定的矩形外，将 alpha 设置为完全透明。
 
 ```cpp
 AEGP_ClearAlphaExceptRect(
@@ -6519,9 +6506,9 @@ AEGP_ClearAlphaExceptRect(
 
 #### AEGP_PrepTrackMatte
 
-Mattes the pixels in a `PF_EffectWorld` with the `PF_Pixel` described in src_masks, putting the output into an array of pixels dst_mask.
-NOTE: Unlike most of the other pixel mangling functions provided by After Effects, this one doesn’t take `PF_EffectWorld` arguments; rather, you can simply pass the data pointer from within the `PF_EffectWorld`.
-This can be confusing, but as a bonus, the function pads output appropriately so that `num_pix` pixels are always output.
+用 src_masks 中描述的`PF_Pixel`对`PF_EffectWorld`中的像素进行消光处理，将输出结果放入一个像素数组 dst_mask 中。
+注意：与 After Effects 提供的其他大多数像素处理函数不同，这个函数不接受`PF_EffectWorld`参数；相反，你可以简单地从`PF_EffectWorld`中传递数据指针。
+这可能会引起混淆，但作为奖励，该函数对输出进行了适当的填充，使`num_pix`像素总是被输出。
 
 ```cpp
 AEGP_PrepTrackMatte(
@@ -6535,8 +6522,7 @@ AEGP_PrepTrackMatte(
 
 #### AEGP_TransferRect
 
-Blends two `PF_EffectWorlds` using a transfer mode, with an optional mask.
-Pass NULL for the `blend_tablesP0` parameter to perform blending in the current working color space.
+使用传输模式混合两个`PF_EffectWorlds'，有一个可选的掩码。 在`blend_tablesP0`参数中传递 NULL，以在当前的工作色彩空间中执行混合。
 
 ```cpp
 AEGP_TransferRect(
@@ -6556,7 +6542,7 @@ AEGP_TransferRect(
 
 #### AEGP_CopyBits_LQ
 
-Copies a rectangle of pixels (pass a `NULL` rectangle to get all pixels) from one `PF_EffectWorld` to another, at low quality.
+从一个`PF_EffectWorld'复制一个像素矩形（传递一个`NULL'矩形来获得所有像素）到另一个`PF_EffectWorld'，质量不高。
 
 ```cpp
 AEGP_CopyBits_LQ(
@@ -6569,7 +6555,7 @@ AEGP_CopyBits_LQ(
 
 #### AEGP_CopyBits_HQ_Straight
 
-Copies a rectangle of pixels (pass a `NULL` rectangle to get all pixels) from one `PF_EffectWorld` to another, at high quality, with a straight alpha channel.
+从一个`PF_EffectWorld'复制一个像素矩形（通过一个`NULL'矩形来获得所有像素）到另一个`PF_EffectWorld'，质量很高，有一个直的 alpha 通道。
 
 ```cpp
 AEGP_CopyBits_HQ_Straight(
@@ -6582,7 +6568,7 @@ AEGP_CopyBits_HQ_Straight(
 
 #### AEGP_CopyBits_HQ_Premul
 
-Copies a rectangle of pixels (pass a `NULL` rectangle to get all pixels) from one `PF_EffectWorld` to another, at high quality, premultiplying the alpha channel.
+从一个`PF_EffectWorld'复制一个像素矩形（传递一个`NULL'矩形来获得所有像素）到另一个`PF_EffectWorld'，质量很高，预先乘以 alpha 通道。
 
 ```cpp
 AEGP_CopyBits_HQ_Premul(
@@ -6595,15 +6581,15 @@ AEGP_CopyBits_HQ_Premul(
 
 ## Work With Audio
 
-`AEGP_SoundDataSuite` allows AEGPs to obtain and manipulate the audio associated with compositions and footage items.
+`AEGP_SoundDataSuite`允许 AEGPs 获得并操作与合成和镜头项目相关的音频。
 
-Audio-only items may be added to the render queue using `AEGP_RenderNewItemSoundData()`.
+使用`AEGP_RenderNewItemSoundData()`可以将纯音频的项目添加到渲染队列中。
 
 ### AEGP_SoundDateSuite1
 
 #### AEGP_NewSoundData
 
-Creates a new `AEGP_SoundDataH`, of which the plug-in must dispose.
+创建一个新的`AEGP_SoundDataH'，插件必须处理它。
 
 ```cpp
 AEGP_NewSoundData(
@@ -6614,7 +6600,7 @@ AEGP_NewSoundData(
 
 #### AEGP_DisposeSoundData
 
-Frees an `AEGP_SoundDataH`.
+释放一个`AEGP_SoundDataH'。
 
 ```cpp
 AEGP_DisposeSoundData(
@@ -6624,7 +6610,7 @@ AEGP_DisposeSoundData(
 
 #### AEGP_GetSoundDataFormat
 
-Obtains information about the format of a given `AEGP_SoundDataH`.
+获取关于给定的`AEGP_SoundDataH'的格式信息。
 
 ```cpp
 AEGP_GetSoundDataFormat(
@@ -6635,7 +6621,7 @@ AEGP_GetSoundDataFormat(
 
 #### AEGP_LockSoundDataSamples
 
-Locks the `AEGP_SoundDataH` in memory.
+锁定内存中的`AEGP_SoundDataH'。
 
 ```cpp
 AEGP_LockSoundDataSamples(
@@ -6646,7 +6632,7 @@ AEGP_LockSoundDataSamples(
 
 #### AEGP_UnlockSoundDataSamples
 
-Unlocks an `AEGP_SoundDataH`.
+解锁一个`AEGP_SoundDataH'。
 
 ```cpp
 AEGP_UnlockSoundDataSamples(
@@ -6656,7 +6642,7 @@ AEGP_UnlockSoundDataSamples(
 
 #### AEGP_GetNumSamples
 
-Obtains the number of samples in the given `AEGP_SoundDataH`.
+获取给定的`AEGP_SoundDataH'中的样本数。
 
 ```cpp
 AEGP_GetNumSamples(
@@ -6667,7 +6653,7 @@ AEGP_GetNumSamples(
 
 ## Audio Settings
 
-Audio render settings are represented using the `AEGP_SoundDataFormat`.
+音频渲染设置用`AEGP_SoundDataFormat`表示。
 
 ```cpp
 struct AEGP_SoundDataFormat {
@@ -6679,23 +6665,23 @@ struct AEGP_SoundDataFormat {
 
 ```
 
-`bytes_per_sampleL` is always either `1`, `2`, or `4`, and is ignored if float encoding is specified.
+`bytes_per_sampleL`总是`1', `2', 或 `4', 如果指定浮动编码则忽略。
 
-`AEGP_SoundEncoding` is one of the following:
+`AEGP_SoundEncoding`是以下之一。
 
-> - `AEGP_SoundEncoding_UNSIGNED_PCM`
-> - `AEGP_SoundEncoding_SIGNED_PCM`
-> - `AEGP_SoundEncoding_FLOAT`
+> - `AEGP_SoundEncoding_UNSIGNED_PCM'。
+> - `AEGP_SoundEncoding_SIGNED_PCM'。
+> - `AEGP_SoundEncoding_FLOAT`。
 
 ## Render Queue Suite
 
-This suite allows AEGPs to add items the to render queue (using default options), and control the basic state of the render queue.
+该套件允许 AEGPs 向渲染队列中添加项目（使用默认选项），并控制渲染队列的基本状态。
 
 ### AEGP_RenderQueueSuite1
 
 #### AEGP_AddCompToRenderQueue
 
-Adds a composition to the render queue, using default options.
+使用默认选项，向渲染队列中添加一个合成。
 
 ```cpp
 AEGP_AddCompToRenderQueue(
@@ -6706,7 +6692,7 @@ AEGP_AddCompToRenderQueue(
 
 #### AEGP_SetRenderQueueState
 
-Sets the render queue to one of three valid states. It is not possible to go from stopped to paused.
+将渲染队列设置为三种有效状态之一。不可能从停止状态转为暂停状态。
 
 ```cpp
 AEGP_SetRenderQueueState(
@@ -6720,7 +6706,7 @@ AEGP_SetRenderQueueState(
 
 #### AEGP_GetRenderQueueState
 
-Obtains the current render queue state.
+获取当前的渲染队列状态。
 
 ```cpp
 AEGP_GetRenderQueueState(
@@ -6730,13 +6716,13 @@ AEGP_GetRenderQueueState(
 
 ## Render Queue Item Suite
 
-Manipulate all aspects of render queue items using this suite.
+使用这个套件操纵渲染队列项目的所有方面。
 
 ### AEGP_RQItemSuite4
 
 #### AEGP_GetNumRQItems
 
-Returns the number of items currently in the render queue.
+返回当前在渲染队列中的项目数量。
 
 ```cpp
 AEGP_GetNumRQItems(
@@ -6746,7 +6732,7 @@ AEGP_GetNumRQItems(
 
 #### AEGP_GetRQItemByIndex
 
-Returns an `AEGP_RQItemRefH` referencing the index’d item.
+返回一个`AEGP_RQItemRefH'，引用索引的项目。
 
 ```cpp
 AEGP_GetRQItemByIndex(
@@ -6757,8 +6743,7 @@ AEGP_GetRQItemByIndex(
 
 #### AEGP_GetNextRQItem
 
-Returns the next `AEGP_RQItemRefH`, for iteration purposes.
-To get the first `AEGP_RQItemRefH`, pass `RQ_ITEM_INDEX_NONE` for the `current_rq_itemH`.
+返回下一个`AEGP_RQItemRefH'，用于迭代目的。 要获得第一个`AEGP_RQItemRefH'，请为`current_rq_itemH'传递`RQ_ITEM_INDEX_NONE`。
 
 ```cpp
 AEGP_GetNextRQItem(
@@ -6769,7 +6754,7 @@ AEGP_GetNextRQItem(
 
 #### AEGP_GetNumOutputModulesForRQItem
 
-Returns the number of output modules applied to the given `AEGP_RQItemRefH`.
+返回应用于给定`AEGP_RQItemRefH`的输出模块的数量。
 
 ```cpp
 AEGP_GetNumOutputModulesForRQItem(
@@ -6780,7 +6765,7 @@ AEGP_GetNumOutputModulesForRQItem(
 
 #### AEGP_GetRenderState
 
-Returns TRUE if the `AEGP_RQItemRefH` is set to render (once the user clicks the Render button).
+如果`AEGP_RQItemRefH`被设置为渲染（一旦用户点击了渲染按钮），返回 TRUE。
 
 ```cpp
 AEGP_GetRenderState(
@@ -6791,9 +6776,9 @@ AEGP_GetRenderState(
 
 #### AEGP_SetRenderState
 
-Controls whether or not the `AEGP_RQItemRefH` will render when the user next clicks the Render button.
-Returns an error if called during rendering.
-This function will return:* `Err_PARAMETER` if you try to call while `AEGP_RenderQueueState` isn’t `AEGP_RenderQueueState_STOPPED`,
+控制`AEGP_RQItemRefH`是否会在用户下次点击渲染按钮时渲染。
+如果在渲染过程中被调用，将返回一个错误。
+如果在`AEGP_RenderQueueState`不是`AEGP_RenderQueueState_STOPPED`的情况下尝试调用，该函数将返回：\*`Err_PARAMETER`。
 
 - `Err_RANGE` if you pass a status that is illegal in any case, and
 - `Err_PARAMETER` if you try to pass a status that doesn’t make sense (like trying to queue something for which there’s no output path)
@@ -6807,7 +6792,7 @@ AEGP_SetRenderState(
 
 #### AEGP_GetStartedTime
 
-Returns the time (in seconds, since 1904) that rendering began.
+返回渲染开始的时间（以秒为单位，从 1904 年开始）。
 
 ```cpp
 AEGP_GetStartedTime(
@@ -6818,7 +6803,7 @@ AEGP_GetStartedTime(
 
 #### AEGP_GetElapsedTime
 
-Returns the time elapsed since rendering began.
+返回渲染开始后所经过的时间。
 
 ```cpp
 AEGP_GetElapsedTime(
@@ -6829,7 +6814,7 @@ AEGP_GetElapsedTime(
 
 #### AEGP_GetLogType
 
-Returns the log type for the referenced `AEGP_RQItemRefH`.
+返回引用的`AEGP_RQItemRefH`的日志类型。
 
 ```cpp
 AEGP_GetLogType(
@@ -6838,7 +6823,7 @@ AEGP_GetLogType(
 
 ```
 
-`AEGP_LogtType` will have one of the following values:
+`AEGP_LogtType`将有以下值之一。
 
 - `AEGP_LogType_NONE`
 - `AEGP_LogType_ERRORS_ONLY`
@@ -6847,7 +6832,7 @@ AEGP_GetLogType(
 
 #### AEGP_SetLogType
 
-Specifies the log type to be used with the referenced `AEGP_RQItemRefH`.
+指定与引用的`AEGP_RQItemRefH'一起使用的日志类型。
 
 ```cpp
 AEGP_SetLogType(
@@ -6858,7 +6843,7 @@ AEGP_SetLogType(
 
 #### AEGP_RemoveOutputModule
 
-Removes the specified output module from the referenced `AEGP_RQItemRefH`.
+从引用的`AEGP_RQItemRefH'中删除指定的输出模块。
 
 ```cpp
 AEGP_RemoveOutputModule(
@@ -6869,8 +6854,8 @@ AEGP_RemoveOutputModule(
 
 #### AEGP_GetComment
 
-Updated to support Unicode in `RQItemSuite4`, available in 14.1.
-Retrieves the comment associated with the referenced `AEGP_RQItemRefH`.
+更新以支持`RQItemSuite4`中的 Unicode，在 14.1 中可用。
+检索与引用的`AEGP_RQItemRefH'相关的注释。
 
 ```cpp
 AEGP_GetComment(
@@ -6881,8 +6866,8 @@ AEGP_GetComment(
 
 #### AEGP_SetComment
 
-Updated to support Unicode in `RQItemSuite4`, available in 14.1.
-Specifies the comment associated with the referenced `AEGP_RQItemRefH`.
+更新为在`RQItemSuite4`中支持 Unicode，在 14.1 中可用。
+指定与引用的 "AEGP_RQItemRefH "相关的注释。
 
 ```cpp
 AEGP_SetComment(
@@ -6893,7 +6878,7 @@ AEGP_SetComment(
 
 #### AEGP_GetCompFromRQItem
 
-Retrieves the `AEGP_CompH` associated with the `AEGP_RQItemRefH`.
+检索与`AEGP_RQItemRefH`相关的`AEGP_CompH'。
 
 ```cpp
 AEGP_GetCompFromRQItem(
@@ -6904,7 +6889,7 @@ AEGP_GetCompFromRQItem(
 
 #### AEGP_DeleteRQItem
 
-Deletes the render queue item. Undoable.
+删除渲染队列项目。可撤销。
 
 ```cpp
 AEGP_DeleteRQItem(
@@ -6914,15 +6899,15 @@ AEGP_DeleteRQItem(
 
 ## Render Queue Monitor Suite
 
-New in CS6. This suite provides all the info a render queue manager needs to figure out what is happening at any point in a render.
+CS6 的新功能。这个套件提供了渲染队列管理器需要的所有信息，以弄清渲染中任何一点的情况。
 
 ### AEGP_RenderQueueMonitorSuite1
 
 #### AEGP_RegisterListener
 
-Register a set of plug-in-defined functions to be called by the render queue.
-Use the refcon to pass in data that you want to use later on when your plug-in-defined functions in `AEGP_RQM_FunctionBlock1` are called later.
-It may be set it to NULL if you don’t need it.
+注册一组插件定义的函数，由渲染队列调用。
+使用 refcon 来传递数据，当你的`AEGP_RQM_FunctionBlock1`中的插件定义的函数以后被调用时，你要使用这些数据。
+如果你不需要它，可以把它设置为 NULL。
 
 ```cpp
 AEGP_RegisterListener(
@@ -6932,7 +6917,7 @@ AEGP_RegisterListener(
 
 ```
 
-The `AEGP_RQM_FunctionBlock1` is defined as follows:
+`AEGP_RQM_FunctionBlock1`定义如下。
 
 ```cpp
 struct _AEGP_RQM_FunctionBlock1 {
@@ -6971,14 +6956,14 @@ struct _AEGP_RQM_FunctionBlock1 {
 
 ```
 
-`AEGP_RQM_FinishedStatus` will be one of the following:
+`AEGP_RQM_FinishedStatus`将是以下的一个。
 
 - `AEGP_RQM_FinishedStatus_UNKNOWN`,
 - `AEGP_RQM_FinishedStatus_SUCCEEDED`,
 - `AEGP_RQM_FinishedStatus_ABORTED`,
 - `AEGP_RQM_FinishedStatus_ERRED`
 
-The AEGP_RQM_BasicData is defined below.
+AEGP_RQM_BasicData 定义如下。
 
 ```cpp
 struct _AEGP_RQM_BasicData {
@@ -6991,7 +6976,7 @@ struct _AEGP_RQM_BasicData {
 
 #### AEGP_DeregisterListener
 
-Deregister from the render queue.
+从渲染队列中取消注册。
 
 ```cpp
 AEGP_DeregisterListener(
@@ -7002,8 +6987,8 @@ AEGP_DeregisterListener(
 
 #### AEGP_GetProjectName
 
-Obtain the current project name.
-The project name is a handle to a NULL-terminated A_UTF16Char string, and must be disposed with `AEGP_FreeMemHandle`.
+获取当前的项目名称。
+项目名称是一个以 NULL 结尾的 A_UTF16Char 字符串的句柄，必须用`AEGP_FreeMemHandle`处置。
 
 ```cpp
 AEGP_GetProjectName(
@@ -7014,8 +6999,8 @@ AEGP_GetProjectName(
 
 #### AEGP_GetAppVersion
 
-Obtain the app version.
-The app version is a handle to a NULL-terminated A_UTF16Char string, and must be disposed with `AEGP_FreeMemHandle`.
+获取应用程序的版本。
+应用程序的版本是一个以 NULL 结尾的 A_UTF16Char 字符串的句柄，必须用`AEGP_FreeMemHandle'来处理。
 
 ```cpp
 AEGP_GetAppVersion(
@@ -7026,7 +7011,7 @@ AEGP_GetAppVersion(
 
 #### AEGP_GetNumJobItems
 
-Obtain the number of job items.
+获取工作项目的数量。
 
 ```cpp
 AEGP_GetNumJobItems(
@@ -7037,7 +7022,7 @@ AEGP_GetNumJobItems(
 
 #### AEGP_GetJobItemID
 
-Get the job with the index specified.
+获取具有指定索引的作业。
 
 ```cpp
 AEGP_GetJobItemID(
@@ -7049,7 +7034,7 @@ AEGP_GetJobItemID(
 
 #### AEGP_GetNumJobItemRenderSettings
 
-Get the number of render settings for the job with the index specified.
+获取具有指定索引的作业的渲染设置的数量。
 
 ```cpp
 AEGP_GetNumJobItemRenderSettings(
@@ -7061,8 +7046,8 @@ AEGP_GetNumJobItemRenderSettings(
 
 #### AEGP_GetJobItemRenderSetting
 
-Get a specific render setting of a specific job.
-The setting name and value are handles to NULL-terminated A_UTF16Char strings, and must be disposed with `AEGP_FreeMemHandle`.
+获取特定作业的特定渲染设置。
+设置名称和值是以 NULL 结尾的 A_UTF16Char 字符串的句柄，必须用`AEGP_FreeMemHandle`处理。
 
 ```cpp
 AEGP_GetJobItemRenderSetting(
@@ -7076,7 +7061,7 @@ AEGP_GetJobItemRenderSetting(
 
 #### AEGP_GetNumJobItemOutputModules
 
-Get the number of output modules for the job with the index specified.
+获取具有指定索引的工作的输出模块的数量。
 
 ```cpp
 AEGP_GetNumJobItemOutputModules(
@@ -7088,7 +7073,7 @@ AEGP_GetNumJobItemOutputModules(
 
 #### AEGP_GetNumJobItemOutputModuleSettings
 
-Get the number of settings for the output module with the index specified.
+获取具有指定索引的输出模块的设置数量。
 
 ```cpp
 AEGP_GetNumJobItemOutputModuleSettings(
@@ -7101,8 +7086,8 @@ AEGP_GetNumJobItemOutputModuleSettings(
 
 #### AEGP_GetJobItemOutputModuleSetting
 
-Get a specific setting of a job item output module.
-The setting name and value are handles to NULL-terminated A_UTF16Char strings, and must be disposed with `AEGP_FreeMemHandle`.
+获取一个工作项目输出模块的特定设置。
+设置名称和值是以 NULL 结尾的 A_UTF16Char 字符串的句柄，必须用`AEGP_FreeMemHandle`处理。
 
 ```cpp
 AEGP_GetJobItemOutputModuleSetting(
@@ -7117,7 +7102,7 @@ AEGP_GetJobItemOutputModuleSetting(
 
 #### AEGP_GetNumJobItemOutputModuleWarnings
 
-Get the number of output module warnings for a job item.
+获取一个工作项目的输出模块警告的数量。
 
 ```cpp
 AEGP_GetNumJobItemOutputModuleWarnings(
@@ -7130,8 +7115,8 @@ AEGP_GetNumJobItemOutputModuleWarnings(
 
 #### AEGP_GetJobItemOutputModuleWarning
 
-Get a specific warning of a specific output module for a specific job item.
-The warning value is a handle to NULL-terminated A_UTF16Char string, and must be disposed with `AEGP_FreeMemHandle`.
+获取一个特定工作项目的特定输出模块的警告。
+警告值是一个以 NULL 结尾的 A_UTF16Char 字符串的句柄，必须用`AEGP_FreeMemHandle`处置。
 
 ```cpp
 AEGP_GetJobItemOutputModuleWarning(
@@ -7145,7 +7130,7 @@ AEGP_GetJobItemOutputModuleWarning(
 
 #### AEGP_GetNumJobItemFrameProperties
 
-Get the number of properties for a job item frame.
+获取一个工作项目框架的属性数量。
 
 ```cpp
 AEGP_GetNumJobItemFrameProperties(
@@ -7158,8 +7143,8 @@ AEGP_GetNumJobItemFrameProperties(
 
 #### AEGP_GetJobItemFrameProperty
 
-Get a specific property on a job item frame.
-The property name and values are handle to NULL-terminated A_UTF16Char strings, and must be disposed with `AEGP_FreeMemHandle`.
+获取一个工作项目框架的特定属性。
+属性名称和值是以 NULL 结尾的 A_UTF16Char 字符串，必须用`AEGP_FreeMemHandle`处理。
 
 ```cpp
 AEGP_GetJobItemFrameProperty(
@@ -7174,7 +7159,7 @@ AEGP_GetJobItemFrameProperty(
 
 #### AEGP_GetNumJobItemOutputModuleProperties
 
-Get the number of properties for a job item output module.
+获取一个工作项目输出模块的属性数量。
 
 ```cpp
 AEGP_GetNumJobItemOutputModuleProperties(
@@ -7187,8 +7172,8 @@ AEGP_GetNumJobItemOutputModuleProperties(
 
 #### AEGP_GetJobItemOutputModuleProperty
 
-Get a specific property off a job item output module.
-The property name and values are handle to NULL-terminated A_UTF16Char strings, and must be disposed with `AEGP_FreeMemHandle`.
+从一个工作项目输出模块上获取一个特定的属性。
+属性名称和值是以 NULL 结尾的 A_UTF16Char 字符串，必须用`AEGP_FreeMemHandle`处理。
 
 ```cpp
 AEGP_GetJobItemOutputModuleProperty(
@@ -7203,8 +7188,8 @@ AEGP_GetJobItemOutputModuleProperty(
 
 #### AEGP_GetJobItemFrameThumbnail
 
-Get a buffer with a JPEG-encoded thumbnail of the job item frame.
-Pass in the maximum width and height, and the actual dimensions will be passed back.
+获得一个缓冲区，里面有工作项目框架的 JPEG 编码的缩略图。
+输入最大宽度和高度，实际尺寸将被传回。
 
 ```cpp
 AEGP_GetJobItemFrameThumbnail(
@@ -7219,20 +7204,20 @@ AEGP_GetJobItemFrameThumbnail(
 
 ## Output Module Suite
 
-Every item in the render queue has at least one output module specified.
+渲染队列中的每个项目都至少有一个指定的输出模块。
 
-Use this suite to query and control all aspects of the output modules attached to a given render item.
+使用这个套件可以查询和控制附属于一个给定渲染项目的输出模块的所有方面。
 
-You may also add and remove output modules.
+你也可以添加和删除输出模块。
 
-Factoid: For each frame rendered for a given render item, the list of output modules is traversed. So, for frame 0, output module 0, then 1, then 2 are called.
+事实是这样的。对于一个给定的渲染项目的每一帧渲染，输出模块的列表都会被遍历。所以，对于第 0 帧，会调用输出模块 0，然后是 1，然后是 2。
 
 ### AEGP_OutputModuleSuite4
 
 #### AEGP_GetOutputModuleByIndex
 
-Retrieves the indexed output module.
-NOTE: `AEGP_OutputModuleRefH` is an opaque data type, and can’t be manipulated directly; you must use our accessor functions to modify it.
+检索索引的输出模块。
+注意：`AEGP_OutputModuleRefH`是一个不透明的数据类型，不能直接操作；你必须使用我们的访问函数来修改它。
 
 ```cpp
 AEGP_GetOutputModuleByIndex(
@@ -7244,7 +7229,7 @@ AEGP_GetOutputModuleByIndex(
 
 #### AEGP_GetEmbedOptions
 
-Retrieves the embedding setting specified for the referenced `AEGP_OutputModuleRefH`.
+检索为引用的`AEGP_OutputModuleRefH`指定的嵌入设置。
 
 ```cpp
 AEGP_GetEmbedOptions(
@@ -7254,7 +7239,7 @@ AEGP_GetEmbedOptions(
 
 ```
 
-`AEGP_EmbeddingType` will be one of the following:
+`AEGP_EmbeddingType`将是以下之一。
 
 - `AEGP_Embedding_NOTHING`
 - `AEGP_Embedding_LINK`
@@ -7262,7 +7247,7 @@ AEGP_GetEmbedOptions(
 
 #### AEGP_SetEmbedOptions
 
-Specifies the embedding setting for the referenced `AEGP_OutputModuleRefH`.
+为引用的`AEGP_OutputModuleRefH`指定嵌入设置。
 
 ```cpp
 AEGP_SetEmbedOptions(
@@ -7274,7 +7259,7 @@ AEGP_SetEmbedOptions(
 
 #### AEGP_GetPostRenderAction
 
-Retrieves the post-render action setting for the referenced `AEGP_OutputModuleRefH`.
+检索引用的`AEGP_OutputModuleRefH'的后期渲染动作设置。
 
 ```cpp
 AEGP_GetPostRenderAction(
@@ -7284,7 +7269,7 @@ AEGP_GetPostRenderAction(
 
 ```
 
-`AEGP_PostRenderAction` will be one of the following:
+`AEGP_PostRenderAction`将是以下之一。
 
 - `AEGP_PostRenderOptions_IMPORT`
 - `AEGP_PostRenderOptions_IMPORT_AND_REPLACE_USAGE`
@@ -7292,7 +7277,7 @@ AEGP_GetPostRenderAction(
 
 #### AEGP_SetPostRenderAction
 
-Specifies the post-render action setting for the referenced `AEGP_OutputModuleRefH`.
+指定引用的`AEGP_OutputModuleRefH'的后期渲染动作设置。
 
 ```cpp
 AEGP_SetPostRenderAction(
@@ -7304,7 +7289,7 @@ AEGP_SetPostRenderAction(
 
 #### AEGP_GetEnabledOutputs
 
-Retrieves which output types are enabled for the referenced `AEGP_OutputModuleRefH`.
+检索引用的`AEGP_OutputModuleRefH'启用了哪些输出类型。
 
 ```cpp
 AEGP_GetEnabledOutputs(
@@ -7314,16 +7299,16 @@ AEGP_GetEnabledOutputs(
 
 ```
 
-`AEGP_OutputTypes` will contain one or both of the following values:
+`AEGP_OutputTypes`将包含以下一个或两个值。
 
 - `AEGP_OutputType_VIDEO`
 - `AEGP_OutputType_AUDIO`
 
-NOTE: These are flags, not an enumeration.
+注意: 这些是标志，不是枚举。
 
 #### AEGP_SetEnabledOutputs
 
-Specifies which output types are enabled for the referenced `AEGP_OutputModuleRefH`.
+指定引用的`AEGP_OutputModuleRefH'启用哪些输出类型。
 
 ```cpp
 AEGP_SetEnabledOutputs(
@@ -7335,7 +7320,7 @@ AEGP_SetEnabledOutputs(
 
 #### AEGP_GetOutputChannels
 
-Retrieves which video channels are enabled for output in the referenced AEGP_OutputModuleRefH.
+检索引用的 AEGP_OutputModuleRefH 中哪些视频通道被启用输出。
 
 ```cpp
 AEGP_GetOutputChannels(
@@ -7345,7 +7330,7 @@ AEGP_GetOutputChannels(
 
 ```
 
-`AEGP_VideoChannels` will be one of the following:
+`AEGP_VideoChannels`将是以下之一。
 
 - `AEGP_VideoChannels_RGB`
 - `AEGP_VideoChannels_RGBA`
@@ -7353,7 +7338,7 @@ AEGP_GetOutputChannels(
 
 #### AEGP_SetOutputChannels
 
-Specifies which video channels are enabled for output in the referenced `AEGP_OutputModuleRefH`.
+指定在引用的`AEGP_OutputModuleRefH'中哪些视频通道被启用进行输出。
 
 ```cpp
 AEGP_SetOutputChannels(
@@ -7365,7 +7350,7 @@ AEGP_SetOutputChannels(
 
 #### AEGP_GetStretchInfo
 
-Retrieves the stretch information enabled for the referenced `AEGP_OutputModuleRefH`; whether or not stretching is enabled, whether or not the frame aspect ratio is locked to the composition’s, and what quality setting is specified.
+检索引用的`AEGP_OutputModuleRefH'启用的拉伸信息；是否启用了拉伸功能，是否将帧的宽高比锁定在合成上，以及指定了什么质量设置。
 
 ```cpp
 AEGP_GetStretchInfo(
@@ -7377,14 +7362,14 @@ AEGP_GetStretchInfo(
 
 ```
 
-`AEGP_StretchQuality` will be one of the following:
+`AEGP_StretchQuality`将是以下之一。
 
 - `AEGP_StretchQual_LOW`
 - `AEGP_StretchQual_HIGH`
 
 #### AEGP_SetStretchInfo
 
-Retrieves the stretch information enabled for the referenced `AEGP_OutputModuleRefH`.
+检索引用的`AEGP_OutputModuleRefH'所启用的拉伸信息。
 
 ```cpp
 AEGP_SetStretchInfo(
@@ -7397,7 +7382,7 @@ AEGP_SetStretchInfo(
 
 #### AEGP_GetCropInfo
 
-Retrieves whether or not the cropping is enabled for the referenced `AEGP_OutputModuleRefH`, and the rectangle to be used.
+检索引用的`AEGP_OutputModuleRefH`是否启用裁剪，以及要使用的矩形。
 
 ```cpp
 AEGP_GetCropInfo(
@@ -7410,7 +7395,7 @@ AEGP_GetCropInfo(
 
 #### AEGP_SetCropInfo
 
-Specifies whether cropping is enabled for the referenced `AEGP_OutputModuleRefH`, and the rectangle to be used.
+指定参考的`AEGP_OutputModuleRefH'是否启用裁剪，以及要使用的矩形。
 
 ```cpp
 AEGP_SetCropInfo(
@@ -7423,7 +7408,7 @@ AEGP_SetCropInfo(
 
 #### AEGP_GetSoundFormatInfo
 
-Retrieves whether or not audio output is enabled for the referenced `AEGP_OutputModuleRefH`, and the settings to be used.
+读取引用的`AEGP_OutputModuleRef'是否启用音频输出，以及要使用的设置。
 
 ```cpp
 AEGP_GetSoundFormatInfo(
@@ -7436,7 +7421,7 @@ AEGP_GetSoundFormatInfo(
 
 #### AEGP_SetSoundFormatInfo
 
-Specifies whether or not audio output is enabled for the referenced `AEGP_OutputModuleRefH`, and the settings to be used.
+指定引用的`AEGP_OutputModuleRefH'是否启用音频输出，以及要使用的设置。
 
 ```cpp
 AEGP_SetSoundFormatInfo(
@@ -7449,8 +7434,8 @@ AEGP_SetSoundFormatInfo(
 
 #### AEGP_GetOutputFilePath
 
-Retrieves the path to which `AEGP_OutputModuleRefH's` output file will be written.
-The path is a handle to a NULL-terminated A_UTF16Char string, and must be disposed with `AEGP_FreeMemHandle`.
+检索 "AEGP_OutputModuleRefH "的输出文件将被写入的路径。
+该路径是一个以 NULL 结尾的 A_UTF16Char 字符串的句柄，必须用`AEGP_FreeMemHandle'来处理。
 
 ```cpp
 AEGP_GetOutputFilePath(
@@ -7462,8 +7447,8 @@ AEGP_GetOutputFilePath(
 
 #### AEGP_SetOutputFilePath
 
-Specifies the path to which `AEGP_OutputModuleRefH's` output file will be written.
-The file path is a NULL-terminated UTF-16 string with platform separators.
+指定`AEGP_OutputModuleRefH'的输出文件将被写入的路径。
+文件路径是一个以 NULL 结尾的 UTF-16 字符串，带有平台分隔符。
 
 ```cpp
 AEGP_SetOutputFilePath(
@@ -7475,7 +7460,7 @@ AEGP_SetOutputFilePath(
 
 #### AEGP_AddDefaultOutputModule
 
-Adds the default output module to the specified `AEGP_RQItemRefH`, and returns the added output module’s `AEGP_OutputModuleRefH` (you wouldn’t add it if you didn’t plan to mess around with it, would you?).
+为指定的`AEGP_RQItemRefH`添加默认的输出模块，并返回添加的输出模块的`AEGP_OutputModuleRefH`（如果你不打算乱用它，就不会添加它，对吗？）
 
 ```cpp
 AEGP_AddDefaultOutputModule(
@@ -7486,9 +7471,9 @@ AEGP_AddDefaultOutputModule(
 
 #### AEGP_GetExtraOutputModuleInfo
 
-Retrieves information about the output module.
-`format_uniPH` and `info_uniPH` provide the textual description of, and information about, the output module, formatted as the user would see it.
-`format_uniPH` and `info_uniPH` will contain NULL-terminated UTF16 strings, of which the caller must dispose.
+检索关于输出模块的信息。
+`format_uniPH`和`info_uniPH`提供输出模块的文字描述和信息，格式为用户看到的样子。
+`format_uniPH`和`info_uniPH`将包含以 NULL 结尾的 UTF16 字符串，调用者必须处理掉。
 
 ```cpp
 AEGP_GetExtraOutputModuleInfo(
@@ -7503,19 +7488,19 @@ AEGP_GetExtraOutputModuleInfo(
 
 ## Working With Effects
 
-These functions provide a way for effects (and AEGPs) to obtain information about the context of an applied effect.
+这些函数为效果（和 AEGPs）提供了一种方法，以获得关于应用效果的上下文的信息。
 
 :::tip
 
-Any time you modify or rely on data from outside the normal render pipeline, you run the risk of dependency problems.
+任何时候，当你修改或依赖来自正常渲染管道之外的数据时，你都有可能出现依赖性问题。
 :::
-There is no way for After Effects to know that you depend on this external information; consequently, you will not be notified if it changes out from under you.
+After Effects 没有办法知道你依赖这些外部信息；因此，如果这些信息从你下面改变了，你将不会得到通知。
 
 ### AEGP_PFInterfaceSuite1
 
 #### AEGP_GetEffectLayer
 
-Obtain the layer handle of the layer to which the effect is applied.
+获取应用该效果的图层的句柄。
 
 ```cpp
 AEGP_GetEffectLayer(
@@ -7526,7 +7511,7 @@ AEGP_GetEffectLayer(
 
 #### AEGP_GetNewEffectForEffect
 
-Obtain the `AEGP_EffectRefH` corresponding to the effect.
+获得与效果对应的`AEGP_EffectRefH`。
 
 ```cpp
 AEGP_GetNewEffectForEffect(
@@ -7538,7 +7523,7 @@ AEGP_GetNewEffectForEffect(
 
 #### AEGP_ConvertEffectToCompTime
 
-Retreive the composition time corresponding to the effect’s layer time.
+获取与效果图层时间相对应的合成时间。
 
 ```cpp
 AEGP_ConvertEffectToCompTime(
@@ -7551,7 +7536,7 @@ AEGP_ConvertEffectToCompTime(
 
 #### AEGP_GetEffectCamera
 
-Obtain the camera (if any) being used by After Effects to view the effect’s layer.
+获取 After Effects 用于查看效果层的摄像机（如果有的话）。
 
 ```cpp
 AEGP_GetEffectCamera(
@@ -7563,7 +7548,7 @@ AEGP_GetEffectCamera(
 
 #### AEGP_GetEffectCameraMatrix
 
-Obtain the transform used to move between the layer’s coordinate space and that of the containing composition.
+获取用于在该层的坐标空间和包含的合成空间之间移动的变换。
 
 ```cpp
 AEGP_GetEffectCameraMatrix(
@@ -7576,24 +7561,24 @@ AEGP_GetEffectCameraMatrix(
 
 ```
 
-NOTE: In cases where the effect’s input layer has square pixels, but is in a non-square pixel composition,
-you must correct for the pixel aspect ratio by premultiplying the matrix by `(1/parF, 1, 1)`.
+注意：如果效果的输入层是方形像素，但在一个非方形像素的合成中。
+你必须通过将矩阵预先乘以`(1/parF, 1, 1)'来校正像素长宽比。
 
 ### AEGP_GetEffectCameraMatrix Notes
 
-The model view for the camera matrix is inverse of the matrix obtained from `AEGP_GetEffectCameraMatrix()`.
+摄像机矩阵的模型视图是由`AEGP_GetEffectCameraMatrix()`得到的矩阵的逆向。
 
-Also note that our matrix is row-based; OpenGL’s is column-based.
+还要注意，我们的矩阵是基于行的；OpenGL 的是基于列的。
 
 ## Do This Many Times
 
-Utilizes multiple processors (if available) for your computations.
+利用多个处理器（如果有的话）进行计算。
 
 ### AEGP_IterateSuite1
 
 #### AEGP_GetNumThreads
 
-Ask After Effects how many threads are currently available.
+询问 After Effects 目前有多少个线程可用。
 
 ```cpp
 AEGP_GetNumThreads(
@@ -7603,9 +7588,9 @@ AEGP_GetNumThreads(
 
 #### AEGP_IterateGeneric
 
-Specify a function for After Effects to manage on multiple processors.
-Can be any function pointer specified by `fn_func`, taking the arguments listed below.
-See [Private Data](implementation.html#aegps-implementation-private-data) for a description of how refconPV is used.
+指定一个函数，让 After Effects 在多个处理器上管理。
+可以是由`fn_func'指定的任何函数指针，采取下面列出的参数。
+参见[Private Data](implementation.html#aegps-implementation-private-data)以了解 refconPV 的使用方法。
 
 ```cpp
 AEGP_IterateGeneric(
@@ -7621,17 +7606,17 @@ AEGP_IterateGeneric(
 
 ## File Import Manager Suite
 
-The FIMSuite allows file types handled by AEGPs to appear as part of the After Effects import dialog, and drag-and-drop messaging.
+FIMSuite 允许由 AEGPs 处理的文件类型作为 After Effects 导入对话框的一部分出现，以及拖放信息。
 
-These are not for use by AEIOs! Rather, they are for importing projects which are best represented as After Effects compositions.
-These are not for use by AEIOs! Rather, they are for importing projects which are best represented as After Effects compositions.
+这些不是给 AEIO 们使用的! 相反，它们是用来导入那些最适合作为 After Effects 合成的项目的。
+这些不是给 AEIO 使用的!
 
 ### AEGP_FIMSuite3
 
 #### AEGP_RegisterImportFlavor
 
-Registers the name of the file type(s) supported by the plug-in.
-Upon return, `imp_refP` will be a valid opaque reference, or `AE_FIM_ImportFlavorRef_NONE`.
+注册插件所支持的文件类型的名称。
+返回时，`imp_refP`将是一个有效的不透明引用，或`AE_FIM_ImportFlavorRef_NONE`。
 
 ```cpp
 AEGP_RegisterImportFlavor(
@@ -7642,7 +7627,7 @@ AEGP_RegisterImportFlavor(
 
 #### AEGP_RegisterImportFlavorFileTypes
 
-Registers an array of file types and file extensions (the two arrays need not be of equal length) supported by the AEGP.
+注册 AEGP 支持的文件类型和文件扩展名的数组（两个数组的长度不需要相等）。
 
 ```cpp
 AEGP_RegisterImportFlavorFileTypes(
@@ -7656,7 +7641,7 @@ AEGP_RegisterImportFlavorFileTypes(
 
 #### AEGP_RegisterImportFlavorImportCallbacks
 
-Register the AEGP functions which will respond to import of different filetypes.
+注册 AEGP 函数，这些函数将响应不同文件类型的导入。
 
 ```cpp
 AEGP_RegisterImportFlavorImportCallbacks(
@@ -7668,7 +7653,7 @@ AEGP_RegisterImportFlavorImportCallbacks(
 
 #### AEGP_SetImportedItem
 
-Designates an item as having been imported (possibly replacing an existing item), and sets associated import options.
+指定一个项目被导入（可能是替换现有项目），并设置相关的导入选项。
 
 ```cpp
 AEGP_SetImportedItem(

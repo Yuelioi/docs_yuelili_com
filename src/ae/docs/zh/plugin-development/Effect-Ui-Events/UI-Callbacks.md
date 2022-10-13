@@ -6,11 +6,11 @@ category:
 ---
 # UI Callbacks
 
-After Effects provides callbacks for transposing between coordinate systems, and obtaining OS-specific information about drawing contexts, without guesswork or asking the OS directly. Use these callbacks! Pointers to these callbacks are provided in PF_EventCallbacks. Use the macros in AE_EffectUI.h and AE_EffectCB.h to access these routines.
+After Effects提供了回调功能，用于在坐标系之间进行转换，并获得操作系统特定的绘图上下文信息，无需猜测或直接询问操作系统。使用这些回调! 这些回调的指针在PF_EventCallbacks中提供。使用AE_EffectUI.h和AE_EffectCB.h中的宏来访问这些程序。
 
-It is possible to build a functioning plug-in which utilizes a custom UI without implementing the coordinate system transposition callbacks. However, the moment a user zooms into the layer panel or rotates a layer, your plug-in will behave badly. We added these macros and callbacks so that custom user interfaces could be easily integrated into the After Effects UI, without inflicting user interface overhead on developers. Again, please use them!
+有可能在不实现坐标系换位回调的情况下建立一个利用自定义UI的有效插件。然而，当用户放大图层面板或旋转图层时，你的插件将表现得很糟糕。我们添加了这些宏和回调，以便自定义用户界面可以很容易地集成到After Effects的用户界面中，而不会给开发者带来用户界面的开销。再次强调，请使用它们!
 
-These macros default the refcon and context handle for simplicity. The refcon assumes you have a local variable named “extra”. The default context is the current context. These default parameters are defined in the PF_EventCallbacks structure (in AE_EffectUI.h). You can override the defaults by accessing the callbacks through the PF_EventExtra structure. We don’t recommend (or support) modification of the macros in the header file. Don’t do it!
+为了简单起见，这些宏默认了refcon和context handle。refcon假定你有一个名为 "extra "的局部变量。默认的上下文是当前的上下文。这些默认参数在PF_EventCallbacks结构中定义（在AE_EffectUI.h中）。你可以通过PF_EventExtra结构访问这些回调来覆盖默认参数。我们不建议（或支持）修改头文件中的宏。请不要这样做!
 
 ### layer_to_comp
 

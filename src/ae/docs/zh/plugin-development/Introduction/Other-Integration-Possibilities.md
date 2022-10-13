@@ -11,7 +11,7 @@ category:
 
 ## Scripting
 
-脚本是一种相对灵活和轻量级的手段，可以用After Effects执行自动任务。ScriptUI是一种可以提供与自定义对话框和面板的UI集成的方式（参见[HTML5面板](#intro-other-integration-possibilities-html) (5)）。脚本可以和插件开发一起使用，在这种情况下，某个功能可以通过脚本而不是本文描述的C语言API来实现。
+脚本是一种相对灵活和轻量级的手段，可以用After Effects执行自动任务。ScriptUI是一种可以提供与自定义对话框和面板的UI集成的方式（参见[HTML5面板] (5)）。脚本可以和插件开发一起使用，在这种情况下，某个功能可以通过脚本而不是本文描述的C语言API来实现。
 
 After Effects中的脚本是通过基于JavaScript的ExtendScript完成的。After Effects包括ExtendScript ToolKit，这是一个创建和测试自己脚本的方便接口。脚本可以被编译成.jsxbin二进制文件，以保护知识产权。
 

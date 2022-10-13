@@ -7,7 +7,7 @@ category:
 
 # Interaction Callback Functions
 
-While the un-macro’d function pointers are provided in [PF_InData](../effect-basics/PF_InData.html) (#effect-basics-pf-indata), use the provided macros to access them. See how stringent we are about deprecating macro usage? Let’s let this be our little secret.
+While the un-macro’d function pointers are provided in [PF_InData](../effect-basics/PF_InData.html) , use the provided macros to access them. See how stringent we are about deprecating macro usage? Let’s let this be our little secret.
 
 ## Interaction Callbacks
 
@@ -112,7 +112,7 @@ PF_CustomUIInfo*cust_info);
 
 ### PF_CHECKOUT_LAYER_AUDIO
 
-Given an index, start_time, duration, time_scale, rate, bytes_per_sample, num_channels, and fmt_signed, After Effects will return a corresponding PF_LayerAudio. After Effects will perform any necessary resampling.
+给定一个索引、start_time、duration、time_scale、rate、byte_per_sample、num_channels和fmt_signed，After Effects将返回一个相应的PF_LayerAudio。After Effects将执行任何必要的重采样。
 
 ```cpp
 PF_ErrPF_CHECKOUT_LAYER_AUDIO(
@@ -130,7 +130,7 @@ PF_LayerAudio*audio);
 
 ### PF_CHECKIN_LAYER_AUDIO
 
-Balance all calls to PF_CHECKOUT_LAYER_AUDIO, regardless of error conditions, with matching calls to PF_CHECKIN_LAYER_AUDIO.
+平衡所有对PF_CHECKOUT_LAYER_AUDIO的调用，无论错误情况如何，都要匹配对PF_CHECKIN_LAYER_AUDIO的调用。
 
 ```cpp
 PF_ErrPF_CHECKIN_LAYER_AUDIO(
@@ -140,9 +140,9 @@ PF_LayerAudioaudio);
 
 ### PF_GET_AUDIO_DATA
 
-Returns information about the PF_LayerAudio.
+返回关于PF_LayerAudio的信息。
 
-All the parameters after audio are optional; pass 0 for any value in which you aren’t interested. rate0 is unsigned, and fmt_signed0 should be non-zero for signed, zero for unsigned. This callback is for visual effects that read audio information. To _alter_ audio, write an audio filter.
+音频之后的所有参数都是可选的；对于任何你不感兴趣的值，都要传递0。rate0是无符号的，fmt_signed0应该是有符号的非零，无符号的是零。这个回调用于读取音频信息的视觉效果。要改变音频，请写一个音频过滤器。
 
 ```cpp
 PF_ErrPF_GET_AUDIO_DATA(
@@ -158,43 +158,43 @@ A_long*fmt_signed0);
 
 ## Parameter Checkout vs. Param Zero
 
-Effects are applied to an image in order from 0 to n within the Effect Control (and Composition) panel.
+在效果控制（和合成）面板中，效果是按照从0到n的顺序应用于图像的。
 
-The output from effect[n-1] is the input ([param[0]](../effect-basics/PF_ParamDef.html) (#effect-basics-pf-paramdef-param-zero)) of effect[n].
+效果[n-1]的输出是效果[n]的输入（[param[0]](.../effect-basics/PF_ParamDef.html) ）。
 
-On the other hand, when a normal effect checks out a layer using `PF_CHECKOUT_PARAM`, it receives the raw (un-effected) source layer, regardless of its order.
+另一方面，当一个普通的效果使用 "PF_CHECKOUT_PARAM "检出一个图层时，它接收的是原始的（未受影响的）源图层，不管它的顺序如何。
 
-However, when a [SmartFX](../smartfx/smartfx.html) (#smartfx-smartfx) effect checks out its input parameter (params[0]), previous effects _are_ applied.
+然而，当[SmartFX](../smartfx/smartfx.html)效果检出其输入参数(params[0])时，先前的效果_被应用。
 
 ## Parameter Checkout Behavior
 
-Regardless of whether the layer in and out point have been trimmed, you will get valid frames from the start of the source footage to the end, and then transparent before and after that.
+无论图层的输入和输出点是否被修剪过，你都会得到从源镜头开始到结束的有效帧，然后在这之前和之后是透明的。
 
-Layer params with a lower frame rate than the composition in which they’re checked out are only refreshed as often as necessitated by the lower frame rate.
+如果图层参数的帧率低于它们被检出的合成，则仅在低帧率需要的时候刷新。
 
-A 10fps layer checked out in a 30fps composition will only need to be refreshed every third frame. if your effect wants to change it’s output every frame despite the static input layer, you’d need to set [PF_Outflag_NON_PARAM_VARY](../effect-basics/PF_OutData.html) (#effect-basics-pf-outdata-pf-outflags).
+如果你的效果想在每一帧改变它的输出，尽管输入层是静态的，你需要设置[PF_Outflag_NON_PARAM_VARY]（.../effect-basics/PF_OutData.html）（#effect-basics-pf-outdata-pf-outflags）。
 
-When an effect checks out a continuously-rasterized Adobe Illustrator layer, After Effects renders the Illustrator layer with geometrics applied, in a composition-sized buffer.
+当特效检出连续光栅化的Adobe Illustrator图层时，After Effects会在一个合成大小的缓冲区中渲染带有几何图形的Illustrator图层。
 
 ## Parameter Checkout And Re-Entrancy
 
-Plug-ins that check out layers at different times can generate re-entrant behavior. Consider an instance where the Checkout sample plug-in is applied to a layer in composition B, and B is pre-composed into composition A where Checkout is applied to it as well.
+在不同时间签出图层的插件会产生重入行为。考虑这样一个例子：Checkout样本插件被应用于组1合物B中的一个图层，而B被预合成为合成物A，Checkout也被应用于其中。
 
-When composition A is rendered, Checkout[A] will be sent _PF_Cmd_RENDER_, during which it checks out a layer (composition B) from a time other than the current time.
+当合成A被渲染时，Checkout[A]将被发送_PF_Cmd_RENDER_，在此期间，它从当前时间以外的时间检查出一个层（合成B）。
 
-In order to provide that checked-out layer, After Effects sends _PF_Cmd_RENDER_ to `Checkout[B]`.
+为了提供这个被检出的图层，After Effects将发送_PF_Cmd_RENDER_到`Checkout[B]`。
 
-Presto, recursion!
+Presto, 递归!
 
-If you’re going to check out parameters, your effects must handle re-entrant render requests appropriately.
+如果你要检出参数，你的特效必须适当地处理重入的渲染请求。
 
-Don’t use globals, or read or write static variables…but you weren’t going to anyway, right?
+不要使用globals，也不要读写静态变量......但你反正也不打算这么做，对吗？
 
 ## Progress During Iteration
 
-After Effects strives to be as responsive as possible to user interaction, even while rendering. Do the same through appropriate use of PF_ITERATE(). For example, perhaps you’re using a PF_ITERATE’d function three times during your response to `PF_Cmd_RENDER`.
+After Effects致力于尽可能地响应用户的互动，甚至在渲染时也是如此。通过适当地使用PF_ITERATE()也可以做到这一点。例如，也许你在对`PF_Cmd_RENDER'的响应过程中，使用了三次PF_ITERATE'd函数。
 
-In this case, you’d start off with:
+在这种情况下，你会先用。
 
 ```cpp
 lines_per_iterateL = in_data>extent_hint.top - in_data>extent_hint.bottom;
@@ -203,7 +203,7 @@ lines_so_farL = 0;
 
 ```
 
-After each iteration, you’d add the already-completed lines to the current position:
+每次迭代后，你会把已经完成的行添加到当前位置。
 
 ```cpp
 suites.iterate8suite()>iterate( lines_so_farL,

@@ -13,4 +13,4 @@ Premiere Elements（但不是Premiere Pro）为每个效果显示视觉图标。
 
 [程序文件]AdobeAdobe Premiere Elements [版本]Plug-inCommonEffectPreviews
 
-文件名应该是你在[PiPL资源](.../intro/pipl-resources.html)(#intro-pipl-resources)中指定的效果的匹配名称，前缀为 "AE"。因此，如果匹配名称是 "MatchName"，那么文件名应该是 "AE.MatchName.png"
+文件名应该是你在[PiPL资源](.../intro/pipl-resources.html)中指定的效果的匹配名称，前缀为 "AE"。因此，如果匹配名称是 "MatchName"，那么文件名应该是 "AE.MatchName.png"

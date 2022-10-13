@@ -9,13 +9,13 @@ category:
 
 ## PF_EffectUISuite
 
-Although not strictly concerned with parameters, this suite can change the name of the options button.
+虽然不是严格意义上的参数，这个套件可以改变选项按钮的名称。
 
 ### PF_SetOptionsButtonName
 
-Changes the text on the options button in the effect controls palette.
+改变效果控制调色板中选项按钮上的文字。
 
-NOTE: This must be called during [PF_Cmd_PARAM_SETUP](https://ae-plugins.docsforadobe.dev/effect-basics/command-selectors.html#effect-basics-command-selectors-global-selectors).
+注意：这必须在[PF_Cmd_PARAM_SETUP](https://ae-plugins.docsforadobe.dev/effect-basics/command-selectors.html#effect-basics-command-selectors-global-selectors)中调用。
 
 ```cpp
 PF_SetOptionsButtonName(
@@ -23,19 +23,19 @@ PF_ProgPtreffect_ref,
 constA_char*nameZ);
 ```
 
-nameZ` may be up to A_char[31]` in length.
+nameZ`的长度可以达到A_char[31]`。
 
 ## PF_AppSuite
 
-Roughly 437 years ago, when we released After Effects 5.0, we published some useful utility callbacks in PF_AppSuite. They’re as useful today as they were then. After Effects has user-controllable UI brightness.
+大约437年前，当我们发布After Effects 5.0时，我们在PF_AppSuite中发布了一些有用的实用回调。今天它们和当时一样有用。After Effects有用户可控制的UI亮度。
 
-In addition to the [PF_EffectCustomUIOverlayThemeSuite](../effect-ui-events/custom-ui-and-drawbot.html) (#effect-ui-events-custom-ui-and-drawbot-pf-effectcustomuioverlaythemesuite) for custom UI in effects, use these calls to integrate seamlessly into the After Effects UI.
+除了[PF_EffectCustomUIOverlayThemeSuite](.../effect-ui-events/custom-ui-and-drawbot.html) 用于特效中的自定义UI，使用这些调用可以无缝集成到After Effects的UI中。
 
-What better way to shame someone into purchasing a copy of your plug-in than by putting their personal information into a watermark, eh? Or set the cursor to add mask vertices, just to confuse people? Heh heh heh. But that would be wrong.
+还有什么比把别人的个人信息放到水印里，更能羞辱别人购买你的插件的呢，嗯？或者将光标设置为添加遮罩顶点，只是为了迷惑人们？嘿嘿嘿。但那是错误的。
 
 ### PF_AppGetBgColor
 
-Retrieves the current background color.
+检索当前的背景颜色。
 
 ```cpp
 PF_AppGetBgColor(
@@ -44,13 +44,13 @@ PF_App_Colorbg_colorP);
 
 ### PF_AppGetColor
 
-Retrieves the color for the specified UI element. See AE_EffectSuites.h for a complete enumeration of available PF_App_Color` values; basically any color in After Effects’ UI can be retrieved.
+检索指定的UI元素的颜色。参见AE_EffectSuites.h中的PF_App_Color`值的完整列举；基本上After Effects的UI中的任何颜色都可以被检索到。
 
-CC adds several new PF_App_ColorType` enum values for new elements that can be queried.
+CC为新元素增加了几个新的PF_App_ColorType`枚举值，可以查询。
 
-Note that in CS6, the color definitions are off from FILL_LIGHT` downward.
+请注意，在CS6中，颜色的定义从FILL_LIGHT`往下偏移。
 
-Use following psuedocode for CS6 only:
+请使用以下仅适用于CS6的psuedocode。
 
 ```cpp
 GetColor(enume)
@@ -67,16 +67,16 @@ PF_App_Color*app_colorP);
 
 ### PF_AppGetLanguage
 
-New in CC. Retrieves the active displayed language of AE UI so plug-in can match. Here are the possible language codes as of CC:
+CC中的新功能。检索AE用户界面的活动显示语言，以便插件可以匹配。以下是CC中可能的语言代码。
 
-- Chinese - zh_CN`
-- English - en_US`
-- French - fr_FR`
-- German - de_DE`
-- Italian - it_IT`
-- Japanese - ja_JP`
-- Korean - ko_KR`
-- Spanish - es_ES`
+- 中文 - zh_CN`。
+- 英语 - en_US`
+- 法语 - fr_FR`
+- 德文 - de_DE`
+- 意大利语 - it_IT`
+- 日语 - ja_JP`
+- 韩国语 - ko_KR`
+- 西班牙语 - es_ES`
 
 ```cpp
 PF_AppGetLanguage(
@@ -85,7 +85,7 @@ A_charlang_tagZ);
 
 ### PF_GetPersonalInfo
 
-Retrieves the user’s registration information.
+检索用户的注册信息。
 
 ```cpp
 PF_GetPersonalInfo(
@@ -100,9 +100,9 @@ A_charserial_str[PF_APP_MAX_PERS_LEN+1];
 
 ### PF_GetFontStyleSheet
 
-Retrieves font style sheet information for the fonts used in After Effects’ UI.
+检索After Effects用户界面中使用的字体样式表信息。
 
-Trivia: The font used in After Effects’ UI starting in 15.0 is Adobe Clean. Before that, it was Tahoma on Windows and Lucida Grande on macOS X.
+琐事：从15.0开始，After Effects的用户界面中使用的字体是Adobe Clean。在此之前，Windows上是Tahoma，macOS X上是Lucida Grande。
 
 ```cpp
 PF_GetFontStyleSheet(
@@ -115,12 +115,12 @@ A_short*stylePS0);
 
 ### PF_SetCursor
 
-Sets the cursor to any of After Effects’ cursors. See AE_EffectUI.h for a complete enumeration.
+将光标设置为After Effects的任何光标。见AE_EffectUI.h的完整列举。
 
-Set to:
+设置为:
 
-- PF_Cursor_NONE` to allow After Effects to set the cursor.
-- PF_Cursor_CUSTOM` if you’ve used OS-specific calls to change the cursor (After Effects will honor your changes).
+- PF_Cursor_NONE`，允许After Effects设置光标。
+- PF_Cursor_CUSTOM`，如果你使用操作系统特定的调用来改变光标（After Effects将尊重你的改变）。
 
 ```cpp
 PF_SetCursor(
@@ -129,20 +129,20 @@ PF_CursorTypecursor);
 
 ### PF_IsRenderEngine
 
-Returns TRUE if After Effects is running in watched folder mode, or is a render engine installation.
+如果After Effects在watched folder模式下运行，或者是渲染引擎安装，返回TRUE。
 
 ```cpp
 PF_IsRenderEngine(
 PF_Boolean*render_enginePB);
 ```
 
-As of AE6.5, this function returns TRUE` if the installation is the render engine, or if the After Effects is being run with no UI, or if After Effects is in watched folder mode.
+从AE6.5开始，如果安装的是渲染引擎，或者After Effects在运行时没有用户界面，或者After Effects处于watched folder模式，这个函数返回TRUE`。
 
 ### PF_AppColorPickerDialog
 
-Displays the After Effects color picker dialog (which may be the system color picker, depending on the user’s preferences).
+显示After Effects颜色选择器对话框（可能是系统颜色选择器，取决于用户的偏好）。
 
-Will return PF_Interrupt_CANCEL` if user cancels dialog. Returned color is in the project’s working color space.
+如果用户取消对话框，将返回PF_Interrupt_CANCEL`。返回的颜色是在项目的工作色彩空间。
 
 ```cpp
 PF_AppColorPickerDialog(
@@ -153,7 +153,7 @@ PF_PixelFloat*result_colorP);
 
 ### PF_GetMouse
 
-Returns the position of the mouse in the custom UI coordinate space.
+返回鼠标在自定义UI坐标空间中的位置。
 
 ```cpp
 PF_GetMouse(
@@ -162,13 +162,13 @@ PF_Point*pointP);
 
 ### PF_InvalidateRect
 
-Queue up a [redraw](https://ae-plugins.docsforadobe.dev/effect-ui-events/custom-ui-and-drawbot.html#effect-ui-events-custom-ui-and-drawbot-redrawing) of a specific area of the custom UI for an effect.
+排队等待自定义用户界面的特定区域的[重绘](https://ae-plugins.docsforadobe.dev/effect-ui-events/custom-ui-and-drawbot.html#effect-ui-events-custom-ui-and-drawbot-redrawing)，以获得效果。
 
-Only valid while handling a non-drawing event in the effect.
+只在处理效果中的非绘制事件时有效。
 
-Specify rectP0` as NULL` to invalidate the entire window. The redraw will happen at the next available idle moment after returning from the event.
+将rectP0`指定为NULL`可以使整个窗口失效。重绘将在事件返回后的下一个可用的空闲时间发生。
 
-Set the PF_EO_UPDATE_NOW` event outflag to update the window immediately after the event returns.
+设置PF_EO_UPDATE_NOW`事件输出标志，在事件返回后立即更新窗口。
 
 ```cpp
 PF_InvalidateRect(
@@ -178,7 +178,7 @@ constPF_Rect*rectP0);
 
 ### PF_ConvertLocalToGlobal
 
-Converts from the custom UI coordinate system to global screen coordinates. Use only during custom UI event handling.
+从自定义UI坐标系统转换为全局屏幕坐标。仅在自定义UI事件处理中使用。
 
 ```cpp
 PF_ConvertLocalToGlobal(
@@ -188,13 +188,13 @@ PF_Point*globalP);
 
 ## Advanced Appsuite: You Can Do That?!
 
-`PF_AdvAppSuite` was originally designed for some pretty nefarious purposes; an external application was pretending to be an After Effects plug-in, and required ways to notify After Effects of the changes it had made to the project. Our API impurity is your gain.
+`PF_AdvAppSuite`最初是为了一些非常邪恶的目的而设计的；一个外部应用程序假装是After Effects的插件，并要求有办法通知After Effects它对项目所做的改变。我们的API不纯洁，你就会得到好处。
 
 ## PF_AdvAppSuite2
 
 ### PF_SetProjectDirty
 
-Tells After Effects that the project has been changed since it was last saved.
+告诉After Effects自从上次保存后，项目已经被改变。
 
 ```cpp
 PF_SetProjectDirty(void);
@@ -202,7 +202,7 @@ PF_SetProjectDirty(void);
 
 ### PF_SaveProject
 
-Saves the project to the current path. To save the project elsewhere, use [AEGP_SaveProjectToPath()](https://ae-plugins.docsforadobe.dev/aegps/aegp-suites.html#aegps-aegp-suites-aegp-projsuite).
+将项目保存到当前路径。要把项目保存在其他地方，请使用[AEGP_SaveProjectToPath()](https://ae-plugins.docsforadobe.dev/aegps/aegp-suites.html#aegps-aegp-suites-aegp-projsuite)。
 
 ```cpp
 PF_SaveProject(void);
@@ -210,7 +210,7 @@ PF_SaveProject(void);
 
 ### PF_SaveBackgroundState
 
-Stores the background state (After Effects’ position in the stacking order of open applications and windows).
+存储背景状态（After Effects在打开的应用程序和窗口的堆叠顺序中的位置）。
 
 ```cpp
 PF_SaveBackgroundState(void);
@@ -218,7 +218,7 @@ PF_SaveBackgroundState(void);
 
 ### PF_ForceForeground
 
-Brings After Effects to the front of all currently open applications and windows.
+将After Effects带到所有当前打开的应用程序和窗口的前面。
 
 ```cpp
 PF_ForceForeground(void);
@@ -226,7 +226,7 @@ PF_ForceForeground(void);
 
 ### PF_RestoreBackgroundState
 
-Puts After Effects back where it was, in relation to other applications and windows.
+将After Effects放回原来的位置，相对于其他的应用程序和窗口而言。
 
 ```cpp
 PF_RestoreBackgroundState(void);
@@ -234,7 +234,7 @@ PF_RestoreBackgroundState(void);
 
 ### PF_RefreshAllWindows
 
-Forces all After Effects windows to update. Note that although the Composition panel will be refreshed, this does not guarantee a new frame will be sent to External Monitor Preview plug-ins.
+强制更新所有After Effects窗口。注意，虽然合成面板会被刷新，但这并不保证会有新的帧被发送到外部监视器预览插件。
 
 ```cpp
 PF_RefreshAllWindows(void);
@@ -242,7 +242,7 @@ PF_RefreshAllWindows(void);
 
 ### PF_InfoDrawText
 
-Writes text into the After Effects info palette.
+将文本写入After Effects信息调色板。
 
 ```cpp
 PF_InfoDrawText(
@@ -252,7 +252,7 @@ constA_char*line2Z0);
 
 ### PF_InfoDrawColor
 
-Draws the specified color in the After Effects info palette (alpha is ignored).
+在After Effects信息调色板中绘制指定的颜色（Alpha被忽略）。
 
 ```cpp
 PF_InfoDrawColor(
@@ -261,7 +261,7 @@ PF_Pixelcolor);
 
 ### PF_InfoDrawText3
 
-Writes three lines of text into the After Effects info palette.
+在After Effects信息调色板中写入三行文字。
 
 ```cpp
 PF_InfoDrawText3(
@@ -272,7 +272,7 @@ constA_char*line3Z0);
 
 ### PF_InfoDrawText3Plus
 
-Writes three lines of text into the After Effects info palette, with portions of the second and third lines left and right justified.
+在After Effects信息调色板上写三行文字，第二行和第三行的部分内容是左右对齐的。
 
 ```cpp
 PF_InfoDrawText3Plus(
@@ -285,7 +285,7 @@ constA_char*line3_jlZ0);
 
 ### PF_AppendInfoText
 
-Appends characters to the currently-displayed info text.
+在当前显示的信息文本中添加字符。
 
 ```cpp
 PF_AppendInfoText(
@@ -294,13 +294,13 @@ constA_char*appendZ0);
 
 ## Formatting Time
 
-`PF_AdvTimeSuite` provides several functions to match how After Effects displays time. In fact, these are the same functions we use internally.
+`PF_AdvTimeSuite`提供了几个函数来配合After Effects显示时间的方式。事实上，这些都是我们内部使用的函数。
 
 ### PF_AdvTimeSuite4
 
 #### PF_FormatTimeActiveItem
 
-Given a time value and scale, returns a formatted string representing that time. If durationB is TRUE`, appropriate units will be appended.
+给定一个时间值和刻度，返回一个代表该时间的格式化字符串。如果durationB为TRUE`，将附加适当的单位。
 
 ```cpp
 PF_FormatTimeActiveItem(
@@ -312,7 +312,7 @@ A_char*time_buf);
 
 #### PF_FormatTime
 
-Contextualizes the formatted time string for the given PF_InData and PF_EffectWorld (i.e., layer time).
+为给定的PF_InData和PF_EffectWorld（即层时间）提供格式化的时间字符串的上下文。
 
 ```cpp
 PF_FormatTime(
@@ -326,7 +326,7 @@ A_char*time_buf);
 
 #### PF_FormatTimePlus
 
-Allows you to select composition or layer time.
+允许你选择组成或层时间。
 
 ```cpp
 PF_FormatTimePlus(
@@ -341,7 +341,7 @@ A_char*time_buf);
 
 #### PF_GetTimeDisplayPref
 
-Returns the starting frame number (specified by the user in composition settings), and the composition’s time display preferences. Updated in 14.2 to support higher frame rates.
+返回起始帧数（由用户在合成设置中指定），以及合成的时间显示偏好。在14.2中更新，以支持更高的帧率。
 
 ```cpp
 PF_GetTimeDisplayPref(
@@ -360,7 +360,7 @@ A_Booleanuse_feet_framesB;
 
 #### PF_TimeCountFrames
 
-New in 15.0. Returns the index of the frame in the current comp.
+15.0版中的新内容。返回当前合成中的帧的索引。
 
 ```cpp
 PF_TimeCountFrames(
@@ -372,17 +372,17 @@ A_long*frame_countL);
 
 ## Affecting The Timeline
 
-Long ago, we helped a developer integrate their stand-alone tracker with After Effects by exposing a set of functions to give them some way to notify us of, and be notified of, changes to the timeline.
+很久以前，我们帮助一个开发者将他们的独立跟踪器与After Effects整合在一起，公开了一组函数，让他们有办法通知我们时间线的变化，并被通知。
 
-With the numerous AEGP API calls available, these aren’t used much, but they’re still available.
+由于有众多的AEGP API调用，这些并不常用，但它们仍然可用。
 
-Don’t confuse this suite with [AEGP_ItemSuite](../aegps/aegp-suites.html) (#aegps-aegp-suites-aegp-itemsuite).
+不要把这个套件和[AEGP_ItemSuite](.../aegps/aegp-suites.html)（#aegps-aegp-suites-aegp-itemsuite）混淆。
 
 ### PF_AdvItemSuite1
 
 #### PF_MoveTimeStep
 
-Moves current time num_stepsL in the specified direction.
+将当前时间num_stepsL向指定方向移动。
 
 ```cpp
 PF_MoveTimeStep(
@@ -394,7 +394,7 @@ A_longnum_stepsL);
 
 #### PF_MoveTimeStepActiveItem
 
-Moves num_stepsL in the specified direction, for the active item.
+在指定的方向上移动活动项目的num_stepsL。
 
 ```cpp
 PF_MoveTimeStepActiveItem(
@@ -404,7 +404,7 @@ A_longnum_stepsL);
 
 #### PF_TouchActiveItem
 
-Tells After Effects that the active item must be updated.
+告诉After Effects必须更新活动项目。
 
 ```cpp
 PF_TouchActiveItem(void);
@@ -412,7 +412,7 @@ PF_TouchActiveItem(void);
 
 #### PF_ForceRerender
 
-Forces After Effects to rerender the current frame.
+强制After Effects重新渲染当前帧。
 
 ```cpp
 PF_ForceRerender(
@@ -422,7 +422,7 @@ PF_EffectWorld*world);
 
 #### PF_EffectIsActiveOrEnabled
 
-Returns whether the effect which owns the PF_ContextH` is currently active or enabled (if it isn’t, After Effects won’t be listening for function calls from it).
+返回拥有PF_ContextH`的效果当前是否激活或启用（如果不是，After Effects将不会监听来自它的函数调用）。
 
 ```cpp
 PF_EffectIsActiveOrEnabled(
@@ -432,13 +432,13 @@ PF_Boolean*enabledPB);
 
 ## Accessing Auxiliary Channel Data
 
-Some file types contain more than just pixel data; use `PF_ChannelSuite` to determine whether such information is present, and the macros in AE_ChannelSuites.h to retrieve it in the format you need.
+有些文件类型不仅仅包含像素数据；使用`PF_ChannelSuite`来确定是否存在这些信息，并使用AE_ChannelSuites.h中的宏来检索你需要的格式。
 
 ### PF_ChannelSuite1
 
 #### PF_GetLayerChannelCount
 
-Retrieves the number of auxiliary channels associated with the indexed layer.
+检索与索引层相关的辅助通道的数量。
 
 ```cpp
 PF_GetLayerChannelCount(
@@ -449,7 +449,7 @@ A_long*num_channelsPL);
 
 #### PF_GetLayerChannelIndexedRefAndDesc
 
-Retrieves (by index) a reference to, and description of, the specified channel.
+检索（通过索引）对指定通道的引用和描述。
 
 ```cpp
 PF_GetLayerChannelIndexedRefAndDesc(
@@ -463,7 +463,7 @@ PF_ChannelDesc*channel_descP);
 
 #### PF_GetLayerChannelTypedRefAndDesc
 
-Retrieves an auxiliary channel by type. Returned information is valid only if foundPB` returns TRUE`.
+按类型检索一个辅助通道。只有当foundPB`返回TRUE`时，返回的信息才有效。
 
 ```cpp
 PF_GetLayerChannelTypedRefAndDesc(
@@ -475,36 +475,36 @@ PF_ChannelRef*channel_refP,
 PF_ChannelDesc*channel_descP);
 ```
 
-PF_DataType will be one of the following:
+PF_DataType将是以下之一。
 
-> - PF_DataType_FLOAT` - 34 bytes
+> PF_DataType_FLOAT` - 34字节
 > - PF_DataType_DOUBLE` - 38 bytes
-> - PF_DataType_LONG` - 34 bytes
-> - PF_DataType_SHORT` - 32 bytes
-> - PF_DataType_FIXED_16_16` - 34 bytes
-> - PF_DataType_CHAR` - 31 byte
-> - PF_DataType_U_BYTE` - 31 byte
-> - PF_DataType_U_SHORT` - 32 bytes
-> - PF_DataType_U_FIXED_16_16` - 34 bytes
-> - PF_DataType_RGB` - 3 bytes
+> - PF_DataType_LONG` - 34字节
+> - PF_DataType_SHORT` - 32字节
+> - PF_DataType_FIXED_16_16` - 34字节
+> - PF_DataType_CHAR` - 31字节
+> - PF_DataType_U_BYTE` - 31字节
+> - PF_DataType_U_SHORT` - 32字节
+> - PF_DataType_U_FIXED_16_16` - 34字节
+> - PF_DataType_RGB` - 3字节
 
-PF_ChannelType will be one of the following:
+PF_ChannelType将是以下之一。
 
-> - PF_ChannelType_DEPTH`
-> - PF_ChannelType_NORMALS`
-> - PF_ChannelType_OBJECTID`
-> - PF_ChannelType_MOTIONVECTOR`
-> - PF_ChannelType_BK_COLOR`
-> - PF_ChannelType_TEXTURE`
-> - PF_ChannelType_COVERAGE`
-> - PF_ChannelType_NODE`
-> - PF_ChannelType_MATERIAL`
-> - PF_ChannelType_UNCLAMPED`
-> - PF_ChannelType_UNKNOWN`
+> - PF_ChannelType_DEPTH` - 3字节
+> - PF_ChannelType_NORMALS` - PF_ChannelType_DEPTH` - PF_ChannelType_NORMALS
+> - PF_ChannelType_OBJECTID`。
+> - PF_ChannelType_MOTIONVECTOR` - PF_ChannelType_NORMALS
+> - PF_ChannelType_BK_COLOR'。
+> - PF_ChannelType_TEXTURE'。
+> - PF_ChannelType_COVERAGE'。
+> - PF_ChannelType_NODE'。
+> - PF_ChannelType_MATERIAL`（材料）。
+> - PF_ChannelType_UNCLAMPED'。
+> - PF_ChannelType_UNKNOWN`。
 
 #### PF_CheckoutLayerChannel
 
-Retrieves the PF_ChannelChunk` containing the data associated with the given PF_ChannelRefPtr`.
+检索包含与给定PF_ChannelRefPtr`相关的数据的PF_ChannelChunk`。
 
 ```cpp
 PF_CheckoutLayerChannel(
@@ -519,7 +519,7 @@ PF_ChannelChunk*channel_chunkP);
 
 #### PF_CheckinLayerChannel
 
-Checks in the PF_ChannelChunk`. Always, always, always check the data back in.
+在PF_ChannelChunk`中进行检查。总是，总是，总是检查数据回来。
 
 ```cpp
 PF_CheckinLayerChannel(

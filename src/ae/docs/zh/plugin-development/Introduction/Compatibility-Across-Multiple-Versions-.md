@@ -8,9 +8,9 @@ category:
 
 一般来说，你应该用最新的After Effects SDK头文件来编译你的插件。这使得你的插件可以使用最新的套件和API功能。当After Effects的新版本发布时，你一般不需要提供新的版本，除非你想利用通过新的SDK暴露的新功能。然而，在声称与新版本兼容之前，你应该在新版本的After Effects中测试你的插件。
 
-你应该在你的插件所支持的每个版本的After Effects中彻底测试你的插件。如果你需要添加一个有条件的代码块，只在特定版本的After Effects中运行，你可以随时在[PF_InData](.../effect-basics/PF_InData.html)(#effect-basics-pf-indata).版本中检查特效的API版本，或者在[Entry Point](.../aegps/implementation.html)(#aegps-implementation-entry-point)的AEGP中传入主要和次要版本L。
+你应该在你的插件所支持的每个版本的After Effects中彻底测试你的插件。如果你需要添加一个有条件的代码块，只在特定版本的After Effects中运行，你可以随时在[PF_InData](.../effect-basics/PF_InData.html).版本中检查特效的API版本，或者在[Entry Point](.../aegps/implementation.html)的AEGP中传入主要和次要版本L。
 
-对于更精确的版本检查，插件可以使用`AEGP_ExecuteScript`（[AEGP_UtilitySuite6](./aegps/aegp-suites.html) (#aegps-aegp-suites-aegp-utilitysuite)）运行一个脚本，查询下列属性之一。
+对于更精确的版本检查，插件可以使用`AEGP_ExecuteScript`（[AEGP_UtilitySuite6](./aegps/aegp-suites.html) ）运行一个脚本，查询下列属性之一。
 
 ```cpp
 app.version - e.g. 11.0.1x12

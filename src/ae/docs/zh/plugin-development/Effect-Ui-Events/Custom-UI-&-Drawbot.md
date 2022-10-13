@@ -5,50 +5,50 @@ category:
   - AE 插件开发
 ---
 
-# Custom UI & Drawbot[¶](#custom-ui-drawbot "Permalink to this headline")
+# Custom UI & Drawbot[¶]
 
-Custom UI uses a composited drawing model using Drawbot. The Drawbot suites can be used for:
+自定义用户界面使用Drawbot的合成绘图模型。Drawbot套件可用于。
 
-1. Basic 2D path drawing: Lines, Rect, Arc, Bezier
-2. Stroking/Filling/Shading paths
-3. Image drawing: Compositing an ARGB/BGRA buffer onto the surface
-4. Pushing/popping surface state
-5. Text drawing, if supplier supports it (clients should first check if text drawing is supported before actual drawing)
+1. 基本的二维路径绘制。线条、矩形、弧线、贝塞尔曲线
+2. 描边/填充/着色路径
+3. 图像绘制。将ARGB/BGRA缓冲器合成到表面上
+4. 推送/弹出表面状态
+5. 文本绘制，如果供应商支持的话（客户应该在实际绘制之前首先检查是否支持文本绘制）。
 
-Drawing may only occur during `PF_Event_DRAW` (and not during `PF_Event_DRAG` or `PF_Event_DO_CLICK`).
+绘图只能在`PF_Event_DRAW`期间发生（而不是在`PF_Event_DRAG`或`PF_Event_DO_CLICK`期间）。
 
-To use Drawbot, first get the drawing reference by passing in PF_Context to a new suite call [PF_GetDrawingReference](#effect-ui-events-custom-ui-and-drawbot-pf-effectcustomuisuite).
+要使用Drawbot，首先通过传递PF_Context到一个新的套件调用[PF_GetDrawingReference]（#effect-ui-events-custom-ui-and-drawbot-pf-effectcustomuisuite）获得绘图参考。
 
-If a non-NULL drawing reference is returned, use it to get the supplier and surface references from [DRAWBOT_DrawbotSuite](#effect-ui-events-custom-ui-and-drawbot-drawbot-drawbotsuite).
+如果返回一个非NULL的绘图参考，使用它从[DRAWBOT_DrawbotSuite]获得供应商和表面参考。
 
-The Drawbot suites include `DRAWBOT_DrawbotSuite`, `DRAWBOT_SupplierSuite`, `DRAWBOT_SurfaceSuite`, `DRAWBOT_PathSuite`.
+Drawbot套件包括`DRAWBOT_DrawbotSuite', `DRAWBOT_SupplierSuite', `DRAWBOT_SurfaceSuite', `DRAWBOT_PathSuite`。
 
-## Make Your Custom UI Look Not So “Custom”[¶](#make-your-custom-ui-look-not-so-custom "Permalink to this headline")
+## Make Your Custom UI Look Not So “Custom”[¶]
 
-Use the new [PF_EffectCustomUIOverlayThemeSuite](#effect-ui-events-custom-ui-and-drawbot-pf-effectcustomuioverlaythemesuite) to match the host application UI. Your users will thank you.
+使用新的[PF_EffectCustomUIOverlayThemeSuite]（#effect-ui-events-custom-ui-and-drawbot-pf-effectcustomuioverlaythemesuite）来匹配主机应用程序的用户界面。你的用户会感谢你的。
 
-## Redrawing[¶](#redrawing "Permalink to this headline")
+## Redrawing[¶]
 
-In order to redraw a specific area of a pane, we recommend the following:
+为了重新绘制一个窗格的特定区域，我们推荐使用以下方法。
 
-1. Call `PF_InvalidateRect` (from [PF_AppSuite](../effect-details/useful-utility-functions.html#effect-details-useful-utility-functions-pf-appsuite)) from the effect. This will cause a lazy display redraw, and will update at the next available idle moment. This rect is in coordinates related to the associated pane. Using a NULL rect will update the entire pane.
-2. Set the [event outflag](PF_EventExtra.html#effect-ui-events-pf-eventextra) to `PF_EO_UPDATE_NOW`, which will cause an immediate draw event for the specified pane when the current event returns.
+1. 从效果中调用`PF_InvalidateRect` ( 参见[PF_AppSuite](.../effect-details/useful-utility-functions.html#effect-details-useful-utility-functions-pf-appsuite)）。这将导致懒惰的显示重绘，并将在下一个可用的空闲时刻更新。这个矩形的坐标与相关的窗格有关。使用一个NULL的矩形将更新整个窗格。
+2. 将[事件输出标志](PF_EventExtra.html#effect-ui-events-pf-eventextra)设置为`PF_EO_UPDATE_NOW'，这将在当前事件返回时为指定的窗格引起一个即时绘制事件。
 
-If an effect needs to update more than one window at a time, it should set `PF_OutFlag_REFRESH_UI` (from [PF_OutFlags](../effect-basics/PF_OutData.html#effect-basics-pf-outdata-pf-outflags)), which will cause a redraw of the entire ECW, comp, and layer windows.
+如果一个效果需要一次更新多个窗口，它应该设置`PF_OutFlag_REFRESH_UI` ( 参见[PF_OutFlags](./effect-basics/PF_OutData.html#effect-basics-pf-outdata-pf-outflags)），这将导致整个ECW、comp和层窗口的重绘。
 
-## HiDPI and Retina Display Support[¶](#hidpi-and-retina-display-support "Permalink to this headline")
+## HiDPI and Retina Display Support[¶]
 
-To support HiDPI and Retina Displays, you can use offscreen images that are twice the size, and then use the `Transform` function from [Drawbot_SurfaceSuite](#effect-ui-events-custom-ui-and-drawbot-drawbot-surfacesuite) to scale the image down in half before drawing it.
+为了支持HiDPI和视网膜显示器，你可以使用两倍大小的屏幕外图像，然后使用[Drawbot_SurfaceSuite]的`Transform`函数，在绘制图像前将其缩小一半。
 
-## PF_EffectCustomUISuite[¶](#pf-effectcustomuisuite "Permalink to this headline")
+## PF_EffectCustomUISuite[¶]
 
-Enables an effect to get the drawing reference. This is the first call needed to use Drawbot.
+启用一个效果来获得绘图参考。这是使用Drawbot需要的第一个调用。
 
-### PF_EffectCustomUISuite1[¶](#pf-effectcustomuisuite1 "Permalink to this headline")
+### PF_EffectCustomUISuite1[¶]
 
 #### PF_GetDrawingReference
 
-Get the drawing reference.
+获取绘图参考。
 
 ```cpp
 PF_GetDrawingReference(
@@ -57,16 +57,16 @@ PF_GetDrawingReference(
 
 ```
 
-## Drawbot_DrawbotSuite[¶](#drawbot-drawbotsuite "Permalink to this headline")
+## Drawbot_DrawbotSuite[¶]
 
-Using the Drawbot reference, get the supplier and surface references.
+使用Drawbot的参考，得到供应商和表面的参考。
 
-### Drawbot_DrawbotSuite1[¶](#drawbot-drawbotsuite1 "Permalink to this headline")
+### Drawbot_DrawbotSuite1[¶]
 
 #### GetSupplier
 
-Get the supplier reference.
-Needed to use [Drawbot_SupplierSuite](#effect-ui-events-custom-ui-and-drawbot-drawbot-suppliersuite).
+获取供应商参考。
+需要使用[Drawbot_SupplierSuite]（#effect-ui-events-custom-ui-and-drawbot-drawbot-suppliersuite）。
 
 ```cpp
 GetSupplier(
@@ -77,8 +77,8 @@ GetSupplier(
 
 #### GetSurface
 
-Get the surface reference.
-Needed to use [Drawbot_SurfaceSuite](#effect-ui-events-custom-ui-and-drawbot-drawbot-surfacesuite).
+获取表面参考。
+需要使用[Drawbot_SurfaceSuite]。
 
 ```cpp
 GetSurface(
@@ -87,15 +87,15 @@ GetSurface(
 
 ```
 
-## Drawbot_SupplierSuite[¶](#drawbot-suppliersuite "Permalink to this headline")
+## Drawbot_SupplierSuite[¶]
 
-Calls to create and release drawing tools, get default settings, and query drawing capabilities.
+调用创建和释放绘图工具，获得默认设置，并查询绘图能力。
 
-### Drawbot_SupplierSuite1[¶](#drawbot-suppliersuite1 "Permalink to this headline")
+### Drawbot_SupplierSuite1[¶]
 
 #### NewPen
 
-Create a new pen. Release this using `ReleaseObject` from [Drawbot_SupplierSuite](#effect-ui-events-custom-ui-and-drawbot-drawbot-suppliersuite).
+创建一个新的笔。使用[Drawbot_SupplierSuite]的`ReleaseObject'释放它。
 
 ```cpp
 NewPen(
@@ -108,7 +108,7 @@ NewPen(
 
 #### NewBrush
 
-Create a new brush. Release this using `ReleaseObject` from [Drawbot_SupplierSuite](#effect-ui-events-custom-ui-and-drawbot-drawbot-suppliersuite).
+创建一个新的画笔。使用[Drawbot_SupplierSuite]中的`ReleaseObject`释放这个笔刷。
 
 ```cpp
 NewBrush(
@@ -120,7 +120,7 @@ NewBrush(
 
 #### SupportsText
 
-Check if current supplier supports text.
+检查当前供应商是否支持文本。
 
 ```cpp
 SupportsText(
@@ -131,7 +131,7 @@ SupportsText(
 
 #### GetDefaultFontSize
 
-Get the default font size.
+获取默认的字体大小。
 
 ```cpp
 GetDefaultFontSize(
@@ -142,9 +142,9 @@ GetDefaultFontSize(
 
 #### NewDefaultFont
 
-Create a new font with default settings.
-You can pass the default font size from `GetDefaultFontSize`.
-Release this using `ReleaseObject` from [Drawbot_SupplierSuite](#effect-ui-events-custom-ui-and-drawbot-drawbot-suppliersuite).
+用默认设置创建一个新的字体。
+你可以从`GetDefaultFontSize`传递默认的字体大小。
+使用[Drawbot_SupplierSuite]中的`ReleaseObject`来释放。
 
 ```cpp
 NewDefaultFont(
@@ -156,8 +156,8 @@ NewDefaultFont(
 
 #### NewImageFromBuffer
 
-Create a new image from buffer passed to in_dataP.
-Release this using `ReleaseObject` from [Drawbot_SupplierSuite](#effect-ui-events-custom-ui-and-drawbot-drawbot-suppliersuite).
+从传递给in_dataP的缓冲区创建一个新的图像。
+使用[Drawbot_SupplierSuite]中的`ReleaseObject`释放这个图像。
 
 ```cpp
 NewImageFromBuffer(
@@ -171,7 +171,7 @@ NewImageFromBuffer(
 
 ```
 
-`DRAWBOT_PixelLayout` can be one of the following:
+`DRAWBOT_PixelLayout`可以是以下的一种。
 
 - `kDRAWBOT_PixelLayout_24RGB`,
 - `kDRAWBOT_PixelLayout_24BGR`,
@@ -186,7 +186,7 @@ NewImageFromBuffer(
 
 #### NewPath
 
-Create a new path. Release this using `ReleaseObject` from [Drawbot_SupplierSuite](#effect-ui-events-custom-ui-and-drawbot-drawbot-suppliersuite).
+创建一个新的路径。使用[Drawbot_SupplierSuite]中的`ReleaseObject`将其释放。
 
 ```cpp
 NewPath(
@@ -197,8 +197,8 @@ NewPath(
 
 #### SupportsPixelLayoutBGRA
 
-A given Drawbot implementation can support multiple channel orders, but will likely prefer one over the other.
-Use the following four callbacks to get the preferred channel order for any API that takes a `DRAWBOT_PixelLayout` (e.g. `NewImageFromBuffer`).
+一个给定的Drawbot实现可以支持多个通道命令，但很可能会偏向于其中一个。
+使用以下四个回调，为任何需要 "DRAWBOT_PixelLayout "的API（例如："NewImageFromBuffer"）获得首选通道顺序。
 
 ```cpp
 SupportsPixelLayoutBGRA(
@@ -236,7 +236,7 @@ PrefersPixelLayoutARGB(
 
 #### RetainObject
 
-Retain (increase reference count on) any object (pen, brush, path, etc). For example, it should be used when any object is copied and the copied object should be retained.
+保留（增加引用次数）任何对象（笔、刷、路径等）。例如，当任何对象被复制时，应该使用它，而且复制的对象应该被保留。
 
 ```cpp
 RetainObject(
@@ -246,8 +246,8 @@ RetainObject(
 
 #### ReleaseObject
 
-Release (decrease reference count on) any object (pen, brush, path, etc). This function MUST be called for any object created using `NewXYZ()` from this suite.
-Do not call this function on a `DRAWBOT_SupplierRef` and `DRAWBOT_SupplierRef`, since these are not created by the plug-in.
+释放（减少引用次数）任何对象（笔、刷子、路径等）。这个函数必须被调用，用于任何使用`NewXYZ()`从这个套件创建的对象。
+不要对`DRAWBOT_SupplierRef`和`DRAWBOT_SupplierRef`调用此函数，因为这些不是由插件创建的。
 
 ```cpp
 ReleaseObject(
@@ -255,16 +255,16 @@ ReleaseObject(
 
 ```
 
-## Drawbot_SurfaceSuite[¶](#drawbot-surfacesuite "Permalink to this headline")
+## Drawbot_SurfaceSuite[¶]
 
-Calls to draw on the surface, and to query and set drawing settings.
+调用在曲面上绘图，以及查询和设置绘图设置。
 
-### Drawbot_SurfaceSuite1[¶](#drawbot-surfacesuite1 "Permalink to this headline")
+### Drawbot_SurfaceSuite1[¶]
 
 #### PushStateStack
 
-Push the current surface state onto the stack. It should be popped to retrieve old state.
-It is required to restore state if you are going to clip or transform a surface or change the interpolation or anti-aliasing policy.
+把当前的曲面状态推到堆栈中。它应该被弹出以检索旧的状态。
+如果你要对曲面进行剪裁或转换，或改变插值或抗锯齿的策略，就需要恢复状态。
 
 ```cpp
 PushStateStack(
@@ -274,7 +274,7 @@ PushStateStack(
 
 #### PopStateStack
 
-Pop the last pushed surface state off the stack.
+把上次推送的曲面状态从堆栈中弹出。
 
 ```cpp
 PopStateStack(
@@ -284,7 +284,7 @@ PopStateStack(
 
 #### PaintRect
 
-Paint a rectangle with a color on the surface.
+在曲面上画一个颜色的矩形。
 
 ```cpp
 PaintRect(
@@ -296,7 +296,7 @@ PaintRect(
 
 #### FillPath
 
-Fill a path using a brush and fill type.
+用画笔和填充类型填充一个路径。
 
 ```cpp
 FillPath(
@@ -307,14 +307,14 @@ FillPath(
 
 ```
 
-`DRAWBOT_FillType` is one of the following:
+`DRAWBOT_FillType`是以下其中一个。
 
 - `kDRAWBOT_FillType_EvenOdd`,
 - `kDRAWBOT_FillType_Winding`
 
 #### StrokePath
 
-Stroke a path using a pen.
+用笔画出路径。
 
 ```cpp
 StrokePath(
@@ -326,7 +326,7 @@ StrokePath(
 
 #### Clip
 
-Clip the surface.
+夹住表面。
 
 ```cpp
 Clip(
@@ -338,7 +338,7 @@ Clip(
 
 #### GetClipBounds
 
-Get clip bounds.
+获取夹子的边界。
 
 ```cpp
 GetClipBounds(
@@ -349,7 +349,7 @@ GetClipBounds(
 
 #### IsWithinClipBounds
 
-Checks whether a rect is within the clip bounds.
+检查矩形是否在剪裁的范围内。
 
 ```cpp
 IsWithinClipBounds(
@@ -361,7 +361,7 @@ IsWithinClipBounds(
 
 #### Transform
 
-Transform the last surface state.
+转换最后的曲面状态。
 
 ```cpp
 Transform(
@@ -372,7 +372,7 @@ Transform(
 
 #### DrawString
 
-Draw a string.
+画一个字符串。
 
 ```cpp
 DrawString(
@@ -387,13 +387,13 @@ DrawString(
 
 ```
 
-`DRAWBOT_TextAlignment` is one of the following:
+`DRAWBOT_TextAlignment`是以下其中之一。
 
 - `kDRAWBOT_TextAlignment_Left`,
 - `kDRAWBOT_TextAlignment_Center`,
 - `kDRAWBOT_TextAlignment_Right`
 
-`DRAWBOT_TextTruncation` is one of the following:
+`DRAWBOT_TextTruncation`是下列其中之一。
 
 - `kDRAWBOT_TextTruncation_None`,
 - `kDRAWBOT_TextTruncation_End`,
@@ -402,7 +402,7 @@ DrawString(
 
 #### DrawImage
 
-Draw an image created using `NewImageFromBuffer()` on the surface. Alpha = [0.0f, 1.0f ].
+在曲面上绘制一个用`NewImageFromBuffer()`创建的图像。Alpha = [0.0f, 1.0f ].
 
 ```cpp
 DrawImage(
@@ -422,7 +422,7 @@ SetInterpolationPolicy(
 
 ```
 
-`DRAWBOT_InterpolationPolicy` is one of the following:
+`DRAWBOT_InterpolationPolicy`是以下之一。
 
 - `kDRAWBOT_InterpolationPolicy_None`,
 - `kDRAWBOT_InterpolationPolicy_Med`,
@@ -446,7 +446,7 @@ SetAntiAliasPolicy(
 
 ```
 
-`DRAWBOT_AntiAliasPolicy` is one of the following:
+`DRAWBOT_AntiAliasPolicy`是以下其中一个。
 
 - `kDRAWBOT_AntiAliasPolicy_None`,
 - `kDRAWBOT_AntiAliasPolicy_Med`,
@@ -463,7 +463,7 @@ GetAntiAliasPolicy(
 
 #### Flush
 
-Flush drawing. This is not always needed, and if overused, may cause excessive redrawing and flashing.
+冲洗绘图。这并不总是需要的，如果过度使用，可能会导致过度重绘和闪烁。
 
 ```cpp
 Flush(
@@ -471,15 +471,15 @@ Flush(
 
 ```
 
-## Drawbot_PathSuite[¶](#drawbot-pathsuite "Permalink to this headline")
+## Drawbot_PathSuite[¶]
 
-Calls to draw paths.
+调用绘制路径。
 
-### Drawbot_PathSuite1[¶](#drawbot-pathsuite1 "Permalink to this headline")
+### Drawbot_PathSuite1[¶]
 
 #### MoveTo
 
-Move to a point.
+移动到一个点。
 
 ```cpp
 MoveTo(
@@ -491,7 +491,7 @@ MoveTo(
 
 #### LineTo
 
-Add a line to the path.
+在路径上添加一条线。
 
 ```cpp
 LineTo(
@@ -503,7 +503,7 @@ LineTo(
 
 #### BezierTo
 
-Add a cubic bezier to the path.
+在路径上添加一个立方体贝塞尔。
 
 ```cpp
 BezierTo(
@@ -516,7 +516,7 @@ BezierTo(
 
 #### AddRect
 
-Add a rect to the path.
+在路径上添加一个矩形。
 
 ```cpp
 AddRect(
@@ -527,8 +527,8 @@ AddRect(
 
 #### AddArc
 
-Add a arc to the path. Zero start degrees == 3 o’clock.
-Sweep is clockwise. Units for angle are in degrees.
+在路径上添加一个圆弧。零起点度数==3点钟方向。
+顺时针扫过。角度的单位是度。
 
 ```cpp
 AddArc(
@@ -542,7 +542,7 @@ AddArc(
 
 #### Close
 
-Close the path.
+关闭路径。
 
 ```cpp
 Close(
@@ -550,15 +550,15 @@ Close(
 
 ```
 
-## PF_EffectCustomUIOverlayThemeSuite[¶](#pf-effectcustomuioverlaythemesuite "Permalink to this headline")
+## PF_EffectCustomUIOverlayThemeSuite[¶]
 
-This suite should be used for stroking and filling paths and vertices on the Composition and Layer Windows. After Effects is using this suite internally, and we have made it available to make custom UI look consistent across effects. The foreground/shadow colors are computed based on the app brightness level so that custom UI is always visible regardless of the application’s Brightness setting in the Preferences.
+这个套件应该用于在合成和图层窗口中对路径和顶点进行描画和填充。After Effects内部正在使用这个套件，我们将其提供给大家，以使自定义的用户界面在不同的效果中看起来一致。前景/阴影的颜色是根据应用程序的亮度水平来计算的，因此，无论应用程序在偏好设置中的亮度如何，自定义用户界面总是可见的。
 
-### PF_EffectCustomUIOverlayThemeSuite1[¶](#pf-effectcustomuioverlaythemesuite1 "Permalink to this headline")
+### PF_EffectCustomUIOverlayThemeSuite1[¶]
 
 #### PF_GetPreferredForegroundColor
 
-Get the preferred foreground color.
+获取首选的前景颜色。
 
 ```cpp
 PF_GetPreferredForegroundColor(
@@ -568,7 +568,7 @@ PF_GetPreferredForegroundColor(
 
 #### PF_GetPreferredShadowColor
 
-Get the preferred shadow color.
+获取首选的阴影颜色。
 
 ```cpp
 PF_GetPreferredShadowColor(
@@ -578,7 +578,7 @@ PF_GetPreferredShadowColor(
 
 #### PF_GetPreferredStrokeWidth
 
-Get the preferred foreground & shadow stroke width.
+获取首选的前景和阴影笔触宽度。
 
 ```cpp
 PF_GetPreferredStrokeWidth(
@@ -588,7 +588,7 @@ PF_GetPreferredStrokeWidth(
 
 #### PF_GetPreferredVertexSize
 
-Get the preferred vertex size.
+获取首选的顶点尺寸。
 
 ```cpp
 PF_GetPreferredVertexSize(
@@ -598,7 +598,7 @@ PF_GetPreferredVertexSize(
 
 #### PF_GetPreferredShadowOffset
 
-Get the preferred shadow offset.
+获得首选的阴影偏移。
 
 ```cpp
 PF_GetPreferredShadowOffset(
@@ -608,9 +608,9 @@ PF_GetPreferredShadowOffset(
 
 #### PF_StrokePath
 
-Stroke the path with the overlay theme foreground color.
-Optionally draw the shadow using the overlay theme shadow color.
-Uses overlay theme stroke width for stroking foreground and shadow strokes.
+用叠加主题的前景色描画路径。
+可以选择使用叠加主题的阴影颜色绘制阴影。
+使用叠加主题的笔触宽度来绘制前景和阴影。
 
 ```cpp
 PF_StrokePath(
@@ -622,8 +622,8 @@ PF_StrokePath(
 
 #### PF_FillPath
 
-Fills the path with overlay theme foreground color.
-Optionally draw the shadow using the overlay theme shadow color.
+用叠加主题的前景色填充路径。
+可以选择使用叠加主题的阴影颜色来绘制阴影。
 
 ```cpp
 PF_FillPath(
@@ -635,7 +635,7 @@ PF_FillPath(
 
 #### PF_FillVertex
 
-Fills a square vertex around the center point using the overlay theme foreground color and vertex size.
+使用覆盖主题的前景颜色和顶点大小，在中心点周围填充一个方形顶点。
 
 ```cpp
 PF_FillVertex(

@@ -29,13 +29,13 @@ A_Err AEGP_PluginInitFuncPrototype(
 
 ```
 
-插件的入口点，在[PiPL Resources](.../intro/pipl-resources.html)(#intro-pipl-resources)中导出，在启动过程中只被调用一次；所有其他对AEGP的调用都转到它所注册的函数。
+插件的入口点，在[PiPL Resources](.../intro/pipl-resources.html)中导出，在启动过程中只被调用一次；所有其他对AEGP的调用都转到它所注册的函数。
 
 这与效果插件模型非常不同，在那里所有的通信都是通过同一个入口点进行的。
 
 因为插件的加载顺序可能不同，所以在入口点函数中获取After Effects没有提供的套件绝不是一个好主意。相反，要等到适当的钩子函数出现。
 
-AEGP [API Versions](.../intro/compatibility-across-multiple-versions.html) (#intro-compatibility-across-multiple-versions-api-versions) 可以帮助区分不同版本的After Effects，以防AEGP需要有不同的行为或处理不同的行为。
+AEGP [API Versions](.../intro/compatibility-across-multiple-versions.html)  可以帮助区分不同版本的After Effects，以防AEGP需要有不同的行为或处理不同的行为。
 
 那些其他函数被注册为回调钩子。一个添加菜单项的AEGP必须注册一个UpdateMenuHook函数（其函数签名如AE_GeneralPlug.h所述），After Effects可以调用该函数来决定是否启用这些项目。同样，处理命令的插件也注册一个CommandHook（所有命令都有一个）。
 
@@ -47,7 +47,7 @@ AEIO和工匠必须向After Effects注册，以便接收它们所依赖的信息
 
 ## Example: Adding A Menu Item
 
-在你的入口函数中，使用`AEGP_GetUniqueCommand()`从[Command Suite](aegp-suites.html) (#aegps-aegp-suites-command-suite)获得After Effects的命令ID，用于`AEGP_InsertMenuCommand`。为你添加的每个菜单项使用不同的ID。
+在你的入口函数中，使用`AEGP_GetUniqueCommand()`从[Command Suite](aegp-suites.html) 获得After Effects的命令ID，用于`AEGP_InsertMenuCommand`。为你添加的每个菜单项使用不同的ID。
 
 使用AEGP_RegisterSuite的`AEGP_RegisterCommandHook()`，告诉After Effects在你的菜单项被选中时要调用哪个函数。你使用`AEGP_RegisterUpdateMenuHook()`注册的函数可以启用和禁用你的菜单项。除非你注册一个菜单更新函数，否则你的菜单项将被永久禁用。
 

@@ -76,7 +76,7 @@ category:
 
 或者。`C:\Program Files\CommonAdobe\Plug-ins\CS6\MediaCore\`。
 
-请注意，这个Windows路径只推荐用于开发目的。Windows的安装人员应该遵循这里的指南。[Where Installers Should Put Plug-ins](Where-installers-should-put-plug-ins.html) (#intro-where-installers-should-put-plug-ins)。
+请注意，这个Windows路径只推荐用于开发目的。Windows的安装人员应该遵循这里的指南。[Where Installers Should Put Plug-ins](Where-installers-should-put-plug-ins.html) 。
 
 在Xcode中，你可以在Xcode首选项>位置>派生数据>高级中为所有项目设置一次这个路径。在_Build Location_下选择_Custom_，并填写路径。
 

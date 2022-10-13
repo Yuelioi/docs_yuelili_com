@@ -11,7 +11,7 @@ category:
 
 调试时，你可以在启动Premiere Pro时按住Shift键，强制重新加载所有的插件。
 
-如果你的效果每次都需要重新加载，有一种方法可以禁用这种缓存。插件可以使用AE_CacheOnLoadSuite.h（来自[Premiere Pro SDK](http://ppro-plugin-sdk.aenhancers.com/)头文件）中的PF Cache On Load套件，在PF_Cmd_GLOBAL_SETUP期间调用PF_SetNoCacheOnLoad()。对于该函数的第二个参数，如果你想让你的效果显示在用户界面上，请传一个非零值。如果加载失败，但你仍然希望Premiere Pro在下次重启时尝试再次加载，则传给0。
+如果你的效果每次都需要重新加载，有一种方法可以禁用这种缓存。插件可以使用AE_CacheOnLoadSuite.h ( 参见[Premiere Pro SDK](http://ppro-plugin-sdk.aenhancers.com/)头文件）中的PF Cache On Load套件，在PF_Cmd_GLOBAL_SETUP期间调用PF_SetNoCacheOnLoad()。对于该函数的第二个参数，如果你想让你的效果显示在用户界面上，请传一个非零值。如果加载失败，但你仍然希望Premiere Pro在下次重启时尝试再次加载，则传给0。
 
 # Effects Presets
 

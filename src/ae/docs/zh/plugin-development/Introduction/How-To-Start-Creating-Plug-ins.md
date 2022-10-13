@@ -9,7 +9,7 @@ category:
 
 ## Play!
 
-在你写一行代码之前，花一些重要的时间来玩After Effects，以及[样本项目](sample-projects.html) (#intro-sample-projects)。把插件建在正确的文件夹里。设置大量的断点，阅读有趣的、内容丰富的评论。
+在你写一行代码之前，花一些重要的时间来玩After Effects，以及[样本项目](sample-projects.html) 。把插件建在正确的文件夹里。设置大量的断点，阅读有趣的、内容丰富的评论。
 
 请看一个关于构建效果的快速入门视频（在macOS上）。[adobe.ly/2sjMDwM](https://adobe.ly/2sjMDwM)
 

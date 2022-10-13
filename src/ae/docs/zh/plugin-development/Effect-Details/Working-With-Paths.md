@@ -8,11 +8,11 @@ category:
 
 ## Accessing Path Data
 
-路径与其他参数类型不同，因为它们的值不能直接访问。除了将它们检出和检入（像层参数一样），你必须使用我们的路径数据函数套件来获取特定时间内的路径细节。参见[PF_PathQuerySuite1](#effect-details-working-with-paths-pf-pathquerysuite)和[PF_PathDataSuite](#effect-details-working-with-paths-pf-pathdatasuite)。当一个路径参数被传递给你时，如果没有先检查出来，千万不要使用它存在的值；虽然被删除的路径将无法使用，但进一步的更新是 "懒惰地 "进行的（以后）；你的效果不会看到这些变化，除非它检查出路径。
+路径与其他参数类型不同，因为它们的值不能直接访问。除了将它们检出和检入（像层参数一样），你必须使用我们的路径数据函数套件来获取特定时间内的路径细节。参见[PF_PathQuerySuite1]和[PF_PathDataSuite]。当一个路径参数被传递给你时，如果没有先检查出来，千万不要使用它存在的值；虽然被删除的路径将无法使用，但进一步的更新是 "懒惰地 "进行的（以后）；你的效果不会看到这些变化，除非它检查出路径。
 
 ## Manipulating Path Data
 
-你也可以使用[AEGP_MaskOutlineSuite3](.../aegps/aegp-suites.html)（#aegps-aegp-suites-aegp-maskoutlinesuite）来操纵路径。参见[AEGP套件的作弊效果使用](.../aegps/cheating effect-usage-of-aegp-suites.html) (#aegps-cheating effect-usage-of-aegp-suites) 。路径参数被视为不透明的数据块；必须使用get和set函数来访问和操作它们。像图层参数一样，它们必须被访问它们的效果检查出来（和进入！）。
+你也可以使用[AEGP_MaskOutlineSuite3](.../aegps/aegp-suites.html)（#aegps-aegp-suites-aegp-maskoutlinesuite）来操纵路径。参见[AEGP套件的作弊效果使用](.../aegps/cheating effect-usage-of-aegp-suites.html)  。路径参数被视为不透明的数据块；必须使用get和set函数来访问和操作它们。像图层参数一样，它们必须被访问它们的效果检查出来（和进入！）。
 
 ## Vertices
 

@@ -7,7 +7,7 @@ category:
 
 # Image Buffer Management Functions
 
-使用这些函数来创建和销毁[PF_EffectWorld / PF_LayerDef](.../effect-basics/PF_EffectWorld.html) (#effect-basics-pf-effectworld)，并找出其位深。
+使用这些函数来创建和销毁[PF_EffectWorld / PF_LayerDef](.../effect-basics/PF_EffectWorld.html) ，并找出其位深。
 
 ## PF_WorldSuite2
 

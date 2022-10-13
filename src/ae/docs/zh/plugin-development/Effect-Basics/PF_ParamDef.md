@@ -6,11 +6,11 @@ category:
 ---
 # PF_ParamDef
 
-After Effects在每个选择器中传递给特效一个PF_ParamDefs数组，描述了插件在当前时间的参数。params数组中的值只在某些选择器中有效（这在[选择器描述](command-selectors.html)(#effect-basics-calling-sequence)中已经注明）。
+After Effects在每个选择器中传递给特效一个PF_ParamDefs数组，描述了插件在当前时间的参数。params数组中的值只在某些选择器中有效（这在[选择器描述](command-selectors.html)中已经注明）。
 
 ## Param Zero
 
-第一个参数，params[0]，是输入的图像（一个[PF_EffectWorld / PF_LayerDef](PF_EffectWorld.html) (#effect-basics-pf-effectworld)），这个效果应该被应用。
+第一个参数，params[0]，是输入的图像（一个[PF_EffectWorld / PF_LayerDef](PF_EffectWorld.html) ），这个效果应该被应用。
 
 ## The Rest Of The Parameters
 

@@ -7,101 +7,101 @@ category:
 
 # What’s New
 
-If this is your first time developing an After Effects plug-in, you can skip the What’s New section and go directly to [How To Start Creating Plug-ins](how-to-start-creating-plug-ins.html) (#intro-how-to-start-creating-plug-ins).
+如果这是你第一次开发After Effects插件，你可以跳过新内容部分，直接进入[如何开始创建插件](how-to-start-creating-plug-ins.html) 。
 
 ## What’s New In After Effects 2022
 
-After Effects 2022 contains the first full public release with Multi-Frame Rendering support. The associated AE Effects SDK released in October 2021 includes one change for increasing the maximum number of PF_Iterate threads.
+After Effects 2022包含了第一个支持多帧渲染的完整公开版本。2021年10月发布的相关AE Effects SDK包括一个增加PF_Iterate线程最大数量的改变。
 
 ## What’s New in the After Effects SDK in March 2021
 
 ### Multi-Frame Rendering Changes
 
-1. The final behavior for the `PF_OutFlag2_SUPPORTS_THREADED_RENDERING` flag is now in place. Setting this flag to indicate support for Multi-Frame Rendering will also enforce the data stored in `sequence_data` to be const/read-only at Render time and access to `sequence_data` is now through a suite, `PF_EffectSequenceDataSuite1`.
-2. A new flag, `PF_OutFlag2_MUTABLE_RENDER_SEQUENCE_DATA_SLOWER` is now available to set alongside `PF_OutFlag2_SUPPORTS_THREADED_RENDERING` if your plugin cannot be updated to work with the new sequence_data behavior. After Effects won’t be able to apply as much rendering concurrency and therefore performance improvements to effects that set this flag (hence the \_SLOWER flag name).
-3. A new suite, the Compute Cache (previously referred to as the 3-way checkout cache) is now available. This suite provides a thread-safe cache that plugins can use as a replacement or supplement to sequence_data to support multiple render threads computing and caching data needed to render frames.
+1. `PF_OutFlag2_SUPPORTS_THREADED_RENDERING`标志的最终行为现在已经到位。设置这个标志以表示对多帧渲染的支持，也将强制要求存储在`sequence_data`中的数据在渲染时是常量/只读的，现在对`sequence_data`的访问是通过一个套件，`PF_EffectSequenceDataSuite1`。
+2. 2.如果你的插件不能被更新到与新的sequence_data行为一起工作，现在有一个新的标志，`PF_OutFlag2_MUTABLE_RENDER_SEQUENCE_DATA_SLOWER'可以和`PF_OutFlag2_SUPPORTS_THREADED_RENDERING'一起设置。After Effects将无法应用尽可能多的渲染并发性，因此无法对设置该标志的效果进行性能改进（因此，标志名称为 \_SLOWER）。
+3. 一个新的套件--计算缓存（以前被称为3-way checkout cache）现在可用。这个套件提供了一个线程安全的缓存，插件可以将其作为sequence_data的替代或补充，以支持多个渲染线程计算和缓存渲染帧所需的数据。
 
-Due to these changes, you must update to, and compile with, the March 2021 SDK to maintain Multi-Frame Rendering compatibility with AE Beta builds moving forward. Plugins compiled with the June 2020 SDK will cease to support Multi-Frame Rendering, even if `PF_OutFlag2_SUPPORTS_THREADED_RENDERING` is set, starting with AE 22.0x6 (released on June 29th 2021).
+由于这些变化，你必须更新到2021年3月的SDK并进行编译，以保持多帧渲染与AE Beta构建的兼容性。使用2020年6月的SDK编译的插件将不再支持多帧渲染，即使`PF_OutFlag2_SUPPORTS_THREADED_RENDERING`被设置，从AE 22.0x6（2021年6月29日发布）开始。
 
-Please see [Multi-Frame Rendering in AE](../effect-details/multi-frame-rendering-in-ae.html) (#effect-details-multi-frame-rendering-in-ae) for more information.
+请参阅[Multi-Frame Rendering in AE](.../effect-details/multi-frame-rendering-in-ae.html)  了解更多信息。
 
 ### Apple Silicon Support
 
-- The AE SDK now supports building effects for Apple Silicon natively. While After Effects itself is not yet running on Apple Silicon, Adobe as a company is moving forward with native support across many of our products. Applications such as Premiere Pro now have native versions available, and your effects may be loaded in Premiere Pro by features such as Motion Graphic Templates. When running the native version of Premiere Pro only natively compiled effects will work so it’s important to update your effects with Apple Silicon support soon. Please see the [Apple Silicon Support](apple-silicon-support.html) (#intro-apple-silicon-support) section for more information.
+- AE SDK现在支持为Apple Silicon原生构建特效。虽然After Effects本身还不能在Apple Silicon上运行，但Adobe作为一家公司，正在推进对我们许多产品的原生支持。像Premiere Pro这样的应用程序现在有原生版本，你的效果可以通过Motion Graphic Templates等功能加载到Premiere Pro中。当运行Premiere Pro的原生版本时，只有原生编译的特效才能工作，所以尽快更新你的特效，支持Apple Silicon很重要。请参阅[Apple Silicon Support](apple-silicon-support.html)部分了解更多信息。
 
 ### Exporting Symbols from Effects
 
-- The SDK samples have been updated on not export symbols by default on MacOS. Please see [Exporting Symbols in Effects](symbol-export.html) (#intro-symbol-export) for more information.
+- SDK样本已经更新，在MacOS上默认不导出符号。请参阅[Exporting Symbols in Effects](symbol-export.html) 了解更多信息。
 
 ### Downloading the March 2021 SDK
 
-The SDK can be downloaded from the Adobe Developer Console at <https://adobe.io/after-effects/>
+SDK可以从Adobe Developer Console下载，地址是<https://adobe.io/after-effects/>。
 
 ### After Effects Beta Builds
 
-To gain access to the AE host-side changes for this SDK, you will need to download a new After Effects beta build from the Creative Cloud Desktop App. Builds 18.2x11 and above are supported with the March 2021 SDK.
+为了获得这个SDK的AE主机端变化，你需要从Creative Cloud Desktop App下载一个新的After Effects beta版本。2021年3月的SDK支持18.2x11及以上版本的构建。
 
 ## What’s New In After Effects Beta builds after June 2020
 
-AE (currently only in Beta builds) now supports Multi-Frame rendering. See [Multi-Frame Rendering in AE](../effect-details/multi-frame-rendering-in-ae.html) (#effect-details-multi-frame-rendering-in-ae) for more details.
+AE（目前仅在Beta版本中）现在支持多帧渲染。请参阅[Multi-Frame Rendering in AE](.../effect-details/multi-frame-rendering-in-ae.html)  了解更多细节。
 
 ## What’s New In CC 2019 (16.0)?
 
-We’ve made some changes to how GPU effects are handled. See “GPU Effects Changes” for details.
+我们对处理GPU特效的方式做了一些改变。详情请参见 "GPU特效的变化"。
 
 ## What’s New In 15.0?
 
-After Effects now supports the _GPU effect rendering_ previously supported in Premiere Pro. Note that unknown effects with a match name that includes “ADBE ” will be excluded from GPU rendering, so make sure any of your GPU effects have your own custom match name. Effects that support GPU rendering will receive the GPU badge in the Effect panel.
+After Effects现在支持以前在Premiere Pro中支持的_GPU效果渲染_。请注意，匹配名称包含 "ADBE "的未知效果将被排除在GPU渲染之外，因此请确保您的任何GPU效果都有自己的自定义匹配名称。支持GPU渲染的效果将在效果面板中获得GPU徽章。
 
-The GPU effect sample projects in the Premiere Pro SDK have been updated to register as GPU effects in AE, although the render output still needs work.
+Premiere Pro SDK中的GPU效果示例项目已经更新，可以在AE中注册为GPU效果，不过渲染输出仍需努力。
 
-A new entry point has been defined, to allow effects to register basic information with the host at runtime, without relying on legacy PiPL resources. An effect can register multiple entry points in a single binary this way. Premiere Pro is the first host to support this entry point, and After Effects will support this in a future release.
+一个新的入口点已经被定义，以允许特效在运行时向主机注册基本信息，而不需要依赖传统的PiPL资源。一个特效可以通过这种方式在一个二进制文件中注册多个入口点。Premiere Pro是第一个支持这个入口点的主机，而After Effects将在未来的版本中支持这个入口点。
 
-The effect sample projects have been updated to use this approach, while maintaining the PiPL for backwards compatibility.
+效果示例项目已被更新，以使用这种方法，同时保留PiPL，以便向后兼容。
 
-`AEGP_StreamSuite` is now at version 5, where [AEGP_GetExpression()](../aegps/aegp-suites.html) (#aegps-aegp-suites-aegp-streamsuite) and [AEGP_SetExpression()](../aegps/aegp-suites.html) (#aegps-aegp-suites-aegp-streamsuite) have been upgraded to support Unicode.
+`AEGP_StreamSuite`现在是第5版，其中[AEGP_GetExpression()](.../aegps/aegp-suites.html) 和[AEGP_SetExpression()](.../aegps/aegp-suites.html)  已升级为支持统一码。
 
-`PF_AdvTimeSuite` is now at version 4, with a new call [PF_TimeCountFrames()](../effect-details/useful-utility-functions.html) (#effect-details-useful-utility-functions-pf-advtimesuite), that returns the index of the frame in the current comp.
+`PF_AdvTimeSuite`现在是第4版，有一个新的调用[PF_TimeCountFrames()](.../effect-details/useful-utility-functions.html) ，它返回当前编译中的帧的索引。
 
-The new AEGP Math Suite provides helpful calls for matrix multiplication.
+新的AEGP数学套件提供了对矩阵乘法的有用调用。
 
-The application font is now Adobe Clean. Previously, the fonts used in After Effects’ UI were Tahoma on Windows and Lucida Grande on macOS X. This is a proprietary font, and we can not make it available for use in your UI.
+应用程序的字体现在是Adobe Clean。以前，After Effects的用户界面中使用的字体在Windows上是Tahoma，在macOS X上是Lucida Grande。这是一种专有字体，我们不能让它在你的用户界面中使用。
 
 ## What’s New In CC 2017.1 (14.2)?
 
-- Layer Params can include Masks and Effects
+- 图层参数可以包括面罩和效果
 
-Effects that use layers as an input, such as Set Matte and Displacement Map, can now target the input layer’s masks and effects, instead of only the source of the layer. This means that for there is no need to pre-compose layers just so that they can be referenced by an effect.
+使用图层作为输入的效果，如Set Matte和Displacement Map，现在可以针对输入图层的遮罩和效果，而不是只针对图层的源。这意味着，没有必要为了让它们能够被效果引用而预先编排图层。
 
-Where an effect includes a layer parameter, a new menu to the right of the layer selector allows you to choose whether to target the input layer from its source, masks, or effects:
+当一个效果包括一个图层参数时，图层选择器右边的一个新菜单允许你选择是否从输入图层的源头、遮罩或效果来瞄准它。
 
-- Source: targets only the source of the layer. Masks and effects are ignored.
-- Masks: targets the layer after its masks are applied. Effects are ignored.
-- Effects & Masks: targets the layer after its masks and effects are applied.
+- 源：只针对图层的源。面具和效果被忽略。
+- 面具：针对应用了面具的图层。效果被忽略。
+- 效果和遮罩：在应用了遮罩和效果后，针对该层。
 
-This control is similar to the View menu at the bottom of the Layer viewer panel, which allows you to render the layer from different positions in the rendering order: from its source, from its masks, or from its individual effects.
+这个控制类似于图层查看器面板底部的查看菜单，它允许你从渲染顺序中的不同位置来渲染图层：从它的源，从它的蒙版，或从它的单个效果。
 
-As this is a user-facing option, the design is intended to be transparent to the effect. From the effect’s perspective, the input simply just includes the upstream effects and masks without any change to the effect. For any effect that uses layer params, here are some testing recommendations:
+由于这是一个面向用户的选项，设计的目的是对效果透明。从效果的角度来看，输入只是包括上游的效果和遮罩，而没有对效果进行任何改变。对于任何使用层参数的效果，这里有一些测试建议。
 
-- Effect continues to work as expected.
-- Using new control in the layer param for Source/Mask/Effects works with effect.
-- Opening old projects or saving back to a previous version project does not break effect.
-- Confirm that effect cannot self-reference; meaning cannot use the effects on the layer as input for the same layer.
-- Suite Enhancements
+- 效果继续按预期工作。
+- 在Source/Mask/Effects的层参数中使用新的控制，可以与效果一起工作。
+- 打开旧项目或保存回以前版本的项目不会破坏效果。
+- 确认effect不能自我引用；也就是说不能把图层上的效果作为同一图层的输入。
+- 套装的增强
 
-PF_AdvTimeSuite is now at version 3, providing a revised [PF_GetTimeDisplayPref()](../effect-details/useful-utility-functions.html) (#effect-details-useful-utility-functions-pf-advtimesuite) call that uses a revised `PF_TimeDisplayPrefVersion` parameter, that supports higher frame rates.
-The previous version 2 of the call can now return an error if there is a problem with the values exceeding the range supported by the structure.
+PF_AdvTimeSuite现在是第3版，提供了一个修订的[PF_GetTimeDisplayPref()](.../effect-details/useful-utility-functions.html) 调用，使用修订的`PF_TimeDisplayPrefVersion`参数，支持更高帧率。
+如果数值超过结构支持的范围有问题，以前的第二版调用现在可以返回错误。
 
-Comp Suite is now at version 11, with a new call, [AEGP_ReorderCompSelection()](../aegps/aegp-suites.html) (#aegps-aegp-suites-aegp-compsuite), to move a selection to a certain layer index.
-It should be used along with `AEGP_SetSelection()`.
+Comp Suite现在是第11版，有一个新的调用，[AEGP_ReorderCompSelection()](.../aegps/aegp-suites.html) ，可以将一个选择移到某个层的索引。
+它应该与`AEGP_SetSelection()`一起使用。
 
 ## What’s New In CC 2017 (14.1)?
 
-Unicode support for [AEGP Item Suite](../aegps/aegp-suites.html) (#aegps-aegp-suites-item-suite) and [AEGP Render Queue Item Suite](../aegps/aegp-suites.html) (#aegps-aegp-suites-render-queue-item-suite).
+对[AEGP项目套件](.../aegps/aegp-suites.html) 和[AEGP渲染队列项目套件](.../aegps/aegp-suites.html) 提供Unicode支持。
 
 ## What’s New In CC 2017 (14.0)?
 
-The GLator sample is back! It has been updated to demonstrate proper OpenGL context management in an effect plug-in.
+GLator样本回来了! 它已被更新，以展示效果插件中正确的OpenGL上下文管理。
 
 ## What’s New In CC 2015.3 (13.8)?
 
@@ -156,220 +156,220 @@ To make this process more efficient, starting in 13.5, AE can send PF_Cmd_GET_FL
 
 This will eventually become required for plug-ins that are rebuilt to be thread-safe (see PF_OutFlag2_AE13_5_THREADSAFE below). The venerable PF_Cmd_SEQUENCE_FLATTEN will eventually be unsupported in future versions.
 
-- PF_OutFlag_FORCE_RERENDER Changes
+- PF_OutFlag_FORCE_RERENDER 更改
 
-Where possible, we recommend triggering rerenders using one of the following: GuidMixInPtr() (described in the next section), arb data, or PF_ChangeFlag_CHANGED_VALUE. All of these allow cached frames to be reused after an Undo.
+在可能的情况下，我们建议使用以下方法之一来触发重做。GuidMixInPtr()（在下一节中描述），arb数据，或PF_ChangeFlag_CHANGED_VALUE。所有这些都允许在撤销后重新使用缓存的帧。
 
-Note: As of 14.0, setting PF_ChangeFlag_CHANGED_VALUE for layer or path params is not triggering a rerender. Instead, you may change set the value using AEGP_StreamSuite-
+注意：从14.0开始，为图层或路径参数设置PF_ChangeFlag_CHANGED_VALUE不会触发重新渲染。相反，你可以使用AEGP_StreamSuit->AEGP_SetStreamValue来改变设置值。
 
-> AEGP_SetStreamValue().
+> AEGP_SetStreamValue()。
 
-FORCE_RERENDER is still needed for situations where sequence_data needs to be copied from the UI thread to the render project/effect clone to keep them matched.
+当序列数据需要从UI线程复制到渲染项目/效果克隆中以保持它们的匹配时，仍然需要FORCE_RERENDER。
 
-FORCE_RERENDER is the trigger for this whether the render request uses the cache or not. Once we have the full set of APIs in place needed to manage render state, we will be able to deprecate FORCE_RERENDER.
+无论渲染请求是否使用缓存，FORCE_RERENDER都是这种情况的触发器。一旦我们有了管理渲染状态所需的全套API，我们就可以废除FORCE_RERENDER了。
 
-FORCE_RERENDER doesn’t work in every situation it did before, because it needs to synchronize the UI copy of sequence_data with the render thread copy.
+FORCE_RERENDER并不是在以前的每一种情况下都能工作，因为它需要将UI的sequence_data副本与渲染线程的副本同步。
 
-FORCE_RERENDER works when set during PF_Cmd_USER_CHANGED_PARAM. It also works in CLICK and DRAG events, but only if PF_Cmd_GET_FLATTENED_SEQUENCE_DATA is implemented. This is required to prevent flattening and loss of UI state in the middle of mouse operations. Without GET_FLATTENED, the new FORCE_RERENDER behavior will NOT be turned on.
+FORCE_RERENDER在PF_Cmd_USER_CHANGED_PARAM中设置时可以工作。它在点击和拖动事件中也起作用，但只有在PF_Cmd_GET_FLATTENED_SEQUENCE_DATA被实现的情况下。这是必要的，以防止在鼠标操作过程中出现扁平化和UI状态的丢失。如果没有GET_FLATTENED，新的FORCE_RERENDER行为将不会被打开。
 
-- GUIDs for Cached Frames
+- 缓存帧的GUIDs
 
 PF_OutFlag2_I_MIX_GUID_DEPENDENCIES
 
 GuidMixInPtr()
 
-Used by SmartFX only. Use this if custom UI or PF_Cmd_DO_DIALOG changes sequence data, or if the render result depends on anything else not factored in, and rerendering may be needed. During PF_Cmd_SMART_PRERENDER, the effect can call GuidMixInPtr() to mix any additional state that affects the render into our internal GUID for the cached frame. Using this GUID, AE can tell whether the frame already exists or if it needs to be rendered. See an example in SmartyPants sample project.
+仅由SmartFX使用。如果自定义UI或PF_Cmd_DO_DIALOG改变了序列数据，或者渲染结果取决于其他没有考虑的东西，可能需要重新渲染，请使用这个。在PF_Cmd_SMART_PRERENDER过程中，效果可以调用GuidMixInPtr()来将任何影响渲染的额外状态混合到我们的内部GUID中，用于缓存帧。使用这个GUID，AE可以知道这个帧是否已经存在，或者是否需要被渲染。请看SmartyPants示例项目中的一个例子。
 
-This is an improvement over the older mechanisms PF_OutFlag_FORCE_RERENDER and PF_Cmd_DO_DIALOG, which would remove the frame from the cache because the host didn’t know what else the plug-in was factoring into the rendering. This can also be used rather than PF_OutFlag2_OUTPUT_IS_WATERMARKED.
+这是对旧机制PF_OutFlag_FORCE_RERENDER和PF_Cmd_DO_DIALOG的改进，后者会从缓存中删除帧，因为主机不知道插件在渲染中还考虑了什么因素。这也可以用来代替PF_OutFlag2_OUTPUT_IS_WATERMARKED。
 
-- Request Frames Asynchronously Without Blocking the UI
+- 异步请求帧而不阻塞UI
 
 PF_OutFlag2_CUSTOM_UI_ASYNC_MANAGER
 
 PF_GetContextAsyncManager() AEGP_CheckoutOrRender_ItemFrame_AsyncManager() AEGP_CheckoutOrRender_LayerFrame_AsyncManager()
 
-For cases where such renders formerly were triggered by side-effect or cancelled implicity
+对于这种渲染以前是由副作用或取消的隐含性触发的情况下
 
-(such as custom UI histogram drawing), and lifetime is less clear from inside the plug-in, use the new “Async Manager” which can handle multiple simultaneous async requests for effect Custom UI and will automatically support interactions with other AE UI behavior.
+(如自定义UI直方图的绘制)，并且在插件内部的寿命不太明确，使用新的 "Async Manager"，它可以处理效果自定义UI的多个同时的异步请求，并将自动支持与其他AE UI行为的交互。
 
-Note: Async retrieval of frames is preferred for handling passive drawing situations, but not when a user action will update the project state. If you are (1) responding to a specific user click, AND 2) you need to update the project as a result, the synchronous AEGP_RenderAndCheckoutLayerFrame() is recommended.
+注意：在处理被动绘图的情况下，异步检索帧是首选，但当用户行为将更新项目状态时，则不适用。如果你（1）对特定的用户点击做出反应，并且（2）你需要因此而更新项目，建议使用同步的AEGP_RenderAndCheckoutLayerFrame()。
 
-The new HistoGrid sample in the SDK shows how to do completely asynchronous custom UI DRAW event handling on the UI thread when 1 or more frame renders are needed. e.g. for calculating histograms that are shown in the effect pane. Please note there is still a known bug where drag-changing an upstream param may not refresh the histogram draw until the mouse hovers over it.
+SDK中新的HistoGrid示例展示了当需要1个或多个帧渲染时，如何在UI线程上进行完全异步的自定义UI DRAW事件处理，例如计算显示在效果窗格中的直方图。请注意仍有一个已知的错误，即拖动改变上游参数可能不会刷新直方图的绘制，直到鼠标悬停在它上面。
 
-- Get Rendered Output of an Effect from its UI
+- 从效果的用户界面获取效果的渲染输出
 
-Effects such as keyers or those that draw histograms of post-processed video can retrieve the needed AEGP_LayerRenderOptionsH using the new function AEGP_NewFromDownstreamOfEffect() in AEGP_LayerRenderOptionsSuite. This function may only be called from the UI thread.
+诸如抠像器或那些绘制后处理视频直方图的效果，可以使用AEGP_LayerRenderOptionsSuite中的新函数AEGP_NewFromDownstreamOfEffect()检索所需的AEGP_LayerRenderOptionsH。这个函数只能从UI线程中调用。
 
-- AEGP Usage on Render Thread
+- 渲染线程上的AEGP使用方法
 
-We’ve tightened validation of when AEGP calls could be used dangerously (such as from the wrong thread or making a change to the project state in render). You may see new errors if code is hitting such cases. For example, making these calls on the render thread will result in an error:
+我们加强了对AEGP调用可能被危险使用的验证（例如从错误的线程或在渲染中对项目状态进行更改）。如果代码碰到了这种情况，你可能会看到新的错误。例如，在渲染线程中进行这些调用会导致错误。
 
-suites.UtilitySuite5()->AEGP_StartUndoGroup() suites.StreamSuite2()->AEGP_GetStreamName() suites.StreamSuite2()->AEGP_SetExpressionState() suites.StreamSuite2()->AEGP_SetExpression() suites.StreamSuite2()->AEGP_GetNewLayerStream() suites.StreamSuite2()->AEGP_DisposeStream() suites.EffectSuite3()->AEGP_DisposeEffect() suites.UtilitySuite5()->AEGP_EndUndoGroup()
+suites.UtilitySuite5()->AEGP_StartUndoGroup() suites.StreamSuite2()->AEGP_GetStreamName() suites.StreamSuite2()->AEGP_SetExpressionState() suites.StreamSuite2()->AEGP_SetExpression() suites. 流套件2()->AEGP_GetNewLayerStream() suites.StreamSuite2()->AEGP_DisposeStream() suites.EffectSuite3()->AEGP_DisposeEffect() suites.UtilitySuite5()->AEGP_EndUndoGroup()
 
-The solution is to move these calls to the UI thread. Selectors for passive UI updates (such as PF_EVENT_DRAW) are not a place to make changes to project state.
+解决方案是将这些调用转移到UI线程。用于被动UI更新的选择器（如PF_EVENT_DRAW）不是一个对项目状态进行更改的地方。
 
-Another example of more strict requirements is AEGP_RegisterWithAEGP(). The documentation has always noted that this function must be called on PF_Cmd_GLOBAL_SETUP. However in previous versions, plug-ins were able to call this function at other times without running into trouble. Not anymore in 13.5! Calling this function at other times can cause crashes!
+另一个有更严格要求的例子是AEGP_RegisterWithAEGP()。文档中一直指出，这个函数必须在PF_Cmd_GLOBAL_SETUP上调用。然而在以前的版本中，插件可以在其他时间调用这个函数而不会遇到麻烦。在13.5中不再是这样了! 在其他时间调用这个函数会导致崩溃!
 
-- PF_Cmd_SEQUENCE_RESETUP Called on UI or Render Thread?
+- PF_Cmd_SEQUENCE_RESETUP在UI或渲染线程上被调用？
 
-There is now a PF_InFlag_PROJECT_IS_RENDER_ONLY flag that is only valid in PF_Cmd_SEQUENCE_RESETUP that will tell you if the effect instance is for render-only purposes. If so, the project should be treated as completely read-only, and you will not be receiving UI related selectors on that effect instance. This can be used to optimize away any UI-only initialization that render does not need. If this flag is false, you should setup UI as normal. This should not be used to avoid reporting errors in render. Errors in render should be reported as usual via existing SDK mechanisms.
+现在有一个PF_InFlag_PROJECT_IS_RENDER_ONLY标志，只在PF_Cmd_SEQUENCE_RESETUP中有效，它将告诉你这个效果实例是否只用于渲染目的。如果是这样，项目应该被视为完全只读，你将不会在该效果实例上收到与UI相关的选择器。这可以用来优化任何渲染不需要的UI-only初始化。如果这个标志是假的，你应该正常地设置UI。这不应该被用来避免报告渲染中的错误。渲染中的错误应该像往常一样通过现有的SDK机制报告。
 
-- Changes to Avoid Deadlocks
+- 为避免死锁的变化
 
-During development, it was noticed that deadlocks could occur in specific call usage. Seatbelts have been introduced to avoid this. The cases occur in PF_Cmd_UPDATE_PARAMS_UI when using particular calls because of deprecated synchronous behavior in these calls when used in the UI:
+在开发过程中，人们注意到在特定的调用用法中可能会出现死锁。为了避免这种情况，我们引入了安全带。这些情况发生在PF_Cmd_UPDATE_PARAMS_UI中，当使用特定的调用时，因为这些调用在UI中使用时被废弃的同步行为。
 
-In PF_Cmd_UPDATE_PARAMS_UI only, PF_PARAM_CHECKOUT() for layer parameters will behave as before except that it will return a black frame of the same size, etc., rather than actual rendered pixels. Code that used this for enable/disable detection of parameters should still work as before. Code that used this for getting analysis frames, etc. outside of PF_Cmd_UPDATE_PARAMS_UI will work as before.
+仅在PF_Cmd_UPDATE_PARAMS_UI中，PF_PARAM_CHECKOUT()对于图层参数的行为将和以前一样，只是它将返回一个相同大小的黑框，等等，而不是实际渲染的像素。用于启用/禁用参数检测的代码应该仍然像以前一样工作。在PF_Cmd_UPDATE_PARAMS_UI之外使用这个来获取分析帧等的代码将和以前一样工作。
 
-In PF_Cmd_UPDATE_PARAMS_UI only, PF_GetCurrentState() will now return a random GUID. This will no longer function as before in this context, but it will continue to work properly elsewhere.
+仅在PF_Cmd_UPDATE_PARAMS_UI中，PF_GetCurrentState()现在将返回一个随机的GUID。在这种情况下，这将不再像以前那样起作用，但它在其他地方将继续正常工作。
 
-The above uses should be rare, but if this affects you please contact us about workarounds.
+上述用途应该是很少见的，但如果这影响到你，请联系我们了解解决方法。
 
-- Deprecated
+- 废弃的
 
-AEGP_RenderAndCheckoutFrame() (on the UI Thread). This call should generally not be used on the UI thread since synchronous renders block interactivity.
+AEGP_RenderAndCheckoutFrame()（在UI线程上）。这个调用一般不应该在UI线程上使用，因为同步渲染会阻止交互性。
 
-Use in the render thread is fine. The one case where this may still be useful on the UI thread is a case like a UI button that requires a frame to calculate a parameter which then updates the AE project.
+在渲染线程中使用就可以了。有一种情况下，在UI线程上可能仍然有用，那就是像一个UI按钮，需要一个框架来计算一个参数，然后更新AE项目。
 
-For example, an “Auto Color” button that takes a frame and then adjusts effect params as a result.
+例如，一个 "自动颜色 "按钮，需要一个帧，然后调整效果参数的结果。
 
-A beta of a progress dialog for this blocking operation if it is slow has been implemented, but using this call on the UI thread should be limited to this special cases. The dialog design is not final.
+如果这个阻塞操作很慢，已经实现了一个进度对话框的测试版，但是在UI线程上使用这个调用应该仅限于这种特殊情况。对话框的设计还没有最终完成。
 
-- Flag for Thread-Safe Effects
+- 线程安全效应的标志
 
 PF_OutFlag2_AE13_5_THREADSAFE
 
-Plug-ins updated for threading should use this flag to tell AE that the plug-in is expected to be UI thread <> Render thread safe.
+为线程更新的插件应该使用这个标志来告诉AE，该插件应该是UI线程<>渲染线程安全的。
 
-This flag tells AE that different threads on different AE project copies can be in the effect at the same time but not accessing the same instance. While multiple render threads are not yet in use, this will be useful in future releases.
+这个标志告诉AE，不同AE项目副本上的不同线程可以同时进入效果，但不能访问同一个实例。虽然多渲染线程还没有被使用，但这在未来的版本中会很有用。
 
-- Support for Effect Version greater than 7 (new max is MAJOR version 127)
+- 支持大于7的效果版本（新的最大版本是MAJOR 127）。
 
-Effects greater than version 7 will now report properly in 13.5 if built with the current SDK headers. It is possible to use these recompiled effects in AE versions older than 13.5, but internally the version number will wrap modulo 8 (e.g. AE will internally see effect version 8 as version 0).
+如果使用当前的SDK头文件，大于7版的效果现在可以在13.5版中正常报告。在13.5之前的AE版本中可以使用这些重新编译的效果，但在内部，版本号将以8为模数（例如，AE在内部将效果版本8视为版本0）。
 
-This can affect the version shown in error dialog display by older AE and affect usage reporting.
+这可能会影响老的AE在错误对话框中显示的版本，并影响使用报告。
 
-Since many older plug-ins were made unloadable in AE with the shift to 64-bit, it should be unlikely this wrapping would cause ambiguity with actual plug-ins in current use (unless these plug-ins have been rapidly increasing version number over the last few years).
+由于许多老的插件在AE中无法加载，随着向64位的转变，这种包装不太可能对当前使用的实际插件造成歧义（除非这些插件在过去几年中迅速增加了版本号）。
 
-However, building with an older SDK and using an 8 or higher version will result in the plug-in reporting an incorrect version to AE, which will then cause mismatch with the PiPL version check for the effect which will have the higher bits set. This is not supported.
+然而，用旧的SDK构建并使用8或更高的版本将导致插件向AE报告一个不正确的版本，这将导致与PiPL版本检查的效果不匹配，这将有更高的位设置。这是不被支持的。
 
-If built with an older SDK, you will need to keep the effect version at 7 or below. Increase in version max has been accomplished by adding 4 new higher significant bits to the version that only AE 13.5 and above “sees”. These new high version bits are not contiguous with the original, preexisting MAJOR version bits – just ignore the intermediate bits. The new version layout looks like this in hexadecimal or binary.
+如果使用旧的SDK，你将需要把效果的版本保持在7或以下。最大版本的增加是通过在版本中增加4个新的更高的有效位来实现的，只有AE 13.5和更高的版本才能 "看到"。这些新的高版本位与原来的、预先存在的主要版本位不相邻--只是忽略了中间位。新的版本布局在十六进制或二进制中看起来像这样。
 
 0x 3C38 0000
 
-^^ original MAJOR version bits as a hex mask 0-7
+^^ 原有的主要版本位作为一个十六进制掩码 0-7
 
-^^ new HIGH bits extending the original MAJOR version bits 8-127
+^^ 新的高位扩展了原来的MAJOR版本位 8-127
 
 0b 0011 1100 0011 1000 0000 0000 0000 0000
 
-^^ ^ original MAJOR version bits as a hex mask 0-7
+^^ 原有的MAJOR版本位作为一个十六进制掩码 0-7
 
-^^ ^^ ignore / do not use
+^^ 忽略/不使用
 
-^^ ^^ new HIGH bits extend the original MAJOR version bits 8-127.
+^^^ 新的高位扩展了原来的MAJOR版本位8-127。
 
-These bits are ignored in AE versions older than 13.5.
+这些位在13.5以上的AE版本中被忽略。
 
-- New Installer Hints for macOS
+- 针对macOS的新安装程序提示
 
-Developers can find paths to the default location of plug-ins, scripts, and presets on macOS X in a new plist file (same as the paths in the Windows registry): /Library/Preferences/ com.Adobe.After Effects.paths.plist
+开发者可以在一个新的plist文件中找到macOS X上插件、脚本和预置的默认位置的路径（与Windows注册表中的路径相同）。/Library/Preferences/ com.Adobe.After Effects.paths.plist
 
-You can use the values in this plist to direct where your installers or scripts write files, in the same way that you would use the paths keys in the registry on Windows: HKEY_LOCAL_MACHINESOFTWAREAdobeAfter Effects13.5
+你可以使用这个plist中的值来指导你的安装程序或脚本写文件的位置，就像你在Windows上使用注册表中的paths键一样。HKEY_LOCAL_MACHINESOFTWAREAdobeAfter Effects13.5
 
-- Work In Progress
+- 正在进行的工作
 
 AEGP_RenderAndCheckoutLayerFrame_Async() AEGP_CancelAsyncRequest()
 
-This APIs are in progress, and should not be used yet.
+这些API正在进行中，还不应该使用。
 
 ## What’s New In CC 2014.1 (13.1)?
 
 PF_CreateNewAppProgressDialog()
 
-It won’t open the dialog unless it detects a slow render. (2 seconds timeout).
+它不会打开对话框，除非它检测到缓慢的渲染。(2秒超时)。
 
 ## What’s New In CC 2014 (13.0)?
 
-Starting in CC 2014, After Effects will now honor a change to a custom UI height made using [PF_UpdateParamUI](../effect-details/parameter-supervision.html) (#effect-detals-parameter-supervision-pf-paramutilsuite).
+从CC 2014开始，After Effects现在会尊重使用[PF_UpdateParamUI](.../effect-details/parameter-supervision.html)对自定义UI高度进行的更改。
 
-[AEGP Effect Suite](../aegps/aegp-suites.html) (#aegps-aegp-suites-effect-suite) is now at version 4, adding new functions to work with effect masks. [AEGP_RenderSuite](../aegps/aegp-suites.html) (#aegps-aegp-suites-aegp-rendersuite) is now at version 4, adding a new function `AEGP_RenderAndCheckoutLayerFrame`, which allows frame checkout of the current
+[AEGP效果套件](.../aegps/aegp-suites.html) 现在是第4版，增加了与效果遮罩有关的新功能。[AEGP_RenderSuite](.../aegps/aegp-suites.html)  现在是第4版，增加了一个新函数`AEGP_RenderAndCheckoutLayerFrame`，它允许对当前图层进行帧检出。
 
-layer with effects applied at non-render time. This is useful for an operation that requires the frame, for example, when a button is clicked and it is acceptable to wait for a moment while it is rendering.
+它允许在非渲染时间内对当前图层的效果进行帧检查。这对需要框架的操作很有用，例如，当一个按钮被点击时，在渲染时等待一会儿是可以接受的。
 
 :::tip
 
-Since it is not asynchronous, it will not solve the general problem where custom UI needs to draw based on the frame.
+由于它不是异步的，所以它不能解决自定义UI需要根据框架来绘制的一般问题。
 :::
-The layer render options are specified using the new [AEGP_LayerRenderOptionsSuite](../aegps/aegp-suites.html) (#aegps-aegp-suites-aegp-layerrenderoptionssuite).
+使用新的[AEGP_LayerRenderOptionsSuite]（.../aegps/aegp-suites.html）（#aegps-aegp-suites-aegp-layerrenderoptionssuite）指定图层渲染选项。
 
-[Mercury Transmit](other-integration-possibilities.html) (#intro-other-integration-possibilities-mercury-transmit) plug-ins and [HTML5 Panels](other-integration-possibilities.html) (#intro-other-integration-possibilities-html5) are now supported.
+现在支持 [Mercury Transmit](other-integration-possibilities.html)  插件和 [HTML5 Panels](other-integration-possibilities.html)  。
 
 ## What’s New In CC (12.0)?
 
-Effect names can now be up to 47 characters long, up from 31 characters previously.
+效果名称的长度现在可以达到47个字符，而之前是31个字符。
 
-We added the [PF_AngleParamSuite](../effect-details/parameters-floating-point-values.html) (#effect-details-parameters-floating-point-values-pf-angleparamsuite), providing a way to get floating point values for angle parameters. [PF App Suite](../effect-details/useful-utility-functions.html) (#effect-details-useful-utility-functions) version 5 adds `PF_AppGetLanguage` to query the current language so that a plug-in can use the correct language string, as well as several new PF_App_ColorType enum values for new elements whose colors can be queried.
+我们增加了[PF_AngleParamSuite](.../effect-details/parameters-floating point-values.html) ，提供了一种获得角度参数浮点值的方法。[PF应用套件](.../effect-details/useful-utility-functions.html) 第五版增加了`PF_AppGetLanguage`来查询当前的语言，以便插件可以使用正确的语言字符串，以及几个新的PF_App_ColorType枚举值，可以查询到新元素的颜色。
 
-[AEGP Persistent Data Suite](../aegps/aegp-suites.html) (#aegps-aegp-suites-persistent-data-suite) is now at version 4, adding a new parameter to AEGP_GetApplicationBlob to choose between retrieving several different application blobs. There are also new functions to get/set time and ARGB values.
+[AEGP持久性数据套件](.../aegps/aegp-suites.html) 现在是第4版，为AEGP_GetApplicationBlob增加了一个新参数，可以在检索几个不同的应用程序blob之间选择。还有一些新的函数来获取/设置时间和ARGB值。
 
-[AEGP Composition Suite](../aegps/aegp-suites.html) (#aegps-aegp-suites-composition-suite) is now at version 10, adding new functions to check/modify whether layer names or source names are shown, and whether the blend modes column is shown or not. Also added are new functions to get and set the Motion Blur Adaptive Sample Limit.
+[AEGP Composition Suite](.../aegps/aegp-suites.html) 现在是第10版，增加了新函数来检查/修改是否显示层名或源名，以及是否显示混合模式列。另外还增加了新的函数来获取和设置运动模糊的自适应采样限制。
 
-[AEGP Layer Suite](../aegps/aegp-suites.html) (#aegps-aegp-suites-layer-suite) is now at version 8, adding new functions to set/get the layer sampling quality. [AEGP_CanvasSuite](../artisans/artisan-data-types.html) (#artisans-artisan-data-types-aegp-canvassuite) is also now at version 8. The new function `AEGP_MapCompToLayerTime` handles time remapping with collapsed or nested comps, unlike AEGP_ConvertCompToLayerTime.
+[AEGP Layer Suite](.../aegps/aegp-suites.html) 现在是第8版，增加了设置/获取图层采样质量的新功能。[AEGP_CanvasSuite](.../artisans/artisan-data-types.html)  现在也是第8版。新函数`AEGP_MapCompToLayerTime`处理折叠或嵌套合成的时间重映射，与AEGP_ConvertCompToLayerTime不同。
 
-[AEGP_UtilitySuite](../aegps/aegp-suites.html) (#aegps-aegp-suites-aegp-utilitysuite) is now at version 6, adding a new Unicode-aware function: `AEGP_ReportInfoUnicode`. Another new function, `AEGP_GetPluginPaths`, provides some useful paths related to the plug-in and the After Effects executable itself.
+[AEGP_UtilitySuite](.../aegps/aegp-suites.html)  现在是第6版，增加了一个新的Unicode感知函数：`AEGP_ReportInfoUnicode'。另一个新函数，`AEGP_GetPluginPaths`，提供了一些与插件和After Effects可执行文件本身有关的有用路径。
 
-The behavior for `AEGP_NewPlaceholderFootageWithPath` has been updated, so that the file_type should now be properly set, otherwise a warning will appear.
+更新了`AEGP_NewPlaceholderFootageWithPath`的行为，所以现在应该正确设置file_type，否则会出现警告。
 
-`AEGP_InsertMenuCommand` can now insert menu items in the File>New submenu.
+`AEGP_InsertMenuCommand`现在可以在文件>新建子菜单中插入菜单项。
 
-[AEGP_IOInSuite](../aeios/new-kids-on-the-function-block.html) (#aeios-new-kids-on-the-function-block-aegp-ioinsuite) is now at version 5, adding new functions to get/set/clear the native start time, and to get/set the drop-frame setting of footage.
+[AEGP_IOInSuite](.../aeios/new-kids-on-the-function-block.html) 现在是第5版，增加了获取/设置/清除本地开始时间，以及获取/设置镜头下降帧设置的新函数。
 
 ## What’s New In CS6.0.1 (11.0.1)?
 
-New in 11.0.1, the AE effect API version has been incremented to 13.3.
+11.0.1中的新功能，AE效果的API版本已经增加到了13.3。
 
-This allows effects to distinguish between 11.0 and 11.0.1.
+这使得效果可以区分11.0和11.0.1。
 
-There is a bug in 11.0 with the Global Performance Cache, when a SmartFX effect uses both `PF_OutFlag2_AUTOMATIC_WIDE_TIME_INPUT` & `PF_OutFlag_NON_PARAM_VARY`.
+11.0中全局性能缓存有一个错误，当一个SmartFX效果同时使用`PF_OutFlag2_AUTOMATIC_WIDE_TIME_INPUT`和`PF_OutFlag_NON_PARAM_VARY`。
 
-Calling `checkout_layer` during `PF_Cmd_SMART_PRE_RENDER` returns empty rects in `PF_CheckoutResult`.
+在`PF_Cmd_SMART_PRE_RENDER`过程中调用`checkout_layer`会在`PF_CheckoutResult`中返回空矩形。
 
-The workaround is to simply make the call again. This workaround is no longer needed in 11.0.1.
+解决方法是简单地再次进行调用。这个解决方法在11.0.1中不再需要了。
 
 ## What’s New In CS6 (11.0)?
 
-We’ve made several refinements for better parameter UI handling. `PF_PUI_INVISIBLE` parameter UI flag is now supported in After Effects, which is useful if your plug-in needs hidden parameters that affect rendering. Now when a plug-in disables a parameter using [PF_UpdateParamUI](../effect-details/parameter-supervision.html) (#effect-detals-parameter-supervision-pf-paramutilsuite), we now save that state in the UI flags so that the plug-in can check the flag in the future to see if it is disabled. A new flag, `PF_ParamFlag_SKIP_REVEAL_WHEN_UNHIDDEN`, allows a parameter to be unhidden without twirling open any parents and without scrolling the parameter into view in the Effect Controls panel and the Timeline panel.
+我们已经做了一些改进，以更好地处理参数UI。`PF_PUI_INVISIBLE`参数UI标志现在在After Effects中被支持，如果你的插件需要影响渲染的隐藏参数，这很有用。现在，当插件使用[PF_UpdateParamUI](.../effect-details/parameter-supervision.html) 禁用一个参数时，我们现在将该状态保存在UI标志中，以便插件在未来可以检查该标志是否被禁用。一个新的标志，`PF_ParamFlag_SKIP_REVEAL_WHEN_UNHIDDEN'，允许一个参数被取消隐藏，而不需要旋转打开任何父类，也不需要滚动参数到效果控制面板和时间线面板中。
 
-Effects that render a watermark over the output when the plug-in is in trial mode can now tell After Effects whether watermark rendering mode is on or off, using the new `PF_OutFlag2_OUTPUT_IS_WATERMARKED`.
+当插件处于试用模式时，在输出上渲染水印的效果，现在可以使用新的`PF_OutFlag2_OUTPUT_IS_WATERMARKED'告诉After Effects水印渲染模式是开还是关。
 
-The new Global Performance Cache means you must tell After Effects to discard old cached frames [when changing your effect’s rendering](../effect-details/tips-tricks.html) (#effect-details-tips-tricks-caching-behavior).
+新的全局性能缓存意味着你必须告诉After Effects丢弃旧的缓存帧[当改变你的效果的渲染时](.../effect-details/tips-tricks.html) 。
 
-We’ve removed `PF_HasParamChanged` and `PF_HaveInputsChangedOverTimeSpan`, providing [PF_AreStatesIdentical](../effect-details/parameter-supervision.html) (#effect-detals-parameter-supervision-pf-paramutilsuite) instead.
+我们删除了`PF_HasParamChanged`和`PF_HaveInputsChangedOverTimeSpan`，改为提供[PF_AreStatesIdentical](.../effect-details/parameter-supervision.html)  。
 
-Effects that provide custom UI can now receive `PF_Event_MOUSE_EXITED`, to gain notification that the mouse exited the layer or comp panel. `PF_ParamUtilsSuite` is now at version 3.
+提供自定义用户界面的效果现在可以接收`PF_Event_MOUSE_EXITED`，以获得鼠标退出层或comp面板的通知。`PF_ParamUtilsSuite`现在是第3个版本。
 
-`PF_GET_PLATFORM_DATA` now has new selectors for getting the wide character path of the executable and resource file: `PF_PlatData_EXE_FILE_PATH_W` and `PF_PlatData_RES_FILE_PATH_W`. The previous non-wide selectors are now deprecated.
+`PF_GET_PLATFORM_DATA`现在有新的选择器，用于获取可执行文件和资源文件的宽字符路径。`PF_PlatData_EXE_FILE_PATH_W`和`PF_PlatData_RES_FILE_PATH_W`。以前的非范围选择器现在已经被废弃了。
 
-3D is a major theme of AE CS6. A new `AEGP_LayerFlag_ENVIRONMENT_LAYER` has been added. Many new [layer streams](../aegps/aegp-suites.html) (#aegps-aegp-suites-stream-suite) were added.
+3D是AE CS6的一个主要主题。增加了一个新的`AEGP_LayerFlag_ENVIRONMENT_LAYER`。增加了许多新的[层流](.../aegps/aegp-suites.html) 。
 
-Additionally, `AEGP_LayerStream_SPECULAR_COEFF` was renamed to `AEGP_LayerStream_SPECULAR_INTENSITY`, `AEGP_LayerStream_SHININESS_COEFF` was renamed to `AEGP_LayerStream_SPECULAR_SHININESS`, and `AEGP_LayerStream_METAL_COEFF` was renamed to just `AEGP_LayerStream_METAL`.
+此外，"AEGP_LayerStream_SPECULAR_COEFF "更名为 "AEGP_LayerStream_SPECULAR_INTENSITY"，"AEGP_LayerStream_SHININESS_COEFF "更名为 "AEGP_LayerStream_SPECULAR_SHININESS"，而 "AEGP_LayerStream_METAL_COEFF "则直接更名为 "AEGP_LayerStream_METAL"。
 
-A new suite, [AEGP_RenderQueueMonitorSuite](../aegps/aegp-suites.html) (#aegps-aegp-suites-render-queue-monitor-suite), provides all the info a render queue manager needs to figure out what is happening at any point in a render.
+一个新的套件，[AEGP_RenderQueueMonitorSuite](.../aegps/aegp-suites.html) ，提供了渲染队列管理器需要的所有信息，以弄清在渲染的任何时刻正在发生什么。
 
-[AEGP Mask Suite](../aegps/aegp-suites.html) (#aegps-aegp-suites-mask-suite) is now at version 6, and provides functions to get and set the mask feather falloff type. [AEGP Mask Outline Suite](../aegps/aegp-suites.html) (#aegps-aegp-suites-mask-outline-suite) is now at version 3, and provides access to get and set mask outline feather information.
+[AEGP Mask Suite](.../aegps/aegp-suites.html) 现在是第6版，提供了获取和设置遮罩羽化类型的函数。[AEGP Mask Outline Suite](.../aegps/aegp-suites.html) 现在是第3版，提供了获取和设置遮罩轮廓羽化信息的权限。
 
-Effects that depend on masks now have a new flag available, `PF_OutFlag2_DEPENDS_ON_UNREFERENCED_MASKS`.
+依赖于遮罩的效果现在有了一个新的标志，`PF_OutFlag2_DEPENDS_ON_UNREFERENCED_MASKS`。
 
-[AEGP Composition Suite](../aegps/aegp-suites.html) (#aegps-aegp-suites-composition-suite) is now at version 9. AEGP_CreateTextLayerInComp and
+[AEGP Composition Suite](.../aegps/aegp-suites.html)  现在是第9版。AEGP_CreateTextLayerInComp和
 
-AEGP_CreateBoxTextLayerInComp now have a new parameter, select_new_layerB.
+AEGP_CreateBoxTextLayerInComp现在有了一个新的参数：select_new_layerB。
 
-[AEGP Render Suite](../aegps/aegp-suites.html) (#aegps-aegp-suites-render-suite) is now at version 3, adding a new function to get the GUID for a render receipt.
+[AEGP Render Suite](.../aegps/aegp-suites.html)  现在是第3版，增加了一个新的函数来获取渲染收据的GUID。
 
-Finally, we have added two new read-only [Dynamic Stream](../aegps/aegp-suites.html) (#aegps-aegp-suites-dynamic-stream-suite) flags: `AEGP_DynStreamFlag_SHOWN_WHEN_EMPTY` and `AEGP_DynStreamFlag_SKIP_REVEAL_WHEN_UNHIDDEN`.
+最后，我们增加了两个新的只读[Dynamic Stream](.../aegps/aegp-suites.html)  标志。`AEGP_DynStreamFlag_SHOWN_WHEN_EMPTY`和`AEGP_DynStreamFlag_SKIP_REVEAL_WHEN_UNHIDDEN`。
 
-For effects running in Premiere Pro CS6, we have added the ability to get 32-bit float and YUV frames from `PF_CHECKOUT_PARAM`.
+对于在Premiere Pro CS6中运行的效果，我们增加了从`PF_CHECKOUT_PARAM`中获得32位浮点和YUV帧的能力。
 
 ## …and what was new before CS6?
 
-For history this far back, see obsolete copies of the SDK (which we don’t provide; if someone wants you do develop for antique software, they’d best provide the SDK).
+关于这么久以前的历史，请看过时的SDK拷贝（我们不提供；如果有人想让你为古董软件做开发，他们最好提供SDK）。

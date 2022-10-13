@@ -7,11 +7,11 @@ category:
 
 # Parameters & Floating Point Values
 
-We have something to admit to you; for years, even though we’ve given you 8 bit color values, we’ve internally used floating point representations behind your back.
+我们有件事要向你承认；多年来，尽管我们给了你8位的颜色值，但我们在内部却背着你使用浮点表示法。
 
-That’s right, even with over-bright colors, we’d only ever tell you ‘255, 255, 255’. Yeah, right.
+没错，即使是过亮的颜色，我们也只告诉你'255，255，255'。是的，没错。
 
-Well, we can’t live the lie any longer! Given a color parameter (passed to you by After Effects in your effect’s parameter array), this function returns a floating point representation, including any high dynamic range component.
+好吧，我们不能再活在谎言中了 给定一个颜色参数（由After Effects在你的效果参数阵列中传递给你），这个函数返回一个浮点表示，包括任何高动态范围的成分。
 
 ## PF_ColorParamSuite1
 
@@ -26,7 +26,7 @@ PF_PixelFloat*fp_colorP);
 
 ## PF_PointParamSuite1
 
-We also provide a way to get floating point values for point parameters.
+我们还提供了一种方法来获取点参数的浮点值。
 
 ### PF_GetFloatingPoint ValueFromPointDef
 
@@ -39,7 +39,7 @@ A_FloatPoint*fp_pointP);
 
 ## PF_AngleParamSuite1
 
-New in CS6.0.2, we now provide a way to get floating point values for angle parameters.
+在CS6.0.2中，我们现在提供了一种方法来获取角度参数的浮点值。
 
 ### PF_GetFloatingPoint ValueFromAngleDef
 

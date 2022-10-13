@@ -5,25 +5,25 @@ category:
   - AE 插件开发
 ---
 
-# New Kids On The Function Block[¶](#new-kids-on-the-function-block "Permalink to this headline")
+# New Kids On The Function Block[¶]
 
-During its main entry point function, each AEIO plug-in must fill in an AEIO_FunctionBlock, providing pointers to the functions After Effects will call for different file-related tasks.
+在其主入口点函数中，每个AEIO插件必须填写AEIO_FunctionBlock，提供指向After Effects将为不同文件相关任务调用的函数的指针。
 
-The table below shows which functions are needed for input, and which ones are needed for output. For a bare-bones implementation, start with the functions that are noted as “Required” in the right column. You can often invoke “best-case” behavior by having After Effects handle the call for you (by returning `AEIO_Err_USE_DFLT_CALLBACK`).
+下表显示了哪些函数是需要输入的，哪些是需要输出的。对于一个简单的实现，从右栏中标明 "需要 "的函数开始。你通常可以通过让After Effects为你处理调用（通过返回`AEIO_Err_USE_DFLT_CALLBACK`）来调用 "最佳情况 "行为。
 
-For a barebones AEIO for video input only, implement the following functions: `AEIO_InitInSpecFromFile` or `AEIO_InitInSpecInteractive` (depending on whether the source is a file or interactively generated), `AEIO_DisposeInSpec`, `AEIO_GetInSpecInfo`, `AEIO_DrawSparseFrame`, `AEIO_CloseSourceFiles`, and `AEIO_InqNextFrameTime` (using `AEIO_Err_USE_DFLT_CALLBACK` is fine).
+对于一个只用于视频输入的原始AEIO，实现以下函数。`AEIO_InitInSpecFromFile`或`AEIO_InitInSpecInteractive`（取决于源是文件还是交互生成的），`AEIO_DisposeInSpec`。`AEIO_GetInSpecInfo`, `AEIO_DrawSparseFrame`, `AEIO_CloseSourceFiles`, 和`AEIO_InqNextFrameTime` (使用`AEIO_Err_USE_DFLT_CALLBACK`也可以)。
 
-Starting from the IO sample, it is best to leave the other functions defined too, and fill them in further as needed.
+从IO样本开始，最好也留下其他函数的定义，并根据需要进一步填充。
 
-## AEIO_FunctionBlock4[¶](#aeio-functionblock4 "Permalink to this headline")
+## AEIO_FunctionBlock4[¶]
 
 #### AEIO_InitInSpecFromFile
 
-Given a file path, describe its contents to After Effects in the provided `AEIO_InSpecH`.
-Use all appropriate “set” calls from the [AEGP_IOInSuite](#aeios-new-kids-on-the-function-block-aegp-ioinsuite)) to do so;
-if there is image data, set its depth, dimensions, and alpha interpretation.
-If there is audio, describe its channels and sample rate.
-The file path is a NULL-terminated UTF-16 string with platform separators.
+给定一个文件路径，在提供的`AEIO_InSpecH`中向After Effects描述其内容。
+使用[AEGP_IOInSuite]中所有适当的 "设置 "调用来完成。
+如果有图像数据，设置其深度、尺寸和阿尔法解释。
+如果有音频，描述其通道和采样率。
+文件路径是一个以NULL结尾的UTF-16字符串，带有平台分隔符。
 
 ```cpp
 AEIO_InitInSpecFromFile(
@@ -33,14 +33,14 @@ AEIO_InitInSpecFromFile(
 
 ```
 
-IO: Input
+IO：输入
 
-Required: Yes, for file-based media
+需要。是的，对于基于文件的媒体
 
 #### AEIO_InitInSpecInteractive
 
-Using some form of user interaction (and not a file path provided by After Effects),
-describe the audio and video your generated AEIO_InSpecH contains.
+使用某种形式的用户互动（而不是由After Effects提供的文件路径）。
+描述你生成的AEIO_InSpecH包含的音频和视频。
 
 ```cpp
 AEIO_InitInSpecInteractive(
@@ -49,13 +49,13 @@ AEIO_InitInSpecInteractive(
 
 ```
 
-IO: Input
+IO: 输入
 
-Required: Yes, for interactiv ely generated media
+需要。是的，对于互动生成的媒体
 
 #### AEIO_DisposeInSpec
 
-Free an `AEIO_InSpecH`.
+释放一个`AEIO_InSpecH`。
 
 ```cpp
 AEIO_DisposeInSpec(
@@ -64,14 +64,14 @@ AEIO_DisposeInSpec(
 
 ```
 
-IO: Input
+IO: 输入
 
-Required: Yes
+需要。是
 
 #### AEIO_FlattenOptions
 
-For the given `AEIO_InSpecH`, return a flattened version of the data contained in its options handle.
-Obtain the unflattened options handle using `AEGP_GetInSpecOptionsHandle`.
+对于给定的`AEIO_InSpecH`，返回其选项句柄中包含的数据的扁平化版本。
+使用`AEGP_GetInSpecOptionsHandle'获取未扁平化的选项句柄。
 
 ```cpp
 AEIO_FlattenOptions(
@@ -81,14 +81,14 @@ AEIO_FlattenOptions(
 
 ```
 
-IO: Input
+IO: 输入
 
-Required: No
+需要。不需要
 
 #### AEIO_InflateOptions
 
-For the given `AEIO_InSpecH`, create (using `AEGP_SetInSpecOptionsHandle`)
-an unflattened version of its flattened option data.
+对于给定的`AEIO_InSpecH`，创建（使用`AEGP_SetInSpecOptionsHandle`）它的非扁平化版本。
+创建其扁平化的选项数据的非扁平化版本。
 
 ```cpp
 AEIO_InflateOptions(
@@ -98,14 +98,14 @@ AEIO_InflateOptions(
 
 ```
 
-IO: Input
+IO: 输入
 
-Required: No
+需要。不需要
 
 #### AEIO_SynchInSpec
 
-`AEIO_Err_USE_DFLT_CALLBACK` allowed.
-Inspect the `AEIO_InSpecH`, update its options if necessary), and indicate whether or not you made changes.
+允许`AEIO_Err_USE_DFLT_CALLBACK`。
+检查`AEIO_InSpecH`，如果需要的话，更新它的选项），并指出你是否做了改变。
 
 ```cpp
 AEIO_SynchInSpec(
@@ -115,14 +115,14 @@ AEIO_SynchInSpec(
 
 ```
 
-IO: Input
+IO: 输入
 
-Required: No
+需要。不需要
 
 #### AEIO_GetActiveExtent
 
-`AEIO_Err_USE_DFLT_CALLBACK` allowed.
-Populate the provided `A_LRect` with the active extent of the file’s pixels at the given time.
+`AEIO_Err_USE_DFLT_CALLBACK'允许。
+在提供的`A_LRect`中填入给定时间内文件像素的活动范围。
 
 ```cpp
 AEIO_GetActiveExtent(
@@ -133,14 +133,14 @@ AEIO_GetActiveExtent(
 
 ```
 
-IO: Input
+IO: 输入
 
-Required: Yes
+需要。是
 
 #### AEIO_GetInSpecInfo
 
-Provide a few strings in `AEIO_Verbiage` to describe the file, which will appear in the Project panel.
-This includes the strings used to describe the file type and subtype (the codec).
+在`AEIO_Verbiage`中提供一些字符串来描述文件，这些字符串将出现在项目面板中。
+这包括用于描述文件类型和子类型（编解码器）的字符串。
 
 ```cpp
 AEIO_GetInSpecInfo(
@@ -150,21 +150,21 @@ AEIO_GetInSpecInfo(
 
 ```
 
-This function gets called OFTEN; every time we refresh the project panel.
-Keep allocations to a minimum.
-In the AEIOs that ship with After Effects, we check for a valid `optionsH` (using `AEGP_GetInSpecOptionsHandle`);
-if we find one, we use the information from within it. If not, we do nothing.
-This is important; if your AEIO handles still images, this function _will_ get called for the folder containing the stills.
-Hopefully, there won’t be an optionsH associated with it (unless you’re writing a truly bizarre AEIO).
+这个函数经常被调用；每次我们刷新项目面板的时候。
+保持分配到最低限度。
+在After Effects的AEIOs中，我们检查一个有效的 "optionsH"（使用 "AEGP_GetInSpecOptionsHandle"）。
+如果我们找到一个，我们就使用其中的信息。如果没有，我们什么都不做。
+这很重要；如果你的AEIO处理静止图像，这个函数_会被调用到包含静止图像的文件夹。
+希望不会有一个与之相关的optionsH（除非你在写一个真正奇怪的AEIO）。
 
-IO: Input
+IO：输入
 
-Required: Yes
+需要。是
 
 #### AEIO_DrawSparseFrame
 
-Draw a frame from the `AEIO_InSpecH`.
-The `PF_EffectWorld*` contains the width and height to use, but make sure you take the required_region0 into account, if it’s not NULL.
+从`AEIO_InSpecH`中绘制一个帧。
+`PF_EffectWorld*`包含要使用的宽度和高度，但要确保你考虑到required_region0，如果它不是NULL。
 
 ```cpp
 AEIO_DrawSparseFrame(
@@ -182,16 +182,16 @@ AEIO_DrawSparseFrame(
 
 ```
 
-NOTE: return data as linear light (1.0), and After Effects
-will perform any necessary transformations to bring the footage into the working colorspace.
+注意：返回数据为线性光（1.0），After Effects
+将执行任何必要的转换，将镜头带入工作的色彩空间。
 
-IO: Input
+IO：输入
 
-Required: Yes
+需要。是
 
 #### AEIO_GetDimensions
 
-AEIO_Err_USE_DFLT_CALLBACK allowed. Provide the dimensions (and, if necessary, scaling factor) of the video in the AEIO_InSpecH.
+AEIO_Err_USE_DFLT_CALLBACK允许。在AEIO_InSpecH中提供视频的尺寸（如有必要，还有缩放系数）。
 
 ```cpp
 AEIO_GetDimensions(
@@ -203,13 +203,13 @@ AEIO_GetDimensions(
 
 ```
 
-IO: Input
+输入：输入
 
-Required: No
+需要。不需要
 
 #### AEIO_GetDuration
 
-`AEIO_Err_USE_DFLT_CALLBACK` allowed. Provide the duration of an `AEIO_InSpecH`, in seconds.
+允许 "AEIO_Err_USE_DFLT_CALLBACK"。提供 "AEIO_InSpecH "的持续时间，单位是秒。
 
 ```cpp
 AEIO_GetDuration(
@@ -219,13 +219,13 @@ AEIO_GetDuration(
 
 ```
 
-IO: Input
+输入：输入
 
-Required: No
+需要。不需要
 
 #### AEIO_GetTime
 
-`AEIO_Err_USE_DFLT_CALLBACK` allowed. Provide the timebase of an `AEIO_InSpecH`.
+允许 "AEIO_Err_USE_DFLT_CALLBACK"。提供 "AEIO_InSpecH "的时间基数。
 
 ```cpp
 AEIO_GetTime(
@@ -235,20 +235,20 @@ AEIO_GetTime(
 
 ```
 
-Here are the values we use internally for common timebases:
+以下是我们内部使用的常用时间基的值。
 29.97 fps: scale = 100; value= 2997;
 59.94 fps: scale = 50; value = 2997;
 23.976 fps: scale = 125; value = 2997;
-30 fps: scale = 1; value = 30;
+30帧：比例=1；值=30。
 25 fps: scale = 1; value = 25;
 
-IO: Input
+输入：输入
 
-Required: No
+需要。没有
 
 #### AEIO_GetSound
 
-`AEIO_Err_USE_DFLT_CALLBACK` allowed. Provide sound from an `AEIO_InSpecH`, at the quality described.
+允许使用`AEIO_Err_USE_DFLT_CALLBACK`。提供来自`AEIO_InSpecH'的声音，以描述的质量。
 
 ```cpp
 AEIO_GetSound(
@@ -264,20 +264,20 @@ AEIO_GetSound(
 
 ```
 
-`AEIO_SndQuality` may be:
+`AEIO_SndQuality`可以是。
 
 - `AEIO_SndQuality_APPROX`, (this quality is used to draw the audio waveform)
 - `AEIO_SndQuality_LO`,
 - `AEIO_SndQuality_HI`
 
-IO: Input
+IO: 输入
 
-Required: No
+需要。不需要
 
 #### AEIO_InqNextFrameTime
 
-`AEIO_Err_USE_DFLT_CALLBACK` allowed.
-Provide the time of the next frame (in the source footage’s timebase) within the `AEIO_InSpecH`.
+`AEIO_Err_USE_DFLT_CALLBACK`允许。
+在`AEIO_InSpecH`内提供下一帧的时间(在源录像的时间基础上)。
 
 ```cpp
 AEIO_InqNextFrameTime(
@@ -290,14 +290,14 @@ AEIO_InqNextFrameTime(
 
 ```
 
-IO: Input
+IO: 输入
 
-Required: Yes
+需要。是
 
 #### AEIO_InitOutputSpec
 
-`AEIO_Err_USE_DFLT_CALLBACK` allowed.
-Perform any initialization necessary for a new `AEIO_OutSpecH`, and indicate whether you made changes.
+允许 "AEIO_Err_USE_DFLT_CALLBACK"。
+对新的`AEIO_OutSpecH`执行任何必要的初始化，并指出你是否做了改变。
 
 ```cpp
 AEIO_InitOutputSpec(
@@ -307,18 +307,18 @@ AEIO_InitOutputSpec(
 
 ```
 
-NOTE: The first time your AEIO is used, After Effects caches the last-known-good optionsH in its preferences.
-When testing this function, [delete your preferences](../intro/debugging-plug-ins.html#intro-debugging-plug-ins-deleting-preferences) often.
+注意：第一次使用你的AEIO时，After Effects会在它的偏好中缓存最后一个已知好的选项H。
+在测试这个功能时，请经常[删除你的偏好](.../intro/debugging-plug-ins.html#intro-debugging-plug-ins-deleting-preferences)。
 
-IO: Output
+IO。输出
 
-Required: Yes
+需要。是
 
 #### AEIO_GetFlatOutputOptions
 
-Describe (in an `AEIO_Handle`) the output options for an `AEIO_OutSpecH`,
-in a disk-safe flat data structure (one that does not reference external memory).
-Note that your output options must be cross-platform, so pay attention to byte ordering issues.
+描述（在一个`AEIO_Handle`中）一个`AEIO_OutSpecH`的输出选项。
+在一个磁盘安全的平面数据结构中（不引用外部内存）。
+注意，你的输出选项必须是跨平台的，所以要注意字节排序问题。
 
 ```cpp
 AEIO_GetFlatOutputOptions(
@@ -328,13 +328,13 @@ AEIO_GetFlatOutputOptions(
 
 ```
 
-IO: Output
+IO。输出
 
-Required: Yes
+需要。是
 
 #### AEIO_DisposeOutputOptions
 
-`AEIO_Err_USE_DFLT_CALLBACK` allowed. Free the memory for the output options passed in.
+`AEIO_Err_USE_DFLT_CALLBACK`允许。为传入的输出选项释放内存。
 
 ```cpp
 AEIO_DisposeOutputOptions(
@@ -343,14 +343,14 @@ AEIO_DisposeOutputOptions(
 
 ```
 
-IO: Output
+IO。输出
 
-Required: No
+需要。不需要
 
 #### AEIO_UserOptionsDialog
 
-Display an output settings dialog (select TIFF output within After Effects to see when this dialog will occur).
-Store this information in an options handle using `AEGP_SetInSpecOptionsHandle`.
+显示一个输出设置对话框（在After Effects中选择TIFF输出以查看何时会出现这个对话框）。
+使用`AEGP_SetInSpecOptionsHandle`将此信息存储在一个选项句柄中。
 
 ```cpp
 AEIO_UserOptionsDialog(
@@ -361,13 +361,13 @@ AEIO_UserOptionsDialog(
 
 ```
 
-IO: Output
+IO。输出
 
-Required: No
+需要。不需要
 
 #### AEIO_GetOutputInfo
 
-Describe (in text) the output options in an `AEIO_OutSpecH`.
+在`AEIO_OutSpecH`中描述（文本）输出选项。
 
 ```cpp
 AEIO_GetOutputInfo(
@@ -379,7 +379,7 @@ AEIO_GetOutputInfo(
 
 #### AEIO_OutputInfoChanged
 
-Update the `AEIO_OutSpecH` based on the current settings (using the various Get functions to obtain them).
+根据当前的设置更新`AEIO_OutSpecH'(使用各种Get函数来获取)。
 
 ```cpp
 AEIO_OutputInfoChanged(
@@ -388,15 +388,15 @@ AEIO_OutputInfoChanged(
 
 ```
 
-IO: Output
+IO: 输出
 
-Required: No
+需要。不需要
 
 #### AEIO_SetOutputFile
 
-`AEIO_Err_USE_DFLT_CALLBACK` allowed. Set the file path for output of an `AEIO_OutSpecH`.
-Return `AEIO_Err_USE_DEFAULT_CALLBACK` unless you’ve changed the path.
-The file path is a NULL-terminated UTF-16 string with platform separators.
+`AEIO_Err_USE_DFLT_CALLBACK`允许。设置`AEIO_OutSpecH'的输出文件路径。
+返回`AEIO_Err_USE_DEFAULT_CALLBACK`，除非你改变了路径。
+文件路径是一个以NULL结尾的UTF-16字符串，带有平台分隔符。
 
 ```cpp
 AEIO_SetOutputFile(
@@ -406,15 +406,15 @@ AEIO_SetOutputFile(
 
 ```
 
-IO: Output
+IO。输出
 
-Required: Yes
+需要。是
 
 #### AEIO_StartAdding
 
-Prepare to add frames to the output file.
-This is a good time to create the ouput file(s) on disk, and to write any header information to such files.
-This is also your first opportunity to allocate pixel buffers based on valid output spec values.
+准备向输出文件添加帧。
+这是一个在磁盘上创建输出文件的好时机，并将任何标题信息写入这些文件中。
+这也是你第一次有机会根据有效的输出规格值来分配像素缓冲区。
 
 ```cpp
 AEIO_StartAdding(
@@ -424,13 +424,13 @@ AEIO_StartAdding(
 
 ```
 
-IO: Output
+IO。输出
 
-Required: Yes, for writing formats that support multiple frames
+需要。是的，用于写入支持多帧的格式
 
 #### AEIO_AddFrame
 
-Add frame(s) to output file. You may pass a pointer to a function you want called if the user interrupts the render.
+将帧添加到输出文件。你可以传递一个指针到一个你希望在用户中断渲染时调用的函数。
 
 ```cpp
 AEIO_AddFrame(
@@ -445,13 +445,13 @@ AEIO_AddFrame(
 
 ```
 
-IO: Output
+IO。输出
 
-Required: Yes, for writing formats that support multiple frames
+需要。是的，用于编写支持多帧的格式
 
 #### AEIO_EndAdding
 
-Perform any clean-up associated with adding frames.
+执行与添加帧相关的任何清理工作。
 
 ```cpp
 AEIO_EndAdding(
@@ -461,13 +461,13 @@ AEIO_EndAdding(
 
 ```
 
-IO: Output
+IO.输出 输出
 
-Required: Yes, for writing formats that support multiple frames
+需要。是的，对于支持多帧的写入格式
 
 #### AEIO_OutputFrame
 
-Output a single frame.
+输出一个单帧。
 
 ```cpp
 AEIO_OutputFrame(
@@ -477,14 +477,14 @@ AEIO_OutputFrame(
 
 ```
 
-IO: Output
+IO: 输出
 
-Required: Yes, for writing formats that support a single frame
+需要。是的，用于写入支持单帧的格式
 
 #### AEIO_WriteLabels
 
-`AEIO_Err_USE_DFLT_CALLBACK` allowed. Set alpha interpretation and field usage information for the `AEIO_OutSpecH`.
-Indicate in `AEIO_LabelFlags` which flags you wrote.
+`AEIO_Err_USE_DFLT_CALLBACK`允许。为`AEIO_OutSpecH`设置字母解释和字段使用信息。
+在`AEIO_LabelFlags`中指出你写了哪些标志。
 
 ```cpp
 AEIO_WriteLabels(
@@ -494,13 +494,13 @@ AEIO_WriteLabels(
 
 ```
 
-IO: Output
+IO。输出
 
-Required: Yes
+需要。是
 
 #### AEIO_GetSizes
 
-`AEIO_Err_USE_DFLT_CALLBACK` allowed. Provide information about file size and remaining free space on output volume.
+`AEIO_Err_USE_DFLT_CALLBACK`允许。提供关于文件大小和输出卷上剩余自由空间的信息。
 
 ```cpp
 AEIO_GetSizes(
@@ -511,13 +511,13 @@ AEIO_GetSizes(
 
 ```
 
-IO: Output
+IO。输出
 
-Required: Yes
+需要。是
 
 #### AEIO_Flush
 
-Destroy any options or user data associated with the `OutSpecH`.
+销毁与`OutSpecH`相关的任何选项或用户数据。
 
 ```cpp
 AEIO_Flush(
@@ -528,7 +528,7 @@ AEIO_Flush(
 
 #### AEIO_AddSoundChunk
 
-Add the given sound to the output file.
+将给定的声音添加到输出文件中。
 
 ```cpp
 AEIO_AddSoundChunk(
@@ -539,13 +539,13 @@ AEIO_AddSoundChunk(
 
 ```
 
-IO: Output
+IO。输出
 
-Required: Yes, for writing formats with audio
+需要。是的，用于写入带有音频的格式
 
 #### AEIO_Idle
 
-Optional. Do something with idle time. `AEIO_Err_USE_DFLT_CALLBACK` is not supported.
+可选的。对空闲时间做一些处理。不支持`AEIO_Err_USE_DFLT_CALLBACK`。
 
 ```cpp
 AEIO_Idle(
@@ -555,14 +555,14 @@ AEIO_Idle(
 
 ```
 
-IO: Output
+IO: 输出
 
-Required: No
+需要。不需要
 
 #### AEIO_GetDepths
 
-Set `AEIO_OptionsFlags` to indicate which pixel and color depths are valid for your output format.
-See the discussion on [Export Bit-Depth](implementation-details.html#aeios-implementation-details).
+设置`AEIO_OptionsFlags'以指示哪些像素和颜色深度对你的输出格式有效。
+见[Export Bit-Depth]的讨论（implementation-details.html#aeios-implementation-details）。
 
 ```cpp
 AEIO_GetDepths(
@@ -572,13 +572,13 @@ AEIO_GetDepths(
 
 ```
 
-IO: Output
+IO。输出
 
-Required: Yes
+需要。是
 
 #### AEIO_GetOutputSuffix
 
-`AEIO_Err_USE_DFLT_CALLBACK` allowed. Describe the three character extension for the output file.
+允许使用`AEIO_Err_USE_DFLT_CALLBACK`。描述输出文件的三个字符扩展名。
 
 ```cpp
 AEIO_GetOutputSuffix(
@@ -588,13 +588,13 @@ AEIO_GetOutputSuffix(
 
 ```
 
-IO: Output
+IO。输出
 
-Required: Yes
+需要。是
 
 #### AEIO_SeqOptionsDlg
 
-Display a footage options dialog, and indicate whether the user made any changes.
+显示一个脚注选项对话框，并指出用户是否做了任何改变。
 
 ```cpp
 AEIO_SeqOptionsDlg(
@@ -604,13 +604,13 @@ AEIO_SeqOptionsDlg(
 
 ```
 
-IO: Input
+IO: 输入
 
-Required: No
+需要。不需要
 
 #### AEIO_GetNumAuxChannels
 
-Enumerate the auxiliary (beyond red, green, blue and alpha) channels of data contained in an `AEIO_InSpecH`.
+枚举一个`AEIO_InSpecH'中包含的数据的辅助通道（超出红、绿、蓝和α）。
 
 ```cpp
 AEIO_GetNumAuxChannels(
@@ -620,13 +620,13 @@ AEIO_GetNumAuxChannels(
 
 ```
 
-IO: Input
+输入：输入
 
-Required: No
+需要。不需要
 
 #### AEIO_GetAuxChannelDesc
 
-Describe the data type, name, channel, and dimensionality of an auxiliary data channel.
+描述一个辅助数据通道的数据类型、名称、通道和尺寸。
 
 ```cpp
 AEIO_GetAuxChannelDesc(
@@ -637,13 +637,13 @@ AEIO_GetAuxChannelDesc(
 
 ```
 
-IO: Input
+输入：输入
 
-Required: No
+需要。不需要
 
 #### AEIO_DrawAuxChannel
 
-Draw the auxiliary channel(s) from an `AEIO_InSpecH`.
+从一个`AEIO_InSpecH'中提取辅助通道。
 
 ```cpp
 AEIO_DrawAuxChannel(
@@ -657,7 +657,7 @@ AEIO_DrawAuxChannel(
 
 #### AEIO_FreeAuxChannel
 
-Free data associated with an auxiliary channel.
+释放与一个辅助通道相关的数据。
 
 ```cpp
 AEIO_FreeAuxChannel(
@@ -667,14 +667,14 @@ AEIO_FreeAuxChannel(
 
 ```
 
-IO: Input
+输入：输入
 
-Required: No
+需要。不需要
 
-`AEIO_Num` AuxFiles Enumerate the files needed to render the given `AEIO_InSpecH`.
-This function and `AEIO_GetNthAuxFileSpec` will be called when the user chooses `File > Dependencies > Collect Files…`
+`AEIO_Num` AuxFiles 枚举渲染给定的`AEIO_InSpecH`需要的文件。
+这个函数和`AEIO_GetNthAuxFileSpec`将在用户选择`文件>依赖性>收集文件...`时被调用。
 
-Here your AEIO tells AE what the associated files are.
+这里你的AEIO告诉AE相关的文件是什么。
 
 ```cpp
 AEIO_NumAuxFiles(
@@ -684,14 +684,14 @@ AEIO_NumAuxFiles(
 
 ```
 
-IO: Input
+IO：输入
 
-Required: No
+需要。不需要
 
 #### AEIO_GetNthAuxFileSpec
 
-Retrieve data from the nth auxiliary file, for the specified frame.
-The path is a handle to a NULL-terminated A_UTF16Char string, and must be disposed with `AEGP_FreeMemHandle`.
+从第n个辅助文件检索数据，为指定的框架。
+路径是一个以NULL结尾的A_UTF16Char字符串的句柄，必须用`AEGP_FreeMemHandle`处置。
 
 ```cpp
 AEIO_GetNthAuxFileSpec(
@@ -703,14 +703,14 @@ AEIO_GetNthAuxFileSpec(
 
 ```
 
-IO: Input
+IO: 输入
 
-Required: No, if no aux files
+需要。不需要，如果没有辅助文件
 
 #### AEIO_CloseSourceFiles
 
-Close (or open, depending upon closeB) the source files for an `AEIO_InSpecH`.
-When the user Collects Files, the AEIO will first be asked to close its source files, then re-open them.
+关闭（或打开，取决于closeB）一个`AEIO_InSpecH`的源文件。
+当用户收集文件时，AEIO将首先被要求关闭它的源文件，然后重新打开它们。
 
 ```cpp
 AEIO_CloseSourceFiles(
@@ -720,15 +720,15 @@ AEIO_CloseSourceFiles(
 
 ```
 
-`TRUE` for close, `FALSE` for open.
+`TRUE`表示关闭，`FALSE`表示打开。
 
-IO: Input
+IO: 输入
 
-Required: Yes
+需要。是
 
 #### AEIO_CountUserData
 
-Enumerate the units of user data associated with the `AEIO_InSpecH`.
+列举与`AEIO_InSpecH'相关的用户数据单位。
 
 ```cpp
 AEIO_CountUserData(
@@ -742,7 +742,7 @@ AEIO_CountUserData(
 
 #### AEIO_SetUserData
 
-Set user data (of the given index and type) for the given `AEIO_OutSpecH`.
+为给定的`AEIO_OutSpecH`设置用户数据（给定的索引和类型）。
 
 ```cpp
 AEIO_SetUserData(
@@ -754,13 +754,13 @@ AEIO_SetUserData(
 
 ```
 
-IO: Output
+IO。输出
 
-Required: No
+需要。不需要
 
 #### AEIO_GetUserData
 
-Describe the user data (at the index and of the type given) associated with the `AEIO_InSpecH`.
+描述与`AEIO_InSpecH'相关的用户数据（在给定的索引和类型）。
 
 ```cpp
 AEIO_GetUserData(
@@ -773,14 +773,14 @@ AEIO_GetUserData(
 
 ```
 
-IO: Input
+输入：输入
 
-Required: No
+需要。不需要
 
 #### AEIO_AddMarker
 
-Associate a marker of the specified type, at the specified frame, with the `AEIO_OutSpecH`.
-You may provide an interrupt function to handle user cancellation of this action.
+在指定的帧上，将指定类型的标记与`AEIO_OutSpecH'相关联。
+你可以提供一个中断函数来处理用户对这个动作的取消。
 
 ```cpp
 AEIO_AddMarker(
@@ -793,17 +793,17 @@ AEIO_AddMarker(
 
 ```
 
-IO: Output
+IO。输出
 
-Required: No
+需要。不需要
 
 #### AEIO_VerifyFileImportable
 
-Indicate (by setting importablePB) whether or not the plug-in can import the file.
-Note that After Effects has already done basic extension checking; you may wish to open the file and determine whether or not it’s valid.
-This can be a time-consuming process; most AEIOs that ship with After Effects simply return TRUE,
-and deal with bad files during `AEIO_InitInSpecFromFile`.
-The file path is a NULL-terminated UTF-16 string with platform separators.
+指示（通过设置importablePB）插件是否可以导入该文件。
+注意，After Effects已经做了基本的扩展名检查；你可能希望打开文件并确定它是否有效。
+这可能是一个耗时的过程；大多数After Effects的AEIO只是简单地返回TRUE。
+并在`AEIO_InitInSpecFromFile`中处理坏文件。
+文件路径是一个以NULL结尾的UTF-16字符串，带有平台分隔符。
 
 ```cpp
 AEIO_VerifyFileImportable(
@@ -814,13 +814,13 @@ AEIO_VerifyFileImportable(
 
 ```
 
-IO: Input
+IO：输入
 
-Required: No
+需要。不需要
 
 #### AEIO_UserAudioOptionsDialog
 
-Display an audio options dialog.
+显示一个音频选项对话框。
 
 ```cpp
 AEIO_UserAudioOptionsDialog(
@@ -830,13 +830,13 @@ AEIO_UserAudioOptionsDialog(
 
 ```
 
-IO: Output
+IO: 输出
 
-Required: No
+需要。不需要
 
 #### AEIO_AddMarker3
 
-Add a marker, with a flag specifying whether or not this is a composition marker.
+添加一个标记，用一个标志来指定这是否是一个合成标记。
 
 ```cpp
 AEIO_AddMarker3(
@@ -849,13 +849,13 @@ AEIO_AddMarker3(
 
 ```
 
-IO: Output
+IO。输出
 
-Required: No
+需要。不需要
 
 #### AEIO_GetMimeType
 
-Describe the output mime type. This is used for XMP support.
+描述输出的mime类型。这是用于XMP支持。
 
 ```cpp
 AEIO_GetMimeType(
@@ -866,21 +866,21 @@ AEIO_GetMimeType(
 
 ```
 
-IO: Output
+IO。输出
 
-Required: No
+需要。不需要
 
-## What Goes In[¶](#what-goes-in "Permalink to this headline")
+## What Goes In[¶]
 
-These functions manage an input specification, After Effects’ internal representation of data gathered from any source.
+这些函数管理一个输入规范，After Effects对从任何来源收集的数据的内部表示。
 
-Any image or audio data in After Effects (except solids) is obtained from an input specification handle, or `AEIO_InSpecH`.
+在After Effects中的任何图像或音频数据（固态层除外）都是从输入规格句柄或`AEIO_InSpecH`获得的。
 
-### AEGP_IOInSuite5[¶](#aegp-ioinsuite5 "Permalink to this headline")
+### AEGP_IOInSuite5[¶]
 
 #### AEGP_GetInSpecOptionsHandle
 
-Retrieves the options data (created by your AEIO) for the given `AEIO_InSpecH`.
+为给定的`AEIO_InSpecH`检索选项数据（由你的AEIO创建）。
 
 ```cpp
 AEGP_GetInSpecOptionsHandle(
@@ -891,8 +891,8 @@ AEGP_GetInSpecOptionsHandle(
 
 #### AEGP_SetInSpecOptionsHandle
 
-Sets the options data for the given `AEIO_InSpecH`.
-Must be allocated using the [Memory Suite](../aegps/aegp-suites.html#aegps-aegp-suites-memory-suite).
+为给定的`AEIO_InSpecH'设置选项数据。
+必须使用[Memory Suite](./aegps/aegp-suites.html#aegps-aegp-suites-memory-suite)分配。
 
 ```cpp
 AEGP_SetInSpecOptionsHandle(
@@ -904,8 +904,8 @@ AEGP_SetInSpecOptionsHandle(
 
 #### AEGP_GetInSpecFilePath
 
-Retrieves the file path for the `AEIO_InSpecH`.
-The file path is a handle to a NULL-terminated A_UTF16Char string, and must be disposed with `AEGP_FreeMemHandle`.
+检索`AEIO_InSpecH`的文件路径。
+文件路径是一个以NULL结尾的A_UTF16Char字符串的句柄，必须用`AEGP_FreeMemHandle`处理。
 
 ```cpp
 AEGP_GetInSpecFilePath(
@@ -916,7 +916,7 @@ AEGP_GetInSpecFilePath(
 
 #### AEGP_GetInSpecNativeFPS
 
-Retrieves the frame rate of the `AEIO_InSpecH`.
+检索`AEIO_InSpecH`的帧速率。
 
 ```cpp
 AEGP_GetInSpecNativeFPS(
@@ -927,7 +927,7 @@ AEGP_GetInSpecNativeFPS(
 
 #### AEGP_SetInSpecNativeFPS
 
-Sets the frame rate of the `AEIO_InSpecH`.
+设置 "AEIO_InSpecH "的帧速率。
 
 ```cpp
 AEGP_SetInSpecNativeFPS(
@@ -938,7 +938,7 @@ AEGP_SetInSpecNativeFPS(
 
 #### AEGP_GetInSpecDepth
 
-Retrieves the bit depth of the image data in the `AEIO_InSpecH`.
+检索 "AEIO_InSpecH "中图像数据的比特深度。
 
 ```cpp
 AEGP_GetInSpecDepth(
@@ -949,7 +949,7 @@ AEGP_GetInSpecDepth(
 
 #### AEGP_SetInSpecDepth
 
-Indicates to After Effects the bit depth of the image data in the `AEIO_InSpecH`.
+向After Effects显示`AEIO_InSpecH'中图像数据的比特深度。
 
 ```cpp
 AEGP_SetInSpecDepth(
@@ -960,7 +960,7 @@ AEGP_SetInSpecDepth(
 
 #### AEGP_GetInSpecSize
 
-Retrieves the size (in bytes) of the data referenced by the `AEIO_InSpecH`.
+检索 "AEIO_InSpecH "所引用的数据的大小（以字节为单位）。
 
 ```cpp
 AEGP_GetInSpecSize(
@@ -971,7 +971,7 @@ AEGP_GetInSpecSize(
 
 #### AEGP_SetInSpecSize
 
-Indicates to After Effects the size (in bytes) of the data referenced by the `AEIO_InSpecH`.
+向After Effects表明`AEIO_InSpecH`所引用的数据的大小（以字节为单位）。
 
 ```cpp
 AEGP_SetInSpecSize(
@@ -982,7 +982,7 @@ AEGP_SetInSpecSize(
 
 #### AEGP_GetInSpecInterlaceLabel
 
-Retrieves field information for the `AEIO_InSpecH`.
+检索 "AEIO_InSpecH "的字段信息。
 
 ```cpp
 AEGP_GetInSpecInterlaceLabel(
@@ -993,7 +993,7 @@ AEGP_GetInSpecInterlaceLabel(
 
 #### AEGP_SetInSpecInterlaceLabel
 
-Specifies field information for the `AEIO_InSpecH`.
+指定 "AEIO_InSpecH "的字段信息。
 
 ```cpp
 AEGP_SetInSpecInterlaceLabel(
@@ -1004,7 +1004,7 @@ AEGP_SetInSpecInterlaceLabel(
 
 #### AEGP_GetInSpecAlphaLabel
 
-Retrieves alpha channel interpretation information for the `AEIO_InSpecH`.
+检索 "AEIO_InSpecH "的alpha通道解释信息。
 
 ```cpp
 AEGP_GetInSpecAlphaLabel(
@@ -1015,7 +1015,7 @@ AEGP_GetInSpecAlphaLabel(
 
 #### AEGP_SetInSpecAlphaLabel
 
-Sets alpha channel interpretation information for the `AEIO_InSpecH`.
+设置 "AEIO_InSpecH "的字母通道解释信息。
 
 ```cpp
 AEGP_SetInSpecAlphaLabel(
@@ -1026,7 +1026,7 @@ AEGP_SetInSpecAlphaLabel(
 
 #### AEGP_GetInSpecDuration
 
-Retrieves the duration of the `AEIO_InSpecH`.
+检索 "AEIO_InSpecH "的持续时间。
 
 ```cpp
 AEGP_GetInSpecDuration(
@@ -1037,10 +1037,10 @@ AEGP_GetInSpecDuration(
 
 #### AEGP_SetInSpecDuration
 
-Sets the duration of the `AEIO_InSpecH`.
-NOTE: As of 5.5, this must be called, even for frame-based file formats.
-If you don’t set the `A_Time.scale` to something other than zero, your file(s) will not import.
-This will be fixed in future versions.
+设置 "AEIO_InSpecH "的持续时间。
+注意：从5.5开始，必须调用这个功能，即使是基于帧的文件格式。
+如果你不把`A_Time.scale`设置为零以外的东西，你的文件将无法导入。
+这个问题将在未来的版本中得到解决。
 
 ```cpp
 AEGP_SetInSpecDuration(
@@ -1051,7 +1051,7 @@ AEGP_SetInSpecDuration(
 
 #### AEGP_GetInSpecDimensions
 
-Retrieves the width and height of the image data in the `AEIO_InSpecH`.
+检索`AEIO_InSpecH`中图像数据的宽度和高度。
 
 ```cpp
 AEGP_GetInSpecDimensions(
@@ -1063,7 +1063,7 @@ AEGP_GetInSpecDimensions(
 
 #### AEGP_SetInSpecDimensions
 
-Indicates to After Effects the width and height of the image data in the `AEIO_InSpecH`.
+向After Effects显示 "AEIO_InSpecH "中的图像数据的宽度和高度。
 
 ```cpp
 AEGP_SetInSpecDimensions(
@@ -1075,9 +1075,9 @@ AEGP_SetInSpecDimensions(
 
 #### AEGP_InSpecGetRational
 
-Dimensions
+尺寸
 
-Retrieves the width, height, bounding rect, and scaling factor applied to an `AEIO_InSpecH`.
+检索应用于`AEIO_InSpecH'的宽度、高度、边界矩形和缩放系数。
 
 ```cpp
 AEGP_InSpecGetRationalDimensions(
@@ -1091,7 +1091,7 @@ AEGP_InSpecGetRationalDimensions(
 
 #### AEGP_GetInSpecHSF
 
-Retrieves the horizontal scaling factor applied to an `AEIO_InSpecH`.
+检索应用于 "AEIO_InSpecH "的水平缩放系数。
 
 ```cpp
 AEGP_GetInSpecHSF(
@@ -1102,7 +1102,7 @@ AEGP_GetInSpecHSF(
 
 #### AEGP_SetInSpecHSF
 
-Sets the horizontal scaling factor of an `AEIO_InSpecH`.
+设定 "AEIO_InSpecH "的水平缩放系数。
 
 ```cpp
 AEGP_SetInSpecHSF(
@@ -1113,7 +1113,7 @@ AEGP_SetInSpecHSF(
 
 #### AEGP_GetInSpecSoundRate
 
-Obtains the sampling rate (in samples per second) for the audio data referenced by the `AEIO_InSpecH`.
+获取 "AEIO_InSpecH "所引用的音频数据的采样率（以每秒采样数为单位）。
 
 ```cpp
 AEGP_GetInSpecSoundRate(
@@ -1124,7 +1124,7 @@ AEGP_GetInSpecSoundRate(
 
 #### AEGP_SetInSpecSoundRate
 
-Sets the sampling rate (in samples per second) for the audio data referenced by the `AEIO_InSpecH`.
+为 "AEIO_InSpecH "引用的音频数据设置采样率（以每秒采样数计）。
 
 ```cpp
 AEGP_SetInSpecSoundRate(
@@ -1135,7 +1135,7 @@ AEGP_SetInSpecSoundRate(
 
 #### AEGP_GetInSpecSoundEncoding
 
-Obtains the encoding method (signed PCM, unsigned PCM, or floating point) from an AEIO_InSpecH.
+从AEIO_InSpecH中获取编码方法（有符号PCM，无符号PCM，或浮点）。
 
 ```cpp
 AEGP_GetInSpecSoundEncoding(
@@ -1146,7 +1146,7 @@ AEGP_GetInSpecSoundEncoding(
 
 #### AEGP_SetInSpecSoundEncoding
 
-Sets the encoding method of an AEIO_InSpecH.
+设置AEIO_InSpecH的编码方法。
 
 ```cpp
 AEGP_SetInSpecSoundEncoding(
@@ -1157,7 +1157,7 @@ AEGP_SetInSpecSoundEncoding(
 
 #### AEGP_GetInSpecSoundSampleSize
 
-Retrieves the bytes-per-sample (1,2, or 4) from an `AEIO_InSpecH`.
+从`AEIO_InSpecH`中获取每样本的字节数（1,2,或4）。
 
 ```cpp
 AEGP_GetInSpecSoundSampleSize(
@@ -1168,7 +1168,7 @@ AEGP_GetInSpecSoundSampleSize(
 
 #### AEGP_SetInSpecSoundSampleSize
 
-Set the bytes per sample of an `AEIO_InSpecH`.
+设置 "AEIO_InSpecH "的每采样字节数。
 
 ```cpp
 AEGP_SetInSpecSoundSampleSize(
@@ -1179,7 +1179,7 @@ AEGP_SetInSpecSoundSampleSize(
 
 #### AEGP_GetInSpecSoundChannels
 
-Determines whether the audio in the `AEIO_SndChannels` is mono or stereo.
+决定`AEIO_SndChannels`中的音频是单声道还是立体声。
 
 ```cpp
 AEGP_GetInSpecSoundChannels(
@@ -1190,7 +1190,7 @@ AEGP_GetInSpecSoundChannels(
 
 #### AEGP_SetInSpecSoundChannels
 
-Sets the audio in an `AEIO_SndChannels` to mono or stereo.
+将一个`AEIO_SndChannels`中的音频设置为单声道或立体声。
 
 ```cpp
 AEGP_SetInSpecSoundChannels(
@@ -1201,8 +1201,8 @@ AEGP_SetInSpecSoundChannels(
 
 #### AEGP_AddAuxExtMap
 
-If your file format has auxiliary files which you want to prevent users from opening directly,
-pass it’s extension, file type and creator to this function to keep it from appearing in input dialogs.
+如果你的文件格式有辅助文件，你想阻止用户直接打开。
+把它的扩展名、文件类型和创建者传给这个函数，以防止它出现在输入对话框中。
 
 ```cpp
 AEGP_AddAuxExtMap(
@@ -1214,15 +1214,15 @@ AEGP_AddAuxExtMap(
 
 #### AEGP_SetInSpecEmbeddedColorProfile
 
-In case of RGB data, if there is an embedded icc profile, build an `AEGP_ColorProfile` out of
-this icc profile using `AEGP_GetNewColorProfileFromICCProfile` from [AEGP_ColorSettingsSuite2](../aegps/aegp-suites.html#aegps-aegp-suites-aegp-colorsettingssuite) and set the profile description set to NULL.
-In case of non-RGB data, if there is an embedded non-RGB icc profile or you know the color space the data is in,
-set the color profile set to NULL, and provide the description as a NULL-terminated unicode string.
-Doing this disables color management UI that allows user to affect profile choice in the application UI.
-If you are unpacking non-RGB data directly into working space (to get working space use `AEGP_GetNewWorkingSpaceColorProfile`), you are done.
-If you are unpacking non-RGB data into specific RGB color space, you must pass the profile describing this space to `AEGP_SetInSpecAssignedColorProfile` below.
-Otherwise, your RGB data will be incorrectly interpreted as being in working space.
-Either color profile or profile description should be NULL in this function. You cannot use both.
+如果是RGB数据，如果有一个嵌入的icc配置文件，使用`AEGP_ColorProfile`从这个icc配置文件中建立一个`AEGP_ColorProfile`。
+使用[AEGP_ColorSettingsSuite2](.../aegps/aegp-suites.html#aegps-aegp-suites-aegp-colorsettingssuite)的`AEGP_GetNewColorProfileFromICCProfile'从这个icc配置文件中建立一个`AEGP_ColorProfile'，并将配置文件描述设置为null。
+在非RGB数据的情况下，如果有一个嵌入式的非RGB icc配置文件，或者你知道数据所处的色彩空间。
+将颜色配置文件设置为NULL，并提供以NULL结尾的unicode字符串的描述。
+这样做会使色彩管理的用户界面失效，从而使用户能够在应用程序的用户界面上影响配置文件的选择。
+如果你将非RGB数据直接解压到工作空间（要获得工作空间请使用`AEGP_GetNewWorkingSpaceColorProfile`），你就完成了。
+如果你要将非RGB数据解压到特定的RGB色彩空间，你必须将描述这个空间的配置文件传递给下面的`AEGP_SetInSpecAssignedColorProfile`。
+否则，你的RGB数据将被错误地解释为在工作空间。
+在这个函数中，颜色配置文件或配置文件描述应该是NULL。你不能同时使用。
 
 ```cpp
 AEGP_SetInSpecEmbeddedColorProfile(
@@ -1234,7 +1234,7 @@ AEGP_SetInSpecEmbeddedColorProfile(
 
 #### AEGP_SetInSpecAssignedColorProfile
 
-Assign a valid RGB color profile to the footage.
+为镜头分配一个有效的RGB颜色配置文件。
 
 ```cpp
 AEGP_SetInSpecAssignedColorProfile(
@@ -1245,7 +1245,7 @@ AEGP_SetInSpecAssignedColorProfile(
 
 #### AEGP_GetInSpecNativeStartTime
 
-New in CC. Retrieves the native start time of the footage.
+CC中的新功能。检索素材的原始开始时间。
 
 ```cpp
 AEGP_GetInSpecNativeStartTime(
@@ -1256,7 +1256,7 @@ AEGP_GetInSpecNativeStartTime(
 
 #### AEGP_SetInSpecNativeStartTime
 
-New in CC. Assign a native start time to the footage.
+在CC中新加入。为素材指定一个本地开始时间。
 
 ```cpp
 AEGP_SetInSpecNativeStartTime(
@@ -1267,9 +1267,9 @@ AEGP_SetInSpecNativeStartTime(
 
 #### AEGP_ClearInSpecNativeStartTime
 
-New in CC. Clear the native start time of the footage.
-Setting the native start time to 0 using `AEGP_SetInSpecNativeStartTime` doesn’t do this.
-It still means there is a special native start time provided.
+在CC中新增 清除镜头的原始开始时间。
+使用`AEGP_SetInSpecNativeStartTime`将原生开始时间设置为0并不能做到这点。
+它仍然意味着有一个特殊的本地开始时间。
 
 ```cpp
 AEGP_ClearInSpecNativeStartTime(
@@ -1279,7 +1279,7 @@ AEGP_ClearInSpecNativeStartTime(
 
 #### AEGP_GetInSpecNativeDisplayDropFrame
 
-New in CC. Retrieve the drop-frame setting of the footage.
+CC中的新功能。检索镜头的下降帧设置。
 
 ```cpp
 AEGP_GetInSpecNativeDisplayDropFrame(
@@ -1290,7 +1290,7 @@ AEGP_GetInSpecNativeDisplayDropFrame(
 
 #### AEGP_SetInSpecNativeDisplayDropFrame
 
-New in CC. Assign the drop-frame setting of the footage.
+CC中的新功能。指派镜头的停格设置。
 
 ```cpp
 AEGP_SetInSpecNativeDisplayDropFrame(
@@ -1299,15 +1299,15 @@ AEGP_SetInSpecNativeDisplayDropFrame(
 
 ```
 
-## What Goes Out[¶](#what-goes-out "Permalink to this headline")
+## What Goes Out[¶]
 
-These functions manage all interactions with an output specification in After Effects’ render queue.
+这些功能管理与After Effects渲染队列中的输出规范的所有互动。
 
-### AEGPIOOutSuite4[¶](#aegpiooutsuite4 "Permalink to this headline")
+### AEGPIOOutSuite4[¶]
 
 #### AEGP_GetOutSpecOptionsHandle
 
-Retrieves the Options for the `AEIO_OutSpecH`.
+检索 "AEIO_OutSpecH "的选项。
 
 ```cpp
 AEGP_GetOutSpecOptionsHandle(
@@ -1318,7 +1318,7 @@ AEGP_GetOutSpecOptionsHandle(
 
 #### AEGP_SetOutSpecOptionsHandle
 
-Sets the Options for the `AEIO_OutSpecH`.
+设置 "AEIO_OutSpecH "的选项。
 
 ```cpp
 AEGP_SetOutSpecOptionsHandle(
@@ -1330,9 +1330,9 @@ AEGP_SetOutSpecOptionsHandle(
 
 #### AEGP_GetOutSpecFilePath
 
-Obtains the path for the `AEIO_OutSpecH`. The file path is a handle to a NULL-terminated A_UTF16Char string, and must be disposed with `AEGP_FreeMemHandle`.
-If `file_rsrvdPB` returns `TRUE`, the plug-in should not overwrite it
-(After Effects has already created an empty file); doing so can cause network renders to fail.
+获取 "AEIO_OutSpecH "的路径。文件路径是一个以NULL结尾的A_UTF16Char字符串的句柄，必须用`AEGP_FreeMemHandle`处理。
+如果`file_rsrvdPB`返回`TRUE`，插件不应该覆盖它。
+(After Effects已经创建了一个空文件）；这样做会导致网络渲染失败。
 
 ```cpp
 AEGP_GetOutSpecFilePath(
@@ -1344,7 +1344,7 @@ AEGP_GetOutSpecFilePath(
 
 #### AEGP_GetOutSpecFPS
 
-Obtains the frames per second of the `AEIO_OutSpecH`.
+获取`AEIO_OutSpecH`的每秒帧数。
 
 ```cpp
 AEGP_GetOutSpecFPS(
@@ -1355,7 +1355,7 @@ AEGP_GetOutSpecFPS(
 
 #### AEGP_SetOutSpecNativeFPS
 
-Sets the frames per second of the `AEIO_OutSpecH`.
+设置 "AEIO_OutSpecH "的每秒帧数。
 
 ```cpp
 AEGP_SetOutSpecNativeFPS(
@@ -1366,7 +1366,7 @@ AEGP_SetOutSpecNativeFPS(
 
 #### AEGP_GetOutSpecDepth
 
-Obtains the pixel bit depth of the `AEIO_OutSpecH`.
+获取 "AEIO_OutSpecH "的像素位深度。
 
 ```cpp
 AEGP_GetOutSpecDepth(
@@ -1377,7 +1377,7 @@ AEGP_GetOutSpecDepth(
 
 #### AEGP_SetOutSpecDepth
 
-Sets the pixel bit depth of the `AEIO_OutSpecH`.
+设置 "AEIO_OutSpecH "的像素位深度。
 
 ```cpp
 AEGP_SetOutSpecDepth(
@@ -1388,7 +1388,7 @@ AEGP_SetOutSpecDepth(
 
 #### AEGP_GetOutSpecInterlaceLabel
 
-Obtains field information for the `AEIO_OutSpecH`.
+获取 "AEIO_OutSpecH "的字段信息。
 
 ```cpp
 AEGP_GetOutSpecInterlaceLabel(
@@ -1399,7 +1399,7 @@ AEGP_GetOutSpecInterlaceLabel(
 
 #### AEGP_SetOutSpecInterlaceLabel
 
-Set the field information for the `AEIO_OutSpecH`.
+设置 "AEIO_OutSpecH "的字段信息。
 
 ```cpp
 AEGP_SetOutSpecInterlaceLabel(
@@ -1410,7 +1410,7 @@ AEGP_SetOutSpecInterlaceLabel(
 
 #### AEGP_GetOutSpecAlphaLabel
 
-Obtains alpha interpretation information for the `AEIO_OutSpecH`.
+获取 "AEIO_OutSpecH "的字母解释信息。
 
 ```cpp
 AEGP_GetOutSpecAlphaLabel(
@@ -1421,7 +1421,7 @@ AEGP_GetOutSpecAlphaLabel(
 
 #### AEGP_SetOutSpecAlphaLabel
 
-Sets the alpha interpretation for the `AEIO_OutSpecH`.
+为 "AEIO_OutSpecH "设置阿尔法解释。
 
 ```cpp
 AEGP_SetOutSpecAlphaLabel(
@@ -1432,7 +1432,7 @@ AEGP_SetOutSpecAlphaLabel(
 
 #### AEGP_GetOutSpecDuration
 
-Obtains the duration of the `AEIO_OutSpecH`.
+获取 "AEIO_OutSpecH "的持续时间。
 
 ```cpp
 AEGP_GetOutSpecDuration(
@@ -1443,7 +1443,7 @@ AEGP_GetOutSpecDuration(
 
 #### AEGP_SetOutSpecDuration
 
-Sets the duration of the `AEIO_OutSpecH`.
+设置 "AEIO_OutSpecH "的持续时间。
 
 ```cpp
 AEGP_SetOutSpecDuration(
@@ -1454,7 +1454,7 @@ AEGP_SetOutSpecDuration(
 
 #### AEGP_GetOutSpecDimensions
 
-Obtains the dimensions of the `AEIO_OutSpecH`.
+获得 "AEIO_OutSpecH "的尺寸。
 
 ```cpp
 AEGP_GetOutSpecDimensions(
@@ -1466,7 +1466,7 @@ AEGP_GetOutSpecDimensions(
 
 #### AEGP_GetOutSpecHSF
 
-Obtains the horizontal scaling factor of the `AEIO_OutSpecH`.
+获取 "AEIO_OutSpecH "的水平缩放系数。
 
 ```cpp
 AEGP_GetOutSpecHSF(
@@ -1477,7 +1477,7 @@ AEGP_GetOutSpecHSF(
 
 #### AEGP_SetOutSpecHSF
 
-Sets the horizontal scaling factor of the `AEIO_OutSpecH`.
+设定 "AEIO_OutSpecH "的水平缩放系数。
 
 ```cpp
 AEGP_SetOutSpecHSF(
@@ -1488,7 +1488,7 @@ AEGP_SetOutSpecHSF(
 
 #### AEGP_GetOutSpecSoundRate
 
-Obtains the sampling rate for the `AEIO_OutSpecH`.
+获取 "AEIO_OutSpecH "的采样率。
 
 ```cpp
 AEGP_GetOutSpecSoundRate(
@@ -1499,7 +1499,7 @@ AEGP_GetOutSpecSoundRate(
 
 #### AEGP_SetOutSpecSoundRate
 
-Sets the sampling rate for the `AEIO_OutSpecH`.
+设置 "AEIO_OutSpecH "的采样率。
 
 ```cpp
 AEGP_SetOutSpecSoundRate(
@@ -1510,7 +1510,7 @@ AEGP_SetOutSpecSoundRate(
 
 #### AEGP_GetOutSpecSoundEncoding
 
-Obtains the sound encoding format of the `AEIO_OutSpecH`.
+获取 "AEIO_OutSpecH "的声音编码格式。
 
 ```cpp
 AEGP_GetOutSpecSoundEncoding(
@@ -1521,7 +1521,7 @@ AEGP_GetOutSpecSoundEncoding(
 
 #### AEGP_SetOutSpecSoundEncoding
 
-Sets the sound encoding format of the `AEIO_OutSpecH`.
+设置 "AEIO_OutSpecH "的声音编码格式。
 
 ```cpp
 AEGP_SetOutSpecSoundEncoding(
@@ -1532,7 +1532,7 @@ AEGP_SetOutSpecSoundEncoding(
 
 #### AEGP_GetOutSpecSoundSampleSize
 
-Obtains the bytes-per-sample of the `AEIO_OutSpecH`.
+获取 "AEIO_OutSpecH "的每采样字节数。
 
 ```cpp
 AEGP_GetOutSpecSoundSampleSize(
@@ -1543,7 +1543,7 @@ AEGP_GetOutSpecSoundSampleSize(
 
 #### AEGP_SetOutSpecSoundSampleSize
 
-Sets the bytes-per-sample of the `AEIO_OutSpecH`.
+设置 "AEIO_OutSpecH "的每采样字节数。
 
 ```cpp
 AEGP_SetOutSpecSoundSampleSize(
@@ -1554,7 +1554,7 @@ AEGP_SetOutSpecSoundSampleSize(
 
 #### AEGP_GetOutSpecSoundChannels
 
-Obtains the number of sounds channels in the `AEIO_OutSpecH`.
+获取 "AEIO_OutSpecH "中的声音通道数。
 
 ```cpp
 AEGP_GetOutSpecSoundChannels(
@@ -1565,7 +1565,7 @@ AEGP_GetOutSpecSoundChannels(
 
 #### AEGP_SetOutSpecSoundChannels
 
-Sets the number of sounds channels in the `AEIO_OutSpecH`.
+设置 "AEIO_OutSpecH "中的声音通道数。
 
 ```cpp
 AEGP_SetOutSpecSoundChannels(
@@ -1576,7 +1576,7 @@ AEGP_SetOutSpecSoundChannels(
 
 #### AEGP_GetOutSpecIsStill
 
-Determines whether the `AEIO_OutSpecH` is a still.
+确定 "AEIO_OutSpecH "是否是静止的。
 
 ```cpp
 AEGP_GetOutSpecIsStill(
@@ -1587,7 +1587,7 @@ AEGP_GetOutSpecIsStill(
 
 #### AEGP_GetOutSpecPosterTime
 
-Obtains the time of the `AEIO_OutSpecH's` poster frame.
+获取 "AEIO_OutSpecH "的海报帧的时间。
 
 ```cpp
 AEGP_GetOutSpecPosterTime(
@@ -1598,7 +1598,7 @@ AEGP_GetOutSpecPosterTime(
 
 #### AEGP_GetOutSpecStartFrame
 
-Obtains the time of the first frame in the `AEIO_OutSpecH`.
+获取 "AEIO_OutSpecH "中第一帧的时间。
 
 ```cpp
 AEGP_GetOutSpecStartFrame(
@@ -1609,7 +1609,7 @@ AEGP_GetOutSpecStartFrame(
 
 #### AEGP_GetOutSpecPullDown
 
-Obtains the pulldown phase of the `AEIO_OutSpecH`.
+获取 "AEIO_OutSpecH "的下拉阶段。
 
 ```cpp
 AEGP_GetOutSpecPullDown(
@@ -1620,7 +1620,7 @@ AEGP_GetOutSpecPullDown(
 
 #### AEGP_GetOutSpecIsMissing
 
-Passes back TRUE if there is no `AEIO_OutSpecH`.
+如果没有 "AEIO_OutSpecH"，则传回TRUE。
 
 ```cpp
 AEGP_GetOutSpecIsMissing(
@@ -1631,7 +1631,7 @@ AEGP_GetOutSpecIsMissing(
 
 #### AEGP_GetOutSpecShouldEmbedICCProfile
 
-Returns TRUE if the AEIO should embed a color profile in the output.
+如果AEIO应该在输出中嵌入一个颜色配置文件，则返回TRUE。
 
 ```cpp
 AEGP_GetOutSpecShouldEmbedICCProfile(
@@ -1642,8 +1642,8 @@ AEGP_GetOutSpecShouldEmbedICCProfile(
 
 #### AEGP_GetNewOutSpecColorProfile
 
-Returns an (opaque) ICC color profile for embedding in the AEIO’s output.
-Must be disposed with `AEGP_DisposeColorProfile`.
+返回一个（不透明的）ICC颜色配置文件，用于嵌入到AEIO的输出中。
+必须用`AEGP_DisposeColorProfile`来处理。
 
 ```cpp
 AEGP_GetNewOutSpecColorProfile(
@@ -1655,9 +1655,9 @@ AEGP_GetNewOutSpecColorProfile(
 
 #### AEGP_GetOutSpecOutputModule
 
-Returns the `AEGP_RQItemRefH` and `AEGP_OutputModuleRefH` associated with the given `AEIO_OutSpecH`.
-Fails if the render queue item is not found, or if `AEIO_OutSpecH` is not a confirmed outH and is a copy,
-i.e. if the Output Module settings dialog is open and the user hasn’t hit OK.
+返回与给定的`AEIO_OutSpecH`相关的`AEGP_RQItemRefH`和`AEGP_OutputModuleRefH`。
+如果没有找到渲染队列项目，或者`AEIO_OutSpecH`不是一个确认的outH，是一个副本，则失败。
+也就是说，如果输出模块设置对话框打开，而用户没有点击OK。
 
 ```cpp
 AEGP_GetOutSpecOutputModule(

@@ -6,7 +6,7 @@ category:
 ---
 # Artisan Data Types
 
-Below are the data types most commonly used in the Artisan API.
+以下是Artisan API中最常用的数据类型。
 
 ## Data Types Used In The Artisan API
 
@@ -18,55 +18,55 @@ Below are the data types most commonly used in the Artisan API.
 
 #### AEGP_RenderLayerContextH
 
-State information at the time of a render request, sent to an Artisan by After Effects.
+渲染请求时的状态信息，由After Effects发送至Artisan。
 
 #### PR_RenderContextH
 
-A collection of settings defining what is to be rendered, and how.
+设置的集合，定义了要渲染的内容和方式。
 
 #### AEGP_SoundDataH
 
-The audio settings used for a given layer.
+用于给定图层的音频设置。
 
-`AEGP_RenderReceiptH`
+"AEGP_RenderReceiptH"（渲染接收）。
 
-`AEGP_FrameReceiptH` Used by Artisans when rendering.
+`AEGP_FrameReceiptH`在渲染时由工匠们使用。
 
 #### AEGP_WorldH
 
-A frame of pixels.
+一个像素的框架。
 
 #### AEGP_RenderOptionsH
 
-The settings associated with a render queue item.
+与一个渲染队列项目相关的设置。
 
-## Horz? Vert?[¶](#horz-vert "Permalink to this headline")
+## Horz? Vert?[¶]
 
-After Effects’ matrix is row based; OpenGL’s is column based. This means more work for you. Yay, billable hours!
+After Effects的矩阵是基于行的，OpenGL的是基于列的。这意味着你要做更多的工作。耶，计费时间!
 
-## Implementation And Design[¶](#implementation-and-design "Permalink to this headline")
+## Implementation And Design[¶]
 
-An Artisan is nearly an application unto itself. Because we realized early in the After Effects 5.0 that there are many ways to approach the problems inherent in 3D rendering; intersections and shading, for example.
+一个工匠几乎是一个独立的应用程序。因为我们在After Effects 5.0的早期就意识到，有很多方法可以解决3D渲染中固有的问题；例如，交叉点和阴影等。
 
-We provided an API with which we and third parties (yes, we really do use our own APIs) could implement any 3D rendering scheme desired.
+我们提供了一个API，我们和第三方（是的，我们真的使用自己的API）可以实现任何需要的3D渲染方案。
 
-## 3D Compositing, Not Modeling[¶](#d-compositing-not-modeling "Permalink to this headline")
+## 3D Compositing, Not Modeling[¶]
 
-After Effects is _not_ a 3D modeling application. Users work in a responsive mode, switching to higher quality only at for proofing or final output. Consider providing at least two quality modes, one for layout and another for final output. Be conscious of render time in low quality mode.
+After Effects不是一个3D建模应用程序。用户在响应模式下工作，只有在打样或最终输出时才切换到更高的质量。考虑提供至少两种质量模式，一种用于布局，另一种用于最终输出。在低质量模式下要注意渲染时间。
 
-## Registering An Artisan[¶](#registering-an-artisan "Permalink to this headline")
+## Registering An Artisan[¶]
 
-An Artisan is an AEGP, and has a single entry point. Artisans must also register their own function entry points and have a special callback for this purpose. See `AEGP_RegisterArtisan()` from [AEGP_RegisterSuites5](../aegps/aegp-suites.html#aegps-aegp-suites-aegp-registersuites).
+工匠是一个AEGP，有一个单一的入口点。匠人也必须注册自己的函数入口点，并为此有一个特殊的回调。参见[AEGP_RegisterSuites5](.../aegps/aegp-suites.html#aegps-aegp-suites-aegp-registersuites)中的`AEGP_RegisterArtisan()`。
 
-This tables shows the functions that Artisans can support as defined by `PR_ArtisanEntryPoints`: only `render_func` is required.
+这个表格显示了由`PR_ArtisanEntryPoints`定义的Artisans可以支持的功能：只有`render_func`是必须的。
 
-### Artisan Entry Points[¶](#artisan-entry-points "Permalink to this headline")
+### Artisan Entry Points[¶]
 
 **PR_ArtisanEntryPoints**
 
 #### global_setup_func0
 
-Called only once, right after `GP_Main`. The global data is common across all instances of the plug-in. If you allocate memory during Global Setup, you must free it during your `global_setdown_func`.
+只调用一次，就在`GP_Main`之后。全局数据在插件的所有实例中是通用的。如果你在全局设置期间分配了内存，你必须在`global_setdown_func`期间释放它。
 
 ```cpp
 
@@ -83,7 +83,7 @@ PR_GlobalSetupFunc(
 
 #### global_setdown_func0
 
-Dispose of any global data you allocated.
+处置你分配的任何全局数据。
 
 ```cpp
 
@@ -100,7 +100,7 @@ PR_GlobalSetdownFunc(
 
 #### global_do_about_func0
 
-Tell the world about yourself! Use `in_dataP>msg_func` to display your dialog.
+告诉世界你的情况! 使用`in_dataP>msg_func`来显示你的对话框。
 
 ```cpp
 
@@ -117,7 +117,7 @@ PR_GlobalDoAboutFunc(
 
 #### setup_instance_func0
 
-Allocate and instantiate any data specific to this instance of your Artisan.
+分配和实例化任何特定于你的Artisan实例的数据。
 
 ```cpp
 
@@ -142,7 +142,7 @@ PR_InstanceSetupFunc(
 
 #### setdown_instance_func0
 
-Deallocate and free any data specific to this instance of your Artisan.
+卸载并释放你的Artisan实例的任何特定数据。
 
 ```cpp
 
@@ -163,7 +163,7 @@ PR_InstanceSetdownFunc(
 
 #### flatten_instance_func0
 
-Flatten your data in preparation to being written to disk. (making sure it’s OS independent, if your Artisan is).
+扁平化你的数据，准备写入磁盘。(确保它是独立于操作系统的，如果你的Artisan是这样的话）。
 
 ```cpp
 
@@ -186,7 +186,7 @@ PR_FlattenInstanceFunc(
 
 #### do_instance_dialog_func0
 
-If your Artisan has a additional parameters (accessed through its Options dialog), this function will be called to get and set them.
+如果你的Artisan有一个额外的参数（通过它的选项对话框访问），这个函数将被调用以获得和设置它们。
 
 ```cpp
 
@@ -207,11 +207,11 @@ PR_DoInstanceDialogFunc(
 
 ```
 
-`PR_DialogResultis` is either `PR_DialogResult_NO_CHANGE` or `PR_DialogResult_CHANGE_MADE`.
+`PR_DialogResultis`是`PR_DialogResult_NO_CHANGE`或`PR_DialogResult_CHANGE_MADE`。
 
 #### frame_setup_func0
 
-Perform any setup necessary to render a frame (called immediately before rendering).
+执行渲染一帧所需的任何设置（在渲染前立即调用）。
 
 ```cpp
 
@@ -236,7 +236,7 @@ PR_FrameSetupFunc(
 
 #### frame_setdown_func0
 
-Dispose of any setup data allocated during `frame_setup` (sent immediately after rendering).
+处理在`frame_setup`期间分配的任何设置数据（在渲染后立即发送）。
 
 ```cpp
 
@@ -261,7 +261,7 @@ PR_FrameSetdownFunc(
 
 #### render_func
 
-Render the scene.
+渲染场景。
 
 ```cpp
 
@@ -286,9 +286,9 @@ PR_FrameRenderFunc(
 
 #### query_func0
 
-Artisans can draw their own projection axes, should the need arise.
+如果有需要，美工人员可以绘制他们自己的投影轴。
 
-After Effects will call this function to obtain the transform between the composition world and those axes, as well as for a number of other functions related to on- and off-screen preview drawing (the former is relevant only to interactive artisans).
+After Effects将调用这个函数来获得合成世界和这些轴之间的变换，以及其他一些与屏上和屏下预览绘制有关的功能（前者只与互动工匠有关）。
 
 ```cpp
 
@@ -311,7 +311,7 @@ PR_QueryFunc(
 
 ```
 
-`PR_QueryType` can be one of the following:
+`PR_QueryType`可以是以下之一。
 
 - `PR_QueryType_NONE = 0`,
 - `PR_QueryType_TRANSFORM`,
@@ -325,29 +325,29 @@ PR_QueryFunc(
 - `PR_QueryType_GET_CURRENT_CONTEXT_SAFE_FOR_LINE_DRAWING`,
 - `PR_QueryType_GET_ARTISAN_QUALITY`
 
-New in CS6.
+CS6中的新功能。
 
-## The World Is Your Canvas[¶](#the-world-is-your-canvas "Permalink to this headline")
+## The World Is Your Canvas[¶]
 
-`AEGP_RenderTexture()` supplies the raw pixels of a layer, untransformed, into an arbitrarily-sized buffer.
+`AEGP_RenderTexture()`提供一个图层的原始像素，未经转换，进入一个任意大小的缓冲区。
 
-`AEGP_RenderLayer()` invokes the entire After Effects render pipeline, including transforms, masking, et cetera, providing the layer as it appears in its composition, in a composition-sized buffer.
+`AEGP_RenderLayer()`调用整个After Effects的渲染管线，包括变换、遮罩等，提供图层在其合成中的样子，在一个合成大小的缓冲区中。
 
-If the layer being rendered is 3D, the default (Standard 3D) Artisan is invoked to perform any 3D geometrics.
+如果被渲染的图层是3D的，就会调用默认的（标准3D）Artisan来执行任何3D几何图形。
 
-Your Artisan can use this to render track matte layers, and apply them only in a strictly 2D sense, to the transformed 3D layer.
+你的工匠可以用它来渲染跟踪哑光层，并且只在严格的二维意义上将它们应用到转换后的三维层。
 
-Before rendering, the Artisans that ship with After Effects apply an inverse transform to get square pixels, then re-apply the transform before display.
+在渲染之前，After Effects附带的Artisans应用一个反变换来获得方形像素，然后在显示之前重新应用变换。
 
-For example, if the pixel aspect ratio is 10/11 (DV NTSC), we multiply by 11/10 to get square pixels. We process and composite 3D layers, then re-divide to get back to the original pixel aspect ratio.
+例如，如果像素的长宽比是10/11（DV NTSC），我们就乘以11/10来得到方形像素。我们对三维图层进行处理和合成，然后重新分割，以恢复到原始的像素长宽比。
 
-The following suite supplies the layers, compositions, texture and destination buffers. This is a vital suite for all artisans.
+以下套件提供了图层、合成、纹理和目标缓冲区。这是所有工匠的一个重要套件。
 
-### AEGP_CanvasSuite8[¶](#aegp-canvassuite8 "Permalink to this headline")
+### AEGP_CanvasSuite8[¶]
 
 #### AEGP_GetCompToRender
 
-Given the render context provided to the Artisan at render time, returns a handle to the composition.
+鉴于在渲染时提供给Artisan的渲染上下文，返回一个指向合成的句柄。
 
 ```cpp
 
@@ -362,7 +362,7 @@ AEGP_GetCompToRender(
 
 #### AEGP_GetNumLayersToRender
 
-Given the render context, returns the number of layers the Artisan needs to render.
+给定渲染上下文，返回Artisan需要渲染的层数。
 
 ```cpp
 
@@ -377,7 +377,7 @@ AEGP_GetNumLayersToRender(
 
 #### AEGP_GetNthLayerContextToRender
 
-Used to build a list of layers to render after determining the total number of layers that need rendering by the Artisan.
+在确定需要由Artisan渲染的总层数后，用于建立一个要渲染的层的列表。
 
 ```cpp
 
@@ -394,7 +394,7 @@ AEGP_GetNthLayerContextToRender(
 
 #### AEGP_GetLayerFromLayerContext
 
-Given a `AEGP_RenderLayerContextH`,retrieves the associated `AEGP_LayerH` (required by many suite functions).
+给出一个`AEGP_RenderLayerContextH`，检索相关的`AEGP_LayerH`（许多套件函数需要）。
 
 ```cpp
 
@@ -411,7 +411,7 @@ AEGP_GetLayerFromLayerContext(
 
 #### AEGP_GetLayerAndSubLayerFromLayerContext
 
-Allows for rendering of sub-layers (as within a Photoshop file).
+允许渲染子层（如Photoshop文件中的子层）。
 
 ```cpp
 
@@ -430,9 +430,9 @@ AEGP_GetLayerAndSubLayerFromLayerContext(
 
 #### AEGP_GetTopLayerFromLayerContext
 
-With collapsed geometrics “on” this gives the layer in the root composition containing the layer context.
+在折叠的几何图形 "打开 "的情况下，它给出了包含图层上下文的根合成中的图层。
 
-With collapsed geometrics off this is the same as `AEGP_GetLayerFromLayerContext`.
+关闭折叠的几何图形时，这与`AEGP_GetLayerFromLayerContext`相同。
 
 ```cpp
 
@@ -449,7 +449,7 @@ AEGP_GetTopLayerFromLayerContext(
 
 #### AEGP_GetCompRenderTime
 
-Given the render context, returns the current point in (composition) time to render.
+给定渲染上下文，返回当前的（合成）渲染时间点。
 
 ```cpp
 
@@ -466,7 +466,7 @@ AEGP_GetNthLayerIndexToRender(
 
 #### AEGP_GetCompDestinationBuffer
 
-Given the render context, returns a buffer in which to place the final rendered output.
+给定渲染上下文，返回一个缓冲区，用于放置最终渲染的输出。
 
 ```cpp
 
@@ -483,7 +483,7 @@ AEGP_GetCompToRender(
 
 #### AEGP_GetROI
 
-Given the render context provided to the Artisan at render time, returns a handle to the composition.
+给出在渲染时提供给Artisan的渲染上下文，返回一个指向合成的句柄。
 
 ```cpp
 
@@ -498,9 +498,9 @@ AEGP_GetROI(
 
 #### AEGP_RenderTexture
 
-Given the render context and layer, returns the layer texture.
+给出渲染上下文和图层，返回图层纹理。
 
-All parameters with a trailing ‘0’ are optional; the returned `PF_EffectWorld` can be NULL.
+所有带 "0 "的参数是可选的；返回的 "PF_EffectWorld "可以是NULL。
 
 ```cpp
 
@@ -523,17 +523,17 @@ AEGP_RenderTexture(
 
 ```
 
-`AEGP_RenderHints` contains one or more of the following:
+`AEGP_RenderHints`包含一个或多个以下内容。
 
 - `AEGP_RenderHints_NONE`
 - `AEGP_RenderHints_IGNORE_EXTENTS`
 - `AEGP_RenderHints_NO_TRANSFER_MODE`
 
-`AEGP_RenderHints_NO_TRANSFER_MODE` prevents application of opacity & transfer mode; for use with `RenderLayer` calls.
+`AEGP_RenderHints_NO_TRANSFER_MODE`防止应用不透明和传输模式；用于调用`RenderLayer`。
 
 #### AEGP_DisposeTexture
 
-Disposes of an acquired layer texture.
+处置一个获得的图层纹理。
 
 ```cpp
 
@@ -550,7 +550,7 @@ AEGP_DisposeTexture(
 
 #### AEGP_GetFieldRender
 
-Returns the field settings of the given `PR_RenderContextH`.
+返回给定的`PR_RenderContextH`的字段设置。
 
 ```cpp
 
@@ -565,9 +565,9 @@ AEGP_GetFieldRender(
 
 #### AEGP_ReportArtisanProgress
 
-Given the render context provided to the Artisan at render time, returns a handle to the composition.
+给出在渲染时提供给Artisan的渲染上下文，返回一个句柄给该合成。
 
-Note: this is NOT thread-safe on macOS; only use this function when the current thread ID is 0.
+注意：这在macOS上不是线程安全的；只有在当前线程ID为0时才使用这个函数。
 
 ```cpp
 
@@ -584,7 +584,7 @@ AEGP_ReportArtisanProgress(
 
 #### AEGP_GetRenderDownsampleFactor
 
-Returns the downsample factor of the `PR_RenderContextH`.
+返回 "PR_RenderContextH "的降采样系数。
 
 ```cpp
 
@@ -599,7 +599,7 @@ AEGP_GetRenderDownsampleFactor(
 
 #### AEGP_IsBlankCanvas
 
-Determines whether the `PR_RenderContextH` is blank (empty).
+确定`PR_RenderContextH`是否为空白（空）。
 
 ```cpp
 
@@ -614,7 +614,7 @@ AEGP_IsBlankCanvas(
 
 #### AEGP_GetRenderLayerToWorldXform
 
-Given a render context and a layer (at a given time), retrieves the 4 by 4 transform to move between their coordinate spaces.
+给出一个渲染环境和一个图层（在给定的时间），检索4乘4的变换，在它们的坐标空间之间移动。
 
 ```cpp
 
@@ -633,7 +633,7 @@ AEGP_GetRenderLayerToWorldXform(
 
 #### AEGP_GetRenderLayerBounds
 
-Retrieves the bounding rectangle of the layer_contextH (at a given time) within the render_contextH.
+检索layer_contextH（在给定时间）在render_contextH中的边界矩形。
 
 ```cpp
 
@@ -652,7 +652,7 @@ AEGP_GetRenderLayerBounds(
 
 #### AEGP_GetRenderOpacity
 
-Returns the opacity of the given layer context at the given time, within the render context.
+返回给定的图层上下文在给定的时间，在渲染上下文中的不透明度。
 
 ```cpp
 
@@ -671,7 +671,7 @@ AEGP_GetRenderOpacity(
 
 #### AEGP_IsRenderLayerActive
 
-Returns whether or not a given layer context is active within the render context, at the given time.
+返回在给定时间内，渲染上下文中给定的图层上下文是否处于活动状态。
 
 ```cpp
 
@@ -690,9 +690,9 @@ AEGP_IsRenderLayerActive(
 
 #### AEGP_SetArtisanLayerProgress
 
-Sets the progress information for a rendering Artisan. countL is the number of layers completed,
+CountL是完成的层数。
 
-`num_layersL` is the total number of layers the Artisan is rendering.
+`num_layersL`是Artisan正在渲染的总层数。
 
 ```cpp
 
@@ -709,7 +709,7 @@ AEGP_SetArtisanLayerProgress(
 
 #### AEGP_RenderLayerPlus
 
-Similar to `AEGP_RenderLayer`, but takes into account the `AEGP_RenderLayerContextH`.
+与`AEGP_RenderLayer`类似，但考虑到`AEGP_RenderLayerContextH`。
 
 ```cpp
 
@@ -730,7 +730,7 @@ AEGP_RenderLayerPlus(
 
 #### AEGP_GetTrackMatteContext
 
-Retrieves the `AEGP_RenderLayerContextH` for the specified render and fill contexts.
+为指定的渲染和填充上下文检索`AEGP_RenderLayerContextH`。
 
 ```cpp
 
@@ -747,9 +747,9 @@ AEGP_GetTrackMatteContext(
 
 #### AEGP_RenderTextureWithReceipt
 
-Renders a texture into an `AEGP_WorldH`, and provides an `AEGP_RenderReceiptH` for the operation.
+渲染纹理到一个`AEGP_WorldH'，并为该操作提供一个`AEGP_RenderReceiptH'。
 
-The returned `receiptPH` must be disposed of with `AEGP_DisposeRenderReceipt`.
+返回的`receiptPH`必须用`AEGP_DisposeRenderReceipt`处理。
 
 ```cpp
 
@@ -776,7 +776,7 @@ AEGP_RenderTextureWithReceipt(
 
 #### AEGP_GetNumberOfSoftwareEffects
 
-Returns the number of software effects applied in the given `AEGP_RenderLayerContextH`.
+返回在给定的`AEGP_RenderLayerContextH`中应用的软件效果的数量。
 
 ```cpp
 
@@ -793,7 +793,7 @@ AEGP_GetNumberOfSoftwareEffects(
 
 #### AEGP_RenderLayerPlusWithReceipt
 
-An improvement over `AEGP_RenderLayerPlus`, this function also provides an `AEGP_RenderReceiptH` for caching purposes.
+作为对`AEGP_RenderLayerPlus`的改进，该函数还提供了一个`AEGP_RenderReceiptH`用于缓存目的。
 
 ```cpp
 
@@ -818,7 +818,7 @@ AEGP_RenderLayerPlusWithReceipt(
 
 #### AEGP_DisposeRenderReceipt
 
-Frees an `AEGP_RenderReceiptH`.
+释放一个`AEGP_RenderReceiptH'。
 
 ```cpp
 
@@ -831,7 +831,7 @@ AEGP_DisposeRenderReceipt(
 
 #### AEGP_CheckRenderReceipt
 
-Checks with After Effects’ internal caching to determine whether a given `AEGP_RenderReceiptH` is still valid.
+检查After Effects的内部缓存，以确定一个给定的`AEGP_RenderReceiptH`是否仍然有效。
 
 ```cpp
 
@@ -854,7 +854,7 @@ AEGP_CheckRenderReceipt(
 
 #### AEGP_GenerateRenderReceipt
 
-Generates a `AEGP_RenderReceiptH` for a layer as if the first `num_effectsS` have been rendered.
+为一个图层生成一个`AEGP_RenderReceiptH'，就像第一个`num_effectsS'已经被渲染了。
 
 ```cpp
 
@@ -873,7 +873,7 @@ AEGP_GenerateRenderReceipt(
 
 #### AEGP_GetNumBinsToRender
 
-Returns the number of bins After Effects wants the artisan to render.
+返回After Effects希望工匠渲染的bins数量。
 
 ```cpp
 
@@ -888,7 +888,7 @@ AEGP_GetNumBinsToRender(
 
 #### AEGP_SetNthBin
 
-Sets the given render context to be the n-th bin to be rendered by After Effects.
+将给定的渲染上下文设置为After Effects要渲染的第n个bin。
 
 ```cpp
 
@@ -903,7 +903,7 @@ AEGP_SetNthBin(
 
 #### AEGP_GetBinType
 
-Retrieves the type of the given bin.
+检索给定仓的类型。
 
 ```cpp
 
@@ -916,7 +916,7 @@ AEGP_GetBinType(
 
 ```
 
-`AEGP_BinType` will be one of the following:
+`AEGP_BinType`将是以下之一。
 
 - `AEGP_BinType_NONE`
 - `AEGP_BinType_2D`
@@ -924,9 +924,9 @@ AEGP_GetBinType(
 
 #### AEGP_GetRenderLayerToWorldXform2D3D
 
-Retrieves the transform to correctly orient the layer being rendered with the output world.
+检索转换，以正确确定被渲染层与输出世界的方向。
 
-Pass `TRUE` for `only_2dB` to constrain the transform to two dimensions.
+为`only_2dB'传递`TRUE'，将变换限制在二维。
 
 ```cpp
 
@@ -947,12 +947,12 @@ AEGP_GetRenderLayerToWorldXform2D3D(
 
 :::tip
 
-Functions below are for interactive artisans only.
+以下函数仅适用于交互式工匠。
 :::
 
 #### AEGP_GetPlatformWindowRef
 
-Retrieves the platform-specific window context into which to draw the given `PR_RenderContextH`.
+检索特定平台的窗口环境，以绘制给定的`PR_RenderContextH`。
 
 ```cpp
 
@@ -967,7 +967,7 @@ AEGP_GetPlatformWindowRef(
 
 #### AEGP_GetViewportScale
 
-Retrieves the source-to-frame downsample factor for the given `PR_RenderContextH`.
+检索给定的`PR_RenderContextH'的源到帧的降采样系数。
 
 ```cpp
 
@@ -984,7 +984,7 @@ AEGP_GetViewportScale(
 
 #### AEGP_GetViewportOrigin
 
-Retrieves to origin of the source, within the frame (necessary to translate between the two), for the given `PR_RenderContextH`.
+为给定的`PR_RenderContextH'检索源的原点，在帧内（在两者之间平移所需）。
 
 ```cpp
 
@@ -1001,7 +1001,7 @@ AEGP_GetViewportOrigin(
 
 #### AEGP_GetViewportRect
 
-Retrieves the bounding rectangle for the area to be drawn, for the given `PR_RenderContextH`.
+为给定的`PR_RenderContextH'检索要绘制的区域的边界矩形。
 
 ```cpp
 
@@ -1016,7 +1016,7 @@ AEGP_GetViewportRect(
 
 #### AEGP_GetFallowColor
 
-Retrieves the color used for the fallow regions in the given `PR_RenderContextH`.
+检索给定的`PR_RenderContextH'中的休眠区域的颜色。
 
 ```cpp
 
@@ -1031,7 +1031,7 @@ AEGP_GetFallowColor(
 
 #### AEGP_GetInteractiveCheckerboard
 
-Retrieves whether or not the checkerboard is currently active for the given `PR_RenderContextH`.
+读取当前是否为给定的`PR_RenderContextH'激活棋盘。
 
 ```cpp
 
@@ -1046,7 +1046,7 @@ AEGP_GetInteractiveCheckerboard(
 
 #### AEGP_GetInteractiveCheckerboardColors
 
-Retrieves the colors used in the checkerboard.
+读取棋盘上使用的颜色。
 
 ```cpp
 
@@ -1063,7 +1063,7 @@ AEGP_GetInteractiveCheckerboardColors(
 
 #### AEGP_GetInteractiveCheckerboardSize
 
-Retrieves the width and height of one checkerboard square.
+检索一个棋盘的宽度和高度。
 
 ```cpp
 
@@ -1080,7 +1080,7 @@ AEGP_GetInteractiveCheckerboardSize(
 
 #### AEGP_GetInteractiveCachedBuffer
 
-Retrieves the cached AEGP_WorldH last used for the `PR_RenderContextH`.
+检索上次用于`PR_RenderContextH'的缓存AEGP_WorldH。
 
 ```cpp
 
@@ -1095,7 +1095,7 @@ AEGP_GetInteractiveCachedBuffer(
 
 #### AEGP_ArtisanMustRenderAsLayer
 
-Determines whether or not the artisan must render the current `AEGP_RenderLayerContextH` as a layer.
+确定工匠是否必须将当前的`AEGP_RenderLayerContextH`渲染成一个图层。
 
 ```cpp
 
@@ -1112,7 +1112,7 @@ AEGP_ArtisanMustRenderAsLayer(
 
 #### AEGP_GetInteractiveDisplayChannel
 
-Returns which channels should be displayed by the interactive artisan.
+返回哪些通道应该由交互式工匠显示。
 
 ```cpp
 
@@ -1125,7 +1125,7 @@ AEGP_GetInteractiveDisplayChannel(
 
 ```
 
-`AEGP_DisplayChannelType` will be one of the following:
+`AEGP_DisplayChannelType`将是以下之一。
 
 - `AEGP_DisplayChannel_NONE`
 - `AEGP_DisplayChannel_RED`
@@ -1139,7 +1139,7 @@ AEGP_GetInteractiveDisplayChannel(
 
 #### AEGP_GetInteractiveExposure
 
-Returns the exposure for the given `PR_RenderContextH`, expressed as a floating point number.
+返回给定`PR_RenderContextH`的曝光量，以浮点数表示。
 
 ```cpp
 
@@ -1154,7 +1154,7 @@ AEGP_GetInteractiveExposure(
 
 #### AEGP_GetColorTransform
 
-Returns the color transform for the given `PR_RenderContextH`.
+返回给定的`PR_RenderContextH'的颜色变换。
 
 ```cpp
 
@@ -1173,7 +1173,7 @@ AEGP_GetColorTransform)(
 
 #### AEGP_GetCompShutterTime
 
-Returns the shutter angle for the given `PR_RenderContextH`.
+返回给定`PR_RenderContextH'的快门角度。
 
 ```cpp
 
@@ -1190,7 +1190,7 @@ AEGP_GetCompShutterTime)(
 
 #### AEGP_MapCompToLayerTime
 
-New in CC. Unlike [AEGP_ConvertCompToLayerTime](../aegps/aegp-suites.html#aegps-aegp-suites-aegp-layersuite), this handles time remapping with collapsed or nested comps.
+CC中的新内容。与[AEGP_ConvertCompToLayerTime](../aegps/aegp-suites.html#aegps-aegp-suites-aegp-layersuite)不同，它可以处理折叠或嵌套的合成的时间重映射。
 
 ```cpp
 
@@ -1207,15 +1207,15 @@ AEGP_MapCompToLayerTime(
 
 ```
 
-## Convert Between Different Contexts[¶](#convert-between-different-contexts "Permalink to this headline")
+## Convert Between Different Contexts[¶]
 
-Convert between render and instance contexts, and manage global data specific to the artisan.
+在渲染和实例上下文之间进行转换，并管理特定于工匠的全局数据。
 
-### AEGP_ArtisanUtilSuite1[¶](#aegp-artisanutilsuite1 "Permalink to this headline")
+### AEGP_ArtisanUtilSuite1[¶]
 
 #### AEGP_GetGlobalContextFromInstanceContext
 
-Given an instance context, returns a handle to the global context.
+给定一个实例上下文，返回一个到全局上下文的句柄。
 
 ```cpp
 
@@ -1230,7 +1230,7 @@ AEGP_GetGlobalContextFromInstanceContext(
 
 #### AEGP_GetInstanceContextFromRenderContext
 
-Given the render context, returns a handle to the instance context.
+给定渲染上下文，返回到实例上下文的句柄。
 
 ```cpp
 
@@ -1245,7 +1245,7 @@ AEGP_GetInstanceContextFromRenderContext(
 
 #### AEGP_GetInstanceContextFromQueryContext
 
-Given a query context, returns a handle to the instance context.
+给定一个查询上下文，返回一个到实例上下文的句柄。
 
 ```cpp
 
@@ -1260,7 +1260,7 @@ AEGP_GetInstanceContextFromQueryContext(
 
 #### AEGP_GetGlobalData
 
-Given the global context, returns a handle to global data.
+给定全局上下文，返回全局数据的句柄。
 
 ```cpp
 
@@ -1275,7 +1275,7 @@ AEGP_GetGlobalData(
 
 #### AEGP_GetInstanceData
 
-Given an instance context, return the associated instance data.
+给定一个实例上下文，返回相关的实例数据。
 
 ```cpp
 
@@ -1290,7 +1290,7 @@ AEGP_GetInstanceData(
 
 #### AEGP_GetRenderData
 
-Given a render context, returns the associated render data.
+给定一个渲染上下文，返回相关的渲染数据。
 
 ```cpp
 
@@ -1303,15 +1303,15 @@ AEGP_GetRenderData(
 
 ```
 
-## Smile! Cameras[¶](#smile-cameras "Permalink to this headline")
+## Smile! Cameras[¶]
 
-Obtains the camera geometry, including camera properties (type, lens, depth of field, focal distance, aperture, et cetera).
+获取相机的几何形状，包括相机的属性（类型、镜头、景深、焦距、光圈等等）。
 
-### AEGP_CameraSuite2[¶](#aegp-camerasuite2 "Permalink to this headline")
+### AEGP_CameraSuite2[¶]
 
 #### AEGP_GetCamera
 
-Given a layer handle and time, returns the current camera layer handle.
+给定一个图层句柄和时间，返回当前的摄像机图层句柄。
 
 ```cpp
 
@@ -1328,7 +1328,7 @@ AEGP_GetCamera(
 
 #### AEGP_GetCameraType
 
-Given a layer, returns the camera type of the layer.
+给定一个图层，返回该图层的摄像机类型。
 
 ```cpp
 
@@ -1341,7 +1341,7 @@ AEGP_GetCameraType(
 
 ```
 
-The camera type can be the following:
+相机类型可以是以下几种。
 
 - `AEGP_CameraType_NONE = -1`
 - `AEGP_CameraType_PERSPECTIVE`
@@ -1349,7 +1349,7 @@ The camera type can be the following:
 
 #### AEGP_GetDefaultCameraDistanceToImagePlane
 
-Given a composition handle, returns the camera distance to the image plane.
+给定一个合成句柄，返回相机到图像平面的距离。
 
 ```cpp
 
@@ -1364,7 +1364,7 @@ AEGP_GetDefaultCamera DistanceToImagePlane(
 
 #### AEGP_GetCameraFilmSize
 
-Retrieves the size (and units used to measure that size) of the film used by the designated camera.
+检索指定相机使用的胶片的尺寸（以及用于测量该尺寸的单位）。
 
 ```cpp
 
@@ -1381,7 +1381,7 @@ AEGP_GetCameraFilmSize(
 
 #### AEGP_SetCameraFilmSize
 
-Sets the size (and unites used to measure that size) of the film used by the designated camera.
+设置指定相机使用的胶片的尺寸（和用于测量该尺寸的单位）。
 
 ```cpp
 
@@ -1396,15 +1396,15 @@ AEGP_SetCameraFilmSize)(
 
 ```
 
-## Notes Regarding Camera Behavior[¶](#notes-regarding-camera-behavior "Permalink to this headline")
+## Notes Regarding Camera Behavior[¶]
 
-Camera orientation is in composition coordinates, and the rotations are in layer (the camera’s layer) coordinates.
+摄像机的方向是以合成坐标为单位，旋转是以层（摄像机的层）坐标为单位。
 
-If the camera layer has a parent, the position is in a coordinate space relative to the parent.
+如果摄像机层有一个父层，那么位置就是相对于父层的坐标空间。
 
-## Orthographic Camera Matrix[¶](#orthographic-camera-matrix "Permalink to this headline")
+## Orthographic Camera Matrix[¶]
 
-Internally, we use composition width and height to set the matrix described by the OpenGL specification as
+在内部，我们使用合成宽度和高度来设置OpenGL规范所描述的矩阵为
 
 ```cpp
 
@@ -1413,33 +1413,33 @@ glOrtho(-width/2, width/2, -height/2, height/2, -1, 100);
 
 ```
 
-The orthographic matrix describes the projection. The position of the camera is described by another, scaled matrix. The inverse of the camera position matrix provides the “eye” coordinates.
+正射矩阵描述了投影。相机的位置由另一个按比例的矩阵描述。摄像机位置矩阵的倒数提供 "眼睛 "坐标。
 
-## Focus On Focal[¶](#focus-on-focal "Permalink to this headline")
+## Focus On Focal[¶]
 
-Remember, focal length affects field of view; focal distance only affects depth of field.
+记住，焦距会影响视野；焦距只影响景深。
 
-## Film Size[¶](#film-size "Permalink to this headline")
+## Film Size[¶]
 
-In the real world, film size is measured in millimeters. In After Effects, it’s measured in pixels. Multiply by 72 and divide by 25.4 to move from millimeters to pixels.
+在现实世界中，胶片的尺寸是以毫米为单位的。在After Effects中，它是以像素来衡量的。乘以72，再除以25.4，就可以从毫米变成像素。
 
-Field of view is more complex;
+视野是比较复杂的。
 
-ϴ = 1/2 field of view
+ϴ=1/2视场
 
-tan(ϴ) = 1/2 composition height / focal length
+tan(ϴ) = 1/2合成高度/焦距
 
-focal length = 2 tan(ϴ) / composition height
+焦距 = 2 tan(ϴ) / 合成高度
 
-## Hit The Lights![¶](#hit-the-lights "Permalink to this headline")
+## Hit The Lights![¶]
 
-Get and set the type of lights in a composition.
+获取和设置合成中的灯光类型。
 
-### AEGP_LightSuite2[¶](#aegp-lightsuite2 "Permalink to this headline")
+### AEGP_LightSuite2[¶]
 
 #### AEGP_GetLightType
 
-Retrieves the `AEGP_LightType` of the specified camera layer.
+检索指定相机层的`AEGP_LightType`。
 
 ```cpp
 
@@ -1452,7 +1452,7 @@ AEGP_GetLightType(
 
 ```
 
-`AEGP_LightType` will be one of the following:
+`AEGP_LightType`将是以下其中之一。
 
 - `AEGP_LightType_PARALLEL`
 - `AEGP_LightType_SPOT`
@@ -1461,7 +1461,7 @@ AEGP_GetLightType(
 
 #### AEGP_SetLightType
 
-Sets the `AEGP_LightType` for the specified camera layer.
+设定指定摄影机层的`AEGP_LightType'。
 
 ```cpp
 
@@ -1474,39 +1474,39 @@ AEGP_SetLightType(
 
 ```
 
-### Notes On Light Behavior[¶](#notes-on-light-behavior "Permalink to this headline")
+### Notes On Light Behavior[¶]
 
-The formula for parallel lights is found in Foley and Van Dam’s “Introduction to Computer Graphics” (ISBN 0-201-60921-5) as is the formula for point lights.
+平行光的公式可以在Foley和Van Dam的《计算机图形学导论》（ISBN 0-201-60921-5）中找到，点光源的公式也是如此。
 
-We use the half angle variant proposed by Jim Blinn instead.
+我们使用Jim Blinn提出的半角变体来代替。
 
-Suppose we have a point on a layer and want to shade it with the light.
+假设我们在一个图层上有一个点，想用灯光对其进行遮挡。
 
-Let V be the unit vector from the layer point to the eye point.
+让V为从图层点到眼睛点的单位向量。
 
-Let L be the unit vector to the light (in the parallel light case this is constant). Let H be (V+L)/2 (normalized).
+让L是到光的单位向量（在平行光的情况下这是常数）。让H是(V+L)/2（归一化）。
 
-Let N be the unit normal vector to the layer.
+让N为该层的单位法向量。
 
-The amount of specular reflected light is S * power(H Dot N, shine), where S is the specular coefficient.
+镜面反射光的数量是S * power(H Dot N, shine)，其中S是镜面反射系数。
 
-## How Should I Draw That?[¶](#how-should-i-draw-that "Permalink to this headline")
+## How Should I Draw That?[¶]
 
-After Effects relies upon Artisans to draw 3D layer handles. If your Artisan chooses not to respond to this call, the default Artisan will draw 3D layer handles for you. Querying transforms is important for optimization of After Effects’ caching.
+After Effects依靠Artisans来绘制3D图层手柄。如果你的美工选择不响应这个调用，默认的美工将为你绘制3D图层手柄。查询变换对于优化After Effects的缓存非常重要。
 
-The coordinate system is positive x to right, positive y down, positive z into the screen. The origin is the upper left corner. Rotations are x then y then z. For matrices the translate is the bottom row, orientations are quaternions (which are applied first), then any x-y-z rotation after that. As a general rule, use orientation or rotation but not both. Also use rotations if you need control over angular velocity.
+坐标系统是正X向右，正Y向下，正Z向屏幕。原点是左上角。旋转是先x后y再z。对于矩阵来说，平移是最下面一行，方向是四元数（先应用），然后是任何x-y-z的旋转。作为一般规则，使用方向或旋转，但不能同时使用。如果你需要控制角速度，也可以使用旋转。
 
-## Query Transform Functions[¶](#query-transform-functions "Permalink to this headline")
+## Query Transform Functions[¶]
 
-These functions give artisans information about the transforms they’ll need in order to correctly place layers within a composition and respond appropriately to the various queries After Effects will send to their `PR_QueryFunc` entry point function.
+这些函数给工匠提供了他们需要的变换信息，以便正确地将图层放置在一个合成中，并对After Effects发送的各种查询作出适当的反应，这些查询将发送到他们的`PR_QueryFunc`入口点函数。
 
-As that entry point is optional, so is your artisan’s response to the queries; however, if you don’t, your users may be disappointed that (while doing interactive preview drawing) all the camera and light indicators vanish, until they stop moving! Artisans are complex beasts; contact us if you have any questions.
+由于该入口点是可选的，所以你的工匠对查询的响应也是可选的；然而，如果你不这样做，你的用户可能会失望，（在进行交互式预览绘图时）所有的相机和灯光指示器都消失了，直到他们停止移动 工匠是复杂的野兽；如果你有任何问题，请联系我们。
 
-### AEGP_QueryXFormSuite2[¶](#aegp-queryxformsuite2 "Permalink to this headline")
+### AEGP_QueryXFormSuite2[¶]
 
 #### AEGP_QueryXformGetSrcType
 
-Given a query context, returns trasnsform source currently being modified.
+给定一个查询上下文，返回当前正在修改的trasnsform源。
 
 ```cpp
 
@@ -1519,7 +1519,7 @@ AEGP_QueryXformGetSrcType(
 
 ```
 
-The query context will be one of the following:
+查询上下文将是以下内容之一。
 
 - `AEGP_Query_Xform_LAYER`,
 - `AEGP_Query_Xform_WORLD`,
@@ -1528,7 +1528,7 @@ The query context will be one of the following:
 
 #### AEGP_QueryXformGetDstType
 
-Given a query context, returns the currently requested transform destination.
+给定一个查询上下文，返回当前请求的转换目的地。
 
 ```cpp
 
@@ -1543,7 +1543,7 @@ AEGP_QueryXformGetDstType(
 
 #### AEGP_QueryXformGetLayer
 
-Used if the source or destination type is a layer. Given a query context, returns the layer handle.
+如果源或目的地类型是一个层，则使用。给定一个查询上下文，返回图层句柄。
 
 ```cpp
 
@@ -1558,7 +1558,7 @@ AEGP_QueryXformGetLayer(
 
 #### AEGP_QueryXformGetComp
 
-Given a query context, returns the current composition handle.
+给定一个查询上下文，返回当前的合成句柄。
 
 ```cpp
 
@@ -1573,7 +1573,7 @@ AEGP_QueryXformGetComp(
 
 #### AEGP_QueryXformGetTransformTime
 
-Given a query context, returns the time of the transformation.
+给定一个查询上下文，返回转换的时间。
 
 ```cpp
 
@@ -1588,7 +1588,7 @@ AEGP_QueryXformGetTransformTime(
 
 #### AEGP_QueryXformGetViewTime
 
-Given a query context, returns the time of the associated view.
+给定一个查询上下文，返回相关视图的时间。
 
 ```cpp
 
@@ -1603,7 +1603,7 @@ AEGP_QueryXformGetViewTime(
 
 #### AEGP_QueryXformGetCamera
 
-Given a query context, returns the current camera layer handle.
+给定一个查询上下文，返回当前的相机层句柄。
 
 ```cpp
 
@@ -1618,7 +1618,7 @@ AEGP_QueryXformGetCamera(
 
 #### AEGP_QueryXformGetXform
 
-Given a query context, returns the current matrix transform.
+给定一个查询上下文，返回当前的矩阵变换。
 
 ```cpp
 
@@ -1633,7 +1633,7 @@ AEGP_QueryXformGetXform(
 
 #### AEGP_QueryXformSetXform
 
-Given a query context, return the matrix transform you compute in `xform`.
+给定一个查询上下文，返回你在`xform`中计算的矩阵变换。
 
 ```cpp
 
@@ -1648,7 +1648,7 @@ AEGP_QueryXformSetXform(
 
 #### AEGP_QueryWindowRef
 
-Sets the window reference to be used (by After Effects) for the given `PR_QueryContextH`.
+为给定的`PR_QueryContextH`设置窗口参考（由After Effects）。
 
 ```cpp
 
@@ -1663,7 +1663,7 @@ AEGP_QueryWindowRef(
 
 #### AEGP_QueryWindowClear
 
-Returns which `AEGP_PlatformWindowRef` (and `A_Rect`) to clear, for the given `PR_QueryContextH`.
+返回要清除的`AEGP_PlatformWindowRef`（和`A_Rect`），为给定的`PR_QueryContextH`。
 
 ```cpp
 
@@ -1680,7 +1680,7 @@ AEGP_QueryWindowClear(
 
 #### AEGP_QueryFrozenProxy
 
-Returns whether or not the textures used in the given `PR_QueryContextH` should be frozen.
+返回在给定的`PR_QueryContextH'中使用的纹理是否应该被冻结。
 
 ```cpp
 
@@ -1695,7 +1695,7 @@ AEGP_QueryFrozenProxy(
 
 #### AEGP_QuerySwapBuffer
 
-Sent after rendering and camera/light handle drawing is complete; After Effects returns the buffer into which the artisan should draw its output.
+在渲染和摄像机/灯光手柄绘制完成后发送；After Effects返回工匠应该绘制其输出的缓冲区。
 
 ```cpp
 
@@ -1712,7 +1712,7 @@ AEGP_QuerySwapBuffer(
 
 #### AEGP_QueryDrawProcs
 
-Sets the interactive drawing functions After Effects will call while drawing camera and lighting handles into the artisan’s provided context.
+设置After Effects在绘制相机和灯光手柄到工匠提供的上下文时将调用的交互式绘图函数。
 
 ```cpp
 
@@ -1727,7 +1727,7 @@ AEGP_QueryDrawProcs(
 
 #### AEGP_QueryPrepareForLineDrawing
 
-Informs After Effects about the context into which it will be drawing.
+告知After Effects它将绘制的上下文。
 
 ```cpp
 
@@ -1748,7 +1748,7 @@ AEGP_QueryPrepareForLineDrawing(
 
 #### AEGP_QueryUnprepareForLineDrawing
 
-As far as After Effects is concerned, the artisan is done drawing lines.
+就After Effects而言，工匠已经完成了画线。
 
 ```cpp
 
@@ -1761,11 +1761,11 @@ AEGP_QueryUnprepareForLineDrawing(
 
 ```
 
-## Interactive Drawing Functions[¶](#interactive-drawing-functions "Permalink to this headline")
+## Interactive Drawing Functions[¶]
 
-We’ve added the ability for artisans to provide functions After Effects can use to do basic drawing functions for updating the comp window display during preview, including camera, light, and wireframe preview modeling.
+我们增加了工匠提供After Effects可以用来做基本绘图功能的功能，以便在预览期间更新comp窗口的显示，包括相机、灯光和线框预览建模。
 
-### PR_InteractiveDrawProcs[¶](#pr-interactivedrawprocs "Permalink to this headline")
+### PR_InteractiveDrawProcs[¶]
 
 #### PR_Draw_MoveToFunc
 
@@ -1826,10 +1826,10 @@ PR_Draw_PaintRectFunc(
 
 ```
 
-## Notes On Query Time Functions[¶](#notes-on-query-time-functions "Permalink to this headline")
+## Notes On Query Time Functions[¶]
 
-`AEGP_QueryXformGetTransformTime()` and `AEGP_QueryXformGetViewTime()` are both necessary for an artisan to build a representation of the scene to render.
+`AEGP_QueryXformGetTransformTime()`和`AEGP_QueryXformGetViewTime()`都是工匠建立要渲染的场景表示所必需的。
 
-`AEGP_QueryXformGetTransformTime()` gets the time of the transform, which is then passed to `AEGP_GetCompShutterFrameRange()` from [AEGP_CompSuite11](../aegps/aegp-suites.html#aegps-aegp-suites-aegp-compsuite).
+`AEGP_QueryXformGetTransformTime()`获得转换的时间，然后传递给[AEGP_CompSuite11](.../aegps/aegp-suites.html#aegps-aegp-suites-aegp-compsuite)的`AEGP_GetCompShutterFrameRange()`。
 
-`AEGP_QueryXformGetViewTime()` gets the time of the view, which is used in calling `AEGP_GetLayerToWorldXformFromView()` from [AEGP_LayerSuite8](../aegps/aegp-suites.html#aegps-aegp-suites-aegp-layersuite).
+`AEGP_QueryXformGetViewTime()`获得视图的时间，用于调用[AEGP_LayerSuite8](./aegps/aegp-suites.html#aegps-aegp-suites-aegp-layersuite)中的`AEGP_GetLayerToWorldXformFromView()`。

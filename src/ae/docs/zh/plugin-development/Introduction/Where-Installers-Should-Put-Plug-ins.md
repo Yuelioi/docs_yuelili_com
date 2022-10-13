@@ -27,4 +27,4 @@ category:
 
 当启动时，After Effects会递归到其路径的子目录的10层深处。以括号结束的目录或前面有符号¬（macOS）或~（Windows）的目录不会被扫描。
 
-尽管你想在AE和Premiere Pro之间建立一道篱笆，但用户仍然会找到使用我们可爱的整合功能的方法--你的效果仍然可以被Premiere Pro用户使用，他们用你的效果创建一个动态链接的AE组合，并将其放入Premiere Pro序列。
+尽管你想在AE和Premiere Pro之间建立一道篱笆，但用户仍然会找到使用我们可爱的整合功能的方法--你的效果仍然可以被Premiere Pro用户使用，他们用你的效果创建一个动态链接的AE合成，并将其放入Premiere Pro序列。
