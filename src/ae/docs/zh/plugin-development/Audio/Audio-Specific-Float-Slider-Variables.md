@@ -13,7 +13,7 @@ category:
 
 唯一可用的标志是`PF_FSliderFlag_WANT_PHASE`。
 
-这个标志将效果注册为在音频渲染过程中从After Effects接收更新的相位信息。
+这个标志将效果注册为在音频渲染过程中从 After Effects 接收更新的相位信息。
 
 为了了解这个标志的作用，把它关掉，然后检查你的输出。
 
@@ -23,8 +23,8 @@ category:
 
 ## Curve Tolerance
 
-曲线公差是After Effects用来细分音频效果的时间变化参数的。将此设置为零为默认行为(或为非音频`FLOAT_SLIDER`参数)。
+曲线公差是 After Effects 用来细分音频效果的时间变化参数的。将此设置为零为默认行为(或为非音频`FLOAT_SLIDER`参数)。
 
 ## What’s Zero, Really?
 
-当振幅为零时，After Effects处于-192db。
+当振幅为零时，After Effects 处于-192db。

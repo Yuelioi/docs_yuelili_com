@@ -4,17 +4,18 @@ order: 7
 category:
   - AE 插件开发
 ---
+
 # Iteration Suites
 
-Effects经常对图像中的所有像素进行迭代，对每个像素进行过滤。通过利用After Effects的迭代套件，你可以让After Effects把你的任务分到尽可能多的处理器上，利用特定硬件加速。
+Effects 经常对图像中的所有像素进行迭代，对每个像素进行过滤。通过利用 After Effects 的迭代套件，你可以让 After Effects 把你的任务分到尽可能多的处理器上，利用特定硬件加速。
 
-After Effects还将自动管理进度报告和用户取消。
+After Effects 还将自动管理进度报告和用户取消。
 
 使用这些套件! 确保你传递给这些迭代器回调的像素处理函数是可重入的。
 
 ::: tip
 
-2021年10月的SDK更新增加了并发迭代线程的数量，最多可达可用的系统CPU核心，而不是以前硬编码的32个限制。
+2021 年 10 月的 SDK 更新增加了并发迭代线程的数量，最多可达可用的系统 CPU 核心，而不是以前硬编码的 32 个限制。
 
 :::
 
@@ -24,7 +25,7 @@ After Effects还将自动管理进度报告和用户取消。
 
 遍历源图像的像素，改变它们，并填充到目标图像中。
 
-你可以指定一个长方形的像素区域来进行迭代；如果你不这样做，After Effects会在每个重叠的像素上进行迭代。你给了一个refcon，这个函数会被调用，并加上当前像素的x和y坐标，以及该像素在源图像和目标图像中的指针。如果你传递一个空的源图像，它将在目的地图像上进行迭代。这个函数是独立于质量的。
+你可以指定一个长方形的像素区域来进行迭代；如果你不这样做，After Effects 会在每个重叠的像素上进行迭代。你给了一个 refcon，这个函数会被调用，并加上当前像素的 x 和 y 坐标，以及该像素在源图像和目标图像中的指针。如果你传递一个空的源图像，它将在目的地图像上进行迭代。这个函数是独立于质量的。
 
 不要依赖像素以任何特定的顺序被遍历。The image may be subset to different CPUs, so consider all the parameters (except dst) to be read-only while After Effects is processing. This callback automatically includes progress and abort checking, so don’t do so in your pixel function.
 
@@ -47,7 +48,7 @@ PF_EffectWorld*dst);
 
 ### iterate_origin
 
-Lets you specify an offset from the input into the output. For example, if your output buffer is smaller than your input buffer, pass (in_- data>output_origin_x, in_data>output_origin_y)` as the origin, and NULL for area, and this function will offset the src pixel pointer appropriately for your pixel function.
+Lets you specify an offset from the input into the output. For example, if your output buffer is smaller than your input buffer, pass (in\_- data>output_origin_x, in_data>output_origin_y)` as the origin, and NULL for area, and this function will offset the src pixel pointer appropriately for your pixel function.
 
 ```cpp
 iterate_origin(
@@ -111,7 +112,7 @@ PF_EffectWorld*dst);
 
 ### iterate_generic
 
-PF_Iterate8Suite only. If you want to do something once per available CPU, this is the function to use (pass PF_Iterations_ONCE_PER_PROCESSOR for iterationsL). 只能从线程索引0调用中止和进度函数。
+PF_Iterate8Suite only. If you want to do something once per available CPU, this is the function to use (pass PF_Iterations_ONCE_PER_PROCESSOR for iterationsL). 只能从线程索引 0 调用中止和进度函数。
 
 注意：你可以对多个像素进行迭代。在内部，我们将其用于基于行的图像处理，以及复杂序列数据的每实体一次的更新。
 

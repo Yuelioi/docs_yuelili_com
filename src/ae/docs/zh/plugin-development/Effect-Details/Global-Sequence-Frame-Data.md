@@ -4,19 +4,20 @@ order: 13
 category:
   - AE 插件开发
 ---
+
 # Global, Sequence, & Frame Data
 
-After Effects允许插件在三个范围内存储数据：全局、序列和帧。仔细考虑你存储信息的位置；选择不当会影响性能，或使你的插件对用户产生混淆。
+After Effects 允许插件在三个范围内存储数据：全局、序列和帧。仔细考虑你存储信息的位置；选择不当会影响性能，或使你的插件对用户产生混淆。
 
-使用全局数据来存储效果的所有实例共有的信息：静态变量和数据、位图、指向其他DLLs或外部应用程序的指针。如果你的效果支持多帧渲染，任何静态变量或全局变量都必须不存在竞赛条件(更多信息请参见[效果是线程安全的是什么意思？](multi-frame-rendering-in-ae.html) )。
+使用全局数据来存储效果的所有实例共有的信息：静态变量和数据、位图、指向其他 DLLs 或外部应用程序的指针。如果你的效果支持多帧渲染，任何静态变量或全局变量都必须不存在竞赛条件(更多信息请参见[效果是线程安全的是什么意思？](multi-frame-rendering-in-ae.html) )。
 
-在序列数据或新的[Compute Cache For Multi-Frame Rendering](multi-frame-rendering-in-ae.html)中存储任何特定于你的插件实例的信息(UI设置、文本字符串和任何不存储在参数中的自定义数据)。
+在序列数据或新的[Compute Cache For Multi-Frame Rendering](multi-frame-rendering-in-ae.html)中存储任何特定于你的插件实例的信息(UI 设置、文本字符串和任何不存储在参数中的自定义数据)。
 
-帧数据用于渲染一个特定的帧的信息。这已经被废弃了，因为大多数机器都能够一次将整个帧加载到内存中。当然，你的IMAX生成用户仍然会感谢你所做的任何优化。
+帧数据用于渲染一个特定的帧的信息。这已经被废弃了，因为大多数机器都能够一次将整个帧加载到内存中。当然，你的 IMAX 生成用户仍然会感谢你所做的任何优化。
 
 ## Persistence
 
-After Effects在项目文件中保存了序列数据，但没有保存全局或帧数据。序列数据中指向外部数据的指针，在重新打开项目时很可能是无效的，必须重新连接。我们把这个过程称为 "扁平化 "和 "非扁平化 "的序列数据。
+After Effects 在项目文件中保存了序列数据，但没有保存全局或帧数据。序列数据中指向外部数据的指针，在重新打开项目时很可能是无效的，必须重新连接。我们把这个过程称为 "扁平化 "和 "非扁平化 "的序列数据。
 
 ::: tip
 
@@ -26,9 +27,9 @@ After Effects在项目文件中保存了序列数据，但没有保存全局或�
 
 ## Validating Sequence Data
 
-仔细的序列数据验证对于做跨时模拟的效果非常重要，在这种情况下，帧N依赖于帧N-1，而你在序列数据中使用计算数据的缓存。如果一个参数改变了，某些计算出来的数据可能就不再有效了，但如果每次改变后都盲目地重新计算，也是一种浪费。
+仔细的序列数据验证对于做跨时模拟的效果非常重要，在这种情况下，帧 N 依赖于帧 N-1，而你在序列数据中使用计算数据的缓存。如果一个参数改变了，某些计算出来的数据可能就不再有效了，但如果每次改变后都盲目地重新计算，也是一种浪费。
 
-当被要求渲染第N帧时，假设你的缓存数据已经计算到了第N-1帧，调用[PF_GetCurrentState()]/[PF_AreStatesIdentical()]中的`PF_ParamUtilSuite3](参数监控.html)，看看在当前参数设置下缓存的计算数据是否仍然有效。
+当被要求渲染第 N 帧时，假设你的缓存数据已经计算到了第 N-1 帧，调用[PF_GetCurrentState()]/[PF_AreStatesIdentical()]中的`PF_ParamUtilSuite3](参数监控.html)，看看在当前参数设置下缓存的计算数据是否仍然有效。
 
 所有参数的状态(除了那些带有[PF_ParamFlag_EXCLUDE_FROM_HAVE_INPUTS_CHANGED](.../effect-basics/PF_ParamDef. html)(#effect-basics-pf-paramdef-parameter-flags)设置)，包括层参数(包括[param[0]](.../effect-basics/PF_ParamDef.html)(#effect-basics-pf-paramdef-param-zero))在通过的时间跨度内被检查。
 
@@ -36,7 +37,7 @@ After Effects在项目文件中保存了序列数据，但没有保存全局或�
 
 如果输入没有变化，你可以安全地使用你的缓存，而且内部缓存系统会认为你对通过的范围有时间上的依赖。因此，如果上游有什么变化，主机的缓存将自动正确地失效。
 
-为了测试它是否有效，在每一帧上用一个参数的关键帧应用你的效果。用RAM预览来填充缓存，然后改变其中一个关键帧。相关的帧和所有从属的帧(例如，在模拟的情况下，后来的帧)应该失去它们的缓存标记，需要重新渲染。同样，对图层参数来源的上游改变应该导致缓存的时间选择性失效。
+为了测试它是否有效，在每一帧上用一个参数的关键帧应用你的效果。用 RAM 预览来填充缓存，然后改变其中一个关键帧。相关的帧和所有从属的帧(例如，在模拟的情况下，后来的帧)应该失去它们的缓存标记，需要重新渲染。同样，对图层参数来源的上游改变应该导致缓存的时间选择性失效。
 
 ## Flattened And Unflattened Sequence Data
 
@@ -44,11 +45,11 @@ After Effects在项目文件中保存了序列数据，但没有保存全局或�
 
 在收到[PF_Cmd_SEQUENCE_FLATTEN](.../effect-basics/command-selectors.html)后，将指针引用的数据放入一个连续的块中，以后可以从中恢复旧的结构。
 
-如果你的序列数据包含一个指向long的指针，分配4个字节来存储扁平化的数据。你必须处理特定平台的字节排序。
+如果你的序列数据包含一个指向 long 的指针，分配 4 个字节来存储扁平化的数据。你必须处理特定平台的字节排序。
 
-记住，你的用户(反正是买了两份你的插件的人)可能希望同一个项目能在macOS和Windows上运行。
+记住，你的用户(反正是买了两份你的插件的人)可能希望同一个项目能在 macOS 和 Windows 上运行。
 
-After Effects在重新加载数据时发送[PF_Cmd_SEQUENCE_RESETUP](.../effect-basics/command-selectors.html) ，对于平面或非平面数据。
+After Effects 在重新加载数据时发送[PF_Cmd_SEQUENCE_RESETUP](.../effect-basics/command-selectors.html) ，对于平面或非平面数据。
 
 在两个结构中使用一个共同偏移量的标志来表示数据的状态。
 
@@ -95,7 +96,7 @@ typedef struct {
 
 #### PF_GetConstSequenceData
 
-当一个效果启用多帧渲染时，为一个渲染线程检索只读的const_data对象。
+当一个效果启用多帧渲染时，为一个渲染线程检索只读的 const_data 对象。
 
 ```cpp
 PF_Err(*PF_GetConstSequenceData)(

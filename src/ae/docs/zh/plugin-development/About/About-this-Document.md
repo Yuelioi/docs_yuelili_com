@@ -4,6 +4,7 @@ order: 1
 category:
   - AE 插件开发
 ---
+
 # About this Document
 
 多年来，这份文件发生了很大变化。部分是百科全书，部分是操作指南，包含了 20 多年来 API 开发和完善过程中积累的多个层次信息。
@@ -29,7 +30,7 @@ category:
 
 ## Documentation Conventions
 
-函数、结构名称和一般的 C/C++代码是在代码块中包裹 ；如MyStruct 和 MyFunction()。
+函数、结构名称和一般的 C/C++代码是在代码块中包裹 ；如 MyStruct 和 MyFunction()。
 
 蓝色的文字是超链接。
 
@@ -41,8 +42,8 @@ category:
 
 ### Coding Conventions
 
-| Type                                             | Suffix           | Example            |
-| ------------------------------------------------ | ---------------- | ------------------ |
+| Type                                             | Suffix     | Example          |
+| ------------------------------------------------ | ---------- | ---------------- |
 | Handle                                           | **H**      | `fooH`           |
 | pointer (to)                                     | **P**      | `fooP`           |
 | Boolean                                          | **B**      | `visibleB`       |
@@ -54,10 +55,10 @@ category:
 | unsigned char                                    | **Cu**     | `redCu`          |
 | function pointer                                 | **\_func** | `sample_func`    |
 | time value                                       | **T**      | `durationT`      |
-| `char*` (NULL-terminated C string)             | **Z**      | `nameZ`          |
+| `char*` (NULL-terminated C string)               | **Z**      | `nameZ`          |
 | rectangle                                        | **R**      | `boundsR`        |
 | fixed rectangle                                  | **FiR**    | `boundsFiR`      |
 | float rectangle                                  | **FR**     | `boundsFR`       |
 | ratio                                            | **Rt**     | `scale_factorRt` |
-| `void*`                                        | **PV**     | `refconPV`       |
+| `void*`                                          | **PV**     | `refconPV`       |
 | optional parameter (must be passed, can be NULL) | **0**      | `extra_flags0`   |

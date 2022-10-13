@@ -7,31 +7,31 @@ category:
 
 # Debugging Plug-ins
 
-学习After Effects和插件之间互动的最好方法是在调试器中运行样本。花一些时间在编译器的调试器上，以及一个与你的插件非常相似的样本项目上，会有很大的收获。
+学习 After Effects 和插件之间互动的最好方法是在调试器中运行样本。花一些时间在编译器的调试器上，以及一个与你的插件非常相似的样本项目上，会有很大的收获。
 
-一旦你按照上面的解释把插件直接构建到插件文件夹中，下面是如何指定After Effects作为调试过程中运行的应用程序。
+一旦你按照上面的解释把插件直接构建到插件文件夹中，下面是如何指定 After Effects 作为调试过程中运行的应用程序。
 
-在Windows上。
+在 Windows 上。
 
-1. 在Visual Studio解决方案中，在解决方案资源管理器面板中，选择你要调试的项目。
+1. 在 Visual Studio 解决方案中，在解决方案资源管理器面板中，选择你要调试的项目。
 2. 2.右键单击它，选择设置为启动项目
 3. 3.再次右击它，并选择属性
-4. 在 "配置属性">"调试">"命令 "中，提供插件将在主机应用程序中运行的可执行文件的路径(这可能是After Effects或Premiere Pro)。
+4. 在 "配置属性">"调试">"命令 "中，提供插件将在主机应用程序中运行的可执行文件的路径(这可能是 After Effects 或 Premiere Pro)。
 5. 在这里，你可以点击播放按钮，或者你可以启动应用程序，然后在任何时候选择调试>附加到进程......
 
-在macOS上。
+在 macOS 上。
 
-1. 在Xcode中，在项目导航器中，选择你要调试的xcodeproj
+1. 在 Xcode 中，在项目导航器中，选择你要调试的 xcodeproj
 2. 2. 选择产品 > 方案 > 编辑方案...
-3. 在 "运行 "下，在 "信息 "选项卡中，为 "可执行 "选择插件将运行的主机程序(这可能是After Effects或Premiere Pro)
+3. 在 "运行 "下，在 "信息 "选项卡中，为 "可执行 "选择插件将运行的主机程序(这可能是 After Effects 或 Premiere Pro)
 4. 在这里，你可以点击 "播放 "按钮来建立和运行当前的方案，或者你可以启动应用程序，然后在任何时候选择调试>附加到进程。
 
 ## Deleting Preferences
 
-在开发插件的过程中，你的插件可能会将设置信息传递给After Effects，然后存储在其偏好文件中。
+在开发插件的过程中，你的插件可能会将设置信息传递给 After Effects，然后存储在其偏好文件中。
 
-你可以在启动时按住Ctrl-Alt-Shift/Cmd-Opt-Shift，删除这些偏好，并以干净的方式重新启动After Effects。
+你可以在启动时按住 Ctrl-Alt-Shift/Cmd-Opt-Shift，删除这些偏好，并以干净的方式重新启动 After Effects。
 
-在Windows上，偏好设置存储在这里。`[用户文件夹]/AppData\Roaming\AdobeAfter Effects\[版本]\Adobe After Effects [版本]-x64 Prefs.txt`。
+在 Windows 上，偏好设置存储在这里。`[用户文件夹]/AppData\Roaming\AdobeAfter Effects\[版本]\Adobe After Effects [版本]-x64 Prefs.txt`。
 
-在macOS上，它们被存储在这里。`~/Library/Preferences/Adobe/After Effects/[版本]/Adobe After Effects [版本]-x64 Prefs`。
+在 macOS 上，它们被存储在这里。`~/Library/Preferences/Adobe/After Effects/[版本]/Adobe After Effects [版本]-x64 Prefs`。

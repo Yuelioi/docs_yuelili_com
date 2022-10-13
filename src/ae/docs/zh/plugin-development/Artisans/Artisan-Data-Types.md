@@ -4,21 +4,22 @@ order: 3
 category:
   - AE 插件开发
 ---
+
 # Artisan Data Types
 
-以下是Artisan API中最常用的数据类型。
+以下是 Artisan API 中最常用的数据类型。
 
 ## Data Types Used In The Artisan API
 
-| **Type**                | **Describes**                                                                     |
-| ----------------------------- | --------------------------------------------------------------------------------------- |
+| **Type**                    | **Describes**                                                                           |
+| --------------------------- | --------------------------------------------------------------------------------------- |
 | `AEGP_RenderLayerContextH ` | State information at the time of a render request, sent to an Artisan by After Effects. |
 | `AEGP_SoundDataH `          | The audio settings used for a given layer.                                              |
 | `AEGP_RenderOptionsH`       | The settings associated with a render queue item.                                       |
 
 #### AEGP_RenderLayerContextH
 
-渲染请求时的状态信息，由After Effects发送至Artisan。
+渲染请求时的状态信息，由 After Effects 发送至 Artisan。
 
 #### PR_RenderContextH
 
@@ -42,23 +43,23 @@ category:
 
 ## Horz? Vert?[¶]
 
-After Effects的矩阵是基于行的，OpenGL的是基于列的。这意味着你要做更多的工作。耶，计费时间!
+After Effects 的矩阵是基于行的，OpenGL 的是基于列的。这意味着你要做更多的工作。耶，计费时间!
 
 ## Implementation And Design[¶]
 
-一个工匠几乎是一个独立的应用程序。因为我们在After Effects 5.0的早期就意识到，有很多方法可以解决3D渲染中固有的问题；例如，交叉点和阴影等。
+一个工匠几乎是一个独立的应用程序。因为我们在 After Effects 5.0 的早期就意识到，有很多方法可以解决 3D 渲染中固有的问题；例如，交叉点和阴影等。
 
-我们提供了一个API，我们和第三方(是的，我们真的使用自己的API)可以实现任何需要的3D渲染方案。
+我们提供了一个 API，我们和第三方(是的，我们真的使用自己的 API)可以实现任何需要的 3D 渲染方案。
 
 ## 3D Compositing, Not Modeling[¶]
 
-After Effects不是一个3D建模应用程序。用户在响应模式下工作，只有在打样或最终输出时才切换到更高的质量。考虑提供至少两种质量模式，一种用于布局，另一种用于最终输出。在低质量模式下要注意渲染时间。
+After Effects 不是一个 3D 建模应用程序。用户在响应模式下工作，只有在打样或最终输出时才切换到更高的质量。考虑提供至少两种质量模式，一种用于布局，另一种用于最终输出。在低质量模式下要注意渲染时间。
 
 ## Registering An Artisan[¶]
 
-工匠是一个AEGP，有一个单一的入口点。匠人也必须注册自己的函数入口点，并为此有一个特殊的回调。参见[AEGP_RegisterSuites5](.../aegps/aegp-suites.html#aegps-aegp-suites-aegp-registersuites)中的`AEGP_RegisterArtisan()`。
+工匠是一个 AEGP，有一个单一的入口点。匠人也必须注册自己的函数入口点，并为此有一个特殊的回调。参见[AEGP_RegisterSuites5](.../aegps/aegp-suites.html#aegps-aegp-suites-aegp-registersuites)中的`AEGP_RegisterArtisan()`。
 
-这个表格显示了由`PR_ArtisanEntryPoints`定义的Artisans可以支持的功能：只有`render_func`是必须的。
+这个表格显示了由`PR_ArtisanEntryPoints`定义的 Artisans 可以支持的功能：只有`render_func`是必须的。
 
 ### Artisan Entry Points[¶]
 
@@ -117,7 +118,7 @@ PR_GlobalDoAboutFunc(
 
 #### setup_instance_func0
 
-分配和实例化任何特定于你的Artisan实例的数据。
+分配和实例化任何特定于你的 Artisan 实例的数据。
 
 ```cpp
 
@@ -142,7 +143,7 @@ PR_InstanceSetupFunc(
 
 #### setdown_instance_func0
 
-卸载并释放你的Artisan实例的任何特定数据。
+卸载并释放你的 Artisan 实例的任何特定数据。
 
 ```cpp
 
@@ -163,7 +164,7 @@ PR_InstanceSetdownFunc(
 
 #### flatten_instance_func0
 
-扁平化你的数据，准备写入磁盘。(确保它是独立于操作系统的，如果你的Artisan是这样的话)。
+扁平化你的数据，准备写入磁盘。(确保它是独立于操作系统的，如果你的 Artisan 是这样的话)。
 
 ```cpp
 
@@ -186,7 +187,7 @@ PR_FlattenInstanceFunc(
 
 #### do_instance_dialog_func0
 
-如果你的Artisan有一个额外的参数(通过它的选项对话框访问)，这个函数将被调用以获得和设置它们。
+如果你的 Artisan 有一个额外的参数(通过它的选项对话框访问)，这个函数将被调用以获得和设置它们。
 
 ```cpp
 
@@ -288,7 +289,7 @@ PR_FrameRenderFunc(
 
 如果有需要，美工人员可以绘制他们自己的投影轴。
 
-After Effects将调用这个函数来获得合成世界和这些轴之间的变换，以及其他一些与屏上和屏下预览绘制有关的功能(前者只与互动工匠有关)。
+After Effects 将调用这个函数来获得合成世界和这些轴之间的变换，以及其他一些与屏上和屏下预览绘制有关的功能(前者只与互动工匠有关)。
 
 ```cpp
 
@@ -325,21 +326,21 @@ PR_QueryFunc(
 - `PR_QueryType_GET_CURRENT_CONTEXT_SAFE_FOR_LINE_DRAWING`,
 - `PR_QueryType_GET_ARTISAN_QUALITY`
 
-CS6中的新功能。
+CS6 中的新功能。
 
 ## The World Is Your Canvas[¶]
 
 `AEGP_RenderTexture()`提供一个图层的原始像素，未经转换，进入一个任意大小的缓冲区。
 
-`AEGP_RenderLayer()`调用整个After Effects的渲染管线，包括变换、遮罩等，提供图层在其合成中的样子，在一个合成大小的缓冲区中。
+`AEGP_RenderLayer()`调用整个 After Effects 的渲染管线，包括变换、遮罩等，提供图层在其合成中的样子，在一个合成大小的缓冲区中。
 
-如果被渲染的图层是3D的，就会调用默认的(标准3D)Artisan来执行任何3D几何图形。
+如果被渲染的图层是 3D 的，就会调用默认的(标准 3D)Artisan 来执行任何 3D 几何图形。
 
 你的工匠可以用它来渲染跟踪哑光层，并且只在严格的二维意义上将它们应用到转换后的三维层。
 
-在渲染之前，After Effects附带的Artisans应用一个反变换来获得方形像素，然后在显示之前重新应用变换。
+在渲染之前，After Effects 附带的 Artisans 应用一个反变换来获得方形像素，然后在显示之前重新应用变换。
 
-例如，如果像素的长宽比是10/11(DV NTSC)，我们就乘以11/10来得到方形像素。我们对三维图层进行处理和合成，然后重新分割，以恢复到原始的像素长宽比。
+例如，如果像素的长宽比是 10/11(DV NTSC)，我们就乘以 11/10 来得到方形像素。我们对三维图层进行处理和合成，然后重新分割，以恢复到原始的像素长宽比。
 
 以下套件提供了图层、合成、纹理和目标缓冲区。这是所有工匠的一个重要套件。
 
@@ -347,7 +348,7 @@ CS6中的新功能。
 
 #### AEGP_GetCompToRender
 
-鉴于在渲染时提供给Artisan的渲染上下文，返回一个指向合成的句柄。
+鉴于在渲染时提供给 Artisan 的渲染上下文，返回一个指向合成的句柄。
 
 ```cpp
 
@@ -362,7 +363,7 @@ AEGP_GetCompToRender(
 
 #### AEGP_GetNumLayersToRender
 
-给定渲染上下文，返回Artisan需要渲染的层数。
+给定渲染上下文，返回 Artisan 需要渲染的层数。
 
 ```cpp
 
@@ -377,7 +378,7 @@ AEGP_GetNumLayersToRender(
 
 #### AEGP_GetNthLayerContextToRender
 
-在确定需要由Artisan渲染的总层数后，用于建立一个要渲染的层的列表。
+在确定需要由 Artisan 渲染的总层数后，用于建立一个要渲染的层的列表。
 
 ```cpp
 
@@ -411,7 +412,7 @@ AEGP_GetLayerFromLayerContext(
 
 #### AEGP_GetLayerAndSubLayerFromLayerContext
 
-允许渲染子层(如Photoshop文件中的子层)。
+允许渲染子层(如 Photoshop 文件中的子层)。
 
 ```cpp
 
@@ -483,7 +484,7 @@ AEGP_GetCompToRender(
 
 #### AEGP_GetROI
 
-给出在渲染时提供给Artisan的渲染上下文，返回一个指向合成的句柄。
+给出在渲染时提供给 Artisan 的渲染上下文，返回一个指向合成的句柄。
 
 ```cpp
 
@@ -500,7 +501,7 @@ AEGP_GetROI(
 
 给出渲染上下文和图层，返回图层纹理。
 
-所有带 "0 "的参数是可选的；返回的 "PF_EffectWorld "可以是NULL。
+所有带 "0 "的参数是可选的；返回的 "PF_EffectWorld "可以是 NULL。
 
 ```cpp
 
@@ -565,9 +566,9 @@ AEGP_GetFieldRender(
 
 #### AEGP_ReportArtisanProgress
 
-给出在渲染时提供给Artisan的渲染上下文，返回一个句柄给该合成。
+给出在渲染时提供给 Artisan 的渲染上下文，返回一个句柄给该合成。
 
-注意：这在macOS上不是线程安全的；只有在当前线程ID为0时才使用这个函数。
+注意：这在 macOS 上不是线程安全的；只有在当前线程 ID 为 0 时才使用这个函数。
 
 ```cpp
 
@@ -614,7 +615,7 @@ AEGP_IsBlankCanvas(
 
 #### AEGP_GetRenderLayerToWorldXform
 
-给出一个渲染环境和一个图层(在给定的时间)，检索4乘4的变换，在它们的坐标空间之间移动。
+给出一个渲染环境和一个图层(在给定的时间)，检索 4 乘 4 的变换，在它们的坐标空间之间移动。
 
 ```cpp
 
@@ -633,7 +634,7 @@ AEGP_GetRenderLayerToWorldXform(
 
 #### AEGP_GetRenderLayerBounds
 
-检索layer_contextH(在给定时间)在render_contextH中的边界矩形。
+检索 layer_contextH(在给定时间)在 render_contextH 中的边界矩形。
 
 ```cpp
 
@@ -690,9 +691,9 @@ AEGP_IsRenderLayerActive(
 
 #### AEGP_SetArtisanLayerProgress
 
-CountL是完成的层数。
+CountL 是完成的层数。
 
-`num_layersL`是Artisan正在渲染的总层数。
+`num_layersL`是 Artisan 正在渲染的总层数。
 
 ```cpp
 
@@ -831,7 +832,7 @@ AEGP_DisposeRenderReceipt(
 
 #### AEGP_CheckRenderReceipt
 
-检查After Effects的内部缓存，以确定一个给定的`AEGP_RenderReceiptH`是否仍然有效。
+检查 After Effects 的内部缓存，以确定一个给定的`AEGP_RenderReceiptH`是否仍然有效。
 
 ```cpp
 
@@ -873,7 +874,7 @@ AEGP_GenerateRenderReceipt(
 
 #### AEGP_GetNumBinsToRender
 
-返回After Effects希望工匠渲染的bins数量。
+返回 After Effects 希望工匠渲染的 bins 数量。
 
 ```cpp
 
@@ -888,7 +889,7 @@ AEGP_GetNumBinsToRender(
 
 #### AEGP_SetNthBin
 
-将给定的渲染上下文设置为After Effects要渲染的第n个bin。
+将给定的渲染上下文设置为 After Effects 要渲染的第 n 个 bin。
 
 ```cpp
 
@@ -1080,7 +1081,7 @@ AEGP_GetInteractiveCheckerboardSize(
 
 #### AEGP_GetInteractiveCachedBuffer
 
-检索上次用于`PR_RenderContextH'的缓存AEGP_WorldH。
+检索上次用于`PR_RenderContextH'的缓存 AEGP_WorldH。
 
 ```cpp
 
@@ -1190,7 +1191,7 @@ AEGP_GetCompShutterTime)(
 
 #### AEGP_MapCompToLayerTime
 
-CC中的新内容。与[AEGP_ConvertCompToLayerTime](../aegps/aegp-suites.html#aegps-aegp-suites-aegp-layersuite)不同，它可以处理折叠或嵌套的合成的时间重映射。
+CC 中的新内容。与[AEGP_ConvertCompToLayerTime](../aegps/aegp-suites.html#aegps-aegp-suites-aegp-layersuite)不同，它可以处理折叠或嵌套的合成的时间重映射。
 
 ```cpp
 
@@ -1404,7 +1405,7 @@ AEGP_SetCameraFilmSize)(
 
 ## Orthographic Camera Matrix[¶]
 
-在内部，我们使用合成宽度和高度来设置OpenGL规范所描述的矩阵为
+在内部，我们使用合成宽度和高度来设置 OpenGL 规范所描述的矩阵为
 
 ```cpp
 
@@ -1421,13 +1422,13 @@ glOrtho(-width/2, width/2, -height/2, height/2, -1, 100);
 
 ## Film Size[¶]
 
-在现实世界中，胶片的尺寸是以毫米为单位的。在After Effects中，它是以像素来衡量的。乘以72，再除以25.4，就可以从毫米变成像素。
+在现实世界中，胶片的尺寸是以毫米为单位的。在 After Effects 中，它是以像素来衡量的。乘以 72，再除以 25.4，就可以从毫米变成像素。
 
 视野是比较复杂的。
 
-ϴ=1/2视场
+ϴ=1/2 视场
 
-tan(ϴ) = 1/2合成高度/焦距
+tan(ϴ) = 1/2 合成高度/焦距
 
 焦距 = 2 tan(ϴ) / 合成高度
 
@@ -1476,29 +1477,29 @@ AEGP_SetLightType(
 
 ### Notes On Light Behavior[¶]
 
-平行光的公式可以在Foley和Van Dam的《计算机图形学导论》(ISBN 0-201-60921-5)中找到，点光源的公式也是如此。
+平行光的公式可以在 Foley 和 Van Dam 的《计算机图形学导论》(ISBN 0-201-60921-5)中找到，点光源的公式也是如此。
 
-我们使用Jim Blinn提出的半角变体来代替。
+我们使用 Jim Blinn 提出的半角变体来代替。
 
 假设我们在一个图层上有一个点，想用灯光对其进行遮挡。
 
-让V为从图层点到眼睛点的单位向量。
+让 V 为从图层点到眼睛点的单位向量。
 
-让L是到光的单位向量(在平行光的情况下这是常数)。让H是(V+L)/2(归一化)。
+让 L 是到光的单位向量(在平行光的情况下这是常数)。让 H 是(V+L)/2(归一化)。
 
-让N为该层的单位法向量。
+让 N 为该层的单位法向量。
 
-镜面反射光的数量是S * power(H Dot N, shine)，其中S是镜面反射系数。
+镜面反射光的数量是 S \* power(H Dot N, shine)，其中 S 是镜面反射系数。
 
 ## How Should I Draw That?[¶]
 
-After Effects依靠Artisans来绘制3D图层手柄。如果你的美工选择不响应这个调用，默认的美工将为你绘制3D图层手柄。查询变换对于优化After Effects的缓存非常重要。
+After Effects 依靠 Artisans 来绘制 3D 图层手柄。如果你的美工选择不响应这个调用，默认的美工将为你绘制 3D 图层手柄。查询变换对于优化 After Effects 的缓存非常重要。
 
-坐标系统是正X向右，正Y向下，正Z向屏幕。原点是左上角。旋转是先x后y再z。对于矩阵来说，平移是最下面一行，方向是四元数(先应用)，然后是任何x-y-z的旋转。作为一般规则，使用方向或旋转，但不能同时使用。如果你需要控制角速度，也可以使用旋转。
+坐标系统是正 X 向右，正 Y 向下，正 Z 向屏幕。原点是左上角。旋转是先 x 后 y 再 z。对于矩阵来说，平移是最下面一行，方向是四元数(先应用)，然后是任何 x-y-z 的旋转。作为一般规则，使用方向或旋转，但不能同时使用。如果你需要控制角速度，也可以使用旋转。
 
 ## Query Transform Functions[¶]
 
-这些函数给工匠提供了他们需要的变换信息，以便正确地将图层放置在一个合成中，并对After Effects发送的各种查询作出适当的反应，这些查询将发送到他们的`PR_QueryFunc`入口点函数。
+这些函数给工匠提供了他们需要的变换信息，以便正确地将图层放置在一个合成中，并对 After Effects 发送的各种查询作出适当的反应，这些查询将发送到他们的`PR_QueryFunc`入口点函数。
 
 由于该入口点是可选的，所以你的工匠对查询的响应也是可选的；然而，如果你不这样做，你的用户可能会失望，(在进行交互式预览绘图时)所有的相机和灯光指示器都消失了，直到他们停止移动 工匠是复杂的野兽；如果你有任何问题，请联系我们。
 
@@ -1506,7 +1507,7 @@ After Effects依靠Artisans来绘制3D图层手柄。如果你的美工选择不
 
 #### AEGP_QueryXformGetSrcType
 
-给定一个查询上下文，返回当前正在修改的trasnsform源。
+给定一个查询上下文，返回当前正在修改的 trasnsform 源。
 
 ```cpp
 
@@ -1648,7 +1649,7 @@ AEGP_QueryXformSetXform(
 
 #### AEGP_QueryWindowRef
 
-为给定的`PR_QueryContextH`设置窗口参考(由After Effects)。
+为给定的`PR_QueryContextH`设置窗口参考(由 After Effects)。
 
 ```cpp
 
@@ -1695,7 +1696,7 @@ AEGP_QueryFrozenProxy(
 
 #### AEGP_QuerySwapBuffer
 
-在渲染和摄像机/灯光手柄绘制完成后发送；After Effects返回工匠应该绘制其输出的缓冲区。
+在渲染和摄像机/灯光手柄绘制完成后发送；After Effects 返回工匠应该绘制其输出的缓冲区。
 
 ```cpp
 
@@ -1712,7 +1713,7 @@ AEGP_QuerySwapBuffer(
 
 #### AEGP_QueryDrawProcs
 
-设置After Effects在绘制相机和灯光手柄到工匠提供的上下文时将调用的交互式绘图函数。
+设置 After Effects 在绘制相机和灯光手柄到工匠提供的上下文时将调用的交互式绘图函数。
 
 ```cpp
 
@@ -1727,7 +1728,7 @@ AEGP_QueryDrawProcs(
 
 #### AEGP_QueryPrepareForLineDrawing
 
-告知After Effects它将绘制的上下文。
+告知 After Effects 它将绘制的上下文。
 
 ```cpp
 
@@ -1748,7 +1749,7 @@ AEGP_QueryPrepareForLineDrawing(
 
 #### AEGP_QueryUnprepareForLineDrawing
 
-就After Effects而言，工匠已经完成了画线。
+就 After Effects 而言，工匠已经完成了画线。
 
 ```cpp
 
@@ -1763,7 +1764,7 @@ AEGP_QueryUnprepareForLineDrawing(
 
 ## Interactive Drawing Functions[¶]
 
-我们增加了工匠提供After Effects可以用来做基本绘图功能的功能，以便在预览期间更新comp窗口的显示，包括相机、灯光和线框预览建模。
+我们增加了工匠提供 After Effects 可以用来做基本绘图功能的功能，以便在预览期间更新 comp 窗口的显示，包括相机、灯光和线框预览建模。
 
 ### PR_InteractiveDrawProcs[¶]
 

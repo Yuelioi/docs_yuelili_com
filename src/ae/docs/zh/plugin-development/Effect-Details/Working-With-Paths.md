@@ -4,6 +4,7 @@ order: 17
 category:
   - AE 插件开发
 ---
+
 # Working With Paths
 
 ## Accessing Path Data
@@ -12,22 +13,22 @@ category:
 
 ## Manipulating Path Data
 
-你也可以使用[AEGP_MaskOutlineSuite3](.../aegps/aegp-suites.html)(#aegps-aegp-suites-aegp-maskoutlinesuite)来操纵路径。参见[AEGP套件的作弊效果使用](.../aegps/cheating effect-usage-of-aegp-suites.html)  。路径参数被视为不透明的数据块；必须使用get和set函数来访问和操作它们。像图层参数一样，它们必须被访问它们的效果检查出来(和进入！)。
+你也可以使用[AEGP_MaskOutlineSuite3](.../aegps/aegp-suites.html)(#aegps-aegp-suites-aegp-maskoutlinesuite)来操纵路径。参见[AEGP 套件的作弊效果使用](.../aegps/cheating effect-usage-of-aegp-suites.html) 。路径参数被视为不透明的数据块；必须使用 get 和 set 函数来访问和操作它们。像图层参数一样，它们必须被访问它们的效果检查出来(和进入！)。
 
 ## Vertices
 
-路径顶点比简单的点更复杂。所有的成员变量都是PF_FpLongs(双倍)，并且是在层的坐标空间中。
+路径顶点比简单的点更复杂。所有的成员变量都是 PF_FpLongs(双倍)，并且是在层的坐标空间中。
 
 ## PF_PathVertex
 
-| **Member** | **Description** |
-| ---| ---|
-| `x` | The location of the vertex. |
-| `y` | |
-| `tan_in_x` | The incoming tangent point. |
-| `tan_in_y` | |
+| **Member**  | **Description**             |
+| ----------- | --------------------------- |
+| `x`         | The location of the vertex. |
+| `y`         |                             |
+| `tan_in_x`  | The incoming tangent point. |
+| `tan_in_y`  |                             |
 | `tan_out_x` | The outgoing tangent point. |
-| `tan_out_y` | |
+| `tan_out_y` |                             |
 
 ## PF_PathDataSuite
 
@@ -57,7 +58,7 @@ A_long*num_segmentsPL);
 
 ### PF_PathVertexInfo
 
-Retrieves the PF_PathVertex ` for the specified path. The range of points is [0.num_segments];` for closed paths, vertex[0]``` ==``` vertex[num_segments]`.
+Retrieves the PF_PathVertex ` for the specified path. The range of points is [0.num_segments];` for closed paths, vertex[0]` ==` vertex[num_segments]`.
 
 ```cpp
 PF_PathVertexInfo(
@@ -172,7 +173,7 @@ PF_MaskMode*modeP);
 
 ### PF_PathGetName
 
-检索路径的名称(最长为PF_MAX_PATH_NAME_LEN`长)。
+检索路径的名称(最长为 PF_MAX_PATH_NAME_LEN`长)。
 
 ```cpp
 PF_PathGetName(
@@ -197,7 +198,7 @@ A_long*num_pathsPL);
 
 ### PF_PathInfo
 
-检索指定路径的PF_PathID。
+检索指定路径的 PF_PathID。
 
 ```cpp
 PF_PathInfo(
@@ -208,7 +209,7 @@ PF_PathID*unique_idP);
 
 ### PF_CheckoutPath
 
-在指定的时间获取路径的PF_PathOutlinePtr。
+在指定的时间获取路径的 PF_PathOutlinePtr。
 
 ```cpp
 PF_CheckoutPath(
@@ -222,7 +223,7 @@ PF_PathOutlinePtr*pathPP);
 
 ### PF_CheckinPath
 
-将路径释放回After Effects。总是这样做，不管遇到什么错误情况。每一次签出都必须由签入来平衡，否则会有痛苦。
+将路径释放回 After Effects。总是这样做，不管遇到什么错误情况。每一次签出都必须由签入来平衡，否则会有痛苦。
 
 ```cpp
 PF_CheckinPath(

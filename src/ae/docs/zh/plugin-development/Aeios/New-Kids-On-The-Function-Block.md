@@ -7,23 +7,23 @@ category:
 
 # New Kids On The Function Block[¶]
 
-在其主入口点函数中，每个AEIO插件必须填写AEIO_FunctionBlock，提供指向After Effects将为不同文件相关任务调用的函数的指针。
+在其主入口点函数中，每个 AEIO 插件必须填写 AEIO_FunctionBlock，提供指向 After Effects 将为不同文件相关任务调用的函数的指针。
 
-下表显示了哪些函数是需要输入的，哪些是需要输出的。对于一个简单的实现，从右栏中标明 "需要 "的函数开始。你通常可以通过让After Effects为你处理调用(通过返回`AEIO_Err_USE_DFLT_CALLBACK`)来调用 "最佳情况 "行为。
+下表显示了哪些函数是需要输入的，哪些是需要输出的。对于一个简单的实现，从右栏中标明 "需要 "的函数开始。你通常可以通过让 After Effects 为你处理调用(通过返回`AEIO_Err_USE_DFLT_CALLBACK`)来调用 "最佳情况 "行为。
 
-对于一个只用于视频输入的原始AEIO，实现以下函数。`AEIO_InitInSpecFromFile`或`AEIO_InitInSpecInteractive`(取决于源是文件还是交互生成的)，`AEIO_DisposeInSpec`。`AEIO_GetInSpecInfo`, `AEIO_DrawSparseFrame`, `AEIO_CloseSourceFiles`, 和`AEIO_InqNextFrameTime` (使用`AEIO_Err_USE_DFLT_CALLBACK`也可以)。
+对于一个只用于视频输入的原始 AEIO，实现以下函数。`AEIO_InitInSpecFromFile`或`AEIO_InitInSpecInteractive`(取决于源是文件还是交互生成的)，`AEIO_DisposeInSpec`。`AEIO_GetInSpecInfo`, `AEIO_DrawSparseFrame`, `AEIO_CloseSourceFiles`, 和`AEIO_InqNextFrameTime` (使用`AEIO_Err_USE_DFLT_CALLBACK`也可以)。
 
-从IO样本开始，最好也留下其他函数的定义，并根据需要进一步填充。
+从 IO 样本开始，最好也留下其他函数的定义，并根据需要进一步填充。
 
 ## AEIO_FunctionBlock4[¶]
 
 #### AEIO_InitInSpecFromFile
 
-给定一个文件路径，在提供的`AEIO_InSpecH`中向After Effects描述其内容。
+给定一个文件路径，在提供的`AEIO_InSpecH`中向 After Effects 描述其内容。
 使用[AEGP_IOInSuite]中所有适当的 "设置 "调用来完成。
 如果有图像数据，设置其深度、尺寸和阿尔法解释。
 如果有音频，描述其通道和采样率。
-文件路径是一个以NULL结尾的UTF-16字符串，带有平台分隔符。
+文件路径是一个以 NULL 结尾的 UTF-16 字符串，带有平台分隔符。
 
 ```cpp
 AEIO_InitInSpecFromFile(
@@ -39,8 +39,8 @@ IO：输入
 
 #### AEIO_InitInSpecInteractive
 
-使用某种形式的用户互动(而不是由After Effects提供的文件路径)。
-描述你生成的AEIO_InSpecH包含的音频和视频。
+使用某种形式的用户互动(而不是由 After Effects 提供的文件路径)。
+描述你生成的 AEIO_InSpecH 包含的音频和视频。
 
 ```cpp
 AEIO_InitInSpecInteractive(
@@ -121,8 +121,7 @@ IO: 输入
 
 #### AEIO_GetActiveExtent
 
-`AEIO_Err_USE_DFLT_CALLBACK'允许。
-在提供的`A_LRect`中填入给定时间内文件像素的活动范围。
+`AEIO_Err_USE_DFLT_CALLBACK'允许。 在提供的`A_LRect`中填入给定时间内文件像素的活动范围。
 
 ```cpp
 AEIO_GetActiveExtent(
@@ -152,10 +151,10 @@ AEIO_GetInSpecInfo(
 
 这个函数经常被调用；每次我们刷新项目面板的时候。
 保持分配到最低限度。
-在After Effects的AEIOs中，我们检查一个有效的 "optionsH"(使用 "AEGP_GetInSpecOptionsHandle")。
+在 After Effects 的 AEIOs 中，我们检查一个有效的 "optionsH"(使用 "AEGP*GetInSpecOptionsHandle")。
 如果我们找到一个，我们就使用其中的信息。如果没有，我们什么都不做。
-这很重要；如果你的AEIO处理静止图像，这个函数_会被调用到包含静止图像的文件夹。
-希望不会有一个与之相关的optionsH(除非你在写一个真正奇怪的AEIO)。
+这很重要；如果你的 AEIO 处理静止图像，这个函数*会被调用到包含静止图像的文件夹。
+希望不会有一个与之相关的 optionsH(除非你在写一个真正奇怪的 AEIO)。
 
 IO：输入
 
@@ -164,7 +163,7 @@ IO：输入
 #### AEIO_DrawSparseFrame
 
 从`AEIO_InSpecH`中绘制一个帧。
-`PF_EffectWorld*`包含要使用的宽度和高度，但要确保你考虑到required_region0，如果它不是NULL。
+`PF_EffectWorld*`包含要使用的宽度和高度，但要确保你考虑到 required_region0，如果它不是 NULL。
 
 ```cpp
 AEIO_DrawSparseFrame(
@@ -191,7 +190,7 @@ IO：输入
 
 #### AEIO_GetDimensions
 
-AEIO_Err_USE_DFLT_CALLBACK允许。在AEIO_InSpecH中提供视频的尺寸(如有必要，还有缩放系数)。
+AEIO_Err_USE_DFLT_CALLBACK 允许。在 AEIO_InSpecH 中提供视频的尺寸(如有必要，还有缩放系数)。
 
 ```cpp
 AEIO_GetDimensions(
@@ -239,7 +238,7 @@ AEIO_GetTime(
 29.97 fps: scale = 100; value= 2997;
 59.94 fps: scale = 50; value = 2997;
 23.976 fps: scale = 125; value = 2997;
-30帧：比例=1；值=30。
+30 帧：比例=1；值=30。
 25 fps: scale = 1; value = 25;
 
 输入：输入
@@ -307,7 +306,7 @@ AEIO_InitOutputSpec(
 
 ```
 
-注意：第一次使用你的AEIO时，After Effects会在它的偏好中缓存最后一个已知好的选项H。
+注意：第一次使用你的 AEIO 时，After Effects 会在它的偏好中缓存最后一个已知好的选项 H。
 在测试这个功能时，请经常[删除你的偏好](.../intro/debugging-plug-ins.html#intro-debugging-plug-ins-deleting-preferences)。
 
 IO。输出
@@ -349,7 +348,7 @@ IO。输出
 
 #### AEIO_UserOptionsDialog
 
-显示一个输出设置对话框(在After Effects中选择TIFF输出以查看何时会出现这个对话框)。
+显示一个输出设置对话框(在 After Effects 中选择 TIFF 输出以查看何时会出现这个对话框)。
 使用`AEGP_SetInSpecOptionsHandle`将此信息存储在一个选项句柄中。
 
 ```cpp
@@ -379,7 +378,7 @@ AEIO_GetOutputInfo(
 
 #### AEIO_OutputInfoChanged
 
-根据当前的设置更新`AEIO_OutSpecH'(使用各种Get函数来获取)。
+根据当前的设置更新`AEIO_OutSpecH'(使用各种 Get 函数来获取)。
 
 ```cpp
 AEIO_OutputInfoChanged(
@@ -394,9 +393,8 @@ IO: 输出
 
 #### AEIO_SetOutputFile
 
-`AEIO_Err_USE_DFLT_CALLBACK`允许。设置`AEIO_OutSpecH'的输出文件路径。
-返回`AEIO_Err_USE_DEFAULT_CALLBACK`，除非你改变了路径。
-文件路径是一个以NULL结尾的UTF-16字符串，带有平台分隔符。
+`AEIO_Err_USE_DFLT_CALLBACK`允许。设置`AEIO_OutSpecH'的输出文件路径。 返回`AEIO_Err_USE_DEFAULT_CALLBACK`，除非你改变了路径。
+文件路径是一个以 NULL 结尾的 UTF-16 字符串，带有平台分隔符。
 
 ```cpp
 AEIO_SetOutputFile(
@@ -610,7 +608,7 @@ IO: 输入
 
 #### AEIO_GetNumAuxChannels
 
-枚举一个`AEIO_InSpecH'中包含的数据的辅助通道(超出红、绿、蓝和α)。
+枚举一个`AEIO_InSpecH'中包含的数据的辅助通道(超出红、绿、蓝和 α)。
 
 ```cpp
 AEIO_GetNumAuxChannels(
@@ -674,7 +672,7 @@ AEIO_FreeAuxChannel(
 `AEIO_Num` AuxFiles 枚举渲染给定的`AEIO_InSpecH`需要的文件。
 这个函数和`AEIO_GetNthAuxFileSpec`将在用户选择`文件>依赖性>收集文件...`时被调用。
 
-这里你的AEIO告诉AE相关的文件是什么。
+这里你的 AEIO 告诉 AE 相关的文件是什么。
 
 ```cpp
 AEIO_NumAuxFiles(
@@ -690,8 +688,8 @@ IO：输入
 
 #### AEIO_GetNthAuxFileSpec
 
-从第n个辅助文件检索数据，为指定的框架。
-路径是一个以NULL结尾的A_UTF16Char字符串的句柄，必须用`AEGP_FreeMemHandle`处置。
+从第 n 个辅助文件检索数据，为指定的框架。
+路径是一个以 NULL 结尾的 A_UTF16Char 字符串的句柄，必须用`AEGP_FreeMemHandle`处置。
 
 ```cpp
 AEIO_GetNthAuxFileSpec(
@@ -709,8 +707,8 @@ IO: 输入
 
 #### AEIO_CloseSourceFiles
 
-关闭(或打开，取决于closeB)一个`AEIO_InSpecH`的源文件。
-当用户收集文件时，AEIO将首先被要求关闭它的源文件，然后重新打开它们。
+关闭(或打开，取决于 closeB)一个`AEIO_InSpecH`的源文件。
+当用户收集文件时，AEIO 将首先被要求关闭它的源文件，然后重新打开它们。
 
 ```cpp
 AEIO_CloseSourceFiles(
@@ -799,11 +797,11 @@ IO。输出
 
 #### AEIO_VerifyFileImportable
 
-指示(通过设置importablePB)插件是否可以导入该文件。
-注意，After Effects已经做了基本的扩展名检查；你可能希望打开文件并确定它是否有效。
-这可能是一个耗时的过程；大多数After Effects的AEIO只是简单地返回TRUE。
+指示(通过设置 importablePB)插件是否可以导入该文件。
+注意，After Effects 已经做了基本的扩展名检查；你可能希望打开文件并确定它是否有效。
+这可能是一个耗时的过程；大多数 After Effects 的 AEIO 只是简单地返回 TRUE。
 并在`AEIO_InitInSpecFromFile`中处理坏文件。
-文件路径是一个以NULL结尾的UTF-16字符串，带有平台分隔符。
+文件路径是一个以 NULL 结尾的 UTF-16 字符串，带有平台分隔符。
 
 ```cpp
 AEIO_VerifyFileImportable(
@@ -855,7 +853,7 @@ IO。输出
 
 #### AEIO_GetMimeType
 
-描述输出的mime类型。这是用于XMP支持。
+描述输出的 mime 类型。这是用于 XMP 支持。
 
 ```cpp
 AEIO_GetMimeType(
@@ -872,15 +870,15 @@ IO。输出
 
 ## What Goes In[¶]
 
-这些函数管理一个输入规范，After Effects对从任何来源收集的数据的内部表示。
+这些函数管理一个输入规范，After Effects 对从任何来源收集的数据的内部表示。
 
-在After Effects中的任何图像或音频数据(固态层除外)都是从输入规格句柄或`AEIO_InSpecH`获得的。
+在 After Effects 中的任何图像或音频数据(固态层除外)都是从输入规格句柄或`AEIO_InSpecH`获得的。
 
 ### AEGP_IOInSuite5[¶]
 
 #### AEGP_GetInSpecOptionsHandle
 
-为给定的`AEIO_InSpecH`检索选项数据(由你的AEIO创建)。
+为给定的`AEIO_InSpecH`检索选项数据(由你的 AEIO 创建)。
 
 ```cpp
 AEGP_GetInSpecOptionsHandle(
@@ -905,7 +903,7 @@ AEGP_SetInSpecOptionsHandle(
 #### AEGP_GetInSpecFilePath
 
 检索`AEIO_InSpecH`的文件路径。
-文件路径是一个以NULL结尾的A_UTF16Char字符串的句柄，必须用`AEGP_FreeMemHandle`处理。
+文件路径是一个以 NULL 结尾的 A_UTF16Char 字符串的句柄，必须用`AEGP_FreeMemHandle`处理。
 
 ```cpp
 AEGP_GetInSpecFilePath(
@@ -949,7 +947,7 @@ AEGP_GetInSpecDepth(
 
 #### AEGP_SetInSpecDepth
 
-向After Effects显示`AEIO_InSpecH'中图像数据的比特深度。
+向 After Effects 显示`AEIO_InSpecH'中图像数据的比特深度。
 
 ```cpp
 AEGP_SetInSpecDepth(
@@ -971,7 +969,7 @@ AEGP_GetInSpecSize(
 
 #### AEGP_SetInSpecSize
 
-向After Effects表明`AEIO_InSpecH`所引用的数据的大小(以字节为单位)。
+向 After Effects 表明`AEIO_InSpecH`所引用的数据的大小(以字节为单位)。
 
 ```cpp
 AEGP_SetInSpecSize(
@@ -1004,7 +1002,7 @@ AEGP_SetInSpecInterlaceLabel(
 
 #### AEGP_GetInSpecAlphaLabel
 
-检索 "AEIO_InSpecH "的alpha通道解释信息。
+检索 "AEIO_InSpecH "的 alpha 通道解释信息。
 
 ```cpp
 AEGP_GetInSpecAlphaLabel(
@@ -1038,7 +1036,7 @@ AEGP_GetInSpecDuration(
 #### AEGP_SetInSpecDuration
 
 设置 "AEIO_InSpecH "的持续时间。
-注意：从5.5开始，必须调用这个功能，即使是基于帧的文件格式。
+注意：从 5.5 开始，必须调用这个功能，即使是基于帧的文件格式。
 如果你不把`A_Time.scale`设置为零以外的东西，你的文件将无法导入。
 这个问题将在未来的版本中得到解决。
 
@@ -1063,7 +1061,7 @@ AEGP_GetInSpecDimensions(
 
 #### AEGP_SetInSpecDimensions
 
-向After Effects显示 "AEIO_InSpecH "中的图像数据的宽度和高度。
+向 After Effects 显示 "AEIO_InSpecH "中的图像数据的宽度和高度。
 
 ```cpp
 AEGP_SetInSpecDimensions(
@@ -1135,7 +1133,7 @@ AEGP_SetInSpecSoundRate(
 
 #### AEGP_GetInSpecSoundEncoding
 
-从AEIO_InSpecH中获取编码方法(有符号PCM，无符号PCM，或浮点)。
+从 AEIO_InSpecH 中获取编码方法(有符号 PCM，无符号 PCM，或浮点)。
 
 ```cpp
 AEGP_GetInSpecSoundEncoding(
@@ -1146,7 +1144,7 @@ AEGP_GetInSpecSoundEncoding(
 
 #### AEGP_SetInSpecSoundEncoding
 
-设置AEIO_InSpecH的编码方法。
+设置 AEIO_InSpecH 的编码方法。
 
 ```cpp
 AEGP_SetInSpecSoundEncoding(
@@ -1157,7 +1155,7 @@ AEGP_SetInSpecSoundEncoding(
 
 #### AEGP_GetInSpecSoundSampleSize
 
-从`AEIO_InSpecH`中获取每样本的字节数(1,2,或4)。
+从`AEIO_InSpecH`中获取每样本的字节数(1,2,或 4)。
 
 ```cpp
 AEGP_GetInSpecSoundSampleSize(
@@ -1214,15 +1212,15 @@ AEGP_AddAuxExtMap(
 
 #### AEGP_SetInSpecEmbeddedColorProfile
 
-如果是RGB数据，如果有一个嵌入的icc配置文件，使用`AEGP_ColorProfile`从这个icc配置文件中建立一个`AEGP_ColorProfile`。
-使用[AEGP_ColorSettingsSuite2](.../aegps/aegp-suites.html#aegps-aegp-suites-aegp-colorsettingssuite)的`AEGP_GetNewColorProfileFromICCProfile'从这个icc配置文件中建立一个`AEGP_ColorProfile'，并将配置文件描述设置为null。
-在非RGB数据的情况下，如果有一个嵌入式的非RGB icc配置文件，或者你知道数据所处的色彩空间。
-将颜色配置文件设置为NULL，并提供以NULL结尾的unicode字符串的描述。
+如果是 RGB 数据，如果有一个嵌入的 icc 配置文件，使用`AEGP_ColorProfile`从这个 icc 配置文件中建立一个`AEGP_ColorProfile`。
+使用[AEGP_ColorSettingsSuite2](.../aegps/aegp-suites.html#aegps-aegp-suites-aegp-colorsettingssuite)的`AEGP_GetNewColorProfileFromICCProfile'从这个icc配置文件中建立一个`AEGP_ColorProfile'，并将配置文件描述设置为 null。
+在非 RGB 数据的情况下，如果有一个嵌入式的非 RGB icc 配置文件，或者你知道数据所处的色彩空间。
+将颜色配置文件设置为 NULL，并提供以 NULL 结尾的 unicode 字符串的描述。
 这样做会使色彩管理的用户界面失效，从而使用户能够在应用程序的用户界面上影响配置文件的选择。
-如果你将非RGB数据直接解压到工作空间(要获得工作空间请使用`AEGP_GetNewWorkingSpaceColorProfile`)，你就完成了。
-如果你要将非RGB数据解压到特定的RGB色彩空间，你必须将描述这个空间的配置文件传递给下面的`AEGP_SetInSpecAssignedColorProfile`。
-否则，你的RGB数据将被错误地解释为在工作空间。
-在这个函数中，颜色配置文件或配置文件描述应该是NULL。你不能同时使用。
+如果你将非 RGB 数据直接解压到工作空间(要获得工作空间请使用`AEGP_GetNewWorkingSpaceColorProfile`)，你就完成了。
+如果你要将非 RGB 数据解压到特定的 RGB 色彩空间，你必须将描述这个空间的配置文件传递给下面的`AEGP_SetInSpecAssignedColorProfile`。
+否则，你的 RGB 数据将被错误地解释为在工作空间。
+在这个函数中，颜色配置文件或配置文件描述应该是 NULL。你不能同时使用。
 
 ```cpp
 AEGP_SetInSpecEmbeddedColorProfile(
@@ -1234,7 +1232,7 @@ AEGP_SetInSpecEmbeddedColorProfile(
 
 #### AEGP_SetInSpecAssignedColorProfile
 
-为镜头分配一个有效的RGB颜色配置文件。
+为镜头分配一个有效的 RGB 颜色配置文件。
 
 ```cpp
 AEGP_SetInSpecAssignedColorProfile(
@@ -1245,7 +1243,7 @@ AEGP_SetInSpecAssignedColorProfile(
 
 #### AEGP_GetInSpecNativeStartTime
 
-CC中的新功能。检索素材的原始开始时间。
+CC 中的新功能。检索素材的原始开始时间。
 
 ```cpp
 AEGP_GetInSpecNativeStartTime(
@@ -1256,7 +1254,7 @@ AEGP_GetInSpecNativeStartTime(
 
 #### AEGP_SetInSpecNativeStartTime
 
-在CC中新加入。为素材指定一个本地开始时间。
+在 CC 中新加入。为素材指定一个本地开始时间。
 
 ```cpp
 AEGP_SetInSpecNativeStartTime(
@@ -1267,8 +1265,8 @@ AEGP_SetInSpecNativeStartTime(
 
 #### AEGP_ClearInSpecNativeStartTime
 
-在CC中新增 清除镜头的原始开始时间。
-使用`AEGP_SetInSpecNativeStartTime`将原生开始时间设置为0并不能做到这点。
+在 CC 中新增 清除镜头的原始开始时间。
+使用`AEGP_SetInSpecNativeStartTime`将原生开始时间设置为 0 并不能做到这点。
 它仍然意味着有一个特殊的本地开始时间。
 
 ```cpp
@@ -1279,7 +1277,7 @@ AEGP_ClearInSpecNativeStartTime(
 
 #### AEGP_GetInSpecNativeDisplayDropFrame
 
-CC中的新功能。检索镜头的下降帧设置。
+CC 中的新功能。检索镜头的下降帧设置。
 
 ```cpp
 AEGP_GetInSpecNativeDisplayDropFrame(
@@ -1290,7 +1288,7 @@ AEGP_GetInSpecNativeDisplayDropFrame(
 
 #### AEGP_SetInSpecNativeDisplayDropFrame
 
-CC中的新功能。指派镜头的停格设置。
+CC 中的新功能。指派镜头的停格设置。
 
 ```cpp
 AEGP_SetInSpecNativeDisplayDropFrame(
@@ -1301,7 +1299,7 @@ AEGP_SetInSpecNativeDisplayDropFrame(
 
 ## What Goes Out[¶]
 
-这些功能管理与After Effects渲染队列中的输出规范的所有互动。
+这些功能管理与 After Effects 渲染队列中的输出规范的所有互动。
 
 ### AEGPIOOutSuite4[¶]
 
@@ -1330,9 +1328,9 @@ AEGP_SetOutSpecOptionsHandle(
 
 #### AEGP_GetOutSpecFilePath
 
-获取 "AEIO_OutSpecH "的路径。文件路径是一个以NULL结尾的A_UTF16Char字符串的句柄，必须用`AEGP_FreeMemHandle`处理。
+获取 "AEIO_OutSpecH "的路径。文件路径是一个以 NULL 结尾的 A_UTF16Char 字符串的句柄，必须用`AEGP_FreeMemHandle`处理。
 如果`file_rsrvdPB`返回`TRUE`，插件不应该覆盖它。
-(After Effects已经创建了一个空文件)；这样做会导致网络渲染失败。
+(After Effects 已经创建了一个空文件)；这样做会导致网络渲染失败。
 
 ```cpp
 AEGP_GetOutSpecFilePath(
@@ -1620,7 +1618,7 @@ AEGP_GetOutSpecPullDown(
 
 #### AEGP_GetOutSpecIsMissing
 
-如果没有 "AEIO_OutSpecH"，则传回TRUE。
+如果没有 "AEIO_OutSpecH"，则传回 TRUE。
 
 ```cpp
 AEGP_GetOutSpecIsMissing(
@@ -1631,7 +1629,7 @@ AEGP_GetOutSpecIsMissing(
 
 #### AEGP_GetOutSpecShouldEmbedICCProfile
 
-如果AEIO应该在输出中嵌入一个颜色配置文件，则返回TRUE。
+如果 AEIO 应该在输出中嵌入一个颜色配置文件，则返回 TRUE。
 
 ```cpp
 AEGP_GetOutSpecShouldEmbedICCProfile(
@@ -1642,7 +1640,7 @@ AEGP_GetOutSpecShouldEmbedICCProfile(
 
 #### AEGP_GetNewOutSpecColorProfile
 
-返回一个(不透明的)ICC颜色配置文件，用于嵌入到AEIO的输出中。
+返回一个(不透明的)ICC 颜色配置文件，用于嵌入到 AEIO 的输出中。
 必须用`AEGP_DisposeColorProfile`来处理。
 
 ```cpp
@@ -1656,8 +1654,8 @@ AEGP_GetNewOutSpecColorProfile(
 #### AEGP_GetOutSpecOutputModule
 
 返回与给定的`AEIO_OutSpecH`相关的`AEGP_RQItemRefH`和`AEGP_OutputModuleRefH`。
-如果没有找到渲染队列项目，或者`AEIO_OutSpecH`不是一个确认的outH，是一个副本，则失败。
-也就是说，如果输出模块设置对话框打开，而用户没有点击OK。
+如果没有找到渲染队列项目，或者`AEIO_OutSpecH`不是一个确认的 outH，是一个副本，则失败。
+也就是说，如果输出模块设置对话框打开，而用户没有点击 OK。
 
 ```cpp
 AEGP_GetOutSpecOutputModule(

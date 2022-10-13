@@ -4,6 +4,7 @@ order: 2
 category:
   - AE 插件开发
 ---
+
 # Multi-Frame Rendering in AE
 
 In order to take advantage of modern hardware with more CPU cores and threads, After Effects 2022 and above now supports Multi-Frame Rendering. Multi-Frame rendering (MFR) allows multiple frames to be rendered concurrently thereby speeding up rendering and export of AE compositions.
@@ -44,13 +45,13 @@ The March 2021 SDK introduces new `sequence_data` behavior that is enabled start
 
 The table below outlines the changes an effect will need to make to support the new behavior:
 
-| **MFR & Sequence Data Usage** | **Changes Needed with March 2021 SDK** |
-|--- | ---|
-| Plugin does not set PF_OutFlag2_SUPPORTS_THREADED_RENDERING | No changes needed. Effect and sequence_data will continue to work as it did in the past. |
-| Plugin sets PF_OutFlag2_SUPPORTS_THREADED_RENDERING but neither reads nor writes to sequence_data during Render | Recompile the plugin with the March 2021 SDK, no other code changes are required. |
-| If the plugin is not compiled with the March 2021 SDK, the plugin will stop utilizing MFR starting with AE 22.0x6. | |
-| Plugin sets PF_OutFlag2_SUPPORTS_THREADED_RENDERING but only reads sequence_data during Render | Recompile the plugin with the March 2021 SDK, update reading sequence_data via `PF_EffectSequenceDataSuite1` for thread-safe access. See [Accessing sequence_data at Render Time with Multi-Frame Rendering](global-sequence-frame-data.html) (#effect-details-sequence-data-mfr-suite) for more information. |
-| Plugin sets PF_OutFlag2_SUPPORTS_THREADED_RENDERING and reads and writes to sequence_data during Render | Recompile the plugin with the March 2021 SDK and modify the plugin to:`<br />`1. Utilize the[Compute Cache API](compute-cache-api.html) (#effect-details-compute-cache-api) for thread-safe cache access instead of reading/writing to sequence_data directly. See [Compute Cache For Multi-Frame Rendering](#compute-cache) for more information.`<br />`AND / OR `<br />`2. Add the `PF_OutFlag2_MUTABLE_RENDER_SEQUENCE_DATA_SLOWER` to the effect to restore direct read/write access to sequence_data. |
+| **MFR & Sequence Data Usage**                                                                                      | **Changes Needed with March 2021 SDK**                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| ------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Plugin does not set PF_OutFlag2_SUPPORTS_THREADED_RENDERING                                                        | No changes needed. Effect and sequence_data will continue to work as it did in the past.                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| Plugin sets PF_OutFlag2_SUPPORTS_THREADED_RENDERING but neither reads nor writes to sequence_data during Render    | Recompile the plugin with the March 2021 SDK, no other code changes are required.                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| If the plugin is not compiled with the March 2021 SDK, the plugin will stop utilizing MFR starting with AE 22.0x6. |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| Plugin sets PF_OutFlag2_SUPPORTS_THREADED_RENDERING but only reads sequence_data during Render                     | Recompile the plugin with the March 2021 SDK, update reading sequence_data via `PF_EffectSequenceDataSuite1` for thread-safe access. See [Accessing sequence_data at Render Time with Multi-Frame Rendering](global-sequence-frame-data.html) (#effect-details-sequence-data-mfr-suite) for more information.                                                                                                                                                                                               |
+| Plugin sets PF_OutFlag2_SUPPORTS_THREADED_RENDERING and reads and writes to sequence_data during Render            | Recompile the plugin with the March 2021 SDK and modify the plugin to:`<br />`1. Utilize the[Compute Cache API](compute-cache-api.html) (#effect-details-compute-cache-api) for thread-safe cache access instead of reading/writing to sequence_data directly. See [Compute Cache For Multi-Frame Rendering](#compute-cache) for more information.`<br />`AND / OR `<br />`2. Add the `PF_OutFlag2_MUTABLE_RENDER_SEQUENCE_DATA_SLOWER` to the effect to restore direct read/write access to sequence_data. |
 
 ::: tip
 
@@ -330,7 +331,7 @@ Here are some standard approaches for treating statics or globals:**1. Could the
 >
 > ```
 >
-> **Double-check that this state isn’t known before your code executes (case 2), but if you have to initialize at runtime use a const static local. (::: tip that thread-safe initialization of static local objects is part of the C++ spec)**
+> **Double-check that this state isn’t known before your code executes (case 2), but if you have to initialize at runtime use a const static local. (Note that thread-safe initialization of static local objects is part of the C++ spec)**
 >
 > ```cpp
 > void UseState(int depends_on_unchanging_runtime_state) {

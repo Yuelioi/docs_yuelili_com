@@ -7,6 +7,6 @@ category:
 
 # Next Steps
 
-你现在已经了解了什么是插件，它们能做什么，以及After Effects如何与它们进行交流。
+你现在已经了解了什么是插件，它们能做什么，以及 After Effects 如何与它们进行交流。
 
 接下来，我们将介绍[特效插件的基本知识](.../effect-basics/effect-basics.html) 。

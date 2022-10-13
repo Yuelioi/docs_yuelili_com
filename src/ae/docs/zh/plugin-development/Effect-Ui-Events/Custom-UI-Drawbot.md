@@ -7,21 +7,21 @@ category:
 
 # Custom UI & Drawbot[¶]
 
-自定义用户界面使用Drawbot的合成绘图模型。Drawbot套件可用于。
+自定义用户界面使用 Drawbot 的合成绘图模型。Drawbot 套件可用于。
 
 1. 基本的二维路径绘制。线条、矩形、弧线、贝塞尔曲线
 2. 描边/填充/着色路径
-3. 图像绘制。将ARGB/BGRA缓冲器合成到表面上
+3. 图像绘制。将 ARGB/BGRA 缓冲器合成到表面上
 4. 推送/弹出表面状态
 5. 文本绘制，如果供应商支持的话(客户应该在实际绘制之前首先检查是否支持文本绘制)。
 
 绘图只能在`PF_Event_DRAW`期间发生(而不是在`PF_Event_DRAG`或`PF_Event_DO_CLICK`期间)。
 
-要使用Drawbot，首先通过传递PF_Context到一个新的套件调用[PF_GetDrawingReference](#effect-ui-events-custom-ui-and-drawbot-pf-effectcustomuisuite)获得绘图参考。
+要使用 Drawbot，首先通过传递 PF_Context 到一个新的套件调用[PF_GetDrawingReference](#effect-ui-events-custom-ui-and-drawbot-pf-effectcustomuisuite)获得绘图参考。
 
-如果返回一个非NULL的绘图参考，使用它从[DRAWBOT_DrawbotSuite]获得供应商和表面参考。
+如果返回一个非 NULL 的绘图参考，使用它从[DRAWBOT_DrawbotSuite]获得供应商和表面参考。
 
-Drawbot套件包括`DRAWBOT_DrawbotSuite', `DRAWBOT_SupplierSuite', `DRAWBOT_SurfaceSuite', `DRAWBOT_PathSuite`。
+Drawbot 套件包括`DRAWBOT_DrawbotSuite', `DRAWBOT_SupplierSuite', `DRAWBOT_SurfaceSuite', `DRAWBOT_PathSuite`。
 
 ## Make Your Custom UI Look Not So “Custom”[¶]
 
@@ -31,18 +31,18 @@ Drawbot套件包括`DRAWBOT_DrawbotSuite', `DRAWBOT_SupplierSuite', `DRAWBOT_Sur
 
 为了重新绘制一个窗格的特定区域，我们推荐使用以下方法。
 
-1. 从效果中调用`PF_InvalidateRect` ( 参见[PF_AppSuite](.../effect-details/useful-utility-functions.html#effect-details-useful-utility-functions-pf-appsuite))。这将导致懒惰的显示重绘，并将在下一个可用的空闲时刻更新。这个矩形的坐标与相关的窗格有关。使用一个NULL的矩形将更新整个窗格。
+1. 从效果中调用`PF_InvalidateRect` ( 参见[PF_AppSuite](.../effect-details/useful-utility-functions.html#effect-details-useful-utility-functions-pf-appsuite))。这将导致懒惰的显示重绘，并将在下一个可用的空闲时刻更新。这个矩形的坐标与相关的窗格有关。使用一个 NULL 的矩形将更新整个窗格。
 2. 将[事件输出标志](PF_EventExtra.html#effect-ui-events-pf-eventextra)设置为`PF_EO_UPDATE_NOW'，这将在当前事件返回时为指定的窗格引起一个即时绘制事件。
 
-如果一个效果需要一次更新多个窗口，它应该设置`PF_OutFlag_REFRESH_UI` ( 参见[PF_OutFlags](./effect-basics/PF_OutData.html#effect-basics-pf-outdata-pf-outflags))，这将导致整个ECW、comp和层窗口的重绘。
+如果一个效果需要一次更新多个窗口，它应该设置`PF_OutFlag_REFRESH_UI` ( 参见[PF_OutFlags](./effect-basics/PF_OutData.html#effect-basics-pf-outdata-pf-outflags))，这将导致整个 ECW、comp 和层窗口的重绘。
 
 ## HiDPI and Retina Display Support[¶]
 
-为了支持HiDPI和视网膜显示器，你可以使用两倍大小的屏幕外图像，然后使用[Drawbot_SurfaceSuite]的`Transform`函数，在绘制图像前将其缩小一半。
+为了支持 HiDPI 和视网膜显示器，你可以使用两倍大小的屏幕外图像，然后使用[Drawbot_SurfaceSuite]的`Transform`函数，在绘制图像前将其缩小一半。
 
 ## PF_EffectCustomUISuite[¶]
 
-启用一个效果来获得绘图参考。这是使用Drawbot需要的第一个调用。
+启用一个效果来获得绘图参考。这是使用 Drawbot 需要的第一个调用。
 
 ### PF_EffectCustomUISuite1[¶]
 
@@ -59,7 +59,7 @@ PF_GetDrawingReference(
 
 ## Drawbot_DrawbotSuite[¶]
 
-使用Drawbot的参考，得到供应商和表面的参考。
+使用 Drawbot 的参考，得到供应商和表面的参考。
 
 ### Drawbot_DrawbotSuite1[¶]
 
@@ -156,7 +156,7 @@ NewDefaultFont(
 
 #### NewImageFromBuffer
 
-从传递给in_dataP的缓冲区创建一个新的图像。
+从传递给 in_dataP 的缓冲区创建一个新的图像。
 使用[Drawbot_SupplierSuite]中的`ReleaseObject`释放这个图像。
 
 ```cpp
@@ -197,8 +197,8 @@ NewPath(
 
 #### SupportsPixelLayoutBGRA
 
-一个给定的Drawbot实现可以支持多个通道命令，但很可能会偏向于其中一个。
-使用以下四个回调，为任何需要 "DRAWBOT_PixelLayout "的API(例如："NewImageFromBuffer")获得首选通道顺序。
+一个给定的 Drawbot 实现可以支持多个通道命令，但很可能会偏向于其中一个。
+使用以下四个回调，为任何需要 "DRAWBOT_PixelLayout "的 API(例如："NewImageFromBuffer")获得首选通道顺序。
 
 ```cpp
 SupportsPixelLayoutBGRA(
@@ -527,7 +527,7 @@ AddRect(
 
 #### AddArc
 
-在路径上添加一个圆弧。零起点度数==3点钟方向。
+在路径上添加一个圆弧。零起点度数==3 点钟方向。
 顺时针扫过。角度的单位是度。
 
 ```cpp
@@ -552,7 +552,7 @@ Close(
 
 ## PF_EffectCustomUIOverlayThemeSuite[¶]
 
-这个套件应该用于在合成和图层窗口中对路径和顶点进行描画和填充。After Effects内部正在使用这个套件，我们将其提供给大家，以使自定义的用户界面在不同的效果中看起来一致。前景/阴影的颜色是根据应用程序的亮度水平来计算的，因此，无论应用程序在偏好设置中的亮度如何，自定义用户界面总是可见的。
+这个套件应该用于在合成和图层窗口中对路径和顶点进行描画和填充。After Effects 内部正在使用这个套件，我们将其提供给大家，以使自定义的用户界面在不同的效果中看起来一致。前景/阴影的颜色是根据应用程序的亮度水平来计算的，因此，无论应用程序在偏好设置中的亮度如何，自定义用户界面总是可见的。
 
 ### PF_EffectCustomUIOverlayThemeSuite1[¶]
 

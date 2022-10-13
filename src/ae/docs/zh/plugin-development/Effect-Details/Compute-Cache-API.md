@@ -42,13 +42,13 @@ AEGP_CCComputeClassIdPcompute_classP);
 
 ### AEGP_ComputeIfNeededAndCheckout
 
-这是主要的结账调用，用于计算和/或返回AEGP_CCCheckoutReceiptP`的缓存条目的接收指针。
+这是主要的结账调用，用于计算和/或返回 AEGP_CCCheckoutReceiptP`的缓存条目的接收指针。
 
-传入在AEGP_RegisterClass`方法中使用的`AEGP_CCComputeClassIdP`。
+传入在 AEGP_RegisterClass`方法中使用的`AEGP_CCComputeClassIdP`。
 
 `AEGP_CCComputeOptionsRefconP`对象将根据需要传递给`AEGP_ComputeCacheCallbacks`、`generate_key`和`compute`方法。这个对象的类型对`AEGP_ComputeCacheSuite1'是不透明的，需要通过`generate_key'和`compute'的效果实现进行适当的铸造。
 
-当需要计算缓存值时，`wait_for_other_threadB bool`会被使用。当设置为 "true "时，该方法将始终执行计算步骤或将完成的收据返回到缓存中。当设置为 "false "时，该方法将完成计算步骤，除非其他线程已经在计算缓存条目，在这种情况下，将返回A_Err_NOT_IN_CACHE_OR_COMPUTE_PENDING`。关于这个参数的更多信息，请参见[wait_for_other_threadB 对 AEGP_ComputeIfNeededAndCheckout 的影响](https://ae-plugins.docsforadobe.dev/effect-details/compute-cache-api.html#effect-details-wait-for-other-threadb)。
+当需要计算缓存值时，`wait_for_other_threadB bool`会被使用。当设置为 "true "时，该方法将始终执行计算步骤或将完成的收据返回到缓存中。当设置为 "false "时，该方法将完成计算步骤，除非其他线程已经在计算缓存条目，在这种情况下，将返回 A_Err_NOT_IN_CACHE_OR_COMPUTE_PENDING`。关于这个参数的更多信息，请参见[wait_for_other_threadB 对 AEGP_ComputeIfNeededAndCheckout 的影响](https://ae-plugins.docsforadobe.dev/effect-details/compute-cache-api.html#effect-details-wait-for-other-threadb)。
 
 `CCCheckoutReceiptP`是一个不透明的指针，然后可以传入`AEGP_GetReceiptComputeValue`中，从缓存中获取计算值的指针。
 

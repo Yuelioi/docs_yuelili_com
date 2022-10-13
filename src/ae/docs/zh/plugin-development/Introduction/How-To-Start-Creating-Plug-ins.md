@@ -9,9 +9,9 @@ category:
 
 ## Play!
 
-在你写一行代码之前，花一些重要的时间来玩After Effects，以及[样本项目](sample-projects.html) 。把插件建在正确的文件夹里。设置大量的断点，阅读有趣的、内容丰富的评论。
+在你写一行代码之前，花一些重要的时间来玩 After Effects，以及[样本项目](sample-projects.html) 。把插件建在正确的文件夹里。设置大量的断点，阅读有趣的、内容丰富的评论。
 
-请看一个关于构建效果的快速入门视频(在macOS上)。[adobe.ly/2sjMDwM](https://adobe.ly/2sjMDwM)
+请看一个关于构建效果的快速入门视频(在 macOS 上)。[adobe.ly/2sjMDwM](https://adobe.ly/2sjMDwM)
 
 ## Plan!
 
@@ -19,15 +19,15 @@ category:
 
 ## Hack!
 
-在对样本进行实验后，找到一个与你想做的事情类似的插件。从头开始的诱惑可能很强烈；要与之抗争! 对于效果来说，使用Skeleton模板项目。通过将你的代码嫁接到一个现有的项目中，避免了重建项目的麻烦(包括Windows PiPL资源生成的麻烦的自定义构建步骤)。
+在对样本进行实验后，找到一个与你想做的事情类似的插件。从头开始的诱惑可能很强烈；要与之抗争! 对于效果来说，使用 Skeleton 模板项目。通过将你的代码嫁接到一个现有的项目中，避免了重建项目的麻烦(包括 Windows PiPL 资源生成的麻烦的自定义构建步骤)。
 
 ## Steal!
 
-要使Skeleton样本成为你自己的，复制整个\Skeleton目录，将其重命名为(例如)\WhizBang。使用您选择的文本编辑器，搜索\WhizBang*.*(是的，这包括.NET和Xcode项目文件)中出现的Skeleton和SKELETON，并用WhizBang和WHIZBANG替换它们。
+要使 Skeleton 样本成为你自己的，复制整个\Skeleton 目录，将其重命名为(例如)\WhizBang。使用您选择的文本编辑器，搜索\WhizBang*.*(是的，这包括.NET 和 Xcode 项目文件)中出现的 Skeleton 和 SKELETON，并用 WhizBang 和 WHIZBANG 替换它们。
 
-你现在有一个正在编译和运行的插件，它可以响应常见的命令，处理8和16-bpc的颜色，使用我们的AEGP_SuiteHandler实用代码，并响应3D灯光和摄像机信息。好了，这有那么难吗？
+你现在有一个正在编译和运行的插件，它可以响应常见的命令，处理 8 和 16-bpc 的颜色，使用我们的 AEGP_SuiteHandler 实用代码，并响应 3D 灯光和摄像机信息。好了，这有那么难吗？
 
-AEGP开发者最好从Projector(支持After Effects项目的创建)开始，Easy Cheese是一个关键帧助手，IO是一个媒体文件格式支持，Persisto是一个简单的菜单命令和与偏好的工作。
+AEGP 开发者最好从 Projector(支持 After Effects 项目的创建)开始，Easy Cheese 是一个关键帧助手，IO 是一个媒体文件格式支持，Persisto 是一个简单的菜单命令和与偏好的工作。
 
 ## Test!
 
@@ -39,6 +39,6 @@ AEGP开发者最好从Projector(支持After Effects项目的创建)开始，Easy
 
 ## Developers Matter
 
-第三方开发者推动了API和SDK的改进和扩展。你们的产品使After Effects可以做一些我们从未考虑过的事情。你们的努力使After Effects变得更好，请继续努力。
+第三方开发者推动了 API 和 SDK 的改进和扩展。你们的产品使 After Effects 可以做一些我们从未考虑过的事情。你们的努力使 After Effects 变得更好，请继续努力。
 
-我们在SDK上努力工作，并欢迎你的意见和反馈。我们对API所做的每一个改动几乎都是由像你这样的开发者提出的。[给我们反馈](https://community.adobe.com/t5/after-effects/bd-p/after-effects?page=1&sort=latest_replies&filter=all&topics=label-sdkcom)
+我们在 SDK 上努力工作，并欢迎你的意见和反馈。我们对 API 所做的每一个改动几乎都是由像你这样的开发者提出的。[给我们反馈](https://community.adobe.com/t5/after-effects/bd-p/after-effects?page=1&sort=latest_replies&filter=all&topics=label-sdkcom)

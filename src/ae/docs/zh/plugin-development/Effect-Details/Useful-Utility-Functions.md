@@ -27,9 +27,9 @@ nameZ`的长度可以达到A_char[31]`。
 
 ## PF_AppSuite
 
-大约437年前，当我们发布After Effects 5.0时，我们在PF_AppSuite中发布了一些有用的实用回调。今天它们和当时一样有用。After Effects有用户可控制的UI亮度。
+大约 437 年前，当我们发布 After Effects 5.0 时，我们在 PF_AppSuite 中发布了一些有用的实用回调。今天它们和当时一样有用。After Effects 有用户可控制的 UI 亮度。
 
-除了[PF_EffectCustomUIOverlayThemeSuite](.../effect-ui-events/custom-ui-and-drawbot.html) 用于特效中的自定义UI，使用这些调用可以无缝集成到After Effects的UI中。
+除了[PF_EffectCustomUIOverlayThemeSuite](.../effect-ui-events/custom-ui-and-drawbot.html) 用于特效中的自定义 UI，使用这些调用可以无缝集成到 After Effects 的 UI 中。
 
 还有什么比把别人的个人信息放到水印里，更能羞辱别人购买你的插件的呢，嗯？或者将光标设置为添加遮罩顶点，只是为了迷惑人们？嘿嘿嘿。但那是错误的。
 
@@ -44,13 +44,13 @@ PF_App_Colorbg_colorP);
 
 ### PF_AppGetColor
 
-检索指定的UI元素的颜色。参见AE_EffectSuites.h中的PF_App_Color`值的完整列举；基本上After Effects的UI中的任何颜色都可以被检索到。
+检索指定的 UI 元素的颜色。参见 AE_EffectSuites.h 中的 PF_App_Color`值的完整列举；基本上 After Effects 的 UI 中的任何颜色都可以被检索到。
 
-CC为新元素增加了几个新的PF_App_ColorType`枚举值，可以查询。
+CC 为新元素增加了几个新的 PF_App_ColorType`枚举值，可以查询。
 
-请注意，在CS6中，颜色的定义从FILL_LIGHT`往下偏移。
+请注意，在 CS6 中，颜色的定义从 FILL_LIGHT`往下偏移。
 
-请使用以下仅适用于CS6的psuedocode。
+请使用以下仅适用于 CS6 的 psuedocode。
 
 ```cpp
 GetColor(enume)
@@ -67,7 +67,7 @@ PF_App_Color*app_colorP);
 
 ### PF_AppGetLanguage
 
-CC中的新功能。检索AE用户界面的活动显示语言，以便插件可以匹配。以下是CC中可能的语言代码。
+CC 中的新功能。检索 AE 用户界面的活动显示语言，以便插件可以匹配。以下是 CC 中可能的语言代码。
 
 - 中文 - zh_CN`。
 - 英语 - en_US`
@@ -100,9 +100,9 @@ A_charserial_str[PF_APP_MAX_PERS_LEN+1];
 
 ### PF_GetFontStyleSheet
 
-检索After Effects用户界面中使用的字体样式表信息。
+检索 After Effects 用户界面中使用的字体样式表信息。
 
-琐事：从15.0开始，After Effects的用户界面中使用的字体是Adobe Clean。在此之前，Windows上是Tahoma，macOS X上是Lucida Grande。
+琐事：从 15.0 开始，After Effects 的用户界面中使用的字体是 Adobe Clean。在此之前，Windows 上是 Tahoma，macOS X 上是 Lucida Grande。
 
 ```cpp
 PF_GetFontStyleSheet(
@@ -115,12 +115,12 @@ A_short*stylePS0);
 
 ### PF_SetCursor
 
-将光标设置为After Effects的任何光标。见AE_EffectUI.h的完整列举。
+将光标设置为 After Effects 的任何光标。见 AE_EffectUI.h 的完整列举。
 
 设置为:
 
-- PF_Cursor_NONE`，允许After Effects设置光标。
-- PF_Cursor_CUSTOM`，如果你使用操作系统特定的调用来改变光标(After Effects将尊重你的改变)。
+- PF_Cursor_NONE`，允许 After Effects 设置光标。
+- PF_Cursor_CUSTOM`，如果你使用操作系统特定的调用来改变光标(After Effects 将尊重你的改变)。
 
 ```cpp
 PF_SetCursor(
@@ -129,20 +129,20 @@ PF_CursorTypecursor);
 
 ### PF_IsRenderEngine
 
-如果After Effects在watched folder模式下运行，或者是渲染引擎安装，返回TRUE。
+如果 After Effects 在 watched folder 模式下运行，或者是渲染引擎安装，返回 TRUE。
 
 ```cpp
 PF_IsRenderEngine(
 PF_Boolean*render_enginePB);
 ```
 
-从AE6.5开始，如果安装的是渲染引擎，或者After Effects在运行时没有用户界面，或者After Effects处于watched folder模式，这个函数返回TRUE`。
+从 AE6.5 开始，如果安装的是渲染引擎，或者 After Effects 在运行时没有用户界面，或者 After Effects 处于 watched folder 模式，这个函数返回 TRUE`。
 
 ### PF_AppColorPickerDialog
 
-显示After Effects颜色选择器对话框(可能是系统颜色选择器，取决于用户的偏好)。
+显示 After Effects 颜色选择器对话框(可能是系统颜色选择器，取决于用户的偏好)。
 
-如果用户取消对话框，将返回PF_Interrupt_CANCEL`。返回的颜色是在项目的工作色彩空间。
+如果用户取消对话框，将返回 PF_Interrupt_CANCEL`。返回的颜色是在项目的工作色彩空间。
 
 ```cpp
 PF_AppColorPickerDialog(
@@ -153,7 +153,7 @@ PF_PixelFloat*result_colorP);
 
 ### PF_GetMouse
 
-返回鼠标在自定义UI坐标空间中的位置。
+返回鼠标在自定义 UI 坐标空间中的位置。
 
 ```cpp
 PF_GetMouse(
@@ -166,9 +166,9 @@ PF_Point*pointP);
 
 只在处理效果中的非绘制事件时有效。
 
-将rectP0`指定为NULL`可以使整个窗口失效。重绘将在事件返回后的下一个可用的空闲时间发生。
+将 rectP0`指定为NULL`可以使整个窗口失效。重绘将在事件返回后的下一个可用的空闲时间发生。
 
-设置PF_EO_UPDATE_NOW`事件输出标志，在事件返回后立即更新窗口。
+设置 PF_EO_UPDATE_NOW`事件输出标志，在事件返回后立即更新窗口。
 
 ```cpp
 PF_InvalidateRect(
@@ -178,7 +178,7 @@ constPF_Rect*rectP0);
 
 ### PF_ConvertLocalToGlobal
 
-从自定义UI坐标系统转换为全局屏幕坐标。仅在自定义UI事件处理中使用。
+从自定义 UI 坐标系统转换为全局屏幕坐标。仅在自定义 UI 事件处理中使用。
 
 ```cpp
 PF_ConvertLocalToGlobal(
@@ -188,13 +188,13 @@ PF_Point*globalP);
 
 ## Advanced Appsuite: You Can Do That?!
 
-`PF_AdvAppSuite`最初是为了一些非常邪恶的目的而设计的；一个外部应用程序假装是After Effects的插件，并要求有办法通知After Effects它对项目所做的改变。我们的API不纯洁，你就会得到好处。
+`PF_AdvAppSuite`最初是为了一些非常邪恶的目的而设计的；一个外部应用程序假装是 After Effects 的插件，并要求有办法通知 After Effects 它对项目所做的改变。我们的 API 不纯洁，你就会得到好处。
 
 ## PF_AdvAppSuite2
 
 ### PF_SetProjectDirty
 
-告诉After Effects自从上次保存后，项目已经被改变。
+告诉 After Effects 自从上次保存后，项目已经被改变。
 
 ```cpp
 PF_SetProjectDirty(void);
@@ -210,7 +210,7 @@ PF_SaveProject(void);
 
 ### PF_SaveBackgroundState
 
-存储背景状态(After Effects在打开的应用程序和窗口的堆叠顺序中的位置)。
+存储背景状态(After Effects 在打开的应用程序和窗口的堆叠顺序中的位置)。
 
 ```cpp
 PF_SaveBackgroundState(void);
@@ -218,7 +218,7 @@ PF_SaveBackgroundState(void);
 
 ### PF_ForceForeground
 
-将After Effects带到所有当前打开的应用程序和窗口的前面。
+将 After Effects 带到所有当前打开的应用程序和窗口的前面。
 
 ```cpp
 PF_ForceForeground(void);
@@ -226,7 +226,7 @@ PF_ForceForeground(void);
 
 ### PF_RestoreBackgroundState
 
-将After Effects放回原来的位置，相对于其他的应用程序和窗口而言。
+将 After Effects 放回原来的位置，相对于其他的应用程序和窗口而言。
 
 ```cpp
 PF_RestoreBackgroundState(void);
@@ -234,7 +234,7 @@ PF_RestoreBackgroundState(void);
 
 ### PF_RefreshAllWindows
 
-强制更新所有After Effects窗口。注意，虽然合成面板会被刷新，但这并不保证会有新的帧被发送到外部监视器预览插件。
+强制更新所有 After Effects 窗口。注意，虽然合成面板会被刷新，但这并不保证会有新的帧被发送到外部监视器预览插件。
 
 ```cpp
 PF_RefreshAllWindows(void);
@@ -242,7 +242,7 @@ PF_RefreshAllWindows(void);
 
 ### PF_InfoDrawText
 
-将文本写入After Effects信息调色板。
+将文本写入 After Effects 信息调色板。
 
 ```cpp
 PF_InfoDrawText(
@@ -252,7 +252,7 @@ constA_char*line2Z0);
 
 ### PF_InfoDrawColor
 
-在After Effects信息调色板中绘制指定的颜色(Alpha被忽略)。
+在 After Effects 信息调色板中绘制指定的颜色(Alpha 被忽略)。
 
 ```cpp
 PF_InfoDrawColor(
@@ -261,7 +261,7 @@ PF_Pixelcolor);
 
 ### PF_InfoDrawText3
 
-在After Effects信息调色板中写入三行文字。
+在 After Effects 信息调色板中写入三行文字。
 
 ```cpp
 PF_InfoDrawText3(
@@ -272,7 +272,7 @@ constA_char*line3Z0);
 
 ### PF_InfoDrawText3Plus
 
-在After Effects信息调色板上写三行文字，第二行和第三行的部分内容是左右对齐的。
+在 After Effects 信息调色板上写三行文字，第二行和第三行的部分内容是左右对齐的。
 
 ```cpp
 PF_InfoDrawText3Plus(
@@ -294,13 +294,13 @@ constA_char*appendZ0);
 
 ## Formatting Time
 
-`PF_AdvTimeSuite`提供了几个函数来配合After Effects显示时间的方式。事实上，这些都是我们内部使用的函数。
+`PF_AdvTimeSuite`提供了几个函数来配合 After Effects 显示时间的方式。事实上，这些都是我们内部使用的函数。
 
 ### PF_AdvTimeSuite4
 
 #### PF_FormatTimeActiveItem
 
-给定一个时间值和刻度，返回一个代表该时间的格式化字符串。如果durationB为TRUE`，将附加适当的单位。
+给定一个时间值和刻度，返回一个代表该时间的格式化字符串。如果 durationB 为 TRUE`，将附加适当的单位。
 
 ```cpp
 PF_FormatTimeActiveItem(
@@ -312,7 +312,7 @@ A_char*time_buf);
 
 #### PF_FormatTime
 
-为给定的PF_InData和PF_EffectWorld(即层时间)提供格式化的时间字符串的上下文。
+为给定的 PF_InData 和 PF_EffectWorld(即层时间)提供格式化的时间字符串的上下文。
 
 ```cpp
 PF_FormatTime(
@@ -341,7 +341,7 @@ A_char*time_buf);
 
 #### PF_GetTimeDisplayPref
 
-返回起始帧数(由用户在合成设置中指定)，以及合成的时间显示偏好。在14.2中更新，以支持更高的帧率。
+返回起始帧数(由用户在合成设置中指定)，以及合成的时间显示偏好。在 14.2 中更新，以支持更高的帧率。
 
 ```cpp
 PF_GetTimeDisplayPref(
@@ -360,7 +360,7 @@ A_Booleanuse_feet_framesB;
 
 #### PF_TimeCountFrames
 
-15.0版中的新内容。返回当前合成中的帧的索引。
+15.0 版中的新内容。返回当前合成中的帧的索引。
 
 ```cpp
 PF_TimeCountFrames(
@@ -372,9 +372,9 @@ A_long*frame_countL);
 
 ## Affecting The Timeline
 
-很久以前，我们帮助一个开发者将他们的独立跟踪器与After Effects整合在一起，公开了一组函数，让他们有办法通知我们时间线的变化，并被通知。
+很久以前，我们帮助一个开发者将他们的独立跟踪器与 After Effects 整合在一起，公开了一组函数，让他们有办法通知我们时间线的变化，并被通知。
 
-由于有众多的AEGP API调用，这些并不常用，但它们仍然可用。
+由于有众多的 AEGP API 调用，这些并不常用，但它们仍然可用。
 
 不要把这个套件和[AEGP_ItemSuite](.../aegps/aegp-suites.html)(#aegps-aegp-suites-aegp-itemsuite)混淆。
 
@@ -382,7 +382,7 @@ A_long*frame_countL);
 
 #### PF_MoveTimeStep
 
-将当前时间num_stepsL向指定方向移动。
+将当前时间 num_stepsL 向指定方向移动。
 
 ```cpp
 PF_MoveTimeStep(
@@ -394,7 +394,7 @@ A_longnum_stepsL);
 
 #### PF_MoveTimeStepActiveItem
 
-在指定的方向上移动活动项目的num_stepsL。
+在指定的方向上移动活动项目的 num_stepsL。
 
 ```cpp
 PF_MoveTimeStepActiveItem(
@@ -404,7 +404,7 @@ A_longnum_stepsL);
 
 #### PF_TouchActiveItem
 
-告诉After Effects必须更新活动项目。
+告诉 After Effects 必须更新活动项目。
 
 ```cpp
 PF_TouchActiveItem(void);
@@ -412,7 +412,7 @@ PF_TouchActiveItem(void);
 
 #### PF_ForceRerender
 
-强制After Effects重新渲染当前帧。
+强制 After Effects 重新渲染当前帧。
 
 ```cpp
 PF_ForceRerender(
@@ -422,7 +422,7 @@ PF_EffectWorld*world);
 
 #### PF_EffectIsActiveOrEnabled
 
-返回拥有PF_ContextH`的效果当前是否激活或启用(如果不是，After Effects将不会监听来自它的函数调用)。
+返回拥有 PF_ContextH`的效果当前是否激活或启用(如果不是，After Effects 将不会监听来自它的函数调用)。
 
 ```cpp
 PF_EffectIsActiveOrEnabled(
@@ -432,7 +432,7 @@ PF_Boolean*enabledPB);
 
 ## Accessing Auxiliary Channel Data
 
-有些文件类型不仅仅包含像素数据；使用`PF_ChannelSuite`来确定是否存在这些信息，并使用AE_ChannelSuites.h中的宏来检索你需要的格式。
+有些文件类型不仅仅包含像素数据；使用`PF_ChannelSuite`来确定是否存在这些信息，并使用 AE_ChannelSuites.h 中的宏来检索你需要的格式。
 
 ### PF_ChannelSuite1
 
@@ -463,7 +463,7 @@ PF_ChannelDesc*channel_descP);
 
 #### PF_GetLayerChannelTypedRefAndDesc
 
-按类型检索一个辅助通道。只有当foundPB`返回TRUE`时，返回的信息才有效。
+按类型检索一个辅助通道。只有当 foundPB`返回TRUE`时，返回的信息才有效。
 
 ```cpp
 PF_GetLayerChannelTypedRefAndDesc(
@@ -475,22 +475,23 @@ PF_ChannelRef*channel_refP,
 PF_ChannelDesc*channel_descP);
 ```
 
-PF_DataType将是以下之一。
+PF_DataType 将是以下之一。
 
-> PF_DataType_FLOAT` - 34字节
+> PF_DataType_FLOAT` - 34 字节
+>
 > - PF_DataType_DOUBLE` - 38 bytes
-> - PF_DataType_LONG` - 34字节
-> - PF_DataType_SHORT` - 32字节
-> - PF_DataType_FIXED_16_16` - 34字节
-> - PF_DataType_CHAR` - 31字节
-> - PF_DataType_U_BYTE` - 31字节
-> - PF_DataType_U_SHORT` - 32字节
-> - PF_DataType_U_FIXED_16_16` - 34字节
-> - PF_DataType_RGB` - 3字节
+> - PF_DataType_LONG` - 34 字节
+> - PF_DataType_SHORT` - 32 字节
+> - PF_DataType_FIXED_16_16` - 34 字节
+> - PF_DataType_CHAR` - 31 字节
+> - PF_DataType_U_BYTE` - 31 字节
+> - PF_DataType_U_SHORT` - 32 字节
+> - PF_DataType_U_FIXED_16_16` - 34 字节
+> - PF_DataType_RGB` - 3 字节
 
-PF_ChannelType将是以下之一。
+PF_ChannelType 将是以下之一。
 
-> - PF_ChannelType_DEPTH` - 3字节
+> - PF_ChannelType_DEPTH` - 3 字节
 > - PF_ChannelType_NORMALS` - PF_ChannelType_DEPTH` - PF_ChannelType_NORMALS
 > - PF_ChannelType_OBJECTID`。
 > - PF_ChannelType_MOTIONVECTOR` - PF_ChannelType_NORMALS
@@ -504,7 +505,7 @@ PF_ChannelType将是以下之一。
 
 #### PF_CheckoutLayerChannel
 
-检索包含与给定PF_ChannelRefPtr`相关的数据的PF_ChannelChunk`。
+检索包含与给定 PF_ChannelRefPtr`相关的数据的PF_ChannelChunk`。
 
 ```cpp
 PF_CheckoutLayerChannel(
@@ -519,7 +520,7 @@ PF_ChannelChunk*channel_chunkP);
 
 #### PF_CheckinLayerChannel
 
-在PF_ChannelChunk`中进行检查。总是，总是，总是检查数据回来。
+在 PF_ChannelChunk`中进行检查。总是，总是，总是检查数据回来。
 
 ```cpp
 PF_CheckinLayerChannel(

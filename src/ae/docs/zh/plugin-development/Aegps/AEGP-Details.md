@@ -4,13 +4,14 @@ order: 8
 category:
   - AE 插件开发
 ---
+
 # AEGP Details
 
 ## Have A Cookie
 
-在After Effects必须保留关于你的AEGP调用的函数状态信息的情况下(如当一个Artisan正在渲染一个帧，或者一个keyframer正在从同一个流中添加和删除一系列关键帧)，你将调用begin()和end()函数。
+在 After Effects 必须保留关于你的 AEGP 调用的函数状态信息的情况下(如当一个 Artisan 正在渲染一个帧，或者一个 keyframer 正在从同一个流中添加和删除一系列关键帧)，你将调用 begin()和 end()函数。
 
-通常，begin函数将返回一个不透明的标识符，或 "cookie"，然后你必须将其传递给正在使用的函数。end函数将正确地处理这个cookie。参见 `AEGP_StartAddKeyframes()` [AEGP_KeyframeSuite3](aegp-suites.html)。
+通常，begin 函数将返回一个不透明的标识符，或 "cookie"，然后你必须将其传递给正在使用的函数。end 函数将正确地处理这个 cookie。参见 `AEGP_StartAddKeyframes()` [AEGP_KeyframeSuite3](aegp-suites.html)。
 
 ## Modifying Items In The Render Queue
 
@@ -18,17 +19,17 @@ category:
 
 ## Names And Solids
 
-固态层在After Effects UI中是有名字的，但在它们的 "PF_LayerDef"[PF_EffectWorld / PF_LayerDef](.../effect-basics/PF_EffectWorld.html) 中没有。因此，它们的名字不能被 `AEGP_GetItemName `(in [AEGP_ItemSuite9](aegp-suites.html) ) 或 `AEGP_GetLayerName`(in [AEGP_LayerSuite8](aegp-suites.html)  检索出来。)
+固态层在 After Effects UI 中是有名字的，但在它们的 "PF_LayerDef"[PF_EffectWorld / PF_LayerDef](.../effect-basics/PF_EffectWorld.html) 中没有。因此，它们的名字不能被 `AEGP_GetItemName `(in [AEGP_ItemSuite9](aegp-suites.html) ) 或 `AEGP_GetLayerName`(in [AEGP_LayerSuite8](aegp-suites.html) 检索出来。)
 
-然而，你可以使用与它们相关的ItemH来 `AEGP_GetItemName` ( 参见[AEGP_ItemSuite9](aegp-suites.html) )。
+然而，你可以使用与它们相关的 ItemH 来 `AEGP_GetItemName` ( 参见[AEGP_ItemSuite9](aegp-suites.html) )。
 
 ## Reporting Errors And Problems
 
-使用 `AEGP_ItemSuite>AEGP_ReportInfo()`来向用户报告信息，并识别你的插件。AEIO插件使用他们被传递的AEIO_BasicData中包含的msg_func指针来代替(与每个函数一起)。
+使用 `AEGP_ItemSuite>AEGP_ReportInfo()`来向用户报告信息，并识别你的插件。AEIO 插件使用他们被传递的 AEIO_BasicData 中包含的 msg_func 指针来代替(与每个函数一起)。
 
 ## Transforms: What Happens First?
 
-After Effects根据自动定向(朝向路径或兴趣点)计算旋转，然后计算定向，再计算X、Y、Z旋转。
+After Effects 根据自动定向(朝向路径或兴趣点)计算旋转，然后计算定向，再计算 X、Y、Z 旋转。
 
 ## Accessing Pixels From Effect Layer Parameters
 
