@@ -20,6 +20,7 @@ export default defineUserConfig({
     },
   },
   theme,
+  
   plugins: [
     mdEnhancePlugin({
       // 添加 `@src` 别名支持
@@ -36,6 +37,7 @@ export default defineUserConfig({
         },
       },
     }),
+
 
     // docsearchPlugin({
     //   appId:"55HOH8C0U6",

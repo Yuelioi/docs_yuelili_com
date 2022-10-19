@@ -13,7 +13,12 @@
 iframe {
   height: 600px;
 }
-
+html{
+  font-size: 20px;
+}
+.nav-links .external-link-icon {
+  display: none;
+}
 
 @media (min-width: 768px) {}
 

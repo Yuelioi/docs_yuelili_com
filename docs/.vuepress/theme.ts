@@ -8,22 +8,32 @@ export default hopeTheme({
     name: "月离",
     url: "https://yuelili.com",
   },
-  iconAssets: "iconfont",
+  iconAssets: "//at.alicdn.com/t/c/font_3673964_0ucuq420my2.css",
   logo: "/logo.svg",
   repo: "Yuelioi/docs_yuelili_com",
   docsDir: "docs",
   pageInfo: ["Author", "Original", "Date", "Category", "Tag", "ReadingTime"],
+  navbarLayout: {
+    left: ["Brand"],
+    center: ["Links"],
+    right: ["Language", "Repo", "Outlook", "Search"],
+  },
+  themeColor: {
+    blue: "#2196f3",
+    red: "#f26d6d",
+    orange: "#fb9b5f",
+  },
+  fullscreen: true,
   locales: {
     "/en/": {
       navbar: enNavbar,
       sidebar: enSidebar,
       displayFooter: true,
       footer: "MIT",
-      copyright: "@2022 | 月离的万事屋",
+      copyright: "@2022 | Yuelili.com",
       //
       blog: {
-        description: "A FrontEnd programmer",
-        intro: "/intro.html",
+        description: "",
       },
     },
     "/zh/": {
@@ -33,8 +43,7 @@ export default hopeTheme({
       footer: "MIT",
       copyright: "@2022 | 月离的万事屋",
       blog: {
-        description: "一个前端开发者",
-        intro: "/zh/intro.html",
+        description: "",
       },
     },
   },
@@ -51,8 +60,6 @@ export default hopeTheme({
   encrypt: {
     // 加密文章
     config: {
-      "/guide/encrypt.html": ["1234"],
-      "/zh/guide/encrypt.html": ["1234"],
     },
   },
   plugins: {
