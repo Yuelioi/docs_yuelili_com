@@ -5,8 +5,6 @@ category:
   - AE 插件开发
 ---
 
-# Errors
-
 总是，总是，_总是_(总是！)从`main()`返回一个`PF_Err`。插件必须把所有的错误传回给 After Effects。
 
 你必须把任何错误(由回调和 PICA 套件返回给你)传递给 After Effects，除非你已经处理了它们，这是非常重要的。

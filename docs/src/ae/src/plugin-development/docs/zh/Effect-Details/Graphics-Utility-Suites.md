@@ -60,7 +60,7 @@ PF_Err blend (
 
 在 a、r、g 和 b 通道上分别用一个任意大小的核对图像进行卷积。
 你可以指定一个矩形来进行卷积(例如，[PF_EffectWorld 结构](../effect-basics/PF_EffectWorld.html#effect-basics-pf-effectworld-structure)中的`extent_hint`)，或者通过 0 来卷积整个图像。
-如果源码\_是目标码，则不要使用。
+如果源码是目标码，则不要使用。
 使用[内核标志](#effect-details-graphics-utility-suites-kernel-flags)描述卷积。
 
 ```cpp

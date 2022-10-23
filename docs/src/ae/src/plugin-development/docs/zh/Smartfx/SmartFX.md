@@ -17,7 +17,7 @@ SmartFX API 在特效和 After Effects 之间提供了双向通信，实现了�
 
 ## The Way Things Are Now
 
-SmartFX 通过颠倒调用顺序解决了这个问题。效果被告知它需要多少输出，它必须明确地\_向主机请求它所需要的输入。渲染过程被分成两部分：预渲染和渲染。
+SmartFX 通过颠倒调用顺序解决了这个问题。效果被告知它需要多少输出，它必须明确地向主机请求它所需要的输入。渲染过程被分成两部分：预渲染和渲染。
 
 在预渲染过程中，效果描述了它所需要的输入像素数据；这个必要的输入可以根据你喜欢的任何东西(非输入层参数、非层参数、来自 in_data 的信息、序列数据中的设置...)而变化。效果还必须返回结果输出的范围，如果在请求的图层部分有空的像素，这个范围可能小于请求的大小。
 
@@ -39,7 +39,7 @@ SmartFX 通过颠倒调用顺序解决了这个问题。效果被告知它需要
 
 ## PF_Cmd_SMART_PRE_RENDER
 
-After Effects 要求从效果中输出。效果通过使用回调函数和操作额外参数中的结构，告诉 After Effects 它需要什么输入来产生该输出。效果不能访问它在*PF_Cmd_SMART_PRE_RENDER*期间没有检查出来的任何图层输入的像素。因此，一个效果可能需要的所有图层输入都必须事先用 checkout*layer 检查出来。如果一个效果可能需要某些层的输入，它们必须现在被检出，即使后来在渲染过程中效果可能决定不需要这个层。另外，由于在\_PF_Cmd_SMART_PRE_RENDER*或`PF_Cmd_SMART_RENDER`过程中，没有参数阵列传递给 SmartFX，任何需要的非层参数必须使用`PF_CHECKOUT_PARAM`来获取 ( 参见[Interaction Callbacks](../effect-details/interaction-callback-functions.html)
+After Effects 要求从效果中输出。效果通过使用回调函数和操作额外参数中的结构，告诉 After Effects 它需要什么输入来产生该输出。效果不能访问它在*PF_Cmd_SMART_PRE_RENDER*期间没有检查出来的任何图层输入的像素。因此，一个效果可能需要的所有图层输入都必须事先用 checkout*layer 检查出来。如果一个效果可能需要某些层的输入，它们必须现在被检出，即使后来在渲染过程中效果可能决定不需要这个层。另外，由于在PF_Cmd_SMART_PRE_RENDER*或`PF_Cmd_SMART_RENDER`过程中，没有参数阵列传递给 SmartFX，任何需要的非层参数必须使用`PF_CHECKOUT_PARAM`来获取 ( 参见[Interaction Callbacks](../effect-details/interaction-callback-functions.html)
 
 ## PF_PreRenderExtra
 
@@ -240,7 +240,7 @@ After Effects 也可以用一个空的 request_rect 来调用效果，这意味�
 
 由一个[PF_RenderRequest](../smartfx/smartfx.html)、位深度和一个指向 pre_render_data`的指针(在[PF_Cmd_SMART_PRE_RENDER](../effect-basics/command-selectors.html)期间分配)组成。
 
-这个 PF*SmartRenderInput`与相应的\_PF_Cmd_SMART_PRE_RENDER*中传递的相同。
+这个 PF*SmartRenderInput`与相应的PF_Cmd_SMART_PRE_RENDER*中传递的相同。
 
 ### PF_SmartRenderCallbacks
 
@@ -255,9 +255,9 @@ PF_EffectWorld**pixels)。
 
 返回的 PF_EffectWorld`在当前命令的持续时间内有效，或者直到检出。
 
-你只能用*PF_Cmd_SMART_PRERENDER*中的 checkout*idL 调用 checkout_layer_pixels`一次。在\_PF_Cmd_SMART_PRERENDER*和*PF_Cmd_SMART_RENDER*中进行的签出数量之间必须有一个一对一的映射。
+你只能用*PF_Cmd_SMART_PRERENDER*中的 checkout*idL 调用 checkout_layer_pixels`一次。在PF_Cmd_SMART_PRERENDER*和*PF_Cmd_SMART_RENDER*中进行的签出数量之间必须有一个一对一的映射。
 
-要在一个图层上多次调用 checkout*layer_pixels`，你应该在\_PF_Cmd_SMART_PRERENDER*中用不同的唯一 checkout*idL`在同一图层上再次调用[checkout_layer](../smartfx/smartfx.html)，然后用这个checkout_idL`在\_PF_Cmd_SMART_RENDER*中做另一个 checkout_layer_pixels`。
+要在一个图层上多次调用 checkout*layer_pixels`，你应该在PF_Cmd_SMART_PRERENDER*中用不同的唯一 checkout*idL`在同一图层上再次调用[checkout_layer](../smartfx/smartfx.html)，然后用这个checkout_idL`在PF_Cmd_SMART_RENDER*中做另一个 checkout_layer_pixels`。
 
 ```
 PF_Errcheckin_layer_pixels(

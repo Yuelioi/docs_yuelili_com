@@ -29,11 +29,11 @@ A_Err AEGP_PluginInitFuncPrototype(
 
 ```
 
-插件的入口点，在[PiPL Resources](../intro/pipl-resources.html)中导出，在启动过程中只被调用一次；所有其他对 AEGP 的调用都转到它所注册的函数。
+插件的入口函数，在[PiPL Resources](../intro/pipl-resources.html)中导出，在启动过程中只被调用一次；所有其他对 AEGP 的调用都转到它所注册的函数。
 
-这与效果插件模型非常不同，在那里所有的通信都是通过同一个入口点进行的。
+这与效果插件模型非常不同，在那里所有的通信都是通过同一个入口函数进行的。
 
-因为插件的加载顺序可能不同，所以在入口点函数中获取 After Effects 没有提供的套件绝不是一个好主意。相反，要等到适当的钩子函数出现。
+因为插件的加载顺序可能不同，所以在入口函数函数中获取 After Effects 没有提供的套件绝不是一个好主意。相反，要等到适当的钩子函数出现。
 
 AEGP [API Versions](../intro/compatibility-across-multiple-versions.html) 可以帮助区分不同版本的 After Effects，以防 AEGP 需要有不同的行为或处理不同的行为。
 
@@ -41,7 +41,7 @@ AEGP [API Versions](../intro/compatibility-across-multiple-versions.html) 可以
 
 ## Specialization
 
-AEIO 和工匠必须向 After Effects 注册，以便接收它们所依赖的信息流。
+AEIO 和 Artisans 必须向 After Effects 注册，以便接收它们所依赖的信息流。
 
 就像 AEGP API 中的其他东西一样，这是通过一个函数套件完成的；在这种情况下，命名为 AEGP_RegisterSuite。
 

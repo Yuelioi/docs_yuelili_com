@@ -29,7 +29,7 @@ After Effects 支持 MediaCore 导入器插件。MediaCore 是一套从 Premiere
 
 ## How It Works
 
-在其入口点函数中，AEIO 填充了一个函数指针的结构，其中包含它希望在响应某些事件时调用的函数名称。许多这些函数钩子是可选的。
+在其入口函数函数中，AEIO 填充了一个函数指针的结构，其中包含它希望在响应某些事件时调用的函数名称。许多这些函数钩子是可选的。
 
 ## What Would After Effects Do?
 
@@ -41,7 +41,7 @@ After Effects 支持 MediaCore 导入器插件。MediaCore 是一套从 Premiere
 
 ## Registering Your AEIO
 
-在你的插件的入口点函数中，填充一个 AEIO_ModuleInfo，描述 AEIO 支持的文件类型，和一个 AEIO_FunctionBlock 结构，指向你的文件处理函数。对于其中一些函数，你可以通过返回 AEIO_Err_USE_DFLT_CALLBACK 来依赖 After Effects 的默认行为。但是，你仍然必须提供一个符合要求的签名的函数，这样做。一旦你填好了这两个结构，从[AEGP_RegisterSuites5](../aegps/aegp-suites.html)调用`AEGP_RegisterIO()`。
+在你的插件的入口函数函数中，填充一个 AEIO_ModuleInfo，描述 AEIO 支持的文件类型，和一个 AEIO_FunctionBlock 结构，指向你的文件处理函数。对于其中一些函数，你可以通过返回 AEIO_Err_USE_DFLT_CALLBACK 来依赖 After Effects 的默认行为。但是，你仍然必须提供一个符合要求的签名的函数，这样做。一旦你填好了这两个结构，从[AEGP_RegisterSuites5](../aegps/aegp-suites.html)调用`AEGP_RegisterIO()`。
 
 在你传递给注册调用的 AEIO_ModuleInfo 中，你提供了文件类型和描述信息，After Effects 在导入对话框中使用这些信息，用于 Windows 的 "类型文件 "下拉，或 MacOS 的启用下拉。从 CS6 开始，文件扩展名不能超过三个字符，尽管我们有一些内置的导入器，扩展名更长。
 

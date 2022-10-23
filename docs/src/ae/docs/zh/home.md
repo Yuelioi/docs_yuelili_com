@@ -16,36 +16,36 @@ actions:
 features:
   - title: 表达式
     details: 中英文档 案例 参数全解
-    link: ./expression/
+    link: https://docs.yuelili.com/ae/expression/zh/home.html
 
   - title: 形状图层
     details: 参数全解
-    link: ./shape/
+    link: https://docs.yuelili.com/ae/shape/zh/home.html
 
 
   - title: 文字动画
     details: 参数全解
-    link: ./text-animation/
+    link: https://docs.yuelili.com/ae/text-animation/zh/home.html
 
   - title: 内置效果
     details: 效果全解 视频教程
-    link: ./effects/
+    link: https://docs.yuelili.com/ae/effects/zh/home.html
 
   - title: 脚本编写
     details: 中英文档, 脚本开发
-    link: ./scripting/
+    link: https://docs.yuelili.com/ae/scripting/zh/home.html
 
   - title: 插件编写
     details: 中英文档, 插件开发
-    link: ./plugin-development/
+    link: https://docs.yuelili.com/ae/plugin-development/zh/home.html
 
   - title: Particular
     details: P粒子
-    link: ./plugins/particular/
+    link: https://docs.yuelili.com/ae/plugins/particular/zh/home.html
 
   - title: Stardust
     details: 星辰粒子
-    link: ./plugins/stardust/
+    link: https://docs.yuelili.com/ae/plugins/stardust/zh/home.html
 
  
 copyright: false

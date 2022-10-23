@@ -7,7 +7,7 @@ category:
 
 # New Kids On The Function Block[¶]
 
-在其主入口点函数中，每个 AEIO 插件必须填写 AEIO_FunctionBlock，提供指向 After Effects 将为不同文件相关任务调用的函数的指针。
+在其主入口函数函数中，每个 AEIO 插件必须填写 AEIO_FunctionBlock，提供指向 After Effects 将为不同文件相关任务调用的函数的指针。
 
 下表显示了哪些函数是需要输入的，哪些是需要输出的。对于一个简单的实现，从右栏中标明 "需要 "的函数开始。你通常可以通过让 After Effects 为你处理调用(通过返回`AEIO_Err_USE_DFLT_CALLBACK`)来调用 "最佳情况 "行为。
 

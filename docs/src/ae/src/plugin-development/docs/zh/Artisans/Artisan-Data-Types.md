@@ -31,7 +31,7 @@ category:
 
 "AEGP_RenderReceiptH"(渲染接收)。
 
-`AEGP_FrameReceiptH`在渲染时由工匠们使用。
+`AEGP_FrameReceiptH`在渲染时由Artisan们使用。
 
 #### AEGP_WorldH
 
@@ -47,7 +47,7 @@ After Effects 的矩阵是基于行的，OpenGL 的是基于列的。这意味�
 
 ## Implementation And Design[¶]
 
-一个工匠几乎是一个独立的应用程序。因为我们在 After Effects 5.0 的早期就意识到，有很多方法可以解决 3D 渲染中固有的问题；例如，交叉点和阴影等。
+一个Artisan几乎是一个独立的应用程序。因为我们在 After Effects 5.0 的早期就意识到，有很多方法可以解决 3D 渲染中固有的问题；例如，交叉点和阴影等。
 
 我们提供了一个 API，我们和第三方(是的，我们真的使用自己的 API)可以实现任何需要的 3D 渲染方案。
 
@@ -57,7 +57,7 @@ After Effects 不是一个 3D 建模应用程序。用户在响应模式下工�
 
 ## Registering An Artisan[¶]
 
-工匠是一个 AEGP，有一个单一的入口点。匠人也必须注册自己的函数入口点，并为此有一个特殊的回调。参见[AEGP_RegisterSuites5](../aegps/aegp-suites.html#aegps-aegp-suites-aegp-registersuites)中的`AEGP_RegisterArtisan()`。
+Artisan是一个 AEGP，有一个单一的入口函数。匠人也必须注册自己的函数入口函数，并为此有一个特殊的回调。参见[AEGP_RegisterSuites5](../aegps/aegp-suites.html#aegps-aegp-suites-aegp-registersuites)中的`AEGP_RegisterArtisan()`。
 
 这个表格显示了由`PR_ArtisanEntryPoints`定义的 Artisans 可以支持的功能：只有`render_func`是必须的。
 
@@ -289,7 +289,7 @@ PR_FrameRenderFunc(
 
 如果有需要，美工人员可以绘制他们自己的投影轴。
 
-After Effects 将调用这个函数来获得合成世界和这些轴之间的变换，以及其他一些与屏上和屏下预览绘制有关的功能(前者只与互动工匠有关)。
+After Effects 将调用这个函数来获得合成世界和这些轴之间的变换，以及其他一些与屏上和屏下预览绘制有关的功能(前者只与互动Artisan有关)。
 
 ```cpp
 
@@ -336,13 +336,13 @@ CS6 中的新功能。
 
 如果被渲染的图层是 3D 的，就会调用默认的(标准 3D)Artisan 来执行任何 3D 几何图形。
 
-你的工匠可以用它来渲染跟踪哑光层，并且只在严格的二维意义上将它们应用到转换后的三维层。
+你的Artisan可以用它来渲染跟踪哑光层，并且只在严格的二维意义上将它们应用到转换后的三维层。
 
 在渲染之前，After Effects 附带的 Artisans 应用一个反变换来获得方形像素，然后在显示之前重新应用变换。
 
 例如，如果像素的长宽比是 10/11(DV NTSC)，我们就乘以 11/10 来得到方形像素。我们对三维图层进行处理和合成，然后重新分割，以恢复到原始的像素长宽比。
 
-以下套件提供了图层、合成、纹理和目标缓冲区。这是所有工匠的一个重要套件。
+以下套件提供了图层、合成、纹理和目标缓冲区。这是所有Artisan的一个重要套件。
 
 ### AEGP_CanvasSuite8[¶]
 
@@ -874,7 +874,7 @@ AEGP_GenerateRenderReceipt(
 
 #### AEGP_GetNumBinsToRender
 
-返回 After Effects 希望工匠渲染的 bins 数量。
+返回 After Effects 希望Artisan渲染的 bins 数量。
 
 ```cpp
 
@@ -948,7 +948,7 @@ AEGP_GetRenderLayerToWorldXform2D3D(
 
 ::: tip
 
-以下函数仅适用于交互式工匠。
+以下函数仅适用于交互式Artisan。
 :::
 
 #### AEGP_GetPlatformWindowRef
@@ -1096,7 +1096,7 @@ AEGP_GetInteractiveCachedBuffer(
 
 #### AEGP_ArtisanMustRenderAsLayer
 
-确定工匠是否必须将当前的`AEGP_RenderLayerContextH`渲染成一个图层。
+确定Artisan是否必须将当前的`AEGP_RenderLayerContextH`渲染成一个图层。
 
 ```cpp
 
@@ -1113,7 +1113,7 @@ AEGP_ArtisanMustRenderAsLayer(
 
 #### AEGP_GetInteractiveDisplayChannel
 
-返回哪些通道应该由交互式工匠显示。
+返回哪些通道应该由交互式Artisan显示。
 
 ```cpp
 
@@ -1210,7 +1210,7 @@ AEGP_MapCompToLayerTime(
 
 ## Convert Between Different Contexts[¶]
 
-在渲染和实例上下文之间进行转换，并管理特定于工匠的全局数据。
+在渲染和实例上下文之间进行转换，并管理特定于Artisan的全局数据。
 
 ### AEGP_ArtisanUtilSuite1[¶]
 
@@ -1499,9 +1499,9 @@ After Effects 依靠 Artisans 来绘制 3D 图层手柄。如果你的美工选�
 
 ## Query Transform Functions[¶]
 
-这些函数给工匠提供了他们需要的变换信息，以便正确地将图层放置在一个合成中，并对 After Effects 发送的各种查询作出适当的反应，这些查询将发送到他们的`PR_QueryFunc`入口点函数。
+这些函数给Artisan提供了他们需要的变换信息，以便正确地将图层放置在一个合成中，并对 After Effects 发送的各种查询作出适当的反应，这些查询将发送到他们的`PR_QueryFunc`入口函数函数。
 
-由于该入口点是可选的，所以你的工匠对查询的响应也是可选的；然而，如果你不这样做，你的用户可能会失望，(在进行交互式预览绘图时)所有的相机和灯光指示器都消失了，直到他们停止移动 工匠是复杂的野兽；如果你有任何问题，请联系我们。
+由于该入口函数是可选的，所以你的Artisan对查询的响应也是可选的；然而，如果你不这样做，你的用户可能会失望，(在进行交互式预览绘图时)所有的相机和灯光指示器都消失了，直到他们停止移动 Artisan是复杂的野兽；如果你有任何问题，请联系我们。
 
 ### AEGP_QueryXFormSuite2[¶]
 
@@ -1696,7 +1696,7 @@ AEGP_QueryFrozenProxy(
 
 #### AEGP_QuerySwapBuffer
 
-在渲染和摄像机/灯光手柄绘制完成后发送；After Effects 返回工匠应该绘制其输出的缓冲区。
+在渲染和摄像机/灯光手柄绘制完成后发送；After Effects 返回Artisan应该绘制其输出的缓冲区。
 
 ```cpp
 
@@ -1713,7 +1713,7 @@ AEGP_QuerySwapBuffer(
 
 #### AEGP_QueryDrawProcs
 
-设置 After Effects 在绘制相机和灯光手柄到工匠提供的上下文时将调用的交互式绘图函数。
+设置 After Effects 在绘制相机和灯光手柄到Artisan提供的上下文时将调用的交互式绘图函数。
 
 ```cpp
 
@@ -1749,7 +1749,7 @@ AEGP_QueryPrepareForLineDrawing(
 
 #### AEGP_QueryUnprepareForLineDrawing
 
-就 After Effects 而言，工匠已经完成了画线。
+就 After Effects 而言，Artisan已经完成了画线。
 
 ```cpp
 
@@ -1764,7 +1764,7 @@ AEGP_QueryUnprepareForLineDrawing(
 
 ## Interactive Drawing Functions[¶]
 
-我们增加了工匠提供 After Effects 可以用来做基本绘图功能的功能，以便在预览期间更新 comp 窗口的显示，包括相机、灯光和线框预览建模。
+我们增加了Artisan提供 After Effects 可以用来做基本绘图功能的功能，以便在预览期间更新 comp 窗口的显示，包括相机、灯光和线框预览建模。
 
 ### PR_InteractiveDrawProcs[¶]
 
@@ -1829,7 +1829,7 @@ PR_Draw_PaintRectFunc(
 
 ## Notes On Query Time Functions[¶]
 
-`AEGP_QueryXformGetTransformTime()`和`AEGP_QueryXformGetViewTime()`都是工匠建立要渲染的场景表示所必需的。
+`AEGP_QueryXformGetTransformTime()`和`AEGP_QueryXformGetViewTime()`都是Artisan建立要渲染的场景表示所必需的。
 
 `AEGP_QueryXformGetTransformTime()`获得转换的时间，然后传递给[AEGP_CompSuite11](../aegps/aegp-suites.html#aegps-aegp-suites-aegp-compsuite)的`AEGP_GetCompShutterFrameRange()`。
 

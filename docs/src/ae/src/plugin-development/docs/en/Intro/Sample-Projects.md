@@ -80,7 +80,7 @@ Note that this Windows path is only recommended for development purposes. Window
 
 In Xcode, you can set this path once for all projects in the Xcode Preferences > Locations > Derived Data > Advanced. Under _Build Location_ choose _Custom_, and fill in the path.
 
-In Visual Studio, for convenience, we have specified the output path for all sample projects using the environment variable AE*PLUGIN_BUILD_DIR. You’ll need to set this as a user environment variable for your system. On Windows 7, right-click \_My Computer* > _Properties_
+In Visual Studio, for convenience, we have specified the output path for all sample projects using the environment variable AE*PLUGIN_BUILD_DIR. You’ll need to set this as a user environment variable for your system. On Windows 7, right-click My Computer* > _Properties_
 
 > and in the left sidebar choose _Advanced System Settings_. In the new dialog, hit the _Environment Variables_ button. In the User variables area, create a New variable named AE_PLUGIN_BUILD_DIR, and with the path described above. Log out of Windows and log back in so that the variable will be set.
 

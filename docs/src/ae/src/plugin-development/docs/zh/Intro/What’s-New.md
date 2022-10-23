@@ -1,61 +1,59 @@
 ---
-title: What’s New
+title: 新鲜东西
 order: 6
 category:
   - AE 插件开发
 ---
 
-# What’s New
+如果这是你第一次开发 After Effects 插件，可以跳过新内容部分，直接进入[如何开始创建插件](how-to-start-creating-plug-ins.html) 。
 
-如果这是你第一次开发 After Effects 插件，你可以跳过新内容部分，直接进入[如何开始创建插件](how-to-start-creating-plug-ins.html) 。
-
-## What’s New In After Effects 2022
+## AE 2022 新变换
 
 After Effects 2022 包含了第一个支持多帧渲染的完整公开版本。2021 年 10 月发布的相关 AE Effects SDK 包括一个增加 PF_Iterate 线程最大数量的改变。
 
-## What’s New in the After Effects SDK in March 2021
+## AE 2021 SDK 变换
 
-### Multi-Frame Rendering Changes
+### 多帧渲染
 
-1. `PF_OutFlag2_SUPPORTS_THREADED_RENDERING`标志的最终行为现在已经到位。设置这个标志以表示对多帧渲染的支持，也将强制要求存储在`sequence_data`中的数据在渲染时是常量/只读的，现在对`sequence_data`的访问是通过一个套件，`PF_EffectSequenceDataSuite1`。
-2. 2.如果你的插件不能被更新到与新的 sequence_data 行为一起工作，现在有一个新的标志，`PF_OutFlag2_MUTABLE_RENDER_SEQUENCE_DATA_SLOWER'可以和`PF_OutFlag2_SUPPORTS_THREADED_RENDERING'一起设置。After Effects 将无法应用尽可能多的渲染并发性，因此无法对设置该标志的效果进行性能改进(因此，标志名称为 \_SLOWER)。
-3. 一个新的套件--计算缓存(以前被称为 3-way checkout cache)现在可用。这个套件提供了一个线程安全的缓存，插件可以将其作为 sequence_data 的替代或补充，以支持多个渲染线程计算和缓存渲染帧所需的数据。
+1. `PF_OutFlag2_SUPPORTS_THREADED_RENDERING`标志现已上线。设置这个标志就可以多帧渲染，但存储在`sequence_data`中的数据在渲染时强制要求是常量/只读，现在通过一个套件来访问`sequence_data`，`PF_EffectSequenceDataSuite1`。
+2. 如果你的插件无法与新的 sequence_data 一起工作，现有一个新标志，`PF_OutFlag2_MUTABLE_RENDER_SEQUENCE_DATA_SLOWER`可以和`PF_OutFlag2_SUPPORTS_THREADED_RENDERING`一起设置。After Effects 将无法应用尽可能多的渲染并发性，因此无法对设置该标志的效果进行性能改进(因此，标志名称为 \_SLOWER)。
+3. 一个新的套件--Compute Cache 计算缓存(以前被称为 3-way checkout cache)现已可用。该套件提供了一个线程安全的缓存，插件可以将其作为 sequence_data 的替代或补充，以支持多渲染线程计算和缓存渲染帧所需的数据。
 
-由于这些变化，你必须更新到 2021 年 3 月的 SDK 并进行编译，以保持多帧渲染与 AE Beta 构建的兼容性。使用 2020 年 6 月的 SDK 编译的插件将不再支持多帧渲染，即使`PF_OutFlag2_SUPPORTS_THREADED_RENDERING`被设置，从 AE 22.0x6(2021 年 6 月 29 日发布)开始。
+由于这些变化，你必须更新到 2021 年 3 月的 SDK 并进行编译，以保持多帧渲染与 AE Beta 构建的兼容性。使用 2020 年 6 月的 SDK 编译的插件将不再支持多帧渲染，即使设置了`PF_OutFlag2_SUPPORTS_THREADED_RENDERING`，从 AE 22.0x6(2021 年 6 月 29 日发布)开始。
 
-请参阅[Multi-Frame Rendering in AE](../effect-details/multi-frame-rendering-in-ae.html) 了解更多信息。
+详情请参阅[Multi-Frame Rendering in AE](../effect-details/multi-frame-rendering-in-ae.html)。
 
-### Apple Silicon Support
+### Apple Silicon 支持
 
 - AE SDK 现在支持为 Apple Silicon 原生构建特效。虽然 After Effects 本身还不能在 Apple Silicon 上运行，但 Adobe 作为一家公司，正在推进对我们许多产品的原生支持。像 Premiere Pro 这样的应用程序现在有原生版本，你的效果可以通过 Motion Graphic Templates 等功能加载到 Premiere Pro 中。当运行 Premiere Pro 的原生版本时，只有原生编译的特效才能工作，所以尽快更新你的特效，支持 Apple Silicon 很重要。请参阅[Apple Silicon Support](apple-silicon-support.html)部分了解更多信息。
 
-### Exporting Symbols from Effects
+### 从效果导出符号
 
 - SDK 样本已经更新，在 MacOS 上默认不导出符号。请参阅[Exporting Symbols in Effects](symbol-export.html) 了解更多信息。
 
-### Downloading the March 2021 SDK
+### 下载 March 2021 SDK
 
 SDK 可以从 Adobe Developer Console 下载，地址是<https://adobe.io/after-effects/>。
 
-### After Effects Beta Builds
+### After Effects Beta 构建
 
 为了获得这个 SDK 的 AE 主机端变化，你需要从 Creative Cloud Desktop App 下载一个新的 After Effects beta 版本。2021 年 3 月的 SDK 支持 18.2x11 及以上版本的构建。
 
-## What’s New In After Effects Beta builds after June 2020
+## June 2020 新特性
 
 AE(目前仅在 Beta 版本中)现在支持多帧渲染。请参阅[Multi-Frame Rendering in AE](../effect-details/multi-frame-rendering-in-ae.html) 了解更多细节。
 
-## What’s New In CC 2019 (16.0)?
+## CC 2019 (16.0) 新特性
 
 我们对处理 GPU 特效的方式做了一些改变。详情请参见 "GPU 特效的变化"。
 
-## What’s New In 15.0?
+## 15.0 新特性
 
-After Effects 现在支持以前在 Premiere Pro 中支持的*GPU 效果渲染*。请注意，匹配名称包含 "ADBE "的未知效果将被排除在 GPU 渲染之外，因此请确保您的任何 GPU 效果都有自己的自定义匹配名称。支持 GPU 渲染的效果将在效果面板中获得 GPU 徽章。
+After Effects 现在支持以前在 Premiere Pro 中支持的*GPU 效果渲染*。请注意，匹配名称包含 "ADBE "的未知效果将被排除在 GPU 渲染之外，因此请确保您的任何 GPU 效果都有自己的自定义匹配名称。支持 GPU 渲染的效果将在效果面板中获得 GPU 标志。
 
 Premiere Pro SDK 中的 GPU 效果示例项目已经更新，可以在 AE 中注册为 GPU 效果，不过渲染输出仍需努力。
 
-一个新的入口点已经被定义，以允许特效在运行时向主机注册基本信息，而不需要依赖传统的 PiPL 资源。一个特效可以通过这种方式在一个二进制文件中注册多个入口点。Premiere Pro 是第一个支持这个入口点的主机，而 After Effects 将在未来的版本中支持这个入口点。
+一个新的入口函数已经被定义，以允许特效在运行时向主机注册基本信息，而不需要依赖传统的 PiPL 资源。一个特效可以通过这种方式在一个二进制文件中注册多个入口函数。Premiere Pro 是第一个支持这个入口函数的主机，而 After Effects 将在未来的版本中支持这个入口函数。
 
 效果示例项目已被更新，以使用这种方法，同时保留 PiPL，以便向后兼容。
 

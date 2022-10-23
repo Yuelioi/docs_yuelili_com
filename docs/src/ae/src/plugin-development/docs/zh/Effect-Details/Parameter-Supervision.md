@@ -25,7 +25,7 @@ category:
 
 在[PF_Cmd_USER_CHANGED_PARAM](../effect-basics/command-selectors.html) 和[PF_Cmd_EVENT](. ./effect-basics/command-selectors.html)(#effect-basics-command-selectors-messaging)(_PF_Event_DO_CLICK_, _PF_Event_DRAG_, & _PF_Event_KEYDOWN_)。After Effects 不会尊重在其他时间做出的改变。
 
-当改变参数\_值时(而不仅仅是用户界面)，修改原始参数，并将`PF_Paramdef.uu.change_flags`设置为`PF_ChangeFlag_CHANGED_VALUE`。
+当改变参数值时(而不仅仅是用户界面)，修改原始参数，并将`PF_Paramdef.uu.change_flags`设置为`PF_ChangeFlag_CHANGED_VALUE`。
 
 这个变化也将更新用户界面，并且用户可以撤销。请注意，`PF_ChangeFlag_CHANGED_VALUE`不支持层参数。
 

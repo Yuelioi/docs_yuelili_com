@@ -14,40 +14,18 @@ actions:
     link: https://docs.yuelili.com/zh/
 
 features:
-  - title: 表达式
-    details: 中英文档 案例 参数全解
-    link: ./expression/
-
-  - title: 形状图层
+  - title: 内置效果文档
     details: 参数全解
-    link: ./shape/
+    link: ./Overview/AE效果介绍.html
 
-
-  - title: 文字动画
+  - title: 官方文档
     details: 参数全解
-    link: ./text-animation/
+    link: https://helpx.adobe.com/cn/after-effects/using/effects-animation-presets-overview.html
 
-  - title: 内置效果
-    details: 效果全解 视频教程
-    link: ./effects/
+  - title: 内置效果教程
+    details: 参数全解
+    link: https://www.bilibili.com/video/BV1e34y1X7Vj/
 
-  - title: 脚本编写
-    details: 中英文档, 脚本开发
-    link: ./scripting/
-
-  - title: 插件编写
-    details: 中英文档, 插件开发
-    link: ./plugin-development/
-
-  - title: Particular
-    details: P粒子
-    link: ./plugins/particular/
-
-  - title: Stardust
-    details: 星辰粒子
-    link: ./plugins/stardust/
-
- 
 copyright: false
 footer: Copyright © 2022 | 月离的万事屋
 ---

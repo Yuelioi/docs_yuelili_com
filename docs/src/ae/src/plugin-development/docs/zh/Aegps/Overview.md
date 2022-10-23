@@ -15,9 +15,9 @@ AEGPs 也可以请求一个套件，如果它不存在，就自己提供替代�
 
 ## AEGP Communication With After Effects
 
-对于效果插件来说，所有与 After Effects 的通信都是通过一个入口点函数进行的。而 AEGP 则不是这样的。
+对于效果插件来说，所有与 After Effects 的通信都是通过一个入口函数函数进行的。而 AEGP 则不是这样的。
 
-虽然 After Effects 会调用 AEGP 的 PiPL 中指定的入口点函数(这仍然是必需的)，但 After Effects 和 AEGP 之间的所有后续通信都由 AEGP 注册的钩子函数处理。
+虽然 After Effects 会调用 AEGP 的 PiPL 中指定的入口函数函数(这仍然是必需的)，但 After Effects 和 AEGP 之间的所有后续通信都由 AEGP 注册的钩子函数处理。
 
 这种注册必须在插件的入口函数中进行，使用[注册套件](aegp-suites.html) 。
 

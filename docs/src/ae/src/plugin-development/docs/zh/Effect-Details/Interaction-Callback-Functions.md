@@ -164,7 +164,7 @@ A_long*fmt_signed0);
 
 另一方面，当一个普通的效果使用 "PF_CHECKOUT_PARAM "检出一个图层时，它接收的是原始的(未受影响的)源图层，不管它的顺序如何。
 
-然而，当[SmartFX](../smartfx/smartfx.html)效果检出其输入参数(params[0])时，先前的效果\_被应用。
+然而，当[SmartFX](../smartfx/smartfx.html)效果检出其输入参数(params[0])时，先前的效果被应用。
 
 ## Parameter Checkout Behavior
 

@@ -100,4 +100,4 @@ The code required is actually very simple to get a `PF_Pixel16*` out of the PF_E
 
 This returns deep_pixelP as NULL if the world does not have deep pixels.
 
-The second parameter is not used very often and should be passed as NULL; pass a PF*PixelPtr that is \_not* contained in a PF_EffectWorld to coerce it to the depth of that PF_EffectWorld).
+The second parameter is not used very often and should be passed as NULL; pass a PF*PixelPtr that is not* contained in a PF_EffectWorld to coerce it to the depth of that PF_EffectWorld).

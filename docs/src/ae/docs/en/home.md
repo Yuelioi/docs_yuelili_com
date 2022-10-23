@@ -16,15 +16,15 @@ actions:
 features:
   - title: After Effects Expression
     details: Expression
-    link: ./expression/
+    link: https://docs.yuelili.com/ae/expression/en/home.html
 
   - title: After Effects Scripting
     details: Scripting
-    link: ./scripting/
+    link: https://docs.yuelili.com/ae/scripting/en/home.html
 
   - title: After Effects Plugin Development
     details: Plugin Development
-    link: ./plugin-development/
+    link: https://docs.yuelili.com/ae/plugin-development/en/home.html
 
 
  

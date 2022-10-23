@@ -1,0 +1,36 @@
+[aria-label$="README.md"] {
+  display: none !important;
+}
+
+#toc .toc-list {
+  overflow: hidden;
+}
+
+#toc .toc-link.level2 {
+  border-bottom: 1px dashed rgb(0 0 0 / 10%);
+}
+
+iframe {
+  height: 600px;
+}
+html{
+  font-size: 20px;
+}
+.nav-links .external-link-icon {
+  display: none;
+}
+
+@media (min-width: 768px) {}
+
+
+
+
+
+@media (min-width: 992px) {}
+
+
+@media (min-width: 1200) {
+  .toc-place-holder {
+    max-width: 75%;
+  }
+}

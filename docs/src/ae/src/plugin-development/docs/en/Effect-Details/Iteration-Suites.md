@@ -47,7 +47,7 @@ PF_EffectWorld*dst);
 
 ### iterate_origin
 
-Lets you specify an offset from the input into the output. For example, if your output buffer is smaller than your input buffer, pass (in\_- data>output_origin_x, in_data>output_origin_y)` as the origin, and NULL for area, and this function will offset the src pixel pointer appropriately for your pixel function.
+Lets you specify an offset from the input into the output. For example, if your output buffer is smaller than your input buffer, pass (in- data>output_origin_x, in_data>output_origin_y)` as the origin, and NULL for area, and this function will offset the src pixel pointer appropriately for your pixel function.
 
 ```cpp
 iterate_origin(

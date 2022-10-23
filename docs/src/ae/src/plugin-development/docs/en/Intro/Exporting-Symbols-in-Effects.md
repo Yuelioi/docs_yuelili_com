@@ -71,7 +71,7 @@ When enabled, all symbols are declared private extern unless explicitly marked t
 
 ## Disabling Visual Studio Export
 
-By default, builds from Visual Studio automatically disable symbol exports. To export symbols, you must either supply a module definition file or set the \_\_declspec(dllexport) keyword in the functions definition.
+By default, builds from Visual Studio automatically disable symbol exports. To export symbols, you must either supply a module definition file or set the declspec(dllexport) keyword in the functions definition.
 
 More information can be found in Microsoft’s Visual Studio documentation <https://docs.microsoft.com/en-us/cpp/build/exporting-from-a-dll?view=msvc-160> (excerpt below):
 

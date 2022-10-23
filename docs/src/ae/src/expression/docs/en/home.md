@@ -15,12 +15,12 @@ actions:
 
 features:
   - title: Docs
-    details: Scripting Document
-    link: ./Intro/Overview.html
+    details: Expression Document
+    link: ./Intro/Introduction.html
 
   - title: Tutorial
-    details: My Scripting Tutorial
-    link: https://www.bilibili.com/video/BV17U4y1T7mU/
+    details: Not now
+    link: https://space.bilibili.com/4279370/
 
 copyright: false
 footer: Copyright © 2022 | Yuelili.com
