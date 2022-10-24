@@ -5,9 +5,7 @@ category:
   - AE 插件开发
 ---
 
-# PF_ParamDef
-
-After Effects 在每个选择器中传递给特效一个 PF_ParamDefs 数组，描述了插件在当前时间的参数。params 数组中的值只在某些选择器中有效(这在[选择器描述](command-selectors.html)中已经注明)。
+After Effects 在每个入口指令中传递给插件一个 PF_ParamDefs 数组，描述插件在当前时间的参数。params 数组中的值只在某些入口指令中有效(这在[入口指令描述](command-selectors.html)中已经注明)。
 
 ## Param Zero
 
