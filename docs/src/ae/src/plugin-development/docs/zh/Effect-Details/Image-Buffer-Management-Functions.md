@@ -1,19 +1,17 @@
 ---
-title: Image Buffer Management Functions
+title: 图像缓冲区管理函数
 order: 6
 category:
   - AE 插件开发
 ---
 
-# Image Buffer Management Functions
-
-使用这些函数来创建和销毁[PF_EffectWorld / PF_LayerDef](../effect-basics/PF_EffectWorld.html) ，并找出其位深。
+使用这些函数创建和销毁[PF_EffectWorld / PF_LayerDef](../effect-basics/PF_EffectWorld.html)，并找出它们的位深度。
 
 ## PF_WorldSuite2
 
 ### PF_NewWorld
 
-创建一个新的 PF_EffectWorld`。
+创建一个新的 `PF_EffectWorld`。
 
 ```cpp
 PF_ErrPF_NewWorld(
@@ -27,7 +25,7 @@ PF_EffectWorld*worldP);
 
 ### PF_DisposeWorld
 
-处置一个 PF_EffectWorld`。
+处置一个 `PF_EffectWorld`。
 
 ```cpp
 PF_ErrPF_DisposeWorld(
@@ -37,7 +35,7 @@ PF_EffectWorld*worldP);
 
 ### PF_GetPixelFormat
 
-获取一个给定的 PF_EffectWorld`的像素格式。
+获取一个给定的 `PF_EffectWorld`的像素格式。
 
 ```cpp
 PF_ErrPF_GetPixelFormat(
@@ -45,7 +43,7 @@ constPF_EffectWorld*worldP,
 PF_PixelFormat*pixel_formatP);
 ```
 
-pixel_formatP`可以是。
+`pixel_formatP`可以是。
 
 - PF_PixelFormat_ARGB32` - 标准 8 位 RGB
 - PF_PixelFormat_ARGB64` - 16-bit RGB

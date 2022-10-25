@@ -1,11 +1,9 @@
 ---
-title: Interaction Callback Functions
+title: 交互回调函数
 order: 9
 category:
   - AE 插件开发
 ---
-
-# Interaction Callback Functions
 
 虽然在[PF_InData](../effect-basics/PF_InData.html)中提供了未使用宏的函数指针，但使用所提供的宏来访问它们。看到我们对废除宏的使用有多严格了吗？让我们把这作为我们的小秘密吧。
 

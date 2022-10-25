@@ -41,3 +41,10 @@ thumb 时间标杆
 unflatten 非线性储存的(adj)/解线性储存转换(v)
 user interface elements UI 元素
 Accessor Macros 访问器宏
+
+MFR: 多帧渲染 Multi-Frame Rendering
+effect: 效果/插件
+Compute Cache: 计算缓存
+
+transfer mode: 传输模式
+ampling routine:例程
