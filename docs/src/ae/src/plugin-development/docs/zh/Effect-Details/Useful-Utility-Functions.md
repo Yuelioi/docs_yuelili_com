@@ -1,11 +1,9 @@
 ---
-title: Useful Utility Functions
+title: 实用函数
 order: 15
 category:
   - AE 插件开发
 ---
-
-# Useful Utility Functions
 
 ## PF_EffectUISuite
 
@@ -13,9 +11,9 @@ category:
 
 ### PF_SetOptionsButtonName
 
-改变效果控制调色板中选项按钮上的文字。
+改变效果控制面板中选项按钮上的文字。
 
-注意：这必须在[PF_Cmd_PARAM_SETUP](../effect-basics/command-selectors.html)中调用。
+注意：必须在[PF_Cmd_PARAM_SETUP](../effect-basics/command-selectors.html)中调用。
 
 ```cpp
 PF_SetOptionsButtonName(
@@ -23,15 +21,15 @@ PF_ProgPtreffect_ref,
 constA_char*nameZ);
 ```
 
-nameZ`的长度可以达到A_char[31]`。
+`nameZ`的长度可以达到`A_char[31]`。
 
 ## PF_AppSuite
 
-大约 437 年前，当我们发布 After Effects 5.0 时，我们在 PF_AppSuite 中发布了一些有用的实用回调。今天它们和当时一样有用。After Effects 有用户可控制的 UI 亮度。
+大约437年前，当我们发布AE 5.0时，我们在PF_AppSuite发布了一些有用的实用程序回调。它们今天和那时一样有用。AE具有用户可控制的UI亮度。
 
-除了[PF_EffectCustomUIOverlayThemeSuite](../effect-ui-events/custom-ui-and-drawbot.html) 用于特效中的自定义 UI，使用这些调用可以无缝集成到 After Effects 的 UI 中。
+除了[PF_EffectCustomUIOverlayThemeSuite](../effect-ui-events/custom-ui-and-drawbot.html) 用于插件中的自定义 UI，使用这些调用可以无缝集成到 After Effects 的 UI 中。
 
-还有什么比把别人的个人信息放到水印里，更能羞辱别人购买你的插件的呢，嗯？或者将光标设置为添加遮罩顶点，只是为了迷惑人们？嘿嘿嘿。但那是错误的。
+还有什么比把别人的个人信息放到水印里，更能增加购买欲呢，嗯？或者将光标设置为添加遮罩顶点，只是为了迷惑人们？嘿嘿嘿。但那可不好。
 
 ### PF_AppGetBgColor
 
@@ -44,11 +42,11 @@ PF_App_Colorbg_colorP);
 
 ### PF_AppGetColor
 
-检索指定的 UI 元素的颜色。参见 AE_EffectSuites.h 中的 PF_App_Color`值的完整列举；基本上 After Effects 的 UI 中的任何颜色都可以被检索到。
+检索指定的 UI 元素的颜色。参见 AE_EffectSuites.h 中的 `PF_App_Color`值的完整面板枚举；基本上可以检索AE UI中的任何颜色。
 
-CC 为新元素增加了几个新的 PF_App_ColorType`枚举值，可以查询。
+CC 为新元素增加了几个新的 `PF_App_ColorType`枚举值，可以查询。
 
-请注意，在 CS6 中，颜色的定义从 FILL_LIGHT`往下偏移。
+请注意，在 CS6 中，颜色定义`从FILL_LIGHT`向下。
 
 请使用以下仅适用于 CS6 的 psuedocode。
 
@@ -69,14 +67,14 @@ PF_App_Color*app_colorP);
 
 CC 中的新功能。检索 AE 用户界面的活动显示语言，以便插件可以匹配。以下是 CC 中可能的语言代码。
 
-- 中文 - zh_CN`。
-- 英语 - en_US`
-- 法语 - fr_FR`
-- 德文 - de_DE`
-- 意大利语 - it_IT`
-- 日语 - ja_JP`
-- 韩国语 - ko_KR`
-- 西班牙语 - es_ES`
+- 中文 - `zh_CN`。
+- 英语 - `en_US`
+- 法语 - `fr_FR`
+- 德文 - `de_DE`
+- 意大利语 - `it_IT`
+- 日语 - `ja_JP`
+- 韩国语 - `ko_KR`
+- 西班牙语 - `es_ES`
 
 ```cpp
 PF_AppGetLanguage(
@@ -115,12 +113,12 @@ A_short*stylePS0);
 
 ### PF_SetCursor
 
-将光标设置为 After Effects 的任何光标。见 AE_EffectUI.h 的完整列举。
+将光标设置为 After Effects 中的任何光标。详见见 AE_EffectUI.h 的枚举值。
 
 设置为:
 
-- PF_Cursor_NONE`，允许 After Effects 设置光标。
-- PF_Cursor_CUSTOM`，如果你使用操作系统特定的调用来改变光标(After Effects 将尊重你的改变)。
+- `PF_Cursor_NONE`，允许 After Effects 设置光标。
+- `PF_Cursor_CUSTOM`，如果你使用操作系统特定的调用来改变光标 (After Effects 将尊重你的改变)。
 
 ```cpp
 PF_SetCursor(
@@ -129,20 +127,20 @@ PF_CursorTypecursor);
 
 ### PF_IsRenderEngine
 
-如果 After Effects 在 watched folder 模式下运行，或者是渲染引擎安装，返回 TRUE。
+如果 After Effects 在 "监视文件夹" 模式下运行，或者是仅使用渲染引擎模式下，返回 TRUE。
 
 ```cpp
 PF_IsRenderEngine(
 PF_Boolean*render_enginePB);
 ```
 
-从 AE6.5 开始，如果安装的是渲染引擎，或者 After Effects 在运行时没有用户界面，或者 After Effects 处于 watched folder 模式，这个函数返回 TRUE`。
+从 AE6.5 开始，如果安装的是渲染引擎，或者 After Effects 在运行时没有用户界面，或者 After Effects 处于 "监视文件夹" 模式，这个函数返回 TRUE`。
 
 ### PF_AppColorPickerDialog
 
 显示 After Effects 颜色选择器对话框(可能是系统颜色选择器，取决于用户的偏好)。
 
-如果用户取消对话框，将返回 PF_Interrupt_CANCEL`。返回的颜色是在项目的工作色彩空间。
+如果用户取消对话框，将返回 `PF_Interrupt_CANCEL`。返回的颜色是在项目的工作色彩空间。
 
 ```cpp
 PF_AppColorPickerDialog(
@@ -166,9 +164,9 @@ PF_Point*pointP);
 
 只在处理效果中的非绘制事件时有效。
 
-将 rectP0`指定为NULL`可以使整个窗口失效。重绘将在事件返回后的下一个可用的空闲时间发生。
+将 `rectP0`指定为`NULL`可以使整个窗口失效。重绘将在事件返回后的下一个可用的空闲时间发生。
 
-设置 PF_EO_UPDATE_NOW`事件输出标志，在事件返回后立即更新窗口。
+设置 `PF_EO_UPDATE_NOW`事件输出标志，在事件返回后立即更新窗口。
 
 ```cpp
 PF_InvalidateRect(
@@ -186,9 +184,9 @@ constPF_Point*localP,
 PF_Point*globalP);
 ```
 
-## Advanced Appsuite: You Can Do That?!
+## 高级应用套件：你可以做到这一点
 
-`PF_AdvAppSuite`最初是为了一些非常邪恶的目的而设计的；一个外部应用程序假装是 After Effects 的插件，并要求有办法通知 After Effects 它对项目所做的改变。我们的 API 不纯洁，你就会得到好处。
+`PF_AdvAppSuite`最初是为了一些非常邪恶的目的而设计的；一个外部应用程序假装是一个AE插件，并且需要一些方法来通知AE它对项目所做的更改。我们的API杂质是你的收获。
 
 ## PF_AdvAppSuite2
 
@@ -210,7 +208,7 @@ PF_SaveProject(void);
 
 ### PF_SaveBackgroundState
 
-存储背景状态(After Effects 在打开的应用程序和窗口的堆叠顺序中的位置)。
+存储背景状态(AE在打开的应用程序和窗口堆叠顺序中的位置)。
 
 ```cpp
 PF_SaveBackgroundState(void);
@@ -218,7 +216,7 @@ PF_SaveBackgroundState(void);
 
 ### PF_ForceForeground
 
-将 After Effects 带到所有当前打开的应用程序和窗口的前面。
+将 After Effects 置顶。
 
 ```cpp
 PF_ForceForeground(void);
@@ -226,7 +224,7 @@ PF_ForceForeground(void);
 
 ### PF_RestoreBackgroundState
 
-将 After Effects 放回原来的位置，相对于其他的应用程序和窗口而言。
+将 After Effects 放回原来的堆叠位置，相对于其他的应用程序和窗口而言。
 
 ```cpp
 PF_RestoreBackgroundState(void);
@@ -242,7 +240,7 @@ PF_RefreshAllWindows(void);
 
 ### PF_InfoDrawText
 
-将文本写入 After Effects 信息调色板。
+将文本写入 After Effects 信息面板。
 
 ```cpp
 PF_InfoDrawText(
@@ -252,7 +250,7 @@ constA_char*line2Z0);
 
 ### PF_InfoDrawColor
 
-在 After Effects 信息调色板中绘制指定的颜色(Alpha 被忽略)。
+在 After Effects 信息面板中绘制指定的颜色(Alpha 被忽略)。
 
 ```cpp
 PF_InfoDrawColor(
@@ -261,7 +259,7 @@ PF_Pixelcolor);
 
 ### PF_InfoDrawText3
 
-在 After Effects 信息调色板中写入三行文字。
+在 After Effects 信息面板中写入三行文字。
 
 ```cpp
 PF_InfoDrawText3(
@@ -272,7 +270,7 @@ constA_char*line3Z0);
 
 ### PF_InfoDrawText3Plus
 
-在 After Effects 信息调色板上写三行文字，第二行和第三行的部分内容是左右对齐的。
+在 After Effects 信息面板上写三行文字，第二行和第三行的部分内容是左右对齐的。
 
 ```cpp
 PF_InfoDrawText3Plus(
@@ -300,7 +298,7 @@ constA_char*appendZ0);
 
 #### PF_FormatTimeActiveItem
 
-给定一个时间值和刻度，返回一个代表该时间的格式化字符串。如果 durationB 为 TRUE`，将附加适当的单位。
+给定一个时间值和刻度，返回一个代表该时间的格式化字符串。如果 `durationB` 为 `TRUE`，将附加适当的单位。
 
 ```cpp
 PF_FormatTimeActiveItem(
@@ -312,7 +310,7 @@ A_char*time_buf);
 
 #### PF_FormatTime
 
-为给定的 PF_InData 和 PF_EffectWorld(即层时间)提供格式化的时间字符串的上下文。
+为给定的 PF_InData 和 PF_EffectWorld(即图层时间)提供格式化的时间字符串的上下文。
 
 ```cpp
 PF_FormatTime(
@@ -326,7 +324,7 @@ A_char*time_buf);
 
 #### PF_FormatTimePlus
 
-允许你选择组成或层时间。
+允许你选择合成或图层时间。
 
 ```cpp
 PF_FormatTimePlus(
@@ -360,7 +358,7 @@ A_Booleanuse_feet_framesB;
 
 #### PF_TimeCountFrames
 
-15.0 版中的新内容。返回当前合成中的帧的索引。
+15.0 版中的新内容。返回当前合成帧的索引。
 
 ```cpp
 PF_TimeCountFrames(
@@ -370,13 +368,13 @@ A_Booleaninclude_partial_frameB,
 A_long*frame_countL);
 ```
 
-## Affecting The Timeline
+## 影响时间轴
 
-很久以前，我们帮助一个开发者将他们的独立跟踪器与 After Effects 整合在一起，公开了一组函数，让他们有办法通知我们时间线的变化，并被通知。
+很久以前，我们帮助开发人员将他们的独立跟踪器与AE集成，方法是公开一组功能，为他们提供某种方式来通知我们和告知它们通知时间线的更改。。
 
-由于有众多的 AEGP API 调用，这些并不常用，但它们仍然可用。
+由于有大量可用的AEGP API调用，这些调用并没有被大量使用，但它们仍然可用。
 
-不要把这个套件和[AEGP_ItemSuite](../aegps/aegp-suites.html)(#aegps-aegp-suites-aegp-itemsuite)混淆。
+不要把这个套件和[AEGP_ItemSuite](../aegps/aegp-suites.html)混淆。
 
 ### PF_AdvItemSuite1
 
@@ -422,7 +420,7 @@ PF_EffectWorld*world);
 
 #### PF_EffectIsActiveOrEnabled
 
-返回拥有 PF_ContextH`的效果当前是否激活或启用(如果不是，After Effects 将不会监听来自它的函数调用)。
+返回拥有`PF_ContextH`的效果当前是否激活或启用（如果不是，AE将不会监听来自它的函数调用）。
 
 ```cpp
 PF_EffectIsActiveOrEnabled(
@@ -430,9 +428,9 @@ PF_ContextHcontextH,
 PF_Boolean*enabledPB);
 ```
 
-## Accessing Auxiliary Channel Data
+## 访问辅助通道数据
 
-有些文件类型不仅仅包含像素数据；使用`PF_ChannelSuite`来确定是否存在这些信息，并使用 AE_ChannelSuites.h 中的宏来检索你需要的格式。
+有些文件类型不仅仅包含像素数据；使用`PF_ChannelSuite`来确定是否存在这些信息，并使用 `AE_ChannelSuites.h` 中的宏来检索你需要的格式。
 
 ### PF_ChannelSuite1
 
@@ -463,7 +461,7 @@ PF_ChannelDesc*channel_descP);
 
 #### PF_GetLayerChannelTypedRefAndDesc
 
-按类型检索一个辅助通道。只有当 foundPB`返回TRUE`时，返回的信息才有效。
+按类型检索一个辅助通道。只有当 `foundPB`返回TRUE`时，返回的信息才有效。
 
 ```cpp
 PF_GetLayerChannelTypedRefAndDesc(
@@ -475,37 +473,37 @@ PF_ChannelRef*channel_refP,
 PF_ChannelDesc*channel_descP);
 ```
 
-PF_DataType 将是以下之一。
+`PF_DataType`, 以下之一。
 
-> PF_DataType_FLOAT` - 34 字节
->
-> - PF_DataType_DOUBLE` - 38 bytes
-> - PF_DataType_LONG` - 34 字节
-> - PF_DataType_SHORT` - 32 字节
-> - PF_DataType_FIXED_16_16` - 34 字节
-> - PF_DataType_CHAR` - 31 字节
-> - PF_DataType_U_BYTE` - 31 字节
-> - PF_DataType_U_SHORT` - 32 字节
-> - PF_DataType_U_FIXED_16_16` - 34 字节
-> - PF_DataType_RGB` - 3 字节
+> - `PF_DataType_FLOAT` - 34 字节
+> - `PF_DataType_DOUBLE` - 38 字节
+> - `PF_DataType_LONG` - 34 字节
+> - `PF_DataType_SHORT` - 32 字节
+> - `PF_DataType_FIXED_16_16` - 34 字节
+> - `PF_DataType_CHAR` - 31 字节
+> - `PF_DataType_U_BYTE` - 31 字节
+> - `PF_DataType_U_SHORT` - 32 字节
+> - `PF_DataType_U_FIXED_16_16` - 34 字节
+> - `PF_DataType_RGB` - 3 字节
 
 PF_ChannelType 将是以下之一。
 
-> - PF_ChannelType_DEPTH` - 3 字节
-> - PF_ChannelType_NORMALS` - PF_ChannelType_DEPTH` - PF_ChannelType_NORMALS
-> - PF_ChannelType_OBJECTID`。
-> - PF_ChannelType_MOTIONVECTOR` - PF_ChannelType_NORMALS
-> - PF_ChannelType_BK_COLOR'。
-> - PF_ChannelType_TEXTURE'。
-> - PF_ChannelType_COVERAGE'。
-> - PF_ChannelType_NODE'。
-> - PF_ChannelType_MATERIAL`(材料)。
-> - PF_ChannelType_UNCLAMPED'。
-> - PF_ChannelType_UNKNOWN`。
+> - `PF_ChannelType_DEPTH`
+> - `PF_ChannelType_NORMALS`
+> - `PF_ChannelType_OBJECTID`
+> - `PF_ChannelType_MOTIONVECTOR`
+> - `PF_ChannelType_NORMALS`
+> - `PF_ChannelType_BK_COLOR`
+> - `PF_ChannelType_TEXTURE`
+> - `PF_ChannelType_COVERAGE`
+> - `PF_ChannelType_NODE`
+> - `PF_ChannelType_MATERIAL`
+> - `PF_ChannelType_UNCLAMPED`
+> - `PF_ChannelType_UNKNOWN`
 
 #### PF_CheckoutLayerChannel
 
-检索包含与给定 PF_ChannelRefPtr`相关的数据的PF_ChannelChunk`。
+检索包含与给定 `PF_ChannelRefPtr`相关的数据的`PF_ChannelChunk`。
 
 ```cpp
 PF_CheckoutLayerChannel(
@@ -520,7 +518,7 @@ PF_ChannelChunk*channel_chunkP);
 
 #### PF_CheckinLayerChannel
 
-在 PF_ChannelChunk`中进行检查。总是，总是，总是检查数据回来。
+在 `PF_ChannelChunk`中进行检查。总总总会检查数据回来。
 
 ```cpp
 PF_CheckinLayerChannel(

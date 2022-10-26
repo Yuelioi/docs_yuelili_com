@@ -1,34 +1,32 @@
 ---
-title: Working With Paths
+title: 与路径一同工作
 order: 17
 category:
   - AE 插件开发
 ---
 
-# Working With Paths
+## 访问路径数据
 
-## Accessing Path Data
+路径与其他参数类型不同，因为它们的值不能直接访问。除了将它们签出和输入(像层参数一样)，你必须使用我们的路径数据函数套件来获取给定时间路径的详细信息。参见`PF_PathQuerySuite1`和`PF_PathDataSuite`。当路径参数传递给您时，在没签出之前, 不要使用它里面存在的值；虽然删除的路径不可用，进一步的更新是“懒惰地”完成（稍后）；除非您的效果检查出路径，否则它不会看到这些更改。
 
-路径与其他参数类型不同，因为它们的值不能直接访问。除了将它们检出和检入(像层参数一样)，你必须使用我们的路径数据函数套件来获取特定时间内的路径细节。参见[PF_PathQuerySuite1]和[PF_PathDataSuite]。当一个路径参数被传递给你时，如果没有先检查出来，千万不要使用它存在的值；虽然被删除的路径将无法使用，但进一步的更新是 "懒惰地 "进行的(以后)；你的效果不会看到这些变化，除非它检查出路径。
+## 操作路径数据
 
-## Manipulating Path Data
+你也可以使用[AEGP_MaskOutlineSuite3](../aegps/aegp-suites.html)来操纵路径。参见[AEGP套件的作弊效果使用](../aegps/cheating effect-usage-of-aegp-suites.html) 。路径参数被视为不透明的数据块；必须使用 get 和 set 函数来访问和操作它们。像图层参数一样，它们必须被访问的效果签出(和签入！)。
 
-你也可以使用[AEGP_MaskOutlineSuite3](../aegps/aegp-suites.html)(#aegps-aegp-suites-aegp-maskoutlinesuite)来操纵路径。参见[AEGP 套件的作弊效果使用](../aegps/cheating effect-usage-of-aegp-suites.html) 。路径参数被视为不透明的数据块；必须使用 get 和 set 函数来访问和操作它们。像图层参数一样，它们必须被访问它们的效果检查出来(和进入！)。
+## 顶点
 
-## Vertices
-
-路径顶点比简单的点更复杂。所有的成员变量都是 PF_FpLongs(双倍)，并且是在层的坐标空间中。
+路径顶点比简单点更复杂。所有成员变量都PF_FpLongs（双精度），并且在层的坐标空间中。
 
 ## PF_PathVertex
 
-| **Member**  | **Description**             |
+| 成员  | 描述     |
 | ----------- | --------------------------- |
-| `x`         | The location of the vertex. |
-| `y`         |                             |
-| `tan_in_x`  | The incoming tangent point. |
-| `tan_in_y`  |                             |
-| `tan_out_x` | The outgoing tangent point. |
-| `tan_out_y` |                             |
+| `x`         | 顶点位置 |
+| `y`         |            |
+| `tan_in_x`  | 传入切点 |
+| `tan_in_y`  |                |
+| `tan_out_x` | 传出切点 |
+| `tan_out_y` |                 |
 
 ## PF_PathDataSuite
 
@@ -36,7 +34,7 @@ category:
 
 ### PF_PathIsOpen
 
-Returns TRUE` if the path is not closed (if the beginning and end vertex are not identical).
+如果路径未关闭（如果开始和结束顶点不相同），则返回TRUE'。
 
 ```cpp
 PF_PathIsOpen(
@@ -47,7 +45,7 @@ PF_Boolean*openPB);
 
 ### PF_PathNumSegments
 
-Retrieves the number of segments in the path. N segments means there are segments [0.N-1];` segment J is defined by vertex J` and J+1`.
+检索路径中的段数。N段表示有段`[0,N-1]`；段`J`由顶点`J`和`J+1`定义。
 
 ```cpp
 PF_PathNumSegments(
@@ -58,7 +56,7 @@ A_long*num_segmentsPL);
 
 ### PF_PathVertexInfo
 
-Retrieves the PF_PathVertex ` for the specified path. The range of points is [0.num_segments];` for closed paths, vertex[0]` ==` vertex[num_segments]`.
+检索指定路径的`PF_PathVertex`. 点的范围是`[0,num_segments];`对于封闭路径则是`vertex[0]==vertex[num_segments]`.
 
 ```cpp
 PF_PathVertexInfo(
@@ -70,7 +68,7 @@ PF_PathVertex*vertexP);
 
 ### PF_PathPrepareSegLength
 
-This fairly counter-intuitive function informs After Effects that you’re going to ask for the length of a segment (using PF_PathGetSegLength ` below), and it’d better get ready. frequencyL` indicates how many times you’d like us to sample the length; our internal effects use 100.
+这个相当反直觉的函数通知AE你要询问一段的长度（使用下面的`PF_PathGetSegLength`), 最好做好准备。 `frequencyL` 表示希望对长度进行多少次采样；我们的内部效果使用100。
 
 ```cpp
 PF_PathPrepareSegLength(
@@ -83,7 +81,7 @@ PF_PathSegPrepPtr*lengthPrepPP);
 
 ### PF_PathGetSegLength
 
-Retrieves the length of the given segment.
+检索给定段的长度。
 
 ```cpp
 PF_PathGetSegLength(
@@ -96,7 +94,7 @@ PF_FpLong*lengthPF);
 
 ### PF_PathEvalSegLength
 
-Retrieves the location of a point lengthF along the given path segment.
+检索沿给定路径段的点lengthF的位置。
 
 ```cpp
 PF_PathEvalSegLength(
@@ -111,7 +109,7 @@ PF_FpLong*y);
 
 ### PF_PathEvalSegLengthDeriv1
 
-Retrieves the location, and the first derivative, of a point lengthF` along the given path segment. If you’re not sure why you’d ever need this, don’t use it. Math is hard.
+检索沿给定路径段的点`lengthF`的位置和一阶导数。如果不确定是否需要，请不要使用。数学好难。
 
 ```cpp
 PF_PathEvalSegLengthDeriv1(
@@ -128,7 +126,7 @@ PF_FpLong*deriv1y);
 
 ### PF_PathCleanupSegLength
 
-Call this when you’re finished evaluating that segment length, so After Effects can properly clean up the PF_PathSegPrepPtr`.
+当完成计算该段长度时, 请调用此命令，以便AE可以正确清理 `PF_PathSegPrepPtr`.
 
 ```cpp
 PF_PathCleanupSegLength(
@@ -140,7 +138,7 @@ PF_PathSegPrepPtr*lengthPrepPP);
 
 ### PF_PathIsInverted
 
-Returns TRUE` if the path is inverted.
+如果路径反转，则返回`TRUE`。
 
 ```cpp
 PF_PathIsInverted(
@@ -151,7 +149,7 @@ PF_Boolean*invertedB);
 
 ### PF_PathGetMaskMode
 
-检索给定路径的模式。
+检索给定路径的蒙版模式。
 
 ```cpp
 PF_PathGetMaskMode(
@@ -160,20 +158,20 @@ PF_PathIDunique_id,
 PF_MaskMode*modeP);
 ```
 
-掩码模式是以下之一。
+蒙版模式, 以下之一。
 
-> - PF_MaskMode_NONE`。
-> - PF_MaskMode_ADD`。
-> - PF_MaskMode_SUBTRACT`。
-> - PF_MaskMode_INTERSECT`。
-> - PF_MaskMode_LIGHTEN`(淡化)
-> - PF_MaskMode_DARKEN`(变暗)
-> - PF_MaskMode_DIFFERENCE`(差值)。
-> - PF_MaskMode_ACCUM`。
+> - PF_MaskMode_NONE`
+> - PF_MaskMode_ADD`
+> - PF_MaskMode_SUBTRACT`
+> - PF_MaskMode_INTERSECT`
+> - PF_MaskMode_LIGHTEN`
+> - PF_MaskMode_DARKEN`
+> - PF_MaskMode_DIFFERENCE`
+> - PF_MaskMode_ACCUM`
 
 ### PF_PathGetName
 
-检索路径的名称(最长为 PF_MAX_PATH_NAME_LEN`长)。
+检索路径的名称(最长为 `PF_MAX_PATH_NAME_LEN`)。
 
 ```cpp
 PF_PathGetName(
@@ -184,7 +182,7 @@ A_char*nameZ);
 
 ## PF_PathQuerySuite1
 
-这个套件用于识别和访问与效果的源层相关的路径。
+这个套件用于识别和访问与效果源层相关的路径。
 
 ### PF_NumPaths
 
@@ -198,7 +196,7 @@ A_long*num_pathsPL);
 
 ### PF_PathInfo
 
-检索指定路径的 PF_PathID。
+检索指定路径的 `PF_PathID`。
 
 ```cpp
 PF_PathInfo(
@@ -209,7 +207,7 @@ PF_PathID*unique_idP);
 
 ### PF_CheckoutPath
 
-在指定的时间获取路径的 PF_PathOutlinePtr。
+在指定的时间获取路径的 `PF_PathOutlinePtr`。
 
 ```cpp
 PF_CheckoutPath(
@@ -223,7 +221,7 @@ PF_PathOutlinePtr*pathPP);
 
 ### PF_CheckinPath
 
-将路径释放回 After Effects。总是这样做，不管遇到什么错误情况。每一次签出都必须由签入来平衡，否则会有痛苦。
+释放返回AE的路径。无论遇到什么错误情况，始终这样做。每次签出都必须通过签入来平衡，否则后果不堪社想。
 
 ```cpp
 PF_CheckinPath(

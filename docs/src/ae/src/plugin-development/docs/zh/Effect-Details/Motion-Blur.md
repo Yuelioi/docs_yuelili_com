@@ -1,11 +1,9 @@
 ---
-title: Motion Blur
+title: 动态模糊
 order: 16
 category:
   - AE 插件开发
 ---
-
-# Motion Blur
 
 效果处理它们自己的运动模糊，使用[PF_InData>shutter_angle](../effect-basics/PF_InData.html)以及[PF_InData>shutter_phase](../effect-basics/PF_InData.html) 。
 

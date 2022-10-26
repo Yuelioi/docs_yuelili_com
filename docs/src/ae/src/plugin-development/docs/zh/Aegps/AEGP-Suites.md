@@ -5846,7 +5846,7 @@ AEGP_SetDownsampleFactor(
 
 #### AEGP_GetDownsampleFactor
 
-检索给定的 "AEGP_RenderOptionsH "的下采样系数。
+检索给定的 "AEGP_RenderOptionsH "的降频采样系数。
 
 ```cpp
 AEGP_GetDownsampleFactor(
@@ -6113,7 +6113,7 @@ AEGP_SetDownsampleFactor(
 
 #### AEGP_GetDownsampleFactor
 
-读取给定的 "AEGP_LayerRenderOptionsH "的下采样系数。
+读取给定的 "AEGP_LayerRenderOptionsH "的降频采样系数。
 
 ```cpp
 AEGP_GetDownsampleFactor(

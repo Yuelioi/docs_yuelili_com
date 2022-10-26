@@ -1,11 +1,9 @@
 ---
-title: Cheating Effect Usage of AEGP Suites
+title: AEGP套件的作弊效果使用
 order: 7
 category:
   - AE 插件开发
 ---
-
-# Cheating Effect Usage of AEGP Suites
 
 当我们刚向开发者展示了 AEGP 套件时，有人就想 "作弊"，从效果中使用它们。这当然可以，但请记住，依赖效果 API 以外的因素(即从 AEGP APIs 获得的任何信息)也许会产生麻烦。如果 After Effects 认为一个效果已经有了它所需要的所有信息，它就不会(例如)根据 AEGP 函数产生的变动来更新其参数。我们正在为未来版本积极解决这个依赖性问题，但在编写 "伪装成 "AEGP 的效果时要记住这一点。
 
