@@ -1,11 +1,9 @@
 ---
-title: Custom UI & Drawbot
+title: 自定义UI与Drawbot
 order: 5
 category:
   - AE 插件开发
 ---
-
-# Custom UI & Drawbot[¶]
 
 自定义用户界面使用 Drawbot 的合成绘图模型。Drawbot 套件可用于。
 
@@ -17,34 +15,34 @@ category:
 
 绘图只能在`PF_Event_DRAW`期间发生(而不是在`PF_Event_DRAG`或`PF_Event_DO_CLICK`期间)。
 
-要使用 Drawbot，首先通过传递 PF_Context 到一个新的套件调用[PF_GetDrawingReference](#effect-ui-events-custom-ui-and-drawbot-pf-effectcustomuisuite)获得绘图参考。
+要使用 Drawbot，首先通过传递 PF_Context 到一个新的套件调用`PF_GetDrawingReference`获得绘图参考。
 
 如果返回一个非 NULL 的绘图参考，使用它从[DRAWBOT_DrawbotSuite]获得供应商和表面参考。
 
-Drawbot 套件包括`DRAWBOT_DrawbotSuite', `DRAWBOT_SupplierSuite', `DRAWBOT_SurfaceSuite', `DRAWBOT_PathSuite`。
+Drawbot 套件包括`DRAWBOT_DrawbotSuite`, `DRAWBOT_SupplierSuite`, `DRAWBOT_SurfaceSuite`, `DRAWBOT_PathSuite`。
 
-## Make Your Custom UI Look Not So “Custom”[¶]
+## 让您的自定义UI看起来不是那么“自定义”
 
-使用新的[PF_EffectCustomUIOverlayThemeSuite](#effect-ui-events-custom-ui-and-drawbot-pf-effectcustomuioverlaythemesuite)来匹配主机应用程序的用户界面。你的用户会感谢你的。
+使用新的`PF_EffectCustomUIOverlayThemeSuite`来匹配主机应用程序的用户界面。你的用户会感谢你的。
 
-## Redrawing[¶]
+## 重绘
 
-为了重新绘制一个窗格的特定区域，我们推荐使用以下方法。
+为了重新绘制一个窗口(pane)的特定区域，我们推荐使用以下方法。
 
-1. 从效果中调用`PF_InvalidateRect` ( 参见[PF_AppSuite](../effect-details/useful-utility-functions.html#effect-details-useful-utility-functions-pf-appsuite))。这将导致懒惰的显示重绘，并将在下一个可用的空闲时刻更新。这个矩形的坐标与相关的窗格有关。使用一个 NULL 的矩形将更新整个窗格。
-2. 将[事件输出标志](PF_EventExtra.html#effect-ui-events-pf-eventextra)设置为`PF_EO_UPDATE_NOW'，这将在当前事件返回时为指定的窗格引起一个即时绘制事件。
+1. 从效果中调用`PF_InvalidateRect` ( 参见[PF_AppSuite](../effect-details/useful-utility-functions.html))。这将会惰性显示重绘，并将在下一个可用的空闲时刻更新。矩形的坐标与相关窗口有关。使用一个 NULL 矩形将更新整个窗口。
+2. 将[事件输出标志](PF_EventExtra.html)设置为`PF_EO_UPDATE_NOW`，这将在当前事件返回时为指定的窗口时,进行即时绘制事件。
 
-如果一个效果需要一次更新多个窗口，它应该设置`PF_OutFlag_REFRESH_UI` ( 参见[PF_OutFlags](./effect-basics/PF_OutData.html#effect-basics-pf-outdata-pf-outflags))，这将导致整个 ECW、comp 和层窗口的重绘。
+如果一个效果需要一次更新多个窗口，应该设置`PF_OutFlag_REFRESH_UI` ( 参见[PF_OutFlags](./effect-basics/PF_OutData.html))，这将导致整个 ECW、合成和图层窗口的重绘。
 
-## HiDPI and Retina Display Support[¶]
+## HiDPI和Retina显示支持
 
-为了支持 HiDPI 和视网膜显示器，你可以使用两倍大小的屏幕外图像，然后使用[Drawbot_SurfaceSuite]的`Transform`函数，在绘制图像前将其缩小一半。
+为了支持 HiDPI 和 Retina 显示器，可以使用两倍大小的屏幕外图像，然后使用`Drawbot_SurfaceSuite`的`Transform`函数，在绘制图像前将其缩小一半。
 
-## PF_EffectCustomUISuite[¶]
+## PF_EffectCustomUISuite
 
 启用一个效果来获得绘图参考。这是使用 Drawbot 需要的第一个调用。
 
-### PF_EffectCustomUISuite1[¶]
+### PF_EffectCustomUISuite1
 
 #### PF_GetDrawingReference
 
@@ -54,48 +52,45 @@ Drawbot 套件包括`DRAWBOT_DrawbotSuite', `DRAWBOT_SupplierSuite', `DRAWBOT_Su
 PF_GetDrawingReference(
  const PF_ContextH effect_contextH,
  DRAWBOT_DrawRef *referenceP0);
-
 ```
 
-## Drawbot_DrawbotSuite[¶]
+## Drawbot_DrawbotSuite
 
 使用 Drawbot 的参考，得到供应商和表面的参考。
 
-### Drawbot_DrawbotSuite1[¶]
+### Drawbot_DrawbotSuite1
 
 #### GetSupplier
 
 获取供应商参考。
-需要使用[Drawbot_SupplierSuite](#effect-ui-events-custom-ui-and-drawbot-drawbot-suppliersuite)。
+需要使用`Drawbot_SupplierSuite`。
 
 ```cpp
 GetSupplier(
  DRAWBOT_DrawRef in_drawbot_ref,
  DRAWBOT_SupplierRef *out_supplierP);
-
 ```
 
 #### GetSurface
 
-获取表面参考。
-需要使用[Drawbot_SurfaceSuite]。
+获取外表参考。
+需要使用`Drawbot_SurfaceSuite`。
 
 ```cpp
 GetSurface(
  DRAWBOT_DrawRef in_drawbot_ref,
  DRAWBOT_SurfaceRef *out_surfaceP);
-
 ```
 
-## Drawbot_SupplierSuite[¶]
+## Drawbot_SupplierSuite
 
 调用创建和释放绘图工具，获得默认设置，并查询绘图能力。
 
-### Drawbot_SupplierSuite1[¶]
+### Drawbot_SupplierSuite1
 
 #### NewPen
 
-创建一个新的笔。使用[Drawbot_SupplierSuite]的`ReleaseObject'释放它。
+创建一个新的笔。使用`Drawbot_SupplierSuite`的`ReleaseObject`释放它。
 
 ```cpp
 NewPen(
@@ -103,19 +98,17 @@ NewPen(
  const DRAWBOT_ColorRGBA *in_colorP,
  float in_size,
  DRAWBOT_PenRef *out_penP);
-
 ```
 
 #### NewBrush
 
-创建一个新的画笔。使用[Drawbot_SupplierSuite]中的`ReleaseObject`释放这个笔刷。
+创建一个新的画笔。使用`Drawbot_SupplierSuite`中的`ReleaseObject`释放这个笔刷。
 
 ```cpp
 NewBrush(
  DRAWBOT_SupplierRef in_supplier_ref,
  const DRAWBOT_ColorRGBA *in_colorP,
  DRAWBOT_BrushRef *out_brushP);
-
 ```
 
 #### SupportsText
@@ -126,7 +119,6 @@ NewBrush(
 SupportsText(
  DRAWBOT_SupplierRef in_supplier_ref,
  DRAWBOT_Boolean *out_supports_textB);
-
 ```
 
 #### GetDefaultFontSize
@@ -137,21 +129,19 @@ SupportsText(
 GetDefaultFontSize(
  DRAWBOT_SupplierRef in_supplier_ref,
  float *out_font_sizeF);
-
 ```
 
 #### NewDefaultFont
 
 用默认设置创建一个新的字体。
 你可以从`GetDefaultFontSize`传递默认的字体大小。
-使用[Drawbot_SupplierSuite]中的`ReleaseObject`来释放。
+使用`Drawbot_SupplierSuite`中的`ReleaseObject`来释放。
 
 ```cpp
 NewDefaultFont(
  DRAWBOT_SupplierRef in_supplier_ref,
  float in_font_sizeF,
  DRAWBOT_FontRef *out_fontP);
-
 ```
 
 #### NewImageFromBuffer
@@ -168,7 +158,6 @@ NewImageFromBuffer(
  DRAWBOT_PixelLayout in_pl,
  const void *in_dataP,
  DRAWBOT_ImageRef *out_imageP);
-
 ```
 
 `DRAWBOT_PixelLayout`可以是以下的一种。
@@ -186,13 +175,12 @@ NewImageFromBuffer(
 
 #### NewPath
 
-创建一个新的路径。使用[Drawbot_SupplierSuite]中的`ReleaseObject`将其释放。
+创建一个新的路径。使用`Drawbot_SupplierSuite`中的`ReleaseObject`将其释放。
 
 ```cpp
 NewPath(
  DRAWBOT_SupplierRef in_supplier_ref,
  DRAWBOT_PathRef *out_pathP);
-
 ```
 
 #### SupportsPixelLayoutBGRA
@@ -204,7 +192,6 @@ NewPath(
 SupportsPixelLayoutBGRA(
  DRAWBOT_SupplierRef in_supplier_ref,
  DRAWBOT_Boolean *out_supports_bgraPB);
-
 ```
 
 #### PrefersPixelLayoutBGRA
@@ -213,7 +200,6 @@ SupportsPixelLayoutBGRA(
 PrefersPixelLayoutBGRA(
  DRAWBOT_SupplierRef in_supplier_ref,
  DRAWBOT_Boolean *out_prefers_bgraPB);
-
 ```
 
 #### SupportsPixelLayoutARGB
@@ -222,7 +208,6 @@ PrefersPixelLayoutBGRA(
 SupportsPixelLayoutARGB(
  DRAWBOT_SupplierRef in_supplier_ref,
  DRAWBOT_Boolean *out_supports_argbPB);
-
 ```
 
 #### PrefersPixelLayoutARGB
@@ -231,7 +216,6 @@ SupportsPixelLayoutARGB(
 PrefersPixelLayoutARGB(
  DRAWBOT_SupplierRef in_supplier_ref,
  DRAWBOT_Boolean *out_prefers_argbPB);
-
 ```
 
 #### RetainObject
@@ -241,25 +225,23 @@ PrefersPixelLayoutARGB(
 ```cpp
 RetainObject(
  DRAWBOT_ObjectRef in_obj_ref);
-
 ```
 
 #### ReleaseObject
 
-释放(减少引用次数)任何对象(笔、刷子、路径等)。这个函数必须被调用，用于任何使用`NewXYZ()`从这个套件创建的对象。
+释放(减少引用次数)任何对象(笔、笔刷、路径等)。这个函数必须被调用，用于任何使用`NewXYZ()`从这个套件创建的对象。
 不要对`DRAWBOT_SupplierRef`和`DRAWBOT_SupplierRef`调用此函数，因为这些不是由插件创建的。
 
 ```cpp
 ReleaseObject(
  DRAWBOT_ObjectRef in_obj_ref);
-
 ```
 
-## Drawbot_SurfaceSuite[¶]
+## Drawbot_SurfaceSuite
 
-调用在曲面上绘图，以及查询和设置绘图设置。
+在曲面上绘图，以及查询和设置绘图设置。
 
-### Drawbot_SurfaceSuite1[¶]
+### Drawbot_SurfaceSuite1
 
 #### PushStateStack
 
@@ -269,7 +251,6 @@ ReleaseObject(
 ```cpp
 PushStateStack(
  DRAWBOT_SurfaceRef in_surface_ref);
-
 ```
 
 #### PopStateStack
@@ -279,19 +260,17 @@ PushStateStack(
 ```cpp
 PopStateStack(
  DRAWBOT_SurfaceRef in_surface_ref);
-
 ```
 
 #### PaintRect
 
-在曲面上画一个颜色的矩形。
+在曲面上画一个颜色矩形。
 
 ```cpp
 PaintRect(
  DRAWBOT_SurfaceRef in_surface_ref,
  const DRAWBOT_ColorRGBA *in_colorP,
  const DRAWBOT_RectF32 *in_rectPR);
-
 ```
 
 #### FillPath
@@ -304,7 +283,6 @@ FillPath(
  DRAWBOT_BrushRef in_brush_ref,
  DRAWBOT_PathRef in_path_ref,
  DRAWBOT_FillType in_fill_type);
-
 ```
 
 `DRAWBOT_FillType`是以下其中一个。
@@ -321,7 +299,6 @@ StrokePath(
  DRAWBOT_SurfaceRef in_surface_ref,
  DRAWBOT_PenRef in_pen_ref,
  DRAWBOT_PathRef in_path_ref);
-
 ```
 
 #### Clip
@@ -333,7 +310,6 @@ Clip(
  DRAWBOT_SurfaceRef in_surface_ref,
  DRAWBOT_SupplierRef in_supplier_ref,
  const DRAWBOT_Rect32 *in_rectPR);
-
 ```
 
 #### GetClipBounds
@@ -344,7 +320,6 @@ Clip(
 GetClipBounds(
  DRAWBOT_SurfaceRef in_surface_ref,
  DRAWBOT_Rect32 *out_rectPR);
-
 ```
 
 #### IsWithinClipBounds
@@ -356,7 +331,6 @@ IsWithinClipBounds(
  DRAWBOT_SurfaceRef in_surface_ref,
  const DRAWBOT_Rect32 *in_rectPR,
  DRAWBOT_Boolean *out_withinPB);
-
 ```
 
 #### Transform
@@ -367,7 +341,6 @@ IsWithinClipBounds(
 Transform(
  DRAWBOT_SurfaceRef in_surface_ref,
  const DRAWBOT_MatrixF32 *in_matrixP);
-
 ```
 
 #### DrawString
@@ -384,7 +357,6 @@ DrawString(
  DRAWBOT_TextAlignment in_alignment_style,
  DRAWBOT_TextTruncation in_truncation_style,
  float in_truncation_width);
-
 ```
 
 `DRAWBOT_TextAlignment`是以下其中之一。
@@ -410,7 +382,6 @@ DrawImage(
  DRAWBOT_ImageRef in_image_ref,
  const DRAWBOT_PointF32 *in_originP,
  float in_alpha);
-
 ```
 
 #### SetInterpolationPolicy
@@ -419,7 +390,6 @@ DrawImage(
 SetInterpolationPolicy(
  DRAWBOT_SurfaceRef in_surface_ref,
  DRAWBOT_InterpolationPolicy in_interp);
-
 ```
 
 `DRAWBOT_InterpolationPolicy`是以下之一。
@@ -434,7 +404,6 @@ SetInterpolationPolicy(
 GetInterpolationPolicy(
  DRAWBOT_SurfaceRef in_surface_ref,
  DRAWBOT_InterpolationPolicy *out_interpP);
-
 ```
 
 #### SetAntiAliasPolicy
@@ -443,7 +412,6 @@ GetInterpolationPolicy(
 SetAntiAliasPolicy(
  DRAWBOT_SurfaceRef in_surface_ref,
  DRAWBOT_AntiAliasPolicy in_policy);
-
 ```
 
 `DRAWBOT_AntiAliasPolicy`是以下其中一个。
@@ -458,24 +426,22 @@ SetAntiAliasPolicy(
 GetAntiAliasPolicy(
  DRAWBOT_SurfaceRef in_surface_ref,
  DRAWBOT_AntiAliasPolicy *out_policyP);
-
 ```
 
 #### Flush
 
-冲洗绘图。这并不总是需要的，如果过度使用，可能会导致过度重绘和闪烁。
+Flush 绘图。这并不总是需要的，如果过度使用，可能会导致过度重绘和闪烁。
 
 ```cpp
 Flush(
  DRAWBOT_SurfaceRef in_surface_ref);
-
 ```
 
-## Drawbot_PathSuite[¶]
+## Drawbot_PathSuite
 
 调用绘制路径。
 
-### Drawbot_PathSuite1[¶]
+### Drawbot_PathSuite1
 
 #### MoveTo
 
@@ -486,7 +452,6 @@ MoveTo(
  DRAWBOT_PathRef in_path_ref,
  float in_x,
  float in_y);
-
 ```
 
 #### LineTo
@@ -498,7 +463,6 @@ LineTo(
  DRAWBOT_PathRef in_path_ref,
  float in_x,
  float in_y);
-
 ```
 
 #### BezierTo
@@ -511,7 +475,6 @@ BezierTo(
  const DRAWBOT_PointF32 *in_pt1P,
  const DRAWBOT_PointF32 *in_pt2P,
  const DRAWBOT_PointF32 *in_pt3P);
-
 ```
 
 #### AddRect
@@ -522,7 +485,6 @@ BezierTo(
 AddRect(
  DRAWBOT_PathRef in_path_ref,
  const DRAWBOT_RectF32 *in_rectPR);
-
 ```
 
 #### AddArc
@@ -537,7 +499,6 @@ AddArc(
  float in_radius,
  float in_start_angle,
  float in_sweep);
-
 ```
 
 #### Close
@@ -547,14 +508,13 @@ AddArc(
 ```cpp
 Close(
  DRAWBOT_PathRef in_path_ref);
-
 ```
 
-## PF_EffectCustomUIOverlayThemeSuite[¶]
+## PF_EffectCustomUIOverlayThemeSuite
 
 这个套件应该用于在合成和图层窗口中对路径和顶点进行描画和填充。After Effects 内部正在使用这个套件，我们将其提供给大家，以使自定义的用户界面在不同的效果中看起来一致。前景/阴影的颜色是根据应用程序的亮度水平来计算的，因此，无论应用程序在偏好设置中的亮度如何，自定义用户界面总是可见的。
 
-### PF_EffectCustomUIOverlayThemeSuite1[¶]
+### PF_EffectCustomUIOverlayThemeSuite1
 
 #### PF_GetPreferredForegroundColor
 
@@ -563,7 +523,6 @@ Close(
 ```cpp
 PF_GetPreferredForegroundColor(
  DRAWBOT_ColorRGBA *foreground_colorP);
-
 ```
 
 #### PF_GetPreferredShadowColor
@@ -573,17 +532,15 @@ PF_GetPreferredForegroundColor(
 ```cpp
 PF_GetPreferredShadowColor(
  DRAWBOT_ColorRGBA *shadow_colorP);
-
 ```
 
 #### PF_GetPreferredStrokeWidth
 
-获取首选的前景和阴影笔触宽度。
+获取首选的前景和阴影笔刷宽度。
 
 ```cpp
 PF_GetPreferredStrokeWidth(
  float *stroke_widthPF);
-
 ```
 
 #### PF_GetPreferredVertexSize
@@ -593,7 +550,6 @@ PF_GetPreferredStrokeWidth(
 ```cpp
 PF_GetPreferredVertexSize(
  float *vertex_sizePF);
-
 ```
 
 #### PF_GetPreferredShadowOffset
@@ -603,21 +559,19 @@ PF_GetPreferredVertexSize(
 ```cpp
 PF_GetPreferredShadowOffset(
  A_LPoint *shadow_offsetP);
-
 ```
 
 #### PF_StrokePath
 
 用叠加主题的前景色描画路径。
 可以选择使用叠加主题的阴影颜色绘制阴影。
-使用叠加主题的笔触宽度来绘制前景和阴影。
+使用叠加主题的笔刷宽度来绘制前景和阴影。
 
 ```cpp
 PF_StrokePath(
  const DRAWBOT_DrawRef drawbot_ref,
  const DRAWBOT_PathRef path_ref
  PF_Boolean draw_shadowB);
-
 ```
 
 #### PF_FillPath
@@ -630,7 +584,6 @@ PF_FillPath(
  const DRAWBOT_DrawRef drawbot_ref,
  const DRAWBOT_PathRef path_ref
  PF_Boolean draw_shadowB);
-
 ```
 
 #### PF_FillVertex
@@ -642,5 +595,4 @@ PF_FillVertex(
  const DRAWBOT_DrawRef drawbot_ref,
  const A_FloatPoint *center_pointP
  PF_Boolean draw_shadowB);
-
 ```

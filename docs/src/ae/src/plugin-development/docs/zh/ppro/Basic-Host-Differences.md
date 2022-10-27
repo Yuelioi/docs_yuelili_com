@@ -1,11 +1,9 @@
 ---
-title: Basic Host Differences
+title: 基本主机差异
 order: 4
 category:
   - AE 插件开发
 ---
-
-# Basic Host Differences
 
 我们已经尝试在 Premiere Pro 中为 After Effects 效果插件提供强大的兼容性。
 
@@ -13,25 +11,25 @@ category:
 
 以下是插件在 Premiere Pro 中运行时将会遇到的一些差异的概述。
 
-## Time Values
+## 时间值
 
 Premiere Pro 在 PF_InData 中使用的时间值略有不同。例如，在 CS4 中。
 
-在 NTSC 制式下，time_scale 为 60000，time_step 为 1001，field 为场序(在 After Effects 中，对于场渲染，scale 为 2997，step 为 50，或者对于逐行渲染，scale 为 2997，step 为 100)。
+在 NTSC 制式下，`time_scale` 为 60000，`time_step` 为 1001，`field` 为场序(在 After Effects 中，对于场渲染，`scale` 为 2997，`step` 为 50，或者对于逐行渲染，scale 为 2997，step 为 100)。
 
 在 PAL 制式下的渲染，time_scale 是 50，time_step 是 1，field 给出 field 的顺序(在 After Effects 中，对于 field 渲染，scale 是 3200，step 是 64，或者对于 progressive 渲染，scale 是 3200，step 是 128。
 
 产生时间值的是时间相关值的比率，而不是具体的 time_scale 值。未来 Premiere Pro 可能会使用不同的时间尺度，所以请不要硬性规定。只是要注意，它不一定使用与 After Effects 完全相同的值。
 
-## Rendering Frames
+## 渲染帧
 
-Premiere 为响应式编辑进行了优化。当在时间线中刷新，并改变效果参数时，Premiere 会立即请求一个低质量的渲染，以便立即显示，然后是一个高质量的渲染。因此，效果可能会在同一有效时间内收到两个请求，一个是低分辨率、低比特率的，接着是全分辨率、全比特率的。每次渲染请求的分辨率要考虑到在 Source 和 Program Monitors 中设置的 Playback 和 Paused Resolution。第一个请求将以播放分辨率进行，第二个请求将以暂停分辨率进行。
+Premiere 为响应式编辑进行了优化。当在时间轴中刷新，并改变效果参数时，Premiere 会立即请求一个低质量的渲染，以便立即显示，然后是一个高质量的渲染。因此，效果可能会在同一有效时间内收到两个请求，一个是低分辨率、低比特率的，接着是全分辨率、全比特率的。每次渲染请求的分辨率要考虑到在 Source 和 Program Monitors 中设置的 Playback 和 Paused Resolution。第一个请求将以播放分辨率进行，第二个请求将以暂停分辨率进行。
 
-Premiere 也会进行推测性渲染，在时间线上提前渲染一组帧，这样如果/当编辑开始播放时，最初的帧就已经准备好了。这意味着，当重新定位时间指针，或者改变效果参数时，Premiere 会要求效果在当前时间之前渲染一组帧。如果这些帧之前已经被渲染和缓存了，那么效果就不会看到这些渲染请求，因为缓存的帧会被使用。
+Premiere 也会进行推测性渲染，在时间轴上提前渲染一组帧，这样如果/当编辑开始播放时，最初的帧就已经准备好了。这意味着，当重新定位时间指针，或者改变效果参数时，Premiere 会要求效果在当前时间之前渲染一组帧。如果这些帧之前已经被渲染和缓存了，那么效果就不会看到这些渲染请求，因为缓存的帧会被使用。
 
-在渲染 Premier-native 像素格式的帧时，Premier 将为每个字段发送一次 PF_Cmd_RENDER，而不是为每个帧发送。`PF_InData->field`将表示哪个字段正在被渲染，`PF_LayerDef->height`将是帧高度的一半，`PF_LayerDef->rowbytes`将是正常值的两倍。
+在渲染 Premier-native 像素格式的帧时，Premier 将为每个字段发送一次 `PF_Cmd_RENDER`，而不是为每个帧发送。`PF_InData->field`将表示哪个字段正在被渲染，`PF_LayerDef->height`将是帧高度的一半，`PF_LayerDef->rowbytes`将是正常值的两倍。
 
-## Render Order
+## 渲染顺序
 
 Premiere Pro 的建立是为了尽可能地提供实时播放带有特效的素材。渲染调度要积极得多，多线程渲染是基本要求。这与 After Effects 完全不同，在 After Effects 中，用户要建立层层叠叠的效果，更愿意等待 RAM 预览。
 
@@ -39,7 +37,7 @@ Premiere 的多线程渲染也适用于 AE 效果。当渲染 AE 效果时，来
 
 因此，一个效果不应该期望按照时间增加的顺序来接收渲染请求。另外，特效不应该依赖于静态的、非恒定的变量。
 
-## Frame Dimensions
+## 帧尺寸
 
 源片段和项目/合成之间的差异会得到不同的处理。
 
@@ -65,8 +63,8 @@ Premiere Pro 支持宏`PF_ADD_FLOAT_EXPONENTIAL_SLIDER()`，它可以让你定�
 
 许多由 After Effects 支持的套装在 Premiere Pro 主机中没有实现。在一些情况下，即使 Premiere Pro 中缺少一个套装，也有相应的宏函数可用。下面是几个例子。
 
-| **After Effects suite call**            | **Premiere Pro equivalent function** |
-| --------------------------------------- | ------------------------------------ |
+| AE 套件调用           | PR等价函数 |
+| ---------------------- | ------------------ |
 | `WorldTransformSuite1()->copy()`        | `PF_COPY()`                          |
 | `WorldTransformSuite1()->convolve()`    | `in_data->utils->convolve()`         |
 | `FillMatteSuite2()->fill()`             | `PF_FILL()`                          |
@@ -74,7 +72,7 @@ Premiere Pro 支持宏`PF_ADD_FLOAT_EXPONENTIAL_SLIDER()`，它可以让你定�
 
 示例项目通过检查主机应用程序和版本，演示了处理缺失套件的其他方法。Portable 示例项目同时演示了主机应用程序和版本检查。
 
-## A Special Suite for AE Effects Running in Premiere Pro
+## 在Premiere Pro中运行AE效果的特殊套件
 
 Premiere Pro 不支持 AEGP 调用。然而，在头文件 PrSDKAESupport.h 中有一些有趣的相似之处。例如，你可以使用该头中的实用程序套件来获得源片段的帧率或场类型，或者获得应用于片段的速度。
 
