@@ -16,6 +16,7 @@ ECP: 效果控制面板(Effect Controls panel)
 ECW: 插件面板(Effect Controls Window)
 MFR: 多帧渲染 Multi-Frame Rendering
 arb: 任意(Arbitrary)
+PICA:插件组件架构(Plug-In Component Architecture)
 
 Artisans:
 
