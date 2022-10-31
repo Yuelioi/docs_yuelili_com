@@ -1,13 +1,13 @@
 ---
-title: Audio-Specific Float Slider Variables
+title: 音频特定的浮动滑块变量
 order: 5
 category:
   - AE 插件开发
 ---
 
-# Audio-Specific Float Slider Variables
+Audio-Specific Float Slider Variables
 
-`PF_Param_FLOAT_SLIDER'包含其他滑块中没有的几个参数；标志、相位和曲线公差。
+`PF_Param_FLOAT_SLIDER`包含其他滑块中没有的几个参数；标志、相位和曲线公差。
 
 ## Flags
 
