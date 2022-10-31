@@ -336,7 +336,7 @@ PF_CreateNewAppProgressDialog()
 
 ## What’s New In CS6 (11.0)?
 
-我们已经做了一些改进，以更好地处理参数 UI。`PF_PUI_INVISIBLE`参数 UI 标志现在在 After Effects 中被支持，如果你的插件需要影响渲染的隐藏参数，这很有用。现在，当插件使用[PF_UpdateParamUI](../effect-details/parameter-supervision.html) 禁用一个参数时，我们现在将该状态保存在 UI 标志中，以便插件在未来可以检查该标志是否被禁用。一个新的标志，`PF_ParamFlag_SKIP_REVEAL_WHEN_UNHIDDEN'，允许一个参数被取消隐藏，而不需要旋转打开任何父类，也不需要滚动参数到效果控制面板和时间线面板中。
+我们已经做了一些改进，以更好地处理参数 UI。`PF_PUI_INVISIBLE`参数 UI 标志现在在 After Effects 中被支持，如果你的插件需要影响渲染的隐藏参数，这很有用。现在，当插件使用[PF_UpdateParamUI](../effect-details/parameter-supervision.html) 禁用一个参数时，我们现在将该状态保存在 UI 标志中，以便插件在未来可以检查该标志是否被禁用。一个新的标志，`PF_ParamFlag_SKIP_REVEAL_WHEN_UNHIDDEN'，允许一个参数被取消隐藏，而不需要旋转打开任何父类，也不需要滚动参数到效果控制面板和时间轴面板中。
 
 当插件处于试用模式时，在输出上渲染水印的效果，现在可以使用新的`PF_OutFlag2_OUTPUT_IS_WATERMARKED'告诉 After Effects 水印渲染模式是开还是关。
 

@@ -11,7 +11,7 @@ category:
 
 [AEGP_PFInterfaceSuite](aegp-suites.html) 是一个起点。这个套件中的函数允许你检索应用效果的层的 AEGP_LayerH，以及你的效果实例的 AEGP_EffectRefH。`AEGP_RegisterWithAEGP`来自[AEGP_UtilitySuite6](aegp-suites.html) 允许你获得一个 AEGP_PluginID，许多 AEGP 调用都需要它。
 
-## Depending on AEGP Queries
+## 基于 AEGP 查询
 
 一个字。别。效果不能让 AEGP 的查询结果来控制渲染的内容，而不适当地存储这些查询结果(通常是在序列数据中)，取消自己的渲染，并强制使用查询信息进行重新渲染。
 

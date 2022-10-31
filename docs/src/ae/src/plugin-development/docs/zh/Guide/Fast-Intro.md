@@ -13,7 +13,9 @@ SDK 地址: [https://developer.adobe.com/console/servicesandapis](https://develo
 
 使用 vs 打开 SKD 文件夹的 `Template > Skeleton > Win > Skeleton.vcxproj`
 
-::: tip 请先备份 Template 文件夹 方便后续创建新模板
+::: tip
+请先备份 Template 文件夹 方便后续创建新模板
+:::
 
 ## 配置
 
@@ -23,11 +25,11 @@ SDK 地址: [https://developer.adobe.com/console/servicesandapis](https://develo
 
 AE_PLUGIN_BUILD_DIR > C:\Program Files\Adobe\Common\Plug-ins\7.0\MediaCore\YLL
 
-![环境变量](images\environment.png)
+![环境变量](/images\environment.png)
 
 (可选)TargetPath : 你的 ae 路径
 
-![1665287136892](images/1665287136892.png)
+![1665287136892](/images/1665287136892.png)
 
 ### 项目属性
 
@@ -35,13 +37,13 @@ AE_PLUGIN_BUILD_DIR > C:\Program Files\Adobe\Common\Plug-ins\7.0\MediaCore\YLL
 
 上面的变量其实就是这里的(默认就是这个,不用改)
 
-![环境变量](images\property.png)
+![环境变量](/images\property.png)
 
 ## 编译
 
 右键这玩意 点编译
 
-![1665220885176](images/1665220885176.png)
+![1665220885176](/images/1665220885176.png)
 
 ## 报错
 
@@ -49,29 +51,29 @@ AE_PLUGIN_BUILD_DIR > C:\Program Files\Adobe\Common\Plug-ins\7.0\MediaCore\YLL
 
 原来是我 vs 组件安少了, 在 Visual Studio Installer 安装: 使用 c++的桌面开发
 
-![1665286881975](images/1665286881975.png)
+![1665286881975](/images/1665286881975.png)
 
 ### 无法找到 VS 2015 生成工具
 
 改成自己工具版本即可
 
-![img](images\tool.png)
+![img](/images\tool.png)
 
 ### 没有访问权限
 
 原来是我还没有新建 YLL 文件夹,新建一下即可,或者自己设置管理员权限
 
-![img](images\folder.png)
+![img](/images\folder.png)
 
 ### C2338 报错
 
-![img](images\C2338.png)
+![img](/images\C2338.png)
 
 或者
 
 预处理器定义前追加 `WINDOWS_IGNORE_PACKING_MISMATCH;`
 
-![1665286593203](images/1665286593203.png)
+![1665286593203](/images/1665286593203.png)
 
 ### 无法打开文件 Sketon.aex
 
@@ -79,27 +81,27 @@ AE_PLUGIN_BUILD_DIR > C:\Program Files\Adobe\Common\Plug-ins\7.0\MediaCore\YLL
 
 `C:\Program Files\Adobe\Common\Plug-ins\7.0\MediaCore`
 
-![1665286787845](images/1665286787845.png)
+![1665286787845](/images/1665286787845.png)
 
 ### 其他报错
 
 干脆把警告视为报错改为否
 
-![1665286453915](images/1665286453915.png)
+![1665286453915](/images/1665286453915.png)
 
 ## 调试
 
 还是属性设置, 设置为 AE 路径
 
-![img](images\ae.png)
+![img](/images\ae.png)
 
 或者在配置 > 环境变量配置里, 追加环境变量 TargetPath : 你的 ae 路径
 
-![1665287136892](images/1665287136892.png)
+![1665287136892](/images/1665287136892.png)
 
 F5 运行,或者自己点 `本地 Windows 调试器`
 
-![1665220525248](images/1665220525248.png)
+![1665220525248](/images/1665220525248.png)
 
 ## 其他
 
@@ -107,4 +109,4 @@ F5 运行,或者自己点 `本地 Windows 调试器`
 
 Sketon 改为 LetterBox
 
-![1665285887802](images/1665285887802.png)
+![1665285887802](/images/1665285887802.png)

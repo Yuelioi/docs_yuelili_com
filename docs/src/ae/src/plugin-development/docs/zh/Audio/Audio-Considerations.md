@@ -1,11 +1,9 @@
 ---
-title: Audio Considerations
+title: 音频注意事项
 order: 7
 category:
   - AE 插件开发
 ---
-
-# Audio Considerations
 
 After Effects 的音频 API 支持高达 96Khz 的采样率，支持尽可能多的格式。
 

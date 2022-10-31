@@ -665,7 +665,7 @@ AEGP_GetNextProjItem(
 
 #### AEGP_GetActiveItem
 
-如果项目窗口处于活动状态，活动项目是选定的项目(如果只有一个项目被选中)。如果合成、时间线或镜头窗口处于活动状态，返回与窗口中最前面的标签相关的层的父级。
+如果项目窗口处于活动状态，活动项目是选定的项目(如果只有一个项目被选中)。如果合成、时间轴或镜头窗口处于活动状态，返回与窗口中最前面的标签相关的层的父级。
 如果没有项目处于活动状态，则返回 NULL。
 
 ```cpp
@@ -1978,7 +1978,7 @@ AEGP_GetCompLayerByIndex(
 
 #### AEGP_GetActiveLayer
 
-获取活动层。如果图层或效果控制调色板是活动的，活动图层是与窗口中最前面的标签相关的。如果一个合成或时间线窗口处于活动状态，活动层是选定的层(如果只有一个被选定；否则返回`NULL`)。
+获取活动层。如果图层或效果控制调色板是活动的，活动图层是与窗口中最前面的标签相关的。如果一个合成或时间轴窗口处于活动状态，活动层是选定的层(如果只有一个被选定；否则返回`NULL`)。
 
 ```cpp
 AEGP_GetActiveLayer(
@@ -2831,7 +2831,7 @@ AEGP_SetEffectMask(
 
 在 After Effects 中，几乎所有的东西都是一个流。效果参数、图层、遮罩和形状都在内部由流表示。AEGP API 几乎可以访问每个流的各个方面。
 
-After Effects 的时间线可以包含许多对象类型；每个对象都支持一组称为流的参数。所有的流，无论连接到哪种类型的对象，在概念上都是相似的(After Effects 的处理方式也是相似的。但由于其包含的内容不同，你访问每种类型的流的方式也不同。
+After Effects 的时间轴可以包含许多对象类型；每个对象都支持一组称为流的参数。所有的流，无论连接到哪种类型的对象，在概念上都是相似的(After Effects 的处理方式也是相似的。但由于其包含的内容不同，你访问每种类型的流的方式也不同。
 
 一个流，一旦获得，代表一个可能随时间变化的值。不是所有的流都能随时间变化，一个特定的流在访问时可能不是随时间变化的。
 
@@ -3360,7 +3360,7 @@ AEGP_GetDynamicStreamFlags(
   注意，从 CS5 开始，如果一个参数被禁用，这个标志将不会被返回。
   相反，请检查[Parameter UI Flags](../effect-basics/PF_ParamDef.html#effect-basics-pf-paramdef-parameter-ui-flags)中的`PF_PUI_DISABLED`。
 - `AEGP_DynStreamFlag_ELIDED` A read-only flag. Indicates that the `AEGP_StreamRefH` is read-only, the user never sees it.
-  但是，在时间线面板中仍然可以看到子节点，而且不缩进。
+  但是，在时间轴面板中仍然可以看到子节点，而且不缩进。
 - `AEGP_DynStreamFlag_SHOWN_WHEN_EMPTY` New in CS6. A read-only flag. Indicates that this stream group should be shown when empty.
 - `AEGP_DynStreamFlag_SKIP_REVEAL_WHEN_UNHIDDEN` New in CS6. A read-only flag. Indicates that this stream property will not be automatically revealed when un-hidden.
 

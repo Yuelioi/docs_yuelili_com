@@ -2,6 +2,7 @@ import { sidebar } from "vuepress-theme-hope";
 
 export const zhSidebar = sidebar({
   "/zh/": [
+    { text: "指南", icon: "creative", prefix: "Guide/", collapsable: true, children: "structure" },
     { text: "关于", icon: "creative", prefix: "About/", collapsable: true, children: "structure" },
     { text: "介绍", icon: "creative", prefix: "Intro/", collapsable: true, children: "structure" },
     { text: "效果基础", icon: "creative", prefix: "Effect-Basics/", collapsable: true, children: "structure" },

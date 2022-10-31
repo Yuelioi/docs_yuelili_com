@@ -1,31 +1,29 @@
 ---
-title: Artisan Data Types
+title: Artisan 数据类型
 order: 3
 category:
   - AE 插件开发
 ---
 
-# Artisan Data Types
-
 以下是 Artisan API 中最常用的数据类型。
 
 ## Data Types Used In The Artisan API
 
-| **Type**                    | **Describes**                                                                           |
+| 类型                   | 描述                                                                        |
 | --------------------------- | --------------------------------------------------------------------------------------- |
-| `AEGP_RenderLayerContextH ` | State information at the time of a render request, sent to an Artisan by After Effects. |
-| `AEGP_SoundDataH `          | The audio settings used for a given layer.                                              |
+| `AEGP_RenderLayerContextH` | State information at the time of a render request, sent to an Artisan by After Effects. |
+| `AEGP_SoundDataH`          | The audio settings used for a given layer.                                              |
 | `AEGP_RenderOptionsH`       | The settings associated with a render queue item.                                       |
 
-#### AEGP_RenderLayerContextH
+### AEGP_RenderLayerContextH
 
 渲染请求时的状态信息，由 After Effects 发送至 Artisan。
 
-#### PR_RenderContextH
+### PR_RenderContextH
 
 设置的集合，定义了要渲染的内容和方式。
 
-#### AEGP_SoundDataH
+### AEGP_SoundDataH
 
 用于给定图层的音频设置。
 
@@ -33,35 +31,35 @@ category:
 
 `AEGP_FrameReceiptH`在渲染时由Artisan们使用。
 
-#### AEGP_WorldH
+### AEGP_WorldH
 
 一个像素的框架。
 
-#### AEGP_RenderOptionsH
+### AEGP_RenderOptionsH
 
 与一个渲染队列项目相关的设置。
 
-## Horz? Vert?[¶]
+## 行还是列?
 
 After Effects 的矩阵是基于行的，OpenGL 的是基于列的。这意味着你要做更多的工作。耶，计费时间!
 
-## Implementation And Design[¶]
+## 实施与设计
 
 一个Artisan几乎是一个独立的应用程序。因为我们在 After Effects 5.0 的早期就意识到，有很多方法可以解决 3D 渲染中固有的问题；例如，交叉点和阴影等。
 
 我们提供了一个 API，我们和第三方(是的，我们真的使用自己的 API)可以实现任何需要的 3D 渲染方案。
 
-## 3D Compositing, Not Modeling[¶]
+## 3D 合成，而非建模
 
 After Effects 不是一个 3D 建模应用程序。用户在响应模式下工作，只有在打样或最终输出时才切换到更高的质量。考虑提供至少两种质量模式，一种用于布局，另一种用于最终输出。在低质量模式下要注意渲染时间。
 
-## Registering An Artisan[¶]
+## 注册 Artisan
 
-Artisan是一个 AEGP，有一个单一的入口函数。匠人也必须注册自己的函数入口函数，并为此有一个特殊的回调。参见[AEGP_RegisterSuites5](../aegps/aegp-suites.html#aegps-aegp-suites-aegp-registersuites)中的`AEGP_RegisterArtisan()`。
+Artisan是一个 AEGP，有单一的入口函数。Artisan也必须注册自己的函数入口函数，并为此有一个特殊的回调。参见[AEGP_RegisterSuites5](../aegps/aegp-suites.html#aegps-aegp-suites-aegp-registersuites)中的`AEGP_RegisterArtisan()`。
 
 这个表格显示了由`PR_ArtisanEntryPoints`定义的 Artisans 可以支持的功能：只有`render_func`是必须的。
 
-### Artisan Entry Points[¶]
+### Artisan 入口函数
 
 **PR_ArtisanEntryPoints**
 
@@ -78,8 +76,6 @@ PR_GlobalSetupFunc(
  PR_GlobalContextH global_contextH,
 
  PR_GlobalDataH *global_dataPH);
-
-
 ```
 
 #### global_setdown_func0
@@ -95,8 +91,6 @@ PR_GlobalSetdownFunc(
  PR_GlobalContextH global_contextH,
 
  PR_GlobalDataH global_dataH);
-
-
 ```
 
 #### global_do_about_func0
@@ -112,8 +106,6 @@ PR_GlobalDoAboutFunc(
  PR_GlobalContextH global_contextH,
 
  PR_GlobalDataH global_dataH);
-
-
 ```
 
 #### setup_instance_func0
@@ -137,13 +129,11 @@ PR_InstanceSetupFunc(
  PR_FlatHandle flat_dataH0,
 
  PR_InstanceDataH *instance_dataPH);
-
-
 ```
 
 #### setdown_instance_func0
 
-卸载并释放你的 Artisan 实例的任何特定数据。
+卸载并释放你 Artisan 实例的任何特定数据。
 
 ```cpp
 
@@ -158,8 +148,6 @@ PR_InstanceSetdownFunc(
  PR_GlobalDataH global_dataH,
 
  PR_InstanceDataH instance_dataH);
-
-
 ```
 
 #### flatten_instance_func0
@@ -181,8 +169,6 @@ PR_FlattenInstanceFunc(
  PR_InstanceDataH instance_dataH,
 
  PR_FlatHandle *flatH);
-
-
 ```
 
 #### do_instance_dialog_func0
@@ -204,8 +190,6 @@ PR_DoInstanceDialogFunc(
  PR_InstanceDataH instance_dataH,
 
  PR_DialogResult *resultP);
-
-
 ```
 
 `PR_DialogResultis`是`PR_DialogResult_NO_CHANGE`或`PR_DialogResult_CHANGE_MADE`。
@@ -231,8 +215,6 @@ PR_FrameSetupFunc(
  PR_InstanceDataH instance_dataH,
 
  PR_RenderDataH *render_dataPH);
-
-
 ```
 
 #### frame_setdown_func0
@@ -256,8 +238,6 @@ PR_FrameSetdownFunc(
  PR_InstanceDataH instance_dataH,
 
  PR_RenderDataH render_dataH);
-
-
 ```
 
 #### render_func
@@ -281,15 +261,13 @@ PR_FrameRenderFunc(
  PR_InstanceDataH instance_dataH,
 
  PR_RenderDataH render_dataH);
-
-
 ```
 
 #### query_func0
 
 如果有需要，美工人员可以绘制他们自己的投影轴。
 
-After Effects 将调用这个函数来获得合成世界和这些轴之间的变换，以及其他一些与屏上和屏下预览绘制有关的功能(前者只与互动Artisan有关)。
+After Effects 将调用这个函数来获得合成世界和这些轴之间的变换，以及其他一些与屏上和屏下预览绘制有关的功能(前者只与交互式Artisan有关)。
 
 ```cpp
 
@@ -308,8 +286,6 @@ PR_QueryFunc(
  PR_GlobalDataH global_dataH,
 
  PR_InstanceDataH instance_dataH);
-
-
 ```
 
 `PR_QueryType`可以是以下之一。
@@ -328,7 +304,7 @@ PR_QueryFunc(
 
 CS6 中的新功能。
 
-## The World Is Your Canvas[¶]
+## 世界是你的画布
 
 `AEGP_RenderTexture()`提供一个图层的原始像素，未经转换，进入一个任意大小的缓冲区。
 
@@ -344,7 +320,7 @@ CS6 中的新功能。
 
 以下套件提供了图层、合成、纹理和目标缓冲区。这是所有Artisan的一个重要套件。
 
-### AEGP_CanvasSuite8[¶]
+### AEGP_CanvasSuite8
 
 #### AEGP_GetCompToRender
 
@@ -357,8 +333,6 @@ AEGP_GetCompToRender(
  PR_RenderContextH render_contextH,
 
  AEGP_CompH *compPH)
-
-
 ```
 
 #### AEGP_GetNumLayersToRender
@@ -372,8 +346,6 @@ AEGP_GetNumLayersToRender(
  PR_RenderContextH render_contextH,
 
  A_long *num_to_renderPL)
-
-
 ```
 
 #### AEGP_GetNthLayerContextToRender
@@ -389,8 +361,6 @@ AEGP_GetNthLayerContextToRender(
  A_long n,
 
  AEGP_RenderLayerContextH *layer_indexPH)
-
-
 ```
 
 #### AEGP_GetLayerFromLayerContext
@@ -406,13 +376,11 @@ AEGP_GetLayerFromLayerContext(
  AEGP_RenderLayerContextH layer_contextH,
 
  AEGP_LayerH *layerPH);
-
-
 ```
 
 #### AEGP_GetLayerAndSubLayerFromLayerContext
 
-允许渲染子层(如 Photoshop 文件中的子层)。
+允许渲染子层(如 Photoshop 文件中的子图层)。
 
 ```cpp
 
@@ -425,8 +393,6 @@ AEGP_GetLayerAndSubLayerFromLayerContext(
  AEGP_LayerH *layerPH,
 
  AEGP_SubLayerIndex *sublayerP);
-
-
 ```
 
 #### AEGP_GetTopLayerFromLayerContext
@@ -444,8 +410,6 @@ AEGP_GetTopLayerFromLayerContext(
  AEGP_RenderLayerContextH l_contextH,
 
  AEGP_LayerH *layerPH);
-
-
 ```
 
 #### AEGP_GetCompRenderTime
@@ -461,8 +425,6 @@ AEGP_GetNthLayerIndexToRender(
  A_long *time,
 
  A_long *time_step)
-
-
 ```
 
 #### AEGP_GetCompDestinationBuffer
@@ -478,8 +440,6 @@ AEGP_GetCompToRender(
  AEGP_CompH compH,
 
  PF_EffectWorld *dst);
-
-
 ```
 
 #### AEGP_GetROI
@@ -493,8 +453,6 @@ AEGP_GetROI(
  PR_RenderContextH render_contextH,
 
  A_LegacyRect *roiPR);
-
-
 ```
 
 #### AEGP_RenderTexture
@@ -520,8 +478,6 @@ AEGP_RenderTexture(
  A_Matrix3 *src_matrixP0,
 
  PF_EffectWorld *render_bufferP);
-
-
 ```
 
 `AEGP_RenderHints`包含一个或多个以下内容。
@@ -545,8 +501,6 @@ AEGP_DisposeTexture(
  AEGP_LayerH layerH,
 
  AEGP_WorldH *dst0);
-
-
 ```
 
 #### AEGP_GetFieldRender
@@ -560,8 +514,6 @@ AEGP_GetFieldRender(
  PR_RenderContextH render_contextH,
 
  PF_Field *field);
-
-
 ```
 
 #### AEGP_ReportArtisanProgress
@@ -579,8 +531,6 @@ AEGP_ReportArtisanProgress(
  A_long countL,
 
  A_long totalL);
-
-
 ```
 
 #### AEGP_GetRenderDownsampleFactor
@@ -594,8 +544,6 @@ AEGP_GetRenderDownsampleFactor(
  PR_RenderContextH render_contextH,
 
  AEGP_DownsampleFactor *dsfP);
-
-
 ```
 
 #### AEGP_IsBlankCanvas
@@ -609,8 +557,6 @@ AEGP_IsBlankCanvas(
  PR_RenderContextH render_contextH,
 
  A_Boolean *is_blankPB);
-
-
 ```
 
 #### AEGP_GetRenderLayerToWorldXform
@@ -628,8 +574,6 @@ AEGP_GetRenderLayerToWorldXform(
  const A_Time *comp_timeP,
 
  A_Matrix4 *transform);
-
-
 ```
 
 #### AEGP_GetRenderLayerBounds
@@ -647,8 +591,6 @@ AEGP_GetRenderLayerBounds(
  const A_Time *comp_timeP,
 
  A_LegacyRect *boundsP);
-
-
 ```
 
 #### AEGP_GetRenderOpacity
@@ -666,8 +608,6 @@ AEGP_GetRenderOpacity(
  const A_Time *comp_timePT,
 
  A_FpLong *opacityPF);
-
-
 ```
 
 #### AEGP_IsRenderLayerActive
@@ -685,13 +625,11 @@ AEGP_IsRenderLayerActive(
  const A_Time *comp_timePT,
 
  A_Boolean *activePB);
-
-
 ```
 
 #### AEGP_SetArtisanLayerProgress
 
-CountL 是完成的层数。
+CountL 是完成的图层数。
 
 `num_layersL`是 Artisan 正在渲染的总层数。
 
@@ -704,8 +642,6 @@ AEGP_SetArtisanLayerProgress(
  A_long countL,
 
  A_long num_layersL);
-
-
 ```
 
 #### AEGP_RenderLayerPlus
@@ -725,8 +661,6 @@ AEGP_RenderLayerPlus(
  AEGP_RenderHints render_hints,
 
  AEGP_WorldH *bufferP);
-
-
 ```
 
 #### AEGP_GetTrackMatteContext
@@ -742,13 +676,11 @@ AEGP_GetTrackMatteContext(
  AEGP_RenderLayerContextH fill_contextH,
 
  AEGP_RenderLayerContextH *mattePH);
-
-
 ```
 
 #### AEGP_RenderTextureWithReceipt
 
-渲染纹理到一个`AEGP_WorldH'，并为该操作提供一个`AEGP_RenderReceiptH'。
+渲染纹理到一个`AEGP_WorldH`，并为该操作提供一个`AEGP_RenderReceiptH`。
 
 返回的`receiptPH`必须用`AEGP_DisposeRenderReceipt`处理。
 
@@ -771,8 +703,6 @@ AEGP_RenderTextureWithReceipt(
  AEGP_RenderReceiptH *receiptPH,
 
  AEGP_WorldH *dstPH);
-
-
 ```
 
 #### AEGP_GetNumberOfSoftwareEffects
@@ -788,8 +718,6 @@ AEGP_GetNumberOfSoftwareEffects(
  AEGP_RenderLayerContextH lyr_contextH,
 
  A_short *num_sft_FXPS);
-
-
 ```
 
 #### AEGP_RenderLayerPlusWithReceipt
@@ -813,21 +741,17 @@ AEGP_RenderLayerPlusWithReceipt(
  AEGP_RenderReceiptH *receiptPH,
 
  AEGP_WorldH *bufferPH);
-
-
 ```
 
 #### AEGP_DisposeRenderReceipt
 
-释放一个`AEGP_RenderReceiptH'。
+释放一个`AEGP_RenderReceiptH`。
 
 ```cpp
 
 AEGP_DisposeRenderReceipt(
 
  AEGP_RenderReceiptH receiptH);
-
-
 ```
 
 #### AEGP_CheckRenderReceipt
@@ -849,13 +773,11 @@ AEGP_CheckRenderReceipt(
  AEGP_NumEffectsToRenderType num_effectsS,
 
  AEGP_RenderReceiptStatus *receipt_statusP);
-
-
 ```
 
 #### AEGP_GenerateRenderReceipt
 
-为一个图层生成一个`AEGP_RenderReceiptH'，就像第一个`num_effectsS'已经被渲染了。
+为一个图层生成一个`AEGP_RenderReceiptH`，就像第一个`num_effectsS`已经被渲染了。
 
 ```cpp
 
@@ -868,8 +790,6 @@ AEGP_GenerateRenderReceipt(
  AEGP_NumEffectsToRenderType num_effectsS,
 
  AEGP_RenderReceiptH *render_receiptPH);
-
-
 ```
 
 #### AEGP_GetNumBinsToRender
@@ -883,8 +803,6 @@ AEGP_GetNumBinsToRender(
  const PR_RenderContextH contextH,
 
  A_long *num_binsPL);
-
-
 ```
 
 #### AEGP_SetNthBin
@@ -898,8 +816,6 @@ AEGP_SetNthBin(
  const PR_RenderContextH contextH,
 
  A_long n);
-
-
 ```
 
 #### AEGP_GetBinType
@@ -913,8 +829,6 @@ AEGP_GetBinType(
  const PR_RenderContextH contextH,
 
  AEGP_BinType *bin_typeP);
-
-
 ```
 
 `AEGP_BinType`将是以下之一。
@@ -927,7 +841,7 @@ AEGP_GetBinType(
 
 检索转换，以正确确定被渲染层与输出世界的方向。
 
-为`only_2dB'传递`TRUE'，将变换限制在二维。
+为`only_2dB`传递`TRUE`，将变换限制在二维。
 
 ```cpp
 
@@ -942,8 +856,6 @@ AEGP_GetRenderLayerToWorldXform2D3D(
  A_Boolean only_2dB,
 
  A_Matrix4 *transformP);
-
-
 ```
 
 ::: tip
@@ -962,13 +874,11 @@ AEGP_GetPlatformWindowRef(
  const PR_RenderContextH contextH,
 
  AEGP_PlatformWindowRef *window_refP);
-
-
 ```
 
 #### AEGP_GetViewportScale
 
-检索给定的`PR_RenderContextH'的源到帧的降采样系数。
+检索给定的`PR_RenderContextH`的源到帧的降采样系数。
 
 ```cpp
 
@@ -979,13 +889,11 @@ AEGP_GetViewportScale(
  A_FpLong *scale_xPF,
 
  A_FpLong *scale_yPF);
-
-
 ```
 
 #### AEGP_GetViewportOrigin
 
-为给定的`PR_RenderContextH'检索源的原点，在帧内(在两者之间平移所需)。
+为给定的`PR_RenderContextH`检索源的原点，在帧内(在两者之间平移所需)。
 
 ```cpp
 
@@ -996,13 +904,11 @@ AEGP_GetViewportOrigin(
  A_long *origin_xPL,
 
  A_long *origin_yPL);
-
-
 ```
 
 #### AEGP_GetViewportRect
 
-为给定的`PR_RenderContextH'检索要绘制的区域的边界矩形。
+为给定的`PR_RenderContextH`检索要绘制的区域的边界矩形。
 
 ```cpp
 
@@ -1011,13 +917,11 @@ AEGP_GetViewportRect(
  const PR_RenderContextH contextH,
 
  A_LegacyRect *v_rectPR);
-
-
 ```
 
 #### AEGP_GetFallowColor
 
-检索给定的`PR_RenderContextH'中的休眠区域的颜色。
+检索给定的`PR_RenderContextH`中的休眠区域的颜色。
 
 ```cpp
 
@@ -1026,13 +930,11 @@ AEGP_GetFallowColor(
  const PR_RenderContextH contextH,
 
  PF_Pixel8 *fallow_colorP);
-
-
 ```
 
 #### AEGP_GetInteractiveCheckerboard
 
-读取当前是否为给定的`PR_RenderContextH'激活棋盘。
+读取当前是否为给定的`PR_RenderContextH`激活棋盘。
 
 ```cpp
 
@@ -1041,8 +943,6 @@ AEGP_GetInteractiveCheckerboard(
  const PR_RenderContextH contextH,
 
  A_Boolean *cboard_onPB);
-
-
 ```
 
 #### AEGP_GetInteractiveCheckerboardColors
@@ -1058,8 +958,6 @@ AEGP_GetInteractiveCheckerboardColors(
  PF_Pixel *color1P,
 
  PF_Pixel *color2P);
-
-
 ```
 
 #### AEGP_GetInteractiveCheckerboardSize
@@ -1075,13 +973,11 @@ AEGP_GetInteractiveCheckerboardSize(
  A_u_long *cbd_widthPLu,
 
  A_u_long *cbd_heightPLu);
-
-
 ```
 
 #### AEGP_GetInteractiveCachedBuffer
 
-检索上次用于`PR_RenderContextH'的缓存 AEGP_WorldH。
+检索上次用于`PR_RenderContextH`的缓存 AEGP_WorldH。
 
 ```cpp
 
@@ -1090,8 +986,6 @@ AEGP_GetInteractiveCachedBuffer(
  const PR_RenderContextH contextH,
 
  AEGP_WorldH *buffer);
-
-
 ```
 
 #### AEGP_ArtisanMustRenderAsLayer
@@ -1107,8 +1001,6 @@ AEGP_ArtisanMustRenderAsLayer(
  AEGP_RenderLayerContextH layer_contextH,
 
  A_Boolean *use_txturePB);
-
-
 ```
 
 #### AEGP_GetInteractiveDisplayChannel
@@ -1122,11 +1014,9 @@ AEGP_GetInteractiveDisplayChannel(
  const PR_RenderContextH contextH,
 
  AEGP_DisplayChannelType *channelP);
-
-
 ```
 
-`AEGP_DisplayChannelType`将是以下之一。
+`AEGP_DisplayChannelType`为以下之一。
 
 - `AEGP_DisplayChannel_NONE`
 - `AEGP_DisplayChannel_RED`
@@ -1149,13 +1039,11 @@ AEGP_GetInteractiveExposure(
  const PR_RenderContextH rcH,
 
  A_FpLong *exposurePF);
-
-
 ```
 
 #### AEGP_GetColorTransform
 
-返回给定的`PR_RenderContextH'的颜色变换。
+返回给定的`PR_RenderContextH`的颜色变换。
 
 ```cpp
 
@@ -1168,13 +1056,11 @@ AEGP_GetColorTransform)(
  A_u_long *xform_keyLu,
 
  void *xformP);
-
-
 ```
 
 #### AEGP_GetCompShutterTime
 
-返回给定`PR_RenderContextH'的快门角度。
+返回给定`PR_RenderContextH`的快门角度。
 
 ```cpp
 
@@ -1185,8 +1071,6 @@ AEGP_GetCompShutterTime)(
  A_Time *shutter_time,
 
  A_Time *shutter_dur);
-
-
 ```
 
 #### AEGP_MapCompToLayerTime
@@ -1204,15 +1088,13 @@ AEGP_MapCompToLayerTime(
  const A_Time *comp_timePT,
 
  A_Time *layer_timePT);
-
-
 ```
 
-## Convert Between Different Contexts[¶]
+## Convert Between Different Contexts
 
 在渲染和实例上下文之间进行转换，并管理特定于Artisan的全局数据。
 
-### AEGP_ArtisanUtilSuite1[¶]
+### AEGP_ArtisanUtilSuite1
 
 #### AEGP_GetGlobalContextFromInstanceContext
 
@@ -1225,8 +1107,6 @@ AEGP_GetGlobalContextFromInstanceContext(
  const PR_InstanceContextH instance_contextH,
 
  PR_GlobalContextH *global_contextPH);
-
-
 ```
 
 #### AEGP_GetInstanceContextFromRenderContext
@@ -1240,8 +1120,6 @@ AEGP_GetInstanceContextFromRenderContext(
  const PR_RenderContextH render_contextH,
 
  PR_InstanceContextH *instnc_ctextPH);
-
-
 ```
 
 #### AEGP_GetInstanceContextFromQueryContext
@@ -1255,8 +1133,6 @@ AEGP_GetInstanceContextFromQueryContext(
  const PR_QueryContextH query_contextH,
 
  PR_InstanceContextH *instnce_contextPH);
-
-
 ```
 
 #### AEGP_GetGlobalData
@@ -1270,8 +1146,6 @@ AEGP_GetGlobalData(
  const PR_GlobalContextH global_contextH,
 
  PR_GlobalDataH *global_dataPH);
-
-
 ```
 
 #### AEGP_GetInstanceData
@@ -1285,8 +1159,6 @@ AEGP_GetInstanceData(
  const PR_InstanceContextH instance_contextH,
 
  PR_InstanceDataH *instance_dataPH);
-
-
 ```
 
 #### AEGP_GetRenderData
@@ -1300,15 +1172,13 @@ AEGP_GetRenderData(
  const PR_RenderContextH render_contextH,
 
  PR_RenderDataH *render_dataPH);
-
-
 ```
 
-## Smile! Cameras[¶]
+## Smile! Cameras
 
 获取相机的几何形状，包括相机的属性(类型、镜头、景深、焦距、光圈等等)。
 
-### AEGP_CameraSuite2[¶]
+### AEGP_CameraSuite2
 
 #### AEGP_GetCamera
 
@@ -1323,8 +1193,6 @@ AEGP_GetCamera(
  const A_Time *comp_timeP,
 
  AEGP_LayerH *camera_layerPH);
-
-
 ```
 
 #### AEGP_GetCameraType
@@ -1338,8 +1206,6 @@ AEGP_GetCameraType(
  AEGP_LayerH aegp_layerH,
 
  AEGP_CameraType *camera_typeP;
-
-
 ```
 
 相机类型可以是以下几种。
@@ -1359,8 +1225,6 @@ AEGP_GetDefaultCamera DistanceToImagePlane(
  AEGP_CompH compH,
 
  A_FpLong *dist_to_planePF)
-
-
 ```
 
 #### AEGP_GetCameraFilmSize
@@ -1376,8 +1240,6 @@ AEGP_GetCameraFilmSize(
  AEGP_FilmSizeUnits *film_size_unitsP,
 
  A_FpLong *film_sizePF0);
-
-
 ```
 
 #### AEGP_SetCameraFilmSize
@@ -1393,34 +1255,30 @@ AEGP_SetCameraFilmSize)(
  AEGP_FilmSizeUnits film_size_units,
 
  A_FpLong *film_sizePF0);
-
-
 ```
 
-## Notes Regarding Camera Behavior[¶]
+## 关于相机行为的注意事项
 
 摄像机的方向是以合成坐标为单位，旋转是以层(摄像机的层)坐标为单位。
 
 如果摄像机层有一个父层，那么位置就是相对于父层的坐标空间。
 
-## Orthographic Camera Matrix[¶]
+## 正交相机矩阵
 
 在内部，我们使用合成宽度和高度来设置 OpenGL 规范所描述的矩阵为
 
 ```cpp
 
 glOrtho(-width/2, width/2, -height/2, height/2, -1, 100);
-
-
 ```
 
 正射矩阵描述了投影。相机的位置由另一个按比例的矩阵描述。摄像机位置矩阵的倒数提供 "眼睛 "坐标。
 
-## Focus On Focal[¶]
+## 专注于焦距
 
-记住，焦距会影响视野；焦距只影响景深。
+记住，焦距(Focal)会影响视野；焦距只影响景深。
 
-## Film Size[¶]
+## Film 尺寸
 
 在现实世界中，胶片的尺寸是以毫米为单位的。在 After Effects 中，它是以像素来衡量的。乘以 72，再除以 25.4，就可以从毫米变成像素。
 
@@ -1432,11 +1290,11 @@ tan(ϴ) = 1/2 合成高度/焦距
 
 焦距 = 2 tan(ϴ) / 合成高度
 
-## Hit The Lights![¶]
+## 打灯
 
 获取和设置合成中的灯光类型。
 
-### AEGP_LightSuite2[¶]
+### AEGP_LightSuite2
 
 #### AEGP_GetLightType
 
@@ -1449,8 +1307,6 @@ AEGP_GetLightType(
  AEGP_LayerH light_layerH,
 
  AEGP_LightType *light_typeP);
-
-
 ```
 
 `AEGP_LightType`将是以下其中之一。
@@ -1462,7 +1318,7 @@ AEGP_GetLightType(
 
 #### AEGP_SetLightType
 
-设定指定摄影机层的`AEGP_LightType'。
+设定指定摄影机层的`AEGP_LightType`。
 
 ```cpp
 
@@ -1471,11 +1327,9 @@ AEGP_SetLightType(
  AEGP_LayerH light_layerH,
 
  AEGP_LightType light_type);
-
-
 ```
 
-### Notes On Light Behavior[¶]
+### 关于灯光行为的注意事项
 
 平行光的公式可以在 Foley 和 Van Dam 的《计算机图形学导论》(ISBN 0-201-60921-5)中找到，点光源的公式也是如此。
 
@@ -1491,19 +1345,19 @@ AEGP_SetLightType(
 
 镜面反射光的数量是 S \* power(H Dot N, shine)，其中 S 是镜面反射系数。
 
-## How Should I Draw That?[¶]
+## 我应该如何绘制
 
 After Effects 依靠 Artisans 来绘制 3D 图层手柄。如果你的美工选择不响应这个调用，默认的美工将为你绘制 3D 图层手柄。查询变换对于优化 After Effects 的缓存非常重要。
 
 坐标系统是正 X 向右，正 Y 向下，正 Z 向屏幕。原点是左上角。旋转是先 x 后 y 再 z。对于矩阵来说，平移是最下面一行，方向是四元数(先应用)，然后是任何 x-y-z 的旋转。作为一般规则，使用方向或旋转，但不能同时使用。如果你需要控制角速度，也可以使用旋转。
 
-## Query Transform Functions[¶]
+## 查询变换函数
 
-这些函数给Artisan提供了他们需要的变换信息，以便正确地将图层放置在一个合成中，并对 After Effects 发送的各种查询作出适当的反应，这些查询将发送到他们的`PR_QueryFunc`入口函数函数。
+这些函数给Artisan提供了他们需要的变换(Transform)信息，以便正确地将图层放置在一个合成中，并对 After Effects 发送的各种查询作出适当的反应，这些查询将发送到他们的`PR_QueryFunc`入口函数函数。
 
 由于该入口函数是可选的，所以你的Artisan对查询的响应也是可选的；然而，如果你不这样做，你的用户可能会失望，(在进行交互式预览绘图时)所有的相机和灯光指示器都消失了，直到他们停止移动 Artisan是复杂的野兽；如果你有任何问题，请联系我们。
 
-### AEGP_QueryXFormSuite2[¶]
+### AEGP_QueryXFormSuite2
 
 #### AEGP_QueryXformGetSrcType
 
@@ -1516,8 +1370,6 @@ AEGP_QueryXformGetSrcType(
  PR_QueryContextH query_contextH,
 
  AEGP_QueryXformType *src_type);
-
-
 ```
 
 查询上下文将是以下内容之一。
@@ -1538,8 +1390,6 @@ AEGP_QueryXformGetDstType(
  PR_QueryContextH query_contextH,
 
  AEGP_QueryXformType *dst_type);
-
-
 ```
 
 #### AEGP_QueryXformGetLayer
@@ -1553,8 +1403,6 @@ AEGP_QueryXformGetLayer(
  PR_QueryContextH query_contextH,
 
  AEGP_LayerH *layerPH);
-
-
 ```
 
 #### AEGP_QueryXformGetComp
@@ -1568,8 +1416,6 @@ AEGP_QueryXformGetComp(
  PR_QueryContextH query_contextH,
 
  AEGP_CompH *compPH);
-
-
 ```
 
 #### AEGP_QueryXformGetTransformTime
@@ -1583,8 +1429,6 @@ AEGP_QueryXformGetTransformTime(
  PR_QueryContextH query_contextH,
 
  A_Time *time);
-
-
 ```
 
 #### AEGP_QueryXformGetViewTime
@@ -1598,8 +1442,6 @@ AEGP_QueryXformGetViewTime(
  PR_QueryContextH query_contextH,
 
  A_Time *time);
-
-
 ```
 
 #### AEGP_QueryXformGetCamera
@@ -1613,8 +1455,6 @@ AEGP_QueryXformGetCamera(
  PR_QueryContextH query_contextH,
 
  AEGP_LayerH *camera_layerPH);
-
-
 ```
 
 #### AEGP_QueryXformGetXform
@@ -1628,8 +1468,6 @@ AEGP_QueryXformGetXform(
  PR_QueryContextH query_contextH,
 
  A_Matrix4 *xform);
-
-
 ```
 
 #### AEGP_QueryXformSetXform
@@ -1643,8 +1481,6 @@ AEGP_QueryXformSetXform(
  PR_QueryContextH query_contextH,
 
  A_Matrix4 *xform);
-
-
 ```
 
 #### AEGP_QueryWindowRef
@@ -1658,8 +1494,6 @@ AEGP_QueryWindowRef(
  PR_QueryContextH q_contextH,
 
  AEGP_PlatformWindowRef *window_refP);
-
-
 ```
 
 #### AEGP_QueryWindowClear
@@ -1675,13 +1509,11 @@ AEGP_QueryWindowClear(
  AEGP_PlatformWindowRef *window_refP,
 
  A_LegacyRect *boundsPR);
-
-
 ```
 
 #### AEGP_QueryFrozenProxy
 
-返回在给定的`PR_QueryContextH'中使用的纹理是否应该被冻结。
+返回在给定的`PR_QueryContextH`中使用的纹理是否应该被冻结。
 
 ```cpp
 
@@ -1690,8 +1522,6 @@ AEGP_QueryFrozenProxy(
  PR_QueryContextH q_contextH,
 
  A_Boolean *onPB);
-
-
 ```
 
 #### AEGP_QuerySwapBuffer
@@ -1707,8 +1537,6 @@ AEGP_QuerySwapBuffer(
  AEGP_PlatformWindowRef *window_refP,
 
  AEGP_WorldH *dest_bufferp);
-
-
 ```
 
 #### AEGP_QueryDrawProcs
@@ -1722,8 +1550,6 @@ AEGP_QueryDrawProcs(
  PR_QueryContextH query_contextH,
 
  PR_InteractiveDrawProcs *window_refP);
-
-
 ```
 
 #### AEGP_QueryPrepareForLineDrawing
@@ -1743,8 +1569,6 @@ AEGP_QueryPrepareForLineDrawing(
  A_LPoint *originP,
 
  A_FloatPoint *scaleP);
-
-
 ```
 
 #### AEGP_QueryUnprepareForLineDrawing
@@ -1758,15 +1582,13 @@ AEGP_QueryUnprepareForLineDrawing(
  PR_QueryContextH query_contextH,
 
  AEGP_PlatformWindowRef *window_refP);
-
-
 ```
 
-## Interactive Drawing Functions[¶]
+## 交互式绘图功能
 
-我们增加了Artisan提供 After Effects 可以用来做基本绘图功能的功能，以便在预览期间更新 comp 窗口的显示，包括相机、灯光和线框预览建模。
+我们增加了Artisan提供 After Effects 可以用来做基本绘图功能的功能，以便在预览期间更新合成窗口的显示，包括相机、灯光和线框预览建模。
 
-### PR_InteractiveDrawProcs[¶]
+### PR_InteractiveDrawProcs
 
 #### PR_Draw_MoveToFunc
 
@@ -1777,8 +1599,6 @@ PR_Draw_MoveToFunc(
  short x,
 
  short y);
-
-
 ```
 
 #### PR_Draw_LineToFunc
@@ -1790,8 +1610,6 @@ PR_Draw_LineToFunc(
  short x,
 
  short y);
-
-
 ```
 
 #### PR_Draw_ForeColorFunc
@@ -1801,8 +1619,6 @@ PR_Draw_LineToFunc(
 PR_Draw_ForeColorFunc(
 
  const A_Color *fore_colo
-
-
 ```
 
 #### PR_Draw_FrameRectFunc
@@ -1812,8 +1628,6 @@ PR_Draw_ForeColorFunc(
 PR_Draw_FrameRectFunc(
 
  const A_Rect *rectPR );
-
-
 ```
 
 #### PR_Draw_PaintRectFunc
@@ -1823,11 +1637,9 @@ PR_Draw_FrameRectFunc(
 PR_Draw_PaintRectFunc(
 
  const A_Rect *rectPR );
-
-
 ```
 
-## Notes On Query Time Functions[¶]
+## 查询时间函数注意事项
 
 `AEGP_QueryXformGetTransformTime()`和`AEGP_QueryXformGetViewTime()`都是Artisan建立要渲染的场景表示所必需的。
 
