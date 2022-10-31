@@ -1,54 +1,52 @@
 ---
-title: AEGP Suites
+title: AEGP 套件
 order: 6
 category:
   - AE 插件开发
 ---
 
-# AEGP Suites
-
 如前所述，AEGPs 通过套件来完成一切。以下套装被所有类型的 AEGP 使用，并且可以从任何钩子函数中调用(除了 RegisterSuite，它必须从 AEGP 的入口函数中使用)。下面是每个套件中每个函数的描述，以及在适当的地方使用这些函数的细节。
 
-| **Suite**                                                                                                                           | **Description**                                                                                                                                                                                                                                                                                                                                                                      |
-| ----------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --- | --------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- | --- | ------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ | --- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------ | --- | --------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [Memory Suite](../aegps/aegp-suites.html)                           | Manage memory resources. Use this suite! Whenever memory-related errors are encountered, After Effects can report errors for you.                                                                                                                                                                                                                                                    |
-| [Command Suite](../aegps/aegp-suites.html)                         | Manage your AEGP’s menu items. Used in conjunction with the Register Suite.                                                                                                                                                                                                                                                                                                          |
-| [Register Suite](../aegps/aegp-suites.html)                       | Used in conjunction with the[Command Suite](../aegps/aegp-suites.html) to add functions to menu commands. AEIOs and Artisans must use this suite’s functions to indicate to After Effects that they want to receive the appropriate message streams. You can replace some After Effects’ commands using this suite. |
-| [Project Suite](../aegps/aegp-suites.html)                         | Reads and modifies project data.                                                                                                                                                                                                                                                                                                                                                     |
-| [Item Suite](../aegps/aegp-suites.html)                               | Manages items within a project or composition. Folders, Compositions, Solids, and Footage are all items.                                                                                                                                                                                                                                                                             |
-| [Collection Suite](../aegps/aegp-suites.html)                   | Query which items are currently selected, and create your own selection sets. It’s often a good UI move to select all the items your AEGP has modified, just to give the user some idea what you’ve done.                                                                                                                                                                            |
-| [Composition Suite](../aegps/aegp-suites.html)                 | Manages (and creates) compositions in a project, and composition-specific items like solids.                                                                                                                                                                                                                                                                                         |
-| [Footage Suite](../aegps/aegp-suites.html)                         | Manages footage.                                                                                                                                                                                                                                                                                                                                                                     |
-| [Layer Suite](../aegps/aegp-suites.html)                             | Provides information about the layers within a composition, and the relationship(s) between the source and layer times. Solids, text, paint, cameras, lights, images, and image sequences can all become layers.                                                                                                                                                                     |
-| [Effect Suite](../aegps/aegp-suites.html)                           | Provides access to the effects applied to a layer. Use Stream suites to obtain effect keyframe information. Use AEGP_EffectCallGeneric()` (in [AEGP_EffectSuite4](../aegps/aegp-suites.html)) to communicate with effects that you setup ahead of time to respond to your AEGP.                                  |     | [Stream Suite](../aegps/aegp-suites.html) | Used to access the values of a layer’s keyframe properties. |     | [Dynamic Stream Suite](../aegps/aegp-suites.html) | Used to access the characteristics of dynamic streams associated with a layer. |     | [Keyframe Suite](../aegps/aegp-suites.html) | Used to access and manipulate all keyframe data. |     | [Marker Suite](../aegps/aegp-suites.html) | Used to manipulate markers. Use AEGP_GetNewCompMarkerStream()` (in [AEGP_CompSuite11](../aegps/aegp-suites.html)) to get the composition marker stream. |
-| [Mask Suite](../aegps/aegp-suites.html)                               | Provides access to retrieve information about a layer’s masks.                                                                                                                                                                                                                                                                                                                       |
-| [Mask Outline Suite](../aegps/aegp-suites.html)               | Used in conjunction with Stream Suite, this suite provides detailed information about the path rendered to make a layer’s mask.                                                                                                                                                                                                                                                      |
-| [Text Document Suite](../aegps/aegp-suites.html)             | Used to access the actual text on a text layer.                                                                                                                                                                                                                                                                                                                                      |
-| [Text Layer Suite](../aegps/aegp-suites.html)                   | Used to access the paths that make up the outlines of a text layer.                                                                                                                                                                                                                                                                                                                  |
-| [Utility Suite](../aegps/aegp-suites.html)                         | Supplies error message handling, AEGP version checking and access to After Effects’ undo stack.                                                                                                                                                                                                                                                                                      |
-| [Persistent Data Suite](../aegps/aegp-suites.html)         | Query and manage all persistent data (i.e., the preferences file). AEGPs can also add their own data to the prefs.                                                                                                                                                                                                                                                                   |
-| [Color Settings Suite](../aegps/aegp-suites.html)           | Obtain information on After Effects’ current color management settings.                                                                                                                                                                                                                                                                                                              |
-| [Render Suite](../aegps/aegp-suites.html)                           | Get rendered frames (and audio samples) from within an AEGP.                                                                                                                                                                                                                                                                                                                         |
-| [World Suite](../aegps/aegp-suites.html)                             | Allocate, dispose of, and query AEGP_Worlds. Also provides a way to convert a PF_EffectWorld ` into an AEGP_World`, for working with effect plug-ins.                                                                                                                                                                                                                                |
-| [Composite Suite](../aegps/aegp-suites.html)                     | Exposes After Effects’ compositing functionality, including transfer modes, track matting, and good old fashioned bit copying.                                                                                                                                                                                                                                                       |
-| [Sound Data Suite](../aegps/aegp-suites.html)                   | Functions for managing and accessing sound data.                                                                                                                                                                                                                                                                                                                                     |
-| [Render Queue Suite](../aegps/aegp-suites.html)               | Add and remove items from the render queue.                                                                                                                                                                                                                                                                                                                                          |
-| [Render Queue Item Suite](../aegps/aegp-suites.html)     | Query and modify items in the render queue.                                                                                                                                                                                                                                                                                                                                          |
-| [Render Options Suite](../aegps/aegp-suites.html)           | Query and manage all items exposed in a render queue item’s options dialog.                                                                                                                                                                                                                                                                                                          |
-| [Output Module Suite](../aegps/aegp-suites.html)             | Query and modify the output modules attached to items in the render queue.                                                                                                                                                                                                                                                                                                           |
-| [PF Interface Suite](../aegps/aegp-suites.html)               | The functions in this suite, while technically part of the AEGP API, are for use by effects.                                                                                                                                                                                                                                                                                         |
-| [AEGP Iterate Suite](../aegps/aegp-suites.html)               | Gives AEGPs a way to have a function (which has the required signature) to be run on any or all available processors.                                                                                                                                                                                                                                                                |
-| [File Import Manager Suite](../aegps/aegp-suites.html) | Registers AEGP file and project importers as part of After Effects’ file handling.                                                                                                                                                                                                                                                                                                   |
+| **Suite**| **Description** |
+| --- | --- |
+| [Memory Suite](../aegps/aegp-suites.html)| 管理内存资源。使用此套件！每当遇到与内存相关的错误时，AE都可以为您报告错误。 |
+| [Command Suite](../aegps/aegp-suites.html) | 管理您的AEGP菜单项。与注册套件结合使用。 |
+| [Register Suite](../aegps/aegp-suites.html)  | 与[Command Suite](../aegps/aegp-suites.html)连用,用于菜单命令添加功能。AEIO和工匠必须使用此套件的功能向AE指示他们想要接收适当的消息流。您可以使用此套件替换一些AE命令。 |
+| [Project Suite](../aegps/aegp-suites.html) | 读取和修改项目数据。 |
+| [Item Suite](../aegps/aegp-suites.html) | 管理项目或合成中的项目。文件夹、合成、纯色层和素材都是项目。  |
+| [Collection Suite](../aegps/aegp-suites.html) | 查询当前选择了哪些项目，并创建您自己的选择集。选择您的AEGP修改的所有项目通常是一个很好的UI举措，只是为了让用户知道您做了什么。|
+| [Composition Suite](../aegps/aegp-suites.html)  |项目中管理（和创建）合成，以及合成特定的项目，如纯色层。  |
+| [Footage Suite](../aegps/aegp-suites.html) | 管理素材|
+| [Layer Suite](../aegps/aegp-suites.html)  | 提供有关合成中图层的信息，以及源和图层时间之间的关系。纯色层、文本、绘制、相机、灯光、图像和图像序列都可以成为图层。|
+| [Effect Suite](../aegps/aegp-suites.html)| 提供对应用于图层的效果的访问。使用流套件获取效果关键帧信息。使用`AEGP_EffectCallGeneric()`(in [AEGP_EffectSuite4](../aegps/aegp-suites.html)) 与您提前设置的效果进行通信，以响应您的AEGP。 |  | [Stream Suite](../aegps/aegp-suites.html) | 用于访问图层的关键帧属性的值。  |  | [Dynamic Stream Suite](../aegps/aegp-suites.html) | 用于访问与图层相关联的动态流的特性。 |  | [Keyframe Suite](../aegps/aegp-suites.html) | 用于访问和操作所有关键帧数据。 |  | [Marker Suite](../aegps/aegp-suites.html) | 用于操纵标记。使用 `AEGP_GetNewCompMarkerStream()` (in [AEGP_CompSuite11](../aegps/aegp-suites.html)) 来获取合成的标记流|
+| [Mask Suite](../aegps/aegp-suites.html) | 提供检索有关图层蒙版的信息的访问。 |
+| [Mask Outline Suite](../aegps/aegp-suites.html)| 与Stream Suite结合使用时，该套件提供了有关为制作图层蒙版而渲染的路径的详细信息。|
+| [Text Document Suite](../aegps/aegp-suites.html) |用于访问文本图层上的实际文本。 |
+| [Text Layer Suite](../aegps/aegp-suites.html) | 用于访问构成文本图层轮廓的路径。|
+| [Utility Suite](../aegps/aegp-suites.html) | 提供错误消息处理、AEGP版本检查和对AE撤消堆栈的访问。 |
+| [Persistent Data Suite](../aegps/aegp-suites.html)| 查询和管理所有持久(persistent)数据（即首选项文件）。AEGP还可以将自己的数据添加到首选项中。  |
+| [Color Settings Suite](../aegps/aegp-suites.html)  | 获取有关AE当前颜色管理设置的信息。  |
+| [Render Suite](../aegps/aegp-suites.html)| 从AEGP中获取渲染的帧（和音频样本）。  |
+| [World Suite](../aegps/aegp-suites.html)  | 分配、处置和查询AEGP_Worlds。还提供了一种将`PF_EffectWorld`转换为`AEGP_World`的方法，用于使用效果插件。   |
+| [Composite Suite](../aegps/aegp-suites.html)| 公开AE的合成功能，包括混合模式、轨道遮罩和良好的老式位复制(fashioned bit copying)。  |
+| [Sound Data Suite](../aegps/aegp-suites.html) |用于管理和访问声音数据的功能。 |
+| [Render Queue Suite](../aegps/aegp-suites.html)| 从渲染队列中添加和删除项目。|
+| [Render Queue Item Suite](../aegps/aegp-suites.html)  | 查询和修改渲染队列中的项目。|
+| [Render Options Suite](../aegps/aegp-suites.html)  |  查询和管理渲染队列项的选项对话框中公开的所有项目。|
+| [Output Module Suite](../aegps/aegp-suites.html) | 查询和修改附加到渲染队列中项目的输出模块。  |
+| [PF Interface Suite](../aegps/aegp-suites.html)| 该套件中的功能虽然在技术上是AEGP API的一部分，但供效果使用。   |
+| [AEGP Iterate Suite](../aegps/aegp-suites.html)| 为AEGP提供了一种在任何或所有可用处理器上运行函数（具有所需签名）的方法。 |
+| [File Import Manager Suite](../aegps/aegp-suites.html) | 注册AEGP文件和项目导入器作为AE文件处理的一部分。|
 
-## Fail Gracefully
+## 优雅地出错
 
-如果一个套件不存在，要尽力做到优雅地失败。向用户显示一条信息，说明问题的性质。尝试获取并使用同一套件的早期版本。
+如果一个套件不存在，要尽力做到优雅地失败。向用户显示一条信息，说明问题的性质。尝试使用同一套件的早期版本。
 
 由于 AEGPs 与 After Effects 结合得如此之深，要确保用户知道是谁或什么东西遇到了某个问题。
 
 表明自己的身份! 尽可能的向用户提供支持和/或帮助信息。
 
-## Handling Handles
+## 处理 Handles
 
 使用 AEGP 内存套件来管理 AEGP 使用的内存。每当遇到与内存有关的错误，After Effects 可以报告错误，让你及早发现。
 
@@ -71,7 +69,6 @@ AEGP_NewMemHandle(
  AEGP_MemSize size,
  AEGP_MemFlag flags,
  AEGP_MemHandle *memPH);
-
 ```
 
 #### AEGP_FreeMemHandle
@@ -81,18 +78,16 @@ AEGP_NewMemHandle(
 ```cpp
 AEGP_FreeMemHandle(
  AEGP_MemHandle memH);
-
 ```
 
 #### AEGP_LockMemHandle
 
-在使用`AEGP_NewMemHandle'分配的内存之前，使用这个函数来锁定手柄(不能被操作系统移动)。可以被嵌套。
+在使用`AEGP_NewMemHandle`分配的内存之前，使用这个函数来锁定手柄(不能被操作系统移动)。可以被嵌套。
 
 ```cpp
 AEGP_LockMemHandle(
  AEGP_MemHandle memH,
  void **ptr_to_ptr);
-
 ```
 
 #### AEGP_UnlockMemHandle
@@ -102,7 +97,6 @@ AEGP_LockMemHandle(
 ```cpp
 AEGP_UnlockMemHandle(
  AEGP_MemHandle memH);
-
 ```
 
 #### AEGP_GetMemHandleSize
@@ -112,7 +106,6 @@ AEGP_UnlockMemHandle(
 ```cpp
 AEGP_GetMemHandleSize AEGP_MemHandle memH,
  AEGP_MemSize *sizeP);
-
 ```
 
 #### AEGP_ResizeMemHandle
@@ -124,7 +117,6 @@ AEGP_ResizeMemHandle(
  const char *whatZ,
  AEGP_MemSize new_size,
  AEGP_MemHandle memH);
-
 ```
 
 #### AEGP_SetMemReportingOn
@@ -136,7 +128,6 @@ AEGP_ResizeMemHandle(
 ```cpp
 AEGP_SetMemReportingOn(
  A_Boolean turn_OnB);
-
 ```
 
 #### AEGP_GetMemStats
@@ -149,7 +140,6 @@ AEGP_GetMemStats(
  AEGP_MemID mem_id,
  A_long *countPL,
  A_long *sizePL);
-
 ```
 
 ## Managing Menu Items
@@ -167,7 +157,6 @@ AEGP_GetMemStats(
 ```cpp
 AEGP_GetUniqueCommand(
  AEGP_Command *unique_commandP);
-
 ```
 
 注意：After Effects 有时会发送命令 0(零)。
@@ -210,7 +199,6 @@ AEGP_InsertMenuCommand(
  const A_char *nameZ,
  AEGP_MenuID menu_id,
  A_long after_itemL);
-
 ```
 
 #### AEGP_RemoveMenuCommand
@@ -220,7 +208,6 @@ AEGP_InsertMenuCommand(
 ```cpp
 AEGP_RemoveMenuCommand(
  AEGP_Command command);
-
 ```
 
 #### AEGP_SetCommandName
@@ -231,7 +218,6 @@ AEGP_RemoveMenuCommand(
 AEGP_SetCommandName(
  AEGP_Command command,
  const A_char *nameZ);
-
 ```
 
 #### AEGP_EnableCommand
@@ -241,7 +227,6 @@ AEGP_SetCommandName(
 ```cpp
 AEGP_EnableCommand(
  AEGP_Command command);
-
 ```
 
 #### AEGP_DisableCommand
@@ -251,7 +236,6 @@ AEGP_EnableCommand(
 ```cpp
 AEGP_DisableCommand(
  AEGP_Command command);
-
 ```
 
 #### AEGP_CheckMarkMenuCommand
@@ -262,7 +246,6 @@ After Effects 会在菜单命令的旁边画一个复选标记。
 AEGP_CheckMarkMenuCommand(
  AEGP_Command command,
  A_Boolean checkB);
-
 ```
 
 #### AEGP_DoCommand
@@ -273,7 +256,6 @@ AEGP_CheckMarkMenuCommand(
 ```cpp
 AEGP_DoCommand(
  AEGP_Command command);
-
 ```
 
 在给出了上述免责声明后，这里有几个已经提供给其他开发者的命令号，可能会有兴趣。
@@ -290,7 +272,6 @@ AEGP_DoCommand(
 ```cpp
 cmd = app.findMenuCommandId(text); // e.g. text = "Open Project…"
 alert(cmd);
-
 ```
 
 在 AE 运行的情况下，只需打开 Adobe ExtendScript Toolkit CC，将上述脚本复制进去，并在应用程序下拉菜单中选择你正在运行的 After Effects 版本，然后点击播放按钮在 AE 中运行脚本。
@@ -310,7 +291,7 @@ alert(cmd);
 - `AEGP_HP_AfterAE`
 
 对于你添加的每个菜单项，使用`AEGP_GetUniqueCommand()`获得你自己的`AEGP_Command`。
-(来自[AEGP_CommandSuite1])，在注册单个`command_hook_func'之前获得自己的`AEGP_mand'。
+(来自[AEGP_CommandSuite1])，在注册单个`command_hook_func`之前获得自己的`AEGP_mand`。
 判断哪个命令是在这个钩子函数中发送的，并采取相应的行动。
 目前，`AEGP_HookPriority`被忽略了。
 
@@ -321,7 +302,6 @@ AEGP_RegisterCommandHook(
  AEGP_Command command,
  AEGP_CommandHook command_hook_func
  void *refconPV);
-
 ```
 
 #### AEGP_RegisterUpdateMenuHook
@@ -334,7 +314,6 @@ AEGP_RegisterUpdateMenuHook(
  AEGP_PluginID aegp_plugin_id,
  AEGP_UpdateMenuHook update_menu_hook_func,
  void *refconPV);
-
 ```
 
 #### AEGP_RegisterDeathHook
@@ -346,7 +325,6 @@ AEGP_RegisterDeathHook(
  AEGP_PluginID aegp_plugin_id,
  AEGP_DeathHook death_hook_func,
  void *refconPV);
-
 ```
 
 #### AEGP_RegisterVersionHook
@@ -374,7 +352,6 @@ AEGP_RegisterArtisan(
  const A_char *match_nameZ,
  const A_char *Artisan_nameZ,
  PR_ArtisanEntryPoints *entry_funcsP);
-
 ```
 
 #### AEGP_RegisterIO
@@ -387,7 +364,6 @@ AEGP_RegisterIO (
  AEGP_IORefcon aegp_refconP,
  const AEIO_ModuleInfo *io_infoP,
  const AEIO_FunctionBlock4 *aeio_fcn_blockP);
-
 ```
 
 #### AEGP_RegisterIdleHook
@@ -399,7 +375,6 @@ AEGP_RegisterIdleHook(
  AEGP_PluginID aegp_plugin_id,
  AEGP_IdleHook idle_hook_func,
  AEGP_IdleRefcon refconP);
-
 ```
 
 #### AEGP_RegisterInteractiveArtisan
@@ -415,7 +390,6 @@ AEGP_RegisterInteractiveArtisan (
  const A_char *match_nameZ,
  const A_char *artisan_nameZ,
  PR_ArtisanEntryPoints *entry_funcsP);
-
 ```
 
 #### AEGP_RegisterPresetLocalizationString
@@ -428,7 +402,6 @@ AEGP_RegisterInteractiveArtisan (
 AEGP_RegisterPresetLocalizationString(
  const A_char *english_nameZ,
  const A_char *localized_nameZ);
-
 ```
 
 ## Manage Projects
@@ -449,7 +422,6 @@ AEGP_RegisterPresetLocalizationString(
 ```cpp
 AEGP_GetNumProjects(
  A_long *num_projPL)
-
 ```
 
 #### AEGP_GetIndProject
@@ -460,7 +432,6 @@ AEGP_GetNumProjects(
 AEGP_GetProjectProjectByIndex(
  A_long proj_indexL,
  AEGP_ProjectH *projPH);
-
 ```
 
 #### AEGP_GetProjectName
@@ -471,7 +442,6 @@ AEGP_GetProjectProjectByIndex(
 AEGP_GetProjectName(
  AEGP_ProjectH projH,
  A_char *nameZ);
-
 ```
 
 #### AEGP_GetProjectPath
@@ -483,7 +453,6 @@ AEGP_GetProjectName(
 AEGP_GetProjectPath(
  AEGP_ProjectH projH,
  AEGP_MemHandle *unicode_pathPH)
-
 ```
 
 #### AEGP_GetProjectRootFolder
@@ -494,7 +463,6 @@ AEGP_GetProjectPath(
 AEGP_GetProjectRootFolder(
  AEGP_ProjectH projH,
  AEGP_ItemH *root_folderPH)
-
 ```
 
 #### AEGP_SaveProjectToPath
@@ -506,7 +474,6 @@ AEGP_GetProjectRootFolder(
 AEGP_SaveProjectToPath(
  AEGP_ProjectH projH,
  const A_UTF16Char *pathZ);
-
 ```
 
 #### AEGP_GetProjectTimeDisplay
@@ -549,7 +516,6 @@ enum {
 };
 
 typedef char AEGP_FramesDisplayMode;
-
 ```
 
 #### AEGP_SetProjectTimeDisplay
@@ -560,7 +526,6 @@ typedef char AEGP_FramesDisplayMode;
 AEGP_SetProjectTimeDisplay(
  AEGP_ProjectH projH,
  const AEGP_TimeDisplay3 *time_displayP);
-
 ```
 
 #### AEGP_ProjectIsDirty
@@ -571,7 +536,6 @@ AEGP_SetProjectTimeDisplay(
 AEGP_ProjectIsDirty(
  AEGP_ProjectH projH,
  A_Boolean *is_dirtyPB);
-
 ```
 
 #### AEGP_SaveProjectAs
@@ -584,7 +548,6 @@ AEGP_ProjectIsDirty(
 AEGP_SaveProjectAs(
  AEGP_ProjectH projH,
  const A_UTF16Char *pathZ);
-
 ```
 
 #### AEGP_NewProject
@@ -594,7 +557,6 @@ AEGP_SaveProjectAs(
 ```cpp
 AEGP_NewProject(
  AEGP_ProjectH *new_projectPH);
-
 ```
 
 #### AEGP_OpenProjectFromPath
@@ -607,7 +569,6 @@ AEGP_NewProject(
 AEGP_OpenProjectFromPath(
  const A_UTF16Char *pathZ,
  AEGP_ProjectH *projectPH);
-
 ```
 
 #### AEGP_GetProjectBitDepth
@@ -618,7 +579,6 @@ AEGP_OpenProjectFromPath(
 AEGP_GetProjectBitDepth(
  AEGP_Projec tH projectH,
  AEGP_ProjBitDepth *bit_depthP);
-
 ```
 
 AEGP_ProjBitDepth 将是以下之一。
@@ -635,7 +595,6 @@ AEGP_ProjBitDepth 将是以下之一。
 AEGP_SetProjectBitDepth(
  AEGP_ProjectH projectH,
  AEGP_ProjBitDepth bit_depth);
-
 ```
 
 ### AEGP_TimeDisplay2
@@ -691,7 +650,6 @@ AEGP_SetProjectBitDepth(
 AEGP_GetFirstProjItem(
  AEGP_ProjectH projectH,
  AEGP_ItemH *itemPH);
-
 ```
 
 #### AEGP_GetNextProjItem
@@ -703,7 +661,6 @@ AEGP_GetNextProjItem(
  AEGP_ProjectH projectH,
  AEGP_ItemH itemH,
  AEGP_ItemH *next_itemPH);
-
 ```
 
 #### AEGP_GetActiveItem
@@ -714,7 +671,6 @@ AEGP_GetNextProjItem(
 ```cpp
 AEGP_GetActiveItem(
  AEGP_ItemH *itemPH,
-
 ```
 
 #### AEGP_IsItemSelected
@@ -725,7 +681,6 @@ AEGP_GetActiveItem(
 AEGP_IsItemSelected(
  AEGP_ItemH itemH,
  A_Boolean *selectedPB)
-
 ```
 
 #### AEGP_SelectItem
@@ -738,7 +693,6 @@ AEGP_SelectItem(
  AEGP_ItemH itemH,
  A_Boolean selectB,
  A_Boolean deselect_othersB);
-
 ```
 
 #### AEGP_GetItemType
@@ -749,7 +703,6 @@ AEGP_SelectItem(
 AEGP_GetItemType(
  AEGP_ItemH itemH,
  AEGP_ItemType *item_typeP);
-
 ```
 
 项目是以下类型中的一种。
@@ -768,7 +721,6 @@ AEGP_GetItemType(
 AEGP_GetTypeName(
  AEGP_ItemType item_type,
  A_char *nameZ);
-
 ```
 
 #### AEGP_GetItemName
@@ -781,7 +733,6 @@ AEGP_GetItemName(
  AEGP_PluginID pluginID,
  AEGP_ItemH itemH,
  AEGP_MemHandle *unicode_namePH);
-
 ```
 
 #### AEGP_SetItemName
@@ -792,7 +743,6 @@ AEGP_GetItemName(
 AEGP_SetItemName(
  AEGP_ItemH itemH,
  const A_UTF16Char *nameZ);
-
 ```
 
 #### AEGP_GetItemID
@@ -803,7 +753,6 @@ AEGP_SetItemName(
 AEGP_GetItemID(
  AEGP_ItemH itemH,
  A_long *item_idPL);
-
 ```
 
 #### AEGP_GetItemFlags
@@ -814,7 +763,6 @@ AEGP_GetItemID(
 AEGP_GetItemFlags(
  AEGP_ItemH itemH,
  AEGP_ItemFlags *item_flagsP);
-
 ```
 
 标志值(可以是 OR'd together)。
@@ -838,7 +786,6 @@ AEGP_GetItemFlags(
 AEGP_SetItemUseProxy(
  AEGP_ItemH itemH,
  A_Boolean use_proxyB);
-
 ```
 
 #### AEGP_GetItemParentFolder
@@ -849,7 +796,6 @@ AEGP_SetItemUseProxy(
 AEGP_GetItemParentFolder(
  AEGP_ItemH itemH,
  AEGP_ItemH *parent_itemPH);
-
 ```
 
 #### AEGP_SetItemParentFolder
@@ -860,7 +806,6 @@ AEGP_GetItemParentFolder(
 AEGP_SetItemParentFolder(
  AEGP_ItemH itemH,
  AEGP_ItemH parent_folderH);
-
 ```
 
 #### AEGP_GetItemDuration
@@ -871,7 +816,6 @@ AEGP_SetItemParentFolder(
 AEGP_GetItemDuration(
  AEGP_ItemH itemH,
  A_Time *durationPT);
-
 ```
 
 #### AEGP_GetItemCurrentTime
@@ -882,7 +826,6 @@ AEGP_GetItemDuration(
 AEGP_GetItemCurrentTime(
  AEGP_ItemH itemH,
  A_long *curr_timePT);
-
 ```
 
 #### AEGP_GetItemDimensions
@@ -894,7 +837,6 @@ AEGP_GetItemDimensions(
  AEGP_ItemH itemH,
  A_long *widthPL)
  A_long *heightPL);
-
 ```
 
 #### AEGP_GetItemPixelAspectRatio
@@ -905,7 +847,6 @@ AEGP_GetItemDimensions(
 AEGP_GetItemPixelAspectRatio(
  AEGP_ItemH itemH,
  A_Ratio *ratioPRt);
-
 ```
 
 #### AEGP_DeleteItem
@@ -916,7 +857,6 @@ AEGP_GetItemPixelAspectRatio(
 ```cpp
 AEGP_DeleteItem(
  AEGP_ItemH itemH);
-
 ```
 
 #### AEGP_GetItemSolidColor
@@ -928,7 +868,6 @@ AEGP_DeleteItem(
 AEGP_GetItemSolidColor(
  AEGP_ItemH itemH,
  PF_Pixel *PF_Pixel);
-
 ```
 
 #### AEGP_SetSolidColor
@@ -940,7 +879,6 @@ AEGP_GetItemSolidColor(
 AEGP_SetSolidColor(
  AEGP_ItemH itemH,
  AEGP_ColorVal color);
-
 ```
 
 #### AEGP_SetSolidDimensions
@@ -953,7 +891,6 @@ AEGP_SetSolidDimensions(
  AEGP_ItemH itemH,
  A_short widthS,
  A_short heightS);
-
 ```
 
 #### AEGP_CreateNewFolder
@@ -967,7 +904,6 @@ AEGP_CreateNewFolder(
  AEGP_ProjectH projH),
  AEGP_ItemH parentH0),
  AEGP_ItemH *new_folderPH);
-
 ```
 
 #### AEGP_SetItemCurrentTime
@@ -978,7 +914,6 @@ Sets the current time within a given `itemH`.
 AEGP_SetItemCurrentTime(
  AEGP_ItemH itemH,
  const A_Time *new_timePT);
-
 ```
 
 #### AEGP_GetItemCommentLength
@@ -989,7 +924,6 @@ Removed in `ItemSuite9`. Retrieves the length (in characters) of the `itemH's` c
 AEGP_GetItemCommentLength(
  AEGP_ItemH itemH,
  A_u_long *buf_sizePLu);
-
 ```
 
 #### AEGP_GetItemComment
@@ -1000,7 +934,6 @@ Updated to support Unicode in `ItemSuite9`, available in 14.1. Retrieves the `it
 AEGP_GetItemComment(
  AEGP_ItemH itemH,
  AEGP_MemHandle *unicode_namePH);
-
 ```
 
 #### AEGP_SetItemComment
@@ -1011,7 +944,6 @@ Updated to support Unicode in `ItemSuite9`, available in 14.1. Sets the `itemH's
 AEGP_SetItemComment(
  AEGP_ItemH itemH,
  const A_UTF16Char *commentZ);
-
 ```
 
 #### AEGP_GetItemLabel
@@ -1022,7 +954,6 @@ Retrieves an item’s label.
 AEGP_GetItemLabel(
  AEGP_ItemH itemH,
  AEGP_LabelID *labelP);
-
 ```
 
 #### AEGP_SetItemLabel
@@ -1033,7 +964,6 @@ Sets an item’s label.
 AEGP_SetItemLabel(
  AEGP_ItemH itemH,
  AEGP_LabelID label);
-
 ```
 
 #### AEGP_GetItemMRUView
@@ -1044,7 +974,6 @@ Gets an item’s most recently used view.The view can be used with two calls in 
 AEGP_GetItemMRUView(
  AEGP_ItemH itemH,
  AEGP_ItemViewP *mru_viewP);
-
 ```
 
 ::: tip
@@ -1073,7 +1002,6 @@ Creates and returns a new, empty collection.To obtain the current composition’
 AEGP_NewCollection(
  AEGP_PluginID plugin_id,
  AEGP_Collection2H *collectionPH);
-
 ```
 
 #### AEGP_DisposeCollection
@@ -1083,7 +1011,6 @@ Disposes of a collection.
 ```cpp
 AEGP_DisposeCollection(
  AEGP_Collection2H collectionH);
-
 ```
 
 #### AEGP_GetCollectionNumItems
@@ -1094,7 +1021,6 @@ Returns the number of items contained in the given collection.
 AEGP_GetCollectionNumItems(
  AEGP_Collection2H collectionH,
  A_u_long *num_itemsPL);
-
 ```
 
 #### AEGP_GetCollectionItemByIndex
@@ -1106,7 +1032,6 @@ AEGP_GetCollectionItemByIndex(
  AEGP_Collection2H collectionH,
  A_u_long indexL,
  AEGP_CollectionItemV2 *itemP);
-
 ```
 
 #### AEGP_CollectionPushBack
@@ -1117,7 +1042,6 @@ Adds an item to the given collection.
 AEGP_CollectionPushBack(
  AEGP_Collection2H collectionH,
  const AEGP_CollectionItemV2 *itemP);
-
 ```
 
 #### AEGP_CollectionErase
@@ -1129,7 +1053,6 @@ AEGP_CollectionErase(
  AEGP_Collection2H collectionH,
  A_u_long index_firstL,
  A_u_long index_lastL);
-
 ```
 
 ### Ownership Of Collection Items
@@ -1153,7 +1076,6 @@ Returns `NULL` if `itemH` is not an `AEGP_CompH`.
 AEGP_GetCompFromItem(
  AEGP_ItemH itemH,
  AEGP_CompH *compPH);
-
 ```
 
 #### AEGP_GetItemFromComp
@@ -1164,7 +1086,6 @@ Used to get the item handle, given a composition handle.
 AEGP_GetItemFromComp(
  AEGP_CompH compH,
  AEGP_ItemH *itemPH);
-
 ```
 
 #### AEGP_GetCompDownsampleFactor
@@ -1175,7 +1096,6 @@ Returns current downsample factor. Measured in pixels X by Y.Users can choose a 
 AEGP_GetCompDownsampleFactor(
  AEGP_CompH compH,
  AEGP_DownsampleFactor *dsfP);
-
 ```
 
 #### AEGP_SetCompDownsampleFactor
@@ -1186,7 +1106,6 @@ Sets the composition’s downsample factor.
 AEGP_SetCompDownsampleFactor(
  AEGP_CompH compH,
  AEGP_DownsampleFactor *dsfP);
-
 ```
 
 #### AEGP_GetCompBGColor
@@ -1197,7 +1116,6 @@ Returns the composition background color.
 AEGP_GetCompBGColor(
  AEGP_CompH compH,
  AEGP_ColorVal *bg_colorP);
-
 ```
 
 #### AEGP_SetCompBGColor
@@ -1208,7 +1126,6 @@ Sets a composition’s background color.
 AEGP_SetCompBGColor(
  AEGP_CompH compH,
  const AEGP_ColorVal *bg_colorP);
-
 ```
 
 #### AEGP_GetCompFlags
@@ -1219,7 +1136,6 @@ Returns composition flags, or’d together.
 AEGP_GetCompFlags(
  AEGP_CompH compH,
  AEGP_CompFlags *AEGP_CompFlags);
-
 ```
 
 - `AEGP_CompFlag_SHOW_ALL_SHY`
@@ -1239,7 +1155,6 @@ New in CC. Passes back true if the Comp’s timeline shows layer names, false if
 AEGP_GetShowLayerNameOrSourceName(
  AEGP_CompH compH,
  A_Boolean *layer_names_shownPB);
-
 ```
 
 #### AEGP_SetShowLayerNameOrSourceName
@@ -1250,7 +1165,6 @@ New in CC. Pass in true to have the Comp’s timeline show layer names, false fo
 AEGP_SetShowLayerNameOrSourceName(
  AEGP_CompH compH,
  A_Boolean *layer_names_shownPB);
-
 ```
 
 #### AEGP_GetShowBlendModes
@@ -1262,7 +1176,6 @@ This will open the comp as a side effect.
 AEGP_GetShowBlendModes(
  AEGP_CompH compH,
  A_Boolean *blend_modes_shownPB);
-
 ```
 
 #### AEGP_SetShowBlendModes
@@ -1274,7 +1187,6 @@ This will open the comp as a side effect.
 AEGP_GetCompFlags(
  AEGP_CompH compH,
  A_Boolean show_blend_modesB);
-
 ```
 
 #### AEGP_GetCompFramerate
@@ -1285,7 +1197,6 @@ Returns the composition’s frames per second.
 AEGP_GetCompFramerate(
  AEGP_CompH compH,
  A_FpLong *fpsPF);
-
 ```
 
 #### AEGP_SetCompFramerate
@@ -1296,7 +1207,6 @@ Sets the composition’s frames per second.
 AEGP_SetCompFramerate(
  AEGP_CompH compH,
  A_FpLong *fpsPF);
-
 ```
 
 #### AEGP_GetCompShutterAnglePhase
@@ -1308,7 +1218,6 @@ AEGP_GetCompShutterAnglePhase(
  AEGP_CompH compH,
  A_Ratio *angle,
  A_Ratio *phase);
-
 ```
 
 #### AEGP_GetCompShutterFrameRange
@@ -1319,7 +1228,6 @@ The duration of the shutter frame, in seconds.
 AEGP_GetCompShutterFrameRange(
  AEGP_CompH compH,
  const A_Time *comp_timeP);
-
 ```
 
 #### AEGP_GetCompSuggestedMotionBlurSamples
@@ -1330,7 +1238,6 @@ Retrieves the number of motion blur samples After Effects will perform in the gi
 AEGP_GetCompSuggestedMotionBlurSamples(
  AEGP_CompH compH,
  A_long *samplesPL)
-
 ```
 
 #### AEGP_SetCompSuggestedMotionBlurSamples
@@ -1341,7 +1248,6 @@ Specifies the number of motion blur samples After Effects will perform in the gi
 AEGP_SetCompSuggestedMotionBlurSamples(
  AEGP_CompH compH,
  A_long samplesL);
-
 ```
 
 #### AEGP_GetCompMotionBlurAdaptiveSampleLimit
@@ -1352,7 +1258,6 @@ New in CC. Retrieves the motion blur adaptive sample limit for the given composi
 AEGP_GetCompMotionBlurAdaptiveSampleLimit(
  AEGP_CompH compH,
  A_long *samplesPL)
-
 ```
 
 #### AEGP_SetCompMotionBlurAdaptiveSampleLimit
@@ -1364,7 +1269,6 @@ Undoable.
 AEGP_SetCompMotionBlurAdaptiveSampleLimit(
  AEGP_CompH compH,
  A_long samplesL);
-
 ```
 
 #### AEGP_GetCompWorkAreaStart
@@ -1375,7 +1279,6 @@ Get the time where the current work area starts.
 AEGP_GetCompWorkAreaStart(
  AEGP_CompH compH,
  A_Time *startPT);
-
 ```
 
 #### AEGP_GetCompWorkAreaDuration
@@ -1386,7 +1289,6 @@ Get the duration of a composition’s current work area, in seconds.
 AEGP_GetCompWorkAreaDuration(
  AEGP_CompH compH,
  A_Time *durationPT);
-
 ```
 
 #### AEGP_SetCompWorkAreaStartAndDuration
@@ -1398,12 +1300,11 @@ AEGP_SetCompWorkAreaStartAndDuration(
  AEGP_CompH compH,
  const A_Time *startPT)
  const A_Time *durationPT);
-
 ```
 
 #### AEGP_CreateSolidInComp
 
-在合成中创建一个具有指定宽度、高度、颜色和持续时间的新实体。可以撤销。如果你为持续时间传入`NULL'，After Effects 会使用它对新静止的持续时间的偏好。
+在合成中创建一个具有指定宽度、高度、颜色和持续时间的新实体。可以撤销。如果你为持续时间传入`NULL`，After Effects 会使用它对新静止的持续时间的偏好。
 如果传递 NULL 或无效的时间尺度，持续时间将被设置为合成的长度。
 
 ```cpp
@@ -1415,7 +1316,6 @@ AEGP_CreateSolidInComp(
  AEGP_CompH parent_compH,
  const A_Time *durationPT0,
  AEGP_LayerH *new_solidPH);
-
 ```
 
 #### AEGP_CreateCameraInComp
@@ -1430,7 +1330,6 @@ AEGP_CreateCameraInComp(
  A_FloatPoint center_point,
  AEGP_CompH parent_compH,
  AEGP_LayerH *new_cameraPH);
-
 ```
 
 #### AEGP_CreateLightInComp
@@ -1443,7 +1342,6 @@ AEGP_CreateLightInComp(
  A_FloatPoint center_point,
  AEGP_CompH parent_compH,
  AEGP_LayerH *new_lightPH);
-
 ```
 
 #### AEGP_CreateComp
@@ -1461,7 +1359,6 @@ AEGP_CreateComp(
  const A_Time *durationPT,
  const A_Ratio *frameratePRt,
  AEGP_CompH *new_compPH);
-
 ```
 
 #### AEGP_GetNewCollectionFromCompSelection
@@ -1474,18 +1371,16 @@ AEGP_GetNewCollectionFromCompSelection(
  AEGP_PluginID plugin_id,
  AEGP_CompH compH,
  AEGP_Collection2H *collectionPH);
-
 ```
 
 #### AEGP_SetSelection
 
-将在给定的合成中的选择设置为给定的`AEGP_Collection2H'。 如果 "AEGP_Collection2H "的成员不可用，将返回一个错误。 不要假设一个合成在操作之间没有变化；总是使用一个新的`AEGP_Collection2H`。
+将在给定的合成中的选择设置为给定的`AEGP_Collection2H`。 如果 "AEGP_Collection2H "的成员不可用，将返回一个错误。 不要假设一个合成在操作之间没有变化；总是使用一个新的`AEGP_Collection2H`。
 
 ```cpp
 AEGP_SetSelection(
  AEGP_CompH compH,
  AEGP_Collection2H collectionH);
-
 ```
 
 #### AEGP_GetCompDisplayStartTime
@@ -1496,7 +1391,6 @@ AEGP_SetSelection(
 AEGP_GetCompDisplayStartTime(
  AEGP_CompH compH,
  const A_Time *start_timePT);
-
 ```
 
 #### AEGP_SetCompDisplayStartTime
@@ -1507,7 +1401,6 @@ AEGP_GetCompDisplayStartTime(
 AEGP_SetCompDisplayStartTime(
  AEGP_CompH compH,
  const A_Time *start_timePT);
-
 ```
 
 #### AEGP_SetCompDuration
@@ -1518,7 +1411,6 @@ AEGP_SetCompDisplayStartTime(
 AEGP_SetCompDuration(
  AEGP_CompH compH,
  const A_Time *durationPT);
-
 ```
 
 #### AEGP_CreateNullInComp
@@ -1532,7 +1424,6 @@ AEGP_CreateNullInComp(
  AEGP_CompH parent_compH,
  const A_Time *durationPT0,
  AEGP_LayerH *new_null_solidPH);
-
 ```
 
 #### AEGP_SetCompPixelAspectRatio
@@ -1543,7 +1434,6 @@ AEGP_CreateNullInComp(
 AEGP_SetCompPixelAspectRatio(
  AEGP_CompH compH,
  const A_Ratio *parPRt);
-
 ```
 
 #### AEGP_CreateTextLayerInComp
@@ -1555,12 +1445,11 @@ AEGP_CreateTextLayerInComp(
  AEGP_CompH parent_compH,
  A_Boolean select_new_layerB,
  AEGP_LayerH *new_text_lyrPH);
-
 ```
 
 #### AEGP_CreateBoxTextLayerInComp
 
-在 CS6 中更新。创建一个新的文本图层，并返回其`AEGP_LayerH'。
+在 CS6 中更新。创建一个新的文本图层，并返回其`AEGP_LayerH`。
 
 ```cpp
 AEGP_CreateBoxTextLayerInComp(
@@ -1568,7 +1457,6 @@ AEGP_CreateBoxTextLayerInComp(
  A_Boolean select_new_layerB,
  A_FloatPoint box_dimensions,
  AEGP_LayerH *new_text_layerPH);
-
 ```
 
 #### AEGP_SetCompDimensions
@@ -1580,7 +1468,6 @@ AEGP_SetCompDimensions(
  AEGP_CompH compH,
  A_long widthL,
  A_long heightL);
-
 ```
 
 #### AEGP_DuplicateComp
@@ -1591,7 +1478,6 @@ AEGP_SetCompDimensions(
 AEGP_DuplicateComp(
  AEGP_CompH compH,
  AEGP_CompH *new_compPH);
-
 ```
 
 #### AEGP_GetCompFrameDuration
@@ -1602,7 +1488,6 @@ AEGP_DuplicateComp(
 AEGP_GetCompFrameDuration(
  AEGP_CompH compH,
  A_Time *timeP);
-
 ```
 
 #### AEGP_GetMostRecentlyUsedComp
@@ -1612,7 +1497,6 @@ AEGP_GetCompFrameDuration(
 ```cpp
 AEGP_GetMostRecentlyUsedComp(
  AEGP_CompH *compPH);
-
 ```
 
 #### AEGP_CreateVectorLayerInComp
@@ -1623,7 +1507,6 @@ AEGP_GetMostRecentlyUsedComp(
 AEGP_CreateVectorLayerInComp(
  AEGP_CompH parent_compH,
  AEGP_LayerH *new_vec_layerPH);
-
 ```
 
 #### AEGP_GetNewCompMarkerStream
@@ -1635,7 +1518,6 @@ AEGP_GetNewCompMarkerStream(
  AEGP_PluginID aegp_plugin_id,
  AEGP_CompH parent_compH,
  AEGP_StreamRefH *streamPH);
-
 ```
 
 #### AEGP_GetCompDisplayDropFrame
@@ -1646,7 +1528,6 @@ AEGP_GetNewCompMarkerStream(
 AEGP_GetCompDisplayDropFrame(
  AEGP_CompH compH,
  A_Boolean *dropFramePB);
-
 ```
 
 #### AEGP_SetCompDisplayDropFrame
@@ -1657,7 +1538,6 @@ AEGP_GetCompDisplayDropFrame(
 AEGP_SetCompDisplayDropFrame(
  AEGP_CompH compH,
  A_Boolean dropFrameB);
-
 ```
 
 #### AEGP_ReorderCompSelection
@@ -1668,7 +1548,6 @@ AEGP_SetCompDisplayDropFrame(
 AEGP_SetCompDisplayDropFrame(
  AEGP_CompH compH,
  A_long index);
-
 ```
 
 ## Work with Footage
@@ -1691,7 +1570,6 @@ AEGP_SetCompDisplayDropFrame(
 AEGP_GetMainFootageFromItem(
  AEGP_ItemH itemH,
  AEGP_FootageH *footagePH);
-
 ```
 
 #### AEGP_GetProxyFootageFromItem
@@ -1702,7 +1580,6 @@ AEGP_GetMainFootageFromItem(
 AEGP_GetProxyFootageFromItem(
  AEGP_ItemH itemH,
  AEGP_FootageH *proxy_ftgPH);
-
 ```
 
 #### AEGP_GetFootageNumFiles
@@ -1714,7 +1591,6 @@ AEGP_GetFootageNumFiles(
  AEGP_FootageH footageH,
  A_long *num_filesPL0,
  A_long *files_per_frmPL0);
-
 ```
 
 #### AEGP_GetFootagePath
@@ -1730,7 +1606,6 @@ AEGP_GetFootagePath(
  A_long frame_numL,
  A_long file_indexL,
  AEGP_MemHandle *unicode_pathPH);
-
 ```
 
 #### AEGP_GetFootageSignature
@@ -1741,7 +1616,6 @@ AEGP_GetFootagePath(
 AEGP_GetFootageSignature(
  AEGP_FootageH footageH,
  AEGP_FootageSignature *sigP);
-
 ```
 
 签名将是以下内容之一。
@@ -1764,7 +1638,6 @@ AEGP_NewFootage(
  AEGP_InterpretationStyle interp_style,
  void *reserved,
  AEGP_FootageH *footagePH);
-
 ```
 
 注意可选的参数。如果`allow_interpretation_dialogB`为 FALSE，After Effects 将猜测 alpha 解释。
@@ -1776,7 +1649,6 @@ typedef struct {
  char *nameAC;
  AEGP_LayerDrawStyle draw_style;
 } AEGP_FootageLayerKey;
-
 ```
 
 `AEGP_LayerDrawStyle`可以是。
@@ -1799,7 +1671,6 @@ AEGP_AddFootageToProject(
  AEGP_FootageH footageH,
  AEGP_ItemH folderH,
  AEGP_ItemH *add_itemPH0);
-
 ```
 
 #### AEGP_SetItemProxyFootage
@@ -1810,7 +1681,6 @@ AEGP_AddFootageToProject(
 AEGP_SetItemProxyFootage(
  AEGP_FootageH footageH,
  AEGP_ItemH itemH);
-
 ```
 
 #### AEGP_ReplaceItemMainFootage
@@ -1821,7 +1691,6 @@ AEGP_SetItemProxyFootage(
 AEGP_ReplaceItemMainFootage(
  AEGP_FootageH footageH,
  AEGP_ItemH itemH);
-
 ```
 
 #### AEGP_DisposeFootage
@@ -1831,7 +1700,6 @@ AEGP_ReplaceItemMainFootage(
 ```cpp
 AEGP_DisposeFootage(
  AEGP_FootageH footageH);
-
 ```
 
 #### AEGP_GetFootageInterpretation
@@ -1843,10 +1711,10 @@ AEGP_GetFootageInterpretation(
  const AEGP_ItemH itemH,
  A_Boolean proxyB,
  AEGP_FootageInterp *interpP);
-
 ```
 
-如果 proxyB 是`TRUE'，代理脚步的设置就会被检索出来。
+如果 proxyB 是`TRUE`
+，代理脚步的设置就会被检索出来。
 
 #### AEGP_SetFootageInterpretation
 
@@ -1857,7 +1725,6 @@ AEGP_SetFootageInterpreta tion(
  const AEGP_ItemH itemH,
  A_Boolean proxyB,
  const AEGP_FootageInterp *interpP);
-
 ```
 
 如果`proxyB`为`TRUE`，代理镜头的设置将被修改。
@@ -1870,7 +1737,6 @@ AEGP_SetFootageInterpreta tion(
 AEGP_GetFootageLayerKey(
  AEGP_FootageH footageH,
  AEGP_FootageLayerKey* layerKeyP);
-
 ```
 
 #### AEGP_NewPlaceholderFootage
@@ -1886,7 +1752,6 @@ AEGP_NewPlaceholderFootage(
  A_long height,
  const A_Time *durationPT,
  AEGP_FootageH *footagePH);
-
 ```
 
 #### AEGP_NewPlaceholderFootageWithPath
@@ -1905,7 +1770,6 @@ AEGP_NewPlaceholderFootageWithPath(
  A_long heightL,
  const A_Time *durationPT,
  AEGP_FootageH *footagePH);
-
 ```
 
 #### AEGP_NewSolidFootage
@@ -1920,7 +1784,6 @@ AEGP_NewSolidFootage(
  A_long height,
  const AEGP_ColorVal *colorP,
  AEGP_FootageH *footagePH);
-
 ```
 
 #### AEGP_GetSolidFootageColor
@@ -1932,10 +1795,9 @@ AEGP_GetSolidFootageColor(
  AEGP_ItemH itemH,
  A_Boolean proxyB,
  AEGP_ColorVal *colorP);
-
 ```
 
-如果`proxyB'是`TRUE'，将检索代理实体的颜色。
+如果`proxyB`是`TRUE`，将检索代理实体的颜色。
 
 #### AEGP_SetSolidFootageColor
 
@@ -1946,7 +1808,6 @@ AEGP_SetSolidFootageColor(
  AEGP_ItemH itemH,
  A_Boolean proxyB,
  AEGP_ColorVal *colorP);
-
 ```
 
 如果`proxyB`是`TRUE`，代理实体的颜色被设置。
@@ -1961,10 +1822,9 @@ AEGP_SetSolidFootageDimensions(
  A_Boolean proxyB,
  A_long widthL,
  A_long heightL);
-
 ```
 
-如果`proxyB`是`TRUE'，代理实体的尺寸会被修改。如果该项目不是实体，则返回错误。
+如果`proxyB`是`TRUE`，代理实体的尺寸会被修改。如果该项目不是实体，则返回错误。
 
 #### AEGP_GetFootageSoundDataFormat
 
@@ -1974,7 +1834,6 @@ AEGP_SetSolidFootageDimensions(
 AEGP_GetFootageSoundDataFormat(
  AEGP_FootageH footageH,
  AEGP_SoundDataFormat *formatP);
-
 ```
 
 #### AEGP_GetFootageSequenceImportOptions
@@ -1985,7 +1844,6 @@ AEGP_GetFootageSoundDataFormat(
 AEGP_GetFootageSequenceImportOptions(
  AEGP_FootageH footageH,
  AEGP_FileSequenceImportOptions *optionsP);
-
 ```
 
 ### AEGP_FootageInterp Structure
@@ -2000,7 +1858,6 @@ A_short version;
 FIEL_Type type;
 FIEL_Order order;
 A_u_long reserved;
-
 ```
 
 FIEL_Type 是以下之一。
@@ -2020,16 +1877,15 @@ AEGP_AlphaFlag flags;
 A_u_char redCu;
 A_u_char greenCu;
 A_u_char blueCu;
-
 ```
 
-`AEGP_AlphaFlags'是以下的一个或多个，或一起。
+`AEGP_AlphaFlags`是以下的一个或多个，或一起。
 
 - `AEGP_AlphaPremul`
 - `AEGP_AlphaInverted`
 - `AEGP_AlphaIgnore`
 
-如果`AEGP_AlphaPremul'没有被设置，则假定为直线α。`AEGP_AlphaInverted`表示高值透明，而不是低值。
+如果`AEGP_AlphaPremul`没有被设置，则假定为直线α。`AEGP_AlphaInverted`表示高值透明，而不是低值。
 
 #### AEGP_PulldownPhase pd
 
@@ -2054,7 +1910,6 @@ A_u_char blueCu;
 ```cpp
 A_long loops;
 A_long reserved;
-
 ```
 
 #### A_Ratio pix_aspect_ratio
@@ -2108,7 +1963,6 @@ AEGP_LayerSuite "提供合成中的层的信息，以及源和层时间之间的
 AEGP_GetCompNumLayers(
  AEGP_CompH compH,
  A_long *num_layersPL);
-
 ```
 
 #### AEGP_GetCompLayerByIndex
@@ -2120,17 +1974,15 @@ AEGP_GetCompLayerByIndex(
  AEGP_CompH compH,
  A_long layer_indexL,
  AEGP_LayerH *layerPH);
-
 ```
 
 #### AEGP_GetActiveLayer
 
-获取活动层。如果图层或效果控制调色板是活动的，活动图层是与窗口中最前面的标签相关的。如果一个合成或时间线窗口处于活动状态，活动层是选定的层(如果只有一个被选定；否则返回`NULL')。
+获取活动层。如果图层或效果控制调色板是活动的，活动图层是与窗口中最前面的标签相关的。如果一个合成或时间线窗口处于活动状态，活动层是选定的层(如果只有一个被选定；否则返回`NULL`)。
 
 ```cpp
 AEGP_GetActiveLayer(
  AEGP_LayerH *layerPH);
-
 ```
 
 #### AEGP_GetLayerIndex
@@ -2141,7 +1993,6 @@ AEGP_GetActiveLayer(
 AEGP_GetLayerIndex(
  AEGP_LayerH layerH,
  A_long *layer_indexPL);
-
 ```
 
 #### AEGP_GetLayerSourceItem
@@ -2152,7 +2003,6 @@ AEGP_GetLayerIndex(
 AEGP_GetLayerSourceItem(
  AEGP_LayerH layerH,
  AEGP_ItemH *source_itemPH);
-
 ```
 
 #### AEGP_GetLayerSourceItemID
@@ -2163,7 +2013,6 @@ AEGP_GetLayerSourceItem(
 AEGP_GetLayerSourceItemID(
  AEGP_LayerH layerH,
  A_long *source_idPL);
-
 ```
 
 #### AEGP_GetLayerParentComp
@@ -2174,7 +2023,6 @@ AEGP_GetLayerSourceItemID(
 AEGP_GetLayerParentComp(
  AEGP_LayerH layerH,
  AEGP_CompH *compPH);
-
 ```
 
 #### AEGP_GetLayerName
@@ -2187,7 +2035,6 @@ AEGP_GetLayerName(
  AEGP_LayerH layerH,
  AEGP_MemHandle *utf_layer_namePH0,
  AEGP_MemHandle *utf_source_namePH0);
-
 ```
 
 #### AEGP_GetLayerQuality
@@ -2198,7 +2045,6 @@ AEGP_GetLayerName(
 AEGP_GetLayerQuality(
  AEGP_LayerH layerH,
  AEGP_LayerQuality *qualityP);
-
 ```
 
 图层质量是以下标志之一。
@@ -2216,7 +2062,6 @@ AEGP_GetLayerQuality(
 AEGP_SetLayerQuality(
  AEGP_LayerH layerH,
  AEGP_LayerQuality quality);
-
 ```
 
 #### AEGP_GetLayerFlags
@@ -2227,7 +2072,6 @@ AEGP_SetLayerQuality(
 AEGP_GetLayerFlags(
  AEGP_LayerH layerH,
  AEGP_LayerFlags *layer_flagsP);
-
 ```
 
 - `AEGP_LayerFlag_NONE`
@@ -2264,7 +2108,6 @@ AEGP_SetLayerFlag(
  AEGP_LayerH layerH,
  AEGP_LayerFlags single_flag,
  A_Boolean valueB);
-
 ```
 
 #### AEGP_IsLayerVideoReallyOn
@@ -2275,7 +2118,6 @@ AEGP_SetLayerFlag(
 AEGP_IsLayerVideoReallyOn(
  AEGP_LayerH layerH,
  A_Boolean *onPB);
-
 ```
 
 #### AEGP_IsLayerAudioReallyOn
@@ -2286,7 +2128,6 @@ AEGP_IsLayerVideoReallyOn(
 AEGP_IsLayerAudioReallyOn(
  AEGP_LayerH layerH,
  A_Boolean *onPB);
-
 ```
 
 #### AEGP_GetLayerCurrentTime
@@ -2299,7 +2140,6 @@ AEGP_GetLayerCurrentTime(
  AEGP_LayerH layerH,
  AEGP_LTimeMode time_mode,
  A_Time *curr_timePT);
-
 ```
 
 #### AEGP_GetLayerInPoint
@@ -2312,7 +2152,6 @@ AEGP_GetLayerInPoint(
  AEGP_LayerH layerH,
  AEGP_LTimeMode time_mode,
  A_Time *in_pointPT);
-
 ```
 
 #### AEGP_GetLayerDuration
@@ -2324,7 +2163,6 @@ AEGP_GetLayerDuration(
  AEGP_LayerH layerH,
  AEGP_LTimeMode time_mode,
  A_Time *durationPT);
-
 ```
 
 #### AEGP_SetLayerInPointAndDuration
@@ -2337,7 +2175,6 @@ AEGP_SetLayerInPointAndDuration(
  AEGP_LTimeMode time_mode,
  const A_Time *in_pointPT,
  const A_Time *durationPT);
-
 ```
 
 #### AEGP_GetLayerOffset
@@ -2348,7 +2185,6 @@ AEGP_SetLayerInPointAndDuration(
 AEGP_GetLayerOffset(
  AEGP_LayerH layerH,
  A_Time *offsetPT);
-
 ```
 
 #### AEGP_SetLayerOffset
@@ -2359,7 +2195,6 @@ AEGP_GetLayerOffset(
 AEGP_SetLayerOffset(
  AEGP_LayerH layerH,
  A_Time *offsetPT);
-
 ```
 
 #### AEGP_GetLayerStretch
@@ -2370,7 +2205,6 @@ AEGP_SetLayerOffset(
 AEGP_GetLayerStretch(
  AEGP_LayerH layerH,
  A_Ratio *stretchPRt);
-
 ```
 
 #### AEGP_SetLayerStretch
@@ -2381,7 +2215,6 @@ AEGP_GetLayerStretch(
 AEGP_SetLayerStretch(
  AEGP_LayerH layerH,
  A_Ratio *stretchPRt);
-
 ```
 
 #### AEGP_GetLayerTransferMode
@@ -2392,7 +2225,6 @@ AEGP_SetLayerStretch(
 AEGP_GetLayerTransferMode(
  AEGP_LayerH layerH,
  AEGP_LayerTransferMode *modeP);
-
 ```
 
 #### AEGP_SetLayerTransferMode
@@ -2403,7 +2235,6 @@ AEGP_GetLayerTransferMode(
 AEGPSetLayerTransferMode(
  AEGP_LayerH layerH,
  AEGP_LayerTransferMode *modeP);
-
 ```
 
 从 6.5 版本开始，当你把一个图层变成轨道哑光时，它前面的图层将被禁用。
@@ -2418,7 +2249,6 @@ AEGP_IsAddLayerValid(
  AEGP_ItemH item_to_addH,
  AEGP_CompH into_compH,
  A_Boolean *validPB);
-
 ```
 
 #### AEGP_AddLayer
@@ -2430,7 +2260,6 @@ AEGP_AddLayer(
  AEGP_ItemH item_to_addH,
  AEGP_CompH into_compH,
  A_Boolean *added_layerPH0);
-
 ```
 
 #### AEGP_ReorderLayer
@@ -2441,7 +2270,6 @@ AEGP_AddLayer(
 AEGP_ReorderLayer(
  AEGP_LayerH layerH,
  A_long layer_indexL);
-
 ```
 
 要将一个图层添加到合成的最后，要使用`layer_indexL = AEGP_REORDER_LAYER_TO_END`。
@@ -2455,7 +2283,6 @@ AEGP_GetLayerMaskedBounds(
  AEGP_LayerH layerH,
  const A_Time *comp_timePT,
  A_FloatRect *boundsPR);
-
 ```
 
 #### AEGP_GetLayerObjectType
@@ -2466,7 +2293,6 @@ AEGP_GetLayerMaskedBounds(
 AEGP_GetLayerObjectType(
  AEGP_LayerH layerH,
  AEGP_ObjectType *object_type);
-
 ```
 
 - `AEGP_ObjectType_AV`
@@ -2482,7 +2308,6 @@ AEGP_GetLayerObjectType(
 AEGP_IsLayer3D(
  AEGP_LayerH layerH,
  A_Boolean *is_3DPB);
-
 ```
 
 #### AEGP_IsLayer2D
@@ -2493,7 +2318,6 @@ AEGP_IsLayer3D(
 AEGP_IsLayer2D(
  AEGP_LayerH layerH,
  A_Boolean *is_2DPB);
-
 ```
 
 #### AEGP_IsVideoActive
@@ -2506,7 +2330,6 @@ AEGP_IsVideoActive(
  AEGP_LTimeMode time_mode,
  A_Time *comp_timePT,
  A_Boolean *is_activePB);
-
 ```
 
 #### AEGP_IsLayerUsedAsTrackMatte
@@ -2518,7 +2341,6 @@ AEGP_IsLayerUsedAsTrackMatte(
  AEGP_LayerH layerH,
  A_Boolean fill_must_be_activeB,
  A_Boolean *is_track_mattePB);
-
 ```
 
 #### AEGP_DoesLayerHaveTrackMatte
@@ -2529,7 +2351,6 @@ AEGP_IsLayerUsedAsTrackMatte(
 AEGP_DoesLayerHaveTrackMatte(
  AEGP_LayerH layerH,
  A_Boolean *has_track_mattePB);
-
 ```
 
 #### AEGP_ConvertCompToLayerTime
@@ -2541,7 +2362,6 @@ AEGP_ConvertCompToLayerTime(
  AEGP_LayerH layerH,
  const A_Time *comp_timeP,
  A_Time *layer_timeP);
-
 ```
 
 #### AEGP_ConvertLayerToCompTime
@@ -2553,7 +2373,6 @@ AEGP_ConvertLayerToCompTime(
  AEGP_LayerH layerH,
  const A_Time *layer_timePT,
  A_Time *comp_timePT);
-
 ```
 
 #### AEGP_GetLayerDancingRandValue
@@ -2565,7 +2384,6 @@ AEGP_GetLayerDancingRandValue(
  AEGP_LayerH layerH,
  const A_Time *comp_timePT,
  A_long *rand_valuePL);
-
 ```
 
 #### AEGP_GetLayerID
@@ -2576,7 +2394,6 @@ AEGP_GetLayerDancingRandValue(
 AEGP_GetLayerID(
  AEGP_LayerH layerH,
  AEGP_LayerIDVal *id_valP);
-
 ```
 
 #### AEGP_GetLayerToWorldXform
@@ -2588,7 +2405,6 @@ AEGP_GetLayerToWorldXform(
  AEGP_LayerH aegp_layerH,
  const A_Time *comp_timeP,
  A_Matrix4 *transform);
-
 ```
 
 #### AEGP_GetLayerToWorldXformFromView
@@ -2602,7 +2418,6 @@ AEGP_GetLayerToWorldXformFromView(
  const A_Time *view_timeP,
  const A_Time *comp_timeP,
  A_Matrix4 *transform);
-
 ```
 
 #### AEGP_SetLayerName
@@ -2613,7 +2428,6 @@ AEGP_GetLayerToWorldXformFromView(
 AEGP_SetLayerName(
  AEGP_LayerH aegp_layerH,
  const A_UTF16Char *new_nameZ);
-
 ```
 
 #### AEGP_GetLayerParent
@@ -2624,7 +2438,6 @@ AEGP_SetLayerName(
 AEGP_GetLayerParent(
  AEGP_LayerH layerH,
  AEGP_LayerH *parent_layerPH);
-
 ```
 
 #### AEGP_SetLayerParent
@@ -2635,7 +2448,6 @@ AEGP_GetLayerParent(
 AEGP_SetLayerParent(
  AEGP_LayerH layerH,
  const AEGP_LayerH parent_layerH);
-
 ```
 
 #### AEGP_DeleteLayer
@@ -2645,7 +2457,6 @@ AEGP_SetLayerParent(
 ```cpp
 AEGP_DeleteLayer(
  AEGP_LayerH layerH);
-
 ```
 
 #### AEGP_DuplicateLayer
@@ -2656,7 +2467,6 @@ AEGP_DeleteLayer(
 AEGP_DuplicateLayer(
  AEGP_LayerH orig_layerH,
  AEGP_LayerH *dupe_layerPH);
-
 ```
 
 #### AEGP_GetLayerFromLayerID
@@ -2668,29 +2478,26 @@ AEGP_GetLayerFromLayerID(
  AEGP_CompH parent_compH,
  AEGP_LayerIDVal id,
  AEGP_LayerH *layerPH);
-
 ```
 
 #### AEGP_GetLayerLabel
 
-获取一个图层的`AEGP_LabelID'。
+获取一个图层的`AEGP_LabelID`。
 
 ```cpp
 AEGP_GetLayerLabel(
  AEGP_LayerH layerH,
  AEGP_LabelID *labelP);
-
 ```
 
 #### AEGP_SetLayerLabel
 
-设置一个图层的`AEGP_LabelID'。可撤销。
+设置一个图层的`AEGP_LabelID`。可撤销。
 
 ```cpp
 AEGP_SetLayerLabel(
  AEGP_LayerH layerH,
  AEGP_LabelID label);
-
 ```
 
 #### AEGP_GetLayerSamplingQuality
@@ -2701,7 +2508,6 @@ CC 中的新功能。获取一个图层的采样质量。
 AEGP_GetLayerSamplingQuality(
  AEGP_LayerH layerH,
  AEGP_LayerSamplingQuality *label);
-
 ```
 
 图层采样质量是以下标志之一。
@@ -2714,14 +2520,13 @@ AEGP_GetLayerSamplingQuality(
 在 CC 中新出现。设置一个图层的采样质量(见上面的标志值)。
 该选项在图层上被明确设置，与图层质量无关。
 如果你想强制开启它，你必须用`AEGP_SetLayerQuality`将图层质量设置为`AEGP_LayerQual_BEST`。
-否则，只要图层质量被设置为`AEGP_LayerQual_BEST'，它就只会使用指定的图层采样质量。
+否则，只要图层质量被设置为`AEGP_LayerQual_BEST`，它就只会使用指定的图层采样质量。
 可撤销。
 
 ```cpp
 AEGP_SetLayerSamplingQuality(
  AEGP_LayerH layerH,
  AEGP_LayerSamplingQuality label);
-
 ```
 
 ## Layer Creation Notes
@@ -2734,7 +2539,6 @@ AEGP_SetLayerSamplingQuality(
 
 ```cpp
 offset = compIn - stretch * layerIn;
-
 ```
 
 ## Communication With A Layer’s Effects
@@ -2757,7 +2561,6 @@ offset = compIn - stretch * layerIn;
 AEGP_GetLayerNumEffects(
  AEGP_LayerH layerH,
  A_long *num_effectsPL);
-
 ```
 
 #### AEGP_GetLayerEffectByIndex
@@ -2770,18 +2573,16 @@ AEGP_GetLayerEffectByIndex(
  AEGP_LayerH layerH,
  AEGP_EffectIndex effect_indexL,
  AEGP_EffectRefH *effectPH);
-
 ```
 
 #### AEGP_GetInstalledKeyFromLayerEffect
 
-给定一个`AEGP_EffectRefH'，检索其相关的`AEGP_InstalledEffectKey'。
+给定一个`AEGP_EffectRefH`，检索其相关的`AEGP_InstalledEffectKey`。
 
 ```cpp
 AEGP_GetInstalledKeyFromLayerEffect(
  AEGP_EffectRefH effect_refH,
  AEGP_InstalledEffectKey *installed_keyP);
-
 ```
 
 #### AEGP_GetEffectParamUnionByIndex
@@ -2798,7 +2599,6 @@ AEGP_GetEffectParamUnionByIndex(
  PF_ParamIndex param_index,
  PF_ParamType *param_typeP
  PF_ParamDefUnion *uP0);
-
 ```
 
 #### AEGP_GetEffectFlags
@@ -2809,7 +2609,6 @@ AEGP_GetEffectParamUnionByIndex(
 AEGP_GetEffectFlags(
  AEGP_EffectRefH effect_refH,
  AEGP_EffectFlags *effect_flagsP);
-
 ```
 
 标志将是以下内容的合成。
@@ -2829,7 +2628,6 @@ AEGP_SetEffectFlags(
  AEGP_EffectRefH effect_refH,
  AEGP_EffectFlags mask,
  AEGP_EffectFlags effect_flags);
-
 ```
 
 #### AEGP_ReorderEffect
@@ -2840,7 +2638,6 @@ AEGP_SetEffectFlags(
 AEGP_ReorderEffect(
  AEGP_EffectRefH effect_refH,
  A_long effect_indexL);
-
 ```
 
 #### AEGP_EffectCallGeneric
@@ -2855,7 +2652,6 @@ AEGP_EffectCallGeneric(
  const A_Time *timePT,
  PF_Cmd effect_cmd,
  void *extraPV);
-
 ```
 
 #### AEGP_DisposeEffect
@@ -2865,7 +2661,6 @@ AEGP_EffectCallGeneric(
 ```cpp
 AEGP_DisposeEffect(
  AEGP_EffectRefH effectH);
-
 ```
 
 #### AEGP_ApplyEffect
@@ -2878,7 +2673,6 @@ AEGP_ApplyEffect(
  AEGP_LayerH layerH,
  AEGP_InstalledEffectKey installed_key,
  AEGP_EffectRefH *effect_refPH);
-
 ```
 
 #### AEGP_DeleteLayerEffect
@@ -2888,7 +2682,6 @@ AEGP_ApplyEffect(
 ```cpp
 AEGP_DeleteLayerEffect(
  AEGP_EffectRefH effect_refH);
-
 ```
 
 #### AEGP_GetNumInstalledEffects
@@ -2898,7 +2691,6 @@ AEGP_DeleteLayerEffect(
 ```cpp
 AEGP_GetNumInstalledEffects(
  A_long *num_installed_effectsPL);
-
 ```
 
 #### AEGP_GetNextInstalledEffect
@@ -2909,7 +2701,6 @@ AEGP_GetNumInstalledEffects(
 AEGP_GetNextInstalledEffect(
  AEGP_InstalledEffectKey key,
  AEGP_InstalledEffectKey *next_keyPH);
-
 ```
 
 #### AEGP_GetEffectName
@@ -2920,7 +2711,6 @@ AEGP_GetNextInstalledEffect(
 AEGP_GetEffectName(
  AEGP_InstalledEffectKey installed_key,
  A_char *nameZ);
-
 ```
 
 注意：使用`AEGP_SetStreamName`来改变一个效果的显示名称。
@@ -2933,7 +2723,6 @@ AEGP_GetEffectName(
 AEGP_GetEffectMatchName(
  AEGP_InstalledEffectKey installed_key,
  A_char *match_nameZ);
-
 ```
 
 匹配名称为 7 位 ASCII。UI 名称是当前应用程序运行时的编码；例如，对于 Windows 上的大多数语言，ISO 8859-1。
@@ -2946,7 +2735,6 @@ AEGP_GetEffectMatchName(
 AEGP_GetEffectCategory(
  AEGP_InstalledEffectKey installed_key,
  A_char *categoryZ);
-
 ```
 
 #### AEGP_DuplicateEffect
@@ -2957,7 +2745,6 @@ AEGP_GetEffectCategory(
 AEGP_DuplicateEffect(
  AEGP_EffectRefH orig_effect_refH,
  AEGP_EffectRefH *dupe_refPH);
-
 ```
 
 #### AEGP_NumEffectMask
@@ -2968,7 +2755,6 @@ CC2014 中的新内容。这个效果上有多少个遮罩？
 AEGP_NumEffectMask(
  AEGP_EffectRefH effect_refH,
  A_u_long *num_masksPL);
-
 ```
 
 #### AEGP_GetEffectMaskID
@@ -2980,7 +2766,6 @@ AEGP_GetEffectMaskID(
  AEGP_EffectRefH effect_refH,
  A_u_long mask_indexL,
  AEGP_MaskIDVal *id_valP);
-
 ```
 
 #### AEGP_AddEffectMask
@@ -2994,7 +2779,6 @@ AEGP_AddEffectMask(
  AEGP_EffectRefH effect_refH,
  AEGP_MaskIDVal id_val,
  AEGP_StreamRefH streamPH0);
-
 ```
 
 #### AEGP_RemoveEffectMask
@@ -3006,7 +2790,6 @@ CC 2014 的新功能。移除一个效果遮罩。
 AEGP_RemoveEffectMask(
  AEGP_EffectRefH effect_refH,
  AEGP_MaskIDVal id_val);
-
 ```
 
 #### AEGP_SetEffectMask
@@ -3022,7 +2805,6 @@ AEGP_SetEffectMask(
  A_u_long mask_indexL,
  AEGP_MaskIDVal id_val,
  AEGP_StreamRefH *streamPH0);
-
 ```
 
 ## Exploiting Effect UI Behavior To Look Cool
@@ -3041,7 +2823,7 @@ AEGP_SetEffectMask(
 
 然后调用`AEGP_GetNewParentStreamRef()`--瞧，你的`AEGP_StreamRef`先生!
 
-如果你获得了对效果流的引用，在你完成对流的处理之前，不要处置`AEGP_EffectRefH`，否则你会使 After Effects 的检出机制不平衡。还要记住，AEGP_StreamRefHs 是不透明的；而`AEGP_StreamValue2's 则不是(完全)。
+如果你获得了对效果流的引用，在你完成对流的处理之前，不要处置`AEGP_EffectRefH`，否则你会使 After Effects 的检出机制不平衡。还要记住，AEGP_StreamRefHs 是不透明的；而`AEGP_StreamValue2`s 则不是(完全)。
 
 要获得一个效果的实例名称(由用户重新命名)，需要获得该效果本身的 AEGP_StreamRef，然后调用`AEGP_GetStreamName`。
 
@@ -3077,7 +2859,6 @@ typedef union {
  AEGP_MaskOutlineValH mask;
  AEGP_TextDocumentH text_documentH;
 } AEGP_StreamVal2;
-
 ```
 
 ## Layers
@@ -3113,7 +2894,6 @@ AEGP_IsStreamLegal(
  AEGP_LayerH layerH,
  AEGP_LayerStream which_stream,
  A_Boolean* is_legalP);
-
 ```
 
 #### AEGP_CanVaryOverTime
@@ -3124,7 +2904,6 @@ AEGP_IsStreamLegal(
 AEGP_CanVaryOverTime(
  AEGP_StreamRefH streamH,
  A_Boolean *can_varyPB);
-
 ```
 
 #### AEGP_GetValidInterpolations
@@ -3135,7 +2914,6 @@ AEGP_CanVaryOverTime(
 AEGP_GetValidInterpolations(
  AEGP_StreamRefH streamH,
  AEGP_KeyInterpolationMask *valid_interpP);
-
 ```
 
 `AEGP_KeyInterpolationMask`将是以下的合成。
@@ -3158,7 +2936,6 @@ AEGP_GetNewLayerStream(
  AEGP_LayerH layerH,
  AEGP_LayerStream which_stream,
  AEGP_StreamRefH *streamPH);
-
 ```
 
 - `AEGP_LayerStream_ANCHORPOINT`,
@@ -3229,7 +3006,7 @@ AEGP_GetNewLayerStream(
 - `AEGP_LayerStream_PLANE_CURVATURE`,
 - `AEGP_LayerStream_PLANE_SUBDIVISION`,
 
-只对`LIGHT'和`AV'有效。
+只对`LIGHT`和`AV`有效。
 
 - `AEGP_LayerStream_CASTS_SHADOWS`,
 - `AEGP_LayerStream_SOURCE_TEXT`
@@ -3244,7 +3021,6 @@ enum {
 };
 
 typedef A_u_long AEGP_LightFalloffType;
-
 ```
 
 #### AEGP_GetEffectNumParamStreams
@@ -3255,7 +3031,6 @@ typedef A_u_long AEGP_LightFalloffType;
 AEGP_GetEffectNumParamStreams(
  AEGP_EffectRefH effect_refH,
  A_long *num_parmsPL);
-
 ```
 
 #### AEGP_GetNewEffectStreamByIndex
@@ -3268,7 +3043,6 @@ AEGP_GetNewEffectStreamByIndex(
  AEGP_EffectRefH effect_refH,
  PF_ParamIndex param_index,
  AEGP_StreamRefH *streamPH);
-
 ```
 
 #### AEGP_GetNewMaskStream
@@ -3291,7 +3065,6 @@ AEGP_GetNewMaskStream(
  AEGP_MaskRefH mask_refH,
  AEGP_MaskStream which_stream,
  AEGP_StreamRefH *mask_strmPH);
-
 ```
 
 #### AEGP_DisposeStream
@@ -3301,7 +3074,6 @@ AEGP_GetNewMaskStream(
 ```cpp
 AEGP_DisposeStream(
  AEGP_StreamRefH streamH);
-
 ```
 
 #### AEGP_GetNewMaskOpacity
@@ -3314,7 +3086,6 @@ AEGP_GetNewMaskOpacity(
  AEGP_MaskH maskH,
  PF_ParamIndex param_index,
  AEGP_StreamRefH *mask_opacity_streamPH);
-
 ```
 
 #### AEGP_GetStreamName
@@ -3328,10 +3099,9 @@ AEGP_GetStreamName(
  AEGP_StreamRefH streamH,
  A_Boolean force_englishB,
  AEGP_MemHandle *utf_stream_namePH);
-
 ```
 
-注意：如果`force_englishB'为 true，默认的名字将覆盖任何已经完成的流重命名(无论是程序上的，还是用户的)。
+注意：如果`force_englishB`为 true，默认的名字将覆盖任何已经完成的流重命名(无论是程序上的，还是用户的)。
 
 #### AEGP_GetStreamUnitsText
 
@@ -3342,7 +3112,6 @@ AEGP_GetStreamUnitsText(
  AEGP_StreamRefH streamH,
  A_Boolean force_englishB,
  A_char *unitsZ);
-
 ```
 
 #### AEGP_GetStreamProperties
@@ -3360,7 +3129,6 @@ AEGP_GetStreamProperties(
  AEGP_StreamFlags *flagsP,
  A_FpLong *minP0,
  A_FpLong *maxP0);
-
 ```
 
 #### AEGP_IsStreamTimevarying
@@ -3371,7 +3139,6 @@ AEGP_GetStreamProperties(
 AEGP_IsStreamTimevarying(
  AEGP_StreamRefH streamH,
  A_Boolean *is_timevaryPB);
-
 ```
 
 #### AEGP_GetStreamType
@@ -3382,7 +3149,6 @@ AEGP_IsStreamTimevarying(
 AEGP_GetStreamType(
  AEGP_StreamRefH streamH,
  AEGP_StreamType *stream_typeP);
-
 ```
 
 - `AEGP_StreamType_NO_DATA`,
@@ -3414,7 +3180,6 @@ AEGP_GetNewStreamValue(
  const A_Time *timePT,
  A_Boolean pre_exprB,
  AEGP_StreamValue2 *valueP);
-
 ```
 
 #### AEGP_DisposeStreamValue
@@ -3424,7 +3189,6 @@ AEGP_GetNewStreamValue(
 ```cpp
 AEGP_DisposeStreamValue(
  AEGP_StreamValue2 *valueP);
-
 ```
 
 #### AEGP_SetStreamValue
@@ -3436,7 +3200,6 @@ AEGP_SetStreamValue(
  AEGP_PluginID aegp_plugin_id,
  AEGP_StreamRefH streamH,
  AEGP_StreamValue2 *valueP);
-
 ```
 
 #### AEGP_GetLayerStreamValue
@@ -3453,7 +3216,6 @@ AEGP_GetLayerStreamValue(
  A_Boolean pre_expB,
  AEGP_StreamVal *stream_valP,
  AEGP_StreamType *strm_typeP0);
-
 ```
 
 #### AEGP_GetExpressionState
@@ -3465,19 +3227,17 @@ AEGP_GetExpressionState(
  AEGP_PluginID aegp_plugin_id,
  AEGP_StreamRefH streamH,
  A_Boolean *enabledPB);
-
 ```
 
 #### AEGP_SetExpressionState
 
-在给定的`AEGP_StreamRefH'上启用和禁用表达式。
+在给定的`AEGP_StreamRefH`上启用和禁用表达式。
 
 ```cpp
 AEGP_SetExpressionState(
  AEGP_PluginID aegp_plugin_id,
  AEGP_StreamRefH streamH,
  A_Boolean enabledB);
-
 ```
 
 #### AEGP_GetExpression
@@ -3489,7 +3249,6 @@ AEGP_GetExpression(
  AEGP_PluginID aegp_plugin_id,
  AEGP_StreamRefH streamH,
  AEGP_MemHandle *unicodeHZ);
-
 ```
 
 #### AEGP_SetExpression
@@ -3501,7 +3260,6 @@ AEGP_SetExpression(
  AEGP_PluginID aegp_plugin_id,
  AEGP_StreamRefH streamH,
  const A_UTF16Char* expressionP);
-
 ```
 
 #### AEGP_DuplicateStreamRef
@@ -3513,7 +3271,6 @@ AEGP_DuplicateStreamRef(
  AEGP_PluginID aegp_plugin_id,
  AEGP_StreamRefH streamH,
  AEGP_StreamRefH *dup_streamPH);
-
 ```
 
 ## Dynamic Streams
@@ -3535,7 +3292,6 @@ AEGP_GetNewStreamRefForLayer(
  AEGP_PluginID aegp_plugin_id,
  AEGP_LayerH layerH,
  AEGP_StreamRefH *streamPH);
-
 ```
 
 #### AEGP_GetNewStreamRefForMask
@@ -3547,30 +3303,27 @@ AEGP_GetNewStreamRefForMask(
  AEGP_PluginID aegp_plugin_id,
  AEGP_MaskRefH maskH,
  AEGP_StreamRefH *streamPH);
-
 ```
 
 #### AEGP_GetStreamDepth
 
-检索与给定的`AEGP_StreamRefH'相关的子流的数量。
+检索与给定的`AEGP_StreamRefH`相关的子流的数量。
 初始层的深度为 0。
 
 ```cpp
 AEGP_GetStreamDepth(
  AEGP_StreamRefH streamH,
  A_long *depthPL);
-
 ```
 
 #### AEGP_GetStreamGroupingType
 
-检索给定的`AEGP_StreamRefH'的分组类型。
+检索给定的`AEGP_StreamRefH`的分组类型。
 
 ```cpp
 AEGP_GetStreamGroupingType(
  AEGP_StreamRefH streamH,
  AEGP_StreamGroupingType *group_typeP);
-
 ```
 
 AEGP_StreamGroupingType 将是以下之一。
@@ -3582,13 +3335,12 @@ AEGP_StreamGroupingType 将是以下之一。
 
 #### AEGP_GetNumStreamsInGroup
 
-检索与给定的`AEGP_StreamRefH'相关的流的数量。 如果用类型为`AEGP_StreamGroupingType_LEAF`的`AEGP_StreamRefH`调用此函数将返回一个错误。
+检索与给定的`AEGP_StreamRefH`相关的流的数量。 如果用类型为`AEGP_StreamGroupingType_LEAF`的`AEGP_StreamRefH`调用此函数将返回一个错误。
 
 ```cpp
 AEGP_GetNumStreamsInGroup(
  AEGP_StreamRefH streamH,
  A_long *num_streamsPL);
-
 ```
 
 #### AEGP_GetDynamicStreamFlags
@@ -3599,7 +3351,6 @@ AEGP_GetNumStreamsInGroup(
 AEGP_GetDynamicStreamFlags(
  AEGP_StreamRefH streamH,
  AEGP_DynStreamFlags *flagsP);
-
 ```
 
 `AEGP_DynStreamFlags`将是以下之一：\* `AEGP_DynStreamFlag_ACTIVE_EYEBALL`意味着流可用于读写。
@@ -3624,7 +3375,6 @@ AEGP_SetDynamicStreamFlag(
  AEGP_DynStreamFlags one_flag,
  A_Boolean undoableB,
  A_Boolean setB);
-
 ```
 
 这个调用可以通过设置和清除`AEGP_DynStreamFlag_HIDDEN`来动态显示或隐藏参数。
@@ -3640,12 +3390,11 @@ AEGP_GetNewStreamRefByIndex(
  AEGP_StreamRefH parent_groupH,
  A_long indexL,
  AEGP_StreamRefH *streamPH);
-
 ```
 
 #### AEGP_GetNewStreamRefByMatchname
 
-从给定的`AEGP_StreamRefH'中按匹配名称检索一个子流。只对`AEGP_StreamGroupingType_NAMED_GROUP`合法。
+从给定的`AEGP_StreamRefH`中按匹配名称检索一个子流。只对`AEGP_StreamGroupingType_NAMED_GROUP`合法。
 
 ```cpp
 AEGP_GetNewStreamRefByMatchname(
@@ -3653,7 +3402,6 @@ AEGP_GetNewStreamRefByMatchname(
  AEGP_StreamRefH parent_groupH,
  const A_char *match_nameZ,
  AEGP_StreamRefH *streamPH);
-
 ```
 
 这里有一些方便的流的名称，可以检索到它们的引用。
@@ -3684,22 +3432,20 @@ AEGP_GetNewStreamRefByMatchname(
 ```cpp
 AEGP_DeleteStream(
  AEGP_StreamRefH streamH);
-
 ```
 
-注意：从 6.5 开始，如果一个流被删除，而它或任何子流被选中，当前的合成选择将变成`NULL'。
+注意：从 6.5 开始，如果一个流被删除，而它或任何子流被选中，当前的合成选择将变成`NULL`。
 
 #### AEGP_ReorderStream
 
 设置指定的`AEGP_StreamRefH`的新索引。可撤销。
 只对`AEGP_StreamGroupingType_INDEXED_GROUP`的子流有效。
-`AEGP_StreamRefH'被更新以引用新排序的流。
+`AEGP_StreamRefH`被更新以引用新排序的流。
 
 ```cpp
 AEGP_ReorderStream(
  AEGP_StreamRefH streamH
  A_long new_indexL);
-
 ```
 
 #### AEGP_DuplicateStream
@@ -3713,19 +3459,17 @@ AEGP_DuplicateStream(
  AEGP_PluginID aegp_plugin_id,
  AEGP_StreamRefH streamH,
  A_long *new_indexPL0);
-
 ```
 
 #### AEGP_SetStreamName
 
 设置给定的`AEGP_StreamRefH`的名称。nameZ 指向一个空尾的 UTF-16 字符串，可撤销。
-只对`AEGP_StreamGroupingType_INDEXED_GROUP'的子集有效。 注意：如果你在 force_englishB 设置为 `TRUE`的情况下检索名称，你将得到流的典型的、未改变的名称。
+只对`AEGP_StreamGroupingType_INDEXED_GROUP`的子集有效。 注意：如果你在 force_englishB 设置为`TRUE`的情况下检索名称，你将得到流的典型的、未改变的名称。
 
 ```cpp
 AEGP_SetStreamName(
  AEGP_StreamRefH streamH,
  const A_UTF16Char *nameZ);
-
 ```
 
 注意：在一个效果流的组上使用这个功能来改变效果的显示名称。
@@ -3739,7 +3483,6 @@ AEGP_CanAddStream(
  AEGP_StreamRefH group_streamH,
  const A_char *match_nameZ,
  A_Boolean *can_addPB);
-
 ```
 
 #### AEGP_AddStream
@@ -3752,7 +3495,6 @@ AEGP_AddStream(
  AEGP_StreamRefH indxd_grp_streamH,
  const A_char *match_nameZ,
  AEGP_StreamRefH *streamPH0);
-
 ```
 
 #### AEGP_GetMatchName
@@ -3765,31 +3507,28 @@ AEGP_AddStream(
 AEGP_GetMatchName(
  AEGP_StreamRefH streamH,
  A_char *nameZ);
-
 ```
 
 #### AEGP_GetNewParentStreamRef
 
-检索指定的`AEGP_StreamRefH'的父类的`AEGP_StreamRefH'。
+检索指定的`AEGP_StreamRefH`的父类的`AEGP_StreamRefH`。
 
 ```cpp
 AEGP_GetNewParentStreamRef(
  AEGP_PluginID plugin_id,
  AEGP_StreamRefH streamH,
  AEGP_StreamRefH *parentPH);
-
 ```
 
 #### AEGP_GetStreamIsModified
 
-返回指定的`AEGP_StreamRefH'是否被修改。
+返回指定的`AEGP_StreamRefH`是否被修改。
 注意：同样的结果可以通过 After Effect 用户界面，在选择合成时键入 "UU"。
 
 ```cpp
 AEGP_GetStreamIsModified(
  AEGP_StreamRefH streamH,
  A_Boolean *modifiedPB);
-
 ```
 
 #### AEGP_GetStreamIndexInParent
@@ -3801,10 +3540,9 @@ AEGP_GetStreamIsModified(
 AEGP_GetStreamIndexInParent(
  AEGP_StreamRefH streamH,
  A_long *indexPL);
-
 ```
 
-注意：正如在其他地方提到的，`AEGP_StreamRefHs'不会在不同的函数调用中持久存在。 如果流被重新排序，添加或删除，所有以前检索到的`AEGP_StreamRefHs'可能会被废止。
+注意：正如在其他地方提到的，`AEGP_StreamRefHs`不会在不同的函数调用中持久存在。 如果流被重新排序，添加或删除，所有以前检索到的`AEGP_StreamRefHs`可能会被废止。
 
 #### AEGP_IsSeparationLeader
 
@@ -3818,7 +3556,6 @@ Leader 并不总是分离的，调用`AEGP_AreDimensionsSeparated`来确定它�
 AEGP_IsSeparationLeader(
  AEGP_StreamRefH streamH,
  A_Boolean *leaderPB);
-
 ```
 
 #### AEGP_AreDimensionsSeparated
@@ -3829,7 +3566,6 @@ AEGP_IsSeparationLeader(
 AEGP_AreDimensionsSeparated(
  AEGP_StreamRefH streamH,
  A_Boolean *separatedPB);
-
 ```
 
 #### AEGP_SetDimensionsSeparated
@@ -3840,7 +3576,6 @@ AEGP_AreDimensionsSeparated(
 AEGP_AreDimensionsSeparated(
  AEGP_StreamRefH streamH,
  A_Boolean *separatedPB);
-
 ```
 
 #### AEGP_GetSeparationFollower
@@ -3852,19 +3587,17 @@ AEGP_GetSeparationFollower(
  AEGP_StreamRefH leader_streamH
  A_short dimS,
  AEGP_StreamRefH *follower_streamPH);
-
 ```
 
 #### AEGP_IsSeparationFollower
 
 只对叶子流有效。
-如果这个流是一个一维的属性，代表 Leader 的一个维度，则返回`true'。 你可以使用`AEGP_GetSeparationFollower()`从 Leader 那里检索流。
+如果这个流是一个一维的属性，代表 Leader 的一个维度，则返回`true`。 你可以使用`AEGP_GetSeparationFollower()`从 Leader 那里检索流。
 
 ```cpp
 AEGP_IsSeparationFollower(
  AEGP_StreamRefH streamH
  A_Boolean *followerPB);
-
 ```
 
 #### AEGP_GetSeparationLeader
@@ -3875,7 +3608,6 @@ AEGP_IsSeparationFollower(
 AEGP_GetSeparationLeader(
  AEGP_StreamRefH follower_streamH,
  AEGP_StreamRefH *leader_streamPH);
-
 ```
 
 #### AEGP_GetSeparationDimension
@@ -3886,7 +3618,6 @@ AEGP_GetSeparationLeader(
 AEGP_GetSeparationDimension(
  AEGP_StreamRefH follower_streamH,
  A_short *dimPS);
-
 ```
 
 ## Working With Keyframes
@@ -3898,14 +3629,13 @@ AEGP_GetSeparationDimension(
 #### AEGP_GetStreamNumKFs
 
 检索给定流上的关键帧的数量。
-如果流不支持关键帧，返回`AEGP_NumKF_NO_DATA'。
+如果流不支持关键帧，返回`AEGP_NumKF_NO_DATA`。
 另外，注意没有关键帧的流不一定是恒定的；它可以被表达式所改变。
 
 ```cpp
 AEGP_GetStreamNumKFs(
  AEGP_StreamRefH streamH,
  A_long *num_kfsPL);
-
 ```
 
 #### AEGP_GetKeyframeTime
@@ -3918,7 +3648,6 @@ AEGP_GetKeyframeTime(
  AEGP_KeyframeIndex index,
  AEGP_LTimeMode time_mode,
  A_Time *timePT);
-
 ```
 
 #### AEGP_InsertKeyframe
@@ -3933,7 +3662,6 @@ AEGP_InsertKeyframe(
  AEGP_LTimeMode time_mode,
  const A_Time *timePT,
  AEGP_KeyframeIndex *key_indexP);
-
 ```
 
 #### AEGP_DeleteKeyframe
@@ -3944,7 +3672,6 @@ AEGP_InsertKeyframe(
 AEGP_DeleteKeyframe(
  AEGP_StreamRefH streamH,
  AEGP_KeyframeIndex key_index);
-
 ```
 
 #### AEGP_GetNewKeyframeValue
@@ -3958,7 +3685,6 @@ AEGP_GetNewKeyframeValue(
  AEGP_StreamRefH streamH,
  AEGP_KeyframeIndex key_index,
  AEGP_StreamValue2 *valueP);
-
 ```
 
 #### AEGP_SetKeyframeValue
@@ -3970,7 +3696,6 @@ AEGP_SetKeyframeValue(
  AEGP_StreamRefH streamH,
  AEGP_KeyframeIndex index,
  const AEGP_StreamValue2 *valP);
-
 ```
 
 #### AEGP_GetStreamValueDimensionality
@@ -3981,7 +3706,6 @@ AEGP_SetKeyframeValue(
 AEGP_GetStreamValueDimensionality(
  AEGP_StreamRefH streamH,
  A_short *value_dimPS);
-
 ```
 
 #### AEGP_GetStreamTemporalDimensionality
@@ -3992,12 +3716,11 @@ AEGP_GetStreamValueDimensionality(
 AEGP_GetStreamTemporalDimensionality(
  AEGP_StreamRefH streamH,
  A_short *t_dimPS);
-
 ```
 
 #### AEGP_GetNewKeyframeSpatialTangents
 
-返回代表关键帧时流的切向值的`AEGP_StreamValue2s'。 返回的`AEGP_StreamValue2s'必须使用`AEGP_DisposeStreamValue'进行处理。
+返回代表关键帧时流的切向值的`AEGP_StreamValue2s`。 返回的`AEGP_StreamValue2s`必须使用`AEGP_DisposeStreamValue`进行处理。
 
 ```cpp
 AEGP_GetNewKeyframeSpatialTangents(
@@ -4006,13 +3729,12 @@ AEGP_GetNewKeyframeSpatialTangents(
  AEGP_KeyframeIndex key_index,
  AEGP_StreamValue2 *in_tanP0,
  AEGP_StreamValue2 *out_tanP0);
-
 ```
 
 #### AEGP_SetKeyframeSpatialTangents
 
 指定切向的`AEGP_StreamValue2s`在关键帧时用于流的值。
-用于切入和切出的`AEGP_StreamValue2s'不被After Effects采用，必须用`AEGP_DisposeStreamValue'来处理。
+用于切入和切出的`AEGP_StreamValue2s`不被After Effects采用，必须用`AEGP_DisposeStreamValue`来处理。
 
 ```cpp
 AEGP_SetKeyframeSpatialTangents(
@@ -4020,7 +3742,6 @@ AEGP_SetKeyframeSpatialTangents(
  AEGP_KeyframeIndex key_index,
  const AEGP_StreamValue2 *in_tP0,
  const AEGP_StreamValue2 *out_tP0);
-
 ```
 
 注意：在`AEGP_KeyframeSuite2`和以前的版本中，当调用效果点控制流或锚点时，从这个函数返回的值是错误的。
@@ -4038,7 +3759,6 @@ AEGP_GetKeyframeTemporalEase(
  A_long dimensionL,
  AEGP_KeyframeEase *in_easeP0,
  AEGP_KeyframeEase *out_easeP0);
-
 ```
 
 注意：返回的缓和值必须乘以图层高度，以匹配 After Effects UI 中显示的值。
@@ -4055,7 +3775,6 @@ AEGP_SetKeyframeTemporalEase(
  A_long dimL,
  const AEGP_KeyframeEase *in_P0,
  const AEGP_KeyframeEase *outP0);
-
 ```
 
 #### AEGP_GetKeyframeFlags
@@ -4067,7 +3786,6 @@ AEGP_GetKeyframeFlags(
  AEGP_StreamRefH streamH,
  AEGP_KeyframeIndex key_index,
  AEGP_KeyframeFlags *flagsP);
-
 ```
 
 `*flagsP`将是以下的合成。
@@ -4089,7 +3807,6 @@ AEGP_SetKeyframeFlag(
  AEGP_KeyframeIndex key_index,
  AEGP_KeyframeFlags flag,
  A_Boolean valueB);
-
 ```
 
 #### AEGP_GetKeyframeInterpolation
@@ -4102,7 +3819,6 @@ AEGP_GetKeyframeInterpolation(
  AEGP_KeyframeIndex key_index,
  AEGP_KeyframeInterpolationType *inP0,
  AEGP_KeyframeInterpolationType *outP0);
-
 ```
 
 `AEGP_KeyframeInterpolationType`是以下之一。
@@ -4122,7 +3838,6 @@ AEGP_SetKeyframeInterpolation(
  AEGP_KeyframeIndex key_index,
  AEGP_KeyframeInterpolationType in_interp,
  AEGP_KeyframeInterpolationType out_interp);
-
 ```
 
 #### AEGP_StartAddKeyframes
@@ -4134,7 +3849,6 @@ After Effects 将返回一个分配的不透明的`AEGP_AddKeyframesInfoH`，供
 AEGP_StartAddKeyframes(
  AEGP_StreamRefH streamH,
  AEGP_AddKeyframesInfoH *akPH);
-
 ```
 
 #### AEGP_AddKeyframes
@@ -4148,7 +3862,6 @@ AEGP_AddKeyframes(
  AEGP_LTimeMode time_mode,
  const A_Time *timePT,
  A_long *indexPL);
-
 ```
 
 #### AEGP_SetAddKeyframe
@@ -4160,7 +3873,6 @@ AEGP_SetAddKeyframe(
  AEGP_AddKeyframesInfoH akH,
  A_long indexL,
  const AEGP_StreamValue2 *valueP);
-
 ```
 
 #### AEGP_EndAddKeyframes
@@ -4171,7 +3883,6 @@ AEGP_SetAddKeyframe(
 AEGP_EndAddKeyframes(
  A_Boolean addB,
  AEGP_AddKeyframesInfoH akH);
-
 ```
 
 ## Adding Multiple Keyframes
@@ -4199,7 +3910,6 @@ AEGP_EndAddKeyframes(
 ```cpp
 AEGP_NewMarker(
  AEGP_MarkerValP *markerPP);
-
 ```
 
 #### AEGP_DisposeMarker
@@ -4209,7 +3919,6 @@ AEGP_NewMarker(
 ```cpp
 AEGP_DisposeMarker(
  AEGP_MarkerValP markerP);
-
 ```
 
 #### AEGP_DuplicateMarker
@@ -4220,7 +3929,6 @@ AEGP_DisposeMarker(
 AEGP_DuplicateMarker(
  AEGP_MarkerValP markerP,
  AEGP_MarkerValP *new_markerP);
-
 ```
 
 #### AEGP_SetMarkerFlag
@@ -4232,7 +3940,6 @@ AEGP_SetMarkerFlag(
  AEGP_MarkerValP markerP,
  AEGP_MarkerFlagType flagType,
  A_Boolean valueB);
-
 ```
 
 目前，AEGP_MarkerFlagType 是以下的一种。
@@ -4249,7 +3956,6 @@ AEGP_GetMarkerFlag(
  AEGP_ConstMarkerValP markerP,
  AEGP_MarkerFlagType flagType
  A_Boolean *valueBP);
-
 ```
 
 #### AEGP_GetMarkerString
@@ -4263,7 +3969,6 @@ AEGP_GetMarkerString(
  AEGP_ConstMarkerValP markerP,
  AEGP_MarkerStringType strType,
  AEGP_MemHandle *unicodePH);
-
 ```
 
 #### AEGP_SetMarkerString
@@ -4276,7 +3981,6 @@ AEGP_SetMarkerString(
  AEGP_MarkerStringType strType,
  const A_u_short *unicodeP,
  A_long lengthL);
-
 ```
 
 #### AEGP_CountCuePointParams
@@ -4287,12 +3991,11 @@ AEGP_SetMarkerString(
 AEGP_CountCuePointParams(
  AEGP_ConstMarkerValP markerP,
  A_long *paramsLP);
-
 ```
 
 #### AEGP_GetIndCuePointParam
 
-返回指定索引的提示点参数(必须在`0'和`(提示点参数-1)'之间。
+返回指定索引的提示点参数(必须在`0`和`(提示点参数-1)`之间。
 返回的句柄是 UTF-16，以 NULL 结尾的字符串，必须由调用者使用`AEGP_FreeMemHandle`来处理。
 
 ```cpp
@@ -4302,7 +4005,6 @@ AEGP_GetIndCuePointParam(
  A_long param_indexL,
  AEGP_MemHandle *unicodeKeyPH,
  AEGP_MemHandle *uni_ValuePH);
-
 ```
 
 #### AEGP_SetIndCuePointParam
@@ -4319,7 +4021,6 @@ AEGP_SetIndCuePointParam(
  A_long key_lengthL,
  const A_u_short *unicode_ValueP,
  A_long value_lengthL);
-
 ```
 
 #### AEGP_InsertCuePointParam
@@ -4331,7 +4032,6 @@ AEGP_SetIndCuePointParam(
 AEGP_InsertCuePointParam(
  AEGP_MarkerValP markerP,
  A_long param_idxL);
-
 ```
 
 | `AEGP_DeleteInd` CuePointParam | Deletes the cue point param at the specified index.
@@ -4340,7 +4040,6 @@ AEGP_InsertCuePointParam(
 AEGP_DeleteIndCuePointParam(
  AEGP_MarkerValP markerP,
  A_long param_idxL);
-
 ```
 
 #### AEGP_SetMarkerDuration
@@ -4349,7 +4048,6 @@ AEGP_DeleteIndCuePointParam(
 AEGP_SetMarkerDuration(
  AEGP_MarkerValP markerP,
  const A_Time *durationPT);
-
 ```
 
 #### AEGP_GetMarkerDuration
@@ -4358,7 +4056,6 @@ AEGP_SetMarkerDuration(
 AEGP_GetMarkerDuration(
  AEGP_ConstMarkerValP markerP,
  A_Time *durationPT);
-
 ```
 
 ## Mask Management
@@ -4375,7 +4072,6 @@ AEGP_GetMarkerDuration(
 AEGP_GetLayerNumMasks(
  AEGP_LayerH aegp_layerH,
  A_long *num_masksPL);
-
 ```
 
 #### AEGP_GetLayerMaskByIndex
@@ -4388,7 +4084,6 @@ AEGP_GetLayerMaskByIndex(
  AEGP_LayerH aegp_layerH,
  A_long mask_indexL,
  AEGP_MaskRefH *maskPH);
-
 ```
 
 #### AEGP_DisposeMask
@@ -4398,7 +4093,6 @@ AEGP_GetLayerMaskByIndex(
 ```cpp
 AEGP_DisposeMask(
  AEGP_MaskRefH maskH);
-
 ```
 
 #### AEGP_GetMaskInvert
@@ -4409,7 +4103,6 @@ AEGP_DisposeMask(
 AEGP_GetMaskInvert(
  AEGP_MaskRefH maskH,
  A_Boolean *invertPB);
-
 ```
 
 #### AEGP_SetMaskInvert
@@ -4420,7 +4113,6 @@ AEGP_GetMaskInvert(
 AEGP_SetMaskInvert(
  AEGP_MaskRefH mask_refH,
  A_Boolean invertB);
-
 ```
 
 #### AEGP_GetMaskMode
@@ -4439,7 +4131,6 @@ AEGP_SetMaskInvert(
 AEGP_GetMaskMode(
  AEGP_MaskRefH maskH,
  PF_MaskMode *modeP);
-
 ```
 
 #### AEGP_SetMaskMode
@@ -4450,7 +4141,6 @@ AEGP_GetMaskMode(
 AEGP_SetMaskMode(
  AEGP_MaskRefH maskH,
  PF_MaskMode mode);
-
 ```
 
 #### AEGP_GetMaskMotionBlurState
@@ -4461,7 +4151,6 @@ AEGP_SetMaskMode(
 AEGP_GetMaskMotionBlurState(
  AEGP_MaskRefH mask_refH,
  AEGP_MaskMBlur *blur_stateP);
-
 ```
 
 `AEGP_MaskMBlur`将是以下的一种。
@@ -4478,7 +4167,6 @@ CS6 中的新设置。设置给定遮罩的运动模糊设置。
 AEGP_SetMaskMotionBlurState(
  AEGP_MaskRefH mask_refH,
  AEGP_MaskMBlur blur_state);
-
 ```
 
 #### AEGP_GetMaskFeatherFalloff
@@ -4490,7 +4178,6 @@ CS6 中新增。获取给定蒙版的羽化淡出类型，可以是
 AEGP_SetMaskMotionBlurState(
  AEGP_MaskRefH mask_refH,
  AEGP_MaskFeatherFalloff *feather_falloffP);
-
 ```
 
 #### AEGP_SetMaskFeatherFalloff
@@ -4501,7 +4188,6 @@ AEGP_SetMaskMotionBlurState(
 AEGP_SetMaskMotionBlurState(
  AEGP_MaskRefH mask_refH,
  AEGP_MaskFeatherFalloff feather_falloff);
-
 ```
 
 #### AEGP_GetMaskName
@@ -4518,7 +4204,6 @@ AEGP_SetMaskMotionBlurState(
 AEGP_GetMaskID(
  AEGP_MaskRefH mask_refH,
  AEGP_MaskIDVal *id_valP);
-
 ```
 
 #### AEGP_CreateNewMask
@@ -4530,7 +4215,6 @@ AEGP_CreateNewMask(
  AEGP_LayerH layerH,
  AEGP_MaskRefH *mask_refPH,
  A_long *mask_indexPL0);
-
 ```
 
 #### AEGP_DeleteMaskFromLayer
@@ -4538,7 +4222,6 @@ AEGP_CreateNewMask(
 ```cpp
 AEGP_DeleteMaskFromLayer(
  AEGP_MaskRefH mask_refH);
-
 ```
 
 注意：从 6.5 版本开始，如果你删除了一个遮罩，并且它或一个子流被选中，在合成中的当前选择将变成 NULL。
@@ -4551,7 +4234,6 @@ AEGP_DeleteMaskFromLayer(
 AEGP_GetMaskColor(
  AEGP_MaskRefH mask_refH,
  AEGP_ColorVal *colorP);
-
 ```
 
 #### AEGP_SetMaskColor
@@ -4562,7 +4244,6 @@ AEGP_GetMaskColor(
 AEGP_SetMaskColor(
  AEGP_MaskRefH mask_refH,
  const AEGP_ColorVal *colorP);
-
 ```
 
 #### AEGP_GetMaskLockState
@@ -4573,7 +4254,6 @@ AEGP_SetMaskColor(
 AEGP_GetMaskLockState(
  AEGP_MaskRefH mask_refH,
  A_Boolean *is_lockedPB);
-
 ```
 
 #### AEGP_SetMaskLockState
@@ -4584,7 +4264,6 @@ AEGP_GetMaskLockState(
 AEGP_SetMaskLockState(
  AEGP_MaskRefH mask_refH,
  A_Boolean lockB);
-
 ```
 
 #### AEGP_GetMaskIsRotoBezier
@@ -4595,7 +4274,6 @@ AEGP_SetMaskLockState(
 AEGP_GetMaskIsRotoBezier(
  AEGP_MaskRefH mask_refH,
  A_Boolean *is_roto_bezierPB);
-
 ```
 
 #### AEGP_SetMaskIsRotoBezier
@@ -4606,7 +4284,6 @@ AEGP_GetMaskIsRotoBezier(
 AEGP_SetMaskIsRotoBezier(
  AEGP_MaskRefH mask_refH,
  A_Boolean *is_roto_bezierPB);
-
 ```
 
 #### AEGP_DuplicateMask
@@ -4617,7 +4294,6 @@ AEGP_SetMaskIsRotoBezier(
 AEGP_DuplicateMask(
  AEGP_MaskRefH orig_mask_refH,
  AEGP_MaskRefH *dupe_mask_refPH);
-
 ```
 
 ## Mask Outlines
@@ -4638,7 +4314,6 @@ AEGP_DuplicateMask(
 AEGP_IsMaskOutlineOpen(
  AEGP_MaskOutlineVal *mask_outlineP,
  A_Boolean *openPB);
-
 ```
 
 #### AEGP_SetMaskOutlineOpen
@@ -4649,7 +4324,6 @@ AEGP_IsMaskOutlineOpen(
 AEGP_SetMaskOutlineOpen(
  AEGP_MaskOutlineValH mask_outlineH,
  A_Boolean openB);
-
 ```
 
 #### AEGP_GetMaskOutlineNumSegments
@@ -4661,7 +4335,6 @@ AEGP_SetMaskOutlineOpen(
 AEGP_GetMaskOutlineNumSegments(
  AEGP_MaskOutlineVal *mask_outlineP,
  A_long *num_segmentsPL);
-
 ```
 
 #### AEGP_GetMaskOutlineVertexInfo
@@ -4674,21 +4347,19 @@ AEGP_GetMaskOutlineVertexInfo(
  AEGP_MaskOutlineVal *mask_outlineP,
  A_long which_pointL,
  AEGP_MaskVertex *vertexP);
-
 ```
 
 #### AEGP_SetMaskOutlineVertexInfo
 
 设置给定索引的顶点信息。
 设置顶点 0 是特别的；它的切线实际上是设置轮廓中最后一个顶点的切线。
-当然，`which_pointL'必须对遮罩的轮廓有效，否则函数将返回错误。
+当然，`which_pointL`必须对遮罩的轮廓有效，否则函数将返回错误。
 
 ```cpp
 AEGP_SetMaskOutlineVertexInfo(
  AEGP_MaskOutlineValH mask_outlineH,
  AEGP_VertexIndex which_pointL,
  AEGP_MaskVertex *vertexP);
-
 ```
 
 #### AEGP_CreateVertex
@@ -4700,7 +4371,6 @@ AEGP_SetMaskOutlineVertexInfo(
 AEGP_CreateVertex(
  AEGP_MaskOutlineValH mask_outlineH,
  AEGP_VertexIndex position);.
-
 ```
 
 注意：所有蒙版必须至少有一个顶点。
@@ -4713,7 +4383,6 @@ AEGP_CreateVertex(
 AEGP_DeleteVertex(
  AEGP_MaskOutlineValH mask_outlineH,
  AEGP_VertexIndex index);
-
 ```
 
 #### AEGP_GetMaskOutlineNumFeathers
@@ -4724,7 +4393,6 @@ CS6 中的新功能。
 AEGP_DeleteVertex(
  AEGP_MaskOutlineValH mask_outlineH,
  A_long *num_feathersPL);
-
 ```
 
 #### AEGP_GetMaskOutlineFeatherInfo
@@ -4736,7 +4404,6 @@ AEGP_GetMaskOutlineFeatherInfo(
  AEGP_MaskOutlineValH mask_outlineH,
  AEGP_FeatherIndex which_featherL,
  AEGP_MaskFeather *featherP);
-
 ```
 
 #### AEGP_SetMaskOutlineFeatherInfo
@@ -4749,7 +4416,6 @@ AEGP_SetMaskOutlineFeatherInfo(
  AEGP_MaskOutlineValH mask_outlineH,
  AEGP_VertexIndex which_featherL,
  const AEGP_MaskFeather *featherP);
-
 ```
 
 #### AEGP_CreateMaskOutlineFeather
@@ -4761,7 +4427,6 @@ AEGP_CreateMaskOutlineFeather(
  AEGP_MaskOutlineValH mask_outlineH,
  const AEGP_MaskFeather *featherP0,
  AEGP_FeatherIndex *insert_positionP);
-
 ```
 
 #### AEGP_DeleteMaskOutlineFeather
@@ -4772,7 +4437,6 @@ CS6 中的新功能。
 AEGP_DeleteMaskOutlineFeather(
  AEGP_MaskOutlineValH mask_outlineH,
  AEGP_FeatherIndex index);
-
 ```
 
 ## Mask Feathering
@@ -4791,7 +4455,6 @@ typedef struct {
  AEGP_MaskFeatherInterp interp;
  AEGP_MaskFeatherType type;
 } AEGP_MaskFeather;
-
 ```
 
 `AEGP_MaskFeatherInterp`是`AEGP_MaskFeatherInterp_NORMAL`或`AEGP_MaskFeatherInterp_HOLD_CW`。
@@ -4812,14 +4475,13 @@ typedef struct {
 
 检索在`AEGP_TextDocumentH`中使用的 UTF-16、以 NULL 为结尾的字符串。
 注意：After Effects 将分配`AEGP_MemHandle`。
-你的插件必须在完成后使用`AEGP_FreeMemHandle'来处理它。
+你的插件必须在完成后使用`AEGP_FreeMemHandle`来处理它。
 
 ```cpp
 AEGP_GetNewText(
  AEGP_PluginID id,
  AEGP_TextDocumentH text_docH,
  AEGP_MemHandle *unicodePH);
-
 ```
 
 #### AEGP_SetText
@@ -4831,7 +4493,6 @@ AEGP_SetText(
  AEGP_TextDocumentH text_docH,
  const A_u_short *unicodePS,
  long lengthL);
-
 ```
 
 ## Working With Text Outlines
@@ -4845,14 +4506,13 @@ AEGP_SetText(
 #### AEGP_GetNewTextOutlines
 
 分配并返回与指定图层相关的`AEGP_TextOutlinesHs`的句柄。
-如果没有与`layerH'相关的`AEGP_TextOutlinesHs'(换句话说，如果它不是一个文本层)，`outlinesPH'将是 NULL。
+如果没有与`layerH`相关的`AEGP_TextOutlinesHs`(换句话说，如果它不是一个文本层)，`outlinesPH`将是 NULL。
 
 ```cpp
 AEGP_GetNewTextOutlines(
  AEGP_LayerH layerH,
  const A_Time *layer_timePT,
  AEGP_TextOutlinesH *outlinesPH);
-
 ```
 
 #### AEGP_DisposeTextOutlines
@@ -4862,7 +4522,6 @@ AEGP_GetNewTextOutlines(
 ```cpp
 AEGP_DisposeTextOutlines(
  AEGP_TextOutlinesH outlinesH);
-
 ```
 
 #### AEGP_GetNumTextOutlines
@@ -4873,7 +4532,6 @@ AEGP_DisposeTextOutlines(
 AEGP_GetNumTextOutlines(
  AEGP_TextOutlinesH outlinesH,
  A_long *num_otlnsPL);
-
 ```
 
 #### AEGP_GetIndexedTextOutline
@@ -4885,7 +4543,6 @@ AEGP_GetIndexedTextOutline(
  AEGP_TextOutlinesH outlinesH,
  A_long path_indexL,
  PF_PathOutlinePtr *pathPP);
-
 ```
 
 ## Utility Functions
@@ -4904,7 +4561,6 @@ Utility 套件提供了错误信息处理、AEGP 版本检查和对撤销堆栈�
 AEGP_ReportInfo(
  AEGP_PluginID aegp_plugin_id,
  const A_char *info_stringZ);
-
 ```
 
 #### AEGP_ReportInfoUnicode
@@ -4915,7 +4571,6 @@ CC 中的新内容。显示对话框，显示 AEGP 的名称和传递的 unicode
 AEGP_ReportInfoUnicode(
  AEGP_PluginID aegp_plugin_id,
  const A_UTF16Char *info_stringP);
-
 ```
 
 #### AEGP_GetDriverSpecVersion
@@ -4926,7 +4581,6 @@ AEGP_ReportInfoUnicode(
 AEGP_GetDriverSpecVersion(
  A_short *major_versionPS,
  A_short *minor_versionPS);
-
 ```
 
 #### AEGP_StartQuietErrors
@@ -4937,7 +4591,6 @@ AEGP_GetDriverSpecVersion(
 ```cpp
 AEGP_StartQuietErrors(
  AEGP_ErrReportState *err_stateP);
-
 ```
 
 #### AEGP_EndQuietErrors
@@ -4947,17 +4600,15 @@ AEGP_StartQuietErrors(
 ```cpp
 AEGP_EndQuietErrors(
  AEGP_ErrReportState *err_stateP)
-
 ```
 
 #### AEGP_StartUndoGroup
 
-将动作添加到撤销队列中。用户可以撤销在此和`AEGP_EndUndoGroup()'之间的任何动作。 `undo_nameZ`将出现在编辑菜单中。
+将动作添加到撤销队列中。用户可以撤销在此和`AEGP_EndUndoGroup()`之间的任何动作。`undo_nameZ`将出现在编辑菜单中。
 
 ```cpp
 AEGP_StartUndoGroup(
  const A_char *undo_nameZ);
-
 ```
 
 #### AEGP_EndUndoGroup
@@ -4966,13 +4617,12 @@ AEGP_StartUndoGroup(
 
 ```cpp
 AEGP_EndUndoGroup();
-
 ```
 
 #### AEGP_RegisterWithAEGP
 
 返回一个 AEGP_PluginID，然后效果插件可以在调用整个 AEGP API 的许多函数时使用。
-在`PF_Cmd_GLOBAL_SETUP'期间，效果器应该只调用这个函数一次，并保存`AEGP_PluginID'供以后使用。
+在`PF_Cmd_GLOBAL_SETUP`期间，效果器应该只调用这个函数一次，并保存`AEGP_PluginID`供以后使用。
 第一个参数可以是任何数值，第二个参数应该是插件的匹配名称。
 
 ```cpp
@@ -4980,7 +4630,6 @@ AEGP_RegisterWithAEGP(
  AEGP_GlobalRefcon global_refcon,
  const A_char *plugin_nameZ,
  AEGP_PluginID *plugin_id);
-
 ```
 
 #### AEGP_GetMainHWND
@@ -4991,7 +4640,6 @@ AEGP_RegisterWithAEGP(
 ```cpp
 AEGP_GetMainHWND(
  void *main_hwnd);
-
 ```
 
 #### AEGP_ShowHideAllFloaters
@@ -5002,7 +4650,6 @@ AEGP_GetMainHWND(
 ```cpp
 AEGP_ShowHideAllFloaters(
  A_Boolean include_tool_palB);
-
 ```
 
 #### AEGP_PaintPalGetForeColor
@@ -5012,7 +4659,6 @@ AEGP_ShowHideAllFloaters(
 ```cpp
 AEGP_PaintPalGetForeColor(
  AEGP_ColorVal *fore_colorP);
-
 ```
 
 #### AEGP_PaintPalGetBackColor
@@ -5022,7 +4668,6 @@ AEGP_PaintPalGetForeColor(
 ```cpp
 AEGP_PaintPalGetBackColor(
  AEGP_ColorVal *back_colorP);
-
 ```
 
 #### AEGP_PaintPalSetForeColor
@@ -5032,7 +4677,6 @@ AEGP_PaintPalGetBackColor(
 ```cpp
 AEGP_PaintPalSetForeColor(
  const AEGP_ColorVal *fore_colorP);
-
 ```
 
 #### AEGP_PaintPalSetBackColor
@@ -5042,7 +4686,6 @@ AEGP_PaintPalSetForeColor(
 ```cpp
 AEGP_PaintPalSetBackColor(
  const AEGP_ColorVal *back_colorP);
-
 ```
 
 #### AEGP_CharPalGetFillColor
@@ -5053,7 +4696,6 @@ AEGP_PaintPalSetBackColor(
 AEGP_CharPalGetFillColor(
  A_Boolean *is_fcolor_definedPB,
  AEGP_ColorVal *fill_colorP);
-
 ```
 
 #### AEGP_CharPalGetStrokeColor
@@ -5064,7 +4706,6 @@ AEGP_CharPalGetFillColor(
 AEGP_CharPalGetStrokeColor(
  A_Boolean *is_scolor_definedPB,
  AEGP_ColorVal *stroke_colorP);
-
 ```
 
 #### AEGP_CharPalSetFillColor
@@ -5074,7 +4715,6 @@ AEGP_CharPalGetStrokeColor(
 ```cpp
 AEGP_CharPalSetFillColor(
  const AEGP_ColorVal *fill_colorP);
-
 ```
 
 #### AEGP_CharPalSetStrokeColor
@@ -5084,7 +4724,6 @@ AEGP_CharPalSetFillColor(
 ```cpp
 AEGP_CharPalSetStrokeColor(
  const AEGP_ColorVal *stroke_colorP);
-
 ```
 
 #### AEGP_CharPalIsFillColorUIFrontmost
@@ -5094,7 +4733,6 @@ AEGP_CharPalSetStrokeColor(
 ```cpp
 AEGP_CharPalIsFillColorUIFrontmost(
  A_Boolean *is_fcolor_selectedPB);
-
 ```
 
 #### AEGP_ConvertFpLongToHSFRatio
@@ -5105,7 +4743,6 @@ AEGP_CharPalIsFillColorUIFrontmost(
 AEGP_ConvertFpLongToHSFRatio(
  A_FpLong numberF,
  A_Ratio *ratioPR);
-
 ```
 
 #### AEGP_ConvertHSFRatioToFpLong
@@ -5116,7 +4753,6 @@ AEGP_ConvertFpLongToHSFRatio(
 AEGP_ConvertHSFRatioToFpLong(
  A_Ratio ratioR,
  A_FpLong *numberPF);
-
 ```
 
 #### AEGP_CauseIdleRoutinesToBeCalled
@@ -5127,7 +4763,6 @@ AEGP_ConvertHSFRatioToFpLong(
 
 ```cpp
 AEGP_CauseIdleRoutinesToBeCalled(void);
-
 ```
 
 #### AEGP_GetSuppressInteractiveUI
@@ -5137,7 +4772,6 @@ AEGP_CauseIdleRoutinesToBeCalled(void);
 ```cpp
 AEGP_GetSuppressInteractiveUI(
  A_Boolean *ui_is_suppressedPB);
-
 ```
 
 #### AEGP_WriteToOSConsole
@@ -5147,7 +4781,6 @@ AEGP_GetSuppressInteractiveUI(
 ```cpp
 AEGP_WriteToOSConsole(
  const A_char *textZ);
-
 ```
 
 #### AEGP_WriteToDebugLog
@@ -5159,7 +4792,6 @@ AEGP_WriteToDebugLog(
  const A_char *subsystemZ,
  const A_char *event_typeZ,
  const A_char *infoZ);
-
 ```
 
 #### AEGP_GetLastErrorMessage
@@ -5172,7 +4804,6 @@ AEGP_GetLastErrorMessage(
  A_long buffer_size,
  A_char *error_string,
  A_Err *error_num);
-
 ```
 
 #### AEGP_IsScriptingAvailable
@@ -5182,7 +4813,6 @@ AEGP_GetLastErrorMessage(
 ```cpp
 AEGP_IsScriptingAvailable(
  A_Boolean *outAvailablePB);
-
 ```
 
 #### AEGP_ExecuteScript
@@ -5198,7 +4828,6 @@ AEGP_ExecuteScript(
  const A_Boolean platform_encodingB,
  AEGP_MemHandle *outResultPH0,
  AEGP_MemHandle *outErrStringPH0);
-
 ```
 
 #### AEGP_HostIsActivated
@@ -5208,7 +4837,6 @@ AEGP_ExecuteScript(
 ```cpp
 AEGP_HostIsActivated(
  A_Boolean *is_activatedPB);
-
 ```
 
 #### AEGP_GetPluginPlatformRef
@@ -5220,7 +4848,6 @@ AEGP_HostIsActivated(
 AEGP_GetPluginPlatformRef(
  AEGP_PluginID plug_id,
  void **plat_refPPV);
-
 ```
 
 #### AEGP_UpdateFontList
@@ -5229,7 +4856,6 @@ AEGP_GetPluginPlatformRef(
 
 ```cpp
 AEGP_UpdateFontList();
-
 ```
 
 #### AEGP_GetPluginPaths
@@ -5246,14 +4872,13 @@ AEGP_GetPluginPaths(
  AEGP_PluginID aegp_plugin_id,
  AEGP_GetPathTypes path_type
  AEGP_MemHandle *unicode_pathPH);
-
 ```
 
 ## Persistent Data Suite
 
 插件可以读写 After Effects 偏好中的持久性数据。AEGPs 可以使用以下套件添加和管理自己的持久性数据。数据条目由(section key, value key)对访问。建议插件使用它们的匹配名称作为它们的部分键，如果使用多个部分键，则作为前缀。
 
-可用的数据类型有`A_long`，`A_FpLong`，字符串和`void*`。`A_FpLong'以小数点后 6 位的精度存储。没有规定可以指定不同的精度。字符串数据支持完整的 8 位空间。只有 0x00 被保留给字符串结束。这使得它们成为存储 UTF-8 编码的字符串、ISO 8859-1 和普通 ASCII 的理想选择。节段键和值键都是这种类型的。对于没有被提供的简单数据类型所代表的数据类型，使用包含你的自定义数据的数据句柄。 void\*非结构化数据允许你存储任何类型的数据。你必须在传递数据的同时传递一个以字节为单位的大小。
+可用的数据类型有`A_long`，`A_FpLong`，字符串和`void*`。`A_FpLong`以小数点后 6 位的精度存储。没有规定可以指定不同的精度。字符串数据支持完整的 8 位空间。只有 0x00 被保留给字符串结束。这使得它们成为存储 UTF-8 编码的字符串、ISO 8859-1 和普通 ASCII 的理想选择。节段键和值键都是这种类型的。对于没有被提供的简单数据类型所代表的数据类型，使用包含你的自定义数据的数据句柄。 void\*非结构化数据允许你存储任何类型的数据。你必须在传递数据的同时传递一个以字节为单位的大小。
 
 当调用任何一个函数来检索一个键的值时，如果没有找到给定的键，默认值都会被写入 blob 并作为值返回；如果没有提供默认值，将写入并返回一个空白值。
 
@@ -5280,7 +4905,6 @@ AEGP_PersistentType "参数在 CC 中是新的，应该被设置为以下内容�
 AEGP_GetApplicationBlob(
  AEGP_PersistentType blob_type,
  AEGP_PersistentBlobH *blobPH);
-
 ```
 
 #### AEGP_GetNumSections
@@ -5291,7 +4915,6 @@ AEGP_GetApplicationBlob(
 AEGP_GetNumSections(
  AEGP_PersistentBlobH blobH,
  A_long *num_sectionPL);
-
 ```
 
 #### AEGP_GetSectionKeyByIndex
@@ -5304,7 +4927,6 @@ AEGP_GetSectionKeyByIndex(
  A_long section_index,
  A_long max_section_size,
  A_char *section_keyZ);
-
 ```
 
 #### AEGP_DoesKeyExist
@@ -5317,7 +4939,6 @@ AEGP_DoesKeyExist(
  const A_char *section_keyZ,
  const A_char *value_keyZ,
  A_Boolean *existsPB);
-
 ```
 
 #### AEGP_GetNumKeys
@@ -5329,7 +4950,6 @@ AEGP_GetNumKeys(
  AEGP_PersistentBlobH blobH,
  const A_char *section_keyZ,
  A_long *num_keysPL);
-
 ```
 
 #### AEGP_GetValueKeyByIndex
@@ -5343,7 +4963,6 @@ AEGP_GetValueKeyByIndex(
  A_long key_index,
  A_long max_key_size,
  A_char *value_keyZ);
-
 ```
 
 ::: tip
@@ -5364,7 +4983,6 @@ AEGP_GetDataHandle(
  const A_char *value_keyZ,
  AEGP_MemHandle defaultH0,
  AEGP_MemHandle *valuePH);
-
 ```
 
 #### AEGP_GetData
@@ -5379,7 +4997,6 @@ AEGP_GetData(
  A_u_long data_sizeLu,
  const void *defaultPV0,
  void *bufPV);
-
 ```
 
 #### AEGP_GetString
@@ -5395,7 +5012,6 @@ AEGP_GetString(
  A_u_long buf_sizeLu,
  char *bufZ,
  A_u_long *actual_szLu0);
-
 ```
 
 #### AEGP_GetLong
@@ -5409,7 +5025,6 @@ AEGP_GetLong(
  const A_char *value_keyZ,
  A_long defaultL,
  A_long *valuePL);
-
 ```
 
 #### AEGP_GetFpLong
@@ -5423,12 +5038,11 @@ AEGP_GetFpLong(
  const A_char *value_keyZ,
  A_FpLong defaultF,
  A_FpLong *valuePF);
-
 ```
 
 #### AEGP_GetTime
 
-在 CC 中新增。获取与给定部分键值相关的`A_Time'。
+在 CC 中新增。获取与给定部分键值相关的`A_Time`。
 
 ```cpp
 AEGP_GetTime(
@@ -5437,7 +5051,6 @@ AEGP_GetTime(
  const A_char *value_keyZ,
  const A_Time *defaultPT0,
  A_Time *valuePT);
-
 ```
 
 #### AEGP_GetARGB
@@ -5451,7 +5064,6 @@ AEGP_GetARGB(
  const A_char *value_keyZ,
  const PF_PixelFloat *defaultP0,
  PF_PixelFloat *valueP);
-
 ```
 
 #### AEGP_SetDataHandle
@@ -5464,7 +5076,6 @@ AEGP_SetDataHandle(
  const A_char *section_keyZ,
  const A_char *value_keyZ,
  const AEGP_MemHandle valueH);
-
 ```
 
 #### AEGP_SetData
@@ -5478,7 +5089,6 @@ AEGP_SetData(
  const A_char *value_keyZ,
  A_u_long data_sizeLu,
  const void *dataPV);
-
 ```
 
 #### AEGP_SetString
@@ -5491,12 +5101,11 @@ AEGP_SetString(
  const A_char *section_keyZ,
  const A_char *value_keyZ,
  const A_char *strZ);
-
 ```
 
 #### AEGP_SetLong
 
-将给定章节的键值设置为`valueL'。
+将给定章节的键值设置为`valueL`。
 
 ```cpp
 AEGP_SetLong(
@@ -5504,12 +5113,11 @@ AEGP_SetLong(
  const A_char *section_keyZ,
  const A_char *value_keyZ,
  A_long valueL);
-
 ```
 
 #### AEGP_SetFpLong
 
-将给定章节的键值设置为`valueF'。
+将给定章节的键值设置为`valueF`。
 
 ```cpp
 AEGP_SetFpLong(
@@ -5517,12 +5125,11 @@ AEGP_SetFpLong(
  const A_char *section_keyZ,
  const A_char *value_keyZ,
  A_FpLong valueF);
-
 ```
 
 #### AEGP_SetTime
 
-CC 中的新内容。将给定章节的键值设置为`valuePT'。
+CC 中的新内容。将给定章节的键值设置为`valuePT`。
 
 ```cpp
 AEGP_SetTime(
@@ -5530,7 +5137,6 @@ AEGP_SetTime(
  const A_char *section_keyZ,
  const A_char *value_keyZ,
  A_Time *valuePT);
-
 ```
 
 #### AEGP_SetARGB
@@ -5543,7 +5149,6 @@ AEGP_SetARGB(
  const A_char *section_keyZ,
  const A_char *value_keyZ,
  PF_PixelFloat *valueP);
-
 ```
 
 #### AEGP_DeleteEntry
@@ -5555,7 +5160,6 @@ AEGP_DeleteEntry(
  AEGP_PersistentBlobH blobH,
  const A_char *section_keyZ,
  const A_char *value_keyZ);
-
 ```
 
 #### AEGP_GetPrefsDirectory
@@ -5566,7 +5170,6 @@ AEGP_DeleteEntry(
 ```cpp
 AEGP_GetPrefsDirectory(
  AEGP_MemHandle *unicode_pathPH);
-
 ```
 
 ## Color Management
@@ -5583,7 +5186,6 @@ AEGP_GetPrefsDirectory(
 AEGP_GetBlendingTables(
  PR_RenderContextH render_contextH,
  PF_EffectBlendingTables *blending_tables);
-
 ```
 
 #### AEGP_DoesViewHaveColorSpaceXform
@@ -5594,7 +5196,6 @@ AEGP_GetBlendingTables(
 AEGP_DoesViewHaveColorSpaceXform(
  AEGP_ItemViewP viewP,
  A_Boolean *has_xformPB);
-
 ```
 
 #### AEGP_XformWorkingToViewColorSpace
@@ -5607,7 +5208,6 @@ AEGP_XformWorkingToViewColorSpace(
  AEGP_ItemViewP viewP,
  AEGP_WorldH srcH,
  AEGP_WorldH dstH);
-
 ```
 
 #### AEGP_GetNewWorkingSpaceColorProfile
@@ -5620,7 +5220,6 @@ AEGP_XformWorkingToViewColorSpace(
 AEGP_GetNewWorkingSpaceColorProfile(
  AEGP_PluginID aegp_plugin_id,
  AEGP_MemHandle *icc_profPH);
-
 ```
 
 #### AEGP_GetNewColorProfileFromICCProfile
@@ -5634,7 +5233,6 @@ AEGP_GetNewColorProfile FromICCProfile(
  A_long icc_sizeL,
  const void *icc_dataPV,
  AEGP_ColorProfileP *profilePP);
-
 ```
 
 #### AEGP_GetNewICCProfileFromColorProfile
@@ -5647,7 +5245,6 @@ AEGP_GetNewICCProfile FromColorProfile(
  AEGP_PluginID plugin_id,
  AEGP_ConstColorProfileP profileP,
  AEGP_MemHandle *profilePH);
-
 ```
 
 #### AEGP_GetNewColorProfileDescription
@@ -5660,7 +5257,6 @@ AEGP_GetNewColorProfileDescription(
  AEGP_PluginID aegp_plugin_id,
  AEGP_ConstColorProfileP profileP,
  AEGP_MemHandle *unicode_descPH);
-
 ```
 
 #### AEGP_DisposeColorProfile
@@ -5670,7 +5266,6 @@ AEGP_GetNewColorProfileDescription(
 ```cpp
 AEGP_DisposeColorProfile(
  AEGP_ColorProfileP profileP);
-
 ```
 
 #### AEGP_GetColorProfileApproximateGamma
@@ -5681,7 +5276,6 @@ AEGP_DisposeColorProfile(
 AEGP_GetColorProfileApproximateGamma(
  AEGP_ConstColorProfileP profileP,
  A_FpShort *approx_gammaP);
-
 ```
 
 #### AEGP_IsRGBColorProfile
@@ -5692,7 +5286,6 @@ AEGP_GetColorProfileApproximateGamma(
 AEGP_IsRGBColorProfile(
  AEGP_ConstColorProfileP profileP,
  A_Boolean *is_rgbPB);
-
 ```
 
 ## Render Suites
@@ -5717,7 +5310,6 @@ AEGP_NewFromItem(
  AEGP_PluginID plugin_id,
  AEGP_ItemH itemH,
  AEGP_RenderOptionsH *optionsPH);
-
 ```
 
 #### AEGP_Duplicate
@@ -5729,39 +5321,35 @@ AEGP_Duplicate(
  AEGP_PluginID plugin_id,
  AEGP_RenderOptionsH optionsH,
  AEGP_RenderOptionsH *copyPH);
-
 ```
 
 #### AEGP_Dispose
 
-删除一个`AEGP_RenderOptionsH'。
+删除一个`AEGP_RenderOptionsH`。
 
 ```cpp
 AEGP_Dispose(
  AEGP_RenderOptionsH optionsH);
-
 ```
 
 #### AEGP_SetTime
 
-设置一个`AEGP_RenderOptionsH'的渲染时间。
+设置一个`AEGP_RenderOptionsH`的渲染时间。
 
 ```cpp
 AEGP_SetTime(
  AEGP_RenderOptionsH optionsH,
  A_Time time);
-
 ```
 
 #### AEGP_GetTime
 
-读取给定的`AEGP_RenderOptionsH'的渲染时间。
+读取给定的`AEGP_RenderOptionsH`的渲染时间。
 
 ```cpp
 AEGP_GetTime(
  AEGP_RenderOptionsH optionsH,
  A_Time *timeP);
-
 ```
 
 #### AEGP_SetTimeStep
@@ -5772,7 +5360,6 @@ AEGP_GetTime(
 AEGP_SetTimeStep(
  AEGP_RenderOptionsH optionsH,
  A_Time time_step);
-
 ```
 
 #### AEGP_GetTimeStep
@@ -5783,18 +5370,16 @@ AEGP_SetTimeStep(
 AEGP_GetTimeStep(
  AEGP_RenderOptionsH optionsH,
  A_Time *timePT);
-
 ```
 
 #### AEGP_SetFieldRender
 
-指定给定的`AEGP_RenderOptionsH'的字段设置。
+指定给定的`AEGP_RenderOptionsH`的字段设置。
 
 ```cpp
 AEGP_SetFieldRender(
  AEGP_RenderOptionsH optionsH,
  PF_Field field_render);
-
 ```
 
 #### AEGP_GetFieldRender
@@ -5805,43 +5390,39 @@ AEGP_SetFieldRender(
 AEGP_GetFieldRender(
  AEGP_RenderOptionsH optionsH,
  PF_Field *field_renderP);
-
 ```
 
 #### AEGP_SetWorldType
 
-指定给定的`AEGP_RenderOptionsH'的输出的 AEGP_WorldType。
+指定给定的`AEGP_RenderOptionsH`的输出的 AEGP_WorldType。
 
 ```cpp
 AEGP_SetWorldType(
  AEGP_RenderOptionsH optionsH,
  AEGP_WorldType type);
-
 ```
 
 `AEGP_WorldType`将是`AEGP_WorldType_8`或`AEGP_WorldType_16`。
 
 #### AEGP_GetWorldType
 
-检索给定的`AEGP_RenderOptionsH'的`AEGP_WorldType'。
+检索给定的`AEGP_RenderOptionsH`的`AEGP_WorldType`。
 
 ```cpp
 AEGP_GetWorldType(
  AEGP_RenderOptionsH optionsH,
  AEGP_WorldType *typeP);
-
 ```
 
 #### AEGP_SetDownsampleFactor
 
-指定给定的`AEGP_RenderOptionsH'的降采样系数(有独立的水平和垂直设置)。
+指定给定的`AEGP_RenderOptionsH`的降采样系数(有独立的水平和垂直设置)。
 
 ```cpp
 AEGP_SetDownsampleFactor(
  AEGP_RenderOptionsH optionsH,
  A_short x,
  A_short y);
-
 ```
 
 #### AEGP_GetDownsampleFactor
@@ -5853,7 +5434,6 @@ AEGP_GetDownsampleFactor(
  AEGP_RenderOptionsH optionsH,
  A_short *xP,
  A_short *yP);
-
 ```
 
 #### AEGP_SetRegionOfInterest
@@ -5864,7 +5444,6 @@ AEGP_GetDownsampleFactor(
 AEGP_SetRegionOfInterest(
  AEGP_RenderOptionsH optionsH,
  const A_LRect *roiP)
-
 ```
 
 #### AEGP_GetRegionOfInterest
@@ -5875,18 +5454,16 @@ AEGP_SetRegionOfInterest(
 AEGP_GetRegionOfInterest(
  AEGP_RenderOptionsH optionsH,
  A_LRect *roiP);
-
 ```
 
 #### AEGP_SetMatteMode
 
-为给定的`AEGP_RenderOptionsH`指定`AEGP_MatteMode'。
+为给定的`AEGP_RenderOptionsH`指定`AEGP_MatteMode`。
 
 ```cpp
 AEGP_SetMatteMode(
  AEGP_RenderOptionsH optionsH,
  AEGP_MatteMode mode);
-
 ```
 
 `AEGP_MatteMode`将是下列之一。
@@ -5897,37 +5474,34 @@ AEGP_SetMatteMode(
 
 #### AEGP_GetMatteMode
 
-为给定的`AEGP_RenderOptionsH'检索`AEGP_MatteMode'。
+为给定的`AEGP_RenderOptionsH`检索`AEGP_MatteMode`。
 
 ```cpp
 AEGP_GetMatteMode(
  AEGP_RenderOptionsH optionsH,
  AEGP_MatteMode *modeP);
-
 ```
 
 #### AEGP_GetChannelOrder
 
-为给定的`AEGP_RenderOptionsH`获取`AEGP_ChannelOrder'。 `AEGP_ChannelOrder`将是`AEGP_ChannelOrder_ARGB`或`AEGP_ChannelOrder_BGRA`。
+为给定的`AEGP_RenderOptionsH`获取`AEGP_ChannelOrder`。`AEGP_ChannelOrder`将是`AEGP_ChannelOrder_ARGB`或`AEGP_ChannelOrder_BGRA`。
 
 ```cpp
 AEGP_GetChannelOrder(
  AEGP_RenderOptionsH optionsH,
  AEGP_ChannelOrder *orderP);
-
 ```
 
 事实是：这是为方便与 Premiere Pro 进行实时连接而添加的。
 
 #### AEGP_SetChannelOrder
 
-设置`AEGP_ChannelOrder'的`AEGP_RenderOptionsH`。
+设置`AEGP_ChannelOrder`的`AEGP_RenderOptionsH`。
 
 ```cpp
 AEGP_SetChannelOrder(
  AEGP_RenderOptionsH optionsH,
  AEGP_ChannelOrder order);
-
 ```
 
 #### AEGP_GetRenderGuideLayers
@@ -5938,7 +5512,6 @@ AEGP_SetChannelOrder(
 AEGP_GetRenderGuideLayers)(
  AEGP_RenderOptionsH optionsH,
  A_Boolean *will_renderPB);
-
 ```
 
 #### AEGP_SetRenderGuideLayers
@@ -5949,7 +5522,6 @@ AEGP_GetRenderGuideLayers)(
 AEGP_SetRenderGuideLayers)(
  AEGP_RenderOptionsH optionsH,
  A_Boolean render_themB);
-
 ```
 
 #### AEGP_GetRenderQuality
@@ -5961,7 +5533,6 @@ AEGP_SetRenderGuideLayers)(
 AEGP_GetRenderQuality)(
  AEGP_RenderOptionsH optionsH,
  AEGP_ItemQuality *qualityP);
-
 ```
 
 #### AEGP_SetRenderQuality
@@ -5972,7 +5543,6 @@ AEGP_GetRenderQuality)(
 AEGP_GetRenderQuality)(
  AEGP_RenderOptionsH optionsH,
  AEGP_ItemQuality quality);
-
 ```
 
 ### AEGP_LayerRenderOptionsSuite1
@@ -5984,14 +5554,13 @@ AEGP_GetRenderQuality)(
 
 #### AEGP_NewFromLayer
 
-返回与给定的`AEGP_LayerH'相关的`AEGP_LayerRenderOptionsH`。 渲染时间设置为该层的当前时间，时间步长设置为该层的帧持续时间。 ROI设置为该层的名义边界，EffectsToRender设置为 "所有"。 `optionsPH`必须由调用代码处理。
+返回与给定的`AEGP_LayerH`相关的`AEGP_LayerRenderOptionsH`。 渲染时间设置为该层的当前时间，时间步长设置为该层的帧持续时间。 ROI设置为该层的名义边界，EffectsToRender设置为 "所有"。`optionsPH`必须由调用代码处理。
 
 ```cpp
 AEGP_NewFromLayer(
  AEGP_PluginID plugin_id,
  AEGP_LayerH layerH,
  AEGP_LayerRenderOptionsH *optionsPH);
-
 ```
 
 #### AEGP_NewFromUpstreamOfEffect
@@ -6006,7 +5575,6 @@ AEGP_NewFromUpstreamOfEffect(
  AEGP_PluginID plugin_id,
  AEGP_EffectRefH effectH,
  AEGP_LayerRenderOptionsH *optionsPH);
-
 ```
 
 #### AEGP_Duplicate
@@ -6018,7 +5586,6 @@ AEGP_Duplicate(
  AEGP_PluginID plugin_id,
  AEGP_LayerRenderOptionsH optionsH,
  AEGP_LayerRenderOptionsH *copyPH);
-
 ```
 
 #### AEGP_Dispose
@@ -6028,29 +5595,26 @@ AEGP_Duplicate(
 ```cpp
 AEGP_Dispose(
  AEGP_LayerRenderOptionsH optionsH);
-
 ```
 
 #### AEGP_SetTime
 
-设置`AEGP_LayerRenderOptionsH'的渲染时间。
+设置`AEGP_LayerRenderOptionsH`的渲染时间。
 
 ```cpp
 AEGP_SetTime(
  AEGP_LayerRenderOptionsH optionsH,
  A_Time time);
-
 ```
 
 #### AEGP_GetTime
 
-读取给定的`AEGP_LayerRenderOptionsH'的渲染时间。
+读取给定的`AEGP_LayerRenderOptionsH`的渲染时间。
 
 ```cpp
 AEGP_GetTime(
  AEGP_LayerRenderOptionsH optionsH,
  A_Time *timeP);
-
 ```
 
 #### AEGP_SetTimeStep
@@ -6061,7 +5625,6 @@ AEGP_GetTime(
 AEGP_SetTimeStep(
  AEGP_LayerRenderOptionsH optionsH,
  A_Time time_step);
-
 ```
 
 #### AEGP_GetTimeStep
@@ -6072,43 +5635,39 @@ AEGP_SetTimeStep(
 AEGP_GetTimeStep(
  AEGP_LayerRenderOptionsH optionsH,
  A_Time *timePT);
-
 ```
 
 #### AEGP_SetWorldType
 
-指定给定的`AEGP_LayerRenderOptionsH'的输出的 AEGP_WorldType。
+指定给定的`AEGP_LayerRenderOptionsH`的输出的 AEGP_WorldType。
 
 ```cpp
 AEGP_SetWorldType(
  AEGP_LayerRenderOptionsH optionsH,
  AEGP_WorldType type);
-
 ```
 
 `AEGP_WorldType`将是`AEGP_WorldType_8`或`AEGP_WorldType_16`。
 
 #### AEGP_GetWorldType
 
-检索给定的`AEGP_LayerRenderOptionsH'的 AEGP_WorldType。
+检索给定的`AEGP_LayerRenderOptionsH`的 AEGP_WorldType。
 
 ```cpp
 AEGP_GetWorldType(
  AEGP_LayerRenderOptionsH optionsH,
  AEGP_WorldType *typeP);
-
 ```
 
 #### AEGP_SetDownsampleFactor
 
-指定给定的`AEGP_LayerRenderOptionsH'的降采样系数(有独立的水平和垂直设置)。
+指定给定的`AEGP_LayerRenderOptionsH`的降采样系数(有独立的水平和垂直设置)。
 
 ```cpp
 AEGP_SetDownsampleFactor(
  AEGP_LayerRenderOptionsH optionsH,
  A_short x,
  A_short y);
-
 ```
 
 #### AEGP_GetDownsampleFactor
@@ -6120,18 +5679,16 @@ AEGP_GetDownsampleFactor(
  AEGP_LayerRenderOptionsH optionsH,
  A_short *xP,
  A_short *yP);
-
 ```
 
 #### AEGP_SetMatteMode
 
-为给定的`AEGP_LayerRenderOptionsH'指定 AEGP_MatteMode。
+为给定的`AEGP_LayerRenderOptionsH`指定 AEGP_MatteMode。
 
 ```cpp
 AEGP_SetMatteMode(
  AEGP_LayerRenderOptionsH optionsH,
  AEGP_MatteMode mode);
-
 ```
 
 AEGP_MatteMode 将是下列之一。
@@ -6142,13 +5699,12 @@ AEGP_MatteMode 将是下列之一。
 
 #### AEGP_GetMatteMode
 
-为给定的`AEGP_LayerRenderOptionsH'检索 AEGP_MatteMode。
+为给定的`AEGP_LayerRenderOptionsH`检索 AEGP_MatteMode。
 
 ```cpp
 AEGP_GetMatteMode(
  AEGP_LayerRenderOptionsH optionsH,
  AEGP_MatteMode *modeP);
-
 ```
 
 ### AEGP_RenderSuite4
@@ -6166,7 +5722,6 @@ AEGP_RenderAndCheckoutFrame(
  AEGP_RenderSuiteCheckForCancel cancel_functionP0,
  AEGP_CancelRefcon cancel_function_refconP0,
  AEGP_FrameReceiptH *receiptPH);
-
 ```
 
 #### AEGP_RenderAndCheckoutLayerFrame
@@ -6188,7 +5743,6 @@ AEGP_RenderAndCheckoutLayerFrame(
  AEGP_RenderSuiteCheckForCancel cancel_functionP0,
  AEGP_CancelRefcon cancel_function_refconP0,
  AEGP_FrameReceiptH *receiptPH);
-
 ```
 
 #### AEGP_CheckinFrame
@@ -6199,7 +5753,6 @@ After Effects 会根据哪些帧被检出而做出缓存决定，所以不要占
 ```cpp
 AEGP_CheckinFrame(
  AEGP_FrameReceiptH receiptH);
-
 ```
 
 #### AEGP_GetReceiptWorld
@@ -6210,19 +5763,17 @@ AEGP_CheckinFrame(
 AEGP_GetReceiptWorld(
  AEGP_FrameReceiptH receiptH,
  AEGP_WorldH *worldPH);
-
 ```
 
 #### AEGP_GetRenderedRegion
 
-检索一个`A_LRect`，包含`AEGP_FrameReceiptH'的`AEGP_WorldH'中已经被渲染的区域。
+检索一个`A_LRect`，包含`AEGP_FrameReceiptH`的`AEGP_WorldH`中已经被渲染的区域。
 记住，只有图像中被改变的部分才有可能被渲染，所以能够检查是否包括你需要的部分是很重要的。
 
 ```cpp
 AEGP_GetRenderedRegion(
  AEGP_FrameReceiptH receiptH,
  A_LRect *regionP);
-
 ```
 
 #### AEGP_IsRenderedFrameSufficient
@@ -6234,12 +5785,11 @@ AEGP_IsRenderedFrameSufficient(
  AEGP_RenderOptionsH rendered_optionsH,
  AEGP_RenderOptionsH proposed_optionsH,
  A_Boolean *is_sufficientPB);
-
 ```
 
 #### AEGP_RenderNewItemSoundData
 
-获得一个`AEGP_ItemH'的音频，在给定的时间，给定的持续时间，以给定的格式。 插件必须处理返回的`AEGP_SoundDataH'(如果没有音频，它可能是 NULL)。
+获得一个`AEGP_ItemH`的音频，在给定的时间，给定的持续时间，以给定的格式。 插件必须处理返回的`AEGP_SoundDataH`(如果没有音频，它可能是 NULL)。
 
 ```cpp
 AEGP_RenderNewItemSoundData(
@@ -6248,10 +5798,9 @@ AEGP_RenderNewItemSoundData(
  const A_Time *durationPT,
  const AEGP_SoundDataFormat *formatP,
  AEGP_SoundDataH *new_dataPH);
-
 ```
 
-注意：这个函数，如果作为`AEGP_ItemSuite2'的一部分被调用，提供了一个可通过鼠标点击中断的渲染，与这里发布的`AEGP_RenderSuite'版本不同。
+注意：这个函数，如果作为`AEGP_ItemSuite2`的一部分被调用，提供了一个可通过鼠标点击中断的渲染，与这里发布的`AEGP_RenderSuite`版本不同。
 
 #### AEGP_GetCurrentTimestamp
 
@@ -6261,12 +5810,11 @@ AEGP_TimeStamp "在项目被触及并影响渲染时被更新。
 ```cpp
 AEGP_GetCurrentTimestamp(
  AEGP_TimeStamp *time_stampP);
-
 ```
 
 #### AEGP_HasItemChangedSinceTimestamp
 
-返回 AEGP_ItemH 的视频在给定的`AEGP_TimeStamp'后是否有变化。
+返回 AEGP_ItemH 的视频在给定的`AEGP_TimeStamp`后是否有变化。
 注意：这并不跟踪音频的变化。
 
 ```cpp
@@ -6276,7 +5824,6 @@ AEGP_HasItemChangedSinceTimestamp(
  const A_Time *durationP,
  const AEGP_TimeStamp *time_stampP,
  A_Boolean *changedPB);
-
 ```
 
 #### AEGP_IsItemWorthwhileToRender
@@ -6290,7 +5837,6 @@ AEGP_IsItemWorthwhileToRender(
  AEGP_RenderOptionsH roH,
  const AEGP_TimeStamp *time_stampP,
  A_Boolean *worthwhilePB);
-
 ```
 
 #### AEGP_CheckinRenderedFrame
@@ -6304,7 +5850,6 @@ AEGP_CheckinRenderedFrame(
  const AEGP_TimeStamp* time_stampP,
  A_u_long ticksL,
  AEGP_PlatformWorldH imageH);
-
 ```
 
 #### AEGP_GetReceiptGuid
@@ -6315,7 +5860,6 @@ CS6 的新功能。检索一个已渲染的帧的 GUID。传回的内存句柄�
 AEGP_GetReceiptGuid(
  AEGP_FrameReceiptH receiptH,
  AEGP_MemHandle *guidMH)
-
 ```
 
 ## The AEGP_World As We Know It
@@ -6335,17 +5879,15 @@ AEGP_New(
  A_long widthL,
  A_long heightL,
  AEGP_WorldH *worldPH);
-
 ```
 
 #### AEGP_Dispose
 
-弃置一个`AEGP_WorldH'。在你分配的每个世界上使用这个。
+弃置一个`AEGP_WorldH`。在你分配的每个世界上使用这个。
 
 ```cpp
 AEGP_Dispose(
  AEGP_WorldH worldH);
-
 ```
 
 #### AEGP_GetType
@@ -6356,7 +5898,6 @@ AEGP_Dispose(
 AEGP_GetType(
  AEGP_WorldH worldH,
  AEGP_WorldType **typeP);
-
 ```
 
 AEGP_WorldType 将是以下之一。
@@ -6374,7 +5915,6 @@ AEGP_GetSize(
  AEGP_WorldH worldH,
  A_long *widthPL,
  A_long *heightPL);
-
 ```
 
 #### AEGP_GetRowBytes
@@ -6385,7 +5925,6 @@ Returns the rowbytes for the given `AEGP_WorldH`. 返回给定`AEGP_WorldH`的�
 AEGP_GetRowBytes(
  AEGP_WorldH worldH,
  A_u_long *row_bytesPL);
-
 ```
 
 #### AEGP_GetBaseAddr8
@@ -6397,7 +5936,6 @@ AEGP_GetRowBytes(
 AEGP_GetBaseAddr8(
  AEGP_WorldH worldH,
  PF_Pixel8 **base_addrP);
-
 ```
 
 #### AEGP_GetBaseAddr16
@@ -6409,7 +5947,6 @@ AEGP_GetBaseAddr8(
 AEGP_GetBaseAddr16(
  AEGP_WorldH worldH,
  PF_Pixel16 **base_addrP);
-
 ```
 
 #### AEGP_GetBaseAddr32
@@ -6421,7 +5958,6 @@ AEGP_GetBaseAddr16(
 AEGP_GetBaseAddr32(
  AEGP_WorldH worldH,
  PF_PixelFloat **base_addrP);
-
 ```
 
 #### AEGP_FillOutPFEffectWorld
@@ -6434,7 +5970,6 @@ AEGP_GetBaseAddr32(
 AEGP_FillOutPFEffectWorld(
  AEGP_WorldH worldH,
  PF_EffectWorld *pf_worldP);
-
 ```
 
 #### AEGP_FastBlur
@@ -6447,7 +5982,6 @@ AEGP_FastBlur(
  PF_ModeFlags mode,
  PF_Quality quality,
  AEGP_WorldH worldH);
-
 ```
 
 #### AEGP_NewPlatformWorld
@@ -6461,22 +5995,20 @@ AEGP_NewPlatformWorld(
  A_long widthL,
  A_long heightL,
  AEGP_PlatformWorldH *worldPH);
-
 ```
 
 #### AEGP_DisposePlatformWorld
 
-处置一个`AEGP_PlatformWorldH'。
+处置一个`AEGP_PlatformWorldH`。
 
 ```cpp
 AEGP_DisposePlatformWorld(
  AEGP_PlatformWorldH worldH);
-
 ```
 
 #### AEGP_NewReferenceFromPlatformWorld
 
-检索指向给定的`AEGP_PlatformWorldH'的 AEGP_WorldH。
+检索指向给定的`AEGP_PlatformWorldH`的 AEGP_WorldH。
 注意：这并不分配一个新的世界，它只是提供一个对现有世界的引用。
 
 ```cpp
@@ -6484,7 +6016,6 @@ AEGP_NewReferenceFromPlatformWorld(
  AEGP_PluginID plugin_id,
  AEGP_PlatformWorldH plat_worldH,
  AEGP_WorldH *worldPH);
-
 ```
 
 ## Track Mattes and Transform Functions
@@ -6501,7 +6032,6 @@ AEGP_NewReferenceFromPlatformWorld(
 AEGP_ClearAlphaExceptRect(
  A_Rect *clipped_dst_rectPR,
  PF_EffectWorld *dstP);
-
 ```
 
 #### AEGP_PrepTrackMatte
@@ -6517,12 +6047,11 @@ AEGP_PrepTrackMatte(
  const PF_Pixel *src_mask,
  PF_MaskFlags mask_flags,
  PF_Pixel *dst_mask);
-
 ```
 
 #### AEGP_TransferRect
 
-使用传输模式混合两个`PF_EffectWorlds'，有一个可选的掩码。 在`blend_tablesP0`参数中传递 NULL，以在当前的工作色彩空间中执行混合。
+使用传输模式混合两个`PF_EffectWorlds`，有一个可选的掩码。 在`blend_tablesP0`参数中传递 NULL，以在当前的工作色彩空间中执行混合。
 
 ```cpp
 AEGP_TransferRect(
@@ -6537,12 +6066,11 @@ AEGP_TransferRect(
  A_long dest_x,
  A_long dest_y,
  PF_EffectWorld *dst_world);
-
 ```
 
 #### AEGP_CopyBits_LQ
 
-从一个`PF_EffectWorld'复制一个像素矩形(传递一个`NULL'矩形来获得所有像素)到另一个`PF_EffectWorld'，质量不高。
+从一个`PF_EffectWorld`复制一个像素矩形(传递一个`NULL`矩形来获得所有像素)到另一个`PF_EffectWorld`，质量不高。
 
 ```cpp
 AEGP_CopyBits_LQ(
@@ -6550,12 +6078,11 @@ AEGP_CopyBits_LQ(
  A_Rect *src_r,
  A_Rect *dst_r,
  PF_EffectWorld *dst_worldP);
-
 ```
 
 #### AEGP_CopyBits_HQ_Straight
 
-从一个`PF_EffectWorld'复制一个像素矩形(通过一个`NULL'矩形来获得所有像素)到另一个`PF_EffectWorld'，质量很高，有一个直的 alpha 通道。
+从一个`PF_EffectWorld`复制一个像素矩形(通过一个`NULL`矩形来获得所有像素)到另一个`PF_EffectWorld`，质量很高，有一个直的 alpha 通道。
 
 ```cpp
 AEGP_CopyBits_HQ_Straight(
@@ -6563,12 +6090,11 @@ AEGP_CopyBits_HQ_Straight(
  A_Rect *src_r,
  A_Rect *dst_r,
  PF_EffectWorld *dst);
-
 ```
 
 #### AEGP_CopyBits_HQ_Premul
 
-从一个`PF_EffectWorld'复制一个像素矩形(传递一个`NULL'矩形来获得所有像素)到另一个`PF_EffectWorld'，质量很高，预先乘以 alpha 通道。
+从一个`PF_EffectWorld`复制一个像素矩形(传递一个`NULL`矩形来获得所有像素)到另一个`PF_EffectWorld`，质量很高，预先乘以 alpha 通道。
 
 ```cpp
 AEGP_CopyBits_HQ_Premul(
@@ -6576,7 +6102,6 @@ AEGP_CopyBits_HQ_Premul(
  A_Rect *src_r,
  A_Rect *dst_r,
  PF_EffectWorld *dst);
-
 ```
 
 ## Work With Audio
@@ -6589,66 +6114,60 @@ AEGP_CopyBits_HQ_Premul(
 
 #### AEGP_NewSoundData
 
-创建一个新的`AEGP_SoundDataH'，插件必须处理它。
+创建一个新的`AEGP_SoundDataH`，插件必须处理它。
 
 ```cpp
 AEGP_NewSoundData(
  const AEGP_SoundDataFormat *formatP,
  AEGP_SoundDataH *new_dataPH);
-
 ```
 
 #### AEGP_DisposeSoundData
 
-释放一个`AEGP_SoundDataH'。
+释放一个`AEGP_SoundDataH`。
 
 ```cpp
 AEGP_DisposeSoundData(
  AEGP_SoundDataH sound_dataH);
-
 ```
 
 #### AEGP_GetSoundDataFormat
 
-获取关于给定的`AEGP_SoundDataH'的格式信息。
+获取关于给定的`AEGP_SoundDataH`的格式信息。
 
 ```cpp
 AEGP_GetSoundDataFormat(
  AEGP_SoundDataH soundH,
  AEGP_SoundDataFormat *formatP);
-
 ```
 
 #### AEGP_LockSoundDataSamples
 
-锁定内存中的`AEGP_SoundDataH'。
+锁定内存中的`AEGP_SoundDataH`。
 
 ```cpp
 AEGP_LockSoundDataSamples(
  AEGP_SoundDataH soundH,
  void **samples);
-
 ```
 
 #### AEGP_UnlockSoundDataSamples
 
-解锁一个`AEGP_SoundDataH'。
+解锁一个`AEGP_SoundDataH`。
 
 ```cpp
 AEGP_UnlockSoundDataSamples(
  AEGP_SoundDataH soundH);
-
 ```
 
 #### AEGP_GetNumSamples
 
-获取给定的`AEGP_SoundDataH'中的样本数。
+获取给定的`AEGP_SoundDataH`中的样本数。
 
 ```cpp
 AEGP_GetNumSamples(
  AEGP_SoundDataH soundH,
  A_long *numsamplesPL);
-
 ```
 
 ## Audio Settings
@@ -6662,15 +6181,14 @@ struct AEGP_SoundDataFormat {
  A_long bytes_per_sampleL;
  A_long num_channelsL; // 1 for mono, 2 for stereo
 } AEGP_SoundDataFormat;
-
 ```
 
-`bytes_per_sampleL`总是`1', `2', 或 `4', 如果指定浮动编码则忽略。
+`bytes_per_sampleL`总是`1`,`2`, 或 `4`, 如果指定浮动编码则忽略。
 
 `AEGP_SoundEncoding`是以下之一。
 
-> - `AEGP_SoundEncoding_UNSIGNED_PCM'。
-> - `AEGP_SoundEncoding_SIGNED_PCM'。
+> - `AEGP_SoundEncoding_UNSIGNED_PCM`。
+> - `AEGP_SoundEncoding_SIGNED_PCM`。
 > - `AEGP_SoundEncoding_FLOAT`。
 
 ## Render Queue Suite
@@ -6687,7 +6205,6 @@ struct AEGP_SoundDataFormat {
 AEGP_AddCompToRenderQueue(
  AEGP_CompH compH,
  const A_char* pathZ);
-
 ```
 
 #### AEGP_SetRenderQueueState
@@ -6697,7 +6214,6 @@ AEGP_AddCompToRenderQueue(
 ```cpp
 AEGP_SetRenderQueueState(
  AEGP_RenderQueueState state);
-
 ```
 
 - `AEGP_RenderQueueState_STOPPED`
@@ -6711,7 +6227,6 @@ AEGP_SetRenderQueueState(
 ```cpp
 AEGP_GetRenderQueueState(
  AEGP_RenderQueueState *stateP);
-
 ```
 
 ## Render Queue Item Suite
@@ -6727,29 +6242,26 @@ AEGP_GetRenderQueueState(
 ```cpp
 AEGP_GetNumRQItems(
  A_long *num_itemsPL);
-
 ```
 
 #### AEGP_GetRQItemByIndex
 
-返回一个`AEGP_RQItemRefH'，引用索引的项目。
+返回一个`AEGP_RQItemRefH`，引用索引的项目。
 
 ```cpp
 AEGP_GetRQItemByIndex(
  A_long rq_item_index,
  AEGP_RQItemRefH *rq_item_refPH);
-
 ```
 
 #### AEGP_GetNextRQItem
 
-返回下一个`AEGP_RQItemRefH'，用于迭代目的。 要获得第一个`AEGP_RQItemRefH'，请为`current_rq_itemH'传递`RQ_ITEM_INDEX_NONE`。
+返回下一个`AEGP_RQItemRefH`，用于迭代目的。 要获得第一个`AEGP_RQItemRefH`，请为`current_rq_itemH`传递`RQ_ITEM_INDEX_NONE`。
 
 ```cpp
 AEGP_GetNextRQItem(
  AEGP_RQItemRefH current_rq_itemH,
  AEGP_RQItemRefH *next_rq_itemPH);
-
 ```
 
 #### AEGP_GetNumOutputModulesForRQItem
@@ -6760,7 +6272,6 @@ AEGP_GetNextRQItem(
 AEGP_GetNumOutputModulesForRQItem(
  AEGP_RQItemRefH rq_itemH,
  A_long *num_outmodsPL);
-
 ```
 
 #### AEGP_GetRenderState
@@ -6771,7 +6282,6 @@ AEGP_GetNumOutputModulesForRQItem(
 AEGP_GetRenderState(
  AEGP_RQItemRefH rq_itemH,
  A_Boolean *will_renderPB);
-
 ```
 
 #### AEGP_SetRenderState
@@ -6787,7 +6297,6 @@ AEGP_GetRenderState(
 AEGP_SetRenderState(
  AEGP_RQItemRefH rq_itemH,
  A_Boolean renderB);
-
 ```
 
 #### AEGP_GetStartedTime
@@ -6798,7 +6307,6 @@ AEGP_SetRenderState(
 AEGP_GetStartedTime(
  AEGP_RQItemRefH rq_itemH,
  A_Time *started_timePT);
-
 ```
 
 #### AEGP_GetElapsedTime
@@ -6809,7 +6317,6 @@ AEGP_GetStartedTime(
 AEGP_GetElapsedTime(
  AEGP_RQItemRefH rq_itemH,
  A_Time *render_timePT);
-
 ```
 
 #### AEGP_GetLogType
@@ -6820,7 +6327,6 @@ AEGP_GetElapsedTime(
 AEGP_GetLogType(
  AEGP_RQItemRefH rq_itemH,
  AEGP_LogType *logtypeP);
-
 ```
 
 `AEGP_LogtType`将有以下值之一。
@@ -6832,36 +6338,33 @@ AEGP_GetLogType(
 
 #### AEGP_SetLogType
 
-指定与引用的`AEGP_RQItemRefH'一起使用的日志类型。
+指定与引用的`AEGP_RQItemRefH`一起使用的日志类型。
 
 ```cpp
 AEGP_SetLogType(
  AEGP_RQItemRefH rq_itemH,
  AEGP_LogType logtype);
-
 ```
 
 #### AEGP_RemoveOutputModule
 
-从引用的`AEGP_RQItemRefH'中删除指定的输出模块。
+从引用的`AEGP_RQItemRefH`中删除指定的输出模块。
 
 ```cpp
 AEGP_RemoveOutputModule(
  AEGP_RQItemRefH rq_itemH,
  AEGP_OutputModuleRefH outmodH);
-
 ```
 
 #### AEGP_GetComment
 
 更新以支持`RQItemSuite4`中的 Unicode，在 14.1 中可用。
-检索与引用的`AEGP_RQItemRefH'相关的注释。
+检索与引用的`AEGP_RQItemRefH`相关的注释。
 
 ```cpp
 AEGP_GetComment(
  AEGP_RQItemRefH rq_itemH,
  AEGP_MemHandle *unicodeH);
-
 ```
 
 #### AEGP_SetComment
@@ -6873,18 +6376,16 @@ AEGP_GetComment(
 AEGP_SetComment(
  AEGP_RQItemRefH rq_itemH,
  const A_UTF16Char *commentZ);
-
 ```
 
 #### AEGP_GetCompFromRQItem
 
-检索与`AEGP_RQItemRefH`相关的`AEGP_CompH'。
+检索与`AEGP_RQItemRefH`相关的`AEGP_CompH`。
 
 ```cpp
 AEGP_GetCompFromRQItem(
  AEGP_RQItemRefH rq_itemH,
  AEGP_CompH *compPH);
-
 ```
 
 #### AEGP_DeleteRQItem
@@ -6894,7 +6395,6 @@ AEGP_GetCompFromRQItem(
 ```cpp
 AEGP_DeleteRQItem(
  AEGP_RQItemRefH rq_itemH);
-
 ```
 
 ## Render Queue Monitor Suite
@@ -6914,7 +6414,6 @@ AEGP_RegisterListener(
  AEGP_PluginID aegp_plugin_id,
  AEGP_RQM_Refcon aegp_refconP,
  const AEGP_RQM_FunctionBlock1 *fcn_blockP);
-
 ```
 
 `AEGP_RQM_FunctionBlock1`定义如下。
@@ -6953,7 +6452,6 @@ struct _AEGP_RQM_FunctionBlock1 {
  A_Boolean isError,
  AEGP_MemHandle logbuf);
 } AEGP_RQM_FunctionBlock1;
-
 ```
 
 `AEGP_RQM_FinishedStatus`将是以下的一个。
@@ -6971,7 +6469,6 @@ struct _AEGP_RQM_BasicData {
  A_long aegp_plug_id;
  AEGP_RQM_Refcon aegp_refconPV;
 } AEGP_RQM_BasicData;
-
 ```
 
 #### AEGP_DeregisterListener
@@ -6982,7 +6479,6 @@ struct _AEGP_RQM_BasicData {
 AEGP_DeregisterListener(
  AEGP_PluginID aegp_plugin_id,
  AEGP_RQM_Refcon aegp_refconP);
-
 ```
 
 #### AEGP_GetProjectName
@@ -6994,19 +6490,17 @@ AEGP_DeregisterListener(
 AEGP_GetProjectName(
  AEGP_RQM_SessionId sessid,
  AEGP_MemHandle *utf_project_namePH0);
-
 ```
 
 #### AEGP_GetAppVersion
 
 获取应用程序的版本。
-应用程序的版本是一个以 NULL 结尾的 A_UTF16Char 字符串的句柄，必须用`AEGP_FreeMemHandle'来处理。
+应用程序的版本是一个以 NULL 结尾的 A_UTF16Char 字符串的句柄，必须用`AEGP_FreeMemHandle`来处理。
 
 ```cpp
 AEGP_GetAppVersion(
  AEGP_RQM_SessionId sessid,
  AEGP_MemHandle *utf_app_versionPH0);
-
 ```
 
 #### AEGP_GetNumJobItems
@@ -7017,7 +6511,6 @@ AEGP_GetAppVersion(
 AEGP_GetNumJobItems(
  AEGP_RQM_SessionId sessid,
  A_long *num_jobitemsPL);
-
 ```
 
 #### AEGP_GetJobItemID
@@ -7029,7 +6522,6 @@ AEGP_GetJobItemID(
  AEGP_RQM_SessionId sessid,
  A_long jobItemIndex,
  AEGP_RQM_ItemId *jobItemID);
-
 ```
 
 #### AEGP_GetNumJobItemRenderSettings
@@ -7041,7 +6533,6 @@ AEGP_GetNumJobItemRenderSettings(
  AEGP_RQM_SessionId sessid,
  AEGP_RQM_ItemId itemid,
  A_long *num_settingsPL);
-
 ```
 
 #### AEGP_GetJobItemRenderSetting
@@ -7056,7 +6547,6 @@ AEGP_GetJobItemRenderSetting(
  A_long settingIndex,
  AEGP_MemHandle *utf_setting_namePH0,
  AEGP_MemHandle *utf_setting_valuePH0);
-
 ```
 
 #### AEGP_GetNumJobItemOutputModules
@@ -7068,7 +6558,6 @@ AEGP_GetNumJobItemOutputModules(
  AEGP_RQM_SessionId sessid,
  AEGP_RQM_ItemId itemid,
  A_long *num_outputmodulesPL);
-
 ```
 
 #### AEGP_GetNumJobItemOutputModuleSettings
@@ -7081,7 +6570,6 @@ AEGP_GetNumJobItemOutputModuleSettings(
  AEGP_RQM_ItemId itemid,
  A_long outputModuleIndex,
  A_long *num_settingsPL);
-
 ```
 
 #### AEGP_GetJobItemOutputModuleSetting
@@ -7097,7 +6585,6 @@ AEGP_GetJobItemOutputModuleSetting(
  A_long settingIndex,
  AEGP_MemHandle *utf_setting_namePH0,
  AEGP_MemHandle *utf_setting_valuePH0);
-
 ```
 
 #### AEGP_GetNumJobItemOutputModuleWarnings
@@ -7110,7 +6597,6 @@ AEGP_GetNumJobItemOutputModuleWarnings(
  AEGP_RQM_ItemId itemid,
  A_long outputModuleIndex,
  A_long *num_warningsPL);
-
 ```
 
 #### AEGP_GetJobItemOutputModuleWarning
@@ -7125,7 +6611,6 @@ AEGP_GetJobItemOutputModuleWarning(
  A_long outputModuleIndex,
  A_long warningIndex,
  AEGP_MemHandle *utf_warning_valuePH0);
-
 ```
 
 #### AEGP_GetNumJobItemFrameProperties
@@ -7138,7 +6623,6 @@ AEGP_GetNumJobItemFrameProperties(
  AEGP_RQM_ItemId itemid,
  AEGP_RQM_FrameId frameid,
  A_long *num_propertiesPL);
-
 ```
 
 #### AEGP_GetJobItemFrameProperty
@@ -7154,7 +6638,6 @@ AEGP_GetJobItemFrameProperty(
  A_long propertyIndex,
  AEGP_MemHandle *utf_property_namePH0,
  AEGP_MemHandle *utf_property_valuePH0);
-
 ```
 
 #### AEGP_GetNumJobItemOutputModuleProperties
@@ -7167,7 +6650,6 @@ AEGP_GetNumJobItemOutputModuleProperties(
  AEGP_RQM_ItemId itemid,
  A_long outputModuleIndex,
  A_long *num_propertiesPL);
-
 ```
 
 #### AEGP_GetJobItemOutputModuleProperty
@@ -7183,7 +6665,6 @@ AEGP_GetJobItemOutputModuleProperty(
  A_long propertyIndex,
  AEGP_MemHandle *utf_property_namePH0,
  AEGP_MemHandle *utf_property_valuePH0);
-
 ```
 
 #### AEGP_GetJobItemFrameThumbnail
@@ -7199,7 +6680,6 @@ AEGP_GetJobItemFrameThumbnail(
  A_long *widthPL,
  A_long *heightPL,
  AEGP_MemHandle *thumbnailPH0);
-
 ```
 
 ## Output Module Suite
@@ -7224,7 +6704,6 @@ AEGP_GetOutputModuleByIndex(
  AEGP_RQItemRefH rq_itemH,
  A_long outmod_indexL,
  AEGP_OutputModuleRefH *outmodPH);
-
 ```
 
 #### AEGP_GetEmbedOptions
@@ -7236,7 +6715,6 @@ AEGP_GetEmbedOptions(
  AEGP_RQItemRefH rq_itemH,
  AEGP_OutputModuleRefH outmodH,
  AEGP_EmbeddingType *embed_optionsP);
-
 ```
 
 `AEGP_EmbeddingType`将是以下之一。
@@ -7254,19 +6732,17 @@ AEGP_SetEmbedOptions(
  AEGP_RQItemRefH rq_itemH,
  AEGP_OutputModuleRefH outmodH,
  AEGP_EmbeddingType embed_options);
-
 ```
 
 #### AEGP_GetPostRenderAction
 
-检索引用的`AEGP_OutputModuleRefH'的后期渲染动作设置。
+检索引用的`AEGP_OutputModuleRefH`的后期渲染动作设置。
 
 ```cpp
 AEGP_GetPostRenderAction(
  AEGP_RQItemRefH rq_itemH,
  AEGP_OutputModuleRefH outmodH,
  AEGP_PostRenderAction *actionP);
-
 ```
 
 `AEGP_PostRenderAction`将是以下之一。
@@ -7277,26 +6753,24 @@ AEGP_GetPostRenderAction(
 
 #### AEGP_SetPostRenderAction
 
-指定引用的`AEGP_OutputModuleRefH'的后期渲染动作设置。
+指定引用的`AEGP_OutputModuleRefH`的后期渲染动作设置。
 
 ```cpp
 AEGP_SetPostRenderAction(
  AEGP_RQItemRefH rq_itemH,
  AEGP_OutputModuleRefH outmodH,
  AEGP_PostRenderAction action);
-
 ```
 
 #### AEGP_GetEnabledOutputs
 
-检索引用的`AEGP_OutputModuleRefH'启用了哪些输出类型。
+检索引用的`AEGP_OutputModuleRefH`启用了哪些输出类型。
 
 ```cpp
 AEGP_GetEnabledOutputs(
  AEGP_RQItemRefH rq_itemH,
  AEGP_OutputModuleRefH outmodH,
  AEGP_OutputTypes *typesP);
-
 ```
 
 `AEGP_OutputTypes`将包含以下一个或两个值。
@@ -7308,14 +6782,13 @@ AEGP_GetEnabledOutputs(
 
 #### AEGP_SetEnabledOutputs
 
-指定引用的`AEGP_OutputModuleRefH'启用哪些输出类型。
+指定引用的`AEGP_OutputModuleRefH`启用哪些输出类型。
 
 ```cpp
 AEGP_SetEnabledOutputs(
  AEGP_RQItemRefH rq_itemH,
  AEGP_OutputModuleRefH outmodH,
  AEGP_OutputTypes enabled_types);
-
 ```
 
 #### AEGP_GetOutputChannels
@@ -7327,7 +6800,6 @@ AEGP_GetOutputChannels(
  AEGP_RQItemRefH rq_itemH,
  AEGP_OutputModuleRefH outmodH,
  AEGP_VideoChannels *outchannelsP);
-
 ```
 
 `AEGP_VideoChannels`将是以下之一。
@@ -7338,19 +6810,18 @@ AEGP_GetOutputChannels(
 
 #### AEGP_SetOutputChannels
 
-指定在引用的`AEGP_OutputModuleRefH'中哪些视频通道被启用进行输出。
+指定在引用的`AEGP_OutputModuleRefH`中哪些视频通道被启用进行输出。
 
 ```cpp
 AEGP_SetOutputChannels(
  AEGP_RQItemRefH rq_itemH,
  AEGP_OutputModuleRefH outmodH,
  AEGP_VideoChannels outchannels);
-
 ```
 
 #### AEGP_GetStretchInfo
 
-检索引用的`AEGP_OutputModuleRefH'启用的拉伸信息；是否启用了拉伸功能，是否将帧的宽高比锁定在合成上，以及指定了什么质量设置。
+检索引用的`AEGP_OutputModuleRefH`启用的拉伸信息；是否启用了拉伸功能，是否将帧的宽高比锁定在合成上，以及指定了什么质量设置。
 
 ```cpp
 AEGP_GetStretchInfo(
@@ -7359,7 +6830,6 @@ AEGP_GetStretchInfo(
  A_Boolean *enabledPB,
  AEGP_StretchQuality *qualP,
  A_Boolean *lockedPB);
-
 ```
 
 `AEGP_StretchQuality`将是以下之一。
@@ -7369,7 +6839,7 @@ AEGP_GetStretchInfo(
 
 #### AEGP_SetStretchInfo
 
-检索引用的`AEGP_OutputModuleRefH'所启用的拉伸信息。
+检索引用的`AEGP_OutputModuleRefH`所启用的拉伸信息。
 
 ```cpp
 AEGP_SetStretchInfo(
@@ -7377,7 +6847,6 @@ AEGP_SetStretchInfo(
  AEGP_OutputModuleRefH outmodH,
  A_Boolean is_enabledB,
  AEGP_StretchQuality quality);
-
 ```
 
 #### AEGP_GetCropInfo
@@ -7390,12 +6859,11 @@ AEGP_GetCropInfo(
  AEGP_OutputModuleRefH outmodH,
  A_Boolean *is_enabledBP,
  A_Rect *crop_rectP);
-
 ```
 
 #### AEGP_SetCropInfo
 
-指定参考的`AEGP_OutputModuleRefH'是否启用裁剪，以及要使用的矩形。
+指定参考的`AEGP_OutputModuleRefH`是否启用裁剪，以及要使用的矩形。
 
 ```cpp
 AEGP_SetCropInfo(
@@ -7403,12 +6871,11 @@ AEGP_SetCropInfo(
  AEGP_OutputModuleRefH outmodH,
  A_Boolean enableB,
  A_Rect crop_rect);
-
 ```
 
 #### AEGP_GetSoundFormatInfo
 
-读取引用的`AEGP_OutputModuleRef'是否启用音频输出，以及要使用的设置。
+读取引用的`AEGP_OutputModuleRef`是否启用音频输出，以及要使用的设置。
 
 ```cpp
 AEGP_GetSoundFormatInfo(
@@ -7416,12 +6883,11 @@ AEGP_GetSoundFormatInfo(
  AEGP_OutputModuleRefH outmodH,
  AEGP_SoundDataFormat *formatP,
  A_Boolean *enabledPB);
-
 ```
 
 #### AEGP_SetSoundFormatInfo
 
-指定引用的`AEGP_OutputModuleRefH'是否启用音频输出，以及要使用的设置。
+指定引用的`AEGP_OutputModuleRefH`是否启用音频输出，以及要使用的设置。
 
 ```cpp
 AEGP_SetSoundFormatInfo(
@@ -7429,25 +6895,23 @@ AEGP_SetSoundFormatInfo(
  AEGP_OutputModuleRefH outmodH,
  AEGP_SoundDataFormat format_info,
  A_Boolean enabledB);
-
 ```
 
 #### AEGP_GetOutputFilePath
 
 检索 "AEGP_OutputModuleRefH "的输出文件将被写入的路径。
-该路径是一个以 NULL 结尾的 A_UTF16Char 字符串的句柄，必须用`AEGP_FreeMemHandle'来处理。
+该路径是一个以 NULL 结尾的 A_UTF16Char 字符串的句柄，必须用`AEGP_FreeMemHandle`来处理。
 
 ```cpp
 AEGP_GetOutputFilePath(
  AEGP_RQItemRefH rq_itemH,
  AEGP_OutputModuleRefH outmodH,
  AEGP_MemHandle *unicode_pathPH);
-
 ```
 
 #### AEGP_SetOutputFilePath
 
-指定`AEGP_OutputModuleRefH'的输出文件将被写入的路径。
+指定`AEGP_OutputModuleRefH`的输出文件将被写入的路径。
 文件路径是一个以 NULL 结尾的 UTF-16 字符串，带有平台分隔符。
 
 ```cpp
@@ -7455,7 +6919,6 @@ AEGP_SetOutputFilePath(
  AEGP_RQItemRefH rq_itemH,
  AEGP_OutputModuleRefH outmodH,
  const A_UTF16Char *pathZ);
-
 ```
 
 #### AEGP_AddDefaultOutputModule
@@ -7466,7 +6929,6 @@ AEGP_SetOutputFilePath(
 AEGP_AddDefaultOutputModule(
  AEGP_RQItemRefH rq_itemH,
  AEGP_OutputModuleRefH *outmodPH);
-
 ```
 
 #### AEGP_GetExtraOutputModuleInfo
@@ -7483,7 +6945,6 @@ AEGP_GetExtraOutputModuleInfo(
  AEGP_MemHandle *info_uniPH,
  A_Boolean *is_sequenceBP,
  A_Boolean *multi_frameBP);
-
 ```
 
 ## Working With Effects
@@ -7506,7 +6967,6 @@ After Effects 没有办法知道你依赖这些外部信息；因此，如果这
 AEGP_GetEffectLayer(
  PF_ProgPtr effect_ref,
  AEGP_LayerH *layerPH);
-
 ```
 
 #### AEGP_GetNewEffectForEffect
@@ -7518,7 +6978,6 @@ AEGP_GetNewEffectForEffect(
  AEGP_PluginID aegp_plugin_id,
  PF_ProgPtr effect_ref,
  AEGP_EffectRefH *effectPH);
-
 ```
 
 #### AEGP_ConvertEffectToCompTime
@@ -7531,7 +6990,6 @@ AEGP_ConvertEffectToCompTime(
  long what_timeL,
  unsigned long time_scaleLu,
  A_Time *comp_timePT);
-
 ```
 
 #### AEGP_GetEffectCamera
@@ -7543,7 +7001,6 @@ AEGP_GetEffectCamera(
  PF_ProgPtr effect_ref,
  const A_Time *comp_timePT,
  AEGP_LayerH camera_layerPH);
-
 ```
 
 #### AEGP_GetEffectCameraMatrix
@@ -7558,11 +7015,10 @@ AEGP_GetEffectCameraMatrix(
  A_FpLong *dst_to_planePF,
  A_short *plane_widthPL,
  A_short *plane_heightPL);
-
 ```
 
 注意：如果效果的输入层是方形像素，但在一个非方形像素的合成中。
-你必须通过将矩阵预先乘以`(1/parF, 1, 1)'来校正像素长宽比。
+你必须通过将矩阵预先乘以`(1/parF, 1, 1)`来校正像素长宽比。
 
 ### AEGP_GetEffectCameraMatrix Notes
 
@@ -7583,13 +7039,12 @@ AEGP_GetEffectCameraMatrix(
 ```cpp
 AEGP_GetNumThreads(
  A_long *num_threadsPL);
-
 ```
 
 #### AEGP_IterateGeneric
 
 指定一个函数，让 After Effects 在多个处理器上管理。
-可以是由`fn_func'指定的任何函数指针，采取下面列出的参数。
+可以是由`fn_func`指定的任何函数指针，采取下面列出的参数。
 参见[Private Data](implementation.html#aegps-implementation-private-data)以了解 refconPV 的使用方法。
 
 ```cpp
@@ -7601,7 +7056,6 @@ AEGP_IterateGeneric(
  A_long thread_indexL,
  A_long i,
  A_long iterationsL));
-
 ```
 
 ## File Import Manager Suite
@@ -7622,7 +7076,6 @@ FIMSuite 允许由 AEGPs 处理的文件类型作为 After Effects 导入对话�
 AEGP_RegisterImportFlavor(
  const char *nameZ,
  AE_FIM_ImportFlavorRef *imp_refP);
-
 ```
 
 #### AEGP_RegisterImportFlavorFileTypes
@@ -7636,7 +7089,6 @@ AEGP_RegisterImportFlavorFileTypes(
  const AEIO_FileKind *kindsAP,
  long num_fileextsL,
  const AEIO_FileKind *extsAP);
-
 ```
 
 #### AEGP_RegisterImportFlavorImportCallbacks
@@ -7648,7 +7100,6 @@ AEGP_RegisterImportFlavorImportCallbacks(
  AE_FIM_ImportFlavorRef ref,
  AE_FIM_ImportFlags single_flag,
  const AE_FIM_ImportCallbacks *imp_cbsP);
-
 ```
 
 #### AEGP_SetImportedItem
@@ -7659,5 +7110,4 @@ AEGP_RegisterImportFlavorImportCallbacks(
 AEGP_SetImportedItem(
  AE_FIM_ImportOptions imp_options,
  AEGP_ItemH imported_itemH);
-
 ```
