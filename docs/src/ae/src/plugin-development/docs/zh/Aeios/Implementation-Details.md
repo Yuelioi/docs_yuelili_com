@@ -1,13 +1,11 @@
 ---
-title: Implementation Details
+title: 实施细节
 order: 6
 category:
   - AE 插件开发
 ---
 
-# Implementation Details
-
-## Export Bit-Depth
+## 导出 Bit-Depth
 
 在输出模块设置中，用户可以根据 AEIO 在[AEIO_FunctionBlock4](new-kids-on-the-function-block.html) 的`AEIO_GetDepths()`中声明支持的选项选择一个深度。
 
@@ -17,7 +15,7 @@ category:
 
 如果 After Effects 认为最终输出的质量更高，你可能会得到以项目比特深度传递的帧而不是最终输出的帧。
 
-## User Data vs. Options
+## 用户数据 vs 选项
 
 可以使用用户数据分配或选项句柄来存储文件的元数据。
 

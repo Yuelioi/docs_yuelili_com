@@ -51,7 +51,7 @@ var sequence = app.project.activeSequence; // 获取当前序列
 
 var end = sequence.markers.getFirstMarker().end; // 获取结束点时间对象
 
-alert(end.seconds.toString()); // 80（秒） 时间线的1分20
+alert(end.seconds.toString()); // 80（秒） 时间轴的1分20
 ```
 
 ### guid 标记标识符
@@ -104,7 +104,7 @@ var sequence = app.project.activeSequence; // 获取当前序列
 
 var end = sequence.markers.getFirstMarker().start; // 获取结束点时间对象
 
-alert(end.seconds.toString()); // 60（秒） 时间线的1分
+alert(end.seconds.toString()); // 60（秒） 时间轴的1分
 ```
 
 ### 标记类型

@@ -1,11 +1,9 @@
 ---
-title: Audio
+title: 音频
 order: 2
 category:
   - AE 插件开发
 ---
-
-# Audio
 
 After Effects 可以处理高达 96Khz、浮点(24 位)分辨率、单声道或立体声编码的音频。
 

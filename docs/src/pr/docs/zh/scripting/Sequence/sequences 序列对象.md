@@ -442,11 +442,11 @@ newTime.seconds = 20;
 alert(sequence.getOutPointAsTime().seconds.toString()); // 50（秒）
 ```
 
-### getPlayerPosition() 获取时间线位置
+### getPlayerPosition() 获取时间轴位置
 
 app.project.sequences[index].getPlayerPosition()
 
-**描述**：检索当前时间线位置，以 Ticks 为单位。
+**描述**：检索当前时间轴位置，以 Ticks 为单位。
 
 **参数**：无。
 

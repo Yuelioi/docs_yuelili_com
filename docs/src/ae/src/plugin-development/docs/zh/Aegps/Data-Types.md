@@ -9,8 +9,8 @@ category:
 
 ## AEGP API 数据类型
 
-| **Type** | **Describes**  | **Manage Using**  |
-| -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|类型 | 描述 | 管理用法  |
+| --- | --- | --- |
 | `AEGP_MemHandle` | 这个结构包含的不仅仅是引用的内存。所以它不应该被直接取消引用。使用 `AEGP_LockMemHandle` 在AEGP内存套件中获取指向AEGP_MemHandle引用的内存的指针。在完成后解锁它。  | [AEGP Memory Suite](../aegps/aegp-suites.html)  |
 | `AEGP_ProjectH`  | 当前AE工程. 项目是在树中分层排列的一组元素，以保留语义关系。树的内部节点是文件夹。从CS6开始，将只有一个开放项目。 | [AEGP Project Suite](../aegps/aegp-suites.html)  |
 | `AEGP_ItemH` |描述项目的任何元素的抽象，包括文件夹。项目是可以选择的任何东西。由于可以选择多种对象类型，我们将它们视为`AEGP_ItemHs`,除非有其他需求。 | [AEGP Item Suite](../aegps/aegp-suites.html)  |
@@ -25,7 +25,7 @@ category:
 | `AEGP_MaskOutlineValH` | 构成蒙版的具体点。蒙版大纲中的点是有序的，蒙版无需关闭。| [AEGP Mask Outline Suite](../aegps/aegp-suites.html)  |
 | `AEGP_TextDocumentH` | 表示与文本图层关联的实际文本。 | [AEGP Text Document Suite](../aegps/aegp-suites.html)  |
 | `AEGP_TextOutlinesH` | 给定文本图层轮廓所有路径的引用。  | [AEGP Text Layer Suite](../aegps/aegp-suites.html)  |
-| `AEGP_MarkerVal` | 与给定时间线标记相关联的数据。  | [AEGP Marker Suite](../aegps/aegp-suites.html)  |
+| `AEGP_MarkerVal` | 与给定时间轴标记相关联的数据。  | [AEGP Marker Suite](../aegps/aegp-suites.html)  |
 | `AEGP_PersistentBlobH` | 包含当前首选项的数据“blob”。 | [AEGP Persistent Data Suite](../aegps/aegp-suites.html)  |
 | `AEGP_RenderOptionsH`  | 与渲染请求关联的设置。 | [AEGP Render Options Suite](../aegps/aegp-suites.html)  |
 | `AEGP_LayerRenderOptionsH` | 与图层渲染请求关联的设置。 | [AEGP Layer Render Options Suite](../aegps/aegp-suites.html)  |
@@ -51,7 +51,7 @@ category:
 ## Data Types Requiring Disposal
 
 | **Data Type**  | **Disposal function**  |
-| -------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| --- | --- |
 | `AEGP_Collection2H`  | `AEGP_DisposeCollection`, 来自于[AEGP_CollectionSuite2](../aegps/aegp-suites.html)  |
 | `AEGP_FootageH`  | `AEGP_DisposeFootage`, 来自于[AEGP_FootageSuite5](../aegps/aegp-suites.html) |
 | `AEGP_WorldH`  | `AEGP_Dispose`, 来自于 [AEGP_WorldSuite3](../aegps/aegp-suites.html) 或 `AEGP_DisposeTexture`, 来自于 [AEGP_CanvasSuite8](../artisans/artisan-data-types.html), if layer texture created using AEGP_RenderTexture`) |

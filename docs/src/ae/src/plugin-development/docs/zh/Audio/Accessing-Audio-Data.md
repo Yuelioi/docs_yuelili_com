@@ -1,11 +1,9 @@
 ---
-title: Accessing Audio Data
+title: 访问音频数据
 order: 6
 category:
   - AE 插件开发
 ---
-
-# Accessing Audio Data
 
 使用`PF_CHECKOUT_LAYER_AUDIO`从[Interaction Callbacks](../effect-details/interaction-callback-functions.html) 检索一个音频层。
 
@@ -15,7 +13,7 @@ category:
 
 如果你的效果要求输入的时间跨度与输出的时间跨度不同，在 "PF_Cmd_AUDIO_SETUP "中更新`startsampL`和`endsampL`字段，从[Frame Selectors](../effect-basics/command-selectors.html) 。
 
-## Extending Audio Clips
+## 扩展音频剪辑
 
 你不能通过 API 延长一个音频片段的长度。
 
