@@ -9,13 +9,6 @@ category:
 
 使用 vs 打开 SDK 文件夹的 `Template > Skeleton > Win > Skeleton.vcxproj`
 
-<<<<<<< HEAD
-=======
-文档地址: [https://ae-plugins.docsforadobe.dev/](https://ae-plugins.docsforadobe.dev/)
-
-使用 vs 打开 SKD 文件夹的 `Template > Skeleton > Win > Skeleton.vcxproj`
-
->>>>>>> 45d2e2368b78eb8835a045bff8226c61943b9799
 ::: tip
 请先备份 Template 文件夹 方便后续创建新模板
 :::
