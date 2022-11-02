@@ -38,6 +38,29 @@ category:
 | [AEGP Iterate Suite](../aegps/aegp-suites.html)| 为AEGP提供了一种在任何或所有可用处理器上运行函数（具有所需签名）的方法。 |
 | [File Import Manager Suite](../aegps/aegp-suites.html) | 注册AEGP文件和项目导入器作为AE文件处理的一部分。|
 
+## 示例代码
+
+在skeleton.cpp文件里 有几个入口函数,比如`About`,`GlobalSetup`,如果没有其他说明,可以把我写的示例放在这些入口函数里进行测试
+
+比如以下代码代表,我在`Render`入口函数里进行测试,`...` 代表省略了函数本身的代码
+
+```cpp
+static PF_Err 
+Render (
+
+// ...
+
+AEGP_Command cmd;
+ERR(suites.CommandSuite1()->AEGP_InsertMenuCommand(
+  suites.CommandSuite1()->AEGP_GetUniqueCommand(&cmd),
+  "Test",
+  AEGP_Menu_WINDOW,
+  AEGP_MENU_INSERT_SORTED));
+
+// ...
+
+```
+
 ## 优雅地出错
 
 如果一个套件不存在，要尽力做到优雅地失败。向用户显示一条信息，说明问题的性质。尝试使用同一套件的早期版本。
@@ -164,7 +187,7 @@ AEGP_GetUniqueCommand(
 
 #### AEGP_InsertMenuCommand
 
-添加一个新的菜单命令。使用 nameZ = "-" 将插入一个分隔符。 menu_ID 可以是。
+添加一个新的菜单命令。使用 nameZ = "-" 将插入一个分隔符。 menu_ID 可以是:
 
 - `AEGP_Menu_NONE`
 - `AEGP_Menu_APPLE`
@@ -182,7 +205,7 @@ AEGP_GetUniqueCommand(
 - `AEGP_Menu_EXPORT`
 - `AEGP_Menu_ANIMATION`
 - `AEGP_Menu_PURGE`
-- `AEGP_Menu_NEW` - Supported in CC and later
+- `AEGP_Menu_NEW` (CC 之后才支持)
 
 位置可以设置为菜单中的一个特定位置，也可以是 After Effects 指定的一个位置。
 
@@ -201,6 +224,26 @@ AEGP_InsertMenuCommand(
  A_long after_itemL);
 ```
 
+示例:注册一个名为"test"的菜单(在"窗口"菜单栏)
+
+:::warn
+菜单名称不支持中文
+:::
+
+```cpp
+
+// GlobalSetup ...
+PF_Err    err = PF_Err_NONE;
+AEGP_SuiteHandler suites(in_data->pica_basicP);
+AEGP_Command cmd; // 定义一个命令
+
+ERR(suites.CommandSuite1()->AEGP_InsertMenuCommand(
+  suites.CommandSuite1()->AEGP_GetUniqueCommand(&cmd), // 获取唯一ID
+  "Test", // 非中文名称
+  AEGP_Menu_WINDOW, // 窗口菜单
+  AEGP_MENU_INSERT_SORTED));
+```
+
 #### AEGP_RemoveMenuCommand
 
 删除一个菜单命令。如果你有这么大的动力，你可以删除所有 After Effects 的菜单项。
@@ -210,12 +253,12 @@ AEGP_RemoveMenuCommand(
  AEGP_Command command);
 ```
 
-#### AEGP_SetCommandName
+#### AEGP_SetMenuCommandName
 
 设置一个命令的菜单名称。
 
 ```cpp
-AEGP_SetCommandName(
+AEGP_SetMenuCommandName(
  AEGP_Command command,
  const A_char *nameZ);
 ```
@@ -264,7 +307,7 @@ AEGP_DoCommand(
 - 10314 - 播放/停止(在 13.5 及以后版本中有效)
 - 2285 - RAM 预览(在 13.5 之前有效)
 - 2415 - 播放(空格键)(在 13.5 之前有效)。
-- 2997 - 裁剪合成到感兴趣的区域。
+- 2997 - 裁剪合成到目标区域。
 - 2372 - 编辑 > 清除 > 图像缓存
 
 如果你的 AEGP 需要调用一些其他的 After Effects 菜单项，有一个相当简单的方法来找出你想要的大多数命令，使用脚本。
@@ -275,24 +318,23 @@ alert(cmd);
 ```
 
 在 AE 运行的情况下，只需打开 Adobe ExtendScript Toolkit CC，将上述脚本复制进去，并在应用程序下拉菜单中选择你正在运行的 After Effects 版本，然后点击播放按钮在 AE 中运行脚本。
-否则，请联系[[mailto:zlam@adobe.com](mailto:zlam%40adobe.com)](<[%5Bmailto:zlam@adobe.com%5D(mailto:zlam%40adobe.com)](%5Bmailto:zlam@adobe.com%5D(mailto:zlam%40adobe.com))](%5B%5Bmailto:zlam@adobe.com%5D(mailto:zlam%40adobe.com)%5D(%5Bmailto:zlam@adobe.com%5D(mail to: zlam%40adobe.com))>) *API 工程*为指令号。
+。
 
-## Registering with After Effects
+## 在 After Effects 中注册
 
 注册函数供 After Effects 使用。
 
-### AEGP_RegisterSuites5
+### AEGP_RegisterSuite5
 
 #### AEGP_RegisterCommandHook
 
-在 After Effects 中注册一个钩子(命令处理)函数。
-如果你要替换一个 After Effects 也处理的函数，`AEGP_HookPriority`决定你的插件是否先得到它。\* `AEGP_HP_BeforeAE`。
+在 After Effects 中注册一个钩子(命令处理)函数。如果要替换 After Effects 也要处理的函数，`AEGP_HookPriority`决定是插件先处理还是AE先处理。
 
+- `AEGP_HP_BeforeAE`
 - `AEGP_HP_AfterAE`
 
-对于你添加的每个菜单项，使用`AEGP_GetUniqueCommand()`获得你自己的`AEGP_Command`。
-(来自[AEGP_CommandSuite1])，在注册单个`command_hook_func`之前获得自己的`AEGP_mand`。
-判断哪个命令是在这个钩子函数中发送的，并采取相应的行动。
+对于添加的每个菜单项，需要使用`AEGP_GetUniqueCommand()`预先注册单个`command_hook_func`获得你自己的`AEGP_Command`。判断哪个命令是在这个钩子函数中发送的，并采取相应的行动。
+
 目前，`AEGP_HookPriority`被忽略了。
 
 ```cpp
@@ -409,7 +451,7 @@ AEGP_RegisterPresetLocalizationString(
 这些功能访问和修改项目数据。包括对多个项目的支持，以便为将来的扩展做准备。
 目前 After Effects 坚持采用单一项目模式。
 
-要在 After Effects 的首选项中保存特定项目的数据(因此，在项目本身之外)，请使用[持久性数据套件](#aegps-aegp-suites-persistent-data-suite)。
+要在 After Effects 的首选项中保存特定项目的数据(因此，在项目本身之外)，请使用"持久性数据套件"
 
 请注意：用于打开和创建项目的函数在被调用时不会保存对当前打开的项目的修改!
 
@@ -4808,7 +4850,7 @@ AEGP_GetLastErrorMessage(
 
 #### AEGP_IsScriptingAvailable
 
-如果脚本对插件可用，返回`TRUE`。
+如果脚本对插件可用，返回`TRUE`。一般与`AEGP_ExecuteScript`配合使用(见下)
 
 ```cpp
 AEGP_IsScriptingAvailable(
@@ -4817,17 +4859,45 @@ AEGP_IsScriptingAvailable(
 
 #### AEGP_ExecuteScript
 
-让 After Effects 执行一个脚本。
-传入的脚本可以是 UTF-8 或当前应用程序的编码(如果 platform_encodingB 被传入为 TRUE)。
-两个输出参数是可选的。脚本的最后一行的值就是传回 outResultPH0 的值。
+执行一个脚本。传入的脚本可以是 UTF-8 或当前应用程序的编码( platform_encodingB为 TRUE)。两个输出参数是可选的。脚本最后一行的值就是传回 outResultPH0 的值。
 
 ```cpp
 AEGP_ExecuteScript(
- AEGP_PluginID inPlugin_id,
- const A_char *inScriptZ,
- const A_Boolean platform_encodingB,
- AEGP_MemHandle *outResultPH0,
- AEGP_MemHandle *outErrStringPH0);
+ AEGP_PluginID inPlugin_id,   // 插件ID
+ const A_char *inScriptZ,     // 脚本内容
+ const A_Boolean platform_encodingB,  // 是否支持当前平台编码
+ AEGP_MemHandle *outResultPH0,    // 返回结果
+ AEGP_MemHandle *outErrStringPH0  // 报错信息
+);
+```
+
+示例: 一个AE弹窗(随便丢在Render函数里了,在自己函数里调用suites即可)
+
+```cpp
+static PF_Err 
+Render (
+  PF_InData  *in_data,
+  PF_OutData  *out_data,
+  PF_ParamDef  *params[],
+  PF_LayerDef  *output )
+{
+  PF_Err    err  = PF_Err_NONE;
+  AEGP_SuiteHandler suites(in_data->pica_basicP); // 调用suites
+  //   ... 以上为 Skeleton.cpp Render 函数自带
+
+
+  A_Boolean outAvailablePB;
+  AEGP_MemHandle outResultPH;
+  AEGP_MemHandle outErrorStringPH;
+
+  // 判断插件能否使用脚本
+  ERR(suites.UtilitySuite4()->AEGP_IsScriptingAvailable(&outAvailablePB));
+  ERR(suites.UtilitySuite4()->AEGP_ExecuteScript(NULL, "alert('我是一个弹窗');", true, &outResultPH, &outErrorStringPH));
+
+  // 使用MemHandle后 需要释放掉
+  ERR(suites.MemorySuite1()->AEGP_FreeMemHandle(outResultPH));
+  ERR(suites.MemorySuite1()->AEGP_FreeMemHandle(outErrorStringPH));
+}
 ```
 
 #### AEGP_HostIsActivated
@@ -5727,10 +5797,15 @@ AEGP_RenderAndCheckoutFrame(
 #### AEGP_RenderAndCheckoutLayerFrame
 
 CC 2014 的新功能。这允许在非渲染时间对应用了效果的图层进行帧检。
+
 这对于需要帧的操作很有用，例如，当一个按钮被点击时，在渲染时等待一会儿是可以接受的。
+
 注意：由于它不是异步的，所以它不能解决自定义 UI 需要根据框架来绘制的一般问题。
+
 为请求的图层框架检索一个`AEGP_FrameReceiptH`(而不是实际的像素)。使用`AEGP_CheckinFrame`签入此收据以释放内存。
-使用`AEGP_NewFromUpstreamOfEffect()`创建`AEGP_LayerRenderOptionsH`，在[AEGP_LayerRenderOptionsSuite1](#aegps-aegp-suites-aegp-layerrenderoptionssuite)。
+
+使用`AEGP_NewFromUpstreamOfEffect()`创建`AEGP_LayerRenderOptionsH`，在AEGP_LayerRenderOptionsSuite1。
+
 实际上，你可以使用`AEGP_NewFromLayer()`来获得其他图层参数的图层，并应用其效果。
 然而，要小心。如果你在你的效果 A 中这样做，而在另一个图层上有一个效果 B，在渲染时做同样的事情，你就会产生一个无限循环。
 如果你不是为了渲染而这样做，那么它可能是好的。

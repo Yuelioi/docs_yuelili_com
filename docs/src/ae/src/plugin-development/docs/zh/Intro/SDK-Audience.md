@@ -7,9 +7,7 @@ category:
 
 必须熟练掌握 C/C++。虽然我们会帮助解决 After Effects API 的具体问题，但IDE 或基本的编程概念需要自己掌握。
 
-本 SDK 指南默认你里了解 After Effects，以及基本的运动图像术语。如果不了解，请购买[Adobe After Effects Classroom in a Book](http://www.adobepress.com/store/adobe-after-effects-cc-classroom-in-a-book-2017-release-9780134665320)，或市场上任何其他优秀的教学书籍。学习
-
-诸如阿尔法通道、像素长宽比、隔行扫描、色彩空间等 After Effects 话题。
+本 SDK 指南默认你里了解 After Effects，以及基本的运动图像术语。如果不了解，请购买[Adobe After Effects Classroom in a Book](http://www.adobepress.com/store/adobe-after-effects-cc-classroom-in-a-book-2017-release-9780134665320)，或市场上任何其他优秀的教学书籍。学习诸如阿尔法通道、像素长宽比、隔行扫描、色彩空间等 After Effects 话题。
 
 ## 开发要求
 
