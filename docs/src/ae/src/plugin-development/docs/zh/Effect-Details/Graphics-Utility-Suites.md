@@ -17,7 +17,7 @@ After Effects 通过以下函数套件公开了其内部的变换和图形实用
 
 #### composite_rect
 
-使用 After Effects 的一个传输模式，将矩形从`PF_EffectWorld`合成到另一个。
+使用 After Effects 的一个混合模式，将矩形从`PF_EffectWorld`合成到另一个。
 
 ```cpp
 PF_Err composite_rect (
@@ -30,6 +30,21 @@ PF_Err composite_rect (
  PF_Field field_rdr,
  PF_XferMode xfer_mode,
  PF_EffectWorld *dst);
+
+// 示例:https://youtu.be/aqq73u091gg&t=434
+PF_CompositeMode ourCompositeMode;
+switch(gip.modeInt) // 切换下拉框
+
+case 1:
+    ourCompositeMode.xfer = PF_Xfer_ADD; // 将图层混合模式改成ADD
+    break;
+case 2:
+    ourCompositeMode.xfer = PF_Xfer_SCREEN; // 屏幕
+    break;
+// ...
+ourCompositeMode.opacity = 255;
+ourCompositeMode.opacitySu = A_u_short(1.0);
+ // 高bit不透明度
 
 ```
 
@@ -86,15 +101,21 @@ PF_Err copy (
  PF_Rect *src_r,
  PF_Rect *dst_r);
 
+// 示例:https://youtu.be/aqq73u091gg
+ERR(
+  PF_COPY(&params[0]->u.ld, 
+  output, 
+  NULL, 
+  NULL));
 ```
 
 #### copy_hq
 
-上述的高保真版本(参数相同)。
+上述的高bpc版本(参数相同)。
 
 #### transfer_rect
 
-使用传输模式进行混合，有一个可选的遮罩。
+使用混合模式进行混合，有一个可选的遮罩。
 
 ```cpp
 PF_Err transfer_rect (
@@ -110,11 +131,39 @@ PF_Err transfer_rect (
  A_long dest_y,
  PF_EffectWorld *dst_world);
 
+// 示例
+PF_CompositeMode ourCompositeMode;
+ourCompositeMode.xfer = PF_Xfer_ADD; // 设置混合模式
+ourCompositeMode.opacity = 255;
+ourCompositeMode.opacitySu = A_u_short(1.0);
+
+
+PF_Rect rect1; // 定义一个矩形
+rect1.left = 0;
+rect1.top = 0;
+rect1.right = params[0]->u.ld.width;
+rect1.right = params[0]->u.ld.height;
+
+ERR(suites.WorldTransformSuite1()->
+transfer_rect(
+  in_data->effect_ref, 
+  in_data->quality, 
+  NULL,
+  NULL,
+  &rect1,
+  &params[0]->u.ld, 
+  &ourCompositeMode, 
+  NULL, 
+  0, 
+  0, 
+  output)
+);
+
 ```
 
 #### transform_world
 
-给定一个 PF_EffectWorld 和一个矩阵(或矩阵数组)，使用 After Effects 的传输模式进行转换和混合，并有一个可选的遮罩。
+给定一个 PF_EffectWorld 和一个矩阵(或矩阵数组)，使用 After Effects 的混合模式进行转换和混合，并有一个可选的遮罩。
 矩阵的指针指向一个用于运动模糊的矩阵阵列。
 什么时候变换不是变换？Z-尺寸 变换不是，除非变换后的图层是其他层的父层，这些层并非都位于z=0平面中。
 

@@ -9,34 +9,34 @@ category:
 
 | **Suite**| **Description** |
 | --- | --- |
-| [Memory Suite](../aegps/aegp-suites.html)| 管理内存资源。使用此套件！每当遇到与内存相关的错误时，AE都可以为您报告错误。 |
-| [Command Suite](../aegps/aegp-suites.html) | 管理您的AEGP菜单项。与注册套件结合使用。 |
-| [Register Suite](../aegps/aegp-suites.html)  | 与[Command Suite](../aegps/aegp-suites.html)连用,用于菜单命令添加功能。AEIO和工匠必须使用此套件的功能向AE指示他们想要接收适当的消息流。您可以使用此套件替换一些AE命令。 |
-| [Project Suite](../aegps/aegp-suites.html) | 读取和修改项目数据。 |
-| [Item Suite](../aegps/aegp-suites.html) | 管理项目或合成中的项目。文件夹、合成、纯色层和素材都是项目。  |
-| [Collection Suite](../aegps/aegp-suites.html) | 查询当前选择了哪些项目，并创建您自己的选择集。选择您的AEGP修改的所有项目通常是一个很好的UI举措，只是为了让用户知道您做了什么。|
-| [Composition Suite](../aegps/aegp-suites.html)  |项目中管理（和创建）合成，以及合成特定的项目，如纯色层。  |
-| [Footage Suite](../aegps/aegp-suites.html) | 管理素材|
-| [Layer Suite](../aegps/aegp-suites.html)  | 提供有关合成中图层的信息，以及源和图层时间之间的关系。纯色层、文本、绘制、相机、灯光、图像和图像序列都可以成为图层。|
-| [Effect Suite](../aegps/aegp-suites.html)| 提供对应用于图层的效果的访问。使用流套件获取效果关键帧信息。使用`AEGP_EffectCallGeneric()`(in [AEGP_EffectSuite4](../aegps/aegp-suites.html)) 与您提前设置的效果进行通信，以响应您的AEGP。 |  | [Stream Suite](../aegps/aegp-suites.html) | 用于访问图层的关键帧属性的值。  |  | [Dynamic Stream Suite](../aegps/aegp-suites.html) | 用于访问与图层相关联的动态流的特性。 |  | [Keyframe Suite](../aegps/aegp-suites.html) | 用于访问和操作所有关键帧数据。 |  | [Marker Suite](../aegps/aegp-suites.html) | 用于操纵标记。使用 `AEGP_GetNewCompMarkerStream()` (in [AEGP_CompSuite11](../aegps/aegp-suites.html)) 来获取合成的标记流|
-| [Mask Suite](../aegps/aegp-suites.html) | 提供检索有关图层蒙版的信息的访问。 |
-| [Mask Outline Suite](../aegps/aegp-suites.html)| 与Stream Suite结合使用时，该套件提供了有关为制作图层蒙版而渲染的路径的详细信息。|
-| [Text Document Suite](../aegps/aegp-suites.html) |用于访问文本图层上的实际文本。 |
-| [Text Layer Suite](../aegps/aegp-suites.html) | 用于访问构成文本图层轮廓的路径。|
-| [Utility Suite](../aegps/aegp-suites.html) | 提供错误消息处理、AEGP版本检查和对AE撤消堆栈的访问。 |
-| [Persistent Data Suite](../aegps/aegp-suites.html)| 查询和管理所有持久(persistent)数据（即首选项文件）。AEGP还可以将自己的数据添加到首选项中。  |
-| [Color Settings Suite](../aegps/aegp-suites.html)  | 获取有关AE当前颜色管理设置的信息。  |
-| [Render Suite](../aegps/aegp-suites.html)| 从AEGP中获取渲染的帧（和音频样本）。  |
-| [World Suite](../aegps/aegp-suites.html)  | 分配、处置和查询AEGP_Worlds。还提供了一种将`PF_EffectWorld`转换为`AEGP_World`的方法，用于使用效果插件。   |
-| [Composite Suite](../aegps/aegp-suites.html)| 公开AE的合成功能，包括混合模式、轨道遮罩和良好的老式位复制(fashioned bit copying)。  |
-| [Sound Data Suite](../aegps/aegp-suites.html) |用于管理和访问声音数据的功能。 |
-| [Render Queue Suite](../aegps/aegp-suites.html)| 从渲染队列中添加和删除项目。|
-| [Render Queue Item Suite](../aegps/aegp-suites.html)  | 查询和修改渲染队列中的项目。|
-| [Render Options Suite](../aegps/aegp-suites.html)  |  查询和管理渲染队列项的选项对话框中公开的所有项目。|
-| [Output Module Suite](../aegps/aegp-suites.html) | 查询和修改附加到渲染队列中项目的输出模块。  |
-| [PF Interface Suite](../aegps/aegp-suites.html)| 该套件中的功能虽然在技术上是AEGP API的一部分，但供效果使用。   |
-| [AEGP Iterate Suite](../aegps/aegp-suites.html)| 为AEGP提供了一种在任何或所有可用处理器上运行函数（具有所需签名）的方法。 |
-| [File Import Manager Suite](../aegps/aegp-suites.html) | 注册AEGP文件和项目导入器作为AE文件处理的一部分。|
+| Memory Suite| 管理内存资源。使用此套件！每当遇到与内存相关的错误时，AE都可以为您报告错误。 |
+| Command Suite | 管理您的AEGP菜单项。与注册套件结合使用。 |
+| Register Suite  | 与Command Suite连用,用于菜单命令添加功能。AEIO和工匠必须使用此套件的功能向AE指示他们想要接收适当的消息流。您可以使用此套件替换一些AE命令。 |
+| Project Suite | 读取和修改项目数据。 |
+| Item Suite | 管理项目或合成中的项目。文件夹、合成、纯色层和素材都是项目。  |
+| Collection Suite | 查询当前选择了哪些项目，并创建您自己的选择集。选择您的AEGP修改的所有项目通常是一个很好的UI举措，只是为了让用户知道您做了什么。|
+| Composition Suite  |项目中管理（和创建）合成，以及合成特定的项目，如纯色层。  |
+| Footage Suite | 管理素材|
+| Layer Suite  | 提供有关合成中图层的信息，以及源和图层时间之间的关系。纯色层、文本、绘制、相机、灯光、图像和图像序列都可以成为图层。|
+| Effect Suite| 提供对应用于图层的效果的访问。使用流套件获取效果关键帧信息。使用`AEGP_EffectCallGeneric()`(in AEGP_EffectSuite4) 与您提前设置的效果进行通信，以响应您的AEGP。 |  | Stream Suite | 用于访问图层的关键帧属性的值。  |  | Dynamic Stream Suite | 用于访问与图层相关联的动态流的特性。 |  | Keyframe Suite | 用于访问和操作所有关键帧数据。 |  | Marker Suite | 用于操纵标记。使用 `AEGP_GetNewCompMarkerStream()` (in AEGP_CompSuite11) 来获取合成的标记流|
+| Mask Suite | 提供检索有关图层蒙版的信息的访问。 |
+| Mask Outline Suite| 与Stream Suite结合使用时，该套件提供了有关为制作图层蒙版而渲染的路径的详细信息。|
+| Text Document Suite |用于访问文本图层上的实际文本。 |
+| Text Layer Suite | 用于访问构成文本图层轮廓的路径。|
+| Utility Suite | 提供错误消息处理、AEGP版本检查和对AE撤消堆栈的访问。 |
+| Persistent Data Suite| 查询和管理所有持久(persistent)数据（即首选项文件）。AEGP还可以将自己的数据添加到首选项中。  |
+| Color Settings Suite  | 获取有关AE当前颜色管理设置的信息。  |
+| Render Suite| 从AEGP中获取渲染的帧（和音频样本）。  |
+| World Suite  | 分配、处置和查询AEGP_Worlds。还提供了一种将`PF_EffectWorld`转换为`AEGP_World`的方法，用于使用效果插件。   |
+| Composite Suite| 公开AE的合成功能，包括混合模式、轨道遮罩和良好的老式位复制(fashioned bit copying)。  |
+| Sound Data Suite |用于管理和访问声音数据的功能。 |
+| Render Queue Suite| 从渲染队列中添加和删除项目。|
+| Render Queue Item Suite  | 查询和修改渲染队列中的项目。|
+| Render Options Suite  |  查询和管理渲染队列项的选项对话框中公开的所有项目。|
+| Output Module Suite | 查询和修改附加到渲染队列中项目的输出模块。  |
+| PF Interface Suite| 该套件中的功能虽然在技术上是AEGP API的一部分，但供效果使用。   |
+| AEGP Iterate Suite| 为AEGP提供了一种在任何或所有可用处理器上运行函数（具有所需签名）的方法。 |
+| File Import Manager Suite | 注册AEGP文件和项目导入器作为AE文件处理的一部分。|
 
 ## 示例代码
 
@@ -81,7 +81,7 @@ ERR(suites.CommandSuite1()->AEGP_InsertMenuCommand(
 
 #### AEGP_NewMemHandle
 
-创建一个新的内存句柄。`plugin_id`是通过主[Entry Point](implement.html#aegps-implementation-entry-point)传入的 ID，或者是你从`AEGP_RegisterWithAEGP()`获得的。
+创建一个新的内存句柄。`plugin_id`是通过[入口函数](implement.html#aegps-implementation-entry-point)传入的 ID，或者是你从`AEGP_RegisterWithAEGP()`获得的。
 (来自[AEGP_UtilitySuite6])。
 使用`whatZ`来识别你所要求的内存。After Effects 使用这个字符串来显示任何相关的错误信息。
 
@@ -2261,7 +2261,7 @@ AEGP_SetLayerStretch(
 
 #### AEGP_GetLayerTransferMode
 
-获取图层的传输模式。
+获取图层的混合模式。
 
 ```cpp
 AEGP_GetLayerTransferMode(
@@ -2271,7 +2271,7 @@ AEGP_GetLayerTransferMode(
 
 #### AEGP_SetLayerTransferMode
 
-设置图层的传输模式。可撤消。
+设置图层的混合模式。可撤消。
 
 ```cpp
 AEGPSetLayerTransferMode(
@@ -6126,7 +6126,7 @@ AEGP_PrepTrackMatte(
 
 #### AEGP_TransferRect
 
-使用传输模式混合两个`PF_EffectWorlds`，有一个可选的掩码。 在`blend_tablesP0`参数中传递 NULL，以在当前的工作色彩空间中执行混合。
+使用混合模式混合两个`PF_EffectWorlds`，有一个可选的掩码。 在`blend_tablesP0`参数中传递 NULL，以在当前的工作色彩空间中执行混合。
 
 ```cpp
 AEGP_TransferRect(

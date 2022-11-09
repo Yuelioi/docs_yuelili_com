@@ -58,7 +58,7 @@ effect: 效果/插件
 Compute Cache: 计算缓存
 receipt :凭证
 
-transfer mode: 传输模式
+transfer mode: 混合模式
 ampling routine:例程
 scanline:扫描线
 

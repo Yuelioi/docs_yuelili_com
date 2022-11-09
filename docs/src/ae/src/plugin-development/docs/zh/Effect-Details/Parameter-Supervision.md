@@ -5,13 +5,13 @@ category:
   - AE 插件开发
 ---
 
-管理(Supervision)是指根据其他参数的值动态地改变一些参数的值。要管理一个参数，在*PF_Cmd_PARAM_SETUP*期间，在添加它之前设置[PF_ParamFlag_SUPERVISE](../effect-basics/PF_ParamDef.html) 。每当它被改变，你会收到[PF_Cmd_USER_CHANGED_PARAM](../effect-basics/command-selectors.html) 。改变的参数的索引(在插件的参数数组中)在 PF*UserChangedParamExtra(额外)参数中发送。在 `PF_Cmd_USER_CHANGED_PARAM*期间，你可以改变任何参数的值和外观。
+管理(Supervision)是指根据其他参数的值动态地改变一些参数的值。要管理一个参数，在`PF_Cmd_PARAM_SETUP`期间，在添加它之前设置[PF_ParamFlag_SUPERVISE](../effect-basics/PF_ParamDef.html) 。每当它被改变，你会收到[PF_Cmd_USER_CHANGED_PARAM](../effect-basics/command-selectors.html) 。改变的参数的索引(在插件的参数数组中)在`PF_UserChangedParamExtra`(额外)参数中发送。在 `PF_Cmd_USER_CHANGED_PARAM`期间，你可以改变任何参数的值和外观。
 
 ## Updating Parameter UI
 
-如果在任何参数上设置了 *PF_ParamFlag_SUPERVISE* ，AE将向你发送 *PF_Cmd_UPDATE_PARAMS_UI* ，就像设置了 *PF_OutFlag_SEND_UPDATE_PARAMS_UI* 一样。
+如果在任何参数上设置了 `PF_ParamFlag_SUPERVISE` ，AE将向你发送 `PF_Cmd_UPDATE_PARAMS_UI` ，就像设置了 `PF_OutFlag_SEND_UPDATE_PARAMS_UI` 一样。
 
-在 *PF_Cmd_UPDATE_PARAMS_UI* 期间，只能改变参数的外观和启用状态。使用[PF_ParamUtilSuite3]中的`PF_UpdateParamUI()`来更新用户界面，把你想修改的参数的*copy*传给它。不要试图修改原始参数。没有必要设置`PF_OutFlag_REFRESH_UI`；`PF_UpdateParamUI()`帮你处理。
+在 `PF_Cmd_UPDATE_PARAMS_UI` 期间，只能改变参数的外观和启用状态。使用[PF_ParamUtilSuite3]中的`PF_UpdateParamUI()`来更新用户界面，把你想修改的参数的 *copy* 传给它。不要试图修改原始参数。没有必要设置`PF_OutFlag_REFRESH_UI`；`PF_UpdateParamUI()`帮你处理。
 
 ::: tip
 

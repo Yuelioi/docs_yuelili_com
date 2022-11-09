@@ -13,7 +13,7 @@ category:
 
 在[PF_Cmd_PARAM_SETUP](../effect-basics/command-selectors.html)期间枚举插件参数给 After Effects，对该函数进行多次调用。。
 
-注意：在 PF_ADD_PARAM()之前没有清除 PF_ParamDef 会出问题。因此在添加参数之前一定要使用 AEFX_CLR_STRUCT`。
+注意：在 `PF_ADD_PARAM()`之前没有清除 `PF_ParamDef` 会出问题。因此在添加参数之前一定要使用 `AEFX_CLR_STRUCT`。
 
 ```cpp
 PF_ErrPF_ADD_PARAM(
@@ -24,24 +24,24 @@ PF_ParamDefPtrdef);
 
 我们在Utils/Param_Utils.h中为特定的参数类型提供了方便的宏：
 
-> - PF_ADD_COLOR`,
-> - PF_ADD_ARBITRARY`,
-> - PF_ADD_SLIDER`,
-> - PF_ADD_FIXED`,
-> - PF_ADD_FLOAT_SLIDERX`,
-> - PF_ADD_CHECKBOXX`,
-> - PF_ADD_BUTTON`,
-> - PF_ADD_ANGLE`,
-> - PF_ADD_NULL`,
-> - PF_ADD_LAYER`,
-> - PF_ADD_255_SLIDER`,
-> - PF_ADD_PERCENT`,
-> - PF_ADD_POINT`,
-> - PF_ADD_POINT_3D`,
-> - PF_ADD_TOPICX`,
-> - PF_END_TOPIC`,
-> - PF_ADD_POPUPX`,
-> - PF_ADD_FLOAT_SLIDERX_DISABLED`
+> - `PF_ADD_COLOR`,
+> - `PF_ADD_ARBITRARY`,
+> - `PF_ADD_SLIDER`,
+> - `PF_ADD_FIXED`,
+> - `PF_ADD_FLOAT_SLIDERX`,
+> - `PF_ADD_CHECKBOXX`,
+> - `PF_ADD_BUTTON`,
+> - `PF_ADD_ANGLE`,
+> - `PF_ADD_NULL`,
+> - `PF_ADD_LAYER`,
+> - `PF_ADD_255_SLIDER`,
+> - `PF_ADD_PERCENT`,
+> - `PF_ADD_POINT`,
+> - `PF_ADD_POINT_3D`,
+> - `PF_ADD_TOPICX`,
+> - `PF_END_TOPIC`,
+> - `PF_ADD_POPUPX`,
+> - `PF_ADD_FLOAT_SLIDERX_DISABLED`
 
 ### PF_ABORT
 

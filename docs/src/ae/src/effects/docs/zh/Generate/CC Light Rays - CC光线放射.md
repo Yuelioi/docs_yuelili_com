@@ -33,7 +33,7 @@ category:
 | Color from source | 来源的颜色  |          |         |      |            |
 | Allow Brightening | 允许变亮    |          |         |      |            |
 | Color             | 颜色        | カラー   |         |      |            |
-| Trensfer mode     | 传输模式    |          | None    | 无   | なし       |
+| Trensfer mode     | 混合模式    |          | None    | 无   | なし       |
 |                   |             |          | Add     | 相加 | 加算       |
 |                   |             |          | Lighten | 变亮 | 明るく     |
 |                   |             |          | Screen  | 屏幕 | スクリーン |

@@ -486,7 +486,7 @@ AEGP_RenderTexture(
 - `AEGP_RenderHints_IGNORE_EXTENTS`
 - `AEGP_RenderHints_NO_TRANSFER_MODE`
 
-`AEGP_RenderHints_NO_TRANSFER_MODE`防止应用不透明和传输模式；用于调用`RenderLayer`。
+`AEGP_RenderHints_NO_TRANSFER_MODE`防止应用不透明和混合模式；用于调用`RenderLayer`。
 
 #### AEGP_DisposeTexture
 
