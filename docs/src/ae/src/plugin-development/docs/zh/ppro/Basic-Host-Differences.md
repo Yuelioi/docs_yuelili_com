@@ -49,7 +49,7 @@ Premiere 的多线程渲染也适用于 AE 效果。当渲染 AE 效果时，来
 
 Premiere Pro 处理字段渲染的方式与 After Effects 不同。在字段渲染时，PF_InData>field 给出的是当前正在渲染的字段，而忽略了是否设置了 PF_OutFlag_PIX_INDEPENDENT 标志。
 
-在 Premiere Pro 中，特效接收[PF_InData&gt;quality](../effect-basics/PF_InData.html)中显示器窗口的质量设置。这与 After Effects 不同，这里提供了源层的质量设置。
+在 Premiere Pro 中，特效接收[PF_InData>quality](../effect-basics/PF_InData.html)中显示器窗口的质量设置。这与 After Effects 不同，这里提供了源层的质量设置。
 
 ## Parameter UI
 

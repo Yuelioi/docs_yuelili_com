@@ -19,7 +19,7 @@ AE现有参数类型不能充分表示某些值。可以通过创建任意数据
 | `PF_Arbitrary_DISPOSE_FUNC`| 释放并销毁任意数据类型的实例。|
 | `PF_Arbitrary_COPY_FUNC`  | M创建现有实例的副本。将向您传递两个句柄，但只有源句柄包含有效实例。您必须创建一个新实例，从源句柄复制值，并将其放入目标句柄。如果向您传递了NULL句柄，请创建arb数据的默认实例。|  | PF_Arbitrary_FLAT_SIZE_FUNC` | 您将被传递一个句柄到您的数据类型的实例，以及一个变量，您可以在其中返回该实例的扁平化版本的大小。 |
 | `PF_Arbitrary_FLATTEN_FUNC` | 展平您传递的实例，并将其放在提供的缓冲区中。缓冲区将是您响应PF_Arbitrary_FLAT_SIZE_FUNC时报告的大小。 |  | PF_Arbitrary_UNFLATTEN_FUNC` | 将缓冲区解压到任意数据类型的实例中，并放入传递给您的句柄中。|
-| `PF_Arbitrary_INTERP_FUNC`  | 您的插值函数将三个句柄传递给任意数据类型的实例；一个包含初始值（0），一个包含最终值（1），第三个用于保存您的插值数据（介于0和1之间）。您还会被传递一个浮点数，指示您的解释值应该在0和1之间的位置.分配一个实例并用插值数据填充它。然后将插值实例放入您传递的句柄中。当计算归一化时间值时，速度曲线已经考虑在内。<br />注意：如果[in_data&gt;effect_ref](../effect-basics/PF_InData.html)为NULL，则永远不要签出参数。 |  | PF_Arbitrary_COMPARE_FUNC`| 将向您传递任意数据的两个实例和一个指向比较结果的指针。使用PF_ArbCompareResult（参见AE_Effect.h）值之一填充结果，以指示第一个值是否等于、小于、大于或不等于第二个值。|
+| `PF_Arbitrary_INTERP_FUNC`  | 您的插值函数将三个句柄传递给任意数据类型的实例；一个包含初始值（0），一个包含最终值（1），第三个用于保存您的插值数据（介于0和1之间）。您还会被传递一个浮点数，指示您的解释值应该在0和1之间的位置.分配一个实例并用插值数据填充它。然后将插值实例放入您传递的句柄中。当计算归一化时间值时，速度曲线已经考虑在内。<br />注意：如果[in_data>effect_ref](../effect-basics/PF_InData.html)为NULL，则永远不要签出参数。 |  | PF_Arbitrary_COMPARE_FUNC`| 将向您传递任意数据的两个实例和一个指向比较结果的指针。使用PF_ArbCompareResult（参见AE_Effect.h）值之一填充结果，以指示第一个值是否等于、小于、大于或不等于第二个值。|
 | `PF_Arbitrary_PRINT_SIZE_FUNC` | 通过设置print_sizePLu（print_size_func_params成员，PF_ArbParamsExtra结构的一部分）来指示打印参数当前值所需的缓冲区大小。 |
 | `PF_Arbitrary_PRINT_FUNC`  | 格式化任意数据以进行基于文本的导出，并将结果复制到缓冲区。这可以像您希望的那样详细。您的插件应该模拟剪切和粘贴行为，以粘贴由AE附带的插件显示的参数设置的文本表示（例如，到Microsoft Excel电子表格中）。您在如何格式化输出方面有很大的灵活性。 |
 | `PF_Arbitrary_SCAN_FUNC`  | 给定一个文本数据缓冲区（通常来自系统剪贴板），将其解析为任意数据格式。|

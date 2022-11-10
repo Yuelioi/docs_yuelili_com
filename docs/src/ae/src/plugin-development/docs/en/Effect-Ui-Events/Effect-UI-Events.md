@@ -24,7 +24,7 @@ After Effects can send events to effects for user interface handling and paramet
 
 While many events are sent in response to user input, After Effects also sends events to effects which manage arbitrary data parameters.
 
-The type of event is specified in [PF_EventExtra-&gt;e_type](PF_EventExtra.html) (#effect-ui-events-pf-eventextra) and the various events are described below.
+The type of event is specified in [PF_EventExtra->e_type](PF_EventExtra.html) (#effect-ui-events-pf-eventextra) and the various events are described below.
 
 ## Events
 

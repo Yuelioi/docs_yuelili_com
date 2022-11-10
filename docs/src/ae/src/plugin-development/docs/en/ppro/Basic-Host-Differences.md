@@ -50,7 +50,7 @@ In AE, `width,height` are `(720,480)` and `pixel_aspect_ratio` is `(10,11)`.
 
 Premiere Pro handles field rendering differently than After Effects. While field rendering, PF_InData>field gives the current field being rendered, ignoring whether or not PF_OutFlag_PIX_INDEPENDENT flag was set.
 
-In Premiere Pro, effects receive the quality setting of the monitor window in [PF_InData&gt;quality](../effect-basics/PF_InData.html) (#effect-basics-pf-indata-pf-indata-members). This differs from After Effects, where the source layer’s quality setting is provided here.
+In Premiere Pro, effects receive the quality setting of the monitor window in [PF_InData>quality](../effect-basics/PF_InData.html) (#effect-basics-pf-indata-pf-indata-members). This differs from After Effects, where the source layer’s quality setting is provided here.
 
 ## Parameter UI
 

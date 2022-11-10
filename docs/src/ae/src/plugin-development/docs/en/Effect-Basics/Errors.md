@@ -36,7 +36,7 @@ If you get an error code back from one of our callback functions, pass it back t
 
 Out-of-memory errors are never reported by After Effects. Error reporting is always suppressed during RAM preview, and when After Effects is running in - noui mode.
 
-To report an error from within a plug-in, set `PF_OutFlag_DISPLAY_ERROR_MESSAGE`, and describe the error in [PF_OutData&gt;return_msg](PF_OutData.html) (#effect-basics-pf-outdata).
+To report an error from within a plug-in, set `PF_OutFlag_DISPLAY_ERROR_MESSAGE`, and describe the error in [PF_OutData>return_msg](PF_OutData.html) (#effect-basics-pf-outdata).
 
 Doing so will enter your error into the render log, and prevent system hangs in renders driven by a render engine or scripting.
 
