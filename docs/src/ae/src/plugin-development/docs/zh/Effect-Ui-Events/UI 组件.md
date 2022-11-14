@@ -170,3 +170,39 @@ PF_END_TOPIC(TOPIC_END_DISK_ID);
 ```
 
 ### 弹出框
+
+`|`: 参数分割符
+
+`(-`: 分割线
+
+```cpp
+PF_ADD_POPUP(
+  "Popup",
+  3,      // 参数个数
+  1,      // 默认值,起始为1
+  "A|B|C",   // 用 / 分割参数
+  POPUP_DISK_ID);
+```
+
+## 其他
+
+### Option 对话框
+
+追加`PF_OutFlag_I_DO_DIALOG`, 然后使用调试工具,运行到此处, 查询当前的`out_flag`值,右键`16进制显示` <https://youtu.be/VU0yir5eYbA&t=214>
+
+再在`SkeletonPiPL.r`文件里 修改`AE_Effect_Global_OutFlags { 0x02000000 //50332160 }` 前面的`0x0...`为改为刚才的out_flag 16进制值
+
+::: tip
+要不然就直接运行,看报错值,他会跟你讲要填多少
+:::
+
+```cpp
+// GlobalSetup()
+out_data->out_flags =  PF_OutFlag_DEEP_COLOR_AWARE | PF_OutFlag_I_DO_DIALOG;
+
+
+// *EffectMain()
+case PF_Cmd_DO_DIALOG:
+  int a = 1; // 任意你的代码
+  break;
+```
