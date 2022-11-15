@@ -15,11 +15,11 @@ category:
 
 ## 配置
 
+<https://youtu.be/uHbbW3qtTJQ>
+
 ### 环境变量设置
 
-最后面的文件夹自己定义
-
-AE_PLUGIN_BUILD_DIR(插件生成目录) > C:\Program Files\Adobe\Common\Plug-ins\7.0\MediaCore\YLL
+AE_PLUGIN_BUILD_DIR(插件生成目录) : C:\Program Files\Adobe\Common\Plug-ins\7.0\MediaCore\YLL(最后面的文件夹自己定义)
 
 ![环境变量](/images\environment.png)
 
@@ -27,13 +27,15 @@ TargetPath(调试器目录,可选) : 你的 ae 路径
 
 ![1665287136892](/images/1665287136892.png)
 
-### 项目属性
-
-选择 Skeleton(vs 2015),右键属性设置,或者点图标
-
-上面的变量其实就是这里的(默认就是这个,不用改)
-
 ![环境变量](/images\property.png)
+
+### VS其他配置项
+
+C++ > 常规: 将警告视为错误 改为 `否`.
+
+C++ > 代码生成: 结构成员对齐 改为 `默认`.
+
+连接器 > 附加依赖项: 自己加依赖路径即可.
 
 ## 编译
 
@@ -41,13 +43,11 @@ TargetPath(调试器目录,可选) : 你的 ae 路径
 
 ![1665220885176](/images/1665220885176.png)
 
-<<<<<<< HEAD
-=======
 ## 报错
 
 ### 无法打开源文件 stdint.h
 
-原来是我 vs 组件安少了, 在 Visual Studio Installer 安装: 使用 c++的桌面开发
+vs 组件安少了, 在 Visual Studio Installer 安装: 使用 c++的桌面开发
 
 ![1665286881975](/images/1665286881975.png)
 
@@ -87,7 +87,6 @@ TargetPath(调试器目录,可选) : 你的 ae 路径
 
 ![1665286453915](/images/1665286453915.png)
 
->>>>>>> 45d2e2368b78eb8835a045bff8226c61943b9799
 ## 调试
 
 还是属性设置, 设置为 AE 路径

@@ -87,7 +87,34 @@ PF_Err convolve(
  void *g_kernel,
  void *b_kernel,
  PF_EffectWorld *dst);
+```
 
+```cpp
+// 示例 7*7卷积 简单模糊效果
+// https://en.wikipedia.org/wiki/Kernel_(image_processing)
+// https://youtu.be/DYKk2Rcub6U
+
+// SKELETON_GAIN 为插件的滑块
+// Render()
+A_long convKer[49] = { };
+for (size_t i = 0; i < 49; i++)
+{
+convKer[i] = A_long(params[SKELETON_GAIN]->u.fs_d.value*2.55);
+}
+
+if (params[SKELETON_GAIN]->u.fs_d.value) {
+if (in_data->appl_id != 'PrMr') {
+  ERR(suites.WorldTransformSuite1()->convolve(
+  in_data->effect_ref,
+  &params[0]->u.ld,
+  &in_data->extent_hint,
+  PF_KernelFlag_2D | PF_KernelFlag_CLAMP,
+  7,
+  convKer, convKer, convKer, convKer,
+  output
+  ));
+}
+}
 ```
 
 #### copy
@@ -192,7 +219,7 @@ PF_Err transform_world (
 
 与给定例程相关的标志与例程原型一起记录。左侧列中的第一个条目始终是默认值，值为0。
 
-|Kernel Flags|Indicates|
+|Kernel Flags|介绍|
 |---|---|
 |`PF_KernelFlag_2D` <br/> `PF_KernelFlag_1D`|指定一维或二维内核。|
 |`PF_KernelFlag_UNNORMALIZED`<br/>`PF_KernelFlag_NORMALIZED`|`NORMALIZED`均衡内核；内核表面下的体积与像素覆盖区域下的体积相同。|
