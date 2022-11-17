@@ -32,11 +32,11 @@ ParamsSetup (
 
 ### ID
 
-ID分为 控件Disk ID, 以及参数ID,
+ID分为 控件Disk ID, 以及参数ID, 都是从1开始 1对1 直到最后
 
 ```cpp
 enum {
- SKELETON_INPUT = 0,
+ SKELETON_INPUT = 0,  // 固定
  SKELETON_ANGLE,
  SKELETON_BUTTON,
  SKELETON_CHECKBOX,
@@ -48,7 +48,7 @@ enum {
  SKELETON_TOPIC_START,
  SKELETON_TOPIC_SLIDER,
  SKELETON_TOPIC_END,
- SKELETON_NUM_PARAMS
+ SKELETON_NUM_PARAMS // 固定 代表参数数量
 };
 
 enum {
