@@ -21,7 +21,7 @@ After Effects 效果API 最好的方面之一是参数插值和管理。
 
 ## Parameter 类型
 
-| Parameter 类型   | Parameter 类型  | PF_ParamDefUnion 成员 | 参数值数据类型 | 描述  |
+| Parameter 类型| Parameter 类型  | PF_ParamDefUnion 成员 | 参数值数据类型 | 描述  |
 | --- | --- | --- | --- | --- |
 | `PF_Param_LAYER`   | [PF_LayerDef](../effect-basics/PF_EffectWorld.html) | `ld`   | `A_long`   | 合成中的图像和音频层。所有效果都自动至少有1个图层参数:param[0],它们应用到的图层。<br />当用作效果参数时，这些显示为下拉菜单，用户使用该菜单选择当前合成中的图层。<br/>下拉菜单内容由AE生成。<br/>注意：这是对包含像素和音频样本的图层的引用，而不是实际的像素和音频样本。   |
 | `PF_Param_SLIDER`   | `PF_SliderDef`   | `sd`   | `long`   | 不再使用   |

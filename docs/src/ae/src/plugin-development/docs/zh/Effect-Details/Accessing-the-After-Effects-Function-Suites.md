@@ -1,5 +1,5 @@
 ---
-title: 访问AE函数套间
+title: 访问AE函数套件
 order: 4
 category:
   - AE 插件开发
